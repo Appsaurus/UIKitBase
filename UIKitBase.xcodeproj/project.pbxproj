@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D284B0F61F79024300D94AF3 /* macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B0F51F79024300D94AF3 /* macOS.swift */; };
+		AC5B086371E95DBF9281B5BC /* Pods_UIKitBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */; };
 		D284B1051F79038B00D94AF3 /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */; };
-		D284B1231F79041C00D94AF3 /* tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1221F79041C00D94AF3 /* tvOS.swift */; };
-		D284B1251F79042800D94AF3 /* watchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1241F79042800D94AF3 /* watchOS.swift */; };
 		D284B1381F7906DB00D94AF3 /* Info-iOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B12F1F7906DA00D94AF3 /* Info-iOS-Tests.plist */; };
 		D284B1391F7906DB00D94AF3 /* Info-tvOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B1301F7906DA00D94AF3 /* Info-tvOS-Tests.plist */; };
 		D284B13B1F7906DB00D94AF3 /* Info-macOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B1331F7906DA00D94AF3 /* Info-macOS-Tests.plist */; };
@@ -20,13 +18,244 @@
 		D284B1461F7908B300D94AF3 /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1321F7906DA00D94AF3 /* SharedTests.swift */; };
 		D284B1471F7908B800D94AF3 /* iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1361F7906DA00D94AF3 /* iOSTests.swift */; };
 		D284B1481F7908BB00D94AF3 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B12E1F7906DA00D94AF3 /* macOSTests.swift */; };
-		D284B1491F790CA200D94AF3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
-		D284B14A1F790CA200D94AF3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* UIKitBase.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */; };
-		D5C629831C3A892A007F7B7C /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629821C3A892A007F7B7C /* iOS.swift */; };
-		D5C629871C3A89A8007F7B7C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
-		D5C629881C3A89A8007F7B7C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
+		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
+		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
+		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
+		E4AF808821BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
+		E4AF808921BB2D90002D6E86 /* ViewRecycler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */; };
+		E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */; };
+		E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */; };
+		E4AF808C21BB2D90002D6E86 /* ViewRecycler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */; };
+		E4AF808D21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */; };
+		E4AF808E21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */; };
+		E4AF808F21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */; };
+		E4AF809021BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */; };
+		E4AF809121BB2D90002D6E86 /* DependencyInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */; };
+		E4AF809221BB2D90002D6E86 /* DependencyInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */; };
+		E4AF809321BB2D90002D6E86 /* DependencyInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */; };
+		E4AF809421BB2D90002D6E86 /* DependencyInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */; };
+		E4AF809521BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */; };
+		E4AF809621BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */; };
+		E4AF809721BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */; };
+		E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */; };
+		E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */; };
+		E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */; };
+		E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */; };
+		E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */; };
+		E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */; };
+		E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */; };
+		E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */; };
+		E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */; };
+		E4AF80A121BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */; };
+		E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */; };
+		E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */; };
+		E4AF80A421BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */; };
+		E4AF80A521BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */; };
+		E4AF80A621BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */; };
+		E4AF80A721BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */; };
+		E4AF80A821BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */; };
+		E4AF80A921BB2D90002D6E86 /* OrientationLockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */; };
+		E4AF80AA21BB2D90002D6E86 /* OrientationLockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */; };
+		E4AF80AB21BB2D90002D6E86 /* OrientationLockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */; };
+		E4AF80AC21BB2D90002D6E86 /* OrientationLockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */; };
+		E4AF80AD21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */; };
+		E4AF80AE21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */; };
+		E4AF80AF21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */; };
+		E4AF80B021BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */; };
+		E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */; };
+		E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */; };
+		E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */; };
+		E4AF80B421BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */; };
+		E4AF80B521BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */; };
+		E4AF80B621BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */; };
+		E4AF80B721BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */; };
+		E4AF80B821BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */; };
+		E4AF80B921BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */; };
+		E4AF80BA21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */; };
+		E4AF80BB21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */; };
+		E4AF80BC21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */; };
+		E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */; };
+		E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */; };
+		E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */; };
+		E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */; };
+		E4AF80C121BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */; };
+		E4AF80C221BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */; };
+		E4AF80C321BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */; };
+		E4AF80C421BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */; };
+		E4AF80C521BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */; };
+		E4AF80C621BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */; };
+		E4AF80C721BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */; };
+		E4AF80C821BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */; };
+		E4AF80C921BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */; };
+		E4AF80CA21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */; };
+		E4AF80CB21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */; };
+		E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */; };
+		E4AF80CD21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */; };
+		E4AF80CE21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */; };
+		E4AF80CF21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */; };
+		E4AF80D021BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */; };
+		E4AF80D121BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */; };
+		E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */; };
+		E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */; };
+		E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */; };
+		E4AF80D521BB2D90002D6E86 /* BaseStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */; };
+		E4AF80D621BB2D90002D6E86 /* BaseStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */; };
+		E4AF80D721BB2D90002D6E86 /* BaseStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */; };
+		E4AF80D821BB2D90002D6E86 /* BaseStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */; };
+		E4AF80D921BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */; };
+		E4AF80DA21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */; };
+		E4AF80DB21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */; };
+		E4AF80DC21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */; };
+		E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */; };
+		E4AF80DE21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */; };
+		E4AF80DF21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */; };
+		E4AF80E021BB2D90002D6E86 /* BaseParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */; };
+		E4AF80E121BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */; };
+		E4AF80E221BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */; };
+		E4AF80E321BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */; };
+		E4AF80E421BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */; };
+		E4AF80E521BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */; };
+		E4AF80E621BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */; };
+		E4AF80E721BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */; };
+		E4AF80E821BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */; };
+		E4AF80E921BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */; };
+		E4AF80EA21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */; };
+		E4AF80EB21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */; };
+		E4AF80EC21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */; };
+		E4AF80ED21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */; };
+		E4AF80EE21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */; };
+		E4AF80EF21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */; };
+		E4AF80F021BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */; };
+		E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */; };
+		E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */; };
+		E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */; };
+		E4AF80F421BB2D90002D6E86 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */; };
+		E4AF80F521BB2D90002D6E86 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807221BB2D90002D6E86 /* BaseViewController.swift */; };
+		E4AF80F621BB2D90002D6E86 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807221BB2D90002D6E86 /* BaseViewController.swift */; };
+		E4AF80F721BB2D90002D6E86 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807221BB2D90002D6E86 /* BaseViewController.swift */; };
+		E4AF80F821BB2D90002D6E86 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807221BB2D90002D6E86 /* BaseViewController.swift */; };
+		E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */; };
+		E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */; };
+		E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */; };
+		E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */; };
+		E4AF80FD21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */; };
+		E4AF80FE21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */; };
+		E4AF80FF21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */; };
+		E4AF810021BB2D90002D6E86 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */; };
+		E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */; };
+		E4AF810221BB2D90002D6E86 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */; };
+		E4AF810321BB2D90002D6E86 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */; };
+		E4AF810421BB2D90002D6E86 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */; };
+		E4AF810521BB2D90002D6E86 /* BaseUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */; };
+		E4AF810621BB2D90002D6E86 /* BaseUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */; };
+		E4AF810721BB2D90002D6E86 /* BaseUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */; };
+		E4AF810821BB2D90002D6E86 /* BaseUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */; };
+		E4AF810921BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */; };
+		E4AF810A21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */; };
+		E4AF810B21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */; };
+		E4AF810C21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */; };
+		E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */; };
+		E4AF810E21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */; };
+		E4AF810F21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */; };
+		E4AF811021BB2D90002D6E86 /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */; };
+		E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */; };
+		E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */; };
+		E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */; };
+		E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */; };
+		E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */; };
+		E4AF811621BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */; };
+		E4AF811721BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */; };
+		E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */; };
+		E4AF811921BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */; };
+		E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */; };
+		E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */; };
+		E4AF811C21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */; };
+		E4AF811D21BB2D90002D6E86 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */; };
+		E4AF811E21BB2D90002D6E86 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */; };
+		E4AF811F21BB2D90002D6E86 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */; };
+		E4AF812021BB2D90002D6E86 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */; };
+		E4AF812121BB2D90002D6E86 /* BaseStatefulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */; };
+		E4AF812221BB2D90002D6E86 /* BaseStatefulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */; };
+		E4AF812321BB2D90002D6E86 /* BaseStatefulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */; };
+		E4AF812421BB2D90002D6E86 /* BaseStatefulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */; };
+		E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808121BB2D90002D6E86 /* BaseTextField.swift */; };
+		E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808121BB2D90002D6E86 /* BaseTextField.swift */; };
+		E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808121BB2D90002D6E86 /* BaseTextField.swift */; };
+		E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808121BB2D90002D6E86 /* BaseTextField.swift */; };
+		E4AF812921BB2D90002D6E86 /* BaseToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */; };
+		E4AF812A21BB2D90002D6E86 /* BaseToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */; };
+		E4AF812B21BB2D90002D6E86 /* BaseToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */; };
+		E4AF812C21BB2D90002D6E86 /* BaseToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */; };
+		E4AF812D21BB2D90002D6E86 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808321BB2D90002D6E86 /* BaseImageView.swift */; };
+		E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808321BB2D90002D6E86 /* BaseImageView.swift */; };
+		E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808321BB2D90002D6E86 /* BaseImageView.swift */; };
+		E4AF813021BB2D90002D6E86 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808321BB2D90002D6E86 /* BaseImageView.swift */; };
+		E4AF813121BB2D90002D6E86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808421BB2D90002D6E86 /* BaseView.swift */; };
+		E4AF813221BB2D90002D6E86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808421BB2D90002D6E86 /* BaseView.swift */; };
+		E4AF813321BB2D90002D6E86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808421BB2D90002D6E86 /* BaseView.swift */; };
+		E4AF813421BB2D90002D6E86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF808421BB2D90002D6E86 /* BaseView.swift */; };
+		E4AF813621BB2F78002D6E86 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */; };
+		E4AF813721BB2F78002D6E86 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */; };
+		E4AF813821BB2F78002D6E86 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */; };
+		E4AF813921BB2F78002D6E86 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */; };
+		E4AF813B21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */; };
+		E4AF813C21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */; };
+		E4AF813D21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */; };
+		E4AF813E21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */; };
+		E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */; };
+		E4AF81DB21BF84EF002D6E86 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */; };
+		E4AF81DC21BF84EF002D6E86 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */; };
+		E4AF81DD21BF84EF002D6E86 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */; };
+		E4AF81DE21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */; };
+		E4AF81DF21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */; };
+		E4AF81E021BF84EF002D6E86 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */; };
+		E4AF81E121BF84EF002D6E86 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */; };
+		E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */; };
+		E4AF81E321BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */; };
+		E4AF81E421BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */; };
+		E4AF81E521BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */; };
+		E4AF81E621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */; };
+		E4AF81E721BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */; };
+		E4AF81E821BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */; };
+		E4AF81E921BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */; };
+		E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */; };
+		E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */; };
+		E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */; };
+		E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */; };
+		E4AF81EE21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */; };
+		E4AF81EF21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */; };
+		E4AF81F021BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */; };
+		E4AF81F121BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */; };
+		E4AF81F221BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */; };
+		E4AF81F321BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */; };
+		E4AF81F421BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */; };
+		E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */; };
+		E4AF81F921BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */; };
+		E4AF81FA21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */; };
+		E4AF81FB21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */; };
+		E4AF81FC21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */; };
+		E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */; };
+		E4AF81FF21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */; };
+		E4AF820021BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */; };
+		E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */; };
+		E4AF820321BF8D9F002D6E86 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820221BF8D9F002D6E86 /* BaseButton.swift */; };
+		E4AF820421BF8D9F002D6E86 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820221BF8D9F002D6E86 /* BaseButton.swift */; };
+		E4AF820521BF8D9F002D6E86 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820221BF8D9F002D6E86 /* BaseButton.swift */; };
+		E4AF820621BF8D9F002D6E86 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820221BF8D9F002D6E86 /* BaseButton.swift */; };
+		E4AF820921BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
+		E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
+		E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
+		E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
+		E4AF820E21BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
+		E4AF820F21BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
+		E4AF821021BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
+		E4AF821121BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
+		E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
+		E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
+		E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
+		E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +283,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D284B0F51F79024300D94AF3 /* macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS.swift; sourceTree = "<group>"; };
+		1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1041F79038B00D94AF3 /* UIKitBase-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1181F79039F00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D284B1221F79041C00D94AF3 /* tvOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvOS.swift; sourceTree = "<group>"; };
-		D284B1241F79042800D94AF3 /* watchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchOS.swift; sourceTree = "<group>"; };
 		D284B12E1F7906DA00D94AF3 /* macOSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOSTests.swift; sourceTree = "<group>"; };
 		D284B12F1F7906DA00D94AF3 /* Info-iOS-Tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS-Tests.plist"; sourceTree = "<group>"; };
 		D284B1301F7906DA00D94AF3 /* Info-tvOS-Tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS-Tests.plist"; sourceTree = "<group>"; };
@@ -77,8 +306,73 @@
 		D5B2E8A91C3A780C00C0327D /* UIKitBase-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* UIKitBase-macOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-macOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5C629821C3A892A007F7B7C /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
-		D5C629861C3A89A8007F7B7C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E4AF7F1721BB21EA002D6E86 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIKitBase.podspec; sourceTree = "<group>"; };
+		E4AF7F1921BB21EB002D6E86 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		E4AF7F1A21BB21EB002D6E86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E4AF7F1B21BB21EB002D6E86 /* circle.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
+		E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponderManaged.swift; sourceTree = "<group>"; };
+		E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecycler.swift; sourceTree = "<group>"; };
+		E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSizeAware.swift; sourceTree = "<group>"; };
+		E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjectable.swift; sourceTree = "<group>"; };
+		E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialAutoLayoutPassAware.swift; sourceTree = "<group>"; };
+		E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonManaged.swift; sourceTree = "<group>"; };
+		E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonManaged.swift; sourceTree = "<group>"; };
+		E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButtonManaged.swift; sourceTree = "<group>"; };
+		E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConfiguration.swift; sourceTree = "<group>"; };
+		E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationLockable.swift; sourceTree = "<group>"; };
+		E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConfigurable.swift; sourceTree = "<group>"; };
+		E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecyclerMixin.swift; sourceTree = "<group>"; };
+		E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponderManagedMixin.swift; sourceTree = "<group>"; };
+		E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonManagedMixin.swift; sourceTree = "<group>"; };
+		E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialAutoLayoutPassAwareMixin.swift; sourceTree = "<group>"; };
+		E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjectableMixin.swift; sourceTree = "<group>"; };
+		E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSizeAwareMixin.swift; sourceTree = "<group>"; };
+		E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConfigurableMixin.swift; sourceTree = "<group>"; };
+		E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinkHandlerMixin.swift; sourceTree = "<group>"; };
+		E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollviewController.swift; sourceTree = "<group>"; };
+		E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackViewController.swift; sourceTree = "<group>"; };
+		E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseParentPagingViewController.swift; sourceTree = "<group>"; };
+		E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseParentViewController.swift; sourceTree = "<group>"; };
+		E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContainerViewController.swift; sourceTree = "<group>"; };
+		E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollviewParentViewController.swift; sourceTree = "<group>"; };
+		E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContainedTableViewController.swift; sourceTree = "<group>"; };
+		E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		E4AF807221BB2D90002D6E86 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePageViewController.swift; sourceTree = "<group>"; };
+		E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIButton.swift; sourceTree = "<group>"; };
+		E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSearchBar.swift; sourceTree = "<group>"; };
+		E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBarButtonItem.swift; sourceTree = "<group>"; };
+		E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
+		E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStatefulView.swift; sourceTree = "<group>"; };
+		E4AF808121BB2D90002D6E86 /* BaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseToolbar.swift; sourceTree = "<group>"; };
+		E4AF808321BB2D90002D6E86 /* BaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
+		E4AF808421BB2D90002D6E86 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
+		E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewControllerProtocol.swift; sourceTree = "<group>"; };
+		E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewController.swift; sourceTree = "<group>"; };
+		E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStateMachine.swift; sourceTree = "<group>"; };
+		E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewControllerView.swift; sourceTree = "<group>"; };
+		E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewControllerDefaultLoadingView.swift; sourceTree = "<group>"; };
+		E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewControllerErrorView.swift; sourceTree = "<group>"; };
+		E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewControllerEmptyView.swift; sourceTree = "<group>"; };
+		E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewControllerLoadingView.swift; sourceTree = "<group>"; };
+		E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButtonManaged.swift; sourceTree = "<group>"; };
+		E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDatasourceChangeManager.swift; sourceTree = "<group>"; };
+		E4AF820221BF8D9F002D6E86 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScrollview.swift; sourceTree = "<group>"; };
+		E4AF820D21BF93CA002D6E86 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5B086371E95DBF9281B5BC /* Pods_UIKitBase_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,10 +432,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18B5EBCF5666FDF8C6B042E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */,
+				72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		93A3DEC7ADAB601B80FCEE2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D284B0F41F79024300D94AF3 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				D284B0F51F79024300D94AF3 /* macOS.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -148,7 +459,6 @@
 		D284B1201F79041300D94AF3 /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				D284B1221F79041C00D94AF3 /* tvOS.swift */,
 			);
 			path = tvOS;
 			sourceTree = "<group>";
@@ -156,7 +466,6 @@
 		D284B1211F79041300D94AF3 /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				D284B1241F79042800D94AF3 /* watchOS.swift */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -207,12 +516,22 @@
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
+				E4AF7F1921BB21EB002D6E86 /* Cartfile */,
+				E4AF7F1B21BB21EB002D6E86 /* circle.yml */,
+				E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */,
+				E4AF7F1421BB21EA002D6E86 /* LICENSE.md */,
+				E4AF7F1721BB21EA002D6E86 /* Package.swift */,
+				E4AF7F1621BB21EA002D6E86 /* Podfile */,
+				E4AF7F1A21BB21EB002D6E86 /* README.md */,
+				E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */,
 				D500FD111C3AABED00782D78 /* Playground-iOS.playground */,
 				D500FD121C3AAC8E00782D78 /* Playground-macOS.playground */,
 				D284B13F1F79081F00D94AF3 /* Info */,
 				D5C629691C3A809D007F7B7C /* Sources */,
 				D5C6298F1C3A8BDA007F7B7C /* UIKitBaseTests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
+				18B5EBCF5666FDF8C6B042E1 /* Pods */,
+				93A3DEC7ADAB601B80FCEE2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,7 +564,6 @@
 		D5C6296A1C3A809D007F7B7C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D5C629821C3A892A007F7B7C /* iOS.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -253,7 +571,9 @@
 		D5C6296E1C3A809D007F7B7C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D5C629861C3A89A8007F7B7C /* Shared.swift */,
+				E4AF821221BF95E4002D6E86 /* Extensions */,
+				E4AF805C21BB2D90002D6E86 /* Classes */,
+				E4AF804E21BB2D90002D6E86 /* Protocols */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -270,6 +590,174 @@
 				D284B1341F7906DA00D94AF3 /* tvOS */,
 			);
 			path = UIKitBaseTests;
+			sourceTree = "<group>";
+		};
+		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF81D121BF84EF002D6E86 /* Stateful */,
+				E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */,
+				E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */,
+				E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */,
+				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
+				E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */,
+				E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */,
+				E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */,
+				E4AF805421BB2D90002D6E86 /* ViewController */,
+				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
+				E4AF820D21BF93CA002D6E86 /* File.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E4AF805421BB2D90002D6E86 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF805521BB2D90002D6E86 /* ManagedButtonProtocols */,
+				E4AF805921BB2D90002D6E86 /* ViewControllerConfiguration.swift */,
+				E4AF805A21BB2D90002D6E86 /* OrientationLockable.swift */,
+				E4AF805B21BB2D90002D6E86 /* ViewControllerConfigurable.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E4AF805521BB2D90002D6E86 /* ManagedButtonProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF805621BB2D90002D6E86 /* BackButtonManaged.swift */,
+				E4AF805721BB2D90002D6E86 /* ButtonManaged.swift */,
+				E4AF805821BB2D90002D6E86 /* SubmitButtonManaged.swift */,
+				E4AF81F821BF8AAD002D6E86 /* DismissButtonManaged.swift */,
+			);
+			path = ManagedButtonProtocols;
+			sourceTree = "<group>";
+		};
+		E4AF805C21BB2D90002D6E86 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF805D21BB2D90002D6E86 /* Mixins */,
+				E4AF806621BB2D90002D6E86 /* ViewControllers */,
+				E4AF807621BB2D90002D6E86 /* BaseSubclasses */,
+				E4AF807821BB2D90002D6E86 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E4AF805D21BB2D90002D6E86 /* Mixins */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */,
+				E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */,
+				E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */,
+				E4AF806121BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift */,
+				E4AF806221BB2D90002D6E86 /* DependencyInjectableMixin.swift */,
+				E4AF806321BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift */,
+				E4AF806421BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift */,
+				E4AF806521BB2D90002D6E86 /* DeepLinkHandlerMixin.swift */,
+			);
+			path = Mixins;
+			sourceTree = "<group>";
+		};
+		E4AF806621BB2D90002D6E86 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF806721BB2D90002D6E86 /* Subclasses */,
+				E4AF806F21BB2D90002D6E86 /* Base */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E4AF806721BB2D90002D6E86 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF806821BB2D90002D6E86 /* BaseScrollviewController.swift */,
+				E4AF806921BB2D90002D6E86 /* BaseStackViewController.swift */,
+				E4AF806A21BB2D90002D6E86 /* BaseParentPagingViewController.swift */,
+				E4AF806B21BB2D90002D6E86 /* BaseParentViewController.swift */,
+				E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */,
+				E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */,
+				E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		E4AF806F21BB2D90002D6E86 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF807021BB2D90002D6E86 /* BaseCollectionViewController.swift */,
+				E4AF807121BB2D90002D6E86 /* BaseTabBarController.swift */,
+				E4AF807221BB2D90002D6E86 /* BaseViewController.swift */,
+				E4AF807321BB2D90002D6E86 /* BaseTableViewController.swift */,
+				E4AF807421BB2D90002D6E86 /* BaseNavigationController.swift */,
+				E4AF807521BB2D90002D6E86 /* BasePageViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E4AF807621BB2D90002D6E86 /* BaseSubclasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BaseSubclasses;
+			sourceTree = "<group>";
+		};
+		E4AF807821BB2D90002D6E86 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF820721BF9067002D6E86 /* Base */,
+				E4AF820221BF8D9F002D6E86 /* BaseButton.swift */,
+				E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4AF81D121BF84EF002D6E86 /* Stateful */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF81D221BF84EF002D6E86 /* StatefulViewController.swift */,
+				E4AF81D321BF84EF002D6E86 /* ViewStateMachine.swift */,
+				E4AF81D421BF84EF002D6E86 /* DefaultStatefulViews */,
+			);
+			path = Stateful;
+			sourceTree = "<group>";
+		};
+		E4AF81D421BF84EF002D6E86 /* DefaultStatefulViews */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF81D521BF84EF002D6E86 /* StatefulViewControllerView.swift */,
+				E4AF81D621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift */,
+				E4AF81D721BF84EF002D6E86 /* StatefulViewControllerErrorView.swift */,
+				E4AF81D821BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift */,
+				E4AF81D921BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift */,
+			);
+			path = DefaultStatefulViews;
+			sourceTree = "<group>";
+		};
+		E4AF820721BF9067002D6E86 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF807921BB2D90002D6E86 /* BaseUIButton.swift */,
+				E4AF807A21BB2D90002D6E86 /* BaseTableViewCell.swift */,
+				E4AF807B21BB2D90002D6E86 /* BaseSearchBar.swift */,
+				E4AF807C21BB2D90002D6E86 /* BaseCollectionViewCell.swift */,
+				E4AF807D21BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift */,
+				E4AF807E21BB2D90002D6E86 /* BaseBarButtonItem.swift */,
+				E4AF807F21BB2D90002D6E86 /* BaseScrollView.swift */,
+				E4AF808021BB2D90002D6E86 /* BaseStatefulView.swift */,
+				E4AF808121BB2D90002D6E86 /* BaseTextField.swift */,
+				E4AF808221BB2D90002D6E86 /* BaseToolbar.swift */,
+				E4AF808321BB2D90002D6E86 /* BaseImageView.swift */,
+				E4AF808421BB2D90002D6E86 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E4AF821221BF95E4002D6E86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +852,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B31C3A780C00C0327D /* Build configuration list for PBXNativeTarget "UIKitBase-iOS" */;
 			buildPhases = (
+				5E68D4C63F97070B65E30D9D /* [CP] Check Pods Manifest.lock */,
 				D5B2E89A1C3A780C00C0327D /* Sources */,
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
@@ -551,13 +1040,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E68D4C63F97070B65E30D9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIKitBase-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D284B0F71F79038B00D94AF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D284B1491F790CA200D94AF3 /* Shared.swift in Sources */,
-				D284B1231F79041C00D94AF3 /* tvOS.swift in Sources */,
+				E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
+				E4AF80A721BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
+				E4AF81E821BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
+				E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
+				E4AF821021BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF80DB21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
+				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
+				E4AF810721BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E4AF820521BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4AF80C721BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
+				E4AF80AB21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E4AF80EF21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E4AF810B21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E4AF81F421BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E4AF80CF21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E4AF812B21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
+				E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
+				E4AF810F21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E4AF81DC21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E4AF80DF21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
+				E4AF810321BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E4AF81E421BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
+				E4AF813D21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E4AF80E321BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E4AF820021BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E4AF811721BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
+				E4AF809721BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */,
+				E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E4AF812321BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E4AF809321BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E4AF811F21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E4AF81FB21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E4AF80EB21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E4AF80CB21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E4AF80B721BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E4AF813321BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E4AF81E021BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E4AF80E721BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E4AF808F21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E4AF80D721BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
+				E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E4AF80BB21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
+				E4AF80FF21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
+				E4AF80AF21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E4AF80C321BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
+				E4AF81F021BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
+				E4AF80F721BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E4AF813821BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +1145,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D284B14A1F790CA200D94AF3 /* Shared.swift in Sources */,
-				D284B1251F79042800D94AF3 /* watchOS.swift in Sources */,
+				E4AF80F421BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
+				E4AF80A821BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
+				E4AF81E921BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
+				E4AF808821BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
+				E4AF821121BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF80DC21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E4AF80A421BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF80B421BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
+				E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
+				E4AF810821BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E4AF820621BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4AF80C821BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
+				E4AF80AC21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E4AF80F021BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E4AF810C21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E4AF80D021BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E4AF812C21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
+				E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
+				E4AF811021BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E4AF81DD21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E4AF80E021BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
+				E4AF810421BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E4AF81E521BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
+				E4AF813E21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E4AF80E421BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
+				E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */,
+				E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E4AF812421BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E4AF809421BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E4AF812021BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E4AF81FC21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E4AF80EC21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E4AF80B821BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E4AF813421BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E4AF81E121BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E4AF80E821BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E4AF809021BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E4AF80D821BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E4AF811C21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
+				E4AF808C21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E4AF80BC21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
+				E4AF810021BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
+				E4AF80B021BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E4AF813021BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E4AF80C421BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
+				E4AF81F121BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
+				E4AF80F821BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E4AF813921BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,8 +1211,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C629831C3A892A007F7B7C /* iOS.swift in Sources */,
-				D5C629871C3A89A8007F7B7C /* Shared.swift in Sources */,
+				E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
+				E4AF80A521BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
+				E4AF81E621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
+				E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E4AF80D121BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
+				E4AF820E21BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF80D921BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E4AF80A121BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
+				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
+				E4AF810521BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E4AF820321BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4AF80C521BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
+				E4AF80A921BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E4AF80ED21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E4AF810921BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E4AF81F221BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E4AF80CD21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E4AF812921BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF820921BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
+				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
+				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
+				E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
+				E4AF813B21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E4AF80E121BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
+				E4AF809521BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */,
+				E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E4AF812121BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E4AF809121BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E4AF811D21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E4AF81F921BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E4AF80E921BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E4AF80C921BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E4AF80B521BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E4AF813121BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E4AF81DE21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E4AF80E521BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E4AF808D21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E4AF80D521BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E4AF811921BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
+				E4AF808921BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E4AF80B921BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
+				E4AF80FD21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
+				E4AF80AD21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E4AF812D21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E4AF80C121BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
+				E4AF81EE21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
+				E4AF80F521BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E4AF813621BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,8 +1286,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C629881C3A89A8007F7B7C /* Shared.swift in Sources */,
-				D284B0F61F79024300D94AF3 /* macOS.swift in Sources */,
+				E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
+				E4AF80A621BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
+				E4AF81E721BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
+				E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
+				E4AF820F21BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF80DA21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
+				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
+				E4AF810621BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E4AF820421BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4AF80C621BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
+				E4AF80AA21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E4AF80EE21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E4AF810A21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E4AF81F321BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E4AF80CE21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E4AF812A21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
+				E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
+				E4AF810E21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E4AF81DB21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E4AF80DE21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
+				E4AF810221BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E4AF81E321BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
+				E4AF813C21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E4AF80E221BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E4AF81FF21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E4AF811621BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
+				E4AF809621BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */,
+				E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E4AF812221BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E4AF809221BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E4AF811E21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E4AF81FA21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E4AF80EA21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E4AF80CA21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E4AF80B621BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E4AF813221BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E4AF81DF21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E4AF80E621BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E4AF808E21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E4AF80D621BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
+				E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E4AF80BA21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
+				E4AF80FE21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
+				E4AF80AE21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E4AF80C221BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
+				E4AF81EF21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
+				E4AF80F621BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E4AF813721BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,6 +1658,7 @@
 		};
 		D5B2E8B41C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -937,6 +1680,7 @@
 		};
 		D5B2E8B51C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -958,6 +1702,7 @@
 		D5B2E8B71C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -975,6 +1720,7 @@
 		D5B2E8B81C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1038,6 +1784,7 @@
 		D5C629551C3A7FAA007F7B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1057,6 +1804,7 @@
 		D5C629561C3A7FAA007F7B7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

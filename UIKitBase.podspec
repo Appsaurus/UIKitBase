@@ -19,12 +19,19 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.2'
   s.watchos.deployment_target = "3.0"
 
+  s.dependency 'DinoDNA'
+  s.dependency 'UIKitTheme'
+  s.dependency 'UIKitMixinable'
+  s.dependency 'UIKitExtensions'
+  s.dependency 'UILayoutKit'
+  s.dependency 'DarkMagic'
+  s.dependency 'UIFontIcons'
+  s.dependency 'Actions'
+
   s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
   s.tvos.source_files = 'Sources/{iOS,tvOS,Shared}/**/*'
   s.osx.source_files = 'Sources/{macOS,Shared}/**/*'
   s.watchos.source_files = 'Sources/{watchOS,Shared}/**/*'
 
-  # s.ios.frameworks = 'UIKit', 'Foundation'
-  # s.osx.frameworks = 'Cocoa', 'Foundation'
 
 end

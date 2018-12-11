@@ -1,0 +1,52 @@
+//
+//  BackButtonManaged.swift
+//  AppsaurusUIKit
+//
+//  Created by Brian Strobach on 1/24/18.
+//
+
+import Foundation
+import UIKit
+import UIFontIcons
+
+public protocol BackButtonManaged: ButtonManaged{
+    func backButtonShouldPopViewController() -> Bool
+    func popViewControllerIfAllowed()
+    func backButtonWillPopViewController()
+    func backButtonDidPopViewController()
+}
+
+extension BackButtonManaged{
+    @discardableResult
+    public func createBackButton<Icon: FontIconEnum>(icon: Icon,
+                                                             iconConfiguration: FontIconConfiguration? = nil,
+                                                             configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton{
+        let button = createManagedButton(configuration: configuration)
+        let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(fontSize: .barButtonFontSize))
+        button.imageMap[.normal] = UIImage(icon: icon, configuration: iconConfiguration)
+        button.onTap = popViewControllerIfAllowed
+        return button
+    }
+    
+    public func backButtonShouldPopViewController() -> Bool{
+        return true
+    }
+    
+    public func backButtonWillPopViewController(){
+        
+    }
+    public func backButtonDidPopViewController(){
+        
+    }
+}
+extension BackButtonManaged where Self: UIViewController{
+    
+    public func popViewControllerIfAllowed(){
+        if backButtonShouldPopViewController(){
+            backButtonWillPopViewController()
+            navigationController?.popViewController(animated: true)
+            backButtonDidPopViewController()
+        }
+    }
+
+}
