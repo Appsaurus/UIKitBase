@@ -264,6 +264,10 @@
 		E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
 		E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
 		E4AF822121C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
+		E4AF822C21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
+		E4AF822D21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
+		E4AF822E21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
+		E4AF822F21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +387,7 @@
 		E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		E4AF821821C0299D002D6E86 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
+		E4AF822B21C05CE2002D6E86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -719,6 +724,7 @@
 				E4AF820221BF8D9F002D6E86 /* BaseButton.swift */,
 				E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */,
 				E4AF821821C0299D002D6E86 /* FooterView.swift */,
+				E4AF822B21C05CE2002D6E86 /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1102,6 +1108,7 @@
 				E4AF81F421BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
 				E4AF80CF21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E4AF812B21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF822E21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -1179,6 +1186,7 @@
 				E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
 				E4AF80D021BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E4AF812C21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF822F21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -1247,6 +1255,7 @@
 				E4AF81F221BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
 				E4AF80CD21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E4AF812921BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF822C21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4AF820921BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -1324,6 +1333,7 @@
 				E4AF81F321BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
 				E4AF80CE21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E4AF812A21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
+				E4AF822D21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
