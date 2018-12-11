@@ -49,7 +49,7 @@ public enum ButtonState: State {
     case activity
 }
 
-public typealias ButtonImageUrlMap = [ButtonState : String]
+public typealias ButtonImageUrlMap = [ButtonState : URLConvertible]
 public typealias ButtonImageMap = [ButtonState : UIImage]
 public typealias ButtonAttributedTitleMap = [ButtonState : NSAttributedString]
 public typealias ButtonTitleMap = [ButtonState : String]
@@ -241,7 +241,7 @@ open class BaseButton: BaseView, ButtonStyleable{
         applyCurrentStateConfiguration()
         
         addTap { [weak self] (view) in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             self.buttonWasTapped(view: view)
         }
     }
@@ -378,18 +378,19 @@ open class BaseButton: BaseView, ButtonStyleable{
         if tintsImagesToMatchTextColor{
             imageView.tintColor = titleLabel.textColor
         }
-        guard imageUrlMap[.overrideAll] == nil else {
-            imageView.displayImage(withUrlString: imageUrlMap[.overrideAll]!)
+        
+        if let imageUrl = imageUrlMap[.overrideAll]?.toURL{
+            imageView.loadImage(with: imageUrl)
             return
         }
         
-        guard imageMap[.overrideAll] == nil else {
-            imageView.image = imageMap[.overrideAll]!
+        if let image = imageMap[.overrideAll] {
+            imageView.image = image
             return
         }
         
-        if let imageUrl = imageUrlMap.firstValue(for: state, .any){
-            imageView.displayImage(withUrlString: imageUrl)
+        if let imageUrl = imageUrlMap.firstValue(for: state, .any)?.toURL{
+            imageView.loadImage(with: imageUrl)
         }
         else if let image = imageMap.firstValue(for: state, .any){
             imageView.image = image

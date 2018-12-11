@@ -8,6 +8,7 @@
 import Foundation
 import DinoDNA
 import UIKitExtensions
+import Nuke
 
 open class BaseStackViewController: BaseViewController{
 
@@ -53,16 +54,24 @@ open class BaseStackViewController: BaseViewController{
 }
 
 open class AlertViewModel{
-	public var headerImage: String?
+	public var headerImage: UIImage?
+    public var headerImageUrl: URLConvertible?
 	public var alertTitle: String?
 	public var message: String?
 	public var dismissButtonTitle: String
-	public init(headerImage: String? = nil, alertTitle: String? = nil, message: String? = nil, dismissButtonTitle: String = "Dismiss") {
-		self.headerImage = headerImage
-		self.alertTitle = alertTitle
-		self.message = message
-		self.dismissButtonTitle = dismissButtonTitle
-	}
+
+    public init(headerImage: UIImage? = nil,
+                headerImageUrl: URLConvertible? = nil,
+                alertTitle: String? = nil,
+                message: String? = nil,
+                dismissButtonTitle: String = "Dismiss") {
+        self.headerImage = headerImage
+        self.headerImageUrl = headerImageUrl
+        self.alertTitle = alertTitle
+        self.message = message
+        self.dismissButtonTitle = dismissButtonTitle
+    }
+
 }
 
 open class StackedAlertViewController: BaseStackViewController{
@@ -109,7 +118,7 @@ open class StackedAlertViewController: BaseStackViewController{
 
 	open var optionalArrangedSubviews: [UIView]{
 		var optionalViews: [UIView] = []
-		if viewModel.headerImage.hasNonEmptyValue{
+		if viewModel.headerImage != nil || viewModel.headerImageUrl != nil{
 			headerImageView.contentMode = .scaleAspectFit
 			optionalViews.append(headerImageView)
 		}
@@ -136,7 +145,12 @@ open class StackedAlertViewController: BaseStackViewController{
 	}
 
 	open func display(viewModel: AlertViewModel){
-		if let image = viewModel.headerImage { headerImageView.displayImage(image) }
+		if let image = viewModel.headerImage {
+            headerImageView.image = image
+        }
+        else if let imageURL = viewModel.headerImageUrl?.toURL{
+            headerImageView.loadImage(with: imageURL)
+        }
 		alertTitleLabel.text =? viewModel.alertTitle
 		messageLabel.text =? viewModel.message
 	}

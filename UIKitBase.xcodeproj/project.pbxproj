@@ -248,14 +248,22 @@
 		E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
 		E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
 		E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
-		E4AF820E21BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
-		E4AF820F21BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
-		E4AF821021BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
-		E4AF821121BF93CA002D6E86 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* File.swift */; };
+		E4AF820E21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
+		E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
+		E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
+		E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
 		E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 		E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 		E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 		E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
+		E4AF821921C0299D002D6E86 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821821C0299D002D6E86 /* FooterView.swift */; };
+		E4AF821A21C0299D002D6E86 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821821C0299D002D6E86 /* FooterView.swift */; };
+		E4AF821B21C0299D002D6E86 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821821C0299D002D6E86 /* FooterView.swift */; };
+		E4AF821C21C0299D002D6E86 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821821C0299D002D6E86 /* FooterView.swift */; };
+		E4AF821E21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
+		E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
+		E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
+		E4AF822121C02CA6002D6E86 /* ImageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -371,8 +379,10 @@
 		E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDatasourceChangeManager.swift; sourceTree = "<group>"; };
 		E4AF820221BF8D9F002D6E86 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScrollview.swift; sourceTree = "<group>"; };
-		E4AF820D21BF93CA002D6E86 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarChildViewControllerProtocol.swift; sourceTree = "<group>"; };
 		E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		E4AF821821C0299D002D6E86 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -605,7 +615,8 @@
 				E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */,
 				E4AF805421BB2D90002D6E86 /* ViewController */,
 				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
-				E4AF820D21BF93CA002D6E86 /* File.swift */,
+				E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */,
+				E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -707,6 +718,7 @@
 				E4AF820721BF9067002D6E86 /* Base */,
 				E4AF820221BF8D9F002D6E86 /* BaseButton.swift */,
 				E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */,
+				E4AF821821C0299D002D6E86 /* FooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -928,7 +940,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Brian Strobach";
 				TargetAttributes = {
 					D284B0FB1F79038B00D94AF3 = {
@@ -1075,9 +1087,10 @@
 				E4AF81E821BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF821021BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E4AF80DB21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810721BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
@@ -1103,6 +1116,7 @@
 				E4AF820021BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E4AF811721BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809721BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF821B21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -1150,9 +1164,10 @@
 				E4AF81E921BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808821BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF821121BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E4AF80DC21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E4AF80A421BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF822121C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B421BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810821BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
@@ -1178,6 +1193,7 @@
 				E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF821C21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -1216,9 +1232,10 @@
 				E4AF81E621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E4AF80D121BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF820E21BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF820E21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E4AF80D921BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E4AF80A121BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF821E21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810521BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
@@ -1244,6 +1261,7 @@
 				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809521BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF821921C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -1291,9 +1309,10 @@
 				E4AF81E721BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF820F21BF93CA002D6E86 /* File.swift in Sources */,
+				E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E4AF80DA21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810621BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
@@ -1319,6 +1338,7 @@
 				E4AF81FF21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E4AF811621BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809621BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
+				E4AF821A21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -1560,12 +1580,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1617,12 +1639,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

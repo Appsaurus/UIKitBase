@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
   s.dependency 'DarkMagic'
   s.dependency 'UIFontIcons'
   s.dependency 'Actions'
+  s.dependency 'Nuke'
 
   s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
   s.tvos.source_files = 'Sources/{iOS,tvOS,Shared}/**/*'

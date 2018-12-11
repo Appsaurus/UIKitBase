@@ -16,11 +16,11 @@ extension KeyboardSizeAware{
     public func registerKeyboard() {
 
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             self.keyboardHeight = nil
         }
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { [weak self] notification in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 self.keyboardHeight = keyboardSize.height
             }

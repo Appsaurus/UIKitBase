@@ -11,6 +11,7 @@ def common_pods
   pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
   pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
   pod 'Actions'
+  pod 'Nuke'
 end
 target 'UIKitBase-iOS' do
     common_pods

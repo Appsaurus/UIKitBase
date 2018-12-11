@@ -9,7 +9,6 @@
 import UIKitMixinable
 import UIKitExtensions
 import Actions
-
 public typealias NotificationClosure = (Notification) -> Void
 public typealias NotificationClosureMap = [Notification.Name : NotificationClosure]
 
@@ -41,12 +40,11 @@ extension NotificationObserver where Self: NSObject{
 
 	public func setupNotificationObserverCallback(){
 		notificationsToObserve().forEach { (notificationName) in
-			var notificationName = notificationName as NSNotification.Name
-            
+            let notificationName = notificationName as NSNotification.Name            
 			NotificationCenter.default.add(observer: self,
                                            name: notificationName,
                                            action: { [weak self] notification in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
 				DispatchQueue.main.async{
 					self.didObserve(notification: notification as Notification)
 				}
@@ -58,7 +56,7 @@ extension NotificationObserver where Self: NSObject{
             NotificationCenter.default.add(observer: self,
                                            name: mappedNotification.key,
                                            action: { [weak self] notification in
-                guard let `self` = self else { return }
+                                            guard self != nil else { return }
                 DispatchQueue.main.async{
                     mappedNotification.value(notification as Notification)
                 }

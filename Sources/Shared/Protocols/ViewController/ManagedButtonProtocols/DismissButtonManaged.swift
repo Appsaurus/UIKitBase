@@ -43,7 +43,7 @@ extension DismissButtonManaged where Self: UIViewController{
     }
     public func setupDismissButtonAction(for button: BaseButton){
         button.onTap = { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
             if self.shouldDismissViewController(){
                 self.willDismissViewController()

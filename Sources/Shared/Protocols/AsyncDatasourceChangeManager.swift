@@ -33,7 +33,7 @@ extension AsyncDatasourceChangeManager{
             return
         }
         modification(){ [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             let _ = self.asyncDatasourceChangeQueue.dequeue()
             self.performNextModification()
         }
