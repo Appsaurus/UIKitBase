@@ -23,14 +23,15 @@ extension BackButtonManaged{
     @discardableResult
     public func createBackButton<Icon: FontIconEnum>(icon: Icon,
                                                      iconConfiguration: FontIconConfiguration? = nil,
-                                                     configuration: ManagedButtonConfiguration = ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered)),
+                                                     configuration: ManagedButtonConfiguration = ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered,
+                                                                                                                                                                   marginInsets: 0)),
                                                                                                                             position: .navBarLeft,
-                                                                                                                            size: CGSize(side: .barButtonFontIconSize))) -> BaseButton{
-        let button = createManagedButton(configuration: configuration)
-        let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: button.size))
+                                                                                                                            size: CGSize(side: 30))) -> BaseButton{
+        let button = configuration.button ?? defaultButton(configuration: configuration)
+        let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: configuration.size))
         button.imageMap[.normal] = UIImage(icon: icon, configuration: iconConfiguration)
         button.onTap = popViewControllerIfAllowed
-        return button
+        return createManagedButton(configuration: configuration)
     }
     
     public func backButtonShouldPopViewController() -> Bool{

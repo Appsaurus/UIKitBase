@@ -7,6 +7,7 @@
 
 import Foundation
 import DinoDNA
+import UIKitTheme
 
 public class ManagedButtonConfiguration: NSObject{
     var button: BaseButton?
@@ -62,8 +63,7 @@ extension ButtonManaged where Self: UIViewController{
         switch position{
         case .navBarLeft, .navBarRight:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
-            let size = size ?? button.calculateMaxButtonSize()
-            button.frame.size = size
+            
             if position == .navBarRight{
                 button.titleLabel.textAlignment =  .right
                 self.navigationItem.rightBarButtonItem = item
@@ -73,12 +73,15 @@ extension ButtonManaged where Self: UIViewController{
                 self.navigationItem.leftBarButtonItem = item
             }
             
+            let size = size ?? button.calculateMaxButtonSize()
+            item.customView?.frame.size = button.frame.size
+            item.width = size.width
+            
             if #available(iOS 11, *) {
-                item.customView?.autoSize(to: size, relatedBy: .greaterThanOrEqual)
+                item.customView?.anchorWidth(equalTo: size.width)
+                item.customView?.anchorHeight(equalTo: size.height)
             }
-            else{
-                item.customView?.frame.size = button.frame.size
-            }
+            
             self.navigationController?.navigationBar.forceAutolayoutPass()
         case .floatingFooter:
             let footer = FooterView<BaseButton>(contentView: button, contentViewInsets: UIEdgeInsets(padding: 10))
