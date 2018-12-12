@@ -10,6 +10,9 @@ import UIKit
 import UIFontIcons
 
 public protocol BackButtonManaged: ButtonManaged{
+    func createBackButton<Icon: FontIconEnum>(icon: Icon,
+                                              iconConfiguration: FontIconConfiguration?,
+                                              configuration: ManagedButtonConfiguration) -> BaseButton
     func backButtonShouldPopViewController() -> Bool
     func popViewControllerIfAllowed()
     func backButtonWillPopViewController()
@@ -19,10 +22,12 @@ public protocol BackButtonManaged: ButtonManaged{
 extension BackButtonManaged{
     @discardableResult
     public func createBackButton<Icon: FontIconEnum>(icon: Icon,
-                                                             iconConfiguration: FontIconConfiguration? = nil,
-                                                             configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton{
+                                                     iconConfiguration: FontIconConfiguration? = nil,
+                                                     configuration: ManagedButtonConfiguration = ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered)),
+                                                                                                                            position: .navBarLeft,
+                                                                                                                            size: CGSize(side: .barButtonFontIconSize))) -> BaseButton{
         let button = createManagedButton(configuration: configuration)
-        let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(fontSize: .barButtonFontSize))
+        let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: button.size))
         button.imageMap[.normal] = UIImage(icon: icon, configuration: iconConfiguration)
         button.onTap = popViewControllerIfAllowed
         return button
@@ -48,5 +53,4 @@ extension BackButtonManaged where Self: UIViewController{
             backButtonDidPopViewController()
         }
     }
-
 }
