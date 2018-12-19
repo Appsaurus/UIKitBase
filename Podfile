@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 def common_pods
-  pod 'DinoDNA', :git => 'git@bitbucket.org:appsaurus/dinodna.git'
+  pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
   pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
   pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
   pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'

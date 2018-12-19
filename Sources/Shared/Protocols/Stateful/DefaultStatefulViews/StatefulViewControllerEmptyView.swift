@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 
 open class StatefulViewControllerEmptyView: StatefulViewControllerView {
     open override func didFinishCreatingAllViews() {

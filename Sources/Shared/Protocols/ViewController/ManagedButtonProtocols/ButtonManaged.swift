@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DinoDNA
+import Swiftest
 import UIKitTheme
 
 public class ManagedButtonConfiguration: NSObject{

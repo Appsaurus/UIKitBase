@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 import UILayoutKit
 
 open class FooterView<View: UIView>: BaseView {

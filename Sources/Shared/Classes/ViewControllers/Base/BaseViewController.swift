@@ -8,7 +8,7 @@
 
 import UIKitMixinable
 import UIKitTheme
-import DinoDNA
+import Swiftest
 
 public protocol BaseViewControllerProtocol:
     BaseNSObjectProtocol

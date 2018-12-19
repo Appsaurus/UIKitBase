@@ -1,30 +1,29 @@
 PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
-  - DinoDNA (0.2.55)
   - DynamicColor (4.0.3)
   - Nuke (7.5.1)
-  - UIFontIcons/Core (0.0.1)
-  - UIFontIcons/MaterialIcons (0.0.1):
+  - Swiftest (0.0.2)
+  - UIFontIcons/Core (0.0.4)
+  - UIFontIcons/MaterialIcons (0.0.4):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.1):
-    - DinoDNA
+  - UIKitExtensions (0.0.4):
+    - Swiftest
   - UIKitMixinable (0.0.2)
-  - UIKitTheme (0.0.2):
+  - UIKitTheme (0.0.4):
     - DarkMagic
-    - DinoDNA
     - DynamicColor
+    - Swiftest
     - UIKitExtensions
     - UIKitMixinable
-  - UILayoutKit (0.0.3):
-    - DinoDNA
+  - UILayoutKit (0.0.5):
     - UIKitExtensions
 
 DEPENDENCIES:
   - Actions
   - DarkMagic (from `https://github.com/Appsaurus/DarkMagic`)
-  - "DinoDNA (from `git@bitbucket.org:appsaurus/dinodna.git`)"
   - Nuke
+  - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
   - UIFontIcons/MaterialIcons (from `https://github.com/Appsaurus/UIFontIcons`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
   - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
@@ -40,8 +39,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DarkMagic:
     :git: https://github.com/Appsaurus/DarkMagic
-  DinoDNA:
-    :git: "git@bitbucket.org:appsaurus/dinodna.git"
+  Swiftest:
+    :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
@@ -57,37 +56,37 @@ CHECKOUT OPTIONS:
   DarkMagic:
     :commit: 6803dbc0fe9679872667a1253cdd6afb433d2375
     :git: https://github.com/Appsaurus/DarkMagic
-  DinoDNA:
-    :commit: 7cb7c903149d5214d8ed2cfc16d77a220e5b47a6
-    :git: "git@bitbucket.org:appsaurus/dinodna.git"
+  Swiftest:
+    :commit: cd7ba87eda65d91b4e9a65be791517677149972a
+    :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
-    :commit: 82e4898dedc30c52564672afb60ca1a065da3809
+    :commit: 2240e43e9a2977f319f691257dd136e6c2a18cd6
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: 5995d1fb8043ed0bd80de61a9d3b8a66fc6f9726
+    :commit: e66a86e6546cb6af0e36b3aec0ea8299996bb670
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
     :commit: dd0dcbad33e409c1d8af4f1241fa9c4880686da5
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: 640d8d3c0f96914e7c69cd16b74d2af2a53cc978
+    :commit: 21c09b5e425eda6b9d02273d5382a7bb9ba9ad31
     :git: https://github.com/Appsaurus/UIKitTheme
   UILayoutKit:
-    :commit: a855563183b8c37d7802769e747c523a324ca1ec
+    :commit: 953e068b96a1748bc3fbb0530f45617ddb736560
     :git: https://github.com/Appsaurus/UILayoutKit
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
-  DinoDNA: 0c2d2e62f36b8a86b28864639045db0e23cab49c
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Nuke: 3814db501e55f17951451839c726ffd91641e9a5
-  UIFontIcons: 088b447a339ac82f36aa151fcf617d24ab091118
-  UIKitExtensions: 01482a8be62c65db695d6b34506f4e583b0b30ba
+  Swiftest: d63bb5f7427ebfd10753609d834219db97b63441
+  UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
+  UIKitExtensions: 8d4bac3f1cd1a0dea193e6d78cf54f57b530ae87
   UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
-  UIKitTheme: d5661187938be97cc3caee0fe0cfb9b85f5fbdf4
-  UILayoutKit: 94f6f6b11eed43ea583c7f372eee56be174a9ff5
+  UIKitTheme: 621b5355b097e60590f42e879446d0cd11e4f387
+  UILayoutKit: 1787425b8aed7db953177c12e0d44d94d0582b27
 
-PODFILE CHECKSUM: a0039e2f20851adfd76320c8237e87327dcec160
+PODFILE CHECKSUM: 7b8caf0eee6808256b6ec305eb233e11de5e028f
 
 COCOAPODS: 1.5.3

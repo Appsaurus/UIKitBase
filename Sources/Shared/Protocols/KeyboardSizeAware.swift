@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 
 public protocol KeyboardSizeAware: class {
     var keyboardHeight: CGFloat? { set get }

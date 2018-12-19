@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 import UIKitMixinable
 
 public protocol BaseTableViewControllerProtocol:

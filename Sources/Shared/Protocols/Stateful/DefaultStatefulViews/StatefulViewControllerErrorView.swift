@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 
 open class StatefulViewControllerErrorView: StatefulViewControllerView {
 

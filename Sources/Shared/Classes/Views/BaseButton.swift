@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 import UIKitTheme
 import UIFontIcons
 import UIKitExtensions
@@ -488,7 +488,7 @@ extension BaseButton{
     
     //TODO: Improve this, rough calculation for usage in UIBarButtonItems
     public func calculateMaxButtonSize() -> CGSize{
-        let titleSize = titleMap.values.max()?.size(OfFont: titleLabel.font) ?? CGSize.zero
+        let titleSize = titleMap.values.max()?.size(with: titleLabel.font) ?? CGSize.zero
         let imageSize = imageMap.values.max(by: { (image1, image2) -> Bool in
             return image1.size.width > image2.size.width
         })?.size ?? .zero

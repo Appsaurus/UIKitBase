@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import DinoDNA
+import Swiftest
 
 public protocol TabBarChildViewControllerProtocol {
     //Must be called by TabBarController at proper times

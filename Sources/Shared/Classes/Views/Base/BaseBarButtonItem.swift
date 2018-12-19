@@ -7,7 +7,7 @@
 //
 
 import UIKitMixinable
-import DinoDNA
+import Swiftest
 import UIFontIcons
 public protocol BaseBarButtonItemProtocol:
     BaseNSObjectProtocol

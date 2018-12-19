@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import DinoDNA
+import Swiftest
 
 public protocol SubmitButtonManaged: class, ButtonManaged{
     var submitButton: BaseButton! { get set }

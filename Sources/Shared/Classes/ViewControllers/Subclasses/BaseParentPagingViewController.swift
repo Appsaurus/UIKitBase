@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import DinoDNA
+import Swiftest
 
 open class BaseParentPagingViewController: BaseParentViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, AsyncDatasourceChangeManager{
 

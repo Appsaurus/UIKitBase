@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.2'
   s.watchos.deployment_target = "3.0"
 
-  s.dependency 'DinoDNA'
+  s.dependency 'Swiftest'
   s.dependency 'UIKitTheme'
   s.dependency 'UIKitMixinable'
   s.dependency 'UIKitExtensions'

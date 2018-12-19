@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 import UIKitMixinable
 import DarkMagic
 

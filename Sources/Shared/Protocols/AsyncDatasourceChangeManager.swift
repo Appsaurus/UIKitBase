@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import DinoDNA
+import Swiftest
 
 public typealias AsyncDatasourceChange = (_ completion: @escaping VoidClosure) -> Void
 

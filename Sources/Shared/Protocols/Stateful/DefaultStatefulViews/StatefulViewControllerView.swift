@@ -7,15 +7,18 @@
 //
 
 import UIKit
-import DinoDNA
+import Swiftest
 import UIKitExtensions
 import UIKitTheme
 
 open class StatefulViewControllerView: BaseView {
     
-    open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews)
+    open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
 	open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
-    open lazy var initialArrangedSubviews: [UIView] = [mainLabel, responseButton]
+    
+    open func initialArrangedSubviews() -> [UIView]{
+        return [mainLabel, responseButton]
+    }
     
     open lazy var mainLabel: UILabel = {
         let label = UILabel()

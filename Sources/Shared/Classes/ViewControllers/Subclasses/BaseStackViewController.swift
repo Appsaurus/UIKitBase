@@ -6,19 +6,21 @@
 //
 
 import Foundation
-import DinoDNA
+import Swiftest
 import UIKitExtensions
 import Nuke
 
 open class BaseStackViewController: BaseViewController{
 
-	open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews)
+	open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
 	open var stackViewBackgroundView: UIView = UIView()
 	open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .fill, spacing: 12)
 	open lazy var stackviewLayoutMargins: UIEdgeInsets = 25
 	open lazy var verticalLayoutPadding: CGFloat = 25.0
 	open lazy var horizontalLayoutPadding: CGFloat = 25.0
-	open lazy var initialArrangedSubviews: [UIView] = []
+	open func initialArrangedSubviews() -> [UIView] {
+        return []
+    }
 
 
 	open override func createSubviews() {
@@ -46,7 +48,7 @@ open class BaseStackViewController: BaseViewController{
 		stackView.autoPinToSuperview(edges: .topAndBottom, withOffset: verticalLayoutPadding, relatedBy: .greaterThanOrEqual)
 		stackView.autoEnforceContentHugging()
 		stackViewBackgroundView.autoPinToSuperview()
-		initialArrangedSubviews.forEach { (view) in
+		initialArrangedSubviews().forEach { (view) in
 			view.autoEnforceCompressionResistance()
 			view.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
 		}
@@ -82,12 +84,17 @@ open class StackedAlertViewController: BaseStackViewController{
 	open lazy var alertTitleLabel: UILabel = UILabel()
 	open lazy var messageLabel: UILabel = UILabel()
 	open lazy var dismissButton = BaseButton()
-	open lazy var bottomStackView: UIStackView = UIStackView(stackViewConfiguration: defaultBottomStackViewConfiguration, arrangedSubviews: initialBottomArrangedSubviews)
+	open lazy var bottomStackView: UIStackView = UIStackView(stackViewConfiguration: defaultBottomStackViewConfiguration, arrangedSubviews: initialBottomArrangedSubviews())
 	open lazy var defaultBottomStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
 	open var showsDismissButton: Bool = { return true }()
 
-	open override lazy var initialArrangedSubviews: [UIView] = (optionalArrangedSubviews + [bottomStackView])
-	open lazy var initialBottomArrangedSubviews: [UIView] = bottomStackArrangedSubviews
+    open override func initialArrangedSubviews() -> [UIView]{
+        return optionalArrangedSubviews + [bottomStackView]
+    }
+    
+    open func initialBottomArrangedSubviews() -> [UIView] {
+        return bottomStackArrangedSubviews
+    }
 
 	public required init(viewModel: AlertViewModel = AlertViewModel()) {
 		super.init(callDidInit: false)
@@ -104,7 +111,7 @@ open class StackedAlertViewController: BaseStackViewController{
 	open override func createAutoLayoutConstraints() {
 		super.createAutoLayoutConstraints()
 		bottomStackView.autoEnforceContentHugging()
-		initialBottomArrangedSubviews.forEach { (view) in
+		initialBottomArrangedSubviews().forEach { (view) in
 			view.autoEnforceCompressionResistance()
 			view.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
 			view.autoMatchWidthOfSuperview()
