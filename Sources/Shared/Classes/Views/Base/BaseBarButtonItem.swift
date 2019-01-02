@@ -9,6 +9,7 @@
 import UIKitMixinable
 import Swiftest
 import UIFontIcons
+import UIKitExtensions
 public protocol BaseBarButtonItemProtocol:
     BaseNSObjectProtocol
 {}
@@ -38,9 +39,7 @@ open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol{
         //TODO: Change to 66 x 66 for Plus sized iPhones
         customButton.frame = CGRect(x: 0, y: 0, width: 44.0 , height: 44.0)
         if let onTouchUpInside = onTouchUpInside{
-            customButton.addAction(forControlEvents: .touchUpInside) {
-                onTouchUpInside()
-            }
+            customButton.on(.touchUpInside, closure: onTouchUpInside)
         }
         self.init(customView: customButton)
     }

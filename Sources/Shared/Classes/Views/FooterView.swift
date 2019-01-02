@@ -9,6 +9,7 @@
 import UIKit
 import Swiftest
 import UILayoutKit
+import UIKitExtensions
 
 open class FooterView<View: UIView>: BaseView {
     

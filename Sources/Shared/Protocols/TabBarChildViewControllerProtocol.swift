@@ -65,7 +65,7 @@ class TabRefreshStepper{
             return
         }
         
-        if scrollView.yOffsetPosition == .Top{
+        if scrollView.yOffsetPosition == .top{
             refreshable.refresh()
         }
         else{

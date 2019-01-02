@@ -192,7 +192,7 @@ open class StackedAlertViewController: BaseStackViewController{
 	}
 
 	open func present(from presenter: UIViewController){
-		view.setBackgroundBlurStyle(.dark)
+		view.setBackgroundBlur(style: .dark)
 		modalPresentationStyle = .overCurrentContext
 		modalTransitionStyle = .crossDissolve
 		presenter.present(viewController: self)

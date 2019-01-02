@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Swiftest
+import UIKitExtensions
 
 open class BaseParentViewController: BaseContainerViewController {
     
@@ -27,7 +28,7 @@ open class BaseParentViewController: BaseContainerViewController {
     open func loadChildViewController(){
 		let child = initialChildViewController()
 		if !children.contains(child){
-			add(childViewController: child, toContainer: containerView)
+			add(child, to: containerView)
 			child.loadViewIfNeeded()
 
 		}

@@ -2,21 +2,22 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
-  - Nuke (7.5.1)
-  - Swiftest (0.0.2)
+  - Nuke (7.5.2)
+  - Swiftest (0.0.12)
   - UIFontIcons/Core (0.0.4)
   - UIFontIcons/MaterialIcons (0.0.4):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.4):
+  - UIKitExtensions (0.0.10):
+    - DarkMagic
     - Swiftest
   - UIKitMixinable (0.0.2)
-  - UIKitTheme (0.0.4):
+  - UIKitTheme (0.0.6):
     - DarkMagic
     - DynamicColor
     - Swiftest
     - UIKitExtensions
     - UIKitMixinable
-  - UILayoutKit (0.0.5):
+  - UILayoutKit (0.0.6):
     - UIKitExtensions
 
 DEPENDENCIES:
@@ -54,38 +55,38 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DarkMagic:
-    :commit: 6803dbc0fe9679872667a1253cdd6afb433d2375
+    :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Swiftest:
-    :commit: cd7ba87eda65d91b4e9a65be791517677149972a
+    :commit: 04f08cde027f74180457600caf53ab29be2ae8ea
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
-    :commit: 2240e43e9a2977f319f691257dd136e6c2a18cd6
+    :commit: 46df0e98c47d5e1d174b7a25d3691e099bbbbc03
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: e66a86e6546cb6af0e36b3aec0ea8299996bb670
+    :commit: a45169c544a5ba9c9d2a11e21ff1a19ef9167d46
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: dd0dcbad33e409c1d8af4f1241fa9c4880686da5
+    :commit: 8b8420507f1ce6e4cd1593b946fe13f63be9f7fa
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: 21c09b5e425eda6b9d02273d5382a7bb9ba9ad31
+    :commit: 193bb3f284cf290a8a34cf9651bc7494a8aff9f8
     :git: https://github.com/Appsaurus/UIKitTheme
   UILayoutKit:
-    :commit: 953e068b96a1748bc3fbb0530f45617ddb736560
+    :commit: d2d1f3dbc47c108bd68969b356ad1a3d91e53bb7
     :git: https://github.com/Appsaurus/UILayoutKit
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Nuke: 3814db501e55f17951451839c726ffd91641e9a5
-  Swiftest: d63bb5f7427ebfd10753609d834219db97b63441
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
+  Swiftest: 98d648aba22af5da50970a0e46b4593f63e911bf
   UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
-  UIKitExtensions: 8d4bac3f1cd1a0dea193e6d78cf54f57b530ae87
+  UIKitExtensions: 9bdf623aa0fc87c40d0759ea63b1fb1409aa144a
   UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
-  UIKitTheme: 621b5355b097e60590f42e879446d0cd11e4f387
-  UILayoutKit: 1787425b8aed7db953177c12e0d44d94d0582b27
+  UIKitTheme: 0b4412291ce397bdfa27c9060618258922b9c904
+  UILayoutKit: e0829aa420c22682d4987dd02f778d5a9d9a75f5
 
 PODFILE CHECKSUM: 7b8caf0eee6808256b6ec305eb233e11de5e028f
 

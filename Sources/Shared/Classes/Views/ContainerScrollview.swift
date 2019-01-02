@@ -129,7 +129,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         }
         
         
-        if yOffsetPosition == .Bottom && !innerScrollView.hasReachedTopOfContent{
+        if yOffsetPosition == .bottom && !innerScrollView.hasReachedTopOfContent{
             //Disbling simultaneous gestures, outer scroll hit bottom and inner scroll has not reached top.
             return false
         }
@@ -150,9 +150,9 @@ extension ContainerScrollView: UIScrollViewDelegate{
         if transfersInertiaBetweenScrollViews && scrollView != self{
             let position = scrollView.calculateYOffsetPostition(for: targetContentOffset.pointee.y)
             switch position{
-            case .Top, .BouncingTop:
+            case .top, .bouncingTop:
                 if(velocity.y < 0) { self.scrollToTop() }
-            case .Bottom, .BouncingBottom:
+            case .bottom, .bouncingBottom:
                 if(velocity.y > 0) { self.scrollToBottom() }
             default: break
             }

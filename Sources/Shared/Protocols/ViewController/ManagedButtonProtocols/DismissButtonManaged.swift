@@ -47,7 +47,7 @@ extension DismissButtonManaged where Self: UIViewController{
             self.dismiss(animated: true, completion: nil)
             if self.shouldDismissViewController(){
                 self.willDismissViewController()
-                self.dismissOrPop()
+                self.popOrDismiss()
             }
         }
     }

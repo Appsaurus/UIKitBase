@@ -34,7 +34,7 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
     
     open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        add(childViewController: initialChildViewController(), toContainer: childViewControllerContainerView)
+        add(initialChildViewController(), to: childViewControllerContainerView)
     }
     
     open func initialChildViewController() -> UIViewController{

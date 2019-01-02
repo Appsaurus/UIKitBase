@@ -26,7 +26,7 @@ open class BaseToolbar: MixinableToolbar, BaseToolbarProtocol{
     
     //MARK: UIViewLifeCycle Overrides
     open override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
+        super.willMove(toSuperview: newSuperview)        
         bindStyle()
     }
     
