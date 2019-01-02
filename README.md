@@ -13,36 +13,37 @@
 
 ## Usage
 
-```swift
-<API>
-```
+Coming soon.
 
 ## Installation
 
 **UIKitBase** is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following to your Podfile:
 
 ```ruby
-pod 'UIKitBase'
+pod 'UIKitBase', :git => 'https://github.com/Appsaurus/UIKitBase'
+pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
+pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
+pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
+pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
+pod 'UILayoutKit', :git => 'https://github.com/Appsaurus/UILayoutKit'
+pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
+pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
 ```
 
 **UIKitBase** is also available through [Carthage](https://github.com/Carthage/Carthage).
 To install just write into your Cartfile:
 
 ```ruby
-github "Strobocop/UIKitBase"
+github "Appsaurus/UIKitBase"
 ```
 
 **UIKitBase** can also be installed manually. Just download and drop `Sources` folders in your project.
 
-## Author
-
-Brian Strobach, brian@appsaurus.io
-
 ## Contributing
 
-We would love you to contribute to **UIKitBase**, check the [CONTRIBUTING](github.com/Strobocop/UIKitBase/blob/master/CONTRIBUTING.md) file for more info.
+We would love you to contribute to **UIKitBase**, check the [CONTRIBUTING](github.com/Appsaurus/UIKitBase/blob/master/CONTRIBUTING.md) file for more info.
 
 ## License
 
-**UIKitBase** is available under the MIT license. See the [LICENSE](github.com/Strobocop/UIKitBase/blob/master/LICENSE.md) file for more info.
+**UIKitBase** is available under the MIT license. See the [LICENSE](github.com/Appsaurus/UIKitBase/blob/master/LICENSE.md) file for more info.
