@@ -51,7 +51,7 @@ open class BaseImageCollectionViewCell: BaseCollectionViewCell{
     }
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        imageView.autoPinToSuperview()
+        imageView.pinToSuperview()
     }
 }
 
@@ -69,8 +69,8 @@ open class BaseLabeledCollectionViewCell: BaseCollectionViewCell{
     }
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        label.autoPinToSuperview()
-        //        label.autoCenterInSuperview()
+        label.pinToSuperview()
+        //        label.centerInSuperview()
         //        label.autoMatchSize(of: self.contentView, relatedBy: .lessThanOrEqual)
     }
 }

@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'UIKitTheme'
   s.dependency 'UIKitMixinable'
   s.dependency 'UIKitExtensions'
-  s.dependency 'UILayoutKit'
+  s.dependency 'Layman'
   s.dependency 'DarkMagic'
   s.dependency 'UIFontIcons'
   s.dependency 'Actions'

@@ -8,7 +8,7 @@
 
 import UIKit
 import Swiftest
-import UILayoutKit
+import Layman
 import UIKitExtensions
 
 open class FooterView<View: UIView>: BaseView {
@@ -16,15 +16,10 @@ open class FooterView<View: UIView>: BaseView {
     open lazy var contentView: View = {
         return self.createContentView()
     }()
-    
-    open lazy var contentViewInsets: UIEdgeInsets = {
-        return .zero
-    }()
-    
-    public init(contentView: View? = nil, contentViewInsets: UIEdgeInsets? = nil) {
+
+    public init(contentView: View? = nil) {
         super.init(callDidInit: false)
         self.contentView =? contentView
-        self.contentViewInsets =? contentViewInsets
         didInitProgramatically()
     }
     
@@ -47,7 +42,7 @@ open class FooterView<View: UIView>: BaseView {
     
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        contentView.autoPinToSuperview(withInsets:  contentViewInsets)
+        contentView.edges.equal(to: margins.edges)
     }
     
     open func createContentView() -> View{
@@ -56,28 +51,29 @@ open class FooterView<View: UIView>: BaseView {
     
     //MARK: Layout in superview
     @discardableResult
-    open func autoLayoutPin(toBottomOf view: UIView, height: CGFloat? = nil) -> ConstraintDictionary{
-        var constraints: ConstraintDictionary = [:]
+    open func autoLayoutPin(toBottomOf view: UIView, height: CGFloat? = nil) -> ConstraintAttributeMap{
+        var constraints: ConstraintAttributeMap = [:]
         let height = height ?? 75.0
         
         if let tableView: UITableView = view as? UITableView{
             tableView.tableFooterView = self
             //            self.autoMatchWidth(of: tableView)
             //            constraints[.height] = autoSizeHeight(to: height)
-            self.w = tableView.w
-            self.h = height
+            self.frame.w = tableView.frame.w
+            self.frame.h = height
             return constraints
         }
         
         if self.superview != view{
             view.addSubview(self)
         }
-        constraints = autoPinToSuperview(edges: .leftAndRight)
-        constraints[.height] = autoSizeHeight(to: height)
+        constraints[.leading] = [leading.equal(to: assertSuperview().leading)]
+        constraints[.trailing] = [trailing.equal(to: assertSuperview().trailing)]
+        constraints[.height] = [self.height.equal(to: height)]
         if #available(iOS 11.0, *) {
-            anchorBottom(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            constraints[.bottom] = [bottom.equal(to: view.safeAreaLayoutGuide.bottom)]
         } else {
-            constraints[.bottom] = autoPinToSuperview(edge: .bottom, withOffset: 0.0)
+            constraints[.bottom] = [bottom.equal(to: view.bottom)]
         }
         return constraints
     }
@@ -85,14 +81,14 @@ open class FooterView<View: UIView>: BaseView {
 
 extension UIViewController{
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintDictionary{
+    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap{
         return footerView.autoLayoutPin(toBottomOf: self.view, height: height)
     }
 }
 
 extension UIView{
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintDictionary{
+    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap{
         return footerView.autoLayoutPin(toBottomOf: self, height: height)
     }
 }

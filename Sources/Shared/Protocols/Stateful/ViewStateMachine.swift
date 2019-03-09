@@ -135,7 +135,7 @@ import UIKit
             statefulView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         }
         else{
-            statefulView.autoPin(toEdgesOf: parentView)
+            statefulView.edges.equal(to: parentView.edges)
         }
         parentView.bringSubviewToFront(statefulView)
         

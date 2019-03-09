@@ -43,14 +43,13 @@ open class BaseStackViewController: BaseViewController{
 
 	open override func createAutoLayoutConstraints() {
 		super.createAutoLayoutConstraints()
-		stackView.autoCenterInSuperview()
-		stackView.autoPinToSuperview(edges: .leftAndRight, withOffset: horizontalLayoutPadding, relatedBy: .greaterThanOrEqual)
-		stackView.autoPinToSuperview(edges: .topAndBottom, withOffset: verticalLayoutPadding, relatedBy: .greaterThanOrEqual)
-		stackView.autoEnforceContentHugging()
-		stackViewBackgroundView.autoPinToSuperview()
+		stackView.centerInSuperview()
+        stackView.edgeAnchors.insetOrEqual(to: edgeAnchors.inset(horizontalLayoutPadding, verticalLayoutPadding))
+        stackView.hugContent()
+		stackViewBackgroundView.pinToSuperview()
 		initialArrangedSubviews().forEach { (view) in
-			view.autoEnforceCompressionResistance()
-			view.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
+			view.resistCompression()
+			view.heightAnchor.greaterThanOrEqual(to: 0)
 		}
 	}
 }
@@ -110,11 +109,11 @@ open class StackedAlertViewController: BaseStackViewController{
 
 	open override func createAutoLayoutConstraints() {
 		super.createAutoLayoutConstraints()
-		bottomStackView.autoEnforceContentHugging()
+		bottomStackView.hugContent()
 		initialBottomArrangedSubviews().forEach { (view) in
-			view.autoEnforceCompressionResistance()
-			view.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
-			view.autoMatchWidthOfSuperview()
+			view.resistCompression()
+			view.size.greaterThanOrEqual(to: 0)
+			view.width.equal(to: view.assertSuperview().width)
 		}
 	}
 

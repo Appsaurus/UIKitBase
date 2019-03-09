@@ -8,6 +8,7 @@
 
 import Foundation
 import Swiftest
+import Layman
 
 public protocol SubmitButtonManaged: class, ButtonManaged{
     var submitButton: BaseButton! { get set }
@@ -29,10 +30,10 @@ extension SubmitButtonManaged where Self: UIViewController{
 		let button = createManagedButton(configuration: configuration)
 		var activityIndicatoPosition: ActivityIndicatorPosition = .center
 		switch configuration.position {
-		case .navBarLeft:
-			activityIndicatoPosition = .left
-		case .navBarRight:
-			activityIndicatoPosition = .right
+		case .navBarLeading:
+			activityIndicatoPosition = .leading
+		case .navBarTrailing:
+			activityIndicatoPosition = .trailing
 		default:
 			break
 		}
@@ -45,7 +46,7 @@ extension SubmitButtonManaged where Self: UIViewController{
 
 	public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
 
-		let button = BaseButton(buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: UIEdgeInsets(padding: 5)))
+		let button = BaseButton(buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5)))
 		button.titleMap = [.normal : "Submit"]
 		styleManagedButton(button: button, position: configuration.position)
 		return button

@@ -44,10 +44,9 @@ open class StatefulViewControllerView: BaseView {
     }
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-		stackView.autoCenterInSuperview()
-		stackView.autoPinToSuperview(relatedBy: .greaterThanOrEqual)
-		stackView.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
-		stackView.autoSizeWidth(to: 0.0, relatedBy: .greaterThanOrEqual)
+		stackView.centerInSuperview()
+        stackView.edgeAnchors.insetOrEqual(to: edgeAnchors)
+        stackView.sizeAnchors.greaterThanOrEqual(to: 0)
 
     }
     open func set(message: String){

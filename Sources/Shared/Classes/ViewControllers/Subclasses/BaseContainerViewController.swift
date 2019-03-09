@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Layman
 
 open class BaseContainerViewController: BaseViewController {
     
@@ -24,7 +25,7 @@ open class BaseContainerViewController: BaseViewController {
     
     open lazy var containerView: UIView = UIView()
     open lazy var containedView: UIView? = nil
-    open lazy var containerViewLayoutInsets: UIEdgeInsets = .zero
+    open lazy var containerViewLayoutInsets: LayoutPadding = .zero
     
     open override func createSubviews(){
         super.createSubviews()
@@ -46,23 +47,23 @@ open class BaseContainerViewController: BaseViewController {
     open func createContainerViewLayoutConstraints(){
         createContainedViewLayoutConstraints()
         let insets = containerViewLayoutInsets
-        containerView.autoPinToSuperview(excludingEdges: [.top], withInsets: insets)
+        containerView.edgeAnchors.equal(to: edgesExcluding(.top).inset(insets))
 
         
         guard let headerView = headerView else {
-			containerView.autoPinToSuperview(edge: .top, withOffset: insets.top)
+			containerView.topAnchor.equal(to: topAnchor.inset(insets.top))
             return
         }
-        
-        headerView.autoPinToSuperview(excludingEdges: [.bottom], withInsets: insets)
-        headerView.autoPin(edge: .bottom, toEdge: .top, of: containerView)
-		headerView.autoEnforceContentSize()
+
+        headerView.edgeAnchors.equal(to: edgesExcluding(.bottom).inset(insets))
+        headerView.bottomAnchor.equal(to: containerView.topAnchor)
+		headerView.enforceContentSize()
     }
     
     open func createContainedViewLayoutConstraints(){
         if let containedView = containedView {
-            containedView.autoPinToSuperview(excludingEdges: [.bottom])
-            containedView.anchorBottom(equalTo: self.bottomLayoutGuide.topAnchor)
+            containedView.edgeAnchors.equal(to: containerView.edgesExcluding(.bottom))
+            containedView.bottomAnchor.equal(to: bottomLayoutGuide.topAnchor)
         }
     }
  }

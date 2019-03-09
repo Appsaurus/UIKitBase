@@ -29,7 +29,7 @@ open class BaseScrollviewController: BaseViewController{
     
     open override func createAutoLayoutConstraints(){
         super.createAutoLayoutConstraints()
-        scrollView.autoPinToSuperview()
+        scrollView.pinToSuperview()
         scrollView.bringSubviewToFront(scrollViewContentView)
     }
 

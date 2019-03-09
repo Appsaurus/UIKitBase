@@ -258,7 +258,8 @@ public extension GradientView{
         gradient.colors = colors
         gradient.alpha = alpha
         superView.insertSubview(gradient, at: 0)
-        gradient.autoCenterAndMatchSizeOfSuperview()
+        gradient.centerInSuperview()
+        gradient.sizeAnchors.equal(to: superView.sizeAnchors)
         gradient.automaticallyDims = true
         return gradient
     }
@@ -271,7 +272,7 @@ public extension GradientView{
                                             alpha: CGFloat = 1.0) -> GradientView{
         let gradientView = gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
         view.insertSubview(gradientView, at: 0)
-        gradientView.autoPinToSuperview()
+        gradientView.pinToSuperview()
         return gradientView
     }
     

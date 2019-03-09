@@ -2,12 +2,19 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
+  - Layman (0.1.1):
+    - Layman/Core (= 0.1.1)
+    - Layman/Operators (= 0.1.1)
+    - Layman/Shorthand (= 0.1.1)
+  - Layman/Core (0.1.1)
+  - Layman/Operators (0.1.1)
+  - Layman/Shorthand (0.1.1)
   - Nuke (7.5.2)
-  - Swiftest (0.0.12)
+  - Swiftest (0.0.13)
   - UIFontIcons/Core (0.0.4)
   - UIFontIcons/MaterialIcons (0.0.4):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.10):
+  - UIKitExtensions (0.0.11):
     - DarkMagic
     - Swiftest
   - UIKitMixinable (0.0.2)
@@ -17,19 +24,17 @@ PODS:
     - Swiftest
     - UIKitExtensions
     - UIKitMixinable
-  - UILayoutKit (0.0.6):
-    - UIKitExtensions
 
 DEPENDENCIES:
   - Actions
   - DarkMagic (from `https://github.com/Appsaurus/DarkMagic`)
+  - Layman (from `https://github.com/Appsaurus/Layman`)
   - Nuke
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
   - UIFontIcons/MaterialIcons (from `https://github.com/Appsaurus/UIFontIcons`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
   - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
   - UIKitTheme (from `https://github.com/Appsaurus/UIKitTheme`)
-  - UILayoutKit (from `https://github.com/Appsaurus/UILayoutKit`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,6 +45,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DarkMagic:
     :git: https://github.com/Appsaurus/DarkMagic
+  Layman:
+    :git: https://github.com/Appsaurus/Layman
   Swiftest:
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
@@ -50,21 +57,22 @@ EXTERNAL SOURCES:
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :git: https://github.com/Appsaurus/UIKitTheme
-  UILayoutKit:
-    :git: https://github.com/Appsaurus/UILayoutKit
 
 CHECKOUT OPTIONS:
   DarkMagic:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
+  Layman:
+    :commit: 4ebd6c21d8eb42e1d0d22468de08783351189a87
+    :git: https://github.com/Appsaurus/Layman
   Swiftest:
-    :commit: 04f08cde027f74180457600caf53ab29be2ae8ea
+    :commit: 3f6c9f3168dcc89d6cb17479e4fcb677e7926e7d
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
     :commit: 46df0e98c47d5e1d174b7a25d3691e099bbbbc03
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: a45169c544a5ba9c9d2a11e21ff1a19ef9167d46
+    :commit: 8f80353c235fb27475308c485199a0406390aa49
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
     :commit: 8b8420507f1ce6e4cd1593b946fe13f63be9f7fa
@@ -72,22 +80,19 @@ CHECKOUT OPTIONS:
   UIKitTheme:
     :commit: 193bb3f284cf290a8a34cf9651bc7494a8aff9f8
     :git: https://github.com/Appsaurus/UIKitTheme
-  UILayoutKit:
-    :commit: d2d1f3dbc47c108bd68969b356ad1a3d91e53bb7
-    :git: https://github.com/Appsaurus/UILayoutKit
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
+  Layman: 3f13e3fdcc1b33b3dc50e207df71918f02cfec62
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
-  Swiftest: 98d648aba22af5da50970a0e46b4593f63e911bf
+  Swiftest: c5f3ad14999edc7dda8b8870d7fb05fcb108986a
   UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
-  UIKitExtensions: 9bdf623aa0fc87c40d0759ea63b1fb1409aa144a
+  UIKitExtensions: bebcb13ad7c6ad0810864ae08e5a5279e58fcb00
   UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
   UIKitTheme: 0b4412291ce397bdfa27c9060618258922b9c904
-  UILayoutKit: e0829aa420c22682d4987dd02f778d5a9d9a75f5
 
-PODFILE CHECKSUM: 7b8caf0eee6808256b6ec305eb233e11de5e028f
+PODFILE CHECKSUM: 7d45ac4139ee1e208d426c8a0595e09d2f43f63d
 
 COCOAPODS: 1.5.3

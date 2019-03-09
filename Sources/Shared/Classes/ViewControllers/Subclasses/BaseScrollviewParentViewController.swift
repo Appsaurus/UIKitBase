@@ -7,7 +7,7 @@
 //
 
 import UIKitMixinable
-import UILayoutKit
+import Layman
 open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestureRecognizerDelegate {
     
     open var childViewControllerContainerView: UIView = UIView()
@@ -19,7 +19,7 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
     
     open override func createAutoLayoutConstraints(){
         super.createAutoLayoutConstraints()
-        childViewControllerContainerView.autoPinToSuperview()
+        childViewControllerContainerView.pinToSuperview()
     }
     
     public required init?(coder aDecoder: NSCoder) {

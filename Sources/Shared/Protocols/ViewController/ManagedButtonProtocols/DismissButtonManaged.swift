@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import UIKitTheme
 import UIFontIcons
+import Layman
 
 public protocol DismissButtonManaged: ButtonManaged{
     @discardableResult
@@ -32,9 +33,9 @@ extension DismissButtonManaged where Self: UIViewController{
         switch configuration.position{
         case .floatingFooter:
             button.titleMap = [.normal : "Dismiss"]
-            button.buttonLayout = ButtonLayout(layoutType: .titleCentered, marginInsets: UIEdgeInsets(padding: 5))
+            button.buttonLayout = ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5))
         default:
-            button.buttonLayout = ButtonLayout(layoutType: .imageCentered, marginInsets: UIEdgeInsets(padding: 5))
+            button.buttonLayout = ButtonLayout(layoutType: .imageCentered, marginInsets: LayoutPadding(5))
             let style = App.style.barButtonItemStyle
             button.imageMap = [.normal : UIImage.iconImage(MaterialIcons.Close, color: style.textStyle.color, fontSize: style.textStyle.font.pointSize)]
         }

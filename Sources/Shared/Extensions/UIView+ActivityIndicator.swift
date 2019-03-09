@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-
+import Layman
 public enum ActivityIndicatorPosition{
-    case center, right, left
+    case center, leading, trailing
 }
 
 extension UIBarButtonItem{
@@ -56,11 +56,11 @@ extension UIView{
         if useAutoLayout{
             switch position{
             case .center:
-                indicator.autoPinToSuperview()
-            case .right:
-                indicator.autoPinToSuperview(excludingEdges: [.left])
-            case .left:
-                indicator.autoPinToSuperview(excludingEdges: [.right])
+                indicator.edges.equal(to: edges)
+            case .trailing:
+                indicator.edges.equal(to: edgesExcluding(.leading))
+            case .leading:
+                indicator.edges.equal(to: edgesExcluding(.trailing))
             }
         }
         else{
@@ -69,14 +69,14 @@ extension UIView{
                 indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 indicator.center = self.center
                 indicator.frame = bounds
-            case .right:
-                indicator.size = CGSize(side: h)
+            case .trailing:
+                indicator.frame.size = CGSize(side: frame.h)
                 indicator.autoresizingMask = [.flexibleHeight]
-                indicator.center = CGPoint(x: w - (indicator.w / 2.0), y: h / 2.0)
-            case .left:
-                indicator.size = CGSize(side: h)
+                indicator.center = CGPoint(x: frame.w - (indicator.frame.w / 2.0), y: frame.h / 2.0)
+            case .leading:
+                indicator.frame.size = CGSize(side: frame.h)
                 indicator.autoresizingMask = [.flexibleHeight]
-                indicator.center = CGPoint(x: indicator.w, y: h / 2.0)
+                indicator.center = CGPoint(x: indicator.frame.w, y: frame.h / 2.0)
             }
             
         }

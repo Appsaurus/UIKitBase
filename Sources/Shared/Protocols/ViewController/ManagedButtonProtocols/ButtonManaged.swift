@@ -14,7 +14,7 @@ public class ManagedButtonConfiguration: NSObject{
     var position: ManagedButtonPosition
     var size: CGSize?
     
-    public init(button: BaseButton? = nil, position: ManagedButtonPosition = .navBarRight, size: CGSize? = nil) {
+    public init(button: BaseButton? = nil, position: ManagedButtonPosition = .navBarTrailing, size: CGSize? = nil) {
         self.button = button
         self.position = position
         self.size = size
@@ -28,8 +28,8 @@ public protocol ButtonManaged{
 }
 
 public enum ManagedButtonPosition{
-    case navBarLeft
-    case navBarRight
+    case navBarLeading
+    case navBarTrailing
     case floatingFooter
     case custom
 }
@@ -61,10 +61,10 @@ extension ButtonManaged where Self: UIViewController{
     internal func layoutManagedButton(button: BaseButton, position: ManagedButtonPosition, size: CGSize? = nil){
         
         switch position{
-        case .navBarLeft, .navBarRight:
+        case .navBarLeading, .navBarTrailing:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
             
-            if position == .navBarRight{
+            if position == .navBarTrailing{
                 button.titleLabel.textAlignment =  .right
                 self.navigationItem.rightBarButtonItem = item
             }
@@ -78,13 +78,12 @@ extension ButtonManaged where Self: UIViewController{
             item.width = size.width
             
             if #available(iOS 11, *) {
-                item.customView?.anchorWidth(equalTo: size.width)
-                item.customView?.anchorHeight(equalTo: size.height)
+                item.customView?.size.equal(to: size)
             }
             
             self.navigationController?.navigationBar.forceAutolayoutPass()
         case .floatingFooter:
-            let footer = FooterView<BaseButton>(contentView: button, contentViewInsets: UIEdgeInsets(padding: 10))
+            let footer = FooterView<BaseButton>(contentView: button)
             self.add(footerView: footer, height: size?.height)
         case .custom:
             break

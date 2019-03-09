@@ -11,6 +11,7 @@ import Swiftest
 import UIKitTheme
 import UIFontIcons
 import UIKitExtensions
+import Layman
 
 //MARK: Image heights are porportionate to button's frame, normalized between 0.0 and 1.0
 public enum ButtonLayoutType{
@@ -57,15 +58,13 @@ public typealias ButtonStyleMap = [ButtonState : ButtonStyle]
 public typealias ButtonTapActionMap = [ButtonState : VoidClosure]
 public typealias ButtonIconMap<FontIcon: FontIconEnum> = [ButtonState: FontIcon]
 
-
-
 open class ButtonLayout{
     public var layoutType: ButtonLayoutType
     public var imageLayoutType: ButtonImageLayoutType
-    public var marginInsets: UIEdgeInsets
-    public var imageInsets: UIEdgeInsets = .zero
+    public var marginInsets: LayoutPadding
+    public var imageInsets: LayoutPadding = .zero
     
-    public init(layoutType: ButtonLayoutType = .imageLeftTitleCenter, imageLayoutType: ButtonImageLayoutType = .square, marginInsets: UIEdgeInsets? = nil, imageInsets: UIEdgeInsets? = nil) {
+    public init(layoutType: ButtonLayoutType = .imageLeftTitleCenter, imageLayoutType: ButtonImageLayoutType = .square, marginInsets: LayoutPadding? = nil, imageInsets: LayoutPadding? = nil) {
         self.layoutType = layoutType
         self.imageInsets =? imageInsets
         self.imageLayoutType = imageLayoutType
@@ -74,7 +73,7 @@ open class ButtonLayout{
             case .titleCentered:
                 self.marginInsets = .zero
             default:
-                self.marginInsets = UIEdgeInsets(horizontalPadding: 10.0, verticalPadding: 5.0)
+                self.marginInsets = LayoutPadding(10.0, 5.0)
             }
             return
         }
@@ -275,64 +274,59 @@ open class BaseButton: BaseView, ButtonStyleable{
     }
     
     open func apply(buttonLayout: ButtonLayout){
-        contentLayoutView.autoForceSuperviewToMatchContentSize(insetBy: buttonLayout.marginInsets)
+        contentLayoutView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.marginInsets)
+
         switch buttonLayout.layoutType {
         case .centerTitleUnderImage(let padding):
-            imageView.autoPinToSuperview(edge: .top, withOffset: buttonLayout.imageInsets.top)
-            imageView.autoPinToSuperview(edges: .leftAndRight, withInsets: buttonLayout.imageInsets, relatedBy: .greaterThanOrEqual)
-            imageView.autoCenterHorizontallyInSuperview()
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.bottom).inset(buttonLayout.imageInsets))
+            imageView.centerX.equal(to: contentLayoutView.centerX)
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
             
-            titleLabel.autoEnforceContentSize()
-            titleLabel.autoPinToSuperview(excludingEdges: [.top])
-            titleLabel.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
-            titleLabel.autoPin(edge: .top, toEdge: .bottom, of: imageView, withOffset: padding)
+            titleLabel.enforceContentSize()
+            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.top))
+            titleLabel.height.greaterThanOrEqual(to: 0)
+            titleLabel.top.equal(to: imageView.bottom.plus(padding))
             titleLabel.textAlignment = .center
             
         case .imageLeftTitleStackedRight(let padding):
-            imageView.autoPinToSuperview(excludingEdges: [.right], withInsets: buttonLayout.imageInsets)
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.autoPinToSuperview(excludingEdges: [.left])
-            titleLabel.autoPin(edge: .left, toEdge: .right, of: imageView, withOffset: padding)
+            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.leading))
+            titleLabel.leading.equal(to: imageView.trailing.plus(padding))
             titleLabel.textAlignment = .left
         case .imageRightTitleStackedLeft(let padding):
-            imageView.autoPinToSuperview(excludingEdges: [.left], withInsets: buttonLayout.imageInsets)
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.leading).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.autoPinToSuperview(excludingEdges: [.right])
-            titleLabel.autoPin(edge: .right, toEdge: .left, of: imageView, withOffset: padding)
+            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.trailing))
+            titleLabel.trailing.equal(to: imageView.leading.plus(padding))
             titleLabel.textAlignment = .right
-            
         case .imageLeftTitleCenter:
-            imageView.autoPinToSuperview(excludingEdges: [.right], withInsets: buttonLayout.imageInsets)
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
-            titleLabel.autoPinToSuperview()
+            titleLabel.pinToSuperview()
             titleLabel.textAlignment = .center
         case .imageRightTitleCenter:
-            imageView.autoPinToSuperview(excludingEdges: [.left])
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.leading).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
-            titleLabel.autoPinToSuperview()
+            titleLabel.pinToSuperview()
             titleLabel.textAlignment = .center
         case .titleCentered:
-            titleLabel.autoForceSuperviewToMatchContentSize()
+            titleLabel.forceSuperviewToMatchContentSize()
             titleLabel.textAlignment = .center
         case .imageCentered:
-            imageView.autoForceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
-            imageView.autoSizeWidth(to: 0.0, relatedBy: .greaterThanOrEqual)
-            imageView.autoSizeHeight(to: 0.0, relatedBy: .greaterThanOrEqual)
+            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            imageView.size.greaterThanOrEqual(to: 0.0)
         case .imageAndTitleCentered(let padding):
             
-            imageView.autoEnforceContentSize()
-            imageView.autoPinToSuperview(excludingEdges: [.right], withInsets: buttonLayout.imageInsets)
-            imageView.autoPin(edge: .right, toEdge: .left, of: titleLabel, withOffset: padding + buttonLayout.imageInsets.right)
+            imageView.enforceContentSize()
+            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
+            titleLabel.leading.equal(to: imageView.trailing.plus(padding + buttonLayout.imageInsets.trailing))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
             
-            titleLabel.anchorTopAndBottomToSuperview()
-            titleLabel.autoPinToSuperview(edge: .right, relatedBy: .greaterThanOrEqual)
-            //            titleLabel.autoCenterHorizontallyInSuperview(relatedBy: .greaterThanOrEqual)
-            //            titleLabel.anchorLeading(equalTo: imageView.trailingAnchor)
-            titleLabel.autoSizeWidth(to: 0.0, relatedBy: .greaterThanOrEqual)
-            
-            titleLabel.autoEnforceContentSize()
+            titleLabel.verticalEdges.equal(to: contentLayoutView.verticalEdges)
+            titleLabel.trailing.insetOrEqual(to: contentLayoutView.trailing)
+            titleLabel.width.greaterThanOrEqual(to: 0)
+            titleLabel.enforceContentSize()
             titleLabel.textAlignment = .center
         }
         
@@ -342,9 +336,14 @@ open class BaseButton: BaseView, ButtonStyleable{
     open func createImageLayoutConstraints(for imageView: UIImageView, ofType type: ButtonImageLayoutType, masterAttribute: NSLayoutConstraint.Attribute = .width){
         switch type{
         case .square:
-            imageView.autoSizeAspectRatio(to: .square, masterAttribute: masterAttribute)
+            if masterAttribute == .width {
+                imageView.aspectRatioAnchor.equal(to: .square)
+            }
+            else{
+                imageView.aspectRatioInverse.equal(to: .square)
+            }
         case .stretchWidth:
-            imageView.autoConstrain(attribute: .width, toAttribute: .height, ofItem: imageView, relatedBy: .greaterThanOrEqual, priority: .required)
+            imageView.width.greaterThanOrEqual(to: imageView.height)
         }
     }
     
@@ -494,7 +493,7 @@ extension BaseButton{
         })?.size ?? .zero
         var size = titleSize + imageSize
         size.height += (buttonLayout.marginInsets.top + buttonLayout.marginInsets.bottom + buttonLayout.imageInsets.top + buttonLayout.imageInsets.bottom)
-        size.width += (buttonLayout.marginInsets.left + buttonLayout.marginInsets.right + buttonLayout.imageInsets.left + buttonLayout.imageInsets.right)
+        size.width += (buttonLayout.marginInsets.leading + buttonLayout.marginInsets.trailing + buttonLayout.imageInsets.leading + buttonLayout.imageInsets.trailing)
         return size
     }
 }
