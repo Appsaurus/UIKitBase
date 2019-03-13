@@ -2,23 +2,23 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
-  - Layman (0.1.1):
-    - Layman/Core (= 0.1.1)
-    - Layman/Operators (= 0.1.1)
-    - Layman/Shorthand (= 0.1.1)
-  - Layman/Core (0.1.1)
-  - Layman/Operators (0.1.1)
-  - Layman/Shorthand (0.1.1)
+  - Layman (0.1.5):
+    - Layman/Core (= 0.1.5)
+    - Layman/Operators (= 0.1.5)
+    - Layman/Shorthand (= 0.1.5)
+  - Layman/Core (0.1.5)
+  - Layman/Operators (0.1.5)
+  - Layman/Shorthand (0.1.5)
   - Nuke (7.5.2)
-  - Swiftest (0.0.13)
+  - Swiftest (0.0.16)
   - UIFontIcons/Core (0.0.4)
   - UIFontIcons/MaterialIcons (0.0.4):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.11):
+  - UIKitExtensions (0.0.12):
     - DarkMagic
     - Swiftest
   - UIKitMixinable (0.0.2)
-  - UIKitTheme (0.0.6):
+  - UIKitTheme (0.0.7):
     - DarkMagic
     - DynamicColor
     - Swiftest
@@ -63,35 +63,35 @@ CHECKOUT OPTIONS:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 4ebd6c21d8eb42e1d0d22468de08783351189a87
+    :commit: 6dfcde6fe4b9e6d5a254b995310106843b045add
     :git: https://github.com/Appsaurus/Layman
   Swiftest:
-    :commit: 3f6c9f3168dcc89d6cb17479e4fcb677e7926e7d
+    :commit: 6bacb11a7b2b5d5ba3178ddfc09af3c84099e355
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
     :commit: 46df0e98c47d5e1d174b7a25d3691e099bbbbc03
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: 8f80353c235fb27475308c485199a0406390aa49
+    :commit: f138a5beee4c505d54ac285fe1aa025bd326e0c5
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
     :commit: 8b8420507f1ce6e4cd1593b946fe13f63be9f7fa
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: 193bb3f284cf290a8a34cf9651bc7494a8aff9f8
+    :commit: 7cfada00ffeb9e4c6b6646b5000ae95e837bcc70
     :git: https://github.com/Appsaurus/UIKitTheme
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Layman: 3f13e3fdcc1b33b3dc50e207df71918f02cfec62
+  Layman: 7bef20405dc65727238718f76ccf9980a34e8a61
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
-  Swiftest: c5f3ad14999edc7dda8b8870d7fb05fcb108986a
+  Swiftest: e7bd8bbafdb9b541a374f2e1fff23580853df8f6
   UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
-  UIKitExtensions: bebcb13ad7c6ad0810864ae08e5a5279e58fcb00
+  UIKitExtensions: a98f7d48c44074bb011e8a56c25250509fbe250d
   UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
-  UIKitTheme: 0b4412291ce397bdfa27c9060618258922b9c904
+  UIKitTheme: e5770ea807b04ea4cf5f4ba44d90b285f2b00ee1
 
 PODFILE CHECKSUM: 7d45ac4139ee1e208d426c8a0595e09d2f43f63d
 

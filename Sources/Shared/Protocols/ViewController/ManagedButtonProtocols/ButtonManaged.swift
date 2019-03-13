@@ -48,7 +48,7 @@ extension ButtonManaged where Self: UIViewController{
         styleManagedButton(button: button, position: configuration.position)
         return button
     }
-    internal func styleManagedButton(button: BaseButton, position: ManagedButtonPosition){
+    public func styleManagedButton(button: BaseButton, position: ManagedButtonPosition){
         switch position{
         case .floatingFooter:
             button.styleMap = [.normal : .outlined(borderColor: .primaryContrast, backgroundColor: .primary)]

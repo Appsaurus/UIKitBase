@@ -56,11 +56,11 @@ extension UIView{
         if useAutoLayout{
             switch position{
             case .center:
-                indicator.edges.equal(to: edges)
+                indicator.equal(to: edges)
             case .trailing:
-                indicator.edges.equal(to: edgesExcluding(.leading))
+                indicator.equal(to: edges.excluding(.leading))
             case .leading:
-                indicator.edges.equal(to: edgesExcluding(.trailing))
+                indicator.equal(to: edges.excluding(.trailing))
             }
         }
         else{

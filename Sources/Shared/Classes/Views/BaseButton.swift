@@ -278,35 +278,35 @@ open class BaseButton: BaseView, ButtonStyleable{
 
         switch buttonLayout.layoutType {
         case .centerTitleUnderImage(let padding):
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.bottom).inset(buttonLayout.imageInsets))
-            imageView.centerX.equal(to: contentLayoutView.centerX)
+            imageView.equal(to: contentLayoutView.edges.excluding(.bottom).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.centerX)
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
             
             titleLabel.enforceContentSize()
-            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.top))
+            titleLabel.equal(to: contentLayoutView.edges.excluding(.top))
             titleLabel.height.greaterThanOrEqual(to: 0)
             titleLabel.top.equal(to: imageView.bottom.plus(padding))
             titleLabel.textAlignment = .center
             
         case .imageLeftTitleStackedRight(let padding):
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.leading))
+            titleLabel.equal(to: contentLayoutView.edges.excluding(.leading))
             titleLabel.leading.equal(to: imageView.trailing.plus(padding))
             titleLabel.textAlignment = .left
         case .imageRightTitleStackedLeft(let padding):
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.leading).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.edges.equal(to: contentLayoutView.edgesExcluding(.trailing))
+            titleLabel.equal(to: contentLayoutView.edges.excluding(.trailing))
             titleLabel.trailing.equal(to: imageView.leading.plus(padding))
             titleLabel.textAlignment = .right
         case .imageLeftTitleCenter:
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
             titleLabel.pinToSuperview()
             titleLabel.textAlignment = .center
         case .imageRightTitleCenter:
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.leading).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
             titleLabel.pinToSuperview()
             titleLabel.textAlignment = .center
@@ -319,12 +319,12 @@ open class BaseButton: BaseView, ButtonStyleable{
         case .imageAndTitleCentered(let padding):
             
             imageView.enforceContentSize()
-            imageView.edges.equal(to: contentLayoutView.edgesExcluding(.trailing).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
             titleLabel.leading.equal(to: imageView.trailing.plus(padding + buttonLayout.imageInsets.trailing))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
             
-            titleLabel.verticalEdges.equal(to: contentLayoutView.verticalEdges)
-            titleLabel.trailing.insetOrEqual(to: contentLayoutView.trailing)
+            titleLabel.equal(to: contentLayoutView.verticalEdges)
+            titleLabel.insetOrEqual(to: contentLayoutView.trailing)
             titleLabel.width.greaterThanOrEqual(to: 0)
             titleLabel.enforceContentSize()
             titleLabel.textAlignment = .center
