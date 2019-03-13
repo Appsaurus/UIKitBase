@@ -113,7 +113,7 @@ open class StackedAlertViewController: BaseStackViewController{
 		initialBottomArrangedSubviews().forEach { (view) in
 			view.resistCompression()
 			view.size.greaterThanOrEqual(to: 0)
-			view.width.equal(to: view.assertSuperview().width)
+			view.width.equal(to: view.assertSuperview.width)
 		}
 	}
 

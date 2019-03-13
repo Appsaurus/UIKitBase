@@ -67,8 +67,8 @@ open class FooterView<View: UIView>: BaseView {
         if self.superview != view{
             view.addSubview(self)
         }
-        constraints[.leading] = [leading.equal(to: assertSuperview().leading)]
-        constraints[.trailing] = [trailing.equal(to: assertSuperview().trailing)]
+        constraints[.leading] = [leading.equal(to: assertSuperview.leading)]
+        constraints[.trailing] = [trailing.equal(to: assertSuperview.trailing)]
         constraints[.height] = [self.height.equal(to: height)]
         if #available(iOS 11.0, *) {
             constraints[.bottom] = [bottom.equal(to: view.safeAreaLayoutGuide.bottom)]
