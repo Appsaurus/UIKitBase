@@ -63,7 +63,7 @@ open class BaseContainerViewController: BaseViewController {
     open func createContainedViewLayoutConstraints(){
         if let containedView = containedView {
             containedView.equal(to: containerView.edges.excluding(.bottom))
-            containedView.equal(to: self.bottom)
+            containedView.equal(to: bottom)
         }
     }
  }
