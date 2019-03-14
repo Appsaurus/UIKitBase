@@ -35,7 +35,7 @@ extension UIView{
     
     /**
      Creates and starts animating a UIActivityIndicator in any UIView
-     Parameter style: `UIActivityIndicatorViewStyle` default is .Gray
+     Parameter style: `UIActivityIndicatorViewStyle` default is .gray
      */
     
     public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, useAutoLayout: Bool = true, position: ActivityIndicatorPosition = .center){
