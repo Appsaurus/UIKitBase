@@ -278,7 +278,8 @@ open class BaseButton: BaseView, ButtonStyleable{
 
         switch buttonLayout.layoutType {
         case .centerTitleUnderImage(let padding):
-            imageView.equal(to: contentLayoutView.edges.excluding(.bottom).inset(buttonLayout.imageInsets))
+            imageView.equal(to: contentLayoutView.top.inset(buttonLayout.imageInsets.top))
+            imageView.insetOrEqual(to: contentLayoutView.horizontalEdges.inset(padding: buttonLayout.imageInsets.horizontal))
             imageView.equal(to: contentLayoutView.centerX)
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
             

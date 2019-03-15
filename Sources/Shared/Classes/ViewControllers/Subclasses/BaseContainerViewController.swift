@@ -48,7 +48,6 @@ open class BaseContainerViewController: BaseViewController {
         createContainedViewLayoutConstraints()
         let insets = containerViewLayoutInsets
         containerView.equal(to: edges.excluding(.top).inset(insets))
-
         
         guard let headerView = headerView else {
 			containerView.equal(to: top.inset(insets.top))
@@ -57,13 +56,12 @@ open class BaseContainerViewController: BaseViewController {
 
         headerView.equal(to: edges.excluding(.bottom).inset(insets))
         headerView.bottom.equal(to: containerView.top)
-		headerView.enforceContentSize()
+        headerView.enforceContentSize()
     }
     
     open func createContainedViewLayoutConstraints(){
         if let containedView = containedView {
-            containedView.equal(to: containerView.edges.excluding(.bottom))
-            containedView.equal(to: bottom)
+            containedView.equal(to: containerView.edges)
         }
     }
  }
