@@ -25,6 +25,10 @@ open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol{
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseBarButtonItemProtocolMixins
     }
+
+    public var customButton: UIButton? {
+        return customView as? UIButton
+    }
     
     //MARK: Convenience Initializers
     public convenience init<T: FontIconEnum>(icon: T,
