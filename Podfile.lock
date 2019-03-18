@@ -2,13 +2,13 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
-  - Layman (0.1.7):
-    - Layman/Core (= 0.1.7)
-    - Layman/Operators (= 0.1.7)
-    - Layman/Shorthand (= 0.1.7)
-  - Layman/Core (0.1.7)
-  - Layman/Operators (0.1.7)
-  - Layman/Shorthand (0.1.7)
+  - Layman (0.1.14):
+    - Layman/Core (= 0.1.14)
+    - Layman/Operators (= 0.1.14)
+    - Layman/Shorthand (= 0.1.14)
+  - Layman/Core (0.1.14)
+  - Layman/Operators (0.1.14)
+  - Layman/Shorthand (0.1.14)
   - Nuke (7.5.2)
   - Swiftest (0.0.16)
   - UIFontIcons/Core (0.0.4)
@@ -18,7 +18,7 @@ PODS:
     - DarkMagic
     - Swiftest
   - UIKitMixinable (0.0.2)
-  - UIKitTheme (0.0.7):
+  - UIKitTheme (0.0.8):
     - DarkMagic
     - DynamicColor
     - Swiftest
@@ -63,10 +63,10 @@ CHECKOUT OPTIONS:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 1f0521cfbb0582e7ba1ce9c9b147ab9712d9f075
+    :commit: f3099b98c3cd5d6cbe5e944cb0e506abf9e8b781
     :git: https://github.com/Appsaurus/Layman
   Swiftest:
-    :commit: 6bacb11a7b2b5d5ba3178ddfc09af3c84099e355
+    :commit: 1a985de8e02df0a2ef819ff77f10ef62c2438607
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
     :commit: 46df0e98c47d5e1d174b7a25d3691e099bbbbc03
@@ -78,20 +78,20 @@ CHECKOUT OPTIONS:
     :commit: 8b8420507f1ce6e4cd1593b946fe13f63be9f7fa
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: 7cfada00ffeb9e4c6b6646b5000ae95e837bcc70
+    :commit: 4115c77a3952135e458def53e32b4788fa839b1b
     :git: https://github.com/Appsaurus/UIKitTheme
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Layman: 046f1f9874da1371eb19dd9c3b147572b4aeaaf5
+  Layman: 6c98b532bf98f7739213575d10adf944ef617f71
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   Swiftest: e7bd8bbafdb9b541a374f2e1fff23580853df8f6
   UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
   UIKitExtensions: a98f7d48c44074bb011e8a56c25250509fbe250d
   UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
-  UIKitTheme: e5770ea807b04ea4cf5f4ba44d90b285f2b00ee1
+  UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
 PODFILE CHECKSUM: 7d45ac4139ee1e208d426c8a0595e09d2f43f63d
 
