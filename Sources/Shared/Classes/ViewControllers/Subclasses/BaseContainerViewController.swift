@@ -25,7 +25,6 @@ open class BaseContainerViewController: BaseViewController {
     
     open lazy var containerView: UIView = UIView()
     open lazy var containedView: UIView? = nil
-    open lazy var containerViewLayoutInsets: LayoutPadding = .zero
     
     open override func createSubviews(){
         super.createSubviews()
@@ -46,23 +45,20 @@ open class BaseContainerViewController: BaseViewController {
 
     open func createContainerViewLayoutConstraints(){
         createContainedViewLayoutConstraints()
-        let insets = containerViewLayoutInsets
-        containerView.equal(to: edges.excluding(.top).inset(insets))
-        
         guard let headerView = headerView else {
-			containerView.equal(to: top.inset(insets.top))
+			containerView.pinToSuperviewMargins()
             return
         }
-
-        headerView.equal(to: edges.excluding(.bottom).inset(insets))
-        headerView.bottom.equal(to: containerView.top)
+        [headerView, containerView].stack(.topToBottom, in: self.margins)
         headerView.enforceContentSize()
+        view.layoutMargins = .zero
     }
     
     open func createContainedViewLayoutConstraints(){
         if let containedView = containedView {
-            containedView.equal(to: containerView.edges)
+            containedView.equal(to: containerView.margins.edges)
         }
+        containerView.layoutMargins = .zero
     }
  }
 

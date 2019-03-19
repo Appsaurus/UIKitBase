@@ -2,13 +2,13 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
-  - Layman (0.1.14):
-    - Layman/Core (= 0.1.14)
-    - Layman/Operators (= 0.1.14)
-    - Layman/Shorthand (= 0.1.14)
-  - Layman/Core (0.1.14)
-  - Layman/Operators (0.1.14)
-  - Layman/Shorthand (0.1.14)
+  - Layman (0.1.15):
+    - Layman/Core (= 0.1.15)
+    - Layman/Operators (= 0.1.15)
+    - Layman/Shorthand (= 0.1.15)
+  - Layman/Core (0.1.15)
+  - Layman/Operators (0.1.15)
+  - Layman/Shorthand (0.1.15)
   - Nuke (7.5.2)
   - Swiftest (0.0.16)
   - UIFontIcons/Core (0.0.4)
@@ -63,7 +63,7 @@ CHECKOUT OPTIONS:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: f3099b98c3cd5d6cbe5e944cb0e506abf9e8b781
+    :commit: 9a26873057c4178ec4d56e090628c7c78d7ea05d
     :git: https://github.com/Appsaurus/Layman
   Swiftest:
     :commit: 1a985de8e02df0a2ef819ff77f10ef62c2438607
@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Layman: 6c98b532bf98f7739213575d10adf944ef617f71
+  Layman: 42144d7e6b674e79a818be9c87f206e9c8dfda4b
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   Swiftest: e7bd8bbafdb9b541a374f2e1fff23580853df8f6
   UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
