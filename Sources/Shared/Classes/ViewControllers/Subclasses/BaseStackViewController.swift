@@ -1,6 +1,6 @@
 //
 //  BaseStackViewController.swift
-//  AppsaurusUIKit
+//  UIKitBase
 //
 //  Created by Brian Strobach on 10/19/17.
 //

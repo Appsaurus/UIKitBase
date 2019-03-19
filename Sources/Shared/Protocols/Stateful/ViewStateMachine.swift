@@ -17,7 +17,7 @@ import UIKit
 ///
 @objc public class ViewStateMachine: NSObject {
     private var viewStore: [State: UIView]
-    private let queue = DispatchQueue(label: "com.appsaurusUIKit.viewStateMachine.queue", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "com.uiKitBase.viewStateMachine.queue", attributes: .concurrent)
     
     
     /// The view that should act as the superview for any added views

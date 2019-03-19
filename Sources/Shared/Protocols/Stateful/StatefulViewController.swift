@@ -1,6 +1,6 @@
 //
 //  StatefulViewController.h
-//  AppsaurusUIKit
+//  UIKitBase
 //
 //  Created by Brian Strobach on 11/5/15.
 //  Copyright Â© 2016 Appsaurus. All rights reserved.

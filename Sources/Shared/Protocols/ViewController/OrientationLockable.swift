@@ -1,6 +1,6 @@
 //
 //  OrientationLockable.swift
-//  AppsaurusUIKit
+//  UIKitBase
 //
 //  Created by Brian Strobach on 11/30/18.
 //

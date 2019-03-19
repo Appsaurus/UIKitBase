@@ -1,6 +1,6 @@
 //
 //  StatefulViewControllerView.swift
-//  AppsaurusUIKit
+//  UIKitBase
 //
 //  Created by Brian Strobach on 7/13/16.
 //  Copyright © 2016 Appsaurus LLC. All rights reserved.
