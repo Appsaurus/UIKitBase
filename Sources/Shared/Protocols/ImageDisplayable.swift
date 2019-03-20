@@ -14,7 +14,7 @@ extension ImageDisplaying where Self: UIView{
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil) throws{
-            try loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
+        try loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
     }
     
     public func loadImage(with url: URL,
@@ -22,6 +22,15 @@ extension ImageDisplaying where Self: UIView{
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil){
         Nuke.loadImage(with: url, options: options, into: self, progress: progress, completion: completion)
+    }
+
+    public func loadImage<P: ImageProcessing>(with url: URL,
+                                              options: ImageLoadingOptions = .shared,
+                                              progress: ImageTask.ProgressHandler? = nil,
+                                              processing: P,
+                                              completion: ImageTask.Completion? = nil){
+        let request = ImageRequest(url: url, processor: processing)
+        Nuke.loadImage(with: request, options: options, into: self, progress: progress, completion: completion)
     }
 }
 //
