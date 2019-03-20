@@ -494,7 +494,8 @@ extension BaseButton{
         })?.size ?? .zero
         var size = titleSize + imageSize
         size.height += (buttonLayout.marginInsets.top + buttonLayout.marginInsets.bottom + buttonLayout.imageInsets.top + buttonLayout.imageInsets.bottom)
-        size.width += (buttonLayout.marginInsets.leading + buttonLayout.marginInsets.trailing + buttonLayout.imageInsets.leading + buttonLayout.imageInsets.trailing)
+        let widthMargins = (buttonLayout.marginInsets.leading + buttonLayout.marginInsets.trailing + buttonLayout.imageInsets.leading + buttonLayout.imageInsets.trailing)
+        size.width += max(widthMargins, 15) // Magic number to avoid truncation
         return size
     }
 }
