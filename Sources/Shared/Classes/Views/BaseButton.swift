@@ -23,6 +23,8 @@ public enum ButtonLayoutType{
     case imageAndTitleCentered(padding: CGFloat)
     case titleCentered
     case imageCentered
+    case imageCenteredSquare
+    case imageCenteredRound
 }
 
 public enum ButtonImageLayoutType{
@@ -317,6 +319,16 @@ open class BaseButton: BaseView, ButtonStyleable{
         case .imageCentered:
             imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
             imageView.size.greaterThanOrEqual(to: 0.0)
+        case .imageCenteredSquare:
+            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            imageView.size.greaterThanOrEqual(to: 0.0)
+            imageView.aspectRatio.equal(to: .square)
+        case .imageCenteredRound:
+            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            imageView.size.greaterThanOrEqual(to: 0.0)
+            imageView.aspectRatio.equal(to: .square)
+            imageView.rounded = true
+
         case .imageAndTitleCentered(let padding):
             
             imageView.enforceContentSize()
