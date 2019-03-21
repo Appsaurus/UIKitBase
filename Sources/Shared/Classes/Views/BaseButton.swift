@@ -320,15 +320,16 @@ open class BaseButton: BaseView, ButtonStyleable{
             imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
             imageView.size.greaterThanOrEqual(to: 0.0)
         case .imageCenteredSquare:
-            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            imageView.insetOrEqual(to: contentLayoutView.edges.inset(buttonLayout.imageInsets))
+            imageView.centerInSuperview()
             imageView.size.greaterThanOrEqual(to: 0.0)
             imageView.aspectRatio.equal(to: .square)
         case .imageCenteredRound:
-            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            imageView.insetOrEqual(to: contentLayoutView.edges.inset(buttonLayout.imageInsets))
+            imageView.centerInSuperview()
             imageView.size.greaterThanOrEqual(to: 0.0)
             imageView.aspectRatio.equal(to: .square)
             imageView.rounded = true
-
         case .imageAndTitleCentered(let padding):
             
             imageView.enforceContentSize()
