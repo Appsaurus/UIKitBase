@@ -20,6 +20,30 @@
 		D284B1481F7908BB00D94AF3 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B12E1F7906DA00D94AF3 /* macOSTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* UIKitBase.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */; };
+		E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
+		E41D6F7C2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
+		E41D6F7D2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
+		E41D6F7E2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
+		E41D6F802245F20700CA05C4 /* BaseAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */; };
+		E41D6F812245F20700CA05C4 /* BaseAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */; };
+		E41D6F822245F20700CA05C4 /* BaseAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */; };
+		E41D6F832245F20700CA05C4 /* BaseAppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */; };
+		E41D6F882249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
+		E41D6F892249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
+		E41D6F8A2249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
+		E41D6F8B2249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
+		E41D6F8C2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
+		E41D6F8D2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
+		E41D6F8E2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
+		E41D6F8F2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
+		E41D6F902249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
+		E41D6F912249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
+		E41D6F922249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
+		E41D6F932249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
+		E41D6F942249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
+		E41D6F952249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
+		E41D6F962249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
+		E41D6F972249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -322,6 +346,12 @@
 		D5B2E8A91C3A780C00C0327D /* UIKitBase-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* UIKitBase-macOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-macOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIApplicationDelegate.swift; sourceTree = "<group>"; };
+		E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAppNotifications.swift; sourceTree = "<group>"; };
+		E41D6F842249731100CA05C4 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		E41D6F852249731100CA05C4 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E41D6F862249731200CA05C4 /* DeepLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinker.swift; sourceTree = "<group>"; };
+		E41D6F872249731200CA05C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -591,8 +621,9 @@
 		D5C6296E1C3A809D007F7B7C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E4AF821221BF95E4002D6E86 /* Extensions */,
 				E4AF805C21BB2D90002D6E86 /* Classes */,
+				E4AF821221BF95E4002D6E86 /* Extensions */,
+				E4AF805D21BB2D90002D6E86 /* Mixins */,
 				E4AF804E21BB2D90002D6E86 /* Protocols */,
 			);
 			path = Shared;
@@ -612,21 +643,55 @@
 			path = UIKitBaseTests;
 			sourceTree = "<group>";
 		};
+		E41D6F762245EDE500CA05C4 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		E41D6F772245F04700CA05C4 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		E41D6F782245F05400CA05C4 /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				E41D6F862249731200CA05C4 /* DeepLinker.swift */,
+				E41D6F872249731200CA05C4 /* Request.swift */,
+				E41D6F842249731100CA05C4 /* Route.swift */,
+				E41D6F852249731100CA05C4 /* Router.swift */,
+			);
+			path = DeepLinking;
+			sourceTree = "<group>";
+		};
+		E41D6F792245F06600CA05C4 /* QuickActions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QuickActions;
+			sourceTree = "<group>";
+		};
 		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				E4AF81D121BF84EF002D6E86 /* Stateful */,
-				E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */,
-				E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */,
-				E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */,
-				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
-				E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */,
-				E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */,
-				E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */,
-				E4AF805421BB2D90002D6E86 /* ViewController */,
 				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
-				E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */,
+				E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */,
+				E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */,
 				E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */,
+				E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */,
+				E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */,
+				E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */,
+				E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */,
+				E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */,
+				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
+				E4AF81D121BF84EF002D6E86 /* Stateful */,
+				E4AF805421BB2D90002D6E86 /* ViewController */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -656,9 +721,9 @@
 		E4AF805C21BB2D90002D6E86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E4AF805D21BB2D90002D6E86 /* Mixins */,
+				E41D6F762245EDE500CA05C4 /* AppDelegate */,
 				E4AF806621BB2D90002D6E86 /* ViewControllers */,
-				E4AF807621BB2D90002D6E86 /* BaseSubclasses */,
+				E4AF807621BB2D90002D6E86 /* AppIO */,
 				E4AF807821BB2D90002D6E86 /* Views */,
 			);
 			path = Classes;
@@ -715,11 +780,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		E4AF807621BB2D90002D6E86 /* BaseSubclasses */ = {
+		E4AF807621BB2D90002D6E86 /* AppIO */ = {
 			isa = PBXGroup;
 			children = (
+				E41D6F792245F06600CA05C4 /* QuickActions */,
+				E41D6F782245F05400CA05C4 /* DeepLinking */,
+				E41D6F772245F04700CA05C4 /* Notifications */,
 			);
-			path = BaseSubclasses;
+			path = AppIO;
 			sourceTree = "<group>";
 		};
 		E4AF807821BB2D90002D6E86 /* Views */ = {
@@ -1121,23 +1189,28 @@
 				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810F21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E41D6F8E2249731200CA05C4 /* Router.swift in Sources */,
 				E4AF81DC21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E4AF80DF21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810321BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D6F962249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E421BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813D21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
 				E4AF80E321BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
 				E4AF820021BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E41D6F7D2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811721BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809721BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821B21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E41D6F922249731200CA05C4 /* DeepLinker.swift in Sources */,
 				E4AF812321BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
 				E4AF809321BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
 				E4AF811F21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
 				E4AF81FB21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D6F822245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EB21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
 				E4AF80CB21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
 				E4AF80B721BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
@@ -1149,6 +1222,7 @@
 				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D6F8A2249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BB21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FF21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AF21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
@@ -1200,23 +1274,28 @@
 				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF811021BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E41D6F8F2249731200CA05C4 /* Router.swift in Sources */,
 				E4AF81DD21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E4AF80E021BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810421BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D6F972249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E521BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813E21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
 				E4AF80E421BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
 				E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E41D6F7E2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821C21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E41D6F932249731200CA05C4 /* DeepLinker.swift in Sources */,
 				E4AF812421BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
 				E4AF809421BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
 				E4AF812021BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
 				E4AF81FC21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D6F832245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EC21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
 				E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
 				E4AF80B821BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
@@ -1228,6 +1307,7 @@
 				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E4AF811C21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808C21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D6F8B2249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BC21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF810021BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80B021BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
@@ -1270,23 +1350,28 @@
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E41D6F8C2249731200CA05C4 /* Router.swift in Sources */,
 				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D6F942249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813B21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
 				E4AF80E121BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
 				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809521BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821921C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E41D6F902249731200CA05C4 /* DeepLinker.swift in Sources */,
 				E4AF812121BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
 				E4AF809121BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
 				E4AF811D21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
 				E4AF81F921BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D6F802245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80E921BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
 				E4AF80C921BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
 				E4AF80B521BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
@@ -1298,6 +1383,7 @@
 				E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E4AF811921BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808921BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D6F882249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80B921BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FD21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AD21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
@@ -1349,23 +1435,28 @@
 				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810E21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E41D6F8D2249731200CA05C4 /* Router.swift in Sources */,
 				E4AF81DB21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E4AF80DE21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810221BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D6F952249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E321BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813C21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
 				E4AF80E221BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
 				E4AF81FF21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
+				E41D6F7C2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811621BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809621BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821A21C0299D002D6E86 /* FooterView.swift in Sources */,
 				E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
+				E41D6F912249731200CA05C4 /* DeepLinker.swift in Sources */,
 				E4AF812221BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
 				E4AF809221BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
 				E4AF811E21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
 				E4AF81FA21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D6F812245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EA21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
 				E4AF80CA21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
 				E4AF80B621BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
@@ -1377,6 +1468,7 @@
 				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D6F892249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BA21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FE21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AE21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,

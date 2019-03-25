@@ -2,22 +2,22 @@ PODS:
   - Actions (3.0.1)
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
-  - Layman (0.1.15):
-    - Layman/Core (= 0.1.15)
-    - Layman/Operators (= 0.1.15)
-    - Layman/Shorthand (= 0.1.15)
-  - Layman/Core (0.1.15)
-  - Layman/Operators (0.1.15)
-  - Layman/Shorthand (0.1.15)
+  - Layman (0.1.17):
+    - Layman/Core (= 0.1.17)
+    - Layman/Operators (= 0.1.17)
+    - Layman/Shorthand (= 0.1.17)
+  - Layman/Core (0.1.17)
+  - Layman/Operators (0.1.17)
+  - Layman/Shorthand (0.1.17)
   - Nuke (7.5.2)
-  - Swiftest (0.0.16)
-  - UIFontIcons/Core (0.0.4)
-  - UIFontIcons/MaterialIcons (0.0.4):
+  - Swiftest (0.0.17)
+  - UIFontIcons/Core (0.0.5)
+  - UIFontIcons/MaterialIcons (0.0.5):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.12):
+  - UIKitExtensions (0.0.18):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.2)
+  - UIKitMixinable (0.0.7)
   - UIKitTheme (0.0.8):
     - DarkMagic
     - DynamicColor
@@ -63,19 +63,19 @@ CHECKOUT OPTIONS:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 9a26873057c4178ec4d56e090628c7c78d7ea05d
+    :commit: 8b5d800321a01de5a26eda538611b134edc1496e
     :git: https://github.com/Appsaurus/Layman
   Swiftest:
-    :commit: 1a985de8e02df0a2ef819ff77f10ef62c2438607
+    :commit: ff4364013a01916776b54638b64e49149dd31455
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
-    :commit: 46df0e98c47d5e1d174b7a25d3691e099bbbbc03
+    :commit: 32c0ba69e0f2b232fa3288b6cdd37b63e2f9eb80
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: f138a5beee4c505d54ac285fe1aa025bd326e0c5
+    :commit: 7688c2ed51a03266be87048c0f1c3956240547d7
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: 8b8420507f1ce6e4cd1593b946fe13f63be9f7fa
+    :commit: 95b3933c6754642433f4d7bf66095d82bcef9625
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :commit: 4115c77a3952135e458def53e32b4788fa839b1b
@@ -85,12 +85,12 @@ SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Layman: 42144d7e6b674e79a818be9c87f206e9c8dfda4b
+  Layman: 2c21001d6c2cdd8739f2db1b3b395f9eb96d366e
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
-  Swiftest: e7bd8bbafdb9b541a374f2e1fff23580853df8f6
-  UIFontIcons: 8ed4b4499c020fa01d350b262fe481ff14605315
-  UIKitExtensions: a98f7d48c44074bb011e8a56c25250509fbe250d
-  UIKitMixinable: fff6c8bc2560dd8365225a6adbb5f28df089813a
+  Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
+  UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
+  UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
+  UIKitMixinable: 264d7e23187c90dbb955fbe805fdc3b8128c22ab
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
 PODFILE CHECKSUM: 7d45ac4139ee1e208d426c8a0595e09d2f43f63d
