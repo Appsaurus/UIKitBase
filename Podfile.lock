@@ -17,7 +17,7 @@ PODS:
   - UIKitExtensions (0.0.18):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.7)
+  - UIKitMixinable (0.0.10)
   - UIKitTheme (0.0.8):
     - DarkMagic
     - DynamicColor
@@ -33,7 +33,7 @@ DEPENDENCIES:
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
   - UIFontIcons/MaterialIcons (from `https://github.com/Appsaurus/UIFontIcons`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
-  - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
+  - UIKitMixinable (from `../UIKitMixinable`)
   - UIKitTheme (from `https://github.com/Appsaurus/UIKitTheme`)
 
 SPEC REPOS:
@@ -54,7 +54,7 @@ EXTERNAL SOURCES:
   UIKitExtensions:
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :git: https://github.com/Appsaurus/UIKitMixinable
+    :path: "../UIKitMixinable"
   UIKitTheme:
     :git: https://github.com/Appsaurus/UIKitTheme
 
@@ -74,9 +74,6 @@ CHECKOUT OPTIONS:
   UIKitExtensions:
     :commit: 7688c2ed51a03266be87048c0f1c3956240547d7
     :git: https://github.com/Appsaurus/UIKitExtensions
-  UIKitMixinable:
-    :commit: 95b3933c6754642433f4d7bf66095d82bcef9625
-    :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :commit: 4115c77a3952135e458def53e32b4788fa839b1b
     :git: https://github.com/Appsaurus/UIKitTheme
@@ -90,9 +87,9 @@ SPEC CHECKSUMS:
   Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
   UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
   UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
-  UIKitMixinable: 264d7e23187c90dbb955fbe805fdc3b8128c22ab
+  UIKitMixinable: ce93f4d1148dc263f1936190a52d3cb2cd8d3484
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
-PODFILE CHECKSUM: 7d45ac4139ee1e208d426c8a0595e09d2f43f63d
+PODFILE CHECKSUM: 6e63ae4a6db1937576b2eabf4a9fb45f22cf92c7
 
 COCOAPODS: 1.5.3

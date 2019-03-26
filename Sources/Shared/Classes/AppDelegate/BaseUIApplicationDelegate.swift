@@ -11,92 +11,103 @@ import UserNotifications
 import UIKitTheme
 import UIKitMixinable
 
-open class BaseUIApplicationDelegate: MixinableApplicationDelegate {
+public protocol BaseUIApplicationDelegateProtocol:
+    AppConfigurable
+{}
+open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDelegateProtocol {
+
+    open override func createMixins() -> [LifeCycle] {
+        return super.createMixins() + [
+            AppConfigurableMixin(self)
+        ]
+    }
+
+    open var appConfiguration: AppConfiguration {
+        return AppConfiguration()
+    }
 
     open var viewControllerConfiguration: ViewControllerConfiguration{
         return ViewControllerConfiguration()
     }
 
-    open lazy var appConfiguration: AppConfiguration? = AppConfiguration()
-
     override public init() {
         super.init()
-
-        if let appConfiguration = appConfiguration {
-            AppConfigurationManager.shared.apply(configuration: appConfiguration)
-        }
-        ViewControllerConfiguration.default = viewControllerConfiguration
         configureLoggingLevels()
     }
-
 
     //MARK: Methods/Functions
     open func configureLoggingLevels(){
         UIApplication.enableAutolayoutWarningLog(false)
     }
+}
 
-    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+public protocol AppConfigurable {
+    var appConfiguration: AppConfiguration { get }
+    var viewControllerConfiguration: ViewControllerConfiguration { get }
+}
+
+open class AppConfigurableMixin: UIApplicationDelegateMixin<UIApplicationDelegate & AppConfigurable> {
+
+    open override func didInit() {
+        super.didInit()
+        AppConfigurationManager.shared.apply(configuration: mixable.appConfiguration)
+        ViewControllerConfiguration.default = mixable.viewControllerConfiguration
+    }
+
+    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UIApplication.mainWindow.backgroundColor = .mainWindowBackgroundColor
-        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
-
 }
 
-public protocol BaseAppNotificationManager: class{
-    var remoteNotificationRegistrationFailure: ErrorClosure? { get set }
-    var remoteNotificationRegistrationSuccess: VoidClosure? { get set }
+@available(iOS 10, *)
+public protocol BaseAppNotificationManager: UIApplicationDelegate & UNUserNotificationCenterDelegate{}
 
-    func application(_ application: UIApplication, didRecieve baseAppNotification: BaseAppNotification)
-
-    @available(iOS 10.0, *)
-    func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for baseAppNotification: BaseAppNotification)
-}
-
+@available(iOS 10, *)
 extension BaseAppNotificationManager {
+
     public static func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
-        (UIApplication.shared.delegate as? BaseAppNotificationManager)?.registerForRemoteNotifications(success: success, failure: failure)
+        guard let notificationManager = (UIApplication.shared.delegate as? MixinableAppDelegate)?.appDelegateMixins.first(BaseAppNotificationManagerMixin.self) else {
+            assertionFailure("Attempted to register remote notifications with a BaseAppNotificationManagerMixin.")
+            return
+        }
+        notificationManager.registerForRemoteNotifications(success: success, failure: failure)
     }
+}
+
+@available(iOS 10, *)
+open class BaseAppNotificationManagerMixin: UNUserNotificationCenterDelegateMixin<BaseAppNotificationManager> {
+
+    var remoteNotificationRegistrationFailure: ErrorClosure?
+    var remoteNotificationRegistrationSuccess: VoidClosure?
+
 
     //MARK: Registration
-    public func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
+    open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
         let application = UIApplication.shared
         remoteNotificationRegistrationSuccess = success
         remoteNotificationRegistrationFailure = failure
 
-        guard application.delegate === self else {
+        guard application.delegate === mixable else {
             assertionFailure()
             return
         }
 
-        if #available(iOS 10.0, *) {
-            assertIsUNUserNotificationCenterDelegate()
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: unAuthorizationOptions(),
-                completionHandler: {_, _ in })
-        } else {
-            application.registerUserNotificationSettings(uiUserNotificationSettings())
-        }
+        UNUserNotificationCenter.current().delegate = mixable
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: unAuthorizationOptions(),
+            completionHandler: {_, _ in })
 
         application.registerForRemoteNotifications()
 
     }
 
-    internal func assertIsUNUserNotificationCenterDelegate() {
-        if #available(iOS 10.0, *){
-            guard let mixableUNUserNotificationDelegate = self as? UNUserNotificationCenterDelegate else {
-                assertionFailure("Delegates conforming to AppNotificationManager must also conform to UNUserNotificationCenterDelegate.")
-                return
-            }
-            UNUserNotificationCenter.current().delegate = mixableUNUserNotificationDelegate
-        }
-    }
-
-    public func uiUserNotificationSettings() -> UIUserNotificationSettings {
+    open  func uiUserNotificationSettings() -> UIUserNotificationSettings {
         return UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
     }
 
     @available(iOS 10.0, *)
-    public func unAuthorizationOptions() -> UNAuthorizationOptions {
+    open func unAuthorizationOptions() -> UNAuthorizationOptions {
         return [.alert, .badge, .sound]
     }
 
@@ -105,38 +116,36 @@ extension BaseAppNotificationManager {
     /// Hook to implement registering of push notifications with backend
     ///
     /// - Parameter token: the device token to register
-    public func registerDevice(withToken token: String, success: VoidClosure? = nil, failure: ErrorClosure? = nil){
+    open  func registerDevice(withToken token: String, success: VoidClosure? = nil, failure: ErrorClosure? = nil){
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
 }
 
+@available(iOS 10.0, *)
 public protocol AppNotificationManager: BaseAppNotificationManager{
     associatedtype AppNotificationIDType: AppNotificationID
 
     func application(_ application: UIApplication, didReceiveNotification notification: AppNotification<AppNotificationIDType>)
     func application(_ application: UIApplication, didRecieveNotificationWhileActive notification: AppNotification<AppNotificationIDType>)
     func application(_ application: UIApplication, didLaunchFrom notification: AppNotification<AppNotificationIDType>)
-
-    @available(iOS 10.0, *)
     func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for notification: AppNotification<AppNotificationIDType>)
 }
 
+@available(iOS 10.0, *)
 extension AppNotificationManager{
-
 
     public func application(_ application: UIApplication, didRecieve baseAppNotification: BaseAppNotification){
         let notification = AppNotification<AppNotificationIDType>(notification: baseAppNotification)
         self.application(application, didReceiveNotification: notification)
     }
 
-    @available(iOS 10.0, *)
     public func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for baseAppNotification: BaseAppNotification){
         let notification = AppNotification<AppNotificationIDType>(notification: baseAppNotification)
         self.application(application, didRecieve: response, for: notification)
     }
 
 
-    @available(iOS 10.0, *)
     public func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for notification: AppNotification<AppNotificationIDType>){
         //Basic logic assumes you have simple notification that user tapped, and want to handle it with a deep link whether the user launched the app with notification or tapped it while the app is active.
         self.application(application, didLaunchFrom: notification)
@@ -181,26 +190,21 @@ extension AppNotificationManager{
     }
 }
 
+@available(iOS 10.0, *)
+open class AppNotificationManagerMixin: BaseAppNotificationManagerMixin {
 
-open class AppNotificationManagerMixin: UIApplicationDelegateMixin<AppNotificationManager> {
-
-    open override func didInit() {
-        super.didInit()
-        mixable.assertIsUNUserNotificationCenterDelegate()
+    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        registerDevice(withToken: String(deviceToken: deviceToken), success: remoteNotificationRegistrationSuccess, failure: remoteNotificationRegistrationFailure)
     }
-
-    open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        mixable.registerDevice(withToken: String(deviceToken: deviceToken), success: mixable.remoteNotificationRegistrationSuccess, failure: mixable.remoteNotificationRegistrationFailure)
-    }
-    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
-    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
-    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Unifying notification methods
         if let localNotification = launchOptions?[.localNotification] as? UILocalNotification, let userInfo = localNotification.userInfo {
             mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .local))
