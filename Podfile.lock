@@ -17,7 +17,7 @@ PODS:
   - UIKitExtensions (0.0.18):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.10)
+  - UIKitMixinable (0.0.12)
   - UIKitTheme (0.0.8):
     - DarkMagic
     - DynamicColor
@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
   UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
   UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
-  UIKitMixinable: ce93f4d1148dc263f1936190a52d3cb2cd8d3484
+  UIKitMixinable: 24960c7ce542cf4075787b0a3800e52527983ce5
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
 PODFILE CHECKSUM: 6e63ae4a6db1937576b2eabf4a9fb45f22cf92c7
