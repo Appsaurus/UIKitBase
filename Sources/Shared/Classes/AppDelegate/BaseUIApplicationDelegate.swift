@@ -98,7 +98,7 @@ open class AppConfigurableMixin: UIApplicationDelegateMixin<UIApplicationDelegat
 }
 
 @available(iOS 10.0, *)
-public protocol AppIOManager: UIApplicationDelegate, UNUserNotificationCenterDelegate{
+public protocol AppIOManager: UIApplicationDelegateMixinable, UNUserNotificationCenterDelegate{
     associatedtype AppNotificationIDType: AppNotificationID
 
     func application(_ application: UIApplication, didReceiveNotification notification: AppNotification<AppNotificationIDType>)
@@ -106,6 +106,12 @@ public protocol AppIOManager: UIApplicationDelegate, UNUserNotificationCenterDel
     func application(_ application: UIApplication, didLaunchFrom notification: AppNotification<AppNotificationIDType>)
     func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for notification: AppNotification<AppNotificationIDType>)
 
+    //MARK: Abstract Methods
+
+    /// Hook to implement registering of push notifications with backend
+    ///
+    /// - Parameter token: the device token to register
+    func registerDevice(withToken token: String, success: VoidClosure?, failure: ErrorClosure?)
     // MARK: DeepLinking
     associatedtype DeepLinkRouteType: DeepLinkRoute
     var deepLinker: DeepLinker<DeepLinkRouteType> { get }
@@ -116,9 +122,9 @@ public protocol AppIOManager: UIApplicationDelegate, UNUserNotificationCenterDel
 @available(iOS 10.0, *)
 extension AppIOManager{
 
-    public static func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
-        guard let notificationManager = (UIApplication.shared.delegate as? MixinableAppDelegate)?.appDelegateMixins.first(AppIOManagerMixin.self) else {
-            assertionFailure("Attempted to register remote notifications with a BaseAppNotificationManagerMixin.")
+    public func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
+        guard let notificationManager = mixins.first(where: { $0 is AppIOManagerMixin}) as? AppIOManagerMixin else {
+            assertionFailure("Attempted to register remote notifications without a AppIOManagerMixin.")
             return
         }
         notificationManager.registerForRemoteNotifications(success: success, failure: failure)
@@ -201,14 +207,6 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
     open var remoteNotificationRegistrationFailure: ErrorClosure?
     open var remoteNotificationRegistrationSuccess: VoidClosure?
 
-    //MARK: Abstract Methods
-
-    /// Hook to implement registering of push notifications with backend
-    ///
-    /// - Parameter token: the device token to register
-    open  func registerDevice(withToken token: String, success: VoidClosure? = nil, failure: ErrorClosure? = nil){
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-    }
 
     //MARK: Registration
     open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
@@ -255,14 +253,14 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
     }
 
 
-    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        registerDevice(withToken: String(deviceToken: deviceToken), success: remoteNotificationRegistrationSuccess, failure: remoteNotificationRegistrationFailure)
+    open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        mixable.registerDevice(withToken: String(deviceToken: deviceToken), success: remoteNotificationRegistrationSuccess, failure: remoteNotificationRegistrationFailure)
     }
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
