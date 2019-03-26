@@ -11,8 +11,6 @@ import UserNotifications
 import UIKitTheme
 import UIKitMixinable
 
-@available(iOS 10, *)
-
 open class BaseUIApplicationDelegate: MixinableApplicationDelegate {
 
     open var viewControllerConfiguration: ViewControllerConfiguration{

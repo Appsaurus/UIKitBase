@@ -10,7 +10,7 @@ import UIKit
 
 open class Request {
     
-    open let route: Route
+    public let route: Route
     
     fileprivate var urlParams = [String: String]()
     fileprivate var queryParams = [String: String]()
