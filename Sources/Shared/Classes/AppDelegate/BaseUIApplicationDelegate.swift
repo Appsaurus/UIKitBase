@@ -182,7 +182,7 @@ extension AppNotificationManager{
 }
 
 
-public class AppNotificationManagerMixin: UIApplicationDelegateMixin<AppNotificationManager> {
+open class AppNotificationManagerMixin: UIApplicationDelegateMixin<AppNotificationManager> {
 
     open override func didInit() {
         super.didInit()
@@ -190,7 +190,7 @@ public class AppNotificationManagerMixin: UIApplicationDelegateMixin<AppNotifica
     }
 
     open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        mixable.registerDevice(withToken: String(deviceToken: deviceToken))
+        mixable.registerDevice(withToken: String(deviceToken: deviceToken), success: mixable.remoteNotificationRegistrationSuccess, failure: mixable.remoteNotificationRegistrationFailure)
     }
     open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
