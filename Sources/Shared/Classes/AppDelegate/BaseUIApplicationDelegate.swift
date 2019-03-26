@@ -12,15 +12,21 @@ import UIKitTheme
 import UIKitMixinable
 
 public protocol BaseUIApplicationDelegateProtocol:
-    AppConfigurable
+    AppConfigurable,
+    UNUserNotificationCenterDelegateMixinable
 {}
+
+@available(iOS 10, *)
 open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDelegateProtocol {
+
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [
             AppConfigurableMixin(self)
         ]
     }
+
+    open lazy var userNotificationMixins: [UNUserNotificationCenterDelegateLifeCycle] = self.mixins.compactMap{ $0 as? UNUserNotificationCenterDelegateLifeCycle }
 
     open var appConfiguration: AppConfiguration {
         return AppConfiguration()
@@ -39,6 +45,37 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     open func configureLoggingLevels(){
         UIApplication.enableAutolayoutWarningLog(false)
     }
+
+    // MARK: UNUserNotificationCenterDelegateMixinable (must be implemented inside class since this is objc protocol)
+
+    // The method will be called on the delegate only if the application is in the foreground. If the method is not implemented or the handler is not called in a timely manner then the notification will not be presented. The application can choose to have the notification presented as a sound, badge, alert and/or in the notification list. This decision should be based on whether the information in the notification is otherwise visible to the user.
+    open func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
+        userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+            mixin.userNotificationCenter(center, willPresent: notification, withCompletionHandler: completionHandler)
+        }, completionHandler: { [weak self] results in
+            guard let self = self else { return }
+            completionHandler(results.first ?? self.completionHandlerOptions(for: notification))
+        })
+    }
+
+
+    // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from application:didFinishLaunchingWithOptions:.
+    open func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void){
+        userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+            mixin.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+        }, completionHandler: { _ in
+            completionHandler()
+        })
+    }
+
+
+    // The method will be called on the delegate when the application is launched in response to the user's request to view in-app notification settings. Add UNAuthorizationOptionProvidesAppNotificationSettings as an option in requestAuthorizationWithOptions:completionHandler: to add a button to inline notification settings view and the notification settings view in Settings. The notification will be nil when opened from Settings.
+    @available(iOS 12.0, *)
+    open func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?){
+        userNotificationMixins.forEach { $0.userNotificationCenter(center, openSettingsFor: notification)}
+    }
+
+
 }
 
 public protocol AppConfigurable {
@@ -124,8 +161,8 @@ extension AppIOManager{
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                              willPresent notification: UNNotification,
-                                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                                       willPresent notification: UNNotification,
+                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
         guard let options = completionHandlerOptions(for: notification) else { return }
         completionHandler(options)
@@ -136,8 +173,8 @@ extension AppIOManager{
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                     didReceive response: UNNotificationResponse,
-                                     withCompletionHandler completionHandler: @escaping () -> Void) {
+                                       didReceive response: UNNotificationResponse,
+                                       withCompletionHandler completionHandler: @escaping () -> Void) {
 
 
         application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
@@ -161,9 +198,17 @@ extension AppIOManager{
 @available(iOS 10.0, *)
 open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager> {
 
-    var remoteNotificationRegistrationFailure: ErrorClosure?
-    var remoteNotificationRegistrationSuccess: VoidClosure?
+    open var remoteNotificationRegistrationFailure: ErrorClosure?
+    open var remoteNotificationRegistrationSuccess: VoidClosure?
 
+    //MARK: Abstract Methods
+
+    /// Hook to implement registering of push notifications with backend
+    ///
+    /// - Parameter token: the device token to register
+    open  func registerDevice(withToken token: String, success: VoidClosure? = nil, failure: ErrorClosure? = nil){
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
 
     //MARK: Registration
     open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil){
@@ -189,19 +234,26 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         return UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
     }
 
-    @available(iOS 10.0, *)
     open func unAuthorizationOptions() -> UNAuthorizationOptions {
         return [.alert, .badge, .sound]
     }
 
-    //MARK: Abstract Methods
+    open override func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
+        mixable.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
+        guard let options = mixable.completionHandlerOptions(for: notification) else { return }
+        completionHandler(options)
+    }
 
-    /// Hook to implement registering of push notifications with backend
-    ///
-    /// - Parameter token: the device token to register
-    open  func registerDevice(withToken token: String, success: VoidClosure? = nil, failure: ErrorClosure? = nil){
+    open override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void){
+        mixable.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
+        completionHandler()
+    }
+
+    @available(iOS 12.0, *)
+    open override func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?){
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
 
     open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         registerDevice(withToken: String(deviceToken: deviceToken), success: remoteNotificationRegistrationSuccess, failure: remoteNotificationRegistrationFailure)

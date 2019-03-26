@@ -45,9 +45,22 @@ open class BaseAppNotification{
         self.origin = origin
     }
 
+    public func parse(key: String) throws -> String{
+        guard let value = payload[key] as? String else { throw NotificationParsingError.missingValueForPayload(key: key) }
+        return value
+    }
+}
+
+public enum NotificationParsingError: LocalizedError{
+    case missingValueForPayload(key: String)
+    public var localizedDescription: String{
+        switch self{
+        case .missingValueForPayload(let key):
+            return "Missing expected value for key \(key)."
+        }
+    }
 }
 open class AppNotification<ID: AppNotificationID> : BaseAppNotification{
-
 
     open var notificationIdentifier: ID?
     open var notificationCenterNotification: Notification?{
