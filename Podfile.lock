@@ -33,7 +33,7 @@ DEPENDENCIES:
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
   - UIFontIcons/MaterialIcons (from `https://github.com/Appsaurus/UIFontIcons`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
-  - UIKitMixinable (from `../UIKitMixinable`)
+  - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
   - UIKitTheme (from `https://github.com/Appsaurus/UIKitTheme`)
 
 SPEC REPOS:
@@ -54,7 +54,7 @@ EXTERNAL SOURCES:
   UIKitExtensions:
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :path: "../UIKitMixinable"
+    :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :git: https://github.com/Appsaurus/UIKitTheme
 
@@ -74,6 +74,9 @@ CHECKOUT OPTIONS:
   UIKitExtensions:
     :commit: 7688c2ed51a03266be87048c0f1c3956240547d7
     :git: https://github.com/Appsaurus/UIKitExtensions
+  UIKitMixinable:
+    :commit: 4901bb23416bcf9f42951344578cd6d25a9e01f0
+    :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :commit: 4115c77a3952135e458def53e32b4788fa839b1b
     :git: https://github.com/Appsaurus/UIKitTheme
@@ -87,9 +90,9 @@ SPEC CHECKSUMS:
   Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
   UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
   UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
-  UIKitMixinable: 6eb7fe80944cb5ef4c37fb9a303e7f24c072ec04
+  UIKitMixinable: 59b18c2cc93bc87b40356fe83697c1fceaa9993a
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
-PODFILE CHECKSUM: 6e63ae4a6db1937576b2eabf4a9fb45f22cf92c7
+PODFILE CHECKSUM: 2c947381e97fca36c09716406e72aa8088d510dc
 
 COCOAPODS: 1.5.3
