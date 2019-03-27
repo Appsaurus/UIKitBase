@@ -219,7 +219,8 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
             return
         }
 
-        UNUserNotificationCenter.current().delegate = self
+        //Set delegate to owning mixable object, which will ultimately call these mixed methods upon delegation from UNUserNotificationCenter.
+        UNUserNotificationCenter.current().delegate = self.mixable
         UNUserNotificationCenter.current().requestAuthorization(
             options: unAuthorizationOptions(),
             completionHandler: {_, _ in })
