@@ -1900,6 +1900,7 @@
 				D5B2E89C1C3A780C00C0327D /* Headers */,
 				D5B2E89D1C3A780C00C0327D /* Resources */,
 				E41D72CC224E796000CA05C4 /* SwiftLint */,
+				E466AC44224EC17300CA54F4 /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -2213,6 +2214,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --config .swiftlint.yml \n";
+		};
+		E466AC44224EC17300CA54F4 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/Sources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
