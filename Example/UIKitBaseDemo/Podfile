@@ -1,17 +1,55 @@
+source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 platform :ios, '9.0'
 
+def common_pods
+    pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
+    pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
+    #    pod 'UIKitMixinable', :path => '../../OpenSource/Swift/UIKitMixinable'
+    pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
+    pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
+    pod 'Layman', :git => 'https://github.com/Appsaurus/Layman'
+    pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
+    pod 'RuntimeExtensions', :git => 'https://github.com/Appsaurus/RuntimeExtensions'
+    pod 'UIFontLoader', :git => 'https://github.com/Appsaurus/UIFontLoader'
+    pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
+    pod 'UIFontIcons/Feather', :git => 'https://github.com/Appsaurus/UIFontIcons'
+    pod 'Actions'
+    pod 'Nuke'
+    pod 'UIKitBase/Permission', :path => '../../'
+    pod 'UIKitBase/Location', :path => '../../'
+    pod 'UIKitBase/Forms', :path => '../../'
+    pod 'UIKitBase/Datasource', :path => '../../'
+
+    pod 'Fakery'
+    pod 'IQKeyboardManagerSwift'
+
+    # Permissions
+    pod 'Permission/Camera', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Contacts', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Microphone', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Notifications', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Photos', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Location', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+
+end
+
 target 'UIKitBaseDemo' do
- pod 'UIKitBase', path: '../../'
- pod 'DinoDNA', :git => 'git@bitbucket.org:appsaurus/dinodna.git'
- pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
- pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
- pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
- pod 'UILayoutKit', :git => 'https://github.com/Appsaurus/UILayoutKit'
- pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
- pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
- pod 'Actions'
- pod 'Nuke'
+    common_pods
+    pod 'SwiftyTimer'
+end
+
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if ['Toucan',
+            'ActiveLabel',
+            'AssistantKit'].include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.0'
+            end
+        end
+    end
 end
 

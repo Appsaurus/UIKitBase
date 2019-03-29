@@ -1,19 +1,46 @@
+source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
+inhibit_all_warnings!
 
-platform :ios, '9.0'
 
-def common_pods
-  pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
-  pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
-  pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
-  #  pod 'UIKitMixinable', :path => '../UIKitMixinable'
-  pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
-  pod 'Layman', :git => 'https://github.com/Appsaurus/Layman'
-  pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
-  pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
-  pod 'Actions'
-  pod 'Nuke'
+def shared
+    pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
 end
+
+def libaryShared
+    pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
+    pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
+    #  pod 'UIKitMixinable', :path => '../UIKitMixinable'
+    pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
+    pod 'Layman', :git => 'https://github.com/Appsaurus/Layman'
+    pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
+    pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
+    pod 'Actions'
+    pod 'Nuke'
+    pod 'ActiveLabel'
+    pod 'SwiftLint'
+    pod 'Algorithm'
+    pod 'SwiftLocation'
+    pod 'SwiftDate'
+    pod 'CountryPickerSwift'
+    pod 'PhoneNumberKit'
+    pod 'Permission/Location', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+end
+
+def testShared
+    pod 'SwiftTestUtils', :git => 'https://github.com/appsaurus/SwiftTestUtils.git'
+end
+
 target 'UIKitBase-iOS' do
-    common_pods
+    platform :ios, '9.0'
+    shared
+    libaryShared
+end
+
+target 'UIKitBase-iOS-Tests' do
+    platform :ios, '9.0'
+    shared
+    testShared
+    pod 'CwlPreconditionTesting', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'
+    pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlCatchException.git'
 end

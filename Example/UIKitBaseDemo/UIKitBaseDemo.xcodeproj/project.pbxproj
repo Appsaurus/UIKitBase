@@ -9,8 +9,29 @@
 /* Begin PBXBuildFile section */
 		D5C7F74E1C3BC9CE008CDDBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F74C1C3BC9CE008CDDBA /* LaunchScreen.storyboard */; };
 		D5C7F75B1C3BCA1E008CDDBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */; };
-		D5C7F75C1C3BCA1E008CDDBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */; };
-		D5C7F75D1C3BCA1E008CDDBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */; };
+		E41D7245224D686200CA05C4 /* ExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7231224D685D00CA05C4 /* ExampleTableViewController.swift */; };
+		E41D7246224D686200CA05C4 /* ExampleUIViewControllerMixinable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7232224D685E00CA05C4 /* ExampleUIViewControllerMixinable.swift */; };
+		E41D7247224D686200CA05C4 /* ScrollViewParentHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7233224D685E00CA05C4 /* ScrollViewParentHeaderExampleViewController.swift */; };
+		E41D7248224D686200CA05C4 /* ExamplePaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7234224D685F00CA05C4 /* ExamplePaginatableTableViewController.swift */; };
+		E41D7249224D686200CA05C4 /* TableViewHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7235224D685F00CA05C4 /* TableViewHeaderExampleViewController.swift */; };
+		E41D724A224D686200CA05C4 /* FakeDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7236224D686000CA05C4 /* FakeDataTableViewController.swift */; };
+		E41D724B224D686200CA05C4 /* TableViewSubheaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7237224D686000CA05C4 /* TableViewSubheaderExampleViewController.swift */; };
+		E41D724C224D686200CA05C4 /* ExampleBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7238224D686100CA05C4 /* ExampleBaseViewController.swift */; };
+		E41D724D224D686200CA05C4 /* ScrollViewHeaderExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7239224D686100CA05C4 /* ScrollViewHeaderExamplesViewController.swift */; };
+		E41D724E224D686200CA05C4 /* ExampleCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723A224D686100CA05C4 /* ExampleCustomTabBarController.swift */; };
+		E41D724F224D686200CA05C4 /* ExampleDeepLinkDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723B224D686100CA05C4 /* ExampleDeepLinkDestinationViewController.swift */; };
+		E41D7250224D686200CA05C4 /* ExampleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723C224D686100CA05C4 /* ExampleObject.swift */; };
+		E41D7251224D686200CA05C4 /* ExampleAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723D224D686100CA05C4 /* ExampleAuthenticationViewController.swift */; };
+		E41D7252224D686200CA05C4 /* ExampleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723E224D686200CA05C4 /* ExampleSearchViewController.swift */; };
+		E41D7253224D686200CA05C4 /* ExamplePermissionAuthorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D723F224D686200CA05C4 /* ExamplePermissionAuthorizedViewController.swift */; };
+		E41D7254224D686200CA05C4 /* ExampleFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7240224D686200CA05C4 /* ExampleFormViewController.swift */; };
+		E41D7255224D686200CA05C4 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7241224D686200CA05C4 /* ExampleNeedsLoadingIndicatorTableViewController.swift */; };
+		E41D7256224D686200CA05C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7242224D686200CA05C4 /* AppDelegate.swift */; };
+		E41D7257224D686200CA05C4 /* BaseButtonExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7243224D686200CA05C4 /* BaseButtonExamplesViewController.swift */; };
+		E41D7258224D686200CA05C4 /* ExampleAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7244224D686200CA05C4 /* ExampleAppConfiguration.swift */; };
+		E41D725D224D686F00CA05C4 /* PagingMenuExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */; };
+		E41D725E224D686F00CA05C4 /* ExamplePagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */; };
+		E41D725F224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */; };
 		F32B4ACF3BDB15E0016862F2 /* Pods_UIKitBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C897C2FE27C65C4B7EE3AA1 /* Pods_UIKitBaseDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +43,29 @@
 		D5C7F74D1C3BC9CE008CDDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5C7F74F1C3BC9CE008CDDBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E41D7231224D685D00CA05C4 /* ExampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewController.swift; sourceTree = "<group>"; };
+		E41D7232224D685E00CA05C4 /* ExampleUIViewControllerMixinable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleUIViewControllerMixinable.swift; sourceTree = "<group>"; };
+		E41D7233224D685E00CA05C4 /* ScrollViewParentHeaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewParentHeaderExampleViewController.swift; sourceTree = "<group>"; };
+		E41D7234224D685F00CA05C4 /* ExamplePaginatableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePaginatableTableViewController.swift; sourceTree = "<group>"; };
+		E41D7235224D685F00CA05C4 /* TableViewHeaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeaderExampleViewController.swift; sourceTree = "<group>"; };
+		E41D7236224D686000CA05C4 /* FakeDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataTableViewController.swift; sourceTree = "<group>"; };
+		E41D7237224D686000CA05C4 /* TableViewSubheaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSubheaderExampleViewController.swift; sourceTree = "<group>"; };
+		E41D7238224D686100CA05C4 /* ExampleBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBaseViewController.swift; sourceTree = "<group>"; };
+		E41D7239224D686100CA05C4 /* ScrollViewHeaderExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderExamplesViewController.swift; sourceTree = "<group>"; };
+		E41D723A224D686100CA05C4 /* ExampleCustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCustomTabBarController.swift; sourceTree = "<group>"; };
+		E41D723B224D686100CA05C4 /* ExampleDeepLinkDestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDeepLinkDestinationViewController.swift; sourceTree = "<group>"; };
+		E41D723C224D686100CA05C4 /* ExampleObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleObject.swift; sourceTree = "<group>"; };
+		E41D723D224D686100CA05C4 /* ExampleAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAuthenticationViewController.swift; sourceTree = "<group>"; };
+		E41D723E224D686200CA05C4 /* ExampleSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSearchViewController.swift; sourceTree = "<group>"; };
+		E41D723F224D686200CA05C4 /* ExamplePermissionAuthorizedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePermissionAuthorizedViewController.swift; sourceTree = "<group>"; };
+		E41D7240224D686200CA05C4 /* ExampleFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFormViewController.swift; sourceTree = "<group>"; };
+		E41D7241224D686200CA05C4 /* ExampleNeedsLoadingIndicatorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleNeedsLoadingIndicatorTableViewController.swift; sourceTree = "<group>"; };
+		E41D7242224D686200CA05C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E41D7243224D686200CA05C4 /* BaseButtonExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButtonExamplesViewController.swift; sourceTree = "<group>"; };
+		E41D7244224D686200CA05C4 /* ExampleAppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppConfiguration.swift; sourceTree = "<group>"; };
+		E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuExamplesViewController.swift; sourceTree = "<group>"; };
+		E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePagingMenuViewController.swift; sourceTree = "<group>"; };
+		E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleStepProcessPagingMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +145,39 @@
 		D5C7F7581C3BCA1E008CDDBA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D5C7F7591C3BCA1E008CDDBA /* AppDelegate.swift */,
-				D5C7F75A1C3BCA1E008CDDBA /* ViewController.swift */,
+				E41D7259224D686F00CA05C4 /* PagingMenuViewControllers */,
+				E41D7242224D686200CA05C4 /* AppDelegate.swift */,
+				E41D7243224D686200CA05C4 /* BaseButtonExamplesViewController.swift */,
+				E41D7244224D686200CA05C4 /* ExampleAppConfiguration.swift */,
+				E41D723D224D686100CA05C4 /* ExampleAuthenticationViewController.swift */,
+				E41D7238224D686100CA05C4 /* ExampleBaseViewController.swift */,
+				E41D723A224D686100CA05C4 /* ExampleCustomTabBarController.swift */,
+				E41D723B224D686100CA05C4 /* ExampleDeepLinkDestinationViewController.swift */,
+				E41D7240224D686200CA05C4 /* ExampleFormViewController.swift */,
+				E41D7241224D686200CA05C4 /* ExampleNeedsLoadingIndicatorTableViewController.swift */,
+				E41D723C224D686100CA05C4 /* ExampleObject.swift */,
+				E41D7234224D685F00CA05C4 /* ExamplePaginatableTableViewController.swift */,
+				E41D723F224D686200CA05C4 /* ExamplePermissionAuthorizedViewController.swift */,
+				E41D723E224D686200CA05C4 /* ExampleSearchViewController.swift */,
+				E41D7231224D685D00CA05C4 /* ExampleTableViewController.swift */,
+				E41D7232224D685E00CA05C4 /* ExampleUIViewControllerMixinable.swift */,
+				E41D7236224D686000CA05C4 /* FakeDataTableViewController.swift */,
+				E41D7239224D686100CA05C4 /* ScrollViewHeaderExamplesViewController.swift */,
+				E41D7233224D685E00CA05C4 /* ScrollViewParentHeaderExampleViewController.swift */,
+				E41D7235224D685F00CA05C4 /* TableViewHeaderExampleViewController.swift */,
+				E41D7237224D686000CA05C4 /* TableViewSubheaderExampleViewController.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E41D7259224D686F00CA05C4 /* PagingMenuViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */,
+				E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */,
+				E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */,
+			);
+			path = PagingMenuViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +215,7 @@
 					D5C7F73F1C3BC9CE008CDDBA = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 4B7GH74X7C;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -189,32 +260,58 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Actions/Actions.framework",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
+				"${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
-				"${BUILT_PRODUCTS_DIR}/DinoDNA/DinoDNA.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
+				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Permission/Permission.framework",
+				"${BUILT_PRODUCTS_DIR}/Runtime/Runtime.framework",
+				"${BUILT_PRODUCTS_DIR}/RuntimeExtensions/RuntimeExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/Swiftest/Swiftest.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/UIFontIcons/UIFontIcons.framework",
+				"${BUILT_PRODUCTS_DIR}/UIFontLoader/UIFontLoader.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitBase/UIKitBase.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitExtensions/UIKitExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitMixinable/UIKitMixinable.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitTheme/UIKitTheme.framework",
-				"${BUILT_PRODUCTS_DIR}/UILayoutKit/UILayoutKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Actions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssistantKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DinoDNA.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Permission.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Runtime.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RuntimeExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swiftest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontIcons.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontLoader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitBase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitMixinable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitTheme.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UILayoutKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -250,8 +347,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C7F75D1C3BCA1E008CDDBA /* ViewController.swift in Sources */,
-				D5C7F75C1C3BCA1E008CDDBA /* AppDelegate.swift in Sources */,
+				E41D7255224D686200CA05C4 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */,
+				E41D724C224D686200CA05C4 /* ExampleBaseViewController.swift in Sources */,
+				E41D7245224D686200CA05C4 /* ExampleTableViewController.swift in Sources */,
+				E41D7257224D686200CA05C4 /* BaseButtonExamplesViewController.swift in Sources */,
+				E41D725E224D686F00CA05C4 /* ExamplePagingMenuViewController.swift in Sources */,
+				E41D7251224D686200CA05C4 /* ExampleAuthenticationViewController.swift in Sources */,
+				E41D7248224D686200CA05C4 /* ExamplePaginatableTableViewController.swift in Sources */,
+				E41D724E224D686200CA05C4 /* ExampleCustomTabBarController.swift in Sources */,
+				E41D724A224D686200CA05C4 /* FakeDataTableViewController.swift in Sources */,
+				E41D7250224D686200CA05C4 /* ExampleObject.swift in Sources */,
+				E41D7258224D686200CA05C4 /* ExampleAppConfiguration.swift in Sources */,
+				E41D7252224D686200CA05C4 /* ExampleSearchViewController.swift in Sources */,
+				E41D7246224D686200CA05C4 /* ExampleUIViewControllerMixinable.swift in Sources */,
+				E41D7254224D686200CA05C4 /* ExampleFormViewController.swift in Sources */,
+				E41D725F224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift in Sources */,
+				E41D724B224D686200CA05C4 /* TableViewSubheaderExampleViewController.swift in Sources */,
+				E41D7256224D686200CA05C4 /* AppDelegate.swift in Sources */,
+				E41D7247224D686200CA05C4 /* ScrollViewParentHeaderExampleViewController.swift in Sources */,
+				E41D724F224D686200CA05C4 /* ExampleDeepLinkDestinationViewController.swift in Sources */,
+				E41D724D224D686200CA05C4 /* ScrollViewHeaderExamplesViewController.swift in Sources */,
+				E41D725D224D686F00CA05C4 /* PagingMenuExamplesViewController.swift in Sources */,
+				E41D7253224D686200CA05C4 /* ExamplePermissionAuthorizedViewController.swift in Sources */,
+				E41D7249224D686200CA05C4 /* TableViewHeaderExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,11 +496,14 @@
 			baseConfigurationReference = 7E0633A0635282FA5358F8DC /* Pods-UIKitBaseDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4B7GH74X7C;
 				INFOPLIST_FILE = UIKitBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appsaurus.UIKitBase.demo.UIKitBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -391,11 +512,13 @@
 			baseConfigurationReference = B871E47F5D2FC7EC09120AC6 /* Pods-UIKitBaseDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4B7GH74X7C;
 				INFOPLIST_FILE = UIKitBaseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appsaurus.UIKitBase.demo.UIKitBaseDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

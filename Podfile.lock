@@ -1,5 +1,11 @@
 PODS:
   - Actions (3.0.1)
+  - ActiveLabel (1.0.1)
+  - Algorithm (2.1.1)
+  - CountryPickerSwift (1.8.0)
+  - CwlCatchException (1.0.2)
+  - CwlPreconditionTesting (1.1.1):
+    - CwlCatchException
   - DarkMagic (0.0.2)
   - DynamicColor (4.0.3)
   - Layman (0.1.17):
@@ -10,7 +16,22 @@ PODS:
   - Layman/Operators (0.1.17)
   - Layman/Shorthand (0.1.17)
   - Nuke (7.5.2)
+  - Permission/Core (2.0.4)
+  - Permission/Location (2.0.4):
+    - Permission/Core
+  - PhoneNumberKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
+    - PhoneNumberKit/UIKit (= 2.6.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
+  - PhoneNumberKit/UIKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - SwiftDate (6.0.1)
   - Swiftest (0.0.17)
+  - SwiftLint (0.31.0)
+  - SwiftLocation (3.2.3):
+    - SwiftyJSON (~> 4.0.0-alpha.1)
+  - SwiftTestUtils (0.1.3)
+  - SwiftyJSON (4.0.0)
   - UIFontIcons/Core (0.0.5)
   - UIFontIcons/MaterialIcons (0.0.5):
     - UIFontIcons/Core
@@ -27,10 +48,21 @@ PODS:
 
 DEPENDENCIES:
   - Actions
+  - ActiveLabel
+  - Algorithm
+  - CountryPickerSwift
+  - CwlCatchException (from `https://github.com/mattgallagher/CwlCatchException.git`)
+  - CwlPreconditionTesting (from `https://github.com/mattgallagher/CwlPreconditionTesting.git`)
   - DarkMagic (from `https://github.com/Appsaurus/DarkMagic`)
   - Layman (from `https://github.com/Appsaurus/Layman`)
   - Nuke
+  - Permission/Location (from `https://github.com/pahmed/Permission/`, branch `swift4.2`)
+  - PhoneNumberKit
+  - SwiftDate
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
+  - SwiftLint
+  - SwiftLocation
+  - SwiftTestUtils (from `https://github.com/appsaurus/SwiftTestUtils.git`)
   - UIFontIcons/MaterialIcons (from `https://github.com/Appsaurus/UIFontIcons`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
   - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
@@ -39,16 +71,33 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Actions
+    - ActiveLabel
+    - Algorithm
+    - CountryPickerSwift
     - DynamicColor
     - Nuke
+    - PhoneNumberKit
+    - SwiftDate
+    - SwiftLint
+    - SwiftLocation
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
+  CwlCatchException:
+    :git: https://github.com/mattgallagher/CwlCatchException.git
+  CwlPreconditionTesting:
+    :git: https://github.com/mattgallagher/CwlPreconditionTesting.git
   DarkMagic:
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
     :git: https://github.com/Appsaurus/Layman
+  Permission:
+    :branch: swift4.2
+    :git: https://github.com/pahmed/Permission/
   Swiftest:
     :git: https://github.com/Appsaurus/Swiftest
+  SwiftTestUtils:
+    :git: https://github.com/appsaurus/SwiftTestUtils.git
   UIFontIcons:
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
@@ -59,15 +108,27 @@ EXTERNAL SOURCES:
     :git: https://github.com/Appsaurus/UIKitTheme
 
 CHECKOUT OPTIONS:
+  CwlCatchException:
+    :commit: 52edb6d4329318ff466db1689e85525c3e18689f
+    :git: https://github.com/mattgallagher/CwlCatchException.git
+  CwlPreconditionTesting:
+    :commit: 243dc31e8f3728f9bdd15b353dbcead4fb3d9fdf
+    :git: https://github.com/mattgallagher/CwlPreconditionTesting.git
   DarkMagic:
     :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
     :commit: 8b5d800321a01de5a26eda538611b134edc1496e
     :git: https://github.com/Appsaurus/Layman
+  Permission:
+    :commit: 8b47d5febe08557e6cb333d7465fd140a9949e56
+    :git: https://github.com/pahmed/Permission/
   Swiftest:
     :commit: ff4364013a01916776b54638b64e49149dd31455
     :git: https://github.com/Appsaurus/Swiftest
+  SwiftTestUtils:
+    :commit: 7661563b4a109b42005b28b59b8eb2a1456f41ff
+    :git: https://github.com/appsaurus/SwiftTestUtils.git
   UIFontIcons:
     :commit: 32c0ba69e0f2b232fa3288b6cdd37b63e2f9eb80
     :git: https://github.com/Appsaurus/UIFontIcons
@@ -83,16 +144,28 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
+  ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
+  Algorithm: 0fe78be3f31f85e857089685477862bcf20393b8
+  CountryPickerSwift: 4c328ae9687322cacf541120f5c43f0e2c1ba194
+  CwlCatchException: 70a52ae44ea5d46db7bd385f801a94942420cd8c
+  CwlPreconditionTesting: d33a4e4f285c0b885fddcae5dfedfbb34d4f3961
   DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Layman: 2c21001d6c2cdd8739f2db1b3b395f9eb96d366e
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
+  Permission: c53c7235f14d76cd2851364df0a7cf05b464037f
+  PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
+  SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
   Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
+  SwiftTestUtils: b8bb7e96dc2e9a356baa42fcee191a049f6f5331
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
   UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
   UIKitMixinable: 59b18c2cc93bc87b40356fe83697c1fceaa9993a
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
-PODFILE CHECKSUM: 2c947381e97fca36c09716406e72aa8088d510dc
+PODFILE CHECKSUM: 2fc033b29d4e4e847d21006e5d6978c3100b632a
 
 COCOAPODS: 1.5.3

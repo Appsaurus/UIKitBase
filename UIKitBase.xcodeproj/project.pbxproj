@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC5B086371E95DBF9281B5BC /* Pods_UIKitBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */; };
+		18114377D50E3B1B09C309D4 /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA8765C286CB895E8D0303F /* Pods_UIKitBase_iOS_Tests.framework */; };
 		D284B1051F79038B00D94AF3 /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */; };
 		D284B1381F7906DB00D94AF3 /* Info-iOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B12F1F7906DA00D94AF3 /* Info-iOS-Tests.plist */; };
 		D284B1391F7906DB00D94AF3 /* Info-tvOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B1301F7906DA00D94AF3 /* Info-tvOS-Tests.plist */; };
@@ -44,6 +44,398 @@
 		E41D6F952249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
 		E41D6F962249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
 		E41D6F972249731200CA05C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F872249731200CA05C4 /* Request.swift */; };
+		E41D709A224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */; };
+		E41D709B224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */; };
+		E41D709C224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */; };
+		E41D709D224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */; };
+		E41D709E224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */; };
+		E41D709F224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */; };
+		E41D70A0224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */; };
+		E41D70A1224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */; };
+		E41D70A2224D5F5B00CA05C4 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707B224D5F5B00CA05C4 /* LocationData.swift */; };
+		E41D70A3224D5F5B00CA05C4 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707B224D5F5B00CA05C4 /* LocationData.swift */; };
+		E41D70A4224D5F5B00CA05C4 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707B224D5F5B00CA05C4 /* LocationData.swift */; };
+		E41D70A5224D5F5B00CA05C4 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707B224D5F5B00CA05C4 /* LocationData.swift */; };
+		E41D70A6224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */; };
+		E41D70A7224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */; };
+		E41D70A8224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */; };
+		E41D70A9224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */; };
+		E41D70AA224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */; };
+		E41D70AB224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */; };
+		E41D70AC224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */; };
+		E41D70AD224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */; };
+		E41D70AE224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */; };
+		E41D70AF224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */; };
+		E41D70B0224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */; };
+		E41D70B1224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */; };
+		E41D70B2224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */; };
+		E41D70B3224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */; };
+		E41D70B4224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */; };
+		E41D70B5224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */; };
+		E41D70B6224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */; };
+		E41D70B7224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */; };
+		E41D70B8224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */; };
+		E41D70B9224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */; };
+		E41D70BA224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */; };
+		E41D70BB224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */; };
+		E41D70BC224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */; };
+		E41D70BD224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */; };
+		E41D70BE224D5F5B00CA05C4 /* FormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7086224D5F5B00CA05C4 /* FormInput.swift */; };
+		E41D70BF224D5F5B00CA05C4 /* FormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7086224D5F5B00CA05C4 /* FormInput.swift */; };
+		E41D70C0224D5F5B00CA05C4 /* FormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7086224D5F5B00CA05C4 /* FormInput.swift */; };
+		E41D70C1224D5F5B00CA05C4 /* FormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7086224D5F5B00CA05C4 /* FormInput.swift */; };
+		E41D70C2224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */; };
+		E41D70C3224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */; };
+		E41D70C4224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */; };
+		E41D70C5224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */; };
+		E41D70C6224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */; };
+		E41D70C7224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */; };
+		E41D70C8224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */; };
+		E41D70C9224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */; };
+		E41D70CA224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */; };
+		E41D70CB224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */; };
+		E41D70CC224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */; };
+		E41D70CD224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */; };
+		E41D70CE224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */; };
+		E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */; };
+		E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */; };
+		E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */; };
+		E41D70D2224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */; };
+		E41D70D3224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */; };
+		E41D70D4224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */; };
+		E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */; };
+		E41D70D6224D5F5B00CA05C4 /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */; };
+		E41D70D7224D5F5B00CA05C4 /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */; };
+		E41D70D8224D5F5B00CA05C4 /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */; };
+		E41D70D9224D5F5B00CA05C4 /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */; };
+		E41D70DA224D5F5B00CA05C4 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708F224D5F5B00CA05C4 /* Form.swift */; };
+		E41D70DB224D5F5B00CA05C4 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708F224D5F5B00CA05C4 /* Form.swift */; };
+		E41D70DC224D5F5B00CA05C4 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708F224D5F5B00CA05C4 /* Form.swift */; };
+		E41D70DD224D5F5B00CA05C4 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D708F224D5F5B00CA05C4 /* Form.swift */; };
+		E41D70DE224D5F5B00CA05C4 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7091224D5F5B00CA05C4 /* FormTextField.swift */; };
+		E41D70DF224D5F5B00CA05C4 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7091224D5F5B00CA05C4 /* FormTextField.swift */; };
+		E41D70E0224D5F5B00CA05C4 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7091224D5F5B00CA05C4 /* FormTextField.swift */; };
+		E41D70E1224D5F5B00CA05C4 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7091224D5F5B00CA05C4 /* FormTextField.swift */; };
+		E41D70E2224D5F5B00CA05C4 /* FormLabelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */; };
+		E41D70E3224D5F5B00CA05C4 /* FormLabelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */; };
+		E41D70E4224D5F5B00CA05C4 /* FormLabelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */; };
+		E41D70E5224D5F5B00CA05C4 /* FormLabelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */; };
+		E41D70E6224D5F5B00CA05C4 /* FormPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */; };
+		E41D70E7224D5F5B00CA05C4 /* FormPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */; };
+		E41D70E8224D5F5B00CA05C4 /* FormPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */; };
+		E41D70E9224D5F5B00CA05C4 /* FormPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */; };
+		E41D70EA224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */; };
+		E41D70EB224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */; };
+		E41D70EC224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */; };
+		E41D70ED224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */; };
+		E41D70EE224D5F5B00CA05C4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7096224D5F5B00CA05C4 /* FormField.swift */; };
+		E41D70EF224D5F5B00CA05C4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7096224D5F5B00CA05C4 /* FormField.swift */; };
+		E41D70F0224D5F5B00CA05C4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7096224D5F5B00CA05C4 /* FormField.swift */; };
+		E41D70F1224D5F5B00CA05C4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7096224D5F5B00CA05C4 /* FormField.swift */; };
+		E41D70F2224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */; };
+		E41D70F3224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */; };
+		E41D70F4224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */; };
+		E41D70F5224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */; };
+		E41D70F6224D5F5B00CA05C4 /* FormDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */; };
+		E41D70F7224D5F5B00CA05C4 /* FormDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */; };
+		E41D70F8224D5F5B00CA05C4 /* FormDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */; };
+		E41D70F9224D5F5B00CA05C4 /* FormDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */; };
+		E41D70FA224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
+		E41D70FB224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
+		E41D70FC224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
+		E41D70FD224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
+		E41D7108224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
+		E41D7109224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
+		E41D710A224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
+		E41D710B224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
+		E41D710C224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
+		E41D710D224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
+		E41D710E224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
+		E41D710F224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
+		E41D7110224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */; };
+		E41D7111224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */; };
+		E41D7112224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */; };
+		E41D7113224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */; };
+		E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */; };
+		E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */; };
+		E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */; };
+		E41D7117224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */; };
+		E41D7118224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
+		E41D7119224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
+		E41D711A224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
+		E41D711B224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
+		E41D711C224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
+		E41D711D224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
+		E41D711E224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
+		E41D711F224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
+		E41D7120224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
+		E41D7121224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
+		E41D7122224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
+		E41D7123224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
+		E41D7124224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
+		E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
+		E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
+		E41D7127224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
+		E41D712B224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
+		E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
+		E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
+		E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
+		E41D714D224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
+		E41D714E224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
+		E41D714F224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
+		E41D7150224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
+		E41D7151224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
+		E41D7152224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
+		E41D7153224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
+		E41D7154224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
+		E41D7155224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
+		E41D7156224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
+		E41D7157224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
+		E41D7158224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
+		E41D7159224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */; };
+		E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */; };
+		E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */; };
+		E41D715C224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */; };
+		E41D715D224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */; };
+		E41D715E224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */; };
+		E41D715F224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */; };
+		E41D7160224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */; };
+		E41D7161224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */; };
+		E41D7162224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */; };
+		E41D7163224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */; };
+		E41D7164224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */; };
+		E41D7165224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */; };
+		E41D7166224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */; };
+		E41D7167224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */; };
+		E41D7168224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */; };
+		E41D7169224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */; };
+		E41D716A224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */; };
+		E41D716B224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */; };
+		E41D716C224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */; };
+		E41D716D224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */; };
+		E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */; };
+		E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */; };
+		E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */; };
+		E41D7171224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */; };
+		E41D7172224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */; };
+		E41D7173224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */; };
+		E41D7174224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */; };
+		E41D7175224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */; };
+		E41D7176224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */; };
+		E41D7177224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */; };
+		E41D7178224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */; };
+		E41D7179224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */; };
+		E41D717A224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */; };
+		E41D717B224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */; };
+		E41D717C224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */; };
+		E41D717D224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */; };
+		E41D717E224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */; };
+		E41D717F224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */; };
+		E41D7180224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */; };
+		E41D7181224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */; };
+		E41D7182224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */; };
+		E41D7183224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */; };
+		E41D7184224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */; };
+		E41D7185224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */; };
+		E41D7186224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */; };
+		E41D7187224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */; };
+		E41D7188224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */; };
+		E41D7189224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */; };
+		E41D718A224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */; };
+		E41D718B224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */; };
+		E41D718C224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */; };
+		E41D718D224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */; };
+		E41D718E224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */; };
+		E41D718F224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */; };
+		E41D7190224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */; };
+		E41D7191224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */; };
+		E41D7192224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */; };
+		E41D7193224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */; };
+		E41D7194224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */; };
+		E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714B224D651300CA05C4 /* PullToRefresher.swift */; };
+		E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714B224D651300CA05C4 /* PullToRefresher.swift */; };
+		E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714B224D651300CA05C4 /* PullToRefresher.swift */; };
+		E41D7198224D651300CA05C4 /* PullToRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714B224D651300CA05C4 /* PullToRefresher.swift */; };
+		E41D7199224D651300CA05C4 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714C224D651300CA05C4 /* InfiniteScroller.swift */; };
+		E41D719A224D651300CA05C4 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714C224D651300CA05C4 /* InfiniteScroller.swift */; };
+		E41D719B224D651300CA05C4 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714C224D651300CA05C4 /* InfiniteScroller.swift */; };
+		E41D719C224D651300CA05C4 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D714C224D651300CA05C4 /* InfiniteScroller.swift */; };
+		E41D71A7224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */; };
+		E41D71A8224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */; };
+		E41D71A9224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */; };
+		E41D71AA224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */; };
+		E41D71AB224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */; };
+		E41D71AC224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */; };
+		E41D71AD224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */; };
+		E41D71AE224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */; };
+		E41D71AF224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */; };
+		E41D71B0224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */; };
+		E41D71B1224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */; };
+		E41D71B2224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */; };
+		E41D71B3224D654800CA05C4 /* DynamicHeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */; };
+		E41D71B4224D654800CA05C4 /* DynamicHeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */; };
+		E41D71B5224D654800CA05C4 /* DynamicHeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */; };
+		E41D71B6224D654800CA05C4 /* DynamicHeightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */; };
+		E41D71B7224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */; };
+		E41D71B8224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */; };
+		E41D71B9224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */; };
+		E41D71BA224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */; };
+		E41D71BB224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */; };
+		E41D71BC224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */; };
+		E41D71BD224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */; };
+		E41D71BE224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */; };
+		E41D71BF224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */; };
+		E41D71C0224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */; };
+		E41D71C1224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */; };
+		E41D71C2224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */; };
+		E41D71C6224D657500CA05C4 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C4224D657500CA05C4 /* MaterialTextField.swift */; };
+		E41D71C7224D657500CA05C4 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C4224D657500CA05C4 /* MaterialTextField.swift */; };
+		E41D71C8224D657500CA05C4 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C4224D657500CA05C4 /* MaterialTextField.swift */; };
+		E41D71C9224D657500CA05C4 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C4224D657500CA05C4 /* MaterialTextField.swift */; };
+		E41D71CA224D657500CA05C4 /* AnimatableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */; };
+		E41D71CB224D657500CA05C4 /* AnimatableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */; };
+		E41D71CC224D657500CA05C4 /* AnimatableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */; };
+		E41D71CD224D657500CA05C4 /* AnimatableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */; };
+		E41D71D2224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */; };
+		E41D71D3224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */; };
+		E41D71D4224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */; };
+		E41D71D5224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */; };
+		E41D71D6224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */; };
+		E41D71D7224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */; };
+		E41D71D8224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */; };
+		E41D71D9224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */; };
+		E41D71DB224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
+		E41D71DC224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
+		E41D71DD224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
+		E41D71DE224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
+		E41D71E2224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
+		E41D71E3224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
+		E41D71E4224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
+		E41D71E5224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
+		E41D71E6224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
+		E41D71E7224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
+		E41D71E8224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
+		E41D71E9224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
+		E41D71F0224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */; };
+		E41D71F1224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */; };
+		E41D71F2224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */; };
+		E41D71F3224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */; };
+		E41D71F4224D664A00CA05C4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */; };
+		E41D71F5224D664A00CA05C4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */; };
+		E41D71F6224D664A00CA05C4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */; };
+		E41D71F7224D664A00CA05C4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */; };
+		E41D71F8224D664A00CA05C4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */; };
+		E41D71F9224D664A00CA05C4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */; };
+		E41D71FA224D664A00CA05C4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */; };
+		E41D71FB224D664A00CA05C4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */; };
+		E41D7206224D665D00CA05C4 /* PagingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */; };
+		E41D7207224D665D00CA05C4 /* PagingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */; };
+		E41D7208224D665D00CA05C4 /* PagingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */; };
+		E41D7209224D665D00CA05C4 /* PagingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */; };
+		E41D720B224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */; };
+		E41D720C224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */; };
+		E41D720D224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */; };
+		E41D720E224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */; };
+		E41D7214224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */; };
+		E41D7215224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */; };
+		E41D7216224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */; };
+		E41D7217224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */; };
+		E41D7218224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */; };
+		E41D7219224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */; };
+		E41D721A224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */; };
+		E41D721B224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */; };
+		E41D721C224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
+		E41D721D224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
+		E41D721E224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
+		E41D721F224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
+		E41D7220224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
+		E41D7221224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
+		E41D7222224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
+		E41D7223224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
+		E41D7226224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
+		E41D7227224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
+		E41D7228224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
+		E41D7229224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
+		E41D722D224D674600CA05C4 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D722C224D674600CA05C4 /* PermissionViewController.swift */; };
+		E41D722E224D674600CA05C4 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D722C224D674600CA05C4 /* PermissionViewController.swift */; };
+		E41D722F224D674600CA05C4 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D722C224D674600CA05C4 /* PermissionViewController.swift */; };
+		E41D7230224D674600CA05C4 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D722C224D674600CA05C4 /* PermissionViewController.swift */; };
+		E41D7261224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
+		E41D7262224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
+		E41D7263224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
+		E41D7264224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
+		E41D7266224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
+		E41D7267224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
+		E41D7268224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
+		E41D7269224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
+		E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
+		E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
+		E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
+		E41D726E224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
+		E41D7270224D78C500CA05C4 /* FontSizeScalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */; };
+		E41D7271224D78C500CA05C4 /* FontSizeScalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */; };
+		E41D7272224D78C500CA05C4 /* FontSizeScalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */; };
+		E41D7273224D78C500CA05C4 /* FontSizeScalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */; };
+		E41D7275224D7A2D00CA05C4 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */; };
+		E41D7276224D7A2D00CA05C4 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */; };
+		E41D7277224D7A2D00CA05C4 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */; };
+		E41D7278224D7A2D00CA05C4 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */; };
+		E41D727C224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */; };
+		E41D727D224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */; };
+		E41D727E224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */; };
+		E41D727F224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */; };
+		E41D7280224D7C0300CA05C4 /* PagingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */; };
+		E41D7281224D7C0300CA05C4 /* PagingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */; };
+		E41D7282224D7C0300CA05C4 /* PagingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */; };
+		E41D7283224D7C0300CA05C4 /* PagingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */; };
+		E41D7285224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */; };
+		E41D7286224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */; };
+		E41D7287224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */; };
+		E41D7288224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */; };
+		E41D728B224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */; };
+		E41D728C224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */; };
+		E41D728D224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */; };
+		E41D728E224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */; };
+		E41D7292224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */; };
+		E41D7293224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */; };
+		E41D7294224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */; };
+		E41D7295224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */; };
+		E41D7296224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */; };
+		E41D7297224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */; };
+		E41D7298224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */; };
+		E41D7299224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */; };
+		E41D729D224D7D7500CA05C4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729B224D7D7500CA05C4 /* EmailComposer.swift */; };
+		E41D729E224D7D7500CA05C4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729B224D7D7500CA05C4 /* EmailComposer.swift */; };
+		E41D729F224D7D7500CA05C4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729B224D7D7500CA05C4 /* EmailComposer.swift */; };
+		E41D72A0224D7D7500CA05C4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729B224D7D7500CA05C4 /* EmailComposer.swift */; };
+		E41D72A1224D7D7500CA05C4 /* DrawingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */; };
+		E41D72A2224D7D7500CA05C4 /* DrawingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */; };
+		E41D72A3224D7D7500CA05C4 /* DrawingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */; };
+		E41D72A4224D7D7500CA05C4 /* DrawingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */; };
+		E41D72A7224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */; };
+		E41D72A8224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */; };
+		E41D72A9224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */; };
+		E41D72AA224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */; };
+		E41D72B2224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */; };
+		E41D72B3224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */; };
+		E41D72B4224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */; };
+		E41D72B5224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */; };
+		E41D72BA224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */; };
+		E41D72BB224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */; };
+		E41D72BC224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */; };
+		E41D72BD224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */; };
+		E41D72BE224D7DDE00CA05C4 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */; };
+		E41D72BF224D7DDE00CA05C4 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */; };
+		E41D72C0224D7DDE00CA05C4 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */; };
+		E41D72C1224D7DDE00CA05C4 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */; };
+		E41D72C2224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */; };
+		E41D72C3224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */; };
+		E41D72C4224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */; };
+		E41D72C5224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */; };
+		E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -296,6 +688,7 @@
 		E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42D2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
+		E5694D809178A786C448B903 /* Pods_UIKitBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2E6CE270C86D2129FC21AB /* Pods_UIKitBase_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,9 +716,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10F72A85C7A7B1EEEB6E3970 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1B89E7A1550EBBFE5709AA88 /* Pods-UIKitBase-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3BA880EC167653D8CBBC19AF /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B40DB0DFBBA62D7347FC5ED5 /* Pods-UIKitBase-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BDA8765C286CB895E8D0303F /* Pods_UIKitBase_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1041F79038B00D94AF3 /* UIKitBase-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1181F79039F00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,6 +747,104 @@
 		E41D6F852249731100CA05C4 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E41D6F862249731200CA05C4 /* DeepLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinker.swift; sourceTree = "<group>"; };
 		E41D6F872249731200CA05C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
+		E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		E41D707B224D5F5B00CA05C4 /* LocationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
+		E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFormField.swift; sourceTree = "<group>"; };
+		E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalDisclosureViewController.swift; sourceTree = "<group>"; };
+		E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalDisclosureView.swift; sourceTree = "<group>"; };
+		E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableViewController.swift; sourceTree = "<group>"; };
+		E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Hidden.swift"; sourceTree = "<group>"; };
+		E41D7086224D5F5B00CA05C4 /* FormInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormInput.swift; sourceTree = "<group>"; };
+		E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeInputFormField.swift; sourceTree = "<group>"; };
+		E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeFormViewController.swift; sourceTree = "<group>"; };
+		E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberEntryViewController.swift; sourceTree = "<group>"; };
+		E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormFields.swift; sourceTree = "<group>"; };
+		E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationController.swift; sourceTree = "<group>"; };
+		E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormToolbar.swift; sourceTree = "<group>"; };
+		E41D708F224D5F5B00CA05C4 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		E41D7091224D5F5B00CA05C4 /* FormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLabelField.swift; sourceTree = "<group>"; };
+		E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormPickerField.swift; sourceTree = "<group>"; };
+		E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractFormField.swift; sourceTree = "<group>"; };
+		E41D7096224D5F5B00CA05C4 /* FormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFieldProtocol.swift; sourceTree = "<group>"; };
+		E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDelegates.swift; sourceTree = "<group>"; };
+		E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedAuthenticationViewController.swift; sourceTree = "<group>"; };
+		E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthControllerManager.swift; sourceTree = "<group>"; };
+		E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAuthController.swift; sourceTree = "<group>"; };
+		E41D7104224D5FB300CA05C4 /* AuthIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthIcons.swift; sourceTree = "<group>"; };
+		E41D7105224D5FB300CA05C4 /* AuthIcons.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AuthIcons.svg; sourceTree = "<group>"; };
+		E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierAndPasswordAuthController.swift; sourceTree = "<group>"; };
+		E41D7107224D5FB300CA05C4 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatableTableViewController.swift; sourceTree = "<group>"; };
+		E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatableCollectionViewController.swift; sourceTree = "<group>"; };
+		E41D7132224D651300CA05C4 /* PaginationManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationManaged.swift; sourceTree = "<group>"; };
+		E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+LoadingControls.swift"; sourceTree = "<group>"; };
+		E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedsLoadingIndicatorView.swift; sourceTree = "<group>"; };
+		E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFInfinityAnimator.swift; sourceTree = "<group>"; };
+		E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFRefreshAnimator.swift; sourceTree = "<group>"; };
+		E41D714B224D651300CA05C4 /* PullToRefresher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresher.swift; sourceTree = "<group>"; };
+		E41D714C224D651300CA05C4 /* InfiniteScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
+		E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleHorizontalStackTableViewCell.swift; sourceTree = "<group>"; };
+		E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightStackTableViewCell.swift; sourceTree = "<group>"; };
+		E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBasedTableViewCell.swift; sourceTree = "<group>"; };
+		E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCell.swift; sourceTree = "<group>"; };
+		E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStackTableViewCell.swift; sourceTree = "<group>"; };
+		E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeCollectionViewCell.swift; sourceTree = "<group>"; };
+		E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBasedCollectionViewCell.swift; sourceTree = "<group>"; };
+		E41D71C4224D657500CA05C4 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableTextField.swift; sourceTree = "<group>"; };
+		E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationalMenuTableViewController.swift; sourceTree = "<group>"; };
+		E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
+		E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepProcessPagingMenuViewController.swift; sourceTree = "<group>"; };
+		E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManagingViewController.swift; sourceTree = "<group>"; };
+		E41D71E1224D663F00CA05C4 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItemView.swift; sourceTree = "<group>"; };
+		E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingWebViewController.swift; sourceTree = "<group>"; };
+		E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSliderViewController.swift; sourceTree = "<group>"; };
+		E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeader.swift; sourceTree = "<group>"; };
+		E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderBehavior.swift; sourceTree = "<group>"; };
+		E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornable.swift; sourceTree = "<group>"; };
+		E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollView.swift; sourceTree = "<group>"; };
+		E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadedView.swift; sourceTree = "<group>"; };
+		E41D722C224D674600CA05C4 /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		E41D7260224D707C00CA05C4 /* BaseStackViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackViews.swift; sourceTree = "<group>"; };
+		E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTaskDelegate.swift; sourceTree = "<group>"; };
+		E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewObserver.swift; sourceTree = "<group>"; };
+		E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeScalable.swift; sourceTree = "<group>"; };
+		E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
+		E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseParentPagingMenuViewController.swift; sourceTree = "<group>"; };
+		E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuView.swift; sourceTree = "<group>"; };
+		E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+IndexPath.swift"; sourceTree = "<group>"; };
+		E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbalExpressions.swift; sourceTree = "<group>"; };
+		E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleLayoutConstraint.swift; sourceTree = "<group>"; };
+		E41D729B224D7D7500CA05C4 /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
+		E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUtils.swift; sourceTree = "<group>"; };
+		E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyleGuideExtensions.swift; sourceTree = "<group>"; };
+		E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLayoutView.swift; sourceTree = "<group>"; };
+		E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerBadgeView.swift; sourceTree = "<group>"; };
+		E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
+		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -423,6 +916,7 @@
 		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
 		E4AF822B21C05CE2002D6E86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+FontIcons.swift"; sourceTree = "<group>"; };
+		EC2E6CE270C86D2129FC21AB /* Pods_UIKitBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,7 +946,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC5B086371E95DBF9281B5BC /* Pods_UIKitBase_iOS.framework in Frameworks */,
+				E5694D809178A786C448B903 /* Pods_UIKitBase_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */,
+				18114377D50E3B1B09C309D4 /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,42 +977,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18B5EBCF5666FDF8C6B042E1 /* Pods */ = {
+		658B28B462EA6D89C8693F8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */,
-				72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		93A3DEC7ADAB601B80FCEE2C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C5B64AB6C4B5B1DA18395A98 /* Pods_UIKitBase_iOS.framework */,
+				EC2E6CE270C86D2129FC21AB /* Pods_UIKitBase_iOS.framework */,
+				BDA8765C286CB895E8D0303F /* Pods_UIKitBase_iOS_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D284B0F41F79024300D94AF3 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
-		D284B1201F79041300D94AF3 /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = tvOS;
-			sourceTree = "<group>";
-		};
-		D284B1211F79041300D94AF3 /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = watchOS;
 			sourceTree = "<group>";
 		};
 		D284B12D1F7906DA00D94AF3 /* macOS */ = {
@@ -563,6 +1029,17 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		D484059E6ECFF1DB7D13A5A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B89E7A1550EBBFE5709AA88 /* Pods-UIKitBase-iOS.debug.xcconfig */,
+				B40DB0DFBBA62D7347FC5ED5 /* Pods-UIKitBase-iOS.release.xcconfig */,
+				3BA880EC167653D8CBBC19AF /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */,
+				10F72A85C7A7B1EEEB6E3970 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
@@ -577,11 +1054,11 @@
 				D500FD111C3AABED00782D78 /* Playground-iOS.playground */,
 				D500FD121C3AAC8E00782D78 /* Playground-macOS.playground */,
 				D284B13F1F79081F00D94AF3 /* Info */,
-				D5C629691C3A809D007F7B7C /* Sources */,
+				D5C6296E1C3A809D007F7B7C /* Sources */,
 				D5C6298F1C3A8BDA007F7B7C /* UIKitBaseTests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
-				18B5EBCF5666FDF8C6B042E1 /* Pods */,
-				93A3DEC7ADAB601B80FCEE2C /* Frameworks */,
+				D484059E6ECFF1DB7D13A5A2 /* Pods */,
+				658B28B462EA6D89C8693F8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -599,34 +1076,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5C629691C3A809D007F7B7C /* Sources */ = {
+		D5C6296E1C3A809D007F7B7C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D284B1201F79041300D94AF3 /* tvOS */,
-				D284B1211F79041300D94AF3 /* watchOS */,
-				D284B0F41F79024300D94AF3 /* macOS */,
-				D5C6296A1C3A809D007F7B7C /* iOS */,
-				D5C6296E1C3A809D007F7B7C /* Shared */,
+				E41D7071224D5DA000CA05C4 /* Core */,
+				E41D7072224D5DCE00CA05C4 /* Subspecs */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		D5C6296A1C3A809D007F7B7C /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		D5C6296E1C3A809D007F7B7C /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				E4AF805C21BB2D90002D6E86 /* Classes */,
-				E4AF821221BF95E4002D6E86 /* Extensions */,
-				E4AF805D21BB2D90002D6E86 /* Mixins */,
-				E4AF804E21BB2D90002D6E86 /* Protocols */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		D5C6298F1C3A8BDA007F7B7C /* UIKitBaseTests */ = {
@@ -677,9 +1133,489 @@
 			path = QuickActions;
 			sourceTree = "<group>";
 		};
+		E41D7071224D5DA000CA05C4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E41D72A5224D7D7D00CA05C4 /* ThemeExtensions */,
+				E41D729A224D7D7500CA05C4 /* Utils */,
+				E41D728F224D7D5200CA05C4 /* LayoutConstraints */,
+				E41D7289224D7CD500CA05C4 /* RegularExpressions */,
+				E4AF805C21BB2D90002D6E86 /* Classes */,
+				E4AF821221BF95E4002D6E86 /* Extensions */,
+				E4AF805D21BB2D90002D6E86 /* Mixins */,
+				E4AF804E21BB2D90002D6E86 /* Protocols */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E41D7072224D5DCE00CA05C4 /* Subspecs */ = {
+			isa = PBXGroup;
+			children = (
+				E41D70FE224D5FB300CA05C4 /* Authentication */,
+				E41D7129224D63CD00CA05C4 /* Datasource */,
+				E41D7074224D5DF700CA05C4 /* Forms */,
+				E41D7073224D5DEC00CA05C4 /* Location */,
+				E41D722A224D674600CA05C4 /* Permission */,
+			);
+			path = Subspecs;
+			sourceTree = "<group>";
+		};
+		E41D7073224D5DEC00CA05C4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		E41D7074224D5DF700CA05C4 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7083224D5F5B00CA05C4 /* Core */,
+				E41D7076224D5F5B00CA05C4 /* Subspecs */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		E41D7076224D5F5B00CA05C4 /* Subspecs */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7128224D61D900CA05C4 /* Authentication */,
+				E41D7077224D5F5B00CA05C4 /* Location */,
+				E41D707D224D5F5B00CA05C4 /* Date */,
+				E41D7082224D5F5B00CA05C4 /* LegalDisclosure */,
+			);
+			path = Subspecs;
+			sourceTree = "<group>";
+		};
+		E41D7077224D5F5B00CA05C4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7078224D5F5B00CA05C4 /* LocationPickerViewController */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		E41D7078224D5F5B00CA05C4 /* LocationPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */,
+				E41D707A224D5F5B00CA05C4 /* LocationPickerViewController.swift */,
+				E41D707B224D5F5B00CA05C4 /* LocationData.swift */,
+				E41D707C224D5F5B00CA05C4 /* SearchHistoryManager.swift */,
+			);
+			path = LocationPickerViewController;
+			sourceTree = "<group>";
+		};
+		E41D707D224D5F5B00CA05C4 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				E41D707E224D5F5B00CA05C4 /* DatePickerFormField.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		E41D707F224D5F5B00CA05C4 /* LegalDisclosureView */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7080224D5F5B00CA05C4 /* LegalDisclosureViewController.swift */,
+				E41D7081224D5F5B00CA05C4 /* LegalDisclosureView.swift */,
+			);
+			path = LegalDisclosureView;
+			sourceTree = "<group>";
+		};
+		E41D7082224D5F5B00CA05C4 /* LegalDisclosure */ = {
+			isa = PBXGroup;
+			children = (
+				E41D707F224D5F5B00CA05C4 /* LegalDisclosureView */,
+			);
+			path = LegalDisclosure;
+			sourceTree = "<group>";
+		};
+		E41D7083224D5F5B00CA05C4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7084224D5F5B00CA05C4 /* FormTableViewController.swift */,
+				E41D7085224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift */,
+				E41D7086224D5F5B00CA05C4 /* FormInput.swift */,
+				E41D708E224D5F5B00CA05C4 /* FormToolbar.swift */,
+				E41D708F224D5F5B00CA05C4 /* Form.swift */,
+				E41D7090224D5F5B00CA05C4 /* Fields */,
+				E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */,
+				E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E41D7087224D5F5B00CA05C4 /* PhoneAuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7088224D5F5B00CA05C4 /* PhoneNumberEntryViewController */,
+				E41D708D224D5F5B00CA05C4 /* PhoneVerificationController.swift */,
+			);
+			path = PhoneAuthViewController;
+			sourceTree = "<group>";
+		};
+		E41D7088224D5F5B00CA05C4 /* PhoneNumberEntryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7089224D5F5B00CA05C4 /* CodeInputFormField.swift */,
+				E41D708A224D5F5B00CA05C4 /* CodeFormViewController.swift */,
+				E41D708B224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift */,
+				E41D708C224D5F5B00CA05C4 /* PhoneNumberFormFields.swift */,
+			);
+			path = PhoneNumberEntryViewController;
+			sourceTree = "<group>";
+		};
+		E41D7090224D5F5B00CA05C4 /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7091224D5F5B00CA05C4 /* FormTextField.swift */,
+				E41D7092224D5F5B00CA05C4 /* FormLabelField.swift */,
+				E41D7093224D5F5B00CA05C4 /* FormPickerField.swift */,
+				E41D7094224D5F5B00CA05C4 /* Base */,
+			);
+			path = Fields;
+			sourceTree = "<group>";
+		};
+		E41D7094224D5F5B00CA05C4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7095224D5F5B00CA05C4 /* AbstractFormField.swift */,
+				E41D7096224D5F5B00CA05C4 /* FormField.swift */,
+				E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E41D70FE224D5FB300CA05C4 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E41D70FF224D5FB300CA05C4 /* AuthenticationViewControllers */,
+				E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */,
+				E41D7104224D5FB300CA05C4 /* AuthIcons.swift */,
+				E41D7105224D5FB300CA05C4 /* AuthIcons.svg */,
+				E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */,
+				E41D7107224D5FB300CA05C4 /* AuthController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E41D70FF224D5FB300CA05C4 /* AuthenticationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */,
+				E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */,
+				E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */,
+			);
+			path = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		E41D7128224D61D900CA05C4 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7087224D5F5B00CA05C4 /* PhoneAuthViewController */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E41D7129224D63CD00CA05C4 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				E41D712F224D651300CA05C4 /* Pagination */,
+				E41D7133224D651300CA05C4 /* ScrollViewLoadingControls */,
+				E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		E41D712F224D651300CA05C4 /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */,
+				E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */,
+				E41D7132224D651300CA05C4 /* PaginationManaged.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		E41D7133224D651300CA05C4 /* ScrollViewLoadingControls */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */,
+				E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */,
+				E41D7136224D651300CA05C4 /* Animators */,
+				E41D714B224D651300CA05C4 /* PullToRefresher.swift */,
+				E41D714C224D651300CA05C4 /* InfiniteScroller.swift */,
+			);
+			path = ScrollViewLoadingControls;
+			sourceTree = "<group>";
+		};
+		E41D7136224D651300CA05C4 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7137224D651300CA05C4 /* arrow */,
+				E41D7139224D651300CA05C4 /* default */,
+				E41D713C224D651300CA05C4 /* normal */,
+				E41D713F224D651300CA05C4 /* circle */,
+				E41D7142224D651300CA05C4 /* spark */,
+				E41D7145224D651300CA05C4 /* snake */,
+				E41D7148224D651300CA05C4 /* gif */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
+		E41D7137224D651300CA05C4 /* arrow */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7138224D651300CA05C4 /* ArrowRefreshAnimator.swift */,
+			);
+			path = arrow;
+			sourceTree = "<group>";
+		};
+		E41D7139224D651300CA05C4 /* default */ = {
+			isa = PBXGroup;
+			children = (
+				E41D713A224D651300CA05C4 /* DefaultInfinityAnimator.swift */,
+				E41D713B224D651300CA05C4 /* DefaultRefreshAnimator.swift */,
+			);
+			path = default;
+			sourceTree = "<group>";
+		};
+		E41D713C224D651300CA05C4 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				E41D713D224D651300CA05C4 /* NormalInfinityAnimator.swift */,
+				E41D713E224D651300CA05C4 /* NormalRefreshAnimator.swift */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		E41D713F224D651300CA05C4 /* circle */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7140224D651300CA05C4 /* CircleInfinityAnimator.swift */,
+				E41D7141224D651300CA05C4 /* CircleRefreshAnimator.swift */,
+			);
+			path = circle;
+			sourceTree = "<group>";
+		};
+		E41D7142224D651300CA05C4 /* spark */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7143224D651300CA05C4 /* SparkRefreshAnimator.swift */,
+				E41D7144224D651300CA05C4 /* SparkInfinityAnimator.swift */,
+			);
+			path = spark;
+			sourceTree = "<group>";
+		};
+		E41D7145224D651300CA05C4 /* snake */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7146224D651300CA05C4 /* SnakeRefreshAnimator.swift */,
+				E41D7147224D651300CA05C4 /* SnakeInfinityAnimator.swift */,
+			);
+			path = snake;
+			sourceTree = "<group>";
+		};
+		E41D7148224D651300CA05C4 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7149224D651300CA05C4 /* GIFInfinityAnimator.swift */,
+				E41D714A224D651300CA05C4 /* GIFRefreshAnimator.swift */,
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
+		E41D719D224D654800CA05C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E41D719E224D654800CA05C4 /* TableViewCells */,
+				E41D71A4224D654800CA05C4 /* CollectionViewCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E41D719E224D654800CA05C4 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E41D719F224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift */,
+				E41D71A0224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift */,
+				E41D71A1224D654800CA05C4 /* ViewBasedTableViewCell.swift */,
+				E41D71A2224D654800CA05C4 /* DynamicHeightCell.swift */,
+				E41D71A3224D654800CA05C4 /* SimpleStackTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		E41D71A4224D654800CA05C4 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E41D71A5224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift */,
+				E41D71A6224D654800CA05C4 /* ViewBasedCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		E41D71C3224D657500CA05C4 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				E41D71C4224D657500CA05C4 /* MaterialTextField.swift */,
+				E41D71C5224D657500CA05C4 /* AnimatableTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		E41D71CE224D661200CA05C4 /* Specialized */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7279224D7BF800CA05C4 /* PagingMenuViewControllers */,
+				E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */,
+				E41D7204224D665D00CA05C4 /* WebViewControllers */,
+				E41D71EA224D664A00CA05C4 /* TabBarControllers */,
+				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
+				E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */,
+				E41D71CF224D662C00CA05C4 /* Navigation */,
+			);
+			path = Specialized;
+			sourceTree = "<group>";
+		};
+		E41D71CF224D662C00CA05C4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */,
+				E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E41D71DF224D663F00CA05C4 /* SearchViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */,
+				E41D71E1224D663F00CA05C4 /* SearchViewController.swift */,
+			);
+			path = SearchViewControllers;
+			sourceTree = "<group>";
+		};
+		E41D71EA224D664A00CA05C4 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */,
+				E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */,
+				E41D71ED224D664A00CA05C4 /* CustomTabBarController.swift */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		E41D7204224D665D00CA05C4 /* WebViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7205224D665D00CA05C4 /* PagingWebViewController.swift */,
+			);
+			path = WebViewControllers;
+			sourceTree = "<group>";
+		};
+		E41D720F224D66D300CA05C4 /* ScrollViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */,
+				E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */,
+				E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */,
+				E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */,
+			);
+			path = ScrollViewHeader;
+			sourceTree = "<group>";
+		};
+		E41D7224224D66DE00CA05C4 /* NibBasedViews */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */,
+			);
+			path = NibBasedViews;
+			sourceTree = "<group>";
+		};
+		E41D722A224D674600CA05C4 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				E41D722C224D674600CA05C4 /* PermissionViewController.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		E41D7279224D7BF800CA05C4 /* PagingMenuViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41D727A224D7C0200CA05C4 /* BaseParentPagingMenuViewController.swift */,
+				E41D727B224D7C0200CA05C4 /* PagingMenuView.swift */,
+			);
+			path = PagingMenuViewControllers;
+			sourceTree = "<group>";
+		};
+		E41D7289224D7CD500CA05C4 /* RegularExpressions */ = {
+			isa = PBXGroup;
+			children = (
+				E41D728A224D7CDF00CA05C4 /* VerbalExpressions.swift */,
+			);
+			path = RegularExpressions;
+			sourceTree = "<group>";
+		};
+		E41D728F224D7D5200CA05C4 /* LayoutConstraints */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7290224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift */,
+				E41D7291224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift */,
+			);
+			path = LayoutConstraints;
+			sourceTree = "<group>";
+		};
+		E41D729A224D7D7500CA05C4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E41D729B224D7D7500CA05C4 /* EmailComposer.swift */,
+				E41D729C224D7D7500CA05C4 /* DrawingUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E41D72A5224D7D7D00CA05C4 /* ThemeExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				E41D72A6224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift */,
+			);
+			path = ThemeExtensions;
+			sourceTree = "<group>";
+		};
+		E41D72AE224D7DDE00CA05C4 /* DecoratorViews */ = {
+			isa = PBXGroup;
+			children = (
+				E41D72AF224D7DDE00CA05C4 /* CornerBadgeView.swift */,
+				E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */,
+			);
+			path = DecoratorViews;
+			sourceTree = "<group>";
+		};
+		E41D72C6224D7DF300CA05C4 /* Specialized */ = {
+			isa = PBXGroup;
+			children = (
+				E41D72AE224D7DDE00CA05C4 /* DecoratorViews */,
+				E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */,
+				E4AF820221BF8D9F002D6E86 /* BaseButton.swift */,
+				E41D7260224D707C00CA05C4 /* BaseStackViews.swift */,
+				E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */,
+				E4AF821821C0299D002D6E86 /* FooterView.swift */,
+				E4AF822B21C05CE2002D6E86 /* GradientView.swift */,
+				E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */,
+				E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */,
+			);
+			path = Specialized;
+			sourceTree = "<group>";
+		};
 		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */,
+				E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */,
+				E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */,
 				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
 				E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */,
 				E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */,
@@ -721,9 +1657,11 @@
 		E4AF805C21BB2D90002D6E86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E41D71C3224D657500CA05C4 /* TextFields */,
 				E41D6F762245EDE500CA05C4 /* AppDelegate */,
-				E4AF806621BB2D90002D6E86 /* ViewControllers */,
 				E4AF807621BB2D90002D6E86 /* AppIO */,
+				E41D719D224D654800CA05C4 /* Cells */,
+				E4AF806621BB2D90002D6E86 /* ViewControllers */,
 				E4AF807821BB2D90002D6E86 /* Views */,
 			);
 			path = Classes;
@@ -747,6 +1685,8 @@
 		E4AF806621BB2D90002D6E86 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */,
+				E41D71CE224D661200CA05C4 /* Specialized */,
 				E4AF806721BB2D90002D6E86 /* Subclasses */,
 				E4AF806F21BB2D90002D6E86 /* Base */,
 			);
@@ -793,11 +1733,10 @@
 		E4AF807821BB2D90002D6E86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E41D72C6224D7DF300CA05C4 /* Specialized */,
 				E4AF820721BF9067002D6E86 /* Base */,
-				E4AF820221BF8D9F002D6E86 /* BaseButton.swift */,
-				E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */,
-				E4AF821821C0299D002D6E86 /* FooterView.swift */,
-				E4AF822B21C05CE2002D6E86 /* GradientView.swift */,
+				E41D7224224D66DE00CA05C4 /* NibBasedViews */,
+				E41D720F224D66D300CA05C4 /* ScrollViewHeader */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -846,6 +1785,7 @@
 		E4AF821221BF95E4002D6E86 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E41D7284224D7C8D00CA05C4 /* Int+IndexPath.swift */,
 				E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */,
 				E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */,
 			);
@@ -944,7 +1884,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B31C3A780C00C0327D /* Build configuration list for PBXNativeTarget "UIKitBase-iOS" */;
 			buildPhases = (
-				5E68D4C63F97070B65E30D9D /* [CP] Check Pods Manifest.lock */,
+				BFBFB772E439F331800552F2 /* [CP] Check Pods Manifest.lock */,
 				D5B2E89A1C3A780C00C0327D /* Sources */,
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
@@ -963,9 +1903,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B61C3A780C00C0327D /* Build configuration list for PBXNativeTarget "UIKitBase-iOS-Tests" */;
 			buildPhases = (
+				AE8BA7C7BFB23AE5DDCB19E6 /* [CP] Check Pods Manifest.lock */,
 				D5B2E8A51C3A780C00C0327D /* Sources */,
 				D5B2E8A61C3A780C00C0327D /* Frameworks */,
 				D5B2E8A71C3A780C00C0327D /* Resources */,
+				19ACE309ECDBCE23199B6488 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1082,6 +2024,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D711E224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +2040,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D284B1391F7906DB00D94AF3 /* Info-tvOS-Tests.plist in Resources */,
+				E41D711F224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
 				D284B1381F7906DB00D94AF3 /* Info-iOS-Tests.plist in Resources */,
 				D284B13B1F7906DB00D94AF3 /* Info-macOS-Tests.plist in Resources */,
 			);
@@ -1106,6 +2050,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D711C224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +2065,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D711D224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1133,7 +2079,91 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5E68D4C63F97070B65E30D9D /* [CP] Check Pods Manifest.lock */ = {
+		19ACE309ECDBCE23199B6488 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Swiftest/Swiftest.framework",
+				"${BUILT_PRODUCTS_DIR}/CwlCatchException/CwlCatchException.framework",
+				"${BUILT_PRODUCTS_DIR}/CwlPreconditionTesting/CwlPreconditionTesting.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftTestUtils/SwiftTestUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/Actions/Actions.framework",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
+				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Permission/Permission.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UIFontIcons/UIFontIcons.framework",
+				"${BUILT_PRODUCTS_DIR}/UIKitExtensions/UIKitExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/UIKitMixinable/UIKitMixinable.framework",
+				"${BUILT_PRODUCTS_DIR}/UIKitTheme/UIKitTheme.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swiftest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CwlCatchException.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CwlPreconditionTesting.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTestUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Actions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Permission.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontIcons.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitMixinable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitTheme.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE8BA7C7BFB23AE5DDCB19E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIKitBase-iOS-Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFBFB772E439F331800552F2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1162,14 +2192,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D70A4224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */,
+				E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
+				E41D7222224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A721BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E821BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E41D71C1224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
+				E41D72A3224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
+				E41D710E224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DB21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E41D71A9224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
+				E41D70C8224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E41D710A224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -1177,60 +2218,146 @@
 				E4AF820521BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C721BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AB21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E41D728D224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
 				E4AF80EF21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E41D70B4224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
+				E41D71CC224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
 				E4AF810B21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E41D70A0224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
+				E41D71F6224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
+				E41D7287224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F421BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E41D714F224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CF21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E41D7193224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
+				E41D72A9224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
+				E41D721A224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */,
+				E41D71D8224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */,
+				E41D70E4224D5F5B00CA05C4 /* FormLabelField.swift in Sources */,
 				E4AF812B21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
 				E4AF822E21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E41D70B0224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
+				E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
+				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E41D715F224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810F21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D6F8E2249731200CA05C4 /* Router.swift in Sources */,
+				E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
+				E41D71BD224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DC21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E41D7294224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
 				E4AF80DF21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810321BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D727E224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F962249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E421BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813D21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E41D72C0224D7DDE00CA05C4 /* BadgeView.swift in Sources */,
+				E41D7263224D707C00CA05C4 /* BaseStackViews.swift in Sources */,
+				E41D729F224D7D7500CA05C4 /* EmailComposer.swift in Sources */,
 				E4AF80E321BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E41D717F224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */,
+				E41D71B1224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
+				E41D70DC224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E4AF820021BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7D2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811721BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809721BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821B21C0299D002D6E86 /* FooterView.swift in Sources */,
+				E41D71C8224D657500CA05C4 /* MaterialTextField.swift in Sources */,
+				E41D7183224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */,
+				E41D7122224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */,
 				E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E41D70F8224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E41D720D224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
+				E41D7167224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
 				E41D6F922249731200CA05C4 /* DeepLinker.swift in Sources */,
+				E41D70EC224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */,
+				E41D718F224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */,
+				E41D70D8224D5F5B00CA05C4 /* FormToolbar.swift in Sources */,
 				E4AF812321BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E41D70FC224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */,
 				E4AF809321BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E41D7187224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */,
 				E4AF811F21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E41D711A224D5FB300CA05C4 /* AuthIcons.swift in Sources */,
 				E4AF81FB21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D7272224D78C500CA05C4 /* FontSizeScalable.swift in Sources */,
 				E41D6F822245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EB21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E41D7163224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */,
+				E41D7173224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
+				E41D70BC224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CB21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E41D7153224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
+				E41D71F2224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
+				E41D719B224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
+				E41D72BC224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
+				E41D7112224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */,
 				E4AF80B721BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E41D7216224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
+				E41D70E0224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
+				E41D718B224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
 				E4AF813321BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E41D70CC224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81E021BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E41D71B9224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */,
+				E41D7157224D651300CA05C4 /* PaginationManaged.swift in Sources */,
 				E4AF80E721BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E41D7228224D66DE00CA05C4 /* NibLoadedView.swift in Sources */,
 				E4AF808F21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E41D722F224D674600CA05C4 /* PermissionViewController.swift in Sources */,
+				E41D71FA224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
+				E41D71B5224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D721BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E41D70F0224D5F5B00CA05C4 /* FormField.swift in Sources */,
+				E41D7298224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E41D7282224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D709C224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */,
 				E41D6F8A2249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BB21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FF21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AF21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E41D70C4224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
+				E41D71D4224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
+				E41D72B4224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E41D7268224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
+				E41D70B8224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E41D70D4224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
+				E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
+				E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */,
+				E41D7177224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E41D71AD224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E41D71E8224D663F00CA05C4 /* SearchViewController.swift in Sources */,
+				E41D70AC224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
+				E41D7208224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
+				E41D717B224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
+				E41D72C4224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
+				E41D7277224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
+				E41D71E4224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
+				E41D721E224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C321BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81F021BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
 				E4AF80F721BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E41D716B224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
+				E41D70A8224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E41D70F4224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813821BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
+				E41D70C0224D5F5B00CA05C4 /* FormInput.swift in Sources */,
+				E41D70E8224D5F5B00CA05C4 /* FormPickerField.swift in Sources */,
+				E41D71DD224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1247,14 +2374,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D70A5224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E41D7117224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E41D7198224D651300CA05C4 /* PullToRefresher.swift in Sources */,
+				E41D726E224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
+				E41D7223224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F421BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A821BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E921BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808821BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E41D71C2224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
+				E41D72A4224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
+				E41D710F224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DC21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E41D71AA224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
+				E41D70C9224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A421BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E41D710B224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF822121C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B421BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -1262,60 +2400,146 @@
 				E4AF820621BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C821BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AC21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E41D728E224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
 				E4AF80F021BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E41D70B5224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
+				E41D71CD224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
 				E4AF810C21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E41D70A1224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
+				E41D71F7224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
+				E41D7288224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E41D7150224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80D021BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E41D7194224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
+				E41D72AA224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
+				E41D721B224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */,
+				E41D71D9224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */,
+				E41D70E5224D5F5B00CA05C4 /* FormLabelField.swift in Sources */,
 				E4AF812C21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
 				E4AF822F21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4D8E42D2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E41D70B1224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
+				E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
+				E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E41D7160224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF811021BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D6F8F2249731200CA05C4 /* Router.swift in Sources */,
+				E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
+				E41D71BE224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DD21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E41D7295224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
 				E4AF80E021BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810421BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D727F224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F972249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E521BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813E21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E41D72C1224D7DDE00CA05C4 /* BadgeView.swift in Sources */,
+				E41D7264224D707C00CA05C4 /* BaseStackViews.swift in Sources */,
+				E41D72A0224D7D7500CA05C4 /* EmailComposer.swift in Sources */,
 				E4AF80E421BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E41D7180224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */,
+				E41D71B2224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
+				E41D70DD224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7E2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821C21C0299D002D6E86 /* FooterView.swift in Sources */,
+				E41D71C9224D657500CA05C4 /* MaterialTextField.swift in Sources */,
+				E41D7184224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */,
+				E41D7123224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */,
 				E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E41D70F9224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E41D720E224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
+				E41D7168224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
 				E41D6F932249731200CA05C4 /* DeepLinker.swift in Sources */,
+				E41D70ED224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */,
+				E41D7190224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */,
+				E41D70D9224D5F5B00CA05C4 /* FormToolbar.swift in Sources */,
 				E4AF812421BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E41D70FD224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */,
 				E4AF809421BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E41D7188224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */,
 				E4AF812021BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E41D711B224D5FB300CA05C4 /* AuthIcons.swift in Sources */,
 				E4AF81FC21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D7273224D78C500CA05C4 /* FontSizeScalable.swift in Sources */,
 				E41D6F832245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EC21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E41D7164224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */,
+				E41D7174224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
+				E41D70BD224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E41D7154224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
+				E41D71F3224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
+				E41D719C224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
+				E41D72BD224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
+				E41D7113224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */,
 				E4AF80B821BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E41D7217224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
+				E41D70E1224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
+				E41D718C224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
 				E4AF813421BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E41D70CD224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81E121BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E41D71BA224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */,
+				E41D7158224D651300CA05C4 /* PaginationManaged.swift in Sources */,
 				E4AF80E821BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E41D7229224D66DE00CA05C4 /* NibLoadedView.swift in Sources */,
 				E4AF809021BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E41D7230224D674600CA05C4 /* PermissionViewController.swift in Sources */,
+				E41D71FB224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
+				E41D71B6224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D821BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E41D70F1224D5F5B00CA05C4 /* FormField.swift in Sources */,
+				E41D7299224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E41D7283224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811C21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808C21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D709D224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */,
 				E41D6F8B2249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BC21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF810021BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80B021BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E41D70C5224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
+				E41D71D5224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
+				E41D72B5224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E41D7269224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
+				E41D70B9224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
+				E41D715C224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
+				E41D7127224D5FB300CA05C4 /* AuthController.swift in Sources */,
+				E41D7178224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E41D71AE224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF813021BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E41D71E9224D663F00CA05C4 /* SearchViewController.swift in Sources */,
+				E41D70AD224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
+				E41D7209224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
+				E41D717C224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
+				E41D72C5224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
+				E41D7278224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
+				E41D71E5224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
+				E41D721F224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C421BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81F121BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
 				E4AF80F821BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E41D716C224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
+				E41D70A9224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E41D70F5224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813921BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
+				E41D70C1224D5F5B00CA05C4 /* FormInput.swift in Sources */,
+				E41D70E9224D5F5B00CA05C4 /* FormPickerField.swift in Sources */,
+				E41D71DE224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1323,14 +2547,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D70A2224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */,
+				E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
+				E41D7220224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A521BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E41D71BF224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
+				E41D72A1224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4AF80D121BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF820E21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
+				E41D710C224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80D921BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E41D71A7224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
+				E41D70C6224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A121BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E41D7108224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF821E21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -1338,60 +2573,146 @@
 				E4AF820321BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C521BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80A921BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E41D728B224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
 				E4AF80ED21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E41D70B2224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
+				E41D71CA224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
 				E4AF810921BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E41D709E224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
+				E41D71F4224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
+				E41D7285224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F221BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E41D714D224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CD21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E41D7191224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
+				E41D72A7224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
+				E41D7218224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */,
+				E41D71D6224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */,
+				E41D70E2224D5F5B00CA05C4 /* FormLabelField.swift in Sources */,
 				E4AF812921BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
 				E4AF822C21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4D8E42A2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820921BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E41D70AE224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E41D716D224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
+				E41D712B224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
+				E41D70CE224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E41D715D224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D6F8C2249731200CA05C4 /* Router.swift in Sources */,
+				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
+				E41D71BB224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E41D7292224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
 				E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D727C224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F942249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813B21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E41D72BE224D7DDE00CA05C4 /* BadgeView.swift in Sources */,
+				E41D7261224D707C00CA05C4 /* BaseStackViews.swift in Sources */,
+				E41D729D224D7D7500CA05C4 /* EmailComposer.swift in Sources */,
 				E4AF80E121BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E41D717D224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */,
+				E41D71AF224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
+				E41D70DA224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809521BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821921C0299D002D6E86 /* FooterView.swift in Sources */,
+				E41D71C6224D657500CA05C4 /* MaterialTextField.swift in Sources */,
+				E41D7181224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */,
+				E41D7120224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */,
 				E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E41D70F6224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E41D720B224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
+				E41D7165224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
 				E41D6F902249731200CA05C4 /* DeepLinker.swift in Sources */,
+				E41D70EA224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */,
+				E41D718D224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */,
+				E41D70D6224D5F5B00CA05C4 /* FormToolbar.swift in Sources */,
 				E4AF812121BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E41D70FA224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */,
 				E4AF809121BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E41D7185224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */,
 				E4AF811D21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E41D7118224D5FB300CA05C4 /* AuthIcons.swift in Sources */,
 				E4AF81F921BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D7270224D78C500CA05C4 /* FontSizeScalable.swift in Sources */,
 				E41D6F802245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80E921BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E41D7161224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */,
+				E41D7171224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
+				E41D70BA224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80C921BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E41D7151224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
+				E41D71F0224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
+				E41D7199224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
+				E41D72BA224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
+				E41D7110224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */,
 				E4AF80B521BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E41D7214224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
+				E41D70DE224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
+				E41D7189224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
 				E4AF813121BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E41D70CA224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81DE21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E41D71B7224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */,
+				E41D7155224D651300CA05C4 /* PaginationManaged.swift in Sources */,
 				E4AF80E521BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E41D7226224D66DE00CA05C4 /* NibLoadedView.swift in Sources */,
 				E4AF808D21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E41D722D224D674600CA05C4 /* PermissionViewController.swift in Sources */,
+				E41D71F8224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
+				E41D71B3224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D521BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E41D70EE224D5F5B00CA05C4 /* FormField.swift in Sources */,
+				E41D7296224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E41D7280224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811921BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808921BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D709A224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */,
 				E41D6F882249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80B921BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FD21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AD21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E41D70C2224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
+				E41D71D2224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
+				E41D72B2224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E41D7266224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
+				E41D70B6224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E41D70D2224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
+				E41D7159224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
+				E41D7124224D5FB300CA05C4 /* AuthController.swift in Sources */,
+				E41D7175224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E41D71AB224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812D21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E41D71E6224D663F00CA05C4 /* SearchViewController.swift in Sources */,
+				E41D70AA224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
+				E41D7206224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
+				E41D7179224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
+				E41D72C2224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
+				E41D7275224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
+				E41D71E2224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
+				E41D721C224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C121BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81EE21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
 				E4AF80F521BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E41D7169224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
+				E41D70A6224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E41D70F2224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813621BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
+				E41D70BE224D5F5B00CA05C4 /* FormInput.swift in Sources */,
+				E41D70E6224D5F5B00CA05C4 /* FormPickerField.swift in Sources */,
+				E41D71DB224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,14 +2729,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41D70A3224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */,
+				E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
+				E41D7221224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A621BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E721BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
 				E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
+				E41D71C0224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
+				E41D72A2224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
+				E41D710D224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DA21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
+				E41D71A8224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
+				E41D70C7224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
+				E41D7109224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -1423,60 +2755,146 @@
 				E4AF820421BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C621BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AA21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
+				E41D728C224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
 				E4AF80EE21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
+				E41D70B3224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
+				E41D71CB224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
 				E4AF810A21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
+				E41D709F224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
+				E41D71F5224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
+				E41D7286224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F321BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
+				E41D714E224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CE21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
+				E41D7192224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
+				E41D72A8224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
+				E41D7219224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift in Sources */,
+				E41D71D7224D662C00CA05C4 /* DismissableNavigationController.swift in Sources */,
+				E41D70E3224D5F5B00CA05C4 /* FormLabelField.swift in Sources */,
 				E4AF812A21BB2D90002D6E86 /* BaseToolbar.swift in Sources */,
 				E4AF822D21C05CE2002D6E86 /* GradientView.swift in Sources */,
 				E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
+				E41D70AF224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
+				E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
+				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
+				E41D715E224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810E21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D6F8D2249731200CA05C4 /* Router.swift in Sources */,
+				E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
+				E41D71BC224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DB21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
+				E41D7293224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
 				E4AF80DE21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810221BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E41D727D224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F952249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E321BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
 				E4AF813C21BB2F93002D6E86 /* UITableViewControllerProtocol.swift in Sources */,
+				E41D72BF224D7DDE00CA05C4 /* BadgeView.swift in Sources */,
+				E41D7262224D707C00CA05C4 /* BaseStackViews.swift in Sources */,
+				E41D729E224D7D7500CA05C4 /* EmailComposer.swift in Sources */,
 				E4AF80E221BB2D90002D6E86 /* BaseContainerViewController.swift in Sources */,
+				E41D717E224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */,
+				E41D71B0224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
+				E41D70DB224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E4AF81FF21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7C2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811621BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809621BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821A21C0299D002D6E86 /* FooterView.swift in Sources */,
+				E41D71C7224D657500CA05C4 /* MaterialTextField.swift in Sources */,
+				E41D7182224D651300CA05C4 /* SparkInfinityAnimator.swift in Sources */,
+				E41D7121224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */,
 				E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
+				E41D70F7224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E41D720C224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
+				E41D7166224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
 				E41D6F912249731200CA05C4 /* DeepLinker.swift in Sources */,
+				E41D70EB224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */,
+				E41D718E224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */,
+				E41D70D7224D5F5B00CA05C4 /* FormToolbar.swift in Sources */,
 				E4AF812221BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
+				E41D70FB224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */,
 				E4AF809221BB2D90002D6E86 /* DependencyInjectable.swift in Sources */,
+				E41D7186224D651300CA05C4 /* SnakeRefreshAnimator.swift in Sources */,
 				E4AF811E21BB2D90002D6E86 /* BaseScrollView.swift in Sources */,
+				E41D7119224D5FB300CA05C4 /* AuthIcons.swift in Sources */,
 				E4AF81FA21BF8AAD002D6E86 /* DismissButtonManaged.swift in Sources */,
+				E41D7271224D78C500CA05C4 /* FontSizeScalable.swift in Sources */,
 				E41D6F812245F20700CA05C4 /* BaseAppNotifications.swift in Sources */,
 				E4AF80EA21BB2D90002D6E86 /* BaseContainedTableViewController.swift in Sources */,
+				E41D7162224D651300CA05C4 /* ArrowRefreshAnimator.swift in Sources */,
+				E41D7172224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
+				E41D70BB224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CA21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
+				E41D7152224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
+				E41D71F1224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
+				E41D719A224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
+				E41D72BB224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
+				E41D7111224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */,
 				E4AF80B621BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
+				E41D7215224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
+				E41D70DF224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
+				E41D718A224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
 				E4AF813221BB2D90002D6E86 /* BaseView.swift in Sources */,
+				E41D70CB224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81DF21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
+				E41D71B8224D654800CA05C4 /* SimpleStackTableViewCell.swift in Sources */,
+				E41D7156224D651300CA05C4 /* PaginationManaged.swift in Sources */,
 				E4AF80E621BB2D90002D6E86 /* BaseScrollviewParentViewController.swift in Sources */,
+				E41D7227224D66DE00CA05C4 /* NibLoadedView.swift in Sources */,
 				E4AF808E21BB2D90002D6E86 /* KeyboardSizeAware.swift in Sources */,
+				E41D722E224D674600CA05C4 /* PermissionViewController.swift in Sources */,
+				E41D71F9224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
+				E41D71B4224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D621BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E41D70EF224D5F5B00CA05C4 /* FormField.swift in Sources */,
+				E41D7297224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E41D7281224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
+				E41D709B224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift in Sources */,
 				E41D6F892249731200CA05C4 /* Route.swift in Sources */,
 				E4AF80BA21BB2D90002D6E86 /* BackButtonManagedMixin.swift in Sources */,
 				E4AF80FE21BB2D90002D6E86 /* BaseNavigationController.swift in Sources */,
 				E4AF80AE21BB2D90002D6E86 /* ViewControllerConfigurable.swift in Sources */,
+				E41D70C3224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
+				E41D71D3224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
+				E41D72B3224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E41D7267224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
+				E41D70B7224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E41D70D3224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
+				E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
+				E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */,
+				E41D7176224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E41D71AC224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E41D71E7224D663F00CA05C4 /* SearchViewController.swift in Sources */,
+				E41D70AB224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
+				E41D7207224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
+				E41D717A224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
+				E41D72C3224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
+				E41D7276224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
+				E41D71E3224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
+				E41D721D224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C221BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81EF21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
 				E4AF80F621BB2D90002D6E86 /* BaseViewController.swift in Sources */,
+				E41D716A224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
+				E41D70A7224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E41D70F3224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813721BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
+				E41D70BF224D5F5B00CA05C4 /* FormInput.swift in Sources */,
+				E41D70E7224D5F5B00CA05C4 /* FormPickerField.swift in Sources */,
+				E41D71DC224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1794,7 +3212,7 @@
 		};
 		D5B2E8B41C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EED7EB10A47FB824EAC11A0 /* Pods-UIKitBase-iOS.debug.xcconfig */;
+			baseConfigurationReference = 1B89E7A1550EBBFE5709AA88 /* Pods-UIKitBase-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1805,7 +3223,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-iOS";
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
@@ -1816,7 +3233,7 @@
 		};
 		D5B2E8B51C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72CCE513D6F9367B31B7AF5C /* Pods-UIKitBase-iOS.release.xcconfig */;
+			baseConfigurationReference = B40DB0DFBBA62D7347FC5ED5 /* Pods-UIKitBase-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1827,7 +3244,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-iOS";
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
@@ -1837,6 +3253,7 @@
 		};
 		D5B2E8B71C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BA880EC167653D8CBBC19AF /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1855,6 +3272,7 @@
 		};
 		D5B2E8B81C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10F72A85C7A7B1EEEB6E3970 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
