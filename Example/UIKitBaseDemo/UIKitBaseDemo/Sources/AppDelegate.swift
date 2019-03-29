@@ -23,8 +23,8 @@ class AppDelegate: BaseUIApplicationDelegate {
         return super.createMixins() + [AppIOManagerMixin(self)]
     }
 
-	static var appsaurusWindow: AppsaurusWindow?{
-		return shared?.window as? AppsaurusWindow
+	static var activityMonitor: ActivityMonitoringWindow?{
+		return shared?.window as? ActivityMonitoringWindow
 	}
 	static var shared: AppDelegate?{
 		return UIApplication.shared.delegate as? AppDelegate
@@ -35,7 +35,6 @@ class AppDelegate: BaseUIApplicationDelegate {
         config.style.tabBarItem.defaults.selectedTextColor = config.style.colors.text.dark
         return config
     }
-
     override init() {
         FontLoader.loadAllFonts()
         super.init()
@@ -48,6 +47,10 @@ class AppDelegate: BaseUIApplicationDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
 		deepLinker.registerRoutes()
+
+        self.window = ActivityMonitoringWindow()
+        self.window?.rootViewController = BaseNavigationController(rootViewController: ExampleTableViewController())
+        self.window?.makeKeyAndVisible()
 
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

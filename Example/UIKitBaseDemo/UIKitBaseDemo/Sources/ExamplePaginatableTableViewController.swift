@@ -12,13 +12,16 @@ import Swiftest
 import UIKitBase
 
 open class ExamplePaginatableTableViewController: PaginatableTableViewController<ExampleObject>, DismissButtonManaged{
-    open override lazy var paginator: Paginator<ExampleObject> = ExampleQueryPaginator()
-    open override lazy var dataSource: CollectionDataSource<ExampleObject> = ExampleCollectionDatasource()
     
     open func registerReusables() {
         tableView.register(ExampleStackTableViewCell.self)
     }
 
+    open override func didInit() {
+        super.didInit()
+        paginator = ExampleQueryPaginator()
+        dataSource = ExampleCollectionDatasource()
+    }
     open override func viewDidLoad() {
         super.viewDidLoad()
         tableView.automaticallySizeCellHeights(100)
@@ -26,7 +29,8 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ExampleStackTableViewCell = tableView.dequeueReusableCell(indexPath)
 
-        cell.leftImageView.displayImage(withUrlString: "https://media.licdn.com/dms/image/C4D0BAQFxm_sSPnumoQ/company-logo_200_200/0?e=2159024400&v=beta&t=QWLPDxc-GV-8jBpr0-VKCTcnLhHYg12d9aBK4ZYTcgU")
+        cell.leftImageView.loadImage(with: "https://media.licdn.com/dms/image/C4D0BAQFxm_sSPnumoQ/company-logo_200_200/0?e=2159024400&v=beta&t=QWLPDxc-GV-8jBpr0-VKCTcnLhHYg12d9aBK4ZYTcgU",
+                                     errorImage: nil)
         cell.primaryLabel.text = "\(indexPath.row) " + dataSource[indexPath]!.name
         cell.secondaryLabel.text = dataSource[indexPath]?.company
         return cell

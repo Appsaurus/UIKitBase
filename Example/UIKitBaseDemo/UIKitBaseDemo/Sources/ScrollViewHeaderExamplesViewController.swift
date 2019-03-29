@@ -29,7 +29,12 @@ extension ScrollViewHeaderAdornable where Self: UIViewController{
     public func displayScrollViewHeaderExampleContent(){
         guard let scrollViewHeader = scrollViewHeader else { return }
         let backgroundImageUrl = "http://www.heavymetal.com/wp-content/uploads/2015/06/big-trouble-in-little-china.jpg"
-        scrollViewHeader.headerBackgroundImageView.displayImage(withUrlString: backgroundImageUrl)
+        do {
+            try scrollViewHeader.headerBackgroundImageView.loadImage(with: backgroundImageUrl)
+        }
+        catch{
+
+        }
         guard let subheader = scrollViewHeader.subheaderView as? ExampleSubheaderView else { return }
         subheader.dynamicHeightLabel.text = "lorem ipsum".repeated(count: 20)
     }

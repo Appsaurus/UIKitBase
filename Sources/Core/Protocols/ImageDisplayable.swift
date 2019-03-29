@@ -20,6 +20,20 @@ extension ImageDisplaying where Self: UIView {
     }
 
     @discardableResult
+    public func loadImage(with url: URLConvertible,
+                          options: ImageLoadingOptions = .shared,
+                          progress: ImageTask.ProgressHandler? = nil,
+                          completion: ImageTask.Completion? = nil,
+                          errorImage: Image?) -> ImageTask? {
+        do {
+            return try loadImage(with: url, options: options, progress: progress, completion: completion)
+        } catch {
+            display(image: errorImage)
+            return nil
+        }
+    }
+
+    @discardableResult
     public func loadImage(with url: URL,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,

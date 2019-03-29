@@ -15,6 +15,8 @@ PODS:
   - Layman/Operators (0.1.17)
   - Layman/Shorthand (0.1.17)
   - Nuke (7.5.2)
+  - Permission (2.0.4):
+    - Permission/Core (= 2.0.4)
   - Permission/Camera (2.0.4):
     - Permission/Core
   - Permission/Contacts (2.0.4):
@@ -45,7 +47,7 @@ PODS:
   - UIFontIcons/MaterialIcons (0.0.5):
     - UIFontIcons/Core
   - UIFontLoader (0.0.2)
-  - UIKitBase/Core (0.0.22):
+  - UIKitBase/Core (0.0.23):
     - Actions
     - Algorithm
     - AssistantKit
@@ -57,31 +59,32 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.22):
+  - UIKitBase/Datasource (0.0.23):
     - UIKitBase/Core
-  - UIKitBase/Forms (0.0.22):
+  - UIKitBase/Forms (0.0.23):
     - ActiveLabel
     - UIKitBase/Core
-    - UIKitBase/Forms/Date (= 0.0.22)
-    - UIKitBase/Forms/LegalDisclosure (= 0.0.22)
-    - UIKitBase/Forms/Location (= 0.0.22)
-  - UIKitBase/Forms/Date (0.0.22):
+    - UIKitBase/Forms/Date (= 0.0.23)
+    - UIKitBase/Forms/LegalDisclosure (= 0.0.23)
+    - UIKitBase/Forms/Location (= 0.0.23)
+  - UIKitBase/Forms/Date (0.0.23):
     - ActiveLabel
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.22):
+  - UIKitBase/Forms/LegalDisclosure (0.0.23):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Forms/Location (0.0.22):
+  - UIKitBase/Forms/Location (0.0.23):
     - ActiveLabel
     - UIKitBase/Core
     - UIKitBase/Location
-  - UIKitBase/Location (0.0.22):
+  - UIKitBase/Location (0.0.23):
     - Permission/Location
     - SwiftLocation
+    - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.22):
-    - Permission/Core
+  - UIKitBase/Permission (0.0.23):
+    - Permission
     - UIKitBase/Core
   - UIKitExtensions (0.0.18):
     - DarkMagic
@@ -215,7 +218,7 @@ SPEC CHECKSUMS:
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
   UIFontLoader: f4e97bbbfdd736f1807c8ca99369895420bea937
-  UIKitBase: 4c82fa93e971e577c68fa081caf1eee236c4f5aa
+  UIKitBase: 47b64408d0d19ee02e511abdcf750bf98b1b32fc
   UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
   UIKitMixinable: 59b18c2cc93bc87b40356fe83697c1fceaa9993a
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60

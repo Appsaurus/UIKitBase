@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "UIKitBase"
   s.summary          = "A short description of UIKitBase."
-  s.version          = "0.0.22"
+  s.version          = "0.0.23"
   s.homepage         = "github.com/Strobocop/UIKitBase"
   s.license          = 'MIT'
   s.author           = { "Brian Strobach" => "brian@appsaurus.io" }
@@ -51,25 +51,25 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Forms' do |f|
-   f.source_files = 'Sources/Subspecs/Forms/Source/**/*'
-   f.dependency 'UIKitBase/Core'
-   f.dependency 'ActiveLabel'
-     f.subspec 'Location' do |fl|
-       fl.source_files = 'Sources/Subspecs/Forms/Subspecs/Location/**/*'
-       fl.dependency 'UIKitBase/Location'
-        end
-     f.subspec 'Date' do |d|
-       d.source_files = 'Sources/Subspecs/Forms/Subspecs/Date/**/*'
-       d.dependency 'SwiftDate'
-     end
-     f.subspec 'LegalDisclosure' do |l|
-       l.source_files = 'Sources/Subspecs/Forms/Subspecs/LegalDisclosure/**/*'
-       l.dependency 'ActiveLabel'
-     end
+    f.source_files = 'Sources/Subspecs/Forms/Core/**/*'
+    f.dependency 'UIKitBase/Core'
+    f.dependency 'ActiveLabel'
+    f.subspec 'Location' do |fl|
+      fl.source_files = 'Sources/Subspecs/Forms/Subspecs/Location/**/*'
+      fl.dependency 'UIKitBase/Location'
+    end
+    f.subspec 'Date' do |d|
+      d.source_files = 'Sources/Subspecs/Forms/Subspecs/Date/**/*'
+      d.dependency 'SwiftDate'
+    end
+    f.subspec 'LegalDisclosure' do |l|
+      l.source_files = 'Sources/Subspecs/Forms/Subspecs/LegalDisclosure/**/*'
+      l.dependency 'ActiveLabel'
+    end
   end
 
-  s.subspec 'Location' do |l|
-   l.source_files = 'Sources/Subspecs/Location/Source/**/*'
+  s.subspec '   ' do |l|
+   l.source_files = 'Sources/Subspecs/Location/**/*'
    l.dependency 'UIKitBase/Permission'
    l.dependency 'UIKitBase/Datasource'
    l.dependency 'Permission/Location'
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Permission' do |p|
-   p.source_files = 'Pod/Subspecs/Permission/Source/**/*'
+   p.source_files = 'Sources/Subspecs/Permission/**/*'
    p.dependency 'UIKitBase/Core'
    p.dependency 'Permission'
   end

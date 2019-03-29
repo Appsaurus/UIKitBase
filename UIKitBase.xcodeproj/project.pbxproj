@@ -428,6 +428,14 @@
 		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E466AC38224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
+		E466AC39224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
+		E466AC3A224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
+		E466AC3B224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
+		E466AC3D224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
+		E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
+		E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
+		E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -836,6 +844,8 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
+		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1155,6 +1165,7 @@
 		E41D7073224D5DEC00CA05C4 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				E41D7078224D5F5B00CA05C4 /* LocationPickerViewController */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1182,7 +1193,7 @@
 		E41D7077224D5F5B00CA05C4 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				E41D7078224D5F5B00CA05C4 /* LocationPickerViewController */,
+				E466AC3C224EA97200CA54F4 /* FormLocationField.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1600,6 +1611,14 @@
 			path = Specialized;
 			sourceTree = "<group>";
 		};
+		E466AC36224EA6F600CA54F4 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
 		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1647,12 +1666,13 @@
 		E4AF805C21BB2D90002D6E86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E41D71C3224D657500CA05C4 /* TextFields */,
 				E41D6F762245EDE500CA05C4 /* AppDelegate */,
 				E4AF807621BB2D90002D6E86 /* AppIO */,
 				E41D719D224D654800CA05C4 /* Cells */,
+				E41D71C3224D657500CA05C4 /* TextFields */,
 				E4AF806621BB2D90002D6E86 /* ViewControllers */,
 				E4AF807821BB2D90002D6E86 /* Views */,
+				E466AC36224EA6F600CA54F4 /* Windows */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2250,6 +2270,7 @@
 				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715F224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -2314,6 +2335,7 @@
 				E41D7216224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70E0224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D718B224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E466AC3A224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813321BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CC224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81E021BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
@@ -2430,6 +2452,7 @@
 				E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D7160224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -2494,6 +2517,7 @@
 				E41D7217224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70E1224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D718C224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E466AC3B224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813421BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CD224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81E121BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
@@ -2601,6 +2625,7 @@
 				E41D716D224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712B224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70CE224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E466AC3D224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715D224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -2665,6 +2690,7 @@
 				E41D7214224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70DE224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D7189224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E466AC38224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813121BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CA224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81DE21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,
@@ -2781,6 +2807,7 @@
 				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715E224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
@@ -2845,6 +2872,7 @@
 				E41D7215224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70DF224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D718A224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E466AC39224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813221BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CB224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
 				E4AF81DF21BF84EF002D6E86 /* ViewStateMachine.swift in Sources */,

@@ -26,7 +26,7 @@ open class ExampleNeedsLoadingIndicatorTableViewController: ExamplePaginatableTa
 				guard !self.autoLoadSwitch.isOn else {
 					return true
 				}
-				return AppDelegate.appsaurusWindow?.dormant == true
+				return AppDelegate.activityMonitor?.dormant == true
 			})
 		})
 	}
