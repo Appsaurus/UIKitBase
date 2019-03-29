@@ -10,39 +10,38 @@ import Swiftest
 import UIKitTheme
 import UIFontIcons
 
-public enum BadgeViewPosition{
+public enum BadgeViewPosition {
     case topRight
     case topRightInside
     case topLeft
     case topLeftInside
 }
-public enum BadgeStyle{
+public enum BadgeStyle {
     case notification, warning, primary, primaryContrast, error, additive, delete
 }
 
-
-public protocol StatefulViewStyleable: ViewStyleable{
-	associatedtype State : Hashable
+public protocol StatefulViewStyleable: ViewStyleable {
+	associatedtype State: Hashable
 	var viewStyleMap: ViewStyleMap { get set }
 	var state: State { get set }
 }
 
-extension StatefulViewStyleable{
-	public typealias ViewStyleMap = [State : ViewStyle]
+extension StatefulViewStyleable {
+	public typealias ViewStyleMap = [State: ViewStyle]
 }
 
-open class StatefulBadgeView<S : Hashable>: BaseView, BadgeViewProtocol, StatefulViewStyleable{
+open class StatefulBadgeView<S: Hashable>: BaseView, BadgeViewProtocol, StatefulViewStyleable {
 	public typealias State = S
 	open var position: BadgeViewPosition
 	open var badgeHeight: CGFloat
-	open var viewStyleMap: [State : ViewStyle] = [:]
-	open var state: State{
-		didSet{
+	open var viewStyleMap: [State: ViewStyle] = [:]
+	open var state: State {
+		didSet {
 			applyCurrentViewStyle()
 		}
 	}
 
-	open func applyCurrentViewStyle(){
+	open func applyCurrentViewStyle() {
 		guard let style = viewStyleMap[state] else { return }
 		self.apply(viewStyle: style)
 	}
@@ -62,15 +61,15 @@ open class StatefulBadgeView<S : Hashable>: BaseView, BadgeViewProtocol, Statefu
 	
 }
 
-public protocol BadgeViewProtocol{
+public protocol BadgeViewProtocol {
 	var position: BadgeViewPosition { get set}
 }
 
-extension BadgeViewProtocol where Self: UIView{
-	public func attachTo(view: UIView, in parentView: UIView? = nil){
+extension BadgeViewProtocol where Self: UIView {
+	public func attachTo(view: UIView, in parentView: UIView? = nil) {
 		let parent = parentView ?? view.superview ?? view
 		parent.addSubview(self)
-		switch position{
+		switch position {
 		case .topRight:
             centerXY.equal(to: view.topRight)
 		case .topRightInside:
@@ -84,26 +83,25 @@ extension BadgeViewProtocol where Self: UIView{
 	}
 }
 
-open class BadgeView: BaseView, BadgeViewProtocol{
+open class BadgeView: BaseView, BadgeViewProtocol {
 	open var label: UILabel = UILabel()
 	open var badgeHeight: CGFloat
 	open var position: BadgeViewPosition
 	open var badgeStyle: BadgeStyle {
-		didSet{
+		didSet {
 			style()
 		}
 	}
-	private var fontIconFont: UIFont?{
-		didSet{
+	private var fontIconFont: UIFont? {
+		didSet {
 			style()
 		}
 	}
-	private var fontSize: CGFloat?{
-		didSet{
+	private var fontSize: CGFloat? {
+		didSet {
 			style()
 		}
 	}
-
 
 	public required init(position: BadgeViewPosition = .topRight, badgeHeight: CGFloat = 15.0, badgeStyle: BadgeStyle = .notification) {
 		self.position = position
@@ -129,28 +127,27 @@ open class BadgeView: BaseView, BadgeViewProtocol{
 		width.greaterThanOrEqual(to: badgeHeight)
 	}
 
-	open var defaultFontSize: CGFloat{
+	open var defaultFontSize: CGFloat {
 		return badgeHeight * 0.6
 	}
 	open override func style() {
 		super.style()
 		let textStyle = App.style.badgeTextStyle(for: badgeStyle, fontSize: fontSize ?? defaultFontSize)
-		if let iconFont = fontIconFont{
+		if let iconFont = fontIconFont {
 			textStyle.font = iconFont
 		}
 		label.apply(textStyle: textStyle)
 		apply(viewStyle: App.style.badgeViewStyle(for: badgeStyle))
 	}
 
-
-	open func set(text: String, fontSize: CGFloat? = nil){
+	open func set(text: String, fontSize: CGFloat? = nil) {
 		fontIconFont = nil
 		self.fontSize = fontSize
 		label.text = text
 		style() //Adjusts font size to fit
 	}
 
-	open func set<FI: FontIconEnum>(icon: FI, fontSize: CGFloat? = nil){
+	open func set<FI: FontIconEnum>(icon: FI, fontSize: CGFloat? = nil) {
 		label.setFontIconText(icon)
 		self.fontSize = fontSize
 		fontIconFont = icon.getFont(fontSize ?? defaultFontSize)

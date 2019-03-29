@@ -13,7 +13,6 @@ import Layman
 import ActiveLabel
 import Algorithm
 
-
 //open class LegalDisclosureManager{
 //	func presentAlert(viewModel: LegalDisclosureViewModel, onCancel: VoidClosure? = nil, onAcceptance: VoidClosure){
 //
@@ -27,10 +26,9 @@ import Algorithm
 //	case check, none
 //}
 
-public struct LegalDisclosureViewModel{
+public struct LegalDisclosureViewModel {
 	public var message: String
-	public var legalDocuments : SortedDictionary<String, String>
-
+	public var legalDocuments: SortedDictionary<String, String>
 
 	/// Example usage:
 	///		let termsOfUse = "Terms of Use"
@@ -43,7 +41,7 @@ public struct LegalDisclosureViewModel{
 	/// - Parameters:
 	///   - message: The label's text, if it does not contain key names for links they will be generated.
 	///   - legalDocuments: String URLS keyed by name of document as it appears in the message text.
-	public init(message: String = "By signing up, you agree to our", legalDocuments : SortedDictionary<String, String>) {
+	public init(message: String = "By signing up, you agree to our", legalDocuments: SortedDictionary<String, String>) {
 		self.message = message
 		self.legalDocuments  = legalDocuments
 		let containsKey: Bool = legalDocuments.keys.contains (where: { message.contains($0) })
@@ -54,11 +52,11 @@ public struct LegalDisclosureViewModel{
 		self.message = generateMessageText()
 	}
 
-	public var regularExpressionPattern: String{
+	public var regularExpressionPattern: String {
 		let keys: [String] = Array(legalDocuments.keys)
 		var verEx = VerEx()
-		for (index, key) in keys.enumerated(){
-			switch index{
+		for (index, key) in keys.enumerated() {
+			switch index {
 			case 0:
 				verEx = verEx.find(key)
 			default:
@@ -68,13 +66,12 @@ public struct LegalDisclosureViewModel{
 		return verEx.pattern
 	}
 
-	public func generateMessageText() -> String{
+	public func generateMessageText() -> String {
 		return "\(message) \(StringUtils.English.punctuatedList(from: legalDocuments.keys))."
 	}
 }
 
-
-open class LegalDisclosureView: BaseView{
+open class LegalDisclosureView: BaseView {
 	open var label: ActiveLabel = ActiveLabel()
 	open var viewModel: LegalDisclosureViewModel
 
@@ -96,10 +93,9 @@ open class LegalDisclosureView: BaseView{
 			pagingVC.initialPageIndex = self.viewModel.legalDocuments.keys.index(of: element) ?? 0
 
 			guard let parent = self.parentViewController else { return }
-			if let nav = parent.navigationController{
+			if let nav = parent.navigationController {
 				nav.push(pagingVC)
-			}
-			else{
+			} else {
 				let dismissableNav = DismissableNavigationController(dismissableViewController: pagingVC)
 				parent.present(viewController: dismissableNav)
 			}

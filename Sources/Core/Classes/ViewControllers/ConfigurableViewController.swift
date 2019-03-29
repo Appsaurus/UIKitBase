@@ -10,12 +10,12 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-public class FormViewControllerConfiguration: ViewControllerConfiguration{
+public class FormViewControllerConfiguration: ViewControllerConfiguration {
     public let promptText: String? = "Please enter a phone number."
     public let autoSubmitsFormWhenValid: Bool = false
 }
 
-public class FormViewControllerStyle: ViewControllerStyle{
+public class FormViewControllerStyle: ViewControllerStyle {
     open lazy var promptLabelStyle: TextStyle = .light(color: .primaryContrast)
     open lazy var textFieldStyles: TextFieldStyleMap = .materialStyleMap(color: .primaryContrast)
     open lazy var submitButtonStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast), viewStyle: ViewStyle(backgroundColor: .success))
@@ -23,23 +23,21 @@ public class FormViewControllerStyle: ViewControllerStyle{
     open lazy var secondaryButtonStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
 }
 
-
-open class ConfigurableViewController<Configuration: ViewControllerConfiguration, Style: ViewControllerStyle>: BaseViewController{
+open class ConfigurableViewController<Configuration: ViewControllerConfiguration, Style: ViewControllerStyle>: BaseViewController {
     
     open lazy var config: Configuration = Configuration()
     open lazy var vcStyle: Style = Style()
-
     
     public required init(config: Configuration? = nil, style: Style? = nil, callDidInit: Bool = true) {
         super.init(nibName: nil, bundle: nil)
-        if let config = config{
+        if let config = config {
             self.config = config
         }
-        if let style = style{
+        if let style = style {
             self.vcStyle = style
         }
         
-        if callDidInit{
+        if callDidInit {
             didInit()
         }
     }

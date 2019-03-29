@@ -10,19 +10,18 @@ import UIKit
 import Swiftest
 import UIKitExtensions
 
-open class PaginatableTableViewController<ModelType: Paginatable>: DatasourceManagedTableViewController<ModelType>, PaginationManaged{
+open class PaginatableTableViewController<ModelType: Paginatable>: DatasourceManagedTableViewController<ModelType>, PaginationManaged {
     
     open var prefetchedData: [ModelType]?
     open var infiniteScrollable: Bool = true
     open var refreshable: Bool = true
     open var loadsResultsImmediately: Bool = true
     open var appendsIndexPathsOnInfinityScroll: Bool = true
-    open var scrollDirection: InfinityScrollDirection{
+    open var scrollDirection: InfinityScrollDirection {
         return .vertical
     }
     
-    
-    //MARK: PaginationManaged
+    // MARK: PaginationManaged
     open lazy var paginator: Paginator<ModelType> = {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return Paginator<ModelType>()
@@ -30,12 +29,12 @@ open class PaginatableTableViewController<ModelType: Paginatable>: DatasourceMan
     open lazy var activePaginator: Paginator<ModelType> = self.paginator
     open lazy var fallbackPaginator: Paginator<ModelType>? = nil
     
-    open func refreshDidFail(with error: Error){
+    open func refreshDidFail(with error: Error) {
         showError(error: error)
         debugLog(error)
     }
     
-    open func loadMoreDidFail(with error: Error){
+    open func loadMoreDidFail(with error: Error) {
         showError(error: error)
         debugLog(error)
     }
@@ -51,7 +50,7 @@ open class PaginatableTableViewController<ModelType: Paginatable>: DatasourceMan
     }
     
     deinit {
-        if tableView != nil{
+        if tableView != nil {
             tableView.loadingControls.clear()
         }
     }
@@ -65,8 +64,3 @@ open class PaginatableTableViewController<ModelType: Paginatable>: DatasourceMan
     }
     
 }
-
-
-
-
-

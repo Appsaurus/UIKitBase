@@ -37,7 +37,7 @@ open class DynamicSizeCollectionViewCell: BaseCollectionViewCell {
 //        return layoutAttributes
 //    }
     
-    open func calculateDynamicSize(fixedDimension: DynamicSizeCellFixedDimension, layoutSize: CGSize = UIView.layoutFittingCompressedSize) -> CGSize{
+    open func calculateDynamicSize(fixedDimension: DynamicSizeCellFixedDimension, layoutSize: CGSize = UIView.layoutFittingCompressedSize) -> CGSize {
         var tempConstraint: NSLayoutConstraint!
         switch fixedDimension {
         case .width(let width):
@@ -52,7 +52,7 @@ open class DynamicSizeCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-public enum DynamicSizeCellFixedDimension{
+public enum DynamicSizeCellFixedDimension {
     case width(size : CGFloat)
     case height(size : CGFloat)
 }

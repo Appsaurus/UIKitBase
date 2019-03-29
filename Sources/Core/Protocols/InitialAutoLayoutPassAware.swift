@@ -8,22 +8,22 @@
 import Foundation
 import DarkMagic
 
-public protocol InitialAutoLayoutPassAware: class{
+public protocol InitialAutoLayoutPassAware: class {
     var didInitialAutolayoutPass: Bool { get set }
     func didFinishInitialAutoLayoutPass()
 }
 
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let didInitialAutolayoutPass = AssociatedObjectKey<Bool>("didInitialAutolayoutPass")
 }
 
-public extension InitialAutoLayoutPassAware where Self: NSObject{
+public extension InitialAutoLayoutPassAware where Self: NSObject {
     
-    public var didInitialAutolayoutPass: Bool{
-        get{
+    public var didInitialAutolayoutPass: Bool {
+        get {
             return self[.didInitialAutolayoutPass, false]
         }
-        set{
+        set {
             self[.didInitialAutolayoutPass] = newValue
         }        
     }

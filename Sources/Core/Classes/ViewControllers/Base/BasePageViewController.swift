@@ -7,32 +7,30 @@
 
 import UIKitMixinable
 
-public protocol BasePageViewControllerProtocol:
-    BaseViewControllerProtocol
-{}
+public protocol BasePageViewControllerProtocol: BaseViewControllerProtocol {}
 
-extension BasePageViewControllerProtocol where Self: UIPageViewController{
-    public var basePageViewControllerProtocolMixins: [LifeCycle]{
+extension BasePageViewControllerProtocol where Self: UIPageViewController {
+    public var basePageViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }
 
-open class BasePageViewController: MixinablePageViewController, BasePageViewControllerProtocol{
+open class BasePageViewController: MixinablePageViewController, BasePageViewControllerProtocol {
     
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + basePageViewControllerProtocolMixins
     }
     
-    //MARK: Orientation
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+    // MARK: Orientation
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
     
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation{
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle{
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
     
@@ -40,23 +38,23 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
         return statusBarHidden
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         view.backgroundColor = currentStyle.pagingViewControllerBaseViewBackgroundColor
     }
     
-    //MARK: StatefulViewController
-    open func startLoading(){}
+    // MARK: StatefulViewController
+    open func startLoading() {}
     
     open func customizeStatefulViews() {}
     
@@ -64,10 +62,8 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
         return [:]
     }
     
-    open func willTransition(to state: State){}
+    open func willTransition(to state: State) {}
     
-    open func didTransition(to state: State){}
- 
+    open func didTransition(to state: State) {}
 
 }
-

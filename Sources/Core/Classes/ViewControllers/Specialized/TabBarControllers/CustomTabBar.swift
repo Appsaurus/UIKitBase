@@ -16,14 +16,14 @@ public protocol CustomTabBarDataSource {
     
 }
 
-public protocol CustomTabBarDelegate {
+public protocol CustomTabBarDelegate: class {
     func customTabBar(_ tabBar: CustomTabBar, didSelectItemAtIndex index: Int)
     func customTabBarDidReselectItemAtCurrentIndex(_ tabBar: CustomTabBar)
     func customTabBar(_ tabBar: CustomTabBar, shouldSelectItemAtIndex index: Int) -> Bool
 }
 
-extension CustomTabBarDelegate{
-    func customTabBar(_ tabBar: CustomTabBar, shouldSelectItemAtIndex index: Int) -> Bool{
+extension CustomTabBarDelegate {
+    func customTabBar(_ tabBar: CustomTabBar, shouldSelectItemAtIndex index: Int) -> Bool {
         return true
     }
 }
@@ -32,10 +32,10 @@ public protocol CustomTabBarItemProtocol {
     
 }
 
-open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
+open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator {
     
     open var datasource: CustomTabBarDataSource
-    open var delegate: CustomTabBarDelegate
+    open weak var delegate: CustomTabBarDelegate?
     public var hasLoadedInitialState: Bool = false
     open var items: [CustomTabBarItemView] = []
     
@@ -57,11 +57,10 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     open override func createSubviews() {
         super.createSubviews()
         setupTabBar()
-        if let selectionIndicatorView = selectionIndicatorView{
+        if let selectionIndicatorView = selectionIndicatorView {
             addSubview(selectionIndicatorView)
         }
     }
@@ -71,11 +70,11 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
         layoutTabBar()
     }
     
-    open func setupTabBar(){
+    open func setupTabBar() {
         addSubview(stackView)
     }
     
-    open func layoutTabBar(){
+    open func layoutTabBar() {
         stackView.pinToSuperview()
     }
     
@@ -85,8 +84,8 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
     open func reloadItems(selectedIndex: IndexPath? = nil, animated: Bool, completion: VoidClosure? = nil) {
         var items: [CustomTabBarItemView] = []
         
-        if datasource.numberOfTabBarItems() > 0{
-            for index in 0...datasource.numberOfTabBarItems() - 1{
+        if datasource.numberOfTabBarItems() > 0 {
+            for index in 0...datasource.numberOfTabBarItems() - 1 {
                 items.append(datasource.tabBarItemViewForItem(at: index))
             }
         }
@@ -105,24 +104,24 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
         completion?()
     }
     
-    open func barItemTapped(sender : CustomTabBarItemView) {
+    open func barItemTapped(sender: CustomTabBarItemView) {
         let index = items.index(of: sender)!
-        guard delegate.customTabBar(self, shouldSelectItemAtIndex: index) else { return }
+        guard delegate?.customTabBar(self, shouldSelectItemAtIndex: index) == true else { return }
         self.userDidSelectCollectionMenuItem(at: IndexPath(item: index, section: 0))
     }
     
-    //MARK: CollectionViewAnimator
+    // MARK: CollectionViewAnimator
     
-    open func didSelectCollectionMenuItem(at indexPath: IndexPath?){
+    open func didSelectCollectionMenuItem(at indexPath: IndexPath?) {
         guard let index = indexPath?.intIndex else { return }
-        delegate.customTabBar(self, didSelectItemAtIndex: index)
+        delegate?.customTabBar(self, didSelectItemAtIndex: index)
     }
     
-    open func renderCollectionMenuItemSelection(transition: IndexPathTransition){
-        if let fromIndex = transition.route.from?.intIndex{
+    open func renderCollectionMenuItemSelection(transition: IndexPathTransition) {
+        if let fromIndex = transition.route.from?.intIndex {
             items[safe: fromIndex]?.state = .normal
         }
-        if let toIndex = transition.route.to?.intIndex{
+        if let toIndex = transition.route.to?.intIndex {
             items[safe: toIndex]?.state = .selected
         }
     }
@@ -138,38 +137,37 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator{
     
 }
 
-extension IndexPath{
+extension IndexPath {
     public func equals(_ otherIndex: IndexPath?) -> Bool {
         guard let otherIndex = otherIndex else { return false }
         return self == otherIndex
     }
 
-    public var intIndex: Int{
+    public var intIndex: Int {
         return item
     }
 
 }
-public struct IndexPathRoute{
+public struct IndexPathRoute {
     public var from: IndexPath?
     public var to: IndexPath?
 
-    public init(from: IndexPath? = nil, to: IndexPath? = nil){
+    public init(from: IndexPath? = nil, to: IndexPath? = nil) {
         self.from = from
         self.to = to
     }
 }
 
-
-public struct IndexPathTransition{
+public struct IndexPathTransition {
     public var route: IndexPathRoute
     public var animated: Bool
 
-    public init(from: IndexPath? = nil, to: IndexPath? = nil, animated: Bool = true){
+    public init(from: IndexPath? = nil, to: IndexPath? = nil, animated: Bool = true) {
         self.route = IndexPathRoute(from: from, to: to)
         self.animated = animated
     }
 }
-public protocol CollectionMenuSelectionAnimator: class{
+public protocol CollectionMenuSelectionAnimator: class {
     var hasLoadedInitialState: Bool { get set }
     var selectionIndicatorView: UIView? { get set }
     var selectedMenuIndexPath: IndexPath? { get set }
@@ -189,23 +187,21 @@ public protocol CollectionMenuSelectionAnimator: class{
     func renderCollectionMenuItemSelection(transition: IndexPathTransition)
     func renderCollectionMenuItemSelectionIndicator(transition: IndexPathTransition)
 
-
     func viewForSelectedCollectioMenuItem() -> UIView?
     func reloadItems(selectedIndex: IndexPath?, animated: Bool, completion: VoidClosure?)
 
-
 }
 
-extension CollectionMenuSelectionAnimator{
-    public func userDidSelectCollectionMenuItem(at indexPath: IndexPath?){
-        if let selectedMenuIndexPath = selectedMenuIndexPath, selectedMenuIndexPath.equals(indexPath){
+extension CollectionMenuSelectionAnimator {
+    public func userDidSelectCollectionMenuItem(at indexPath: IndexPath?) {
+        if let selectedMenuIndexPath = selectedMenuIndexPath, selectedMenuIndexPath.equals(indexPath) {
             userDidReselectCollectionMenuItem(at: selectedMenuIndexPath)
             return
         }
         selectCollectionMenuItem(at: indexPath, animated: true)
     }
 
-    public func selectCollectionMenuItem(at indexPath: IndexPath?, animated: Bool = true){
+    public func selectCollectionMenuItem(at indexPath: IndexPath?, animated: Bool = true) {
         //        guard hasLoadedInitialState else{
         //            initialSelectedMenuIndexPath = indexPath
         //            return
@@ -215,7 +211,7 @@ extension CollectionMenuSelectionAnimator{
         didSelectCollectionMenuItem(at: indexPath)
     }
 
-    public func transitionToInitialSelectionState(){
+    public func transitionToInitialSelectionState() {
         hasLoadedInitialState = true
         transitionSelectionState(transition: IndexPathTransition(to: initialSelectedMenuIndexPath, animated: false))
     }
@@ -232,13 +228,13 @@ extension CollectionMenuSelectionAnimator{
         self.renderCollectionMenuItemSelectionIndicator(transition: transition)
     }
 
-    public func rerenderCollectionMenuSelection(){
+    public func rerenderCollectionMenuSelection() {
         let transition = IndexPathTransition(to: self.selectedMenuIndexPath, animated: false)
         self.renderCollectionMenuItemSelection(transition: transition)
         self.renderCollectionMenuItemSelectionIndicator(transition: transition)
     }
 
-    public func renderCollectionMenuItemSelectionIndicator(transition: IndexPathTransition){
+    public func renderCollectionMenuItemSelectionIndicator(transition: IndexPathTransition) {
         guard let selectionIndicatorView = self.selectionIndicatorView else { return }
 
         DispatchQueue.main.async {
@@ -249,13 +245,12 @@ extension CollectionMenuSelectionAnimator{
             }
             selectionIndicatorView.moveToFront()
 
-
             guard transition.route.from != nil else {
                 selectionIndicatorView.frame = self.selectionIndicatorAnimation.finalFrameForSelectionIndicator(view: selectionIndicatorView, whenAnimatedTo: selectedMenuView)
                 selectionIndicatorView.show()
                 return
             }
-            guard transition.animated else{
+            guard transition.animated else {
                 selectionIndicatorView.frame = self.selectionIndicatorAnimation.finalFrameForSelectionIndicator(view: selectionIndicatorView, whenAnimatedTo: selectedMenuView)
                 selectionIndicatorView.isVisible = true
                 return
@@ -266,18 +261,16 @@ extension CollectionMenuSelectionAnimator{
         }
     }
 
-
-    //MARK: Convenience
-    public func selectItem(at index: Int, animated: Bool = true){
+    // MARK: Convenience
+    public func selectItem(at index: Int, animated: Bool = true) {
         guard selectedMenuIndexPath?.intIndex != index else { return }
         selectCollectionMenuItem(at: index.indexPath, animated: animated)
     }
 
-
 }
 
-public class CollectionMenuSelectionIndicatorAnimation{
-    open func animateLayoutOfSelectionIndicator(view: UIView, to selectedView: UIView, completion: VoidClosure? = nil){
+public class CollectionMenuSelectionIndicatorAnimation {
+    open func animateLayoutOfSelectionIndicator(view: UIView, to selectedView: UIView, completion: VoidClosure? = nil) {
         let configuration: SpringAnimationConfiguration = SpringAnimationConfiguration(duration: 0.4, springDamping: 0.7)
         DispatchQueue.main.async {
             view.springAnimate(configuration: configuration, animations: {
@@ -286,7 +279,7 @@ public class CollectionMenuSelectionIndicatorAnimation{
         }
     }
 
-    open func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect{
+    open func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect {
         var frame = CGRect()
         frame.w = selectedView.frame.w
         frame.h = 2.0
@@ -295,18 +288,18 @@ public class CollectionMenuSelectionIndicatorAnimation{
         return frame
     }
 
-    static public var slidingUnderline: CollectionMenuSelectionIndicatorAnimation{
+    static public var slidingUnderline: CollectionMenuSelectionIndicatorAnimation {
         return CollectionMenuSelectionIndicatorAnimation()
     }
 
-    static public var stretchSlidingFrame: SlidingFrameMenuSelectionIndicatorAnimation{
+    static public var stretchSlidingFrame: SlidingFrameMenuSelectionIndicatorAnimation {
         return SlidingFrameMenuSelectionIndicatorAnimation()
     }
 }
 
-public class SlidingFrameMenuSelectionIndicatorAnimation: CollectionMenuSelectionIndicatorAnimation{
+public class SlidingFrameMenuSelectionIndicatorAnimation: CollectionMenuSelectionIndicatorAnimation {
 
-    open override func animateLayoutOfSelectionIndicator(view: UIView, to selectedView: UIView, completion: VoidClosure? = nil){
+    open override func animateLayoutOfSelectionIndicator(view: UIView, to selectedView: UIView, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             let destinationFrame = self.finalFrameForSelectionIndicator(view: view, whenAnimatedTo: selectedView)
             let time = 0.3
@@ -321,7 +314,7 @@ public class SlidingFrameMenuSelectionIndicatorAnimation: CollectionMenuSelectio
         }
     }
 
-    open override  func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect{
+    open override  func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect {
         return selectedView.frame(in: view)
     }
 }

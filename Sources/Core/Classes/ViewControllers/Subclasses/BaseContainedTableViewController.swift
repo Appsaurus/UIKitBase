@@ -4,11 +4,10 @@
 //
 //  Created by Brian Strobach on 10/20/17.
 
-
 import Foundation
 import UIKitMixinable
 
-open class BaseContainedTableViewController: BaseContainerViewController, ViewRecycler, UITableViewControllerProtocol{
+open class BaseContainedTableViewController: BaseContainerViewController, ViewRecycler, UITableViewControllerProtocol {
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [ViewRecyclerMixin(self)]
     }

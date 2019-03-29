@@ -15,7 +15,7 @@ extension UITabBarItem {
                                              selectedIcon: T? = nil,
                                              style: TabBarItemStyle = .defaultStyle,
                                              title: String,
-                                             tabIconHeight: CGFloat? = nil) -> UITabBarItem{
+                                             tabIconHeight: CGFloat? = nil) -> UITabBarItem {
         let sizeConfiguration: FontIconSizeConfiguration = FontIconSizeConfiguration(fontSize: tabIconHeight ?? .icon)
 
         let normalIconStyle = FontIconStyle(color: style.normalIconColor)

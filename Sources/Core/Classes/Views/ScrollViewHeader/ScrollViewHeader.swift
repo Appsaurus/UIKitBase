@@ -12,8 +12,8 @@ import Swiftest
 
 open class ScrollViewHeader: BaseView, ScrollViewObserver {
     open override var bounds: CGRect {
-        didSet{
-            if oldValue != bounds{
+        didSet {
+            if oldValue != bounds {
                 onBoundsChange?(bounds)
             }
         }
@@ -23,15 +23,14 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     public func scrollViewObserverDidObserveScroll(of scrollView: UIScrollView, to offset: CGPoint) {
         setNeedsLayout()
     }
-
     
-    open var behaviors: [ScrollViewHeaderBehavior] = []{
-        didSet{
+    open var behaviors: [ScrollViewHeaderBehavior] = [] {
+        didSet {
             setupBehaviors()
         }
     }
     
-    public var expandedHeight: CGFloat{
+    public var expandedHeight: CGFloat {
         return expandedHeaderHeight + subheaderBackgroundView.frame.h
     }
     
@@ -40,8 +39,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     
     open var headerLayoutHeightConstraint: NSLayoutConstraint?
     open var viewConstraints: ConstraintAttributeMap = [:]
-    open var headerState: ScrollViewHeaderState{
-        switch visibleHeaderHeight{
+    open var headerState: ScrollViewHeaderState {
+        switch visibleHeaderHeight {
         case -UIScreen.screenHeight...collapsedHeaderHeight:
             return .collapsed
         case collapsedHeaderHeight..<expandedHeight:
@@ -68,36 +67,39 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     }
     var backgroundViewConstraints: ConstraintAttributeMap = [:]
     
-    public var offset: CGFloat{
+    public var offset: CGFloat {
         return scrollView.contentOffset.y + scrollView.contentInset.top
     }
     
-    public var headerHeightRange: CGFloat{
+    public var headerHeightRange: CGFloat {
         return expandedHeight - collapsedHeaderHeight
     }
     
-    public var percentCollapsed: CGFloat{
+    public var percentCollapsed: CGFloat {
         let value = (expandedHeight - visibleHeaderHeight)/headerHeightRange
         return value.clamped(0.0, 1.0)
     }
     
-    public var percentExpanded: CGFloat{
+    public var percentExpanded: CGFloat {
         return visibleHeaderHeight/expandedHeight
     }
     
-    public var visibleHeaderHeight: CGFloat{
+    public var visibleHeaderHeight: CGFloat {
         return (expandedHeight - offset).clamped(collapsedHeaderHeight, expandedHeight)
     }
     
-    
-    func setupBehaviors(){
+    func setupBehaviors() {
         behaviors.forEach { (behavior) in
             behavior.scrollViewHeader = self
             
         }
     }
     
-    public required init(autoExpandingContentView: UIView, width: CGFloat, collapsedHeaderHeight: CGFloat = 0.0, subheaderView: UIView? = nil, behaviors: [ScrollViewHeaderBehavior] = []) {
+    public required init(autoExpandingContentView: UIView,
+                         width: CGFloat,
+                         collapsedHeaderHeight: CGFloat = 0.0,
+                         subheaderView: UIView? = nil,
+                         behaviors: [ScrollViewHeaderBehavior] = []) {
         
         self.collapsedHeaderHeight = collapsedHeaderHeight
         autoExpandingContentView.layoutDynamicHeight(forWidth: width)
@@ -155,7 +157,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         headerBackgroundImageView.contentMode = .scaleAspectFill
     }
     
-    open func setupScrollViewRelatedConstraints(){
+    open func setupScrollViewRelatedConstraints() {
         let initialInsetTop = scrollView.contentInset.top
 
         viewConstraints.update(with: width.equal(to: scrollView.width))
@@ -168,8 +170,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         super.layoutSubviews()
         adjustViews(for: scrollView.contentOffset)
     }
-    
-    
+
+    //swiftlint:disable:next block_based_kvo
     open override func observeValue(forKeyPath _: String?, of _: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         setNeedsLayout()
     }
@@ -178,7 +180,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     
     open func adjustViews(for scrollViewOffset: CGPoint) {
         var topConstant = -scrollView.contentInset.top
-        if(visibleHeaderHeight <= collapsedHeaderHeight){
+        if visibleHeaderHeight <= collapsedHeaderHeight {
             topConstant = scrollViewOffset.y + collapsedHeaderHeight - expandedHeight
         }
         viewConstraints[.top]?.first?.constant = topConstant
@@ -191,7 +193,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
 //        debugPrintDescription()
     }
     
-    func resetBackgroundViewSizeConstraints(){
+    func resetBackgroundViewSizeConstraints() {
         backgroundViewConstraints[.width]?.first?.constant = 0.0
         backgroundViewConstraints[.height]?.first?.constant = 0.0
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AnimatableTextFieldConfiguration{
+open class AnimatableTextFieldConfiguration {
     
 }
 open class AnimatableTextField: StatefulTextField {
@@ -16,7 +16,6 @@ open class AnimatableTextField: StatefulTextField {
     open var secondaryLabel: UILabel = UILabel()
     open var leftViewWidth: CGFloat = 0.0
     open var layoutHeights: (titleLabel: CGFloat, textField: CGFloat, secondaryLabel: CGFloat) = (15.0, 30.0, 15.0)
-    
 
     /// Sync up textAlignment of all labels
     open override var textAlignment: NSTextAlignment {
@@ -29,7 +28,6 @@ open class AnimatableTextField: StatefulTextField {
             secondaryLabel.textAlignment = value
         }
     }
-    
     
     /// EdgeInsets for text.
     open var textInset: CGFloat = 0
@@ -46,7 +44,7 @@ open class AnimatableTextField: StatefulTextField {
     }
   */
 
-    open override func layoutSubviews(for state: TextFieldState){
+    open override func layoutSubviews(for state: TextFieldState) {
         super.layoutSubviews(for: state)
         layoutTitleLabel()
     }

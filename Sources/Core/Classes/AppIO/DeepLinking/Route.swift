@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//swiftlint:disable force_try legacy_hashing
 open class Route {
     
     enum Pattern: String {
@@ -59,7 +59,7 @@ open class Route {
         let _route = "^\(route)/?$"
         var _routeRegex = NSString(string: _route)
         let matches = routeParameter.matches(in: _route, options: [],
-            range: NSMakeRange(0, _route.count))
+            range: NSRange(location: 0, length: _route.count))
 
         // range offset when replacing :params
         var offset = 0
@@ -68,7 +68,7 @@ open class Route {
             
             var matchWithOffset = match.range
             if offset != 0 {
-                matchWithOffset = NSMakeRange(matchWithOffset.location + offset, matchWithOffset.length)
+                matchWithOffset = NSRange(location: matchWithOffset.location + offset, length: matchWithOffset.length)
             }
             
             // route param (ie. :id)
@@ -109,7 +109,7 @@ extension Route: Hashable {
 
 extension Route: Equatable {}
 
-public func ==(lhs: Route, rhs: Route) -> Bool {
+public func == (lhs: Route, rhs: Route) -> Bool {
     return lhs.route == rhs.route
 }
 

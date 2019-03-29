@@ -28,7 +28,7 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         }
     }
     
-    fileprivate var arrowLayer:CAShapeLayer = CAShapeLayer()
+    fileprivate var arrowLayer: CAShapeLayer = CAShapeLayer()
     fileprivate var circleFrontLayer: CAShapeLayer = CAShapeLayer()
     fileprivate var circleBackLayer: CAShapeLayer = CAShapeLayer()
     

@@ -8,7 +8,7 @@
 
 import Foundation
 import Swiftest
-public protocol FormFieldProtocol: class{
+public protocol FormFieldProtocol: class {
     var fieldName: String { get set }
     var validationStatus: ValidationStatus { get set }
     var validationDelegate: FieldValidationDelegate? { get set }
@@ -20,15 +20,14 @@ public protocol FormFieldProtocol: class{
     func outputValueToJSON() -> Any?
 }
 
-
-extension FormFieldProtocol{
+extension FormFieldProtocol {
     
-    func runNetworkValidation(_ success: VoidClosure, failure: VoidClosure){
+    func runNetworkValidation(_ success: VoidClosure, failure: VoidClosure) {
         success()//Effectively make network validation optional by faking success when not implemented by adopting class
     }
 }
 
-public protocol FormTextFieldProtocol: UITextFieldDelegate{
+public protocol FormTextFieldProtocol: UITextFieldDelegate {
     var textField: UITextField { get set }
     var confirmationField: FormTextFieldProtocol? { get set }
     var confirmsField: FormTextFieldProtocol? { get set }

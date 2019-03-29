@@ -10,7 +10,7 @@ import UIKitTheme
 import Layman
 
 //Basis for any form viewcontroller. Doesn't implement any view logic for fields.
-open class BaseFormViewController: BaseContainerViewController, FormDelegate, SubmitButtonManaged{
+open class BaseFormViewController: BaseContainerViewController, FormDelegate, SubmitButtonManaged {
     
     open lazy var formToolbar: FormToolbar? = {
         return self.createFormToolbar()
@@ -18,7 +18,6 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
     
     open var submitButton: BaseButton!
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
-    
 	
     lazy open var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
@@ -30,8 +29,8 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
 
     }
 
-	open func style(fields: [FormFieldProtocol]){
-		for field in fields{
+	open func style(fields: [FormFieldProtocol]) {
+		for field in fields {
 
 			guard let textField = field.getContentView() as? StatefulTextField else {
 				continue
@@ -51,21 +50,20 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         setupSubmitButton(configuration: ManagedButtonConfiguration(position: submitButtonPosition))
     }
     
-    open func createForm() -> Form{
+    open func createForm() -> Form {
         return Form(fields: createFields())
     }
     
-    open func createFields() -> [FormFieldProtocol]{
+    open func createFields() -> [FormFieldProtocol] {
         assertionFailure("Must be created by subclass")
         return []
     }
     
-    open func createFormToolbar() -> FormToolbar?{
+    open func createFormToolbar() -> FormToolbar? {
         var textFields: [FormInput] = []
-        for field in form.fields{
-            if field is FormInput{
-                textFields.append((field as! FormInput))
-            }
+        for field in form.fields where field is FormInput {
+            //swiftlint:disable force_cast
+            textFields.append((field as! FormInput))
         }
         let toolbar = FormToolbar(inputs: textFields)
         toolbar.direction = .upDown
@@ -104,7 +102,6 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         
     }
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }
@@ -114,7 +111,7 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         return true
     }
     
-    //MARK: SubmitButtonManaged
+    // MARK: SubmitButtonManaged
     open func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
@@ -123,22 +120,22 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         
     }
     
-    open func submissionDidBegin(){
+    open func submissionDidBegin() {
         submitButton.state = .activity
         view.endEditing(true)
     }
-    open func submissionDidSucceed(){
+    open func submissionDidSucceed() {
         self.view.isUserInteractionEnabled = true
         self.updateSubmitButtonState()
     }
     
-    open func submissionDidFail(with error: Error){
+    open func submissionDidFail(with error: Error) {
         self.view.isUserInteractionEnabled = true
         self.updateSubmitButtonState()
     }
     
-    open func updateSubmitButtonState(){
-        switch form.status{
+    open func updateSubmitButtonState() {
+        switch form.status {
         case .testingInProgress:
             submitButton.state = .activity
         default:
@@ -146,27 +143,27 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         }
     }
     
-    open func userCanSubmit() -> Bool{
+    open func userCanSubmit() -> Bool {
         return form.status == .valid
     }
     
-    @objc open func displayFormErrors(_ sender: UIBarButtonItem){
+    @objc open func displayFormErrors(_ sender: UIBarButtonItem) {
         _ = [String]()
-        for field in self.form.fields{
+        for field in self.form.fields {
             field.validate(displayErrors: true)
         }
         form.presentFormErrorsAlertView(self)
     }
 }
 
-open class FormTableViewController: BaseFormViewController, UITableViewControllerProtocol{
+open class FormTableViewController: BaseFormViewController, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
     
     open var tableView: UITableView = UITableView().then { (tv) in
         tv.backgroundColor = .clear
     }
 
-    open var headerPromptText: String?{
+    open var headerPromptText: String? {
         return nil
     }
 
@@ -181,7 +178,6 @@ open class FormTableViewController: BaseFormViewController, UITableViewControlle
     open var fieldCellInsets: LayoutPadding {
         return LayoutPadding(horizontal: 20.0, vertical: 5.0)
     }
-
 
     open override func style() {
         super.style()
@@ -206,7 +202,6 @@ open class FormTableViewController: BaseFormViewController, UITableViewControlle
         tableView.reloadData()
     }
 
-
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         self.tableView.layoutDynamicHeightHeaderView(width: size.width)
@@ -216,7 +211,6 @@ open class FormTableViewController: BaseFormViewController, UITableViewControlle
         super.viewWillAppear(animated)
         self.tableView.layoutDynamicHeightHeaderView(width: self.tableView.bounds.width)
     }
-
 
     open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -233,8 +227,8 @@ open class FormTableViewController: BaseFormViewController, UITableViewControlle
         return cell
     }
 
-	open func customize(fieldCell: FormFieldCell, at indexPath: IndexPath){
-		if fieldCell.field is FormPickerFieldProtocol{
+	open func customize(fieldCell: FormFieldCell, at indexPath: IndexPath) {
+		if fieldCell.field is FormPickerFieldProtocol {
 			fieldCell.accessoryType = .disclosureIndicator
 		}
 

@@ -33,7 +33,7 @@ class SearchBarContainerView: UIView {
 	}
 }
 
-public enum SearchBarPosition{
+public enum SearchBarPosition {
 	case navigationTitle, header
 }
 
@@ -43,10 +43,10 @@ public enum SearchBarPosition{
 //	case neverRegainFirstResponder
 //}
 
-public enum SearchDataSource{
+public enum SearchDataSource {
 	case paginator, localDatasource
 }
-open class SearchViewController<ModelType: Paginatable>: BaseParentViewController, UISearchBarDelegate{
+open class SearchViewController<ModelType: Paginatable>: BaseParentViewController, UISearchBarDelegate {
 
 	open lazy var preSearchViewController: UIViewController? = nil
 
@@ -66,13 +66,11 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		return searchLayoutView
 	}()
 
-
-	//MARK: SearchBar layout configuration //TODO: Refactor this into single layout config class
+	// MARK: SearchBar layout configuration //TODO: Refactor this into single layout config class
 	open lazy var searchBarPosition: SearchBarPosition = .header
 	open lazy var searchBarInsets: UIEdgeInsets = .zero //This can mess with corner radius of search bar's text field, may need to tweak accordingly
 
-
-	//MARK: SearchBar layout configuration //TODO: Refactor this into single search config class
+	// MARK: SearchBar layout configuration //TODO: Refactor this into single search config class
 	open lazy var searchDataSource: SearchDataSource = .paginator
 	open lazy var searchThrottle: Float? = 0.25
 	open lazy var fetchesResultsWithEmptyQuery: Bool = false
@@ -82,14 +80,14 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 	open lazy var cachesQueryOnResignation: Bool = false
 	open var lastSearchQuery: String?
 
-	open var userHasEnteredSearchQuery: Bool{
+	open var userHasEnteredSearchQuery: Bool {
 		return searchQuery != nil
 	}
 	open var searchQuery: String? {
 		return searchBar.textField?.text.removeEmpty
 	}
 
-	open func createSearchResultsTableViewController() -> PaginatableTableViewController<ModelType>{
+	open func createSearchResultsTableViewController() -> PaginatableTableViewController<ModelType> {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 		return PaginatableTableViewController<ModelType>()
 	}
@@ -99,7 +97,7 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 	}
 
 	open override func createHeaderView() -> UIView? {
-		guard searchBarPosition == .header else{
+		guard searchBarPosition == .header else {
 			return nil
 		}
 		return searchLayoutView
@@ -119,7 +117,7 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 
 	open override func createSubviews() {
 		super.createSubviews()
-		switch searchBarPosition{
+		switch searchBarPosition {
 		case .navigationTitle:
 			let searchBarContainer = SearchBarContainerView(contentView: searchBar, contentInsets: searchBarInsets)
 			searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
@@ -131,7 +129,7 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 
 	private var searchBarWasActiveWhenLastVisible: Bool = false
 
-	open override func viewWillDisappear(_ animated: Bool){
+	open override func viewWillDisappear(_ animated: Bool) {
 		searchBarWasActiveWhenLastVisible = searchBar.isFirstResponder
 		super.viewWillDisappear(animated)
 		if endsEditingOnDisappearance {
@@ -145,16 +143,16 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		restorePreviousSearchState(makeSearchBarFirstResponder: shouldBecomeFirstResponder)
 	}
 
-	open func queryInputChanged(){
+	open func queryInputChanged() {
 
-		if searchDataSource == .paginator{
+		if searchDataSource == .paginator {
 			searchResultsTableViewController.reset(to: .loading)
 		}
 
-		guard let query = searchQuery else{
-			switch searchDataSource{
+		guard let query = searchQuery else {
+			switch searchDataSource {
 			case .paginator:
-				if fetchesResultsWithEmptyQuery{
+				if fetchesResultsWithEmptyQuery {
 					searchResultsTableViewController.activePaginator.searchQuery = nil
 					searchResultsTableViewController.fetchNextPage(firstPage: true)
 				}
@@ -164,7 +162,6 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 			}
 			return
 		}
-
 
 		guard let searchThrottle = searchThrottle else {
 			performSearch(query: query)
@@ -177,16 +174,16 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		self.perform(performSearchSelector, with: nil, afterDelay: TimeInterval(searchThrottle))
 	}
 
-	@objc private func triggerSearch(){
-		guard let query = searchQuery else{
+	@objc private func triggerSearch() {
+		guard let query = searchQuery else {
 			return
 		}
 		performSearch(query: query)
 	}
 
-	open func performSearch(query: String){
+	open func performSearch(query: String) {
 		DispatchQueue.main.async {
-			switch self.searchDataSource{
+			switch self.searchDataSource {
 			case .paginator:
 				self.searchResultsTableViewController.activePaginator.searchQuery = query
 				self.searchResultsTableViewController.fetchNextPage(firstPage: true)
@@ -202,7 +199,7 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 
 	}
 
-	open func resignSearch(forceClearQuery: Bool? = nil){
+	open func resignSearch(forceClearQuery: Bool? = nil) {
 		DispatchQueue.main.async {
 			let clearQuery = forceClearQuery ?? self.clearsResultsOnCancel
 			self.resignSearchBar(forceClearQuery: clearQuery)
@@ -210,8 +207,7 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		}
 	}
 
-
-	open func hideSearchResultsViewController(){
+	open func hideSearchResultsViewController() {
 
 		guard let preSearchViewController = preSearchViewController, preSearchViewController != children.first else {
 			return
@@ -225,11 +221,11 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 				sSelf.searchResultsTableViewController.transition(to: sSelf.searchResultsTableViewController.currentState)
 		})
 	}
-	open func resignSearchBar(forceClearQuery: Bool = false){
-		if cachesQueryOnResignation{
+	open func resignSearchBar(forceClearQuery: Bool = false) {
+		if cachesQueryOnResignation {
 			lastSearchQuery = searchBar.text
 		}
-		if forceClearQuery{
+		if forceClearQuery {
 			clearSearchQuery()
 			queryInputChanged()
 		}
@@ -237,17 +233,17 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		searchBar.resignFirstResponder()
 	}
 
-	open func resetSearch(){
+	open func resetSearch() {
 		resignSearch(forceClearQuery: true)
 		searchBarWasActiveWhenLastVisible = false
 	}
-	open func clearSearchQuery(){
+	open func clearSearchQuery() {
 		lastSearchQuery = nil
 		searchBar.text = nil
 	}
 
-	open func resignSearchBarIfActive(forceClearQuery: Bool = false){
-		if searchBar.isFirstResponder{
+	open func resignSearchBarIfActive(forceClearQuery: Bool = false) {
+		if searchBar.isFirstResponder {
 			resignSearchBar(forceClearQuery: forceClearQuery)
 		}
 	}
@@ -276,8 +272,8 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		})
 	}
 
-	open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false){
-		if let query = self.lastSearchQuery, self.searchBar.text != query{
+	open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false) {
+		if let query = self.lastSearchQuery, self.searchBar.text != query {
 			self.searchBar.text = query
 			self.queryInputChanged()
 		}

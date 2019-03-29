@@ -18,10 +18,10 @@ open class SnakeRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     var animating = false
     
     fileprivate var snakeLayer = CAShapeLayer()
-    fileprivate var snakeLengthByCycle:CGFloat = 0 // 显示的长度所占周期数
+    fileprivate var snakeLengthByCycle: CGFloat = 0 // 显示的长度所占周期数
     fileprivate var cycleCount = 1000
     
-    fileprivate var pathLength:CGFloat = 0
+    fileprivate var pathLength: CGFloat = 0
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,9 +37,17 @@ open class SnakeRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         for index in 0...cycleCount {
             let cycleStartX = CGFloat(index) * ovalDiametor * 2
             snakePath.addLine(to: CGPoint(x: cycleStartX, y: ovalDiametor / 2))
-            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2, y: ovalDiametor / 2), radius: ovalDiametor / 2, startAngle: CGFloat(Double.pi), endAngle: 0, clockwise: true)
+            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2, y: ovalDiametor / 2),
+                             radius: ovalDiametor / 2,
+                             startAngle: CGFloat(Double.pi),
+                             endAngle: 0,
+                             clockwise: true)
             snakePath.addLine(to: CGPoint(x: cycleStartX + ovalDiametor, y: frame.height - ovalDiametor / 2))
-            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2 * 3, y: frame.height - ovalDiametor/2), radius: ovalDiametor/2, startAngle: CGFloat(Double.pi), endAngle: 0, clockwise: false)
+            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2 * 3, y: frame.height - ovalDiametor/2),
+                             radius: ovalDiametor/2, 
+                             startAngle: CGFloat(Double.pi), 
+                             endAngle: 0, 
+                             clockwise: false)
         }
         snakeLayer.path = snakePath.cgPath
         snakeLayer.fillColor = nil
@@ -98,9 +106,8 @@ open class SnakeRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         strokeEndAnim.toValue = 1
         moveAnim.toValue = NSValue(cgPoint: CGPoint(x: snakeLayer.position.x - pathLength, y: snakeLayer.position.y))
         
-        
         let animGroup = CAAnimationGroup()
-        animGroup.animations = [strokeStartAnim,strokeEndAnim,moveAnim]
+        animGroup.animations = [strokeStartAnim, strokeEndAnim, moveAnim]
         animGroup.duration = Double(cycleCount) * 0.6
         
         snakeLayer.add(animGroup, forKey: AnimationGroupKey)

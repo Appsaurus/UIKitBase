@@ -13,7 +13,7 @@ open class GIFRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     open var refreshImages = [UIImage]()
     open var animatedImages = [UIImage]()
     
-    fileprivate var imageView:UIImageView = UIImageView()
+    fileprivate var imageView: UIImageView = UIImageView()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

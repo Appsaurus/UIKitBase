@@ -11,7 +11,7 @@ import MapKit
 import Swiftest
 import Contacts
 import SwiftLocation
-open class LocationSearchResultsViewController: PaginatableTableViewController<MKMapItem> , AsyncTaskDelegate{
+open class LocationSearchResultsViewController: PaginatableTableViewController<MKMapItem>, AsyncTaskDelegate {
     
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
@@ -35,17 +35,16 @@ open class LocationSearchResultsViewController: PaginatableTableViewController<M
     open override func didInit() {
         super.didInit()
         paginator = MKLocalSearchRequestQueryPaginator()
-        if let location = locationHint{
+        if let location = locationHint {
             (paginator as? MKLocalSearchRequestQueryPaginator)?.locationHint = location
-        }
-        else {
+        } else {
 			Locator.currentPosition(usingIP: .freeGeoIP, onSuccess: {[weak self] location in
 				guard let `self` = self else { return }
 				debugLog("Setting search location hint \(location)")
 				(self.paginator as? MKLocalSearchRequestQueryPaginator)?.locationHint = location.coordinate
-			}) { error, _ in
+                }, onFail: { error, _ in
 				debugLog("Something bad has occurred \(error)")
-			}
+			})
         }
     }
     
@@ -66,14 +65,13 @@ open class LocationSearchResultsViewController: PaginatableTableViewController<M
 	}
 }
 
-extension MKMapItem{
-    public func toLocation() -> LocationData{
+extension MKMapItem {
+    public func toLocation() -> LocationData {
         return LocationData(placemark: placemark)
     }
 }
 
-
-class MKLocalSearchRequestQueryPaginator: Paginator<MKMapItem>{
+class MKLocalSearchRequestQueryPaginator: Paginator<MKMapItem> {
    
 //}
 //

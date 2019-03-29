@@ -36,9 +36,15 @@ public func == (left: PullToRefreshState, right: PullToRefreshState) -> Bool {
 }
 
 class PullToRefresher: NSObject {
-    func containerFrame(scrollView: UIScrollView) -> CGRect{
-        let horizontalFrame = CGRect(x: -defaultDistanceToTrigger + animatorOffset.horizontal, y: animatorOffset.vertical, width: defaultDistanceToTrigger, height: scrollView.frame.height)
-        let verticalFrame = CGRect(x: 0 + animatorOffset.horizontal, y: -defaultDistanceToTrigger + animatorOffset.vertical, width: scrollView.frame.width, height: defaultDistanceToTrigger)
+    func containerFrame(scrollView: UIScrollView) -> CGRect {
+        let horizontalFrame = CGRect(x: -defaultDistanceToTrigger + animatorOffset.horizontal,
+                                     y: animatorOffset.vertical,
+                                     width: defaultDistanceToTrigger,
+                                     height: scrollView.frame.height)
+        let verticalFrame = CGRect(x: 0 + animatorOffset.horizontal,
+                                   y: -defaultDistanceToTrigger + animatorOffset.vertical, 
+                                   width: scrollView.frame.width, 
+                                   height: defaultDistanceToTrigger)
         return direction == .horizontal ? horizontalFrame : verticalFrame
     }
     
@@ -55,17 +61,17 @@ class PullToRefresher: NSObject {
                 containerView.scrollView = scrollView
                 scrollView.addSubview(containerView)
                 let frame = containerFrame(scrollView: scrollView)
-                switch direction{
-                    case .horizontal:
+                switch direction {
+                case .horizontal:
                     containerView.height.equal(to: scrollView)
-					containerView.width.equal(to: frame.w)
-					containerView.centerY.equalToSuperview()
-					containerView.trailing.equal(to: scrollView.leading)
+                    containerView.width.equal(to: frame.w)
+                    containerView.centerY.equalToSuperview()
+                    containerView.trailing.equal(to: scrollView.leading)
                 case .vertical:
                     containerView.width.equal(to: scrollView)
-					containerView.height.equal(to: frame.h)
-					containerView.centerX.equalToSuperview()
-					containerView.bottom.equal(to: scrollView.top)
+                    containerView.height.equal(to: frame.h)
+                    containerView.centerX.equalToSuperview()
+                    containerView.bottom.equal(to: scrollView.top)
                 }
             }
         }
@@ -73,7 +79,7 @@ class PullToRefresher: NSObject {
     var animator: CustomPullToRefreshAnimator
     var containerView: HeaderContainerView
     var direction: InfinityScrollDirection
-    var action:(()->Void)?
+    var action:(() -> Void)?
     var enable = true
     
     var animatorOffset: UIOffset = UIOffset() {
@@ -106,8 +112,9 @@ class PullToRefresher: NSObject {
         scrollView?.removeObserver(self, forKeyPath: "contentOffset", context: &KVOContext)
         scrollView?.removeObserver(self, forKeyPath: "contentInset", context: &KVOContext)
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+
+    //swiftlint:disable:next block_based_kvo
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if context == &KVOContext {
             if keyPath == "contentOffset" {
                 guard !updatingState && enable else {
@@ -123,21 +130,20 @@ class PullToRefresher: NSObject {
                 case (-CGFloat.greatestFiniteMagnitude)...(-defaultDistanceToTrigger) where state == .releasing(progress:1):
                     if scrollView!.isDragging {
                         state = .releasing(progress: 1.0)
-                    }else {
+                    } else {
                         state = .loading
                     }
                 default:
                     break
                 }
-            }
-            else if keyPath == "contentInset" {
+            } else if keyPath == "contentInset" {
                 guard !self.scrollView!.lockInset else {
                     return
                 }
                 self.defaultContentInset = (change![.newKey]! as AnyObject).uiEdgeInsetsValue!
             }
             
-        }else {
+        } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
@@ -151,7 +157,7 @@ class PullToRefresher: NSObject {
                     guard self.scrollView?.contentInset != self.defaultContentInset else { return }
                     if !self.scrollbackImmediately {
                         self.updatingState = true
-                        self.scrollView?.setContentInset(self.defaultContentInset, completion: { [unowned self] (finished) -> Void in
+                        self.scrollView?.setContentInset(self.defaultContentInset, completion: { [unowned self] (_) -> Void in
                             self.updatingState = false
                         })
                     }
@@ -160,13 +166,12 @@ class PullToRefresher: NSObject {
                     if !self.scrollbackImmediately {
                         self.updatingState = true
                         var inset = self.defaultContentInset
-                        if self.direction == .horizontal{
+                        if self.direction == .horizontal {
                             inset.left += self.defaultDistanceToTrigger
-                        }
-                        else{
+                        } else {
                             inset.top += self.defaultDistanceToTrigger
                         }
-                        self.scrollView?.setContentInset(inset, completion: { [unowned self] (finished) -> Void in
+                        self.scrollView?.setContentInset(inset, completion: { [unowned self] (_) -> Void in
                             self.updatingState = false
                         })
                         self.action?()
@@ -181,13 +186,12 @@ class PullToRefresher: NSObject {
     func beginRefreshing() {
         let verticalContentOffset = CGPoint(x: 0, y: -(defaultDistanceToTrigger + defaultContentInset.top + 10))
         let  horizontalContentOffset = CGPoint(x: -(defaultDistanceToTrigger + defaultContentInset.left + 10), y: 0)
-        self.scrollView?.setContentOffset(direction == .horizontal ? horizontalContentOffset : verticalContentOffset , animated: true)
+        self.scrollView?.setContentOffset(direction == .horizontal ? horizontalContentOffset : verticalContentOffset, animated: true)
     }
     func endRefreshing() {
         self.state = .none
     }
 }
-
 
 class HeaderContainerView: UIView {
     
@@ -219,4 +223,3 @@ extension UIView {
         return nil
     }
 }
-

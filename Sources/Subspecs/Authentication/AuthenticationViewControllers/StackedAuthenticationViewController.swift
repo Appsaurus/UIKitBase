@@ -1,5 +1,3 @@
-
-
 //
 //  AuthenticationViewController.swift
 //  AppsaurusUIKit
@@ -11,7 +9,7 @@
 import Swiftest
 import Layman
 
-open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthControllerManager>: AuthenticationViewController<AuthControllerManager> {
+open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: AuthenticationViewController<ACM> {
     
     open var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,14 +43,14 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
     open var authButtonStackView: UIStackView?
     open var additionalActionsStackView: UIStackView?
     
-    //MARK: Notifications
+    // MARK: Notifications
     override open func notificationsToObserve() -> [Notification.Name] {
         return super.notificationsToObserve() + [UIResponder.keyboardWillHideNotification, UIResponder.keyboardWillShowNotification]
     }
     
     override open func didObserve(notification: Notification) {
         super.didObserve(notification: notification)
-        guard let authButtonStackView = authButtonStackView else{
+        guard let authButtonStackView = authButtonStackView else {
             return
         }
         switch notification.name {
@@ -82,7 +80,14 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
         let layoutViewInsets = layoutInsets()
         layoutView.horizontalEdges.equal(to: horizontalEdges.inset(layoutViewInsets.leading, layoutViewInsets.trailing))
         
-        let topKeyboardConstraint = KeyboardAdjustableLayoutConstraint.createConstraint(item: layoutView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, keyboardHiddenConstant: layoutViewInsets.top, keyboardVisibleConstant: UIApplication.shared.statusBarFrame.h)
+        let topKeyboardConstraint = KeyboardAdjustableLayoutConstraint.createConstraint(item: layoutView,
+                                                                                        attribute: .top, 
+                                                                                        relatedBy: .equal, 
+                                                                                        toItem: view, 
+                                                                                        attribute: .top, 
+                                                                                        multiplier: 1.0, 
+                                                                                        keyboardHiddenConstant: layoutViewInsets.top, 
+                                                                                        keyboardVisibleConstant: UIApplication.shared.statusBarFrame.h)
         
         let bottomKeyboardConstraint =  KeyboardDodgingLayoutConstraint.createConstraint(item: layoutView,
                                                                                          attribute: .bottom,
@@ -108,9 +113,9 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
     }
 
     open func layoutInsets() -> LayoutPadding {
-        switch UIDevice.current.userInterfaceIdiom{
-        case .pad: return iPadLayoutInsets();
-        default: return iPhoneLayoutInsets();
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad: return iPadLayoutInsets()
+        default: return iPhoneLayoutInsets()
         }
     }
     
@@ -128,10 +133,8 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
         return LayoutPadding(top: topPadding, leading: sidePadding, bottom: bottomPadding, trailing: sidePadding)
     }
     
-    
-    
     func createAuthButtonStackView() -> UIStackView? {
-        guard let authButtons = authButtons else{
+        guard let authButtons = authButtons else {
             return nil
         }
         let stackView = UIStackView(arrangedSubviews: authButtons)
@@ -143,7 +146,6 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
         return stackView
     }
     
-    
     open func createAdditionalActionsStackView() -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: stackedAdditionalActionsViews())
         stackView.alignment = UIStackView.Alignment.fill
@@ -153,12 +155,11 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
         return stackView
     }
     
-    open func stackedAdditionalActionsViews() -> [UIView]{
+    open func stackedAdditionalActionsViews() -> [UIView] {
         return []
     }
 
-
-    //MARK: AuthControllerDelegate
+    // MARK: AuthControllerDelegate
 
 	open override func showAuthViews(animated: Bool = true) {
 		super.showAuthViews(animated: animated)
@@ -170,7 +171,6 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
 		hideBottomStacks(animated: animated)
 	}
 
-
 	open override func stopAuthenticationInProgressAnimation() {
 		super.stopAuthenticationInProgressAnimation()
 		imageView.stopInfiniteFadeInOut(1.0)
@@ -180,38 +180,25 @@ open class StackedAuthenticationViewController<AuthControllerManager: BaseAuthCo
 		super.startAuthenticationInProgressAnimation()
 		imageView.startInfiniteFadeInOut()
 	}
-
-
     
-    //MARK: Convenience
-    open var bottomStacks: [UIStackView]{
+    // MARK: Convenience
+    open var bottomStacks: [UIStackView] {
         return [middleStackView, additionalActionsStackView].removeNils()
     }
     
     let stackVisibilityAnimationDuration: Double = 0.3
-    open func showBottomStacks(animated: Bool = true){
+    open func showBottomStacks(animated: Bool = true) {
         animateStackedViews(bottomStacks, hidden: false, animated: animated)
     }
     
-    open func hideBottomStacks(animated: Bool = true){
+    open func hideBottomStacks(animated: Bool = true) {
         animateStackedViews(bottomStacks, hidden: true, animated: animated)
     }
     
-    open func animateStackedViews(_ views: [UIView], hidden: Bool, animated: Bool = true){
+    open func animateStackedViews(_ views: [UIView], hidden: Bool, animated: Bool = true) {
         UIView.animate(withDuration: animated ? stackVisibilityAnimationDuration : 0.0, animations: {
-            views.forEach{$0.alpha = hidden ? 0 : 1}
+            views.forEach {$0.alpha = hidden ? 0 : 1}
             //views.forEach{$0.hidden = hidden}
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-

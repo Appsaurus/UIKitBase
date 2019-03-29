@@ -5,13 +5,12 @@
 //  Created by Brian Strobach on 10/6/17.
 //
 
-
 import CountryPicker
 import PhoneNumberKit
 import UIKit
 import Swiftest
 
-open class PhoneNumberFormTextField<ContentView: UITextField>: FormTextField<ContentView, String> where ContentView: FormFieldViewProtocol{
+open class PhoneNumberFormTextField<ContentView: UITextField>: FormTextField<ContentView, String> where ContentView: FormFieldViewProtocol {
     open override func didInit() {
         super.didInit()
         keyboardType = .numberPad
@@ -23,7 +22,7 @@ open class PhoneNumberFormTextField<ContentView: UITextField>: FormTextField<Con
     }
 }
 
-open class PhoneNumberCountry{
+open class PhoneNumberCountry {
     public let name: String
     public let countryCode: String
     public let phoneCode: String
@@ -36,7 +35,7 @@ open class PhoneNumberCountry{
     }
 }
 
-open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, PhoneNumberCountry>, CountryPickerDelegate where T: FormFieldViewProtocol{
+open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, PhoneNumberCountry>, CountryPickerDelegate where T: FormFieldViewProtocol {
     
     open lazy var flagImageView: UIImageView = UIImageView()
     
@@ -47,7 +46,7 @@ open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, P
         return picker
     }()
     
-    open override var inputView: UIView?{
+    open override var inputView: UIView? {
         return countryPicker
     }
 
@@ -94,4 +93,3 @@ open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, P
     }
 
 }
-

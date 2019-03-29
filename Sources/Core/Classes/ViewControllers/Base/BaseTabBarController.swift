@@ -9,17 +9,15 @@ import Foundation
 import Swiftest
 import UIKitMixinable
 
-public protocol BaseTabBarControllerProtocol:
-    BaseViewControllerProtocol
-{}
+public protocol BaseTabBarControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseTabBarControllerProtocol where Self: UITabBarController{
-    public var baseTabBarControllerProtocolMixins: [LifeCycle]{
+extension BaseTabBarControllerProtocol where Self: UITabBarController {
+    public var baseTabBarControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }
 
-open class BaseTabBarController: MixinableTabBarController, BaseTabBarControllerProtocol, UITabBarControllerDelegate{
+open class BaseTabBarController: MixinableTabBarController, BaseTabBarControllerProtocol, UITabBarControllerDelegate {
     
     open var initialSelectedIndex: Int? = 0
     
@@ -32,22 +30,22 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
         delegate = self
     }
 
-    //MARK: LifeCycle
+    // MARK: LifeCycle
     open override func viewDidLoad() {
         super.viewDidLoad()
         selectedIndex =? initialSelectedIndex
     }
     
-    //MARK: Orientation
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+    // MARK: Orientation
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
     
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation{
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle{
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
     
@@ -55,23 +53,23 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
         return statusBarHidden
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         applyBaseViewStyle()
     }
     
-    //MARK: StatefulViewController
-    open func startLoading(){}
+    // MARK: StatefulViewController
+    open func startLoading() {}
     
     open func customizeStatefulViews() {}
     
@@ -79,12 +77,12 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
         return [:]
     }
     
-    open func willTransition(to state: State){}
+    open func willTransition(to state: State) {}
     
-    open func didTransition(to state: State){}
+    open func didTransition(to state: State) {}
 
-    //MARK: UITabBarControllerDelegate    
-    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+    // MARK: UITabBarControllerDelegate    
+    open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         guard let childVC = viewController as? TabBarChildViewControllerProtocol else {
             return
         }
@@ -94,12 +92,12 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     
     open override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let vc = selectedViewController else { return }
-        if vc.tabBarItem == item && vc.isViewLoaded == true{
+        if vc.tabBarItem == item && vc.isViewLoaded == true {
             self.tabBar(tabBar, didReselect: vc)
         }
     }
     
-    open func tabBar(_ tabBar: UITabBar, didReselect viewController: UIViewController){
+    open func tabBar(_ tabBar: UITabBar, didReselect viewController: UIViewController) {
         guard let childVC = self.selectedViewController as? TabBarChildViewControllerProtocol else {
             return
         }
@@ -114,7 +112,7 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
         return false
     }
     
-    open func modalViewControllerToPresent(inPlaceOf placeholderViewController: TabBarControllerModalChildPlaceholder) -> UIViewController{
+    open func modalViewControllerToPresent(inPlaceOf placeholderViewController: TabBarControllerModalChildPlaceholder) -> UIViewController {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return UIViewController()
     }
@@ -122,4 +120,4 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     open func tabBarController(_ tabBarController: UITabBarController, willPresentModal viewController: UIViewController) {}
 }
 
-open class TabBarControllerModalChildPlaceholder: UIViewController{}
+open class TabBarControllerModalChildPlaceholder: UIViewController {}

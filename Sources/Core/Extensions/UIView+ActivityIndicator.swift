@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 import Layman
-public enum ActivityIndicatorPosition{
+public enum ActivityIndicatorPosition {
     case center, leading, trailing
 }
 
-extension UIBarButtonItem{
-    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, position: ActivityIndicatorPosition = .center){
+extension UIBarButtonItem {
+    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, position: ActivityIndicatorPosition = .center) {
         guard let customView = self.customView else {
             assertionFailure("You can only show activity indicator on a UIBarButtonItem with a customView.")
             return
         }
         customView.showActivityIndicator(style: style, useAutoLayout: false, position: position)
     }
-    public func hideActivityIndicator(){
+    public func hideActivityIndicator() {
         guard let customView = self.customView else {
             assertionFailure("You can only show activity indicator on a UIBarButtonItem with a customView.")
             return
@@ -30,31 +30,33 @@ extension UIBarButtonItem{
     }
 }
 
-extension UIView{
-    
+extension UIView {
     
     /**
      Creates and starts animating a UIActivityIndicator in any UIView
      Parameter style: `UIActivityIndicatorViewStyle` default is .gray
      */
     
-    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, useAutoLayout: Bool = true, position: ActivityIndicatorPosition = .center){
-        if let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView { //Indicator already exists, make sure it is visible but do not create another
+    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
+                                      useAutoLayout: Bool = true,
+                                      position: ActivityIndicatorPosition = .center) {
+        //Indicator already exists, make sure it is visible but do not create another
+        if let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
             bringSubviewToFront(indicator)
             indicator.startAnimating()
             return
         }
         let indicator = UIActivityIndicatorView(style: style)
         indicator.apply(viewStyle: self.viewStyle())
-        while let superview = superview, indicator.backgroundColor == .clear{
+        while let superview = superview, indicator.backgroundColor == .clear {
             indicator.backgroundColor = superview.backgroundColor
             indicator.cornerRadius = superview.cornerRadius
         }
         indicator.tag = UIViewExtensionTag.activityIndicator.rawValue
         addSubview(indicator)
         
-        if useAutoLayout{
-            switch position{
+        if useAutoLayout {
+            switch position {
             case .center:
                 indicator.equal(to: edges)
             case .trailing:
@@ -62,9 +64,8 @@ extension UIView{
             case .leading:
                 indicator.equal(to: edges.excluding(.trailing))
             }
-        }
-        else{
-            switch position{
+        } else {
+            switch position {
             case .center:
                 indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 indicator.center = self.center
@@ -87,8 +88,8 @@ extension UIView{
     /**
      Stops and removes an UIActivityIndicator in any UIView
      */
-    public func hideActivityIndicator(){
-        guard let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else{
+    public func hideActivityIndicator() {
+        guard let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
             return
         }
         indicator.stopAnimating()
@@ -100,17 +101,16 @@ public protocol UIViewTag: RawRepresentable {
     var rawValue: Int { get }
 }
 
-
 /// Tags for any views that are created by an extension method and need to be accessed at later time.
 /// Used as an alternative to storing references in associated objects via obj-c runtime.
 ///
 /// - activityIndicator: 1001
-public enum UIViewExtensionTag: Int, UIViewTag{
+public enum UIViewExtensionTag: Int, UIViewTag {
     case activityIndicator = 1001
 }
 
-extension UIView{
-    public func subview<VT: UIViewTag>(withTag tag: VT) -> UIView?{
+extension UIView {
+    public func subview<VT: UIViewTag>(withTag tag: VT) -> UIView? {
         return viewWithTag(tag.rawValue)
     }
 }

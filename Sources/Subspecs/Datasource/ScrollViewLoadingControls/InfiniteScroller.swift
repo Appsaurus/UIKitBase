@@ -42,7 +42,7 @@ class InfiniteScroller: NSObject {
         didSet {
             addScrollViewObserving(scrollView)
             if let scrollView = scrollView {
-                switch direction{
+                switch direction {
                 case .vertical:
                     scrollView.contentInset.bottom += defaultDistanceToTrigger
                 case .horizontal:
@@ -64,7 +64,6 @@ class InfiniteScroller: NSObject {
     var direction: InfinityScrollDirection
     var action: (() -> Void)?
     var enable = true
-    
     
     var defaultContentInset = UIEdgeInsets.zero
     var defaultDistanceToTrigger: CGFloat = 0.0
@@ -95,29 +94,26 @@ class InfiniteScroller: NSObject {
         scrollView?.removeObserver(self, forKeyPath: "contentSize", context: &KVOContext)
     }
     fileprivate var lastOffset = CGPoint()
-    
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+
+    //swiftlint:disable:next block_based_kvo cyclomatic_complexity
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if context == &KVOContext {
             if keyPath == "contentSize" {
                 adjustFooterFrame()
-            }
-            else if keyPath == "contentInset" {
+            } else if keyPath == "contentInset" {
                 guard !self.scrollView!.lockInset else {
                     return
                 }
                 defaultContentInset = (change![.newKey]! as AnyObject).uiEdgeInsetsValue!
                 adjustFooterFrame()
-            }
-            else if keyPath == "contentOffset" {
+            } else if keyPath == "contentOffset" {
                 let point = (change![.newKey]! as AnyObject).cgPointValue!
                 
-                if direction == .vertical{
+                if direction == .vertical {
                     guard lastOffset.y != point.y else {
                         return
                     }
-                }
-                else{
+                } else {
                     guard lastOffset.x != point.x else {
                         return
                     }
@@ -128,31 +124,30 @@ class InfiniteScroller: NSObject {
 
                 var distance: CGFloat = 0
                 
-                switch (direction, stickToContent){
-                    case (.vertical, true):
-                        distance = scrollView!.contentSize.height - point.y - scrollView!.frame.height
-                    case (.vertical, false):
+                switch (direction, stickToContent) {
+                case (.vertical, true):
+                    distance = scrollView!.contentSize.height - point.y - scrollView!.frame.height
+                case (.vertical, false):
                     distance = scrollView!.contentSize.height + self.defaultContentInset.bottom - point.y - scrollView!.frame.height
-                    case (.horizontal, true):
+                case (.horizontal, true):
                     distance = scrollView!.contentSize.width - point.x - scrollView!.frame.width
-                    case (.horizontal, false):
+                case (.horizontal, false):
                     distance = scrollView!.contentSize.width + self.defaultContentInset.right - point.x - scrollView!.frame.width
                 }
 
                 // 要保证scrollView里面是有内容的, 且保证是在上滑
-                if self.state != .loading{
+                if self.state != .loading {
                     let verticalShouldLoad: Bool = distance < 0 && scrollView!.contentSize.height > 0 && point.y > lastOffset.y
                     let horizontalShouldLoad: Bool = distance < 0 && scrollView!.contentSize.width > 0 && point.x > lastOffset.x
                     let shouldLoad: Bool = direction == .vertical ? verticalShouldLoad : horizontalShouldLoad
-                    if shouldLoad{
+                    if shouldLoad {
                         self.state = .loading
                     }
                 }
                 
                 lastOffset = point
             }
-        }
-        else {
+        } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
@@ -167,22 +162,21 @@ class InfiniteScroller: NSObject {
                     
                     self.updatingState = true
                     var inset: UIEdgeInsets!
-                    if self.direction == .vertical{
+                    if self.direction == .vertical {
                         let jumpToBottom = self.defaultDistanceToTrigger + self.defaultContentInset.bottom
                         inset = UIEdgeInsets(top: self.defaultContentInset.top, left: self.defaultContentInset.left, bottom: jumpToBottom, right: self.defaultContentInset.right)
-                    }
-                    else{
+                    } else {
                         let jumpToBottom = self.defaultDistanceToTrigger + self.defaultContentInset.right
                         inset = UIEdgeInsets(top: self.defaultContentInset.top, left: self.defaultContentInset.left, bottom: self.defaultContentInset.bottom, right: jumpToBottom)
                     }
                     
-                    self.scrollView?.setContentInset(inset, completion: { [unowned self] (finished) -> Void in
+                    self.scrollView?.setContentInset(inset, completion: { [unowned self] (_) -> Void in
                         self.updatingState = false
                     })
                     self.action?()
                 case .none where oldValue == .loading:
                     self.updatingState = true
-                    self.scrollView?.setContentInset(self.defaultContentInset, completion: { (finished) -> Void in
+                    self.scrollView?.setContentInset(self.defaultContentInset, completion: { (_) -> Void in
                         self.updatingState = false
                     })
                 default:
@@ -198,27 +192,30 @@ class InfiniteScroller: NSObject {
         }
     }
     
-    func containerFrame(scrollView: UIScrollView) -> CGRect{
-        switch (direction, stickToContent){
-            case (.vertical, true):
-                return CGRect(x: 0, y: scrollView.contentSize.height, width: scrollView.bounds.width, height: defaultDistanceToTrigger)
-            case (.vertical, false):
-                return CGRect(x: 0, y: scrollView.contentSize.height + self.defaultContentInset.bottom, width: scrollView.bounds.width, height: defaultDistanceToTrigger)
-            case (.horizontal, true):
-                return CGRect(x: scrollView.contentSize.width, y: 0, width: defaultDistanceToTrigger, height: scrollView.bounds.height)
-            case (.horizontal, false):
-                return CGRect(x: scrollView.contentSize.width + self.defaultContentInset.right, y: 0, width: defaultDistanceToTrigger, height: scrollView.bounds.height)
+    func containerFrame(scrollView: UIScrollView) -> CGRect {
+        switch (direction, stickToContent) {
+        case (.vertical, true):
+            return CGRect(x: 0, y: scrollView.contentSize.height, width: scrollView.bounds.width, height: defaultDistanceToTrigger)
+        case (.vertical, false):
+            return CGRect(x: 0, y: scrollView.contentSize.height + self.defaultContentInset.bottom, width: scrollView.bounds.width, height: defaultDistanceToTrigger)
+        case (.horizontal, true):
+            return CGRect(x: scrollView.contentSize.width, y: 0, width: defaultDistanceToTrigger, height: scrollView.bounds.height)
+        case (.horizontal, false):
+            return CGRect(x: scrollView.contentSize.width + self.defaultContentInset.right, y: 0, width: defaultDistanceToTrigger, height: scrollView.bounds.height)
         }
         
     }
     
     // MARK: - Infinity Scroll
     func beginInfiniteScrolling() {
-        if direction == .vertical{
-            scrollView?.setContentOffset(CGPoint(x: 0, y: (scrollView!.contentSize.height + defaultContentInset.bottom - scrollView!.frame.height + defaultDistanceToTrigger)), animated: true)
-        }
-        else{
-            scrollView?.setContentOffset(CGPoint(x: (scrollView!.contentSize.width + defaultContentInset.right - scrollView!.frame.width + defaultDistanceToTrigger), y: 0), animated: true)
+        if direction == .vertical {
+            scrollView?.setContentOffset(CGPoint(x: 0,
+                                                 y: (scrollView!.contentSize.height + defaultContentInset.bottom - scrollView!.frame.height + defaultDistanceToTrigger)),
+                                         animated: true)
+        } else {
+            scrollView?.setContentOffset(CGPoint(x: (scrollView!.contentSize.width + defaultContentInset.right - scrollView!.frame.width + defaultDistanceToTrigger),
+                                                 y: 0),
+                                         animated: true)
         }
         
     }

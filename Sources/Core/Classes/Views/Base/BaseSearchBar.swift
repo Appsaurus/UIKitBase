@@ -8,35 +8,31 @@
 
 import UIKitMixinable
 
-public protocol BaseSearchBarProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseSearchBarProtocol: BaseViewProtocol {}
 
-extension BaseSearchBarProtocol where Self: UISearchBar{
-    public var baseSearchBarProtocolMixins: [LifeCycle]{
+extension BaseSearchBarProtocol where Self: UISearchBar {
+    public var baseSearchBarProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }
 
-open class BaseSearchBar: MixinableSearchBar, BaseSearchBarProtocol{
+open class BaseSearchBar: MixinableSearchBar, BaseSearchBarProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseSearchBarProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }
-

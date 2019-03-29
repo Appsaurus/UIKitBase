@@ -16,7 +16,7 @@ open class StatefulViewControllerView: BaseView {
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
 	open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
     
-    open func initialArrangedSubviews() -> [UIView]{
+    open func initialArrangedSubviews() -> [UIView] {
         return [mainLabel, responseButton]
     }
     
@@ -49,26 +49,26 @@ open class StatefulViewControllerView: BaseView {
         stackView.sizeAnchors.greaterThanOrEqual(to: 0)
 
     }
-    open func set(message: String){
+    open func set(message: String) {
         mainLabel.text = message
     }
     
-    open func set(message: String? = nil, responseButtonTitle: String? = nil, responseAction: VoidClosure? = nil){
-        if let message = message{
+    open func set(message: String? = nil, responseButtonTitle: String? = nil, responseAction: VoidClosure? = nil) {
+        if let message = message {
             mainLabel.text = message
         }
-        if let buttonTitle = responseButtonTitle{
+        if let buttonTitle = responseButtonTitle {
             responseButton.setTitle(buttonTitle, for: .normal)
         }
         
-        if let responseAction = responseAction{
+        if let responseAction = responseAction {
             self.responseAction = responseAction
         }
         
     }
     
     @discardableResult
-    open func addButton(title: String, action: @escaping VoidClosure) -> BaseUIButton{
+    open func addButton(title: String, action: @escaping VoidClosure) -> BaseUIButton {
         let button = BaseUIButton()
 		button.apply(buttonStyle: .flat(textStyle: .regular(color: .primary)))
         button.setTitle(title, for: .normal)
@@ -77,7 +77,7 @@ open class StatefulViewControllerView: BaseView {
         return button
     }
     
-    open func didPressResponseButton(){
+    open func didPressResponseButton() {
         responseAction?()
     }
     
@@ -86,11 +86,9 @@ open class StatefulViewControllerView: BaseView {
         mainLabel.apply(textStyle: .regular())
 		responseButton.apply(buttonStyle: .flat(textStyle: .regular(color: .primary)))
         backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? self.parentViewController?.view.backgroundColor
-        if backgroundColor == .clear || backgroundColor == nil{
+        if backgroundColor == .clear || backgroundColor == nil {
             backgroundColor = .white
         }
     }
     
-    
 }
-

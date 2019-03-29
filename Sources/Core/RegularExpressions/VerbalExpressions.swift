@@ -6,7 +6,6 @@
 //
 //	Original implementation: https://github.com/VerbalExpressions/SwiftVerbalExpressions
 
-
 import Foundation
 import UIKit
 
@@ -14,7 +13,6 @@ public func VerEx() -> VerbalExpressions {
 	return VerbalExpressions()
 }
 
-//TODO: Move this to DinoDNA
 public struct VerbalExpressions {
 	// stored properties
 	fileprivate let prefixes: String
@@ -26,6 +24,7 @@ public struct VerbalExpressions {
 	public var pattern: String { return prefixes + source + suffixes }
 
 	public var regularExpression: NSRegularExpression! {
+        //swiftlint:disable:next force_try
 		return try! NSRegularExpression(pattern: pattern, options: options)
 	}
 
@@ -85,7 +84,7 @@ public struct VerbalExpressions {
 	}
 
 	public func or(_ exp: VerbalExpressions) -> VerbalExpressions {
-		return or(exp.source);
+		return or(exp.source)
 	}
 
 	public func anything() -> VerbalExpressions {
@@ -149,8 +148,7 @@ public struct VerbalExpressions {
 	public func withAnyCase(enabled: Bool = true) -> VerbalExpressions {
 		if enabled {
 			return adding(modifier: "i")
-		}
-		else {
+		} else {
 			return removing(modifier: "i")
 		}
 	}
@@ -158,8 +156,7 @@ public struct VerbalExpressions {
 	public func searchOneLine(enabled: Bool = true) -> VerbalExpressions {
 		if enabled {
 			return removing(modifier: "m")
-		}
-		else {
+		} else {
 			return adding(modifier: "m")
 		}
 	}
@@ -240,7 +237,7 @@ extension VerbalExpressions: CustomStringConvertible, CustomDebugStringConvertib
 
 // MARK: - Equatable conformance
 extension VerbalExpressions: Equatable {
-	public static func ==(lhs: VerbalExpressions, rhs: VerbalExpressions) -> Bool {
+	public static func == (lhs: VerbalExpressions, rhs: VerbalExpressions) -> Bool {
 		return lhs.pattern == rhs.pattern && lhs.options == rhs.options
 	}
 }
@@ -279,18 +276,18 @@ fileprivate extension NSRegularExpression.Options {
 infix operator =~: ComparisonPrecedence
 infix operator !~: ComparisonPrecedence
 
-public func =~(lhs: String, rhs: VerbalExpressions) -> Bool {
+public func =~ (lhs: String, rhs: VerbalExpressions) -> Bool {
 	return rhs.test(lhs)
 }
 
-public func =~(lhs: VerbalExpressions, rhs: String) -> Bool {
+public func =~ (lhs: VerbalExpressions, rhs: String) -> Bool {
 	return lhs.test(rhs)
 }
 
-public func !~(lhs: String, rhs: VerbalExpressions) -> Bool {
+public func !~ (lhs: String, rhs: VerbalExpressions) -> Bool {
 	return !(lhs =~ rhs)
 }
 
-public func !~(lhs: VerbalExpressions, rhs: String) -> Bool {
+public func !~ (lhs: VerbalExpressions, rhs: String) -> Bool {
 	return !(lhs =~ rhs)
 }

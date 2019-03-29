@@ -16,23 +16,23 @@ public protocol FormInput: class, NSObjectProtocol {
 //    var view: UIView { get }
 }
 
-extension FormField: FormInput{
+extension FormField: FormInput {
     
-    public var responder: UIResponder{
+    public var responder: UIResponder {
         return proxyFirstResponder() ?? self
     }
     
-    public var view: UIView{
+    public var view: UIView {
         return self.canBecomeFirstResponder ? self : self.contentView
     }
 }
 
 extension UITextField: FormInput {
     public var _inputAccessoryView: UIView? {
-        get{
+        get {
             return inputAccessoryView
         }
-        set{
+        set {
             inputAccessoryView = newValue
         }
     }
@@ -48,10 +48,10 @@ extension UITextField: FormInput {
 extension UITextView: FormInput {
     
     public var _inputAccessoryView: UIView? {
-        get{
+        get {
             return inputAccessoryView
         }
-        set{
+        set {
             inputAccessoryView = newValue
         }
     }

@@ -28,7 +28,7 @@ open class ViewBasedTableViewCell<View: UIView>: DynamicHeightCell {
         view.forceSuperviewToMatchContentSize(insetBy: mainViewInsets)
     }
     
-    open func createMainView() -> View{
+    open func createMainView() -> View {
         return View()        
     }
     

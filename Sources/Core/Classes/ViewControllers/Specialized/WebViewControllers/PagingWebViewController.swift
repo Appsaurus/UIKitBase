@@ -11,15 +11,15 @@ import Layman
 import SafariServices
 import Algorithm
 
-open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged{
+open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged {
 
 	open var titledUrls: SortedDictionary<String, URL>
 
-	public required init(titledUrlStrings: SortedDictionary<String, String>){
+	public required init(titledUrlStrings: SortedDictionary<String, String>) {
 		titledUrls = SortedDictionary<String, URL>()
 		super.init(callDidInit: false)
-		for titledUrlString in titledUrlStrings{
-			guard let url = titledUrlString.value?.toURL else{
+		for titledUrlString in titledUrlStrings {
+			guard let url = titledUrlString.value?.toURL else {
 				continue
 			}
 			self.titledUrls.insert(value: url, for: titledUrlString.key)
@@ -37,7 +37,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 
 	open override func createPagedViewControllers() -> [UIViewController] {
 		var vcs: [UIViewController] = []
-		for titledUrl in titledUrls{
+		for titledUrl in titledUrls {
 			guard let url = titledUrl.value else { continue }
 			let vc = UIViewController()
 			let webView = UIWebView()
@@ -49,10 +49,10 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 		return vcs
 	}
 
-	//MARK: PagingMenuController
+	// MARK: PagingMenuController
 
-	open override var pagingMenuViewOptions: PagingMenuViewOptions{
-		let menuHeight:CGFloat = 50.0
+	open override var pagingMenuViewOptions: PagingMenuViewOptions {
+		let menuHeight: CGFloat = 50.0
 		let sizing: PagingeMenuViewItemSizingBehavior = .spanWidthCollectively(height: menuHeight * 0.75)
 		return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: sizing, scrollBehavior: .tabBar)
 	}
@@ -73,7 +73,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 		return cell
 	}
 
-	open func configure(cell: WebViewPagingMenuItemCell, at index: Int){
+	open func configure(cell: WebViewPagingMenuItemCell, at index: Int) {
 		cell.menuItemButton.setTitle(titledUrls[index].key)
 		cell.menuItemButton.buttonLayout = cell.menuItemButtonLayout()
 		cell.forceAutolayoutPass()
@@ -81,7 +81,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 
 }
 
-open class WebViewPagingMenuView: PagingMenuView{
+open class WebViewPagingMenuView: PagingMenuView {
 	open override func createSelectionIndicatorView() -> UIView? {
 		return UIView()
 	}
@@ -101,7 +101,7 @@ open class WebViewPagingMenuView: PagingMenuView{
 
 open class WebViewPagingMenuItemCell: PagingMenuButtonCell {
 
-	open override func menuItemButtonLayout() -> ButtonLayout{
+	open override func menuItemButtonLayout() -> ButtonLayout {
 		let insets = LayoutPadding(10)
 		return ButtonLayout(layoutType: .titleCentered, marginInsets: insets)
 	}
@@ -110,15 +110,15 @@ open class WebViewPagingMenuItemCell: PagingMenuButtonCell {
 		super.style()
 		let viewStyle = ViewStyle(backgroundColor: .clear)
 
-		let fontSize:CGFloat = CGFloat(12.0).scaledForDevice(scaleDownOnly: true)		
+		let fontSize: CGFloat = CGFloat(12.0).scaledForDevice(scaleDownOnly: true)		
 		let font: UIFont = .regular(fontSize)
 		let textStyle = TextStyle(color: .textMedium, font: font)
 		let selectedTextStyle = TextStyle(color: .primary, font: font)
 		let normalButtonStyle = ButtonStyle(textStyle: textStyle, viewStyle: viewStyle)
 		let selectedButtonStyle = ButtonStyle(textStyle: selectedTextStyle, viewStyle: viewStyle)
 		menuItemButton.styleMap = [
-			.normal : normalButtonStyle,
-			.selected : selectedButtonStyle
+			.normal: normalButtonStyle,
+			.selected: selectedButtonStyle
 		]
 	}
 }

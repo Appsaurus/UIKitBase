@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ZoomableImageScrollViewDelegate: class{
+protocol ZoomableImageScrollViewDelegate: class {
     func imageScrollView(_ imageScrollView: ZoomableImageScrollView, didReframeImage image: UIImage)
 }
 
@@ -77,16 +77,15 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
         resetZoom()
     }
     
-    open func resetZoom(){
+    open func resetZoom() {
         zoomScale = calculateZoomScaleToAspectFitImageViewToBoundingView()
     }
     
-    open func recalculateMinMaxZoomScalesForCurrentBounds(){
+    open func recalculateMinMaxZoomScalesForCurrentBounds() {
         let zoomRange = maximumZoomScale - minimumZoomScale
         minimumZoomScale = calculateZoomScaleToAspectFitImageViewToBoundingView()
         maximumZoomScale = minimumZoomScale + zoomRange
     }
-    
     
     fileprivate func calculateZoomScaleToAspectFitImageViewToBoundingView() -> CGFloat {
         // calculate min/max zoomscale
@@ -103,7 +102,7 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
         // zoom out if it bigger than middle scale point. Else, zoom in
         let scaleStep = (maximumZoomScale - minimumZoomScale) / 2.0
         var nextStep = zoomScale + scaleStep
-        if nextStep > maximumZoomScale{
+        if nextStep > maximumZoomScale {
             nextStep = minimumZoomScale
         }
         let zoomRect = zoomRectForScale(nextStep, center: gestureRecognizer.location(ofTouch: 0, in: imageView))
@@ -118,16 +117,19 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
         imageWasReframed()
     }
     
-    open func imageWasReframed(){
-        if let image = self.imageView.image{
+    open func imageWasReframed() {
+        if let image = self.imageView.image {
             imageScrollViewDelegate?.imageScrollView(self, didReframeImage: image)
         }
     }
     
-    open func getCurrentCropRectForImage() -> CGRect{
+    open func getCurrentCropRectForImage() -> CGRect {
         let scale = 1 / zoomScale
         let boundingView = self.boundingView ?? self
-        let visibleRect = CGRect(x: (contentOffset.x + contentInset.left) * scale, y: (contentOffset.y + contentInset.top)*scale, width: boundingView.bounds.size.width*scale, height: boundingView.bounds.size.height*scale)
+        let visibleRect = CGRect(x: (contentOffset.x + contentInset.left) * scale,
+                                 y: (contentOffset.y + contentInset.top)*scale,
+                                 width: boundingView.bounds.size.width*scale,
+                                 height: boundingView.bounds.size.height*scale)
         return visibleRect
     }
     fileprivate func zoomRectForScale(_ scale: CGFloat, center: CGPoint) -> CGRect {

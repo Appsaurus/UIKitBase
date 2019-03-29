@@ -10,14 +10,14 @@ import UIKitTheme
 import Layman
 
 @available(iOS 10.0, *)
-open class FeedbackGenerator{
-    public static func selectionChanged(){
+open class FeedbackGenerator {
+    public static func selectionChanged() {
         let feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.prepare()
         feedbackGenerator.selectionChanged()
     }
 }
-open class FormToolbarStyle: Style{
+open class FormToolbarStyle: Style {
     open var viewStyle: ViewStyle?
 	open var buttonActiveStyle: TextStyle = .regular(color: .primary)
     open var buttonInactiveStyle: TextStyle = .regular(color: .primaryLight)
@@ -50,13 +50,13 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     }
     private lazy var backButton: UIBarButtonItem = self.buildBackButton()
     
-    private func buildBackButton() -> UIBarButtonItem{
+    private func buildBackButton() -> UIBarButtonItem {
         return UIBarButtonItem(barButtonHiddenItem: self.backButtonType, target: self, action: #selector(backButtonDidTap))
     }
     
     private lazy var fixedSpacer: UIBarButtonItem = self.buildFixedSpacer()
     
-    private func buildFixedSpacer() -> UIBarButtonItem{
+    private func buildFixedSpacer() -> UIBarButtonItem {
         let item = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         item.width = self.direction == .upDown ? 8.0 : 20.0
         return item
@@ -64,14 +64,14 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     
     private lazy var forwardButton: UIBarButtonItem = self.buildForwardButton()
     
-    private func buildForwardButton() -> UIBarButtonItem{
+    private func buildForwardButton() -> UIBarButtonItem {
         return  UIBarButtonItem(barButtonHiddenItem: self.forwardButtonType, target: self, action: #selector(forwardButtonDidTap))
     }
     private lazy var flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     private lazy var doneButton: UIBarButtonItem = self.buildDoneButton()
     
-    private func buildDoneButton() -> UIBarButtonItem{
+    private func buildDoneButton() -> UIBarButtonItem {
         return UIBarButtonItem(title: self.doneButtonTitle, style: .plain, target: self, action: #selector(doneButtonDidtap(_:)))
     }
     
@@ -86,7 +86,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
         super.style()
         apply(toolBarStyle: toolBarStyle)
     }
-    open func apply(toolBarStyle: FormToolbarStyle){
+    open func apply(toolBarStyle: FormToolbarStyle) {
 
         doneButton.apply(textStyle: toolBarStyle.buttonActiveStyle, for: .normal)
         doneButton.apply(textStyle: toolBarStyle.buttonInactiveStyle, for: .disabled)
@@ -133,7 +133,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     /// Get previous input.
     public var previousInput: FormInput? {
         var previousValidInput = currentFormItem?.previousItem
-        while previousValidInput?.input?.responder.canBecomeFirstResponder == false{
+        while previousValidInput?.input?.responder.canBecomeFirstResponder == false {
             previousValidInput = previousValidInput?.previousItem
         }
         return previousValidInput?.input
@@ -142,7 +142,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     /// Get next input.
     public var nextInput: FormInput? {
         var nextItem = currentFormItem?.nextItem
-        while nextItem?.input?.responder.canBecomeFirstResponder == false{
+        while nextItem?.input?.responder.canBecomeFirstResponder == false {
             nextItem = nextItem?.nextItem
         }
         return nextItem?.input
@@ -206,7 +206,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     
     /// Update toolbar's buttons.
     public func update() {
-        guard let _ = currentInput else {
+        guard currentInput != nil else {
             backButton.isEnabled = false
             forwardButton.isEnabled = false
             return
@@ -265,7 +265,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
         }
     }
     
-    //MARK: UIInputViewAudioFeedback
+    // MARK: UIInputViewAudioFeedback
     open var enableInputClicksWhenVisible: Bool {
         return true
     }

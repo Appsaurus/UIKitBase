@@ -31,9 +31,10 @@ import Swiftest
         view.pinToSuperview()
     }
 
-    open func loadNib() -> UIView{
-        let bundle = Bundle(for:  type(of: self))
+    open func loadNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nibName, bundle: bundle)
+        //swiftlint:disable force_cast
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }

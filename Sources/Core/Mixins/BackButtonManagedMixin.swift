@@ -8,7 +8,7 @@
 import UIKitMixinable
 import UIFontIcons
 
-open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged>{
+open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged> {
     open override func createSubviews() {
             mixable.createBackButton(icon: MaterialIcons.Arrow_Back)
     }

@@ -7,7 +7,7 @@
 
 import UIKitTheme
 
-open class ViewControllerConfiguration{
+open class ViewControllerConfiguration {
     open var style: ViewControllerStyle
     open var orientationMask: UIInterfaceOrientationMask
     open var statusBarConfiguration: StatusBarConfiguration
@@ -21,7 +21,7 @@ open class ViewControllerConfiguration{
     }
     static public var `default`: ViewControllerConfiguration = ViewControllerConfiguration()
 }
-extension UIInterfaceOrientationMask{
+extension UIInterfaceOrientationMask {
     static public var `default`: UIInterfaceOrientationMask {
         return App.configuration.orientation
     }

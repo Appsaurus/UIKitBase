@@ -8,9 +8,9 @@
 
 import UIKitExtensions
 
-open class HorizontalStackView: UIStackView{
+open class HorizontalStackView: UIStackView {
     
-    public init(){
+    public init() {
         super.init(frame: .zero)
         apply(stackViewConfiguration: .fillEquallyHorizontal(spacing: 10.0))
     }
@@ -21,7 +21,7 @@ open class HorizontalStackView: UIStackView{
 }
 
 open class VerticalStackView: UIStackView {
-    public init(){
+    public init() {
         super.init(frame: .zero)
         apply(stackViewConfiguration: .equalSpacingVertical(spacing: 0.0))
     }
@@ -31,7 +31,7 @@ open class VerticalStackView: UIStackView {
     }
 }
 
-public protocol LazilyGrowingStackView{
+public protocol LazilyGrowingStackView {
     associatedtype StackedView: UIView
     var stackedViews: [StackedView] { get set }
     mutating func stackedView(at index: Int) -> StackedView
@@ -40,19 +40,18 @@ public protocol LazilyGrowingStackView{
 
 var stackedViewsAssociated: UInt8 = 0
 
-extension LazilyGrowingStackView where Self: UIStackView{
+extension LazilyGrowingStackView where Self: UIStackView {
     
-    public var stackedViews: [StackedView]{
-        get{
+    public var stackedViews: [StackedView] {
+        get {
             return getAssociatedObject(for: &stackedViewsAssociated, initialValue: [])
         }
-        set{
+        set {
             setAssociatedObject(newValue, for: &stackedViewsAssociated)
         }
     }
     
-    
-    public mutating func stackedView(at index: Int) -> StackedView{
+    public mutating func stackedView(at index: Int) -> StackedView {
         while stackedViews[safe: index] == nil {
             let view = createStackedView()
             stackedViews.append(view)
@@ -63,7 +62,7 @@ extension LazilyGrowingStackView where Self: UIStackView{
     }
 }
 
-open class GrowingStackView<SV: UIView>: UIStackView, LazilyGrowingStackView{
+open class GrowingStackView<SV: UIView>: UIStackView, LazilyGrowingStackView {
     public func createStackedView() -> SV {
         return SV.init()
     }
@@ -71,7 +70,7 @@ open class GrowingStackView<SV: UIView>: UIStackView, LazilyGrowingStackView{
     public typealias StackedView = SV
 }
 
-open class HorizontalButtonStackView: HorizontalStackView, LazilyGrowingStackView{
+open class HorizontalButtonStackView: HorizontalStackView, LazilyGrowingStackView {
     
     public typealias StackedView = BaseButton
     open func createStackedView() -> BaseButton {
@@ -79,7 +78,7 @@ open class HorizontalButtonStackView: HorizontalStackView, LazilyGrowingStackVie
     }
 }
 
-open class VerticalButtonStackView: VerticalStackView, LazilyGrowingStackView{
+open class VerticalButtonStackView: VerticalStackView, LazilyGrowingStackView {
     
     public typealias StackedView = BaseButton
     open func createStackedView() -> BaseButton {
@@ -87,7 +86,7 @@ open class VerticalButtonStackView: VerticalStackView, LazilyGrowingStackView{
     }
 }
 
-open class HorizontalLabelStackView: HorizontalStackView, LazilyGrowingStackView{
+open class HorizontalLabelStackView: HorizontalStackView, LazilyGrowingStackView {
     
     public typealias StackedView = UILabel
     open func createStackedView() -> UILabel {
@@ -95,7 +94,7 @@ open class HorizontalLabelStackView: HorizontalStackView, LazilyGrowingStackView
     }
 }
 
-open class VerticalLabelStackView: VerticalStackView, LazilyGrowingStackView{
+open class VerticalLabelStackView: VerticalStackView, LazilyGrowingStackView {
     
     public typealias StackedView = UILabel
     open  func createStackedView() -> UILabel {

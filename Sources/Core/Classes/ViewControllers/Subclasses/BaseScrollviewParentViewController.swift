@@ -12,12 +12,12 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
     
     open var childViewControllerContainerView: UIView = UIView()
     
-    open override func createSubviews(){
+    open override func createSubviews() {
         super.createSubviews()
         scrollViewContentView.addSubview(childViewControllerContainerView)
     }
     
-    open override func createAutoLayoutConstraints(){
+    open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         childViewControllerContainerView.pinToSuperview()
     }
@@ -37,10 +37,9 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
         add(initialChildViewController(), to: childViewControllerContainerView)
     }
     
-    open func initialChildViewController() -> UIViewController{
+    open func initialChildViewController() -> UIViewController {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return UIViewController()
     }
     
 }
-

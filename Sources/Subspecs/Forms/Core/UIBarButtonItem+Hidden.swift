@@ -16,13 +16,13 @@ enum UIBarButtonHiddenItem: Int {
     case up = 103
     case down = 104
     
-    var systemItem: UIBarButtonItem.SystemItem  {
+    var systemItem: UIBarButtonItem.SystemItem {
         return UIBarButtonItem.SystemItem(rawValue: rawValue)!
     }
 }
 
 extension UIBarButtonItem {
     convenience init(barButtonHiddenItem item: UIBarButtonHiddenItem, target: AnyObject?, action: Selector) {
-        self.init(barButtonSystemItem: item.systemItem, target:target, action: action)
+        self.init(barButtonSystemItem: item.systemItem, target: target, action: action)
     }
 }

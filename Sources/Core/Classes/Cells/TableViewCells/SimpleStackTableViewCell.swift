@@ -11,11 +11,11 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-open class ModularTableViewCell<MV, CLV: CellLayoutView<MV>> : ViewBasedTableViewCell<CLV>{
+open class ModularTableViewCell<MV, CLV: CellLayoutView<MV>> : ViewBasedTableViewCell<CLV> {
     
 }
 
-open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV>{
+open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV> {
 
     open var config: CellLayoutViewConfiguration?
     
@@ -27,7 +27,7 @@ open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedV
         return self.view.leftImageView
     }
     
-    open var optionalRightView: UIView?{
+    open var optionalRightView: UIView? {
         return nil
     }
     
@@ -39,9 +39,9 @@ open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedV
 
 open class ModularTextFieldStackTableViewCell<MSV: ModularStackView<UITextField>>: ModularStackTableViewCell<UITextField, MSV> {}
 open class ModularLabelStackTableViewCell<MSV: ModularStackView<UILabel>>: ModularStackTableViewCell<UILabel, MSV> {}
-open class ModularButtonStackTableViewCell<MSV: ModularStackView<BaseButton>>: ModularStackTableViewCell<BaseButton, MSV>{}
+open class ModularButtonStackTableViewCell<MSV: ModularStackView<BaseButton>>: ModularStackTableViewCell<BaseButton, MSV> {}
 
-open class SimpleStackTableViewCell<StackedView: UIView>: ModularStackTableViewCell<StackedView, ModularStackView<StackedView>>{
+open class SimpleStackTableViewCell<StackedView: UIView>: ModularStackTableViewCell<StackedView, ModularStackView<StackedView>> {
     
     open override func createMainView() -> ModularStackView<StackedView> {
         return ModularStackView<StackedView>(config: config, optionalRightView: optionalRightView)
@@ -49,8 +49,7 @@ open class SimpleStackTableViewCell<StackedView: UIView>: ModularStackTableViewC
     
 }
 
-
-open class DualStackTableViewCell<StackedView: UIView, RightStackedView: UIView>: ModularStackTableViewCell<StackedView, DualModularStackview<StackedView, RightStackedView>>{
+open class DualStackTableViewCell<StackedView: UIView, RightStackedView: UIView>: ModularStackTableViewCell<StackedView, DualModularStackview<StackedView, RightStackedView>> {
     
     open lazy var rightStack: GrowingStackView<RightStackedView> = {
         return self.view.rightStack
@@ -61,7 +60,7 @@ open class DualStackTableViewCell<StackedView: UIView, RightStackedView: UIView>
         rightStack.apply(stackViewConfiguration: self.rightStackLayoutStyle)
     }
     
-    open var rightStackLayoutStyle: StackViewConfiguration{
+    open var rightStackLayoutStyle: StackViewConfiguration {
         return .equalSpacingVertical(spacing: 3.0)
     }
 }
@@ -72,7 +71,7 @@ open class LabelStackTableViewCell: SimpleStackTableViewCell<UILabel> {
     open var secondaryLabel: UILabel { return self.stackView.stackedView(at: 1)}
     open var tertiaryLabel: UILabel { return self.stackView.stackedView(at: 2)}
 
-    open override func style(){
+    open override func style() {
         super.style()
         primaryLabel.apply(textStyle: TextStyle(color: .textDark, font: .medium(17.0)))
         secondaryLabel.apply(textStyle: TextStyle(color: .textMedium, font: .regular(14.0)))
@@ -84,9 +83,9 @@ open class ButtonStackTableViewCell: SimpleStackTableViewCell<UIButton> {
     
     open var primaryButton: UIButton { return self.stackView.stackedView(at: 0)}
     open var secondaryButton: UIButton { return self.stackView.stackedView(at: 0)}
-    open var tertiaryButton: UIButton  { return self.stackView.stackedView(at: 0)}
+    open var tertiaryButton: UIButton { return self.stackView.stackedView(at: 0)}
     
-    open override func style(){
+    open override func style() {
         super.style()
         primaryButton.apply(textStyle: TextStyle(color: .textDark, font: .medium(16.0)))
         secondaryButton.apply(textStyle: TextStyle(color: .textMedium, font: .regular(13.0)))

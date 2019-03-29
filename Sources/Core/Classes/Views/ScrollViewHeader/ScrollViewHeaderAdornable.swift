@@ -10,34 +10,32 @@ import Foundation
 import UIKit
 import ObjectiveC
 
-
 // MARK: - UIScrollView Extension
 
-public protocol ScrollViewHeaderAdornable: class{
+public protocol ScrollViewHeaderAdornable: class {
     associatedtype SVH: ScrollViewHeader
-    var scrollView: UIScrollView { get set }
+    var scrollView: UIScrollView { get }
     func createScrollViewHeader() -> SVH
     func setupScrollViewHeader()
 }
 
 private var scrollViewHeaderKey: UInt8 = 0
-public extension ScrollViewHeaderAdornable where Self: NSObject{
+public extension ScrollViewHeaderAdornable where Self: NSObject {
     
-    
-    public var scrollViewHeader: SVH?{
-        get{            
+    public var scrollViewHeader: SVH? {
+        get {            
             return getAssociatedObject(for: &scrollViewHeaderKey)
         }
-        set{
+        set {
             setAssociatedObject(newValue, for: &scrollViewHeaderKey)
         }
     }
 
-    public func setupScrollViewHeader(){
+    public func setupScrollViewHeader() {
         addScrollViewHeader(createScrollViewHeader())
     }
     
-    public func addScrollViewHeader(_ scrollViewHeader: SVH){
+    public func addScrollViewHeader(_ scrollViewHeader: SVH) {
         scrollViewHeader.setupObserver(for: scrollView)
         scrollView.addSubview(scrollViewHeader)
         scrollView.bringSubviewToFront(scrollViewHeader)
@@ -49,7 +47,7 @@ public extension ScrollViewHeaderAdornable where Self: NSObject{
         self.scrollViewHeader = scrollViewHeader
 
 		scrollViewHeader.onBoundsChange = { [weak self] bounds in
-            DispatchQueue.main.async{
+            DispatchQueue.main.async {
                 self?.headerContentDidChange()
             }
         }
@@ -58,13 +56,13 @@ public extension ScrollViewHeaderAdornable where Self: NSObject{
     }
     
     //Called whenever changes are made that could effect the height of the header
-    public func headerContentDidChange(){
+    public func headerContentDidChange() {
         adjustContentPositionToAccomodateHeaderHeight()
     }
     
-    public func adjustContentPositionToAccomodateHeaderHeight(){
+    public func adjustContentPositionToAccomodateHeaderHeight() {
         guard let scrollViewHeader = scrollViewHeader else { return }
-        if scrollView.contentInset.top < scrollViewHeader.expandedHeight{
+        if scrollView.contentInset.top < scrollViewHeader.expandedHeight {
             scrollView.contentInset.top = scrollViewHeader.expandedHeight
             scrollView.contentOffset.y = -scrollViewHeader.expandedHeight
         }
@@ -77,40 +75,29 @@ public extension ScrollViewHeaderAdornable where Self: NSObject{
     }
 }
 
-extension ScrollViewHeaderAdornable where Self: UITableViewController{
-    public var scrollView: UIScrollView{
-        get{
-            return tableView
-        }
-        set{
-            
-        }
+extension ScrollViewHeaderAdornable where Self: UITableViewController {
+    public var scrollView: UIScrollView {
+        return tableView
     }
-    
     
 }
 
-extension ScrollViewHeaderAdornable where Self: UICollectionViewController{
-    public var scrollView: UIScrollView{
-        get{
-            return collectionView!
-        }
-        set{
-            
-        }
+extension ScrollViewHeaderAdornable where Self: UICollectionViewController {
+    public var scrollView: UIScrollView {
+        return collectionView!
     }
     
 }
 
 //extension BaseScrollviewController: ScrollViewHeaderAdornable{
-extension ScrollViewHeaderAdornable where Self: BaseScrollviewController{
-    public func setupScrollViewHeader(){
+extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
+    public func setupScrollViewHeader() {
         addScrollViewHeader(createScrollViewHeader())
         headerContentDidChange() //Get initial layout
     }
     
     //Called whenever changes are made that could effect the height of the header
-    public func headerContentDidChange(){
+    public func headerContentDidChange() {
         guard let header = scrollViewHeader else { return }
         view.forceAutolayoutPass()
         var contentSize = view.bounds.size
@@ -121,9 +108,6 @@ extension ScrollViewHeaderAdornable where Self: BaseScrollviewController{
     }
 }
 
-public enum ScrollViewHeaderState{
+public enum ScrollViewHeaderState {
     case collapsed, expanded, transitioning, stretched
 }
-
-
-

@@ -16,7 +16,6 @@ open class CircleInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
         circle.fillColor = UIColor.darkGray.cgColor
         circle.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
         circle.transform = CATransform3DMakeScale(0, 0, 0)
@@ -66,7 +65,7 @@ open class CircleInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         
         animGroup.duration = 1.0
         animGroup.repeatCount = 1000
-        animGroup.animations = [scaleAnim,opacityAnim]
+        animGroup.animations = [scaleAnim, opacityAnim]
         animGroup.isRemovedOnCompletion = false
         animGroup.fillMode = CAMediaTimingFillMode.forwards
         

@@ -6,8 +6,6 @@
 //
 //
 
-
-
 import Swiftest
 import UIKitTheme
 import UIKitExtensions
@@ -19,25 +17,24 @@ import SwiftLocation
 import Permission
 import UIFontIcons
 
-open class LocationPickerSearchConfiguration{
-    public init(){}
+open class LocationPickerSearchConfiguration {
+    public init() {}
     public var useCurrentLocationAsHint = false
     public var searchBarPlaceholder = "Search or enter an address"
     public var searchHistoryLabel = "Search History"
     
 }
 
-
-open class LocationPickerSearchViewController: SearchViewController<MKMapItem>, AsyncTaskDelegate{
+open class LocationPickerSearchViewController: SearchViewController<MKMapItem>, AsyncTaskDelegate {
     
     public typealias TaskResult = LocationData
-    public var onDidFinishTask: TaskCompletionClosure?{
-        didSet{
+    public var onDidFinishTask: TaskCompletionClosure? {
+        didSet {
             mapViewController.onDidFinishTask = onDidFinishTask
         }
     }
     
-    //MARK: ChildViewControllers
+    // MARK: ChildViewControllers
     open var searchConfig = LocationPickerSearchConfiguration()
     open var mapConfig = LocationPickerMapConfiguration()
     
@@ -62,12 +59,10 @@ open class LocationPickerSearchViewController: SearchViewController<MKMapItem>, 
         return searchResultsViewController
     }
     
-    
     lazy var mapViewController: LocationPickerMapViewController = {
         let mapVC = LocationPickerMapViewController(config: self.mapConfig)
         return mapVC
     }()
-    
     
     open override func didInit() {
         super.didInit()
@@ -82,17 +77,15 @@ open class LocationPickerSearchViewController: SearchViewController<MKMapItem>, 
         
     }
     
-    
-    
 }
 
 public typealias SelectButtonTitleFormatter = (LocationData?) -> String
-public enum SelectButtonTitleBuilder{
+public enum SelectButtonTitleBuilder {
     case staticTitle(title: String)
     case dynamicTitle(formatter: SelectButtonTitleFormatter)
     
-    func titleFor(location: LocationData?) -> String{
-        switch self{
+    func titleFor(location: LocationData?) -> String {
+        switch self {
         case .staticTitle(let title):
             return title
         case .dynamicTitle(let formatter):
@@ -100,7 +93,7 @@ public enum SelectButtonTitleBuilder{
         }
     }
 }
-open class LocationPickerMapConfiguration: ViewControllerConfiguration{
+open class LocationPickerMapConfiguration: ViewControllerConfiguration {
     
     /// default: true
     public var showCurrentLocationButton = true
@@ -116,16 +109,17 @@ open class LocationPickerMapConfiguration: ViewControllerConfiguration{
     public var locationDisplayNameFormatter: LocationDisplayNameFormatter?
 }
 
-open class LocationPickerMapViewController: ConfigurableViewController<LocationPickerMapConfiguration, ViewControllerStyle>, AsyncTaskDelegate, UIGestureRecognizerDelegate, MKMapViewDelegate{
+internal typealias LocationPickerMapViewControllerProtocols = AsyncTaskDelegate & UIGestureRecognizerDelegate & MKMapViewDelegate
+open class LocationPickerMapViewController: ConfigurableViewController<LocationPickerMapConfiguration, ViewControllerStyle>, LocationPickerMapViewControllerProtocols {
     
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
     
     public var submitButton: BaseButton!
-    public var selectButtonTitle: String{
+    public var selectButtonTitle: String {
         return config.selectButtonTitleBuilder.titleFor(location: self.location)
     }
-    //MARK: Configuration
+    // MARK: Configuration
     //    open var config: LocationPickerMapConfiguration = LocationPickerMapConfiguration()
     
     public var mapType: MKMapType = .standard {
@@ -136,11 +130,11 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         }
     }
     
-    //MARK: Model
+    // MARK: Model
     public var location: LocationData? {
         didSet {
             location?.locationDisplayNameFormatter = self.config.locationDisplayNameFormatter
-            submitButton.titleMap = [.normal : selectButtonTitle]
+            submitButton.titleMap = [.normal: selectButtonTitle]
             updateSubmitButtonState()
             if isViewLoaded {
                 updateAnnotation()
@@ -148,7 +142,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         }
     }
     
-    //MARK: Views
+    // MARK: Views
     var mapView: MKMapView = MKMapView(frame: .zero)
     
     lazy var currentLocationButton: BaseButton = {        
@@ -197,9 +191,8 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         view.addSubview(mapView)
         mapView.addSubview(currentLocationButton)
         setupSubmitButton(configuration: ManagedButtonConfiguration(position: .floatingFooter))
-        submitButton.titleMap = [.normal : selectButtonTitle]
+        submitButton.titleMap = [.normal: selectButtonTitle]
     }
-    
     
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
@@ -207,7 +200,6 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         currentLocationButton.size.equal(to: 35)
         currentLocationButton.topTrailing.equal(to: .inset(25, 25))
     }
-    
     
     open override func setupControlActions() {
         super.setupControlActions()
@@ -218,7 +210,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
                 Locator.currentPosition(accuracy: .neighborhood, onSuccess: { [weak self] location in
                     self?.currentLocationButton.hideActivityIndicator()
                     self?.reversGeocodeAndDropPin(at: location)
-                    }, onFail: {[weak self] (error, optionalLocation) in
+                    }, onFail: {[weak self] (error, _) in
                         self?.currentLocationButton.hideActivityIndicator()
                         self?.showErrorAlert(error)
                 })
@@ -229,24 +221,22 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
     open override func startLoading() {
         super.startLoading()
         currentLocationButton.isVisible = config.showCurrentLocationButton
-        if config.dropPinAtInitialLocation{
+        if config.dropPinAtInitialLocation {
             Locator.currentPosition(usingIP: .freeGeoIP, onSuccess: {[weak self] location in
                 guard let `self` = self else { return }
                 debugLog("Found location \(location)")
                 self.reversGeocodeAndDropPin(at: location)
-            }) { error, _ in
+                }, onFail: { error, _ in
                 debugLog("Something bad has occurred \(error)")
-            }
+            })
         }
     }
-    
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         mapView.userTrackingMode = .none
         mapView.showsUserLocation = config.dropPinAtInitialLocation || config.showCurrentLocationButton
-        
         
         //        if useCurrentLocationAsHint {
         //            getCurrentLocation()
@@ -297,29 +287,28 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         mapView.setRegion(displayRegion, animated: animated)
     }
     
-    
-    func reversGeocodeAndDropPin(at location: CLLocation){
+    func reversGeocodeAndDropPin(at location: CLLocation) {
         dropPin(at: location.coordinate)
         Locator.location(fromCoordinates: location.coordinate, using: .apple, onSuccess: {[weak self] places in
             guard let `self` = self else { return }
             self.currentLocationButton.hideActivityIndicator() //In case this was triggered by gps lookup
             guard let placemark = places.first?.placemark else { return }
             self.location = LocationData(location: location, placemark: placemark)
-        }) { [weak self] error in
+            }, onFail: { [weak self] error in
             self?.currentLocationButton.hideActivityIndicator()
             self?.showErrorAlert(error)
-        }
+        })
         
     }
     
-    func dropPin(at coordinate: CLLocationCoordinate2D){
+    func dropPin(at coordinate: CLLocationCoordinate2D) {
         // add point annotation to map
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
     
-    func authorize(locationRequest: @escaping VoidClosure){
+    func authorize(locationRequest: @escaping VoidClosure) {
         let permission: Permission = .locationWhenInUse
         
         let disabledAlert = permission.disabledAlert
@@ -347,7 +336,6 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
     
     // MARK: MKMapViewDelegate
     
-    
     @nonobjc public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         
@@ -368,7 +356,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
             let width = titleLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: Int.max, height: 30), limitedToNumberOfLines: 1).width
             button.frame.size = CGSize(width: width, height: 30.0)
         }
-        button.setTitleColor(view.tintColor,  for: .normal)
+        button.setTitleColor(view.tintColor, for: .normal)
         return button
     }
     
@@ -386,18 +374,16 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         }
     }
     
-    
-    //MARK: UIGestureRecognizerDelegate
+    // MARK: UIGestureRecognizerDelegate
     @nonobjc public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-    
 }
 
-extension LocationPickerMapViewController: SubmitButtonManaged{
+extension LocationPickerMapViewController: SubmitButtonManaged {
     
-    //MARK: SubmitButtonManaged
+    // MARK: SubmitButtonManaged
     public func userCanSubmit() -> Bool {
         return location != nil
     }
@@ -446,5 +432,3 @@ extension LocationPickerMapViewController {
         }
     }
 }
-
-

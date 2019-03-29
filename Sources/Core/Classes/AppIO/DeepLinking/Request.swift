@@ -5,7 +5,6 @@
 //  Created by Brian Strobach on 10/11/17.
 //
 
-
 import UIKit
 
 open class Request {

@@ -8,40 +8,37 @@
 
 import UIKitMixinable
 
-public protocol BaseToolbarProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseToolbarProtocol: BaseViewProtocol {}
 
-extension BaseToolbarProtocol where Self: UIToolbar{
-    public var baseToolbarProtocolMixins: [LifeCycle]{
+extension BaseToolbarProtocol where Self: UIToolbar {
+    public var baseToolbarProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseToolbar: MixinableToolbar, BaseToolbarProtocol{
+open class BaseToolbar: MixinableToolbar, BaseToolbarProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseToolbarProtocolMixins
     }
     
-    //MARK: UIViewLifeCycle Overrides
+    // MARK: UIViewLifeCycle Overrides
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)        
         bindStyle()
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }

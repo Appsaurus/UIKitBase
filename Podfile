@@ -5,6 +5,7 @@ inhibit_all_warnings!
 
 def shared
     pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
+    pod 'SwiftLint'
 end
 
 def libaryShared

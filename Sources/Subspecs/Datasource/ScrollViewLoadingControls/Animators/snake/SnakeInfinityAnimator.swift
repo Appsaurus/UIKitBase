@@ -24,10 +24,10 @@ open class SnakeInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     var animating = false
     
     fileprivate var snakeLayer = CAShapeLayer()
-    fileprivate var snakeLengthByCycle:CGFloat = 0 // 占的周期数
+    fileprivate var snakeLengthByCycle: CGFloat = 0 // 占的周期数
     fileprivate var cycleCount = 1000
     
-    fileprivate var pathLength:CGFloat = 0
+    fileprivate var pathLength: CGFloat = 0
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,9 +43,17 @@ open class SnakeInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         for index in 0...cycleCount {
             let cycleStartX = CGFloat(index) * ovalDiametor * 2
             snakePath.addLine(to: CGPoint(x: cycleStartX, y: ovalDiametor / 2))
-            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2, y: ovalDiametor / 2), radius: ovalDiametor / 2, startAngle: CGFloat(Double.pi), endAngle: 0, clockwise: true)
+            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2, y: ovalDiametor / 2),
+                             radius: ovalDiametor / 2,
+                             startAngle: CGFloat(Double.pi),
+                             endAngle: 0,
+                             clockwise: true)
             snakePath.addLine(to: CGPoint(x: cycleStartX + ovalDiametor, y: frame.height - ovalDiametor / 2))
-            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2 * 3, y: frame.height - ovalDiametor/2), radius: ovalDiametor/2, startAngle: CGFloat(Double.pi), endAngle: 0, clockwise: false)
+            snakePath.addArc(withCenter: CGPoint(x: cycleStartX + ovalDiametor / 2 * 3, y: frame.height - ovalDiametor/2),
+                             radius: ovalDiametor/2,
+                             startAngle: CGFloat(Double.pi),
+                             endAngle: 0,
+                             clockwise: false)
         }
         snakeLayer.path = snakePath.cgPath
         snakeLayer.fillColor = nil
@@ -93,10 +101,9 @@ open class SnakeInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         strokeStartAnim.toValue = 1 - snakeLengthByCycle/CGFloat(cycleCount)
         strokeEndAnim.toValue = 1
         moveAnim.toValue = NSValue(cgPoint: CGPoint(x: snakeLayer.position.x - pathLength, y: snakeLayer.position.y))
-        
 
         let animGroup = CAAnimationGroup()
-        animGroup.animations = [strokeStartAnim,strokeEndAnim,moveAnim]
+        animGroup.animations = [strokeStartAnim, strokeEndAnim, moveAnim]
         animGroup.duration = Double(cycleCount) * 0.6
         
         snakeLayer.add(animGroup, forKey: AnimationGroupKey)

@@ -8,35 +8,31 @@
 
 import UIKitMixinable
 
-public protocol BaseScrollViewProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseScrollViewProtocol: BaseViewProtocol {}
 
-extension BaseScrollViewProtocol where Self: UIScrollView{
-    public var baseScrollViewProtocolMixins: [LifeCycle]{
+extension BaseScrollViewProtocol where Self: UIScrollView {
+    public var baseScrollViewProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseScrollView: MixinableScrollView, BaseScrollViewProtocol{
+open class BaseScrollView: MixinableScrollView, BaseScrollViewProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseScrollViewProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }
-

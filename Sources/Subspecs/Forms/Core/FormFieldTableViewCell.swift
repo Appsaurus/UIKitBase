@@ -13,13 +13,12 @@ open class FormFieldCell: DynamicHeightCell {
     
     open var field: View
 
-    public init(field: View, insets: LayoutPadding? = nil){
+    public init(field: View, insets: LayoutPadding? = nil) {
         self.field = field
         super.init(callDidInit: false)
         self.mainViewInsets =? insets
         didInitProgramatically()
     }
-
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

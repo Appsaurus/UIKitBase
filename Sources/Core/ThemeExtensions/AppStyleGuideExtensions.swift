@@ -8,10 +8,10 @@
 import Foundation
 import UIKitTheme
 
-extension AppStyleGuide{
+extension AppStyleGuide {
 //    TODO: Refactor into style classes
-//    MARK: Badge View Styles
-        open func badgeViewStyle(for badgeStyle: BadgeStyle) -> ViewStyle{
+// MARK: Badge View Styles
+        open func badgeViewStyle(for badgeStyle: BadgeStyle) -> ViewStyle {
             let style = ViewStyle(backgroundColor: .primary, shape: .rounded)
             switch badgeStyle {
             case .notification, .error, .delete:
@@ -28,7 +28,7 @@ extension AppStyleGuide{
             return style
         }
     
-        open func badgeTextStyle(for badgeStyle: BadgeStyle, fontSize: CGFloat? = nil) -> TextStyle{
+        open func badgeTextStyle(for badgeStyle: BadgeStyle, fontSize: CGFloat? = nil) -> TextStyle {
     
             let font: UIFont = fontSize != nil ? UIFont.regular(fontSize!) : UIFont.regular()
             let style = TextStyle(color: .primaryContrast, font: font)
@@ -41,4 +41,3 @@ extension AppStyleGuide{
             return style
         }
 }
-

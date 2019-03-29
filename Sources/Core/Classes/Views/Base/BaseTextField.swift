@@ -10,42 +10,38 @@ import UIKitMixinable
 import UIKitTheme
 import UIKitExtensions
 
-public protocol BaseTextFieldProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseTextFieldProtocol: BaseViewProtocol {}
 
-extension BaseTextFieldProtocol where Self: UITextField{
-    public var baseTextFieldProtocolMixins: [LifeCycle]{
+extension BaseTextFieldProtocol where Self: UITextField {
+    public var baseTextFieldProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseTextField: MixinableTextField, BaseTextFieldProtocol{
+open class BaseTextField: MixinableTextField, BaseTextFieldProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTextFieldProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }
 
+public typealias TextFieldStyleMap = [TextFieldState: TextFieldStyle]
 
-public typealias TextFieldStyleMap = [TextFieldState : TextFieldStyle]
-
-public enum TextFieldState: State{
+public enum TextFieldState: State {
     case none
     case inactive
     case active
@@ -54,12 +50,12 @@ public enum TextFieldState: State{
     case processing    
 }
 
-open class StatefulTextField: BaseTextField{
+open class StatefulTextField: BaseTextField {
 
     open var adjustsFontSizeToFitHeight: Bool = false
     
-    //MARK: State
-    open var currentState: TextFieldState{
+    // MARK: State
+    open var currentState: TextFieldState {
         if isReadOnly { return .readOnly }
         if !isEnabled { return .disabled }
         if isFirstResponder { return .active}
@@ -67,27 +63,27 @@ open class StatefulTextField: BaseTextField{
     }
     open var previousState: TextFieldState = .none
     
-    open var styleMap: TextFieldStyleMap = [:]{
-        didSet{
+    open var styleMap: TextFieldStyleMap = [:] {
+        didSet {
             applyCurrentStateConfiguration()
         }
     }
     
-    open override var isSelected: Bool{
-        didSet{
+    open override var isSelected: Bool {
+        didSet {
             applyCurrentStateConfiguration()
         }
     }
     
-    open override var isEnabled: Bool{
-        didSet{
+    open override var isEnabled: Bool {
+        didSet {
             applyCurrentStateConfiguration()
         }
     }
 
-    open var isReadOnly: Bool = false{
-        didSet{
-            if isEnabled{
+    open var isReadOnly: Bool = false {
+        didSet {
+            if isEnabled {
                 isEnabled = false //Will trigger state update
                 return
             }
@@ -99,16 +95,16 @@ open class StatefulTextField: BaseTextField{
     open var matchesCaretToTextColor: Bool = true
     open var defaultStyleAdjustsToBackgroundColor: Bool = true
     
-    open var labelAnimationConfiguration: AnimationConfiguration{
+    open var labelAnimationConfiguration: AnimationConfiguration {
         return  AnimationConfiguration(duration: 0.3, options: [.curveEaseInOut, .allowAnimatedContent])
     }
     
-    open func applyCurrentStateConfiguration(animated: Bool = false){
-        if previousState != currentState{
+    open func applyCurrentStateConfiguration(animated: Bool = false) {
+        if previousState != currentState {
             previousState = currentState
         }
         
-        if currentState == .inactive && text.hasNonEmptyValue{
+        if currentState == .inactive && text.hasNonEmptyValue {
             //Fixes UIKit bug where text input jumps vertically on first resignation.
             //Shitty and may have unforeseen side effects. Find better fix or consider living with UITextField bug.
             forceAutolayoutPass()
@@ -128,39 +124,33 @@ open class StatefulTextField: BaseTextField{
         })
     }
     
-    
-    
-    //MARK: Layout
-    open func layoutSubviews(for state: TextFieldState){
+    // MARK: Layout
+    open func layoutSubviews(for state: TextFieldState) {
         
     }
     
-    //MARK: Style
-    open func applyCurrentTextFieldStyle(){
-        if let textFieldStyle = styleMap[currentState]{
+    // MARK: Style
+    open func applyCurrentTextFieldStyle() {
+        if let textFieldStyle = styleMap[currentState] {
             apply(textFieldStyle: textFieldStyle)
         }
-        if matchesCaretToTextColor, let color = textColor{
+        if matchesCaretToTextColor, let color = textColor {
             setCaret(color: color)
         }
     }
     
-    open func apply(textFieldStyle: TextFieldStyle){
+    open func apply(textFieldStyle: TextFieldStyle) {
         apply(textStyle: textFieldStyle.textStyle)
         apply(viewStyle: textFieldStyle.viewStyle, optimizeRendering: false)
     }
     
-
-    
     open override func setupControlActions() {
         addTarget(self, action: #selector(StatefulTextField.controlEventFired), for: UIControl.Event.allEvents)
     }
-
     
     @objc open func controlEventFired() {
         applyCurrentStateConfiguration(animated: true)
     }
-    
     
     open override func caretRect(for position: UITextPosition) -> CGRect {
         guard hidesCaret else { return super.caretRect(for: position)}
@@ -173,7 +163,7 @@ open class StatefulTextField: BaseTextField{
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        if adjustsFontSizeToFitHeight{
+        if adjustsFontSizeToFitHeight {
             adjustsFontSizeToFitWidth = false
             adjustFontSizeToFitHeight()
         }

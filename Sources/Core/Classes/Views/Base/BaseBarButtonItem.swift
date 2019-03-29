@@ -10,56 +10,53 @@ import UIKitMixinable
 import Swiftest
 import UIFontIcons
 import UIKitExtensions
-public protocol BaseBarButtonItemProtocol:
-    BaseNSObjectProtocol
-{}
+public protocol BaseBarButtonItemProtocol: BaseNSObjectProtocol {}
 
-extension BaseBarButtonItemProtocol where Self: UIBarButtonItem{
-    public var baseBarButtonItemProtocolMixins: [LifeCycle]{
+extension BaseBarButtonItemProtocol where Self: UIBarButtonItem {
+    public var baseBarButtonItemProtocolMixins: [LifeCycle] {
         return baseNSObjectProtocolMixins
     }
 }
 
-open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol{
+open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseBarButtonItemProtocolMixins
     }
-
+    
     public var customButton: UIButton? {
         return customView as? UIButton
     }
     
-    //MARK: Convenience Initializers
+    // MARK: Convenience Initializers
     public convenience init<T: FontIconEnum>(icon: T,
-                                                     fontSize: CGFloat = .barButtonFontIconSize,
-                                                     onTouchUpInside: VoidClosure? = nil){
+                                             fontSize: CGFloat = .barButtonFontIconSize,
+                                             onTouchUpInside: VoidClosure? = nil) {
         let button = UIButton()
         button.setFontIconTitle(icon, fontSize: fontSize)
         self.init(customButton: button, onTouchUpInside: onTouchUpInside)
     }
     
-    public convenience init(customButton: UIButton, onTouchUpInside: VoidClosure? = nil){
+    public convenience init(customButton: UIButton, onTouchUpInside: VoidClosure? = nil) {
         //TODO: Change to 66 x 66 for Plus sized iPhones
-        customButton.frame = CGRect(x: 0, y: 0, width: 44.0 , height: 44.0)
-        if let onTouchUpInside = onTouchUpInside{
+        customButton.frame = CGRect(x: 0, y: 0, width: 44.0, height: 44.0)
+        if let onTouchUpInside = onTouchUpInside {
             customButton.on(.touchUpInside, closure: onTouchUpInside)
         }
         self.init(customView: customButton)
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
     
-
 }

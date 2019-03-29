@@ -8,35 +8,31 @@
 
 import UIKitMixinable
 
-public protocol BaseButtonProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseButtonProtocol: BaseViewProtocol {}
 
-extension BaseButtonProtocol where Self: UIButton{
-    public var baseButtonProtocolMixins: [LifeCycle]{
+extension BaseButtonProtocol where Self: UIButton {
+    public var baseButtonProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }
 
-open class BaseUIButton: MixinableButton, BaseButtonProtocol{
+open class BaseUIButton: MixinableButton, BaseButtonProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseButtonProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }
-

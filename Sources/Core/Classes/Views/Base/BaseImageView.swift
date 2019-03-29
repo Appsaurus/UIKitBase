@@ -8,27 +8,24 @@
 
 import UIKitMixinable
 
-public protocol BaseImageViewProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseImageViewProtocol: BaseViewProtocol {}
 
-extension BaseImageViewProtocol where Self: UIImageView{
-    public var baseImageViewProtocolMixins: [LifeCycle]{
+extension BaseImageViewProtocol where Self: UIImageView {
+    public var baseImageViewProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseImageView: MixinableImageView, BaseImageViewProtocol{
+open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
     open var tintsImages: Bool = false
     
-    open override var image: UIImage?{
-        set{
-            if self.tintsImages{
+    open override var image: UIImage? {
+        set {
+            if self.tintsImages {
                 super.image = newValue?.withRenderingMode(.alwaysTemplate)
-            }
-            else{ super.image = newValue }
+            } else { super.image = newValue }
         }
-        get{
+        get {
             return super.image
         }
     }
@@ -43,18 +40,17 @@ open class BaseImageView: MixinableImageView, BaseImageViewProtocol{
         clipsToBounds = true
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }

@@ -71,7 +71,7 @@ open class CircleRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         
         animGroup.duration = 1.0
         animGroup.repeatCount = 1000
-        animGroup.animations = [scaleAnim,opacityAnim]
+        animGroup.animations = [scaleAnim, opacityAnim]
         animGroup.isRemovedOnCompletion = false
         animGroup.fillMode = CAMediaTimingFillMode.forwards
         

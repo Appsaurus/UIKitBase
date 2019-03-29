@@ -8,36 +8,36 @@
 import UIKit
 import DarkMagic
 
-public protocol OrientationLockable: class{
+public protocol OrientationLockable: class {
     var temporaryOrientationLock: UIInterfaceOrientationMask? { get set }
     var defaultSupportedOrientations: UIInterfaceOrientationMask? { get set }
 }
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let temporaryOrientationLock = AssociatedObjectKey<UIInterfaceOrientationMask>("temporaryOrientationLock")
     static let defaultSupportedOrientations = AssociatedObjectKey<UIInterfaceOrientationMask>("defaultSupportedOrientations")
 }
 
-public extension OrientationLockable where Self: UIViewController{
+public extension OrientationLockable where Self: UIViewController {
     
-    public var defaultSupportedOrientations: UIInterfaceOrientationMask?{
-        get{
+    public var defaultSupportedOrientations: UIInterfaceOrientationMask? {
+        get {
             return self[.defaultSupportedOrientations]
         }
-        set{
+        set {
             self[.defaultSupportedOrientations] = newValue
         }
     }
     
-    public var temporaryOrientationLock: UIInterfaceOrientationMask?{
-        get{
+    public var temporaryOrientationLock: UIInterfaceOrientationMask? {
+        get {
             return self[.temporaryOrientationLock]
         }
-        set{
+        set {
             self[.temporaryOrientationLock] = newValue
         }
     }
     
-    public var currentSupportedInterfaceOrientation: UIInterfaceOrientationMask{
+    public var currentSupportedInterfaceOrientation: UIInterfaceOrientationMask {
         return temporaryOrientationLock ?? defaultSupportedOrientations ?? .default
     }
     

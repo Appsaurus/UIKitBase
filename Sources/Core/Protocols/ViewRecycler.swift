@@ -7,8 +7,8 @@
 
 import UIKit
 
-@objc public protocol ViewRecycler{
+@objc public protocol ViewRecycler {
     @objc optional func registerReusables()
 }
-extension UITableViewController: ViewRecycler{}
-extension UICollectionViewController: ViewRecycler{}
+extension UITableViewController: ViewRecycler {}
+extension UICollectionViewController: ViewRecycler {}

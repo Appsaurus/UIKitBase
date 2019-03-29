@@ -9,13 +9,11 @@ import UIKit
 import Swiftest
 import UIKitMixinable
 
-public protocol BaseTableViewControllerProtocol:
-    BaseViewControllerProtocol
-    & ViewRecycler
-{}
+public protocol BaseTableViewControllerProtocol: BaseViewControllerProtocol
+    & ViewRecycler {}
 
-extension BaseTableViewControllerProtocol where Self: UITableViewController{
-    public var baseTableViewControllerProtocolMixins: [LifeCycle]{
+extension BaseTableViewControllerProtocol where Self: UITableViewController {
+    public var baseTableViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins + [ViewRecyclerMixin(self)]
     }
 }
@@ -26,16 +24,16 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
     
-    //MARK: Orientation
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+    // MARK: Orientation
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
     
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation{
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle{
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
     
@@ -43,24 +41,24 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return statusBarHidden
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         applyBaseViewStyle()
         self.tableView.apply(tableViewStyle: .defaultStyle)
     }
     
-    //MARK: StatefulViewController
-    open func startLoading(){}
+    // MARK: StatefulViewController
+    open func startLoading() {}
     
     open func customizeStatefulViews() {}
     
@@ -68,10 +66,8 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return [:]
     }
     
-    open func willTransition(to state: State){}
+    open func willTransition(to state: State) {}
     
-    open func didTransition(to state: State){}
-    
+    open func didTransition(to state: State) {}
 
 }
-

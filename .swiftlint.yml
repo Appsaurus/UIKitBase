@@ -1,0 +1,21 @@
+disabled_rules:
+- trailing_whitespace
+- identifier_name
+- type_name
+- large_tuple
+- todo
+excluded:
+- Example
+- Demo
+- Carthage
+- Pods
+- .build
+line_length:
+  warning: 180
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
+file_length:
+  warning: 500
+cyclomatic_complexity:
+    ignore_case_statements: true

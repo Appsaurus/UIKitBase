@@ -15,16 +15,15 @@ open class StatefulViewControllerDefaultLoadingView: StatefulViewControllerLoadi
     open override func initialArrangedSubviews() -> [UIView] {
         return [activityIndicator]
     }
-
     
     override open func startLoadingAnimation() {
-        if !activityIndicator.isAnimating{
+        if !activityIndicator.isAnimating {
             activityIndicator.startAnimating()
         }
     }
     
     override open func stopLoadingAnimation() {
-        if activityIndicator.isAnimating{
+        if activityIndicator.isAnimating {
             activityIndicator.stopAnimating()
         }
     }

@@ -10,7 +10,7 @@ import Swiftest
 import UIKitExtensions
 import Nuke
 
-open class BaseStackViewController: BaseViewController{
+open class BaseStackViewController: BaseViewController {
 
 	open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
 	open var stackViewBackgroundView: UIView = UIView()
@@ -21,7 +21,6 @@ open class BaseStackViewController: BaseViewController{
 	open func initialArrangedSubviews() -> [UIView] {
         return []
     }
-
 
 	open override func createSubviews() {
 		super.createSubviews()
@@ -54,7 +53,7 @@ open class BaseStackViewController: BaseViewController{
 	}
 }
 
-open class AlertViewModel{
+open class AlertViewModel {
 	public var headerImage: UIImage?
     public var headerImageUrl: URLConvertible?
 	public var alertTitle: String?
@@ -75,7 +74,7 @@ open class AlertViewModel{
 
 }
 
-open class StackedAlertViewController: BaseStackViewController{
+open class StackedAlertViewController: BaseStackViewController {
 
 	open var viewModel: AlertViewModel = AlertViewModel()
 
@@ -87,7 +86,7 @@ open class StackedAlertViewController: BaseStackViewController{
 	open lazy var defaultBottomStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
 	open var showsDismissButton: Bool = { return true }()
 
-    open override func initialArrangedSubviews() -> [UIView]{
+    open override func initialArrangedSubviews() -> [UIView] {
         return optionalArrangedSubviews + [bottomStackView]
     }
     
@@ -100,7 +99,6 @@ open class StackedAlertViewController: BaseStackViewController{
 		self.viewModel = viewModel
 		didInit()
 	}
-
 
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -122,18 +120,18 @@ open class StackedAlertViewController: BaseStackViewController{
 		display(viewModel: viewModel)
 	}
 
-	open var optionalArrangedSubviews: [UIView]{
+	open var optionalArrangedSubviews: [UIView] {
 		var optionalViews: [UIView] = []
-		if viewModel.headerImage != nil || viewModel.headerImageUrl != nil{
+		if viewModel.headerImage != nil || viewModel.headerImageUrl != nil {
 			headerImageView.contentMode = .scaleAspectFit
 			optionalViews.append(headerImageView)
 		}
-		if viewModel.alertTitle.hasNonEmptyValue{
+		if viewModel.alertTitle.hasNonEmptyValue {
 			alertTitleLabel.wrapWords()
 			alertTitleLabel.textAlignment = .center
 			optionalViews.append(alertTitleLabel)
 		}
-		if viewModel.message.hasNonEmptyValue{
+		if viewModel.message.hasNonEmptyValue {
 			messageLabel.wrapWords()
 			messageLabel.textAlignment = .center
 			optionalViews.append(messageLabel)
@@ -142,19 +140,18 @@ open class StackedAlertViewController: BaseStackViewController{
 		return optionalViews
 	}
 
-	open var bottomStackArrangedSubviews: [UIView]{
-		guard showsDismissButton else{
+	open var bottomStackArrangedSubviews: [UIView] {
+		guard showsDismissButton else {
 			return []
 		}
-		dismissButton.titleMap = [.any : viewModel.dismissButtonTitle]
+		dismissButton.titleMap = [.any: viewModel.dismissButtonTitle]
 		return [dismissButton]
 	}
 
-	open func display(viewModel: AlertViewModel){
+	open func display(viewModel: AlertViewModel) {
 		if let image = viewModel.headerImage {
             headerImageView.image = image
-        }
-        else if let imageURL = viewModel.headerImageUrl?.toURL{
+        } else if let imageURL = viewModel.headerImageUrl?.toURL {
             headerImageView.loadImage(with: imageURL)
         }
 		alertTitleLabel.text =? viewModel.alertTitle
@@ -164,10 +161,10 @@ open class StackedAlertViewController: BaseStackViewController{
 	open override func style() {
 		super.style()
 		stackViewBackgroundView.backgroundColor = .viewControllerBaseViewBackgroundColor
-		if viewModel.alertTitle.hasNonEmptyValue{
+		if viewModel.alertTitle.hasNonEmptyValue {
 			alertTitleLabel.apply(textStyle: .semibold(color: .primary, size: .button + 2))
 		}
-		if viewModel.message.hasNonEmptyValue{
+		if viewModel.message.hasNonEmptyValue {
 			messageLabel.apply(textStyle: .regular(size: UIFont.labelFontSize))
 		}
 
@@ -179,18 +176,18 @@ open class StackedAlertViewController: BaseStackViewController{
 		dismissButton.onTap = userDidTapDismissButton
 	}
 
-	//MARK: Control Actions
-	open func userDidTapDismissButton(){
+	// MARK: Control Actions
+	open func userDidTapDismissButton() {
 		self.dismiss(animated: true) { [weak self] in
 			self?.userDidDismiss()
 		}
 	}
 
-	open func userDidDismiss(){
+	open func userDidDismiss() {
 
 	}
 
-	open func present(from presenter: UIViewController){
+	open func present(from presenter: UIViewController) {
 		view.setBackgroundBlur(style: .dark)
 		modalPresentationStyle = .overCurrentContext
 		modalTransitionStyle = .crossDissolve

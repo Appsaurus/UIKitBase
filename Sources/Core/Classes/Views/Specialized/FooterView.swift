@@ -45,17 +45,17 @@ open class FooterView<View: UIView>: BaseView {
         contentView.edges.equal(to: margins.edges)
     }
     
-    open func createContentView() -> View{
+    open func createContentView() -> View {
         return View()
     }
     
-    //MARK: Layout in superview
+    // MARK: Layout in superview
     @discardableResult
-    open func autoLayoutPin(toBottomOf view: UIView, height: CGFloat? = nil) -> ConstraintAttributeMap{
+    open func autoLayoutPin(toBottomOf view: UIView, height: CGFloat? = nil) -> ConstraintAttributeMap {
         var constraints: ConstraintAttributeMap = [:]
         let height = height ?? 75.0
         
-        if let tableView: UITableView = view as? UITableView{
+        if let tableView: UITableView = view as? UITableView {
             tableView.tableFooterView = self
             //            self.autoMatchWidth(of: tableView)
             //            constraints[.height] = autoSizeHeight(to: height)
@@ -64,7 +64,7 @@ open class FooterView<View: UIView>: BaseView {
             return constraints
         }
         
-        if self.superview != view{
+        if self.superview != view {
             view.addSubview(self)
         }
         constraints[.leading] = [leading.equal(to: assertSuperview.leading)]
@@ -79,16 +79,16 @@ open class FooterView<View: UIView>: BaseView {
     }
 }
 
-extension UIViewController{
+extension UIViewController {
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap{
+    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
         return footerView.autoLayoutPin(toBottomOf: self.view, height: height)
     }
 }
 
-extension UIView{
+extension UIView {
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap{
+    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
         return footerView.autoLayoutPin(toBottomOf: self, height: height)
     }
 }

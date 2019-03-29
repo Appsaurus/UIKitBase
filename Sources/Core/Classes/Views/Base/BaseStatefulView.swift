@@ -8,13 +8,13 @@
 import UIKit
 import UIKitMixinable
 
-open class BaseStatefulView: BaseView, StatefulViewController{
+open class BaseStatefulView: BaseView, StatefulViewController {
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [StatefulViewMixin(self)]
     }
     
-    //MARK: StatefulViewController
-    open func startLoading(){}
+    // MARK: StatefulViewController
+    open func startLoading() {}
     
     open func customizeStatefulViews() {}
     
@@ -22,8 +22,8 @@ open class BaseStatefulView: BaseView, StatefulViewController{
         return .default
     }
     
-    open func willTransition(to state: State){}
+    open func willTransition(to state: State) {}
     
-    open func didTransition(to state: State){}
+    open func didTransition(to state: State) {}
     
 }

@@ -37,15 +37,14 @@ open class ImageScrollingCollectionViewController: PaginatableCollectionViewCont
         collectionView?.registerReusable(cellClass: BaseImageCollectionViewCell.self)
     }
     
-    //MARK: CollectionView Delegate/Datasource
+    // MARK: CollectionView Delegate/Datasource
     open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BaseImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        if let url = dataSource[indexPath]{
+        if let url = dataSource[indexPath] {
             cell.imageView.tag = indexPath.row
             do {
                 try cell.imageView.loadImage(with: url)
-            }
-            catch{
+            } catch {
                 cell.imageView.display(image: nil)
             }
 
@@ -54,12 +53,11 @@ open class ImageScrollingCollectionViewController: PaginatableCollectionViewCont
     }
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch imageAspectRatio{
+        switch imageAspectRatio {
         case .square:
             return CGSize(side: collectionView.frame.h)
         default:
             assertionFailure("Still need to implement other aspect ratios")
-            //TODO: implement other aspect ratios
             return .zero
         }
     }
@@ -68,8 +66,7 @@ open class ImageScrollingCollectionViewController: PaginatableCollectionViewCont
         
     }
     
-    
-    //MARK: Flow layout delegate
+    // MARK: Flow layout delegate
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0

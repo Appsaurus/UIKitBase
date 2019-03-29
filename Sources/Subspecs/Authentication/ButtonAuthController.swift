@@ -7,7 +7,7 @@
 
 import Swiftest
 
-open class ThirdPartyAuthButtonViewModel{
+open class ThirdPartyAuthButtonViewModel {
 	open var icon: AuthIcons?
 	open var fullLoginButtonTitle: String
 	public init(icon: AuthIcons?, fullLoginButtonTitle: String) {
@@ -16,7 +16,7 @@ open class ThirdPartyAuthButtonViewModel{
 	}
 }
 
-open class AuthButton: BaseButton, AuthView{
+open class AuthButton: BaseButton, AuthView {
 
 	open override func didInit() {
 		super.didInit()
@@ -36,7 +36,7 @@ open class AuthButton: BaseButton, AuthView{
 
 }
 
-open class ButtonAuthController<R, V>: AuthController<Any, AuthButton>{
+open class ButtonAuthController<R, V>: AuthController<Any, AuthButton> {
 
 	open override func didInit() {
 		setupAuthAction(for: authView)

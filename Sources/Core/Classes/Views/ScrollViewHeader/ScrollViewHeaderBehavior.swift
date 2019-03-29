@@ -9,37 +9,37 @@
 import Foundation
 import UIKit
 
-public enum ScrollViewHeaderBehaviorType{
+public enum ScrollViewHeaderBehaviorType {
     case parallax(strength: CGFloat)
     case stretch(strength: CGFloat)
     case fade
     case blur(timing: ScrollViewHeaderBehaviorTiming)
 }
 
-open class ScrollViewHeaderBehavior{
+open class ScrollViewHeaderBehavior {
     
     public init() {
         
     }
-    public weak var scrollViewHeader: ScrollViewHeader!{
-        didSet{
+    public weak var scrollViewHeader: ScrollViewHeader! {
+        didSet {
             setup()
         }
     }
     open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         
     }
-    open func setup(){
+    open func setup() {
         
     }
 }
 
-public enum ScrollViewHeaderBehaviorTiming{
+public enum ScrollViewHeaderBehaviorTiming {
     case onPull, onCollapse
 }
 
 @available(iOS 10.0, *)
-open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehavior{
+open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehavior {
     open var timing: [ScrollViewHeaderBehaviorTiming]
     open var strength: CGFloat
     open lazy var animator: UIViewPropertyAnimator = createViewPropertyAnimator()
@@ -53,7 +53,7 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
 		animator.stopAnimation(true)
 	}
     
-    open func createViewPropertyAnimator() -> UIViewPropertyAnimator{
+    open func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return UIViewPropertyAnimator()
     }
@@ -71,7 +71,7 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
     }
 }
 
-open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior{
+open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior {
     open override func setup() {
         super.setup()
       
@@ -88,7 +88,7 @@ open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior{
     }
 }
 
-open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior{
+open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior {
     open var speed: CGFloat
     
     open var parallaxOffset: CGFloat {
@@ -100,7 +100,7 @@ open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior{
         self.speed = speed
     }
     
-    open override func setup(){
+    open override func setup() {
         
     }
     
@@ -117,11 +117,11 @@ open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior{
     }
 }
 @available(iOS 10.0, *)
-open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeaderBehavior{
+open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     open var visualEffectView: UIVisualEffectView
     open var visualEffect: UIVisualEffect
     
-    open override func setup(){
+    open override func setup() {
         super.setup()
         scrollViewHeader.headerLayoutView.insertSubview(visualEffectView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
         visualEffectView.pinToSuperview()
@@ -141,7 +141,7 @@ open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeade
     }
 }
 
-open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior{
+open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior {
     open override func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         scrollViewHeader.headerLayoutHeightConstraint?.constant = max(scrollViewHeader.expandedHeaderHeight, scrollViewHeader.expandedHeaderHeight - scrollViewHeader.offset)
         switch scrollViewHeader.headerState {
@@ -153,7 +153,7 @@ open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior{
     }
 }
 @available(iOS 10.0, *)
-open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderBehavior{
+open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     open override func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             guard let sSelf = self else { return }
@@ -163,18 +163,17 @@ open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderB
 }
 
 @available(iOS 10.0, *)
-open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHeaderBehavior{
+open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     var fillColor: UIColor
     var fillView: UIView = UIView()
     
-    open override func setup(){
+    open override func setup() {
         super.setup()
         scrollViewHeader.insertSubview(fillView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
         fillView.pinToSuperview()
         fillView.backgroundColor = fillColor
         fillView.alpha = 0.0
     }
-    
     
     public init(timing: [ScrollViewHeaderBehaviorTiming] = [.onCollapse], strength: CGFloat = 1.0, fillColor: UIColor) {
         self.fillColor = fillColor

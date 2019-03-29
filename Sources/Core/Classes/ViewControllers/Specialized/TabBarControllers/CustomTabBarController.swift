@@ -11,7 +11,7 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-public enum CustomTabBarLayout{
+public enum CustomTabBarLayout {
     case bottom(height: CGFloat)
     case top(height: CGFloat)
     case left(width: CGFloat)
@@ -25,8 +25,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
     open var eagerLoadsViewControllers: Bool = true
     open var initialViewControllers: [UIViewController] = []
     
-    
-    open var tabBarStackViewConfiguration: StackViewConfiguration{
+    open var tabBarStackViewConfiguration: StackViewConfiguration {
         switch tabBarLayout {
         case .bottom, .top:
             return .fillEquallyHorizontal(spacing: 0.0)
@@ -37,8 +36,8 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
     open var tabBarLayoutView: UIView = UIView()
     open lazy var contentPadding: CGFloat = 25.0
     
-    open override var selectedIndex: Int{
-        didSet{
+    open override var selectedIndex: Int {
+        didSet {
             customTabBar.selectItem(at: selectedIndex)
         }
     }
@@ -57,7 +56,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         self.delegate = self
         self.tabBar.removeFromSuperview()
         self.customTabBar.initialSelectedMenuIndexPath = initialSelectedIndex?.indexPath
-        initialViewControllers.enumerated().forEach{ (index, vc) in
+        initialViewControllers.enumerated().forEach { (index, vc) in
             vc.tabBarItem.tag = index
             if appliesTabBarItemTitlesToViewControllerTitles { vc.title = vc.tabBarItem.title }
         }
@@ -73,10 +72,10 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
     //        customTabBar.rerenderCollectionMenuSelection()
     //    }
     
-    open override func setViewControllers(_ viewControllers: [UIViewController]?, animated: Bool){
+    open override func setViewControllers(_ viewControllers: [UIViewController]?, animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
         customTabBar.reloadItems(animated: animated)
-        if eagerLoadsViewControllers{
+        if eagerLoadsViewControllers {
             viewControllers?.loadViewIfNeeded()
         }
         //        viewControllers?.forEach({ (vc) in
@@ -100,7 +99,6 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         //        })
     }
     
-    
     open override func createSubviews() {
         super.createSubviews()
         self.view.addSubview(tabBarLayoutView)
@@ -113,10 +111,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         tabBarLayoutView.layoutMargins = .zero
     }
     
-    
-    
-    
-    open func createTabBarAutolayoutConstraints(){
+    open func createTabBarAutolayoutConstraints() {
         guard let contentView = contentView else { return }
         customTabBar.edges.equalToSuperviewMargin()
         switch tabBarLayout {
@@ -137,7 +132,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
     
     // MARK: - CustomTabBarDataSource
     
-    open func customTabBar(_ tabBar: CustomTabBar, shouldSelectItemAtIndex index: Int) -> Bool{
+    open func customTabBar(_ tabBar: CustomTabBar, shouldSelectItemAtIndex index: Int) -> Bool {
         guard let vc = self.viewControllers?[index] else { return false }
         return tabBarController(self, shouldSelect: vc)
     }
@@ -150,7 +145,6 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         return CustomTabBarItemView(tabBarItem: self.viewControllers![index].tabBarItem)
     }
     
-    
     // MARK: - CustomTabBarDelegate
     
     open func customTabBarDidReselectItemAtCurrentIndex(_ tabBar: CustomTabBar) {
@@ -161,7 +155,6 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         
         childVC.tabItemWasTappedWhileViewControllerIsVisible()
     }
-    
     
     open func customTabBar(_ tabBar: CustomTabBar, didSelectItemAtIndex index: Int) {
         guard let selectedVC = self.viewControllers?[index] else { return }
@@ -197,9 +190,9 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         //                contentView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width - width, height: view.frame.size.height)
         //        }
     }
-    //MARK: Convenience
+    // MARK: Convenience
     
-    open func transition(to childViewController: UIViewController){
+    open func transition(to childViewController: UIViewController) {
         guard let index = childViewController.tabBarItem?.tag ?? viewControllers?.index(of: childViewController),
             index != selectedIndex else { return }
         selectedIndex = index

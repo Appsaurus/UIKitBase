@@ -15,18 +15,17 @@ open class BaseContainerViewController: BaseViewController {
         return self.createHeaderView()
     }()
 
-
     /// Hook to create a static header view that is pinned above the containerview.
     ///
     /// - Returns: Header view, height determined by subview autolayout constraints
-    open func createHeaderView() -> UIView?{
+    open func createHeaderView() -> UIView? {
         return nil
     }
 
     open lazy var containerView: UIView = UIView()
     open lazy var containedView: UIView? = nil
 
-    open override func createSubviews(){
+    open override func createSubviews() {
         super.createSubviews()
         view.addSubview(containerView)
         if let containedView = containedView {
@@ -37,13 +36,13 @@ open class BaseContainerViewController: BaseViewController {
         view.addSubview(headerView)
     }
 
-    open override func createAutoLayoutConstraints(){
+    open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         createContainedViewLayoutConstraints()
         createContainerViewLayoutConstraints()
     }
 
-    open func createContainerViewLayoutConstraints(){
+    open func createContainerViewLayoutConstraints() {
         view.layoutMargins = .zero
         if #available(iOS 11.0, *) {
             view.directionalLayoutMargins = .zero
@@ -57,11 +56,10 @@ open class BaseContainerViewController: BaseViewController {
         headerView.enforceContentSize()
     }
 
-    open func createContainedViewLayoutConstraints(){
+    open func createContainedViewLayoutConstraints() {
         if let containedView = containedView {
             containedView.equal(to: containerView.margins.edges)
         }
         containerView.layoutMargins = .zero
     }
 }
-

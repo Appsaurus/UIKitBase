@@ -19,14 +19,12 @@ import UIKit
     private var viewStore: [State: UIView]
     private let queue = DispatchQueue(label: "com.uiKitBase.viewStateMachine.queue", attributes: .concurrent)
     
-    
     /// The view that should act as the superview for any added views
     public var view: UIView
     
     public private(set) var currentState: State = .uninitialized
     
     public private(set) var previousState: State = .uninitialized
-    
     
     // MARK: Init
     
@@ -50,7 +48,6 @@ import UIKit
         self.init(view: view, states: nil)
     }
     
-    
     // MARK: Add and remove view states
     
     /// - returns: the view for a given state
@@ -68,7 +65,6 @@ import UIKit
         viewStore[state] = nil
     }
     
-    
     // MARK: Subscripting
     
     public subscript(state: State) -> UIView? {
@@ -84,7 +80,6 @@ import UIKit
         }
     }
     
-    
     // MARK: Switch view state
     
     /// Adds and removes views to and from the `view` based on the given state.
@@ -94,10 +89,10 @@ import UIKit
     /// - parameter animated:    true if the transition should fade views in and out
     /// - parameter completion:    called when all animations are finished and the view has been updated
     ///
-    public func transition(to state: State, animated: Bool = true, completion: (() -> ())? = nil) {
+    public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
         
         if state == self.currentState {
-            if let statefulView = self.viewForState(state: state){
+            if let statefulView = self.viewForState(state: state) {
                 statefulView.superview?.bringSubviewToFront(statefulView)
             }
             completion?()
@@ -108,22 +103,20 @@ import UIKit
         currentState = state
         // Update the view
         DispatchQueue.main.async {
-            if let statefulView = self.viewForState(state: state){
+            if let statefulView = self.viewForState(state: state) {
                 self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
-            }
-            else{
+            } else {
                 self.hideAllViews(animated: animated, completion: completion)
             }
         }
         
     }
     
-    
     // MARK: Private view updates
     
-    public func show(statefulView: UIView, for state: State, animated: Bool, completion: (() -> ())? = nil) {
+    public func show(statefulView: UIView, for state: State, animated: Bool, completion: (() -> Void)? = nil) {
         
-        if let previousView = self.viewForState(state: previousState){
+        if let previousView = self.viewForState(state: previousState) {
             previousView.removeFromSuperview()
         }
         
@@ -131,10 +124,9 @@ import UIKit
         
         statefulView.frame = parentView.bounds
         parentView.addSubview(statefulView)
-        if parentView is UIScrollView{
+        if parentView is UIScrollView {
             statefulView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        }
-        else{
+        } else {
             statefulView.edges.equal(to: parentView.edges)
         }
         parentView.bringSubviewToFront(statefulView)
@@ -142,7 +134,7 @@ import UIKit
         completion?()
     }
     
-    public func hideAllViews(animated: Bool, completion: (() -> ())? = nil) {
+    public func hideAllViews(animated: Bool, completion: (() -> Void)? = nil) {
         for (_, view) in self.viewStore {
             view.removeFromSuperview()
         }

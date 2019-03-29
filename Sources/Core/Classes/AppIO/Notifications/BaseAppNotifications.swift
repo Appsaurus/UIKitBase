@@ -10,13 +10,13 @@ import Foundation
 import Swiftest
 import UserNotifications
 
-public typealias AppNotificationPayload = [AnyHashable : Any]
+public typealias AppNotificationPayload = [AnyHashable: Any]
 
-public enum AppNotificationOrigin{
+public enum AppNotificationOrigin {
     case local, remote
 }
 
-open class BaseAppNotification{
+open class BaseAppNotification {
     open var payload: AppNotificationPayload = [:]
     open var origin: AppNotificationOrigin
 
@@ -45,25 +45,25 @@ open class BaseAppNotification{
         self.origin = origin
     }
 
-    public func parse(key: String) throws -> String{
+    public func parse(key: String) throws -> String {
         guard let value = payload[key] as? String else { throw NotificationParsingError.missingValueForPayload(key: key) }
         return value
     }
 }
 
-public enum NotificationParsingError: LocalizedError{
+public enum NotificationParsingError: LocalizedError {
     case missingValueForPayload(key: String)
-    public var localizedDescription: String{
-        switch self{
+    public var localizedDescription: String {
+        switch self {
         case .missingValueForPayload(let key):
             return "Missing expected value for key \(key)."
         }
     }
 }
-open class AppNotification<ID: AppNotificationID> : BaseAppNotification{
+open class AppNotification<ID: AppNotificationID> : BaseAppNotification {
 
     open var notificationIdentifier: ID?
-    open var notificationCenterNotification: Notification?{
+    open var notificationCenterNotification: Notification? {
         guard let name = notificationIdentifier?.notificationCenterName() else { return nil }
         return Notification(name: name, object: self, userInfo: payload)
     }
@@ -71,7 +71,7 @@ open class AppNotification<ID: AppNotificationID> : BaseAppNotification{
     @available(iOS 10.0, *)
     public required init(unNotification: UNNotification, idKey: String = "notificationId") {
         super.init(unNotification: unNotification)
-        guard let notificationStringId = payload[idKey] as? String else{
+        guard let notificationStringId = payload[idKey] as? String else {
             return
         }
         self.notificationIdentifier = ID.from(id: notificationStringId)
@@ -79,7 +79,7 @@ open class AppNotification<ID: AppNotificationID> : BaseAppNotification{
 
     public required init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote, idKey: String = "notificationId") {
         super.init(payload: payload, origin: origin)
-        guard let notificationStringId = payload[idKey] as? String else{
+        guard let notificationStringId = payload[idKey] as? String else {
             return
         }
         self.notificationIdentifier = ID.from(id: notificationStringId)
@@ -91,25 +91,23 @@ open class AppNotification<ID: AppNotificationID> : BaseAppNotification{
 
 }
 
-public protocol AppNotificationID: StringIdentifiableEnum{}
+public protocol AppNotificationID: StringIdentifiableEnum {}
 
-
-
-public protocol StringIdentifiableEnum: CaseIterable, RawRepresentable, Equatable{
+public protocol StringIdentifiableEnum: CaseIterable, RawRepresentable, Equatable {
     var rawValue: String { get }
     static func from(id: String) -> Self?
     func notificationCenterName() -> Notification.Name
 }
 
-extension StringIdentifiableEnum{
+extension StringIdentifiableEnum {
     //Convenience for when rawValues don't match labels.
-    public static func from(id: String) -> Self?{
+    public static func from(id: String) -> Self? {
         return allCases.first { (enumCase) -> Bool in
             "\(enumCase)" == id
         }
     }
 
-    public func notificationCenterName() -> Notification.Name{
+    public func notificationCenterName() -> Notification.Name {
         return Notification.Name("\(rawValue)")
     }
 }

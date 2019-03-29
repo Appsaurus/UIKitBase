@@ -7,7 +7,7 @@
 
 import UIKitMixinable
 
-public class KeyboardSizeAwareMixin: UIViewControllerMixin<UIViewController & KeyboardSizeAware>{
+public class KeyboardSizeAwareMixin: UIViewControllerMixin<UIViewController & KeyboardSizeAware> {
     open override func viewWillAppear(_ animated: Bool) {
         mixable.registerKeyboard()
     }

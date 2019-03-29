@@ -6,11 +6,9 @@
 //
 //
 
-
 import Layman
 
 open class ViewBasedCollectionViewCell<View: UIView>: DynamicSizeCollectionViewCell {
-    
     
     open lazy var view: View = {
         return self.createMainView()
@@ -30,7 +28,7 @@ open class ViewBasedCollectionViewCell<View: UIView>: DynamicSizeCollectionViewC
         view.forceSuperviewToMatchContentSize(insetBy: mainViewInsets)
     }
     
-    open func createMainView() -> View{
+    open func createMainView() -> View {
         return View()
     }
     

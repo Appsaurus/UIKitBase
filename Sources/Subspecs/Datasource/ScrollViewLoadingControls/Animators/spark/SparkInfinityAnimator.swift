@@ -18,7 +18,7 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let ovalDiameter = min(frame.width,frame.height) / 8
+        let ovalDiameter = min(frame.width, frame.height) / 8
         let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: ovalDiameter, height: ovalDiameter))
         
         let count = 8
@@ -71,16 +71,16 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         let moveV1 = NSValue(cgPoint: positions[index])
         let moveV2 = NSValue(cgPoint: CGPoint(x: bounds.midX, y: bounds.midY))
         let moveV3 = NSValue(cgPoint: positions[index])
-        moveAnimation.values = [moveV1,moveV2,moveV3]
+        moveAnimation.values = [moveV1, moveV2, moveV3]
         
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform")
         let scaleV1 = NSValue(caTransform3D: CATransform3DIdentity)
         let scaleV2 = NSValue(caTransform3D: CATransform3DMakeScale(0.1, 0.1, 1.0))
         let scaleV3 = NSValue(caTransform3D: CATransform3DIdentity)
-        scaleAnimation.values = [scaleV1,scaleV2,scaleV3]
+        scaleAnimation.values = [scaleV1, scaleV2, scaleV3]
         
         let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [moveAnimation,scaleAnimation]
+        animationGroup.animations = [moveAnimation, scaleAnimation]
         animationGroup.duration = 1.0
         animationGroup.repeatCount = 1000
         animationGroup.beginTime = CACurrentMediaTime() + Double(index) * animationGroup.duration / 8 / 2

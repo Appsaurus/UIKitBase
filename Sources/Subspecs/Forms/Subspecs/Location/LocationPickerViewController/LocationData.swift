@@ -6,7 +6,6 @@
 //
 //
 
-
 import Foundation
 import CoreLocation
 import AddressBookUI
@@ -47,11 +46,11 @@ extension LocationData: MKAnnotation {
     }
     
     public var title: String? {
-        if let formatted = locationDisplayNameFormatter?(self){
+        if let formatted = locationDisplayNameFormatter?(self) {
             return formatted.title
         }
         
-        if let placemark = placemark{
+        if let placemark = placemark {
             if let name = placemark.name, !name.isEmpty {
                 return placemark.name!
             }
@@ -64,21 +63,20 @@ extension LocationData: MKAnnotation {
         return "\(location.coordinate)"
         
     }
-    public var subtitle: String?{
-        if let formatted = locationDisplayNameFormatter?(self){
+    public var subtitle: String? {
+        if let formatted = locationDisplayNameFormatter?(self) {
             return formatted.subtitle
         }
         
-        if let placemark = placemark{
+        if let placemark = placemark {
             if let city = placemark.locality, let state = placemark.administrativeArea, !city.isEmpty, !state.isEmpty {
                 return "\(city), \(state)"
             }
             
-            if let postcode = placemark.postalCode, !postcode.isEmpty{
+            if let postcode = placemark.postalCode, !postcode.isEmpty {
                 return postcode
             }
         }
-        
         
         if let address = placemark?._postalAddress {
             return CNPostalAddressFormatter.string(from: address, style: .mailingAddress)

@@ -10,7 +10,7 @@ import UIKit
 import UIFontIcons
 import Layman
 
-public protocol BackButtonManaged: ButtonManaged{
+public protocol BackButtonManaged: ButtonManaged {
     func createBackButton<Icon: FontIconEnum>(icon: Icon,
                                               iconConfiguration: FontIconConfiguration?,
                                               configuration: ManagedButtonConfiguration) -> BaseButton
@@ -20,14 +20,17 @@ public protocol BackButtonManaged: ButtonManaged{
     func backButtonDidPopViewController()
 }
 
-extension BackButtonManaged{
+extension BackButtonManaged {
+    public static var defaultButtonConfiguration: ManagedButtonConfiguration {
+        return ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered,
+                                                                                 marginInsets: LayoutPadding(0))),
+                                          position: .navBarLeading,
+                                          size: CGSize(side: 30))
+    }
     @discardableResult
     public func createBackButton<Icon: FontIconEnum>(icon: Icon,
                                                      iconConfiguration: FontIconConfiguration? = nil,
-                                                     configuration: ManagedButtonConfiguration = ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered,
-                                                                                                                                                                   marginInsets: LayoutPadding(0))),
-                                                                                                                            position: .navBarLeading,
-                                                                                                                            size: CGSize(side: 30))) -> BaseButton{
+                                                     configuration: ManagedButtonConfiguration = defaultButtonConfiguration) -> BaseButton {
         let button = configuration.button ?? defaultButton(configuration: configuration)
         let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: configuration.size))
         button.imageMap[.normal] = UIImage(icon: icon, configuration: iconConfiguration)
@@ -35,21 +38,21 @@ extension BackButtonManaged{
         return createManagedButton(configuration: configuration)
     }
     
-    public func backButtonShouldPopViewController() -> Bool{
+    public func backButtonShouldPopViewController() -> Bool {
         return true
     }
     
-    public func backButtonWillPopViewController(){
+    public func backButtonWillPopViewController() {
         
     }
-    public func backButtonDidPopViewController(){
+    public func backButtonDidPopViewController() {
         
     }
 }
-extension BackButtonManaged where Self: UIViewController{
+extension BackButtonManaged where Self: UIViewController {
     
-    public func popViewControllerIfAllowed(){
-        if backButtonShouldPopViewController(){
+    public func popViewControllerIfAllowed() {
+        if backButtonShouldPopViewController() {
             backButtonWillPopViewController()
             navigationController?.popViewController(animated: true)
             backButtonDidPopViewController()

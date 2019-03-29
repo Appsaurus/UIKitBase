@@ -13,7 +13,7 @@ import UIKitTheme
     // MARK: - Types
     
     /// The mode of the gradient.
-    @objc public enum Mode : Int {
+    @objc public enum Mode: Int {
         /// A linear gradient.
         case linear
         
@@ -21,16 +21,14 @@ import UIKitTheme
         case radial
     }
     
-    
     /// The direction of the gradient.
-    @objc public enum Direction : Int {
+    @objc public enum Direction: Int {
         /// The gradient is vertical.
         case vertical
         
         /// The gradient is horizontal
         case horizontal
     }
-    
     
     // MARK: - Properties
     
@@ -71,14 +69,14 @@ import UIKitTheme
     }
     
     /// The mode of the gradient. The default is `.Linear`.
-    @IBInspectable open var mode: Mode = .linear {
+    open var mode: Mode = .linear {
         didSet {
             setNeedsDisplay()
         }
     }
     
     /// The direction of the gradient. Only valid for the `Mode.Linear` mode. The default is `.Vertical`.
-    @IBInspectable open var direction: Direction = .vertical {
+    open var direction: Direction = .vertical {
         didSet {
             setNeedsDisplay()
         }
@@ -118,7 +116,6 @@ import UIKitTheme
             setNeedsDisplay()
         }
     }
-    
     
     // MARK: - UIView
     
@@ -184,7 +181,6 @@ import UIKitTheme
         contentMode = .redraw
     }
     
-    
     // MARK: - Private
     
     fileprivate var gradient: CGGradient?
@@ -245,13 +241,12 @@ import UIKitTheme
     }
 }
 
-
-public extension GradientView{
+public extension GradientView {
     class func insertGradientBackgroundView(_ superView: UIView, pinnedToView sourceView: UIView,
                                             colors: [UIColor],
                                             size: CGSize,
                                             gradientMode: Mode = .linear,
-                                            alpha: CGFloat = 1.0) -> GradientView{
+                                            alpha: CGFloat = 1.0) -> GradientView {
         let gradient = GradientView()
         gradient.clipsToBounds = false
         gradient.mode = gradientMode
@@ -269,7 +264,7 @@ public extension GradientView{
                                                                  .secondary],
                                             gradientMode: Mode = .linear,
                                             gradientDirection: Direction = .horizontal,
-                                            alpha: CGFloat = 1.0) -> GradientView{
+                                            alpha: CGFloat = 1.0) -> GradientView {
         let gradientView = gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
         view.insertSubview(gradientView, at: 0)
         gradientView.pinToSuperview()
@@ -281,7 +276,7 @@ public extension GradientView{
                                              .secondary],
                         gradientMode: Mode = .linear,
                         gradientDirection: Direction = .horizontal,
-                        alpha: CGFloat = 1.0) -> GradientView{
+                        alpha: CGFloat = 1.0) -> GradientView {
         let gradient = GradientView()
         gradient.clipsToBounds = false
         gradient.mode = gradientMode
@@ -293,8 +288,8 @@ public extension GradientView{
     }
 }
 
-extension GradientConfiguration{
-    public func toView(frame: CGRect) -> GradientView{
+extension GradientConfiguration {
+    public func toView(frame: CGRect) -> GradientView {
         let gv = GradientView()
         gv.locations = self.locations.map({$0.doubleValue.cgFloat})
         gv.colors = colors

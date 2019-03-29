@@ -10,6 +10,5 @@ import UIKit
 import Swiftest
 
 open class StatefulViewControllerErrorView: StatefulViewControllerView {
-
     
 }

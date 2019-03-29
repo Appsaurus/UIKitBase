@@ -9,41 +9,40 @@
 import Swiftest
 import UIKitTheme
 
+open class DrawingUtils {
 
-open class DrawingUtils{
-
-    public static func draw(polygon: [CGPoint], style: ViewStyle, innerBorder: Bool = true){
+    public static func draw(polygon: [CGPoint], style: ViewStyle, innerBorder: Bool = true) {
 			draw(polygon: polygon,
 						  fill: style.backgroundColor,
 						  borderColor: style.borderStyle?.borderColor,
 						  borderWidth: style.borderStyle?.borderWidth)
 	}
-    public static func draw(polygon: [CGPoint], fill: UIColor? = nil, borderColor: UIColor? = nil, borderWidth: CGFloat? = nil, innerBorder: Bool = true){
+    public static func draw(polygon: [CGPoint], fill: UIColor? = nil, borderColor: UIColor? = nil, borderWidth: CGFloat? = nil, innerBorder: Bool = true) {
         var points = polygon
         let firstPoint = points.removeFirst()
         
         let path = UIBezierPath()
         path.move(to: firstPoint)
-        for point in points{
+        for point in points {
             path.addLine(to: point)
         }
         path.addLine(to: firstPoint)
 		if let borderWidth = borderWidth { path.lineWidth = borderWidth }
 		if let borderColor = borderColor {
-			if innerBorder{
+			if innerBorder {
 				path.addClip()
 			}
 			borderColor.setStroke()
 			path.stroke()
 		}
-		if let fill = fill{
+		if let fill = fill {
 			fill.setFill()
 			path.fill()
 		}
 
     }
     
-    public static func drawSplitBackgroundSpanning(view: UIView, startY: CGFloat? = nil, incline: CGFloat, filledWith color: UIColor){
+    public static func drawSplitBackgroundSpanning(view: UIView, startY: CGFloat? = nil, incline: CGFloat, filledWith color: UIColor) {
         let rect = view.bounds
         let startY = startY ?? rect.minY
         let poly = [
@@ -56,18 +55,18 @@ open class DrawingUtils{
     }
 
     public static func drawDottedUnderline(strokeColor: UIColor? = nil,
-										 fillColor: UIColor? = nil,
-										 lineWidth: CGFloat = 2,
-										 in view: UIView){
+                                           fillColor: UIColor? = nil,
+                                           lineWidth: CGFloat = 2,
+                                           in view: UIView) {
 		let strokeColor = strokeColor ?? .black
 		let fillColor = fillColor ?? view.backgroundColor ?? .white
 		let path = UIBezierPath()
 
 		var start = view.frame.bottomLeft
-		start.x = start.x + lineWidth / 2.0
+		start.x += lineWidth / 2.0
 
 		var end = view.frame.bottomRight
-		end.x = end.x - lineWidth / 2.0
+		end.x -= lineWidth / 2.0
 
 		path.move(to: start)
 		path.addLine(to: end)

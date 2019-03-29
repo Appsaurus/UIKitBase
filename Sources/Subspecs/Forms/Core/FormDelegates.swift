@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol FieldValidationDelegate{
+public protocol FieldValidationDelegate: class {
     func fieldIsValidating(_ field: FormFieldProtocol)
     func fieldFailedValidation(_ field: FormFieldProtocol, failures: [ValidationFailure])
     func fieldPassedValidation(_ field: FormFieldProtocol)
@@ -18,7 +18,7 @@ public protocol FieldValidationDelegate{
 }
 
 //Default implementations to effectively make delegate methods optional
-extension FieldValidationDelegate{
+extension FieldValidationDelegate {
     public func fieldIsValidating(_ field: FormFieldProtocol) {}
     public func fieldFailedValidation(_ field: FormFieldProtocol, failures: [ValidationFailure]) {}
     public func fieldPassedValidation(_ field: FormFieldProtocol) {}
@@ -27,7 +27,7 @@ extension FieldValidationDelegate{
     
 }
 
-public protocol FormDelegate: FieldValidationDelegate{
+public protocol FormDelegate: FieldValidationDelegate {
     func formIsValidating(_ form: Form)
     func formFailedValidation(_ form: Form, failures: [ValidationFailure])
     func formPassedValidation(_ form: Form)
@@ -39,7 +39,7 @@ public protocol FormDelegate: FieldValidationDelegate{
 }
 
 //Default implementations to effectively make delegate methods optional
-extension FormDelegate{
+extension FormDelegate {
     public func formIsValidating(_ form: Form) {}
     public func formFailedValidation(_ form: Form, failures: [ValidationFailure]) {}
     public func formPassedValidation(_ form: Form) {}

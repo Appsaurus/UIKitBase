@@ -40,20 +40,19 @@ open class NavigationalMenuTableViewController: BaseTableViewController {
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellData = cells[indexPath.row]
         
-        if !cellData.presentModally, let navVC = self.navigationController{
+        if !cellData.presentModally, let navVC = self.navigationController {
             navVC.pushViewController(cellData.createDestinationVC(), animated: true)
-        }
-        else{
+        } else {
             self.present(cellData.createDestinationVC(), animated: true, completion: nil)
         }
     }
 
-	open func addRow(leftImage: UIImage? = nil, title: String, createDestinationVC: @escaping @autoclosure () -> UIViewController, presentModally: Bool = false){
+	open func addRow(leftImage: UIImage? = nil, title: String, createDestinationVC: @escaping @autoclosure () -> UIViewController, presentModally: Bool = false) {
 		cells.append(NavigationalMenuTableViewCellDatasource(leftImage: leftImage, title: title, createDestinationVC: createDestinationVC, presentModally: presentModally))
     }
 }
 
-public struct NavigationalMenuTableViewCellDatasource{
+public struct NavigationalMenuTableViewCellDatasource {
     var leftImage: UIImage?
     var title: String
     var createDestinationVC: () -> UIViewController

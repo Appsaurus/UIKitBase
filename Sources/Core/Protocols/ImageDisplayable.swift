@@ -23,7 +23,7 @@ extension ImageDisplaying where Self: UIView {
     public func loadImage(with url: URL,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil)  -> ImageTask? {
+                          completion: ImageTask.Completion? = nil) -> ImageTask? {
         return Nuke.loadImage(with: url, options: options, into: self, progress: progress, completion: completion)
     }
 
@@ -43,7 +43,7 @@ extension ImageDisplaying where Self: UIView {
     }
 }
 
-extension UIButton: ImageDisplaying{
+extension UIButton: ImageDisplaying {
 
     public func display(image: Image?) {
         self.imageView?.image = image
@@ -99,15 +99,15 @@ extension UIButton: ImageDisplaying{
 //    
 //}
 
-public enum URLConvertibleError: Error{
+public enum URLConvertibleError: Error {
     case invalidURL
 }
 public protocol URLConvertible {
     var toURL: URL? { get }
     func assertURL() throws -> URL
 }
-extension URLConvertible{
-    public func assertURL() throws -> URL{
+extension URLConvertible {
+    public func assertURL() throws -> URL {
         guard let url = toURL else {
             throw URLConvertibleError.invalidURL
         }

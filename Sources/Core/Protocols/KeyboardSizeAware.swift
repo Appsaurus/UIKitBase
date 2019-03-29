@@ -9,17 +9,21 @@ import UIKit
 import Swiftest
 
 public protocol KeyboardSizeAware: class {
-    var keyboardHeight: CGFloat? { set get }
+    var keyboardHeight: CGFloat? { get set }
 }
 
-extension KeyboardSizeAware{
+extension KeyboardSizeAware {
     public func registerKeyboard() {
 
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] notification in
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
+                                                   object: nil,
+                                                   queue: nil) { [weak self] _ in
             guard let self = self else { return }
             self.keyboardHeight = nil
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { [weak self] notification in
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
+                                                   object: nil, 
+                                                   queue: nil) { [weak self] notification in
             guard let self = self else { return }
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 self.keyboardHeight = keyboardSize.height
@@ -32,6 +36,3 @@ extension KeyboardSizeAware{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 }
-
-
-

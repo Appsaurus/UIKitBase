@@ -32,7 +32,7 @@ open class CustomTabBarItemView: BaseButton, ObjectDisplayable {
 
     public func display(object: UITabBarItem) {
         tabBarItem = object
-        var images: [ButtonState : UIImage] = [:]
+        var images: [ButtonState: UIImage] = [:]
         images[.normal] =? tabBarItem.image
         images[.selected] =? tabBarItem.selectedImage
         imageMap = images

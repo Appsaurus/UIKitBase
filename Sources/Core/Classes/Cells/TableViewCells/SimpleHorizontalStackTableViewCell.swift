@@ -9,7 +9,6 @@
 import Layman
 import Swiftest
 
-
 open class SimpleHorizontalStackTableViewCell: DynamicHeightCell {
     open var stackViewLayoutInsets: LayoutPadding = LayoutPadding(10.0, 5.0)
     open var stackView: HorizontalStackView = HorizontalStackView()

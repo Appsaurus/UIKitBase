@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class DynamicHeightStackTableViewCell: ViewBasedTableViewCell<VerticalStackView>{
+open class DynamicHeightStackTableViewCell: ViewBasedTableViewCell<VerticalStackView> {
     open override func createMainView() -> VerticalStackView {
         let sv = VerticalStackView()
         sv.apply(stackViewConfiguration: .equalSpacingVertical(spacing: 0.0))

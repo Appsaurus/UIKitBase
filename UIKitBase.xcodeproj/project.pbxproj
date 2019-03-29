@@ -344,10 +344,6 @@
 		E41D721D224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
 		E41D721E224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
 		E41D721F224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */; };
-		E41D7220224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
-		E41D7221224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
-		E41D7222224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
-		E41D7223224D66D300CA05C4 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */; };
 		E41D7226224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
 		E41D7227224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
 		E41D7228224D66DE00CA05C4 /* NibLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */; };
@@ -818,7 +814,6 @@
 		E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeader.swift; sourceTree = "<group>"; };
 		E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderBehavior.swift; sourceTree = "<group>"; };
 		E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornable.swift; sourceTree = "<group>"; };
-		E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollView.swift; sourceTree = "<group>"; };
 		E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadedView.swift; sourceTree = "<group>"; };
 		E41D722C224D674600CA05C4 /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		E41D7260224D707C00CA05C4 /* BaseStackViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackViews.swift; sourceTree = "<group>"; };
@@ -840,6 +835,7 @@
 		E41D72B0224D7DDE00CA05C4 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
+		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1038,6 +1034,7 @@
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
+				E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */,
 				E4AF7F1921BB21EB002D6E86 /* Cartfile */,
 				E4AF7F1B21BB21EB002D6E86 /* circle.yml */,
 				E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */,
@@ -1515,7 +1512,6 @@
 				E41D7210224D66D300CA05C4 /* ScrollViewHeader.swift */,
 				E41D7211224D66D300CA05C4 /* ScrollViewHeaderBehavior.swift */,
 				E41D7212224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift */,
-				E41D7213224D66D300CA05C4 /* ContainerScrollView.swift */,
 			);
 			path = ScrollViewHeader;
 			sourceTree = "<group>";
@@ -1883,6 +1879,7 @@
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
 				D5B2E89D1C3A780C00C0327D /* Resources */,
+				E41D72CC224E796000CA05C4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -2179,6 +2176,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E41D72CC224E796000CA05C4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --config .swiftlint.yml \n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2190,7 +2205,6 @@
 				E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
-				E41D7222224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A721BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E821BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
@@ -2371,7 +2385,6 @@
 				E41D7117224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7198224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726E224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
-				E41D7223224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F421BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A821BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E921BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
@@ -2543,7 +2556,6 @@
 				E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
-				E41D7220224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A521BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E621BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,
@@ -2724,7 +2736,6 @@
 				E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
-				E41D7221224D66D300CA05C4 /* ContainerScrollView.swift in Sources */,
 				E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
 				E4AF80A621BB2D90002D6E86 /* ViewControllerConfiguration.swift in Sources */,
 				E4AF81E721BF84EF002D6E86 /* StatefulViewControllerDefaultLoadingView.swift in Sources */,

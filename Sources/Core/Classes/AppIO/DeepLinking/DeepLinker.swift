@@ -8,13 +8,13 @@
 import Foundation
 import Swiftest
 
-open class DeepLink<R: DeepLinkRoute>{
+open class DeepLink<R: DeepLinkRoute> {
 
 	public typealias DeepLinkAuthorizationTest = ClosureOut<Bool>
 
 	open var route: R
 	open var authorizationTest: DeepLinkAuthorizationTest?
-	open var isActionable: Bool{
+	open var isActionable: Bool {
 		return authorizationTest == nil || authorizationTest!() == true
 	}
 	public init(route: R, authorizationTest: DeepLinkAuthorizationTest? = nil) {
@@ -23,7 +23,7 @@ open class DeepLink<R: DeepLinkRoute>{
 	}
 }
 
-open class DeepLinkRequest<R: DeepLinkRoute>{
+open class DeepLinkRequest<R: DeepLinkRoute> {
 	open var request: Request
 	open var link: DeepLink<R>
 
@@ -37,12 +37,13 @@ public extension Notification.Name {
 	static public let deepLinkRequested = Notification.Name("deepLinkRequested")
 }
 
-internal var singletonsStore : [String : AnyObject] = [:]
+internal var singletonsStore: [String: AnyObject] = [:]
 open class DeepLinker<R: DeepLinkRoute> {
 
-	class var shared : DeepLinker<R> {
+	class var shared: DeepLinker<R> {
 		let storeKey = String(describing: R.self)
 		if let singleton = singletonsStore[storeKey] {
+            //swiftlint:disable:next force_cast
 			return singleton as! DeepLinker<R>
 		} else {
 			let new_singleton = DeepLinker<R>()
@@ -56,54 +57,48 @@ open class DeepLinker<R: DeepLinkRoute> {
 
 	public init() {}
 	
-	open func register(deepLinks: [DeepLink<R>]){
-		for deepLink in deepLinks{
+	open func register(deepLinks: [DeepLink<R>]) {
+		for deepLink in deepLinks {
 			router.bind(deepLink.route.rawValue, callback: {(req) in
 				self.request = DeepLinkRequest(request: req, link: deepLink)
 			})
 		}
 	}
-	open func register(deepLinks: DeepLink<R>...){
+	open func register(deepLinks: DeepLink<R>...) {
 		register(deepLinks: deepLinks)
 	}
 
 	@discardableResult
-	open func respond(to deepLinkURLRequest: String) -> Bool{
+	open func respond(to deepLinkURLRequest: String) -> Bool {
 
-		guard let linkUrl = URL(string: deepLinkURLRequest), router.match(linkUrl) != nil else{
+		guard let linkUrl = URL(string: deepLinkURLRequest), router.match(linkUrl) != nil else {
 			debugLog("Invalid deeplink request:\(deepLinkURLRequest)")
 			UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: :\(deepLinkURLRequest)")
 			return false
 		}
 
-		guard let _ = self.request else{
-			return false
-		}
-
-		return true
-
+        return self.request == nil ? false : true
 	}
-	open var request: DeepLinkRequest<R>?{
-		didSet{
+	open var request: DeepLinkRequest<R>? {
+		didSet {
 			postDeepLinkNotification()
 		}
 	}
 
-	open func postDeepLinkNotification(){
-		guard let request = self.request, request.link.isActionable else{
+	open func postDeepLinkNotification() {
+		guard let request = self.request, request.link.isActionable else {
 			return
 		}
-		DispatchQueue.main.async{
+		DispatchQueue.main.async {
 			NotificationCenter.post(name: request.link.route.notificationCenterName(), object: self)
 		}
 	}
 
-	static func notificationName(for route: String) -> Notification.Name{
+	static func notificationName(for route: String) -> Notification.Name {
 		return Notification.Name("deepLinkRequested_\(route)")
 	}
 
-
-	public func registerRoutes(withAuthorizationTest authorizationTest: DeepLink<R>.DeepLinkAuthorizationTest? = nil){
+	public func registerRoutes(withAuthorizationTest authorizationTest: DeepLink<R>.DeepLinkAuthorizationTest? = nil) {
 		var deepLinks: [DeepLink<R>] = []
 		R.allCases.forEach { (route) in
 			deepLinks.append(DeepLink(route: route, authorizationTest: authorizationTest))
@@ -112,40 +107,39 @@ open class DeepLinker<R: DeepLinkRoute> {
 	}
 }
 
-
-public protocol DeepLinkRoute: StringIdentifiableEnum{}
-public protocol DeepLinkObserver: class{
+public protocol DeepLinkRoute: StringIdentifiableEnum {}
+public protocol DeepLinkObserver: class {
 	func observeDeepLinkNotifications()
 }
-public protocol DeepLinkHandler: DeepLinkObserver{
+public protocol DeepLinkHandler: DeepLinkObserver {
 	associatedtype RouteType: DeepLinkRoute
 	func deepLinkRoutes() -> [RouteType]
 	func handleDeepLink()
 	func respond(to deepLinkRequest: DeepLinkRequest<RouteType>)
 }
 
-extension DeepLinkHandler{
-	var deepLinker: DeepLinker<RouteType>{
+extension DeepLinkHandler {
+	var deepLinker: DeepLinker<RouteType> {
 		return DeepLinker<RouteType>.shared
 	}
 }
 
-extension DeepLinkHandler where Self: UIViewController{
+extension DeepLinkHandler where Self: UIViewController {
 
 	public func handleDeepLink() {
-		guard let request = deepLinker.request, request.link.isActionable else{
+		guard let request = deepLinker.request, request.link.isActionable else {
 			return
 		}
 		let route = request.link.route
-		guard deepLinkRoutes().contains(route) else{
+		guard deepLinkRoutes().contains(route) else {
 			return
 		}
 		respond(to: request)
 	}
 
-	public func observeDeepLinkNotifications(){
+	public func observeDeepLinkNotifications() {
 		handleDeepLink() //Run once to take care of any links posted before observation starts
-		for route in deepLinkRoutes(){
+		for route in deepLinkRoutes() {
 			NotificationCenter.default.observe(route.notificationCenterName(), action: { [weak self] in
 				DispatchQueue.main.async {
 					self?.handleDeepLink()
@@ -157,7 +151,7 @@ extension DeepLinkHandler where Self: UIViewController{
 
 import UIKitMixinable
 
-open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler>{
+open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler> {
     open override func didInit() {
         mixable.observeDeepLinkNotifications()
     }

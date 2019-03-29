@@ -8,41 +8,38 @@
 
 import UIKitMixinable
 
-public protocol BaseCollectionViewCellProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseCollectionViewCellProtocol: BaseViewProtocol {}
 
-extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell{
-    public var baseCollectionViewCellProtocolMixins: [LifeCycle]{
+extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell {
+    public var baseCollectionViewCellProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionViewCellProtocol{
+open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionViewCellProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseCollectionViewCellProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         apply(collectionViewCellStyle: .defaultStyle)
     }
-    
 
 }
 
-open class BaseImageCollectionViewCell: BaseCollectionViewCell{
+open class BaseImageCollectionViewCell: BaseCollectionViewCell {
     open var imageView: BaseImageView = BaseImageView()
     
     open override func createSubviews() {
@@ -55,7 +52,7 @@ open class BaseImageCollectionViewCell: BaseCollectionViewCell{
     }
 }
 
-open class BaseLabeledCollectionViewCell: BaseCollectionViewCell{
+open class BaseLabeledCollectionViewCell: BaseCollectionViewCell {
     open var label: UILabel = UILabel()
     
     override open func didFinishCreatingAllViews() {

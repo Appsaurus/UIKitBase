@@ -11,7 +11,7 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-public struct CellLayoutViewConfiguration{
+public struct CellLayoutViewConfiguration {
     public var showsLeftImageView: Bool
     public var leftImageViewSize: CGSize
     public var innerPadding: CGFloat
@@ -32,7 +32,7 @@ public struct CellLayoutViewConfiguration{
         self.mainLayoutViewInsets = mainLayoutViewInsets
     }
 }
-open class CellLayoutView<MV: UIView>: BaseView{
+open class CellLayoutView<MV: UIView>: BaseView {
     open var mainLayoutView: UIView = UIView()
     
     open lazy var config: CellLayoutViewConfiguration = CellLayoutViewConfiguration()
@@ -49,21 +49,21 @@ open class CellLayoutView<MV: UIView>: BaseView{
         return self.createMainView()
     }()
     
-    open func createMainView() -> MV{
+    open func createMainView() -> MV {
         return MV()
     }    
     
-    //MARK: Initialization
+    // MARK: Initialization
     public required init(config: CellLayoutViewConfiguration? = nil, optionalRightView: UIView? = nil) {
         super.init(callDidInit: false)
         self.optionalRightView = optionalRightView
-        if let config = config{
+        if let config = config {
             self.config = config
         }
         didInitProgramatically()
     }
     
-    public override init(callDidInit: Bool = true){
+    public override init(callDidInit: Bool = true) {
         super.init(callDidInit: callDidInit)
     }
     
@@ -74,20 +74,17 @@ open class CellLayoutView<MV: UIView>: BaseView{
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
-    //Configuration. TODO: Combine this into single config class.
-
     
     open override func createSubviews() {
         super.createSubviews()
         addSubview(mainLayoutView)
         
         var views: [UIView] = [middleView]
-        if config.showsLeftImageView{
+        if config.showsLeftImageView {
             views.prepend(leftImageView)
         }
         
-        if let optionalRightView = optionalRightView{
+        if let optionalRightView = optionalRightView {
             views.append(optionalRightView)
         }
         mainLayoutView.addSubviews(views)
@@ -102,18 +99,17 @@ open class CellLayoutView<MV: UIView>: BaseView{
         mainLayoutView.height.greaterThanOrEqual(to: 0.0)
         
         var contentHeightBoundaryViews: [UIView] = [middleView]
-        if config.showsLeftImageView{
+        if config.showsLeftImageView {
             
             contentHeightBoundaryViews.append(leftImageView)
             leftImageView.leading.equal(to: mainLayoutView.leading.inset(config.marginInsets.leading))
             leftImageView.size.equal(to: config.leftImageViewSize)
             middleView.leading.equal(to: leftImageView.trailing.plus(config.innerPadding))
-        }
-        else{
+        } else {
             middleView.leading.equal(to: mainLayoutView.leading.inset(config.marginInsets.leading))
         }
         
-        if let optionalRightView = optionalRightView{
+        if let optionalRightView = optionalRightView {
             optionalRightView.equal(to: mainLayoutView.edges.excluding(.leading).inset(config.marginInsets))
 			optionalRightView.resistCompression()
 			optionalRightView.width.greaterThanOrEqual(to: config.optionalRightViewMinimumWidth)
@@ -122,8 +118,7 @@ open class CellLayoutView<MV: UIView>: BaseView{
 
 			middleView.width.greaterThanOrEqual(to: 0.0 ~ .high) // Give right view's width priority over middle stack
 			contentHeightBoundaryViews.append(optionalRightView)
-        }
-        else{
+        } else {
             middleView.trailing.equal(to: .inset(config.marginInsets.trailing))
         }
         
@@ -132,7 +127,7 @@ open class CellLayoutView<MV: UIView>: BaseView{
     }
 }
 
-open class ModularStackView<StackedView: UIView>: CellLayoutView<GrowingStackView<StackedView>>{
+open class ModularStackView<StackedView: UIView>: CellLayoutView<GrowingStackView<StackedView>> {
     
     open lazy var stackView: GrowingStackView<StackedView> = {
         return self.middleView
@@ -143,10 +138,9 @@ open class ModularStackView<StackedView: UIView>: CellLayoutView<GrowingStackVie
         stackView.apply(stackViewConfiguration: .equalSpacingVertical(spacing: 0.0))
     }
     
-    
 }
 
-open class DualModularStackview<StackedView: UIView, RightStackedView: UIView>: ModularStackView<StackedView>{
+open class DualModularStackview<StackedView: UIView, RightStackedView: UIView>: ModularStackView<StackedView> {
     
     open override func didInit() {
         super.didInit()
@@ -160,7 +154,7 @@ open class DualModularStackview<StackedView: UIView, RightStackedView: UIView>: 
         rightStack.apply(stackViewConfiguration: self.rightStackLayoutStyle)
     }
     
-    open var rightStackLayoutStyle: StackViewConfiguration{
+    open var rightStackLayoutStyle: StackViewConfiguration {
         return .equalSpacingVertical(spacing: 3.0)
     }
 }
@@ -171,8 +165,7 @@ open class ModularLabelStackView: ModularStackView<UILabel> {
     open var secondaryLabel: UILabel { return self.stackView.stackedView(at: 1)}
     open var tertiaryLabel: UILabel { return self.stackView.stackedView(at: 2)}
     
-    
-    open override func style(){
+    open override func style() {
         super.style()
         primaryLabel.apply(textStyle: .medium(color: .textDark, size: 17.0))
 		secondaryLabel.apply(textStyle: .regular(color: .textMedium, size: 14.0))
@@ -184,9 +177,9 @@ open class ModularButtonStackView: ModularStackView<UIButton> {
     
     open var primaryButton: UIButton { return self.stackView.stackedView(at: 0)}
     open var secondaryButton: UIButton { return self.stackView.stackedView(at: 0)}
-    open var tertiaryButton: UIButton  { return self.stackView.stackedView(at: 0)}
+    open var tertiaryButton: UIButton { return self.stackView.stackedView(at: 0)}
     
-    open override func style(){
+    open override func style() {
         super.style()
 		primaryButton.apply(textStyle: .medium(color: .textDark, size: 16.0))
 		let lighterStyle: TextStyle = .regular(color: .textMedium, size: 13.0)

@@ -8,35 +8,31 @@
 
 import UIKitMixinable
 
-public protocol BaseTableViewHeaderFooterViewProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseTableViewHeaderFooterViewProtocol: BaseViewProtocol {}
 
-extension BaseTableViewHeaderFooterViewProtocol where Self: UITableViewHeaderFooterView{
-    public var baseTableViewHeaderFooterViewProtocolMixins: [LifeCycle]{
+extension BaseTableViewHeaderFooterViewProtocol where Self: UITableViewHeaderFooterView {
+    public var baseTableViewHeaderFooterViewProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }
 
-open class BaseUITableViewHeaderFooterView: MixinableTableViewHeaderFooterView, BaseTableViewHeaderFooterViewProtocol{
+open class BaseUITableViewHeaderFooterView: MixinableTableViewHeaderFooterView, BaseTableViewHeaderFooterViewProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewHeaderFooterViewProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }
-

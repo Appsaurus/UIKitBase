@@ -10,7 +10,7 @@ import Foundation
 import Actions
 import Swiftest
 
-public protocol FormFieldContentViewProvider{
+public protocol FormFieldContentViewProvider {
 	func getContentView() -> UIView & FormFieldViewProtocol
 }
 public protocol FormFieldViewProtocol {
@@ -22,121 +22,117 @@ public protocol FormFieldViewProtocol {
     func display(state: FormFieldState)
 }
 
-extension FormFieldViewProtocol{
-    public func display(valueDescription: String?){}
-    public func display(validationStatus: ValidationStatus){}
-    public func display(validationFailures: [ValidationFailure]){}
-    public func display(title: String){}
-    public func display(placeholder: String?){}
-    public func display(state: FormFieldState){}
+extension FormFieldViewProtocol {
+    public func display(valueDescription: String?) {}
+    public func display(validationStatus: ValidationStatus) {}
+    public func display(validationFailures: [ValidationFailure]) {}
+    public func display(title: String) {}
+    public func display(placeholder: String?) {}
+    public func display(state: FormFieldState) {}
 }
-
 
 extension FormFieldViewProtocol where Self: UITextField {
 
-    public func display(valueDescription: String?){
+    public func display(valueDescription: String?) {
         self.text = valueDescription
         debugLog("")
     }
-    public func display(validationStatus: ValidationStatus){
+    public func display(validationStatus: ValidationStatus) {
         debugLog("")
     }
     
-    public func display(title: String){
+    public func display(title: String) {
         debugLog("")
         self.placeholder = title //Title takes precedence over placeholder in vanilla UITextFields
     }
     
-    public func display(placeholder: String?){
+    public func display(placeholder: String?) {
         debugLog("")
         //Do nothing, title takes precedence over placeholder in vanilla UITextFields
     }
 }
 
-
-extension MaterialTextField : FormFieldViewProtocol{}
+extension MaterialTextField: FormFieldViewProtocol {}
 extension FormFieldViewProtocol where Self: MaterialTextField {
-    public func display(valueDescription: String?){
+    public func display(valueDescription: String?) {
         debugLog("")
         self.text = valueDescription
     }
-    public func display(validationStatus: ValidationStatus){
+    public func display(validationStatus: ValidationStatus) {
         debugLog("")
     }
     
-    public func display(validationFailures: [ValidationFailure]){
+    public func display(validationFailures: [ValidationFailure]) {
         debugLog("")
         errorText = validationFailures.first?.explanationMessage
     }
     
-    public func display(title: String){
+    public func display(title: String) {
         debugLog("")
         self.title = title
     }
-    public func display(placeholder: String){
+    public func display(placeholder: String) {
         debugLog("")
         self.placeholder = placeholder
     }
 }
 
-
-public protocol TextDisplayable{
+public protocol TextDisplayable {
     var text: String {get set }
 }
 
-public enum FormFieldState{
+public enum FormFieldState {
     case active, inactive, disabled
 }
 
-open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol{
-
+open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol {
     
     //Makes accessoryview assignable
-    open var _inputAccessoryView: UIView?{
-        didSet{
+    open var _inputAccessoryView: UIView? {
+        didSet {
             reloadInputViews()
         }
     }
     
-    open override var inputAccessoryView: UIView?{
+    open override var inputAccessoryView: UIView? {
         return _inputAccessoryView
     }
     
-    open override var isEnabled: Bool{
-        didSet{
+    open override var isEnabled: Bool {
+        didSet {
             (contentView as? UIControl)?.isEnabled = isEnabled
         }
     }
     
     open var state: FormFieldState = .inactive
     
-    open var placeholder: String?{
-        didSet{
+    open var placeholder: String? {
+        didSet {
             updateContentView()
         }
     }
     
     open var title: String = ""{
-        didSet{
+        didSet {
             updateContentView()
         }
     }
     
-    open var value: Value?{
-        didSet{
+    open var value: Value? {
+        didSet {
             updateContentView()
-            if validationFrequency == .onValueChanged{
+            if validationFrequency == .onValueChanged {
                 validate(displayErrors: displayErrorOnNextValidation && validationErrorDisplayFrequency == .onValueChanged)
             }
         }
     }
     
-    open override var hasValue: Bool{
+    open override var hasValue: Bool {
         return value != nil
     }
 
-    open func textDescription(for value: Value?) -> String?{
-        guard let value = value else{ return nil }
+    open func textDescription(for value: Value?) -> String? {
+        guard let value = value else { return nil }
         return "\(value)"
     }
         
@@ -144,20 +140,18 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         return value
     }
 
-
     lazy public var contentView: ContentView = {
         return self.createContentView()
     }()
-	
     
-    open func createContentView() -> ContentView{
+    open func createContentView() -> ContentView {
         return ContentView()
     }
     
     open var usesFieldNameAsPlaceholder: Bool = false
     open var showsValidationErrorMessages: Bool = false
     
-    //MARK: Initialization
+    // MARK: Initialization
     public init(contentView: ContentView? = nil, fieldName: String, title: String? = nil, placeholder: String? = nil, value: Value? = nil) {
         super.init(callDidInit: false)
         self.contentView =? contentView
@@ -168,7 +162,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         didInitProgramatically()
     }
     
-    public override init(callDidInit: Bool = true){
+    public override init(callDidInit: Bool = true) {
         super.init(callDidInit: callDidInit)
     }
     
@@ -180,7 +174,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         super.init(coder: aDecoder)
     }
 
-    open override func didInit(){
+    open override func didInit() {
         super.didInit()
         title = fieldName
         if usesFieldNameAsPlaceholder { placeholder = fieldName }
@@ -201,18 +195,18 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     
     open override func setupControlActions() {
         super.setupControlActions()
-        self.addTap{ [weak self] view in
+        self.addTap { [weak self] _ in
             guard let `self` = self else { return }
             self.fieldWasTapped()
         }
     }
     
-    open func fieldWasTapped(){
-        let _ = becomeFirstResponder()
+    open func fieldWasTapped() {
+        _ = becomeFirstResponder()
     }
 
-    open func proxyFirstResponder() -> UIResponder?{
-        if contentView.canBecomeFirstResponder{
+    open func proxyFirstResponder() -> UIResponder? {
+        if contentView.canBecomeFirstResponder {
             return contentView
         }
         return nil
@@ -220,29 +214,29 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     
     open override func becomeFirstResponder() -> Bool {
         let didRespond = proxyFirstResponder()?.becomeFirstResponder() ?? super.becomeFirstResponder()
-        if didRespond{
+        if didRespond {
             validationDelegate?.fieldDidBeginEditing(self)
         }
         return didRespond
     }
     
-    open override var isFirstResponder: Bool{
+    open override var isFirstResponder: Bool {
         return proxyFirstResponder()?.isFirstResponder ?? super.isFirstResponder
     }
     
     open override func resignFirstResponder() -> Bool {
         let didResign = proxyFirstResponder()?.resignFirstResponder() ?? super.resignFirstResponder()
-        if didResign{
+        if didResign {
             validationDelegate?.fieldDidEndEditing(self)
         }
         return didResign
     }
 
-    open override var canBecomeFirstResponder: Bool{
+    open override var canBecomeFirstResponder: Bool {
         return true
     }
     
-    //MARK: Validation
+    // MARK: Validation
     
     open override func validationStatusChanged(_ status: ValidationStatus) {
         contentView.display(validationStatus: status)
@@ -256,7 +250,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         return self.validationFailures.first?.explanationMessage
     }
     
-    //MARK: Content View Updating
+    // MARK: Content View Updating
     open func updateContentView() {
         contentView.display(title: title)
         contentView.display(placeholder: placeholder)
@@ -266,20 +260,15 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     
 }
 
-
-extension FormFieldProtocol{
+extension FormFieldProtocol {
 	public func getContentView() -> (UIView & FormFieldViewProtocol)? {
 		return (self as? FormFieldContentViewProvider)?.getContentView()
 	}
 }
 
-extension FormField: FormFieldContentViewProvider{
+extension FormField: FormFieldContentViewProvider {
 	public func getContentView() -> UIView & FormFieldViewProtocol {
 		return self.contentView
 	}
 
-
 }
-
-
-

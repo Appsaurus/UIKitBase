@@ -10,28 +10,27 @@ import UIKitTheme
 import Layman
 import DarkMagic
 
-
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
 	static let needsLoadingIndicator = AssociatedObjectKey<BaseButton>("needsLoadingIndicator")
 }
 
-extension UIScrollView{
+extension UIScrollView {
 
-	public var needsLoadingIndicator: BaseButton?{
-		get{
+	public var needsLoadingIndicator: BaseButton? {
+		get {
 			return getAssociatedObject(for: .needsLoadingIndicator)
 		}
-		set{
+		set {
 			setAssociatedObject(newValue, for: .needsLoadingIndicator)
 		}
 	}
 
-	public func showNeedsLoadingIndicator(title: String = "RELOAD", onTap: VoidClosure? = nil){
-		if loadingControls.pullToRefresh.isEnabled && needsLoadingIndicator == nil{
+	public func showNeedsLoadingIndicator(title: String = "RELOAD", onTap: VoidClosure? = nil) {
+		if loadingControls.pullToRefresh.isEnabled && needsLoadingIndicator == nil {
 			DispatchQueue.main.async {
 				let needsLoadingIndicator = NeedsLoadingIndicator(scrollView: self)
-				needsLoadingIndicator.titleMap = [.normal : title]
-				needsLoadingIndicator.styleMap = [.normal : .solid(backgroundColor: .primary, textColor: .primaryContrast, font: .bold(.button))]
+				needsLoadingIndicator.titleMap = [.normal: title]
+				needsLoadingIndicator.styleMap = [.normal: .solid(backgroundColor: .primary, textColor: .primaryContrast, font: .bold(.button))]
 				self.needsLoadingIndicator = needsLoadingIndicator
 				needsLoadingIndicator.onTap = onTap ?? { [weak self] in
 					guard let `self` = self else { return }
@@ -53,18 +52,17 @@ extension UIScrollView{
 //
 //    }
 
-
-	public func hideNeedsLoadingIndicator(){
+	public func hideNeedsLoadingIndicator() {
 		guard let needsLoadingIndicator = needsLoadingIndicator else { return }
 		needsLoadingIndicator.removeFromSuperview()
 		self.needsLoadingIndicator = nil
 	}
 }
 
-extension PaginationManaged where Self: UIViewController{
-	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil){
+extension PaginationManaged where Self: UIViewController {
+	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil) {
 		let shouldLoad = reloadTest?() ?? (self.currentState == .empty || !self.isCurrentlyVisibleToUser)
-		guard shouldLoad else{
+		guard shouldLoad else {
 			showNeedsLoadingIndicator(title: title)
 			return
 		}
@@ -72,26 +70,26 @@ extension PaginationManaged where Self: UIViewController{
 		reload()
 	}
 
-	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotification name: Notification.Name, reloadTest: ClosureOut<Bool>? = nil){
+	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotification name: Notification.Name, reloadTest: ClosureOut<Bool>? = nil) {
 		NotificationCenter.default.add(observer: self, name: name) { [weak self] in
-			DispatchQueue.main.async{
+			DispatchQueue.main.async {
 				guard let `self` = self else { return }
 				self.reloadOrShowNeedsLoadingIndicator(title: title, reloadTest: reloadTest)
 			}
 		}
 	}
-	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotifications names: [Notification.Name], reloadTest: ClosureOut<Bool>? = nil){
-		for name in names{
+	public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotifications names: [Notification.Name], reloadTest: ClosureOut<Bool>? = nil) {
+		for name in names {
 			reloadOrShowNeedsLoadingIndicator(onNotification: name)
 		}
 	}
 
-	public func showNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onTap: VoidClosure? = nil){
+	public func showNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onTap: VoidClosure? = nil) {
 		paginatableScrollView.showNeedsLoadingIndicator(title: title, onTap: onTap)
 	}
 }
 
-open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver{
+open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
 
 	weak var topConstraint: NSLayoutConstraint?
 	let padding: CGFloat = 20.0

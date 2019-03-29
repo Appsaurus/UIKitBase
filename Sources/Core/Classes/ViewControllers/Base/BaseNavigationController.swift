@@ -8,30 +8,28 @@
 
 import UIKitMixinable
 
-public protocol BaseNavigationControllerProtocol:
-    BaseViewControllerProtocol
-{}
+public protocol BaseNavigationControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseNavigationControllerProtocol where Self: UINavigationController{
-    public var baseNavigationControllerProtocolMixins: [LifeCycle]{
+extension BaseNavigationControllerProtocol where Self: UINavigationController {
+    public var baseNavigationControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }
-open class BaseNavigationController: MixinableNavigationController, BaseNavigationControllerProtocol{
+open class BaseNavigationController: MixinableNavigationController, BaseNavigationControllerProtocol {
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseNavigationControllerProtocolMixins
     }
     
-    //MARK: Orientation
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+    // MARK: Orientation
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
     
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation{
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle{
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
     
@@ -39,23 +37,23 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
         return statusBarHidden
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         view.backgroundColor = currentStyle.navigationControllerBaseViewBackgroundColor
     }
     
-    //MARK: StatefulViewController
-    open func startLoading(){}
+    // MARK: StatefulViewController
+    open func startLoading() {}
     
     open func customizeStatefulViews() {}
     
@@ -63,7 +61,7 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
         return [:]
     }
     
-    open func willTransition(to state: State){}
+    open func willTransition(to state: State) {}
     
-    open func didTransition(to state: State){}
+    open func didTransition(to state: State) {}
 }

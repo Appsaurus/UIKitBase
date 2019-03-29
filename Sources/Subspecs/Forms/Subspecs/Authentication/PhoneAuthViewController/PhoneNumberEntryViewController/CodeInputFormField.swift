@@ -10,21 +10,21 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-//MARK: Delegate
-public protocol CodeInputTextFieldDelegate: class{
+// MARK: Delegate
+public protocol CodeInputTextFieldDelegate: class {
     func codeInputTextFieldDidChange(value: String)
 }
 
-//MARK: Configuration
-public struct CodeInputFieldConfiguration{
+// MARK: Configuration
+public struct CodeInputFieldConfiguration {
     public let codeLength: Int = 6
     public  let style: CodeInputTextFieldStyle = CodeInputTextFieldStyle()
     
-    public init(){}
+    public init() {}
 }
 
-//MARK: Style
-open class CodeInputTextFieldStyle: Style{
+// MARK: Style
+open class CodeInputTextFieldStyle: Style {
     open var keyboardAppearance: UIKeyboardAppearance = .dark
 	open var emptyTextFieldStyle: TextFieldStyle = TextFieldStyle(textStyle: .regular(color: .primaryContrast),
 																  viewStyle: .roundedRect(backgroundColor: .clear, borderStyle: BorderStyle(borderColor: .primaryContrast, borderWidth: 2.0)))
@@ -40,7 +40,7 @@ open class CodeInputTextFieldStyle: Style{
     }
 }
 
-open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
+open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput {
     public func display(valueDescription: String?) {
         
     }
@@ -66,7 +66,7 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
     open var stackView: HorizontalStackView = HorizontalStackView()
     open var configuration: CodeInputFieldConfiguration = CodeInputFieldConfiguration()
     
-    open var inputFilled: Bool{
+    open var inputFilled: Bool {
         return value.count == configuration.codeLength
     }
     open var value: String {
@@ -80,11 +80,14 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
         self.configuration =? configuration
         didInitProgramatically()
     }
-    
+    open override func didInit() {
+        super.didInit()
+        keyboardType = .numberPad
+    }
     open override func style() {
         super.style()
         let s = configuration.style
-        for field in characterLabels{
+        for field in characterLabels {
             field.apply(textFieldStyle: field.text.hasNonEmptyValue ? s.filledTextFieldStyle : s.emptyTextFieldStyle)
         }
     }
@@ -108,7 +111,7 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
             tf.adjustFontSizeToFit(height: CGFloat(30.0).scaledForDevice())
         }
     }
-    open func createCodeTextFields(){
+    open func createCodeTextFields() {
         
         configuration.codeLength.times {
             let label = createCharacterInputTextField()
@@ -118,13 +121,13 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
         stackView.swapArrangedSubviews(for: characterLabels)
     }
     
-    open func createCharacterInputTextField() -> UILabel{
+    open func createCharacterInputTextField() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
         return label
     }
     
-    open override var canBecomeFirstResponder: Bool{
+    open override var canBecomeFirstResponder: Bool {
         return true
     }
 
@@ -132,13 +135,13 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
         
         return super.becomeFirstResponder()
     }
-    public var keyboardAppearance: UIKeyboardAppearance{
+    public var keyboardAppearance: UIKeyboardAppearance {
         return configuration.style.keyboardAppearance
     }
-    open var keyboardType: UIKeyboardType { get { return .numberPad } set { } }
+    open var keyboardType: UIKeyboardType = .numberPad
     
     // MARK: - UIKeyInput
-    open var hasText : Bool {
+    open var hasText: Bool {
         return true
     }
     
@@ -164,18 +167,18 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput{
         }
     }
     
-    open var lastFilledInputLabel: UILabel?{
-        if let empty = firstEmptyInputLabel, let lastEmptyIndex = characterLabels.index(of: empty){
+    open var lastFilledInputLabel: UILabel? {
+        if let empty = firstEmptyInputLabel, let lastEmptyIndex = characterLabels.index(of: empty) {
             return lastEmptyIndex == 0 ? nil : characterLabels[lastEmptyIndex - 1]
         }
         return characterLabels.last
     }
-    open var firstEmptyInputLabel: UILabel?{
+    open var firstEmptyInputLabel: UILabel? {
         return characterLabels.first(where: {$0.text.isNilOrEmpty})
     }
 }
 
-open class CodeInputFormField: FormField<CodeInputTextField, String>, CodeInputTextFieldDelegate{
+open class CodeInputFormField: FormField<CodeInputTextField, String>, CodeInputTextFieldDelegate {
     
     open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
@@ -188,7 +191,7 @@ open class CodeInputFormField: FormField<CodeInputTextField, String>, CodeInputT
     
     override func runValidationTests() -> [ValidationFailure] {
         var failures = super.runValidationTests()
-        if !contentView.inputFilled{
+        if !contentView.inputFilled {
             failures.append(ValidationFailure.init(failureType: .customValidation, explanationMessage: "Code too short."))
         }
         return failures

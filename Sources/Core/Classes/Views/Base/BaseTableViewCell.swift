@@ -8,34 +8,32 @@
 
 import UIKitMixinable
 
-public protocol BaseTableViewCellProtocol:
-    BaseViewProtocol
-{}
+public protocol BaseTableViewCellProtocol: BaseViewProtocol {}
 
-extension BaseTableViewCellProtocol where Self: UITableViewCell{
-    public var baseTableViewCellProtocolMixins: [LifeCycle]{
+extension BaseTableViewCellProtocol where Self: UITableViewCell {
+    public var baseTableViewCellProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }
 
-open class BaseTableViewCell: MixinableTableViewCell, BaseTableViewCellProtocol{
+open class BaseTableViewCell: MixinableTableViewCell, BaseTableViewCellProtocol {
 //    open var subviewsUnmodifiedBySelectionState: [UIView] = []
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewCellProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {
         apply(tableViewCellStyle: .defaultStyle)
     }

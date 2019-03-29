@@ -10,13 +10,13 @@ import UIKit
 
 open class CollapsibleLayoutConstraint: NSLayoutConstraint {
     open var expandedConstant: CGFloat = 0.0
-    open override var constant: CGFloat{
-        get{
+    open override var constant: CGFloat {
+        get {
             return super.constant
         }
-        set{
+        set {
             super.constant = newValue
-            if constant > 0.0{
+            if constant > 0.0 {
                 expandedConstant = constant
             }
         }
@@ -25,28 +25,27 @@ open class CollapsibleLayoutConstraint: NSLayoutConstraint {
         self.expandedConstant = self.constant
     }
     
-    open func collapse(){
+    open func collapse() {
         self.constant = 0.0
     }
-    open func expand(){
+    open func expand() {
         self.constant = expandedConstant
     }
     
 }
 
-
-public extension UIView{
+public extension UIView {
     //TODO: Add animated collapsing/expanding and func that autocollapses/expands when view is hidden/visible
-    public func collapseConstraints(){
-        for constraint in self.constraints{
-            if let collapsible = constraint as? CollapsibleLayoutConstraint{
+    public func collapseConstraints() {
+        for constraint in self.constraints {
+            if let collapsible = constraint as? CollapsibleLayoutConstraint {
                 collapsible.collapse()
             }
         }
     }
-    public func expandConstraints(){
-        for constraint in self.constraints{
-            if let collapsible = constraint as? CollapsibleLayoutConstraint{
+    public func expandConstraints() {
+        for constraint in self.constraints {
+            if let collapsible = constraint as? CollapsibleLayoutConstraint {
                 collapsible.expand()
             }
         }

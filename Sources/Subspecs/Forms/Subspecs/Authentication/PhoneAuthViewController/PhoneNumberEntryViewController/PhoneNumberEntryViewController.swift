@@ -11,25 +11,25 @@ import PhoneNumberKit
 import UIKitTheme
 import UIKitMixinable
 
-public protocol PhoneNumberFormDelegate: class{
+public protocol PhoneNumberFormDelegate: class {
     func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) //For asyncronous processing or validation, optionally override
     func phoneNumberFormViewController(didSelect phoneNumber: PhoneNumber)
     func phoneNumberFormViewControllerDidCancel()
 }
 
-public extension PhoneNumberFormDelegate{
-    public func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure){ //Make this effectively optional
+public extension PhoneNumberFormDelegate {
+    public func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) { //Make this effectively optional
         success()
     }
 }
 
-public struct PhoneNumberFormViewControllerConfiguration{
+public struct PhoneNumberFormViewControllerConfiguration {
     public let promptText: String? = "Please enter a phone number."
     public let style: PhoneNumberFormViewControllerStyle = PhoneNumberFormViewControllerStyle()
-    public init(){}
+    public init() {}
 }
 
-public class PhoneNumberFormViewControllerStyle{
+public class PhoneNumberFormViewControllerStyle {
 
 	open lazy var keyboard: UIKeyboardAppearance = .dark
     open lazy var statusBar: UIStatusBarStyle = .lightContent
@@ -41,13 +41,11 @@ public class PhoneNumberFormViewControllerStyle{
     open lazy var submitButtonDisabledStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
     open lazy var secondaryButtonStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
     
-    public init(){}
+    public init() {}
 }
 
-extension PhoneNumberFormViewController:
-    BackButtonManaged
-{}
-open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewController where TextField : FormFieldViewProtocol{
+extension PhoneNumberFormViewController: BackButtonManaged {}
+open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewController where TextField: FormFieldViewProtocol {
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [BackButtonManagedMixin(self)]
@@ -62,19 +60,19 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         return "\(self.countryField.value?.phoneCode ?? "")\(self.numberField.value ?? "")"
     }
     
-    open var phoneNumber: PhoneNumber?{
+    open var phoneNumber: PhoneNumber? {
         return try? PhoneNumberKit().parse(self.phoneNumberString)
     }
     
-//    //MARK: Style
+// MARK: Style
 //    open var style: PhoneNumberFormViewControllerStyle{
 //        return configuration.style
 //    }
 
-    open override var headerPromptText: String?{
+    open override var headerPromptText: String? {
         return configuration.promptText
     }
-    public var defaultNavigationBarStyle: NavigationBarStyle?{
+    public var defaultNavigationBarStyle: NavigationBarStyle? {
         return configuration.style.navigationBarStyle
     }
 
@@ -84,7 +82,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         let fields: [UITextField] = [numberField.textField, countryField.textField]
 
         fields.forEach({ (tf: UITextField) in
-			switch tf{
+			switch tf {
 			case let stf as StatefulTextField:
 				stf.styleMap = configuration.style.textFieldStyles
 			default:
@@ -120,11 +118,10 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let _ = numberField.becomeFirstResponder()
+        _ = numberField.becomeFirstResponder()
     }
     
-    
-    open func backButtonWillPopViewController(){
+    open func backButtonWillPopViewController() {
         delegate?.phoneNumberFormViewControllerDidCancel()
     }
     
@@ -133,7 +130,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         let form = Form(fields: [countryField, numberField])
         form.customValidationCheck = { [weak self] in
             guard let `self` = self else { return nil}
-            guard self.phoneNumber != nil else{
+            guard self.phoneNumber != nil else {
                 return ValidationFailure(failureType: .customValidation, explanationMessage: "Invalid phone number.")
             }
             return nil
@@ -148,7 +145,6 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         }
         delegate.processSelected(phoneNumber: phoneNumber, success: success, failure: failure)
     }
-   
 
     open override func submissionDidSucceed() {
         super.submissionDidSucceed()

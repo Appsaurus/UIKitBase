@@ -9,50 +9,44 @@
 import UIKitMixinable
 import UIKitTheme
 
-public protocol BaseNSObjectProtocol:
-    DependencyInjectable
-    & NotificationObserver
+public protocol BaseNSObjectProtocol: DependencyInjectable
+    & NotificationObserver {}
 
-{}
-
-extension BaseNSObjectProtocol where Self: NSObject{
-    public var baseNSObjectProtocolMixins: [LifeCycle]{
+extension BaseNSObjectProtocol where Self: NSObject {
+    public var baseNSObjectProtocolMixins: [LifeCycle] {
         return [DependencyInjectableViewMixin(self),
                 NotificationObserverMixin(self)]
     }
 }
 
-public protocol BaseViewProtocol:
-    BaseNSObjectProtocol
+public protocol BaseViewProtocol: BaseNSObjectProtocol
     & Roundable
-    & Styleable
-{}
+    & Styleable {}
 
-extension BaseViewProtocol where Self: UIView{
-    public var baseViewProtocolMixins: [LifeCycle]{
+extension BaseViewProtocol where Self: UIView {
+    public var baseViewProtocolMixins: [LifeCycle] {
         return [RoundableMixin(self),
                 StyleableViewMixin(self)] + baseNSObjectProtocolMixins
     }
 }
 
-open class BaseView: MixinableView, BaseViewProtocol{
+open class BaseView: MixinableView, BaseViewProtocol {
     
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseViewProtocolMixins
     }
     
-    //MARK: NotificationObserver
-    open func notificationsToObserve() -> [Notification.Name]{
+    // MARK: NotificationObserver
+    open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
-    open func notificationClosureMap() -> NotificationClosureMap{
+    open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
     
-    open func didObserve(notification: Notification){}
+    open func didObserve(notification: Notification) {}
     
-    //MARK: Styleable
+    // MARK: Styleable
     open func style() {}
-    
 
 }

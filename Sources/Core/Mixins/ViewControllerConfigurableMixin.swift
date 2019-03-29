@@ -7,7 +7,7 @@
 
 import UIKitMixinable
 
-public class ViewControllerConfigurableMixin: UIViewControllerMixin<UIViewController & ViewControllerConfigurable>{
+public class ViewControllerConfigurableMixin: UIViewControllerMixin<UIViewController & ViewControllerConfigurable> {
     open override func didInit() {
         mixable.navigationBarStyle = mixable.viewControllerConfiguration.style.navigationBarStyle
     }

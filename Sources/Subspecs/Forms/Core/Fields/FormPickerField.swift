@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-public protocol FormPickerFieldProtocol{}
-open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController>: FormField<ContentView, Value>, FormPickerFieldProtocol where VC: AsyncTaskDelegate, VC.TaskResult == Value, ContentView : FormFieldViewProtocol{
+public protocol FormPickerFieldProtocol {}
+open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController>: FormField<ContentView, Value>, FormPickerFieldProtocol
+where VC: AsyncTaskDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol {
     
     open lazy var pickerViewController: VC = VC(nibName: nil, bundle: nil)
     
-    open override var canBecomeFirstResponder: Bool{
+    open override var canBecomeFirstResponder: Bool {
         return false
     }
     
@@ -23,22 +24,22 @@ open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController
 //        return true
 //    }
     
-    open override func didFinishCreatingAllViews(){
+    open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
 
     }
     
-    open override func fieldWasTapped(){
+    open override func fieldWasTapped() {
         self.presentPickerViewController()
     }
     
-    open func presentPickerViewController(){
+    open func presentPickerViewController() {
         configurePickerTaskHandler(picker: pickerViewController)
         self.parentViewController?.view.endEditing(true)
         self.parentViewController?.navigationController?.push(pickerViewController)
     }
     
-    open func configurePickerTaskHandler(picker: VC){
+    open func configurePickerTaskHandler(picker: VC) {
         picker.onDidFinishTask = (result: { [weak self] value in
             guard let `self` = self else { return }
             self.value = value

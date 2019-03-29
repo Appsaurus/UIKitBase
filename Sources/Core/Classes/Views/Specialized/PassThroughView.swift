@@ -16,13 +16,13 @@ open class PassThroughView: BaseStatefulView, PassThroughTouchable {
     }
 }
 
-public protocol PassThroughTouchable{
+public protocol PassThroughTouchable {
     func shouldPassThroughTouch(inside point: CGPoint, with event: UIEvent?) -> Bool
 }
 
-extension PassThroughTouchable where Self: UIView{
+extension PassThroughTouchable where Self: UIView {
     public func shouldPassThroughTouch(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        for subview: UIView in subviews{
+        for subview: UIView in subviews {
             if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
                 return true
             }

@@ -32,8 +32,7 @@ public struct PhoneVerificationControllerConfiguration {
     
 }
 
-
-open class PhoneVerificationController<TextField: UITextField> where TextField : FormFieldViewProtocol {
+open class PhoneVerificationController<TextField: UITextField> where TextField: FormFieldViewProtocol {
 
     //    open lazy var entryViewController: PhoneNumberFormViewController = self.createPhoneNumberFormViewController()
     /**
@@ -55,17 +54,17 @@ open class PhoneVerificationController<TextField: UITextField> where TextField :
         self.delegate = delegate
     }
     
-    open func present(in navigationController: UINavigationController){
+    open func present(in navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.pushViewController(self.createPhoneNumberFormViewController(), animated: true)
     }
     
-    open func presentModally(from presentingViewController: UIViewController){
+    open func presentModally(from presentingViewController: UIViewController) {
         let nav = UINavigationController(rootViewController: createPhoneNumberFormViewController())
         self.navigationController = nav
         presentingViewController.present(viewController: nav)
     }
-    open func createPhoneNumberFormViewController() -> PhoneNumberFormViewController<TextField>{
+    open func createPhoneNumberFormViewController() -> PhoneNumberFormViewController<TextField> {
         let vc =  PhoneNumberFormViewController<TextField>(delegate: self, configuration: configuration.phoneNumberFormConfiguration)
         return vc
     }
@@ -76,11 +75,10 @@ open class PhoneVerificationController<TextField: UITextField> where TextField :
     }
 }
 
-extension PhoneVerificationController: PhoneNumberFormDelegate{
+extension PhoneVerificationController: PhoneNumberFormDelegate {
     public func phoneNumberFormViewControllerDidCancel() {
         delegate?.phoneVerificationControllerDidCancel()
     }
-    
     
     public func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
         self.phoneNumber = phoneNumber
@@ -96,17 +94,16 @@ extension PhoneVerificationController: PhoneNumberFormDelegate{
  
 }
 
-extension PhoneVerificationController: CodeFormDelegate{
+extension PhoneVerificationController: CodeFormDelegate {
     
     public func processVerification(of code: String, success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
         delegate?.confirmVerificationCode(verificationCode: code, verificationID: self.verificationID!, success: success, failure: failure)
     }
     public func codeVerificationViewControllerDidVerifyCode() {
-        guard let phoneNumber = phoneNumber else{
+        guard let phoneNumber = phoneNumber else {
             assertionFailure("phoneNumber must be set before code verification step.")
             return
         }
         delegate?.phoneVerificationControllerDidVerify(phoneNumber: phoneNumber)
     }
 }
-

@@ -18,23 +18,23 @@ private var associatedisInfiniteScrollEnabledKey: String = "InfinityisInfiniteSc
 
 // MARK: - PullToRefresh
 
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let loadingControls = AssociatedObjectKey<ScrollViewLoadingControl>("loadingControls")
 }
 
-public extension UIScrollView{
+public extension UIScrollView {
     
-    public var loadingControls: ScrollViewLoadingControl{
-        get{
+    public var loadingControls: ScrollViewLoadingControl {
+        get {
             return getAssociatedObject(for: .loadingControls, initialValue: ScrollViewLoadingControl(scrollView: self))
         }
-        set{
+        set {
             setAssociatedObject(newValue, for: .loadingControls)
         }
     }
 }
 
-public enum InfinityScrollDirection{
+public enum InfinityScrollDirection {
     case vertical, horizontal
 }
 
@@ -142,22 +142,21 @@ public class ScrollViewLoadingControl {
     }
 }
 
-
 extension UIScrollView {
     
-    func addPullToRefresh(_ height: CGFloat = 60.0, direction: InfinityScrollDirection, animator: CustomPullToRefreshAnimator, action:(()->Void)?) {
+    func addPullToRefresh(_ height: CGFloat = 60.0, direction: InfinityScrollDirection, animator: CustomPullToRefreshAnimator, action:(() -> Void)?) {
         
-        bindPullToRefresh(height, direction:  direction, toAnimator: animator, action: action)
+        bindPullToRefresh(height, direction: direction, toAnimator: animator, action: action)
         
         if let animatorView = animator as? UIView {
             self.pullToRefresher?.containerView.addSubview(animatorView)
         }
         
     }
-    func bindPullToRefresh(_ height: CGFloat = 60.0, direction: InfinityScrollDirection, toAnimator: CustomPullToRefreshAnimator, action:(()->Void)?) {
+    func bindPullToRefresh(_ height: CGFloat = 60.0, direction: InfinityScrollDirection, toAnimator: CustomPullToRefreshAnimator, action:(() -> Void)?) {
         removePullToRefresh()
         
-        self.pullToRefresher = PullToRefresher(height: height, direction:  direction, animator: toAnimator)
+        self.pullToRefresher = PullToRefresher(height: height, direction: direction, animator: toAnimator)
         self.pullToRefresher?.scrollView = self
         self.pullToRefresher?.action = action
     }
@@ -172,7 +171,7 @@ extension UIScrollView {
         self.pullToRefresher?.endRefreshing()
     }
     
-    //MARK: - Properties
+    // MARK: - Properties
     var pullToRefresher: PullToRefresher? {
         get {
             return objc_getAssociatedObject(self, &associatedPullToRefresherKey) as? PullToRefresher
@@ -203,7 +202,7 @@ extension UIScrollView {
 extension UIScrollView {
     
     func addInfiniteScroll(_ height: CGFloat = 80.0, direction: InfinityScrollDirection, animator: CustomInfiniteScrollAnimator, action: (() -> Void)?) {
-        bindInfiniteScroll(height, direction: direction,toAnimator: animator, action: action)
+        bindInfiniteScroll(height, direction: direction, toAnimator: animator, action: action)
         
         if let animatorView = animator as? UIView {
             self.infiniteScroller?.containerView.addSubview(animatorView)
@@ -227,7 +226,7 @@ extension UIScrollView {
         self.infiniteScroller?.endInfiniteScrolling()
     }
     
-    //MARK: - Properties
+    // MARK: - Properties
     var infiniteScroller: InfiniteScroller? {
         get {
             return objc_getAssociatedObject(self, &associatedInfiniteScrollerKey) as? InfiniteScroller
@@ -255,7 +254,7 @@ extension UIScrollView {
     }
 }
 
-private var associatedSupportSpringBouncesKey:String = "InfinitySupportSpringBouncesKey"
+private var associatedSupportSpringBouncesKey: String = "InfinitySupportSpringBouncesKey"
 private var associatedLockInsetKey: String           = "InfinityLockInsetKey"
 
 extension UIScrollView {
@@ -272,7 +271,7 @@ extension UIScrollView {
         }
     }
     func setContentInset(_ inset: UIEdgeInsets, completion: ((Bool) -> Void)?) {
-        guard contentInset != inset else{
+        guard contentInset != inset else {
             completion?(true)
             return
         }

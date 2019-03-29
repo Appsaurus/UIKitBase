@@ -8,11 +8,11 @@
 import Swiftest
 
 @available(iOS 9.0, *)
-public enum AuthenticationState: State{
+public enum AuthenticationState: State {
 	case authenticating, authenticationFailed, authenticationSucceeded
 }
 
-public enum AuthenticationError: Error{
+public enum AuthenticationError: Error {
 	case unknown(message: String?)
 
 	public var description: String {
@@ -27,7 +27,7 @@ public extension Notification.Name {
 	static public let logoutRequested = Notification.Name("logoutRequested")
 }
 
-public enum AuthError: LocalizedError, Equatable{
+public enum AuthError: LocalizedError, Equatable {
 	case tokenRefreshFailed
 	case userCancelled
 	case userCancelledSignup
@@ -47,7 +47,7 @@ public enum AuthError: LocalizedError, Equatable{
 	}
 }
 
-open class AuthenticationViewControllerConfiguration{
+open class AuthenticationViewControllerConfiguration {
 	open lazy var showsSystemAlertsForErrors: Bool = true
 	open lazy var automaticallySeguesAfterAuthentication: Bool = true
 
@@ -55,10 +55,10 @@ open class AuthenticationViewControllerConfiguration{
 	open lazy var dimissesInitialViewControllerOnLogoutAttempt: Bool = true 
 }
 
-open class AuthenticationViewController<AuthControllerManager: BaseAuthControllerManager>: BaseViewController, AuthControllerManagerDelegate {
+open class AuthenticationViewController<ACM: BaseAuthControllerManager>: BaseViewController, AuthControllerManagerDelegate {
 
 	open lazy var config: AuthenticationViewControllerConfiguration = AuthenticationViewControllerConfiguration()
-	open lazy var authControllerManager: AuthControllerManager = AuthControllerManager(delegate: self)
+	open lazy var authControllerManager: ACM = ACM(delegate: self)
 
 	open var mainAuthView: UIView?
 	open var authButtons: [AuthButton]?
@@ -66,7 +66,7 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 	deinit {
 
 	}
-	//MARK: Notifications
+	// MARK: Notifications
     open override func notificationsToObserve() -> [Notification.Name] {
 		return [.logoutRequested]
 	}
@@ -79,8 +79,8 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 		}
 	}
 
-	//MARK: ViewController lifecycle
-	open func setupAuthControllers(){
+	// MARK: ViewController lifecycle
+	open func setupAuthControllers() {
 
 	}
 
@@ -94,35 +94,32 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 		super.viewDidLoad()
 	}
 
-
-	//MARK: Abstract methods
+	// MARK: Abstract methods
 	open func beginSignup(success: @escaping (Any) -> Void, failure: @escaping ErrorClosure) {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 	}
 
-	open func createIntialViewControllerAfterLogin() -> UIViewController{
+	open func createIntialViewControllerAfterLogin() -> UIViewController {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 		return UIViewController()
 	}
 
-
-
-	open func showAuthViews(animated: Bool = true){
+	open func showAuthViews(animated: Bool = true) {
 
 	}
 
-	open func hideAuthViews(animated: Bool = true){
+	open func hideAuthViews(animated: Bool = true) {
 
 	}
 
-	open func startAuthenticationInProgressAnimation(){
+	open func startAuthenticationInProgressAnimation() {
 
 	}
-	open func stopAuthenticationInProgressAnimation(){
+	open func stopAuthenticationInProgressAnimation() {
 
 	}
 
-	//MARK: Any AuthController events
+	// MARK: Any AuthController events
 
 	open func authenticationDidBegin() {
 		hideAuthViews(animated: true)
@@ -133,7 +130,7 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 	open func authenticationDidSucceed(successResponse: Any) {
 		stopAuthenticationInProgressAnimation()
 		guard config.automaticallySeguesAfterAuthentication else { return }
-		presentInitialViewController(){ [weak self] in
+		presentInitialViewController { [weak self] in
 			self?.showAuthViews(animated: false)
 		}
 	}
@@ -151,7 +148,7 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 		showAuthentication(error: error)
 	}
 
-	open func authenticationWasCancelledByUser(_ error: Error? = nil){
+	open func authenticationWasCancelledByUser(_ error: Error? = nil) {
 		stopAuthenticationInProgressAnimation()
 		showAuthViews(animated: true)
 	}
@@ -164,17 +161,16 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 		onAnyLogoutAttempt()
 	}
 
-	open func onAnyLogoutAttempt(){
+	open func onAnyLogoutAttempt() {
 		guard config.dimissesInitialViewControllerOnLogoutAttempt else { return }
-		self.dimissInitialViewController(){ [weak self] in
+		self.dimissInitialViewController { [weak self] in
 			self?.showAuthViews(animated: true)
 		}
 	}
 
-	//MARK: AuthControllerManagerDelegate
+	// MARK: AuthControllerManagerDelegate
 
-
-	open func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>) where V : UIView, V : AuthView {
+	open func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>) where V: UIView, V: AuthView {
 
 	}
 
@@ -182,46 +178,43 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 
 	}
 
-
-	open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V : UIView, V : AuthView {
-
-	}
-
-	open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V : UIView, V : AuthView {
+	open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V: UIView, V: AuthView {
 
 	}
 
-	open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V : UIView, V : AuthView {
+	open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V: UIView, V: AuthView {
 
 	}
 
-	open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V : UIView, V : AuthView {
+	open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V: UIView, V: AuthView {
+
+	}
+
+	open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {
 		self.showAuthViews()
 	}
 
-	open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V : UIView, V : AuthView {
+	open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V: UIView, V: AuthView {
 
 	}
 
-	open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V : UIView, V : AuthView {
+	open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {
 
 	}
 
+	// MARK: Presenting/Dismissing initial ViewControllers
 
-
-	//MARK: Presenting/Dismissing initial ViewControllers
-
-	open func dimissInitialViewController(animated: Bool = true, completion: VoidClosure? = nil){
-		guard let navigationController = navigationController else{
+	open func dimissInitialViewController(animated: Bool = true, completion: VoidClosure? = nil) {
+		guard let navigationController = navigationController else {
 			self.dismiss(animated: animated, completion: completion)
 			return
 		}
 		navigationController.dismiss(animated: animated, completion: completion)
 	}
 
-	open func presentInitialViewController(animated: Bool = true, completion: VoidClosure? = nil){
+	open func presentInitialViewController(animated: Bool = true, completion: VoidClosure? = nil) {
 		let firstVC = createIntialViewControllerAfterLogin()
-		guard let navigationController = navigationController else{
+		guard let navigationController = navigationController else {
 			self.present(viewController: firstVC, animated: animated, completion: completion)
 			return
 		}
@@ -231,19 +224,19 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 		})
 	}
 
-	//MARK: Convenience
+	// MARK: Convenience
 
-	open func showAuthentication(error: Error){
+	open func showAuthentication(error: Error) {
 		showError(error: error)
 	}
 
-	open func configureMainAuthController<R: Any, V>(_ controller: AuthController<R, V>){
+	open func configureMainAuthController<R: Any, V>(_ controller: AuthController<R, V>) {
 		controller.delegate = authControllerManager
 		mainAuthView = controller.authView
 	}
 
-	open func configureAuthButtonControllers<R: Any, B: AuthButton, AC: AuthController<R, B>>(_ controllers: AC...){
-		var authButtons:[AuthButton] = []
+	open func configureAuthButtonControllers<R: Any, B: AuthButton, AC: AuthController<R, B>>(_ controllers: AC...) {
+		var authButtons: [AuthButton] = []
 		controllers.forEach { (controller) in
 			controller.delegate = authControllerManager
 			authButtons.append(controller.authView)
@@ -252,7 +245,7 @@ open class AuthenticationViewController<AuthControllerManager: BaseAuthControlle
 	}
 
 	//Stateful convenience
-	public func transition(to state: AuthenticationState, animated: Bool = true, completion: (() -> ())? = nil){
+	public func transition(to state: AuthenticationState, animated: Bool = true, completion: (() -> Void)? = nil) {
 		transition(to: state.rawValue, animated: animated, completion: completion)
 	}
 }

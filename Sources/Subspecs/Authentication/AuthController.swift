@@ -6,13 +6,13 @@
 //
 
 import Swiftest
-public protocol AuthView{
+public protocol AuthView {
 	func authenticationDidBegin()
 	func authenticationDidFail(_ error: Error)
 	func authenticationDidSucceed()
 }
 
-public protocol AuthControllerDelegate: class{
+public protocol AuthControllerDelegate: class {
 	func authenticationDidBegin<R, V>(controller: AuthController<R, V>)
 	func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error)
 	func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any)
@@ -22,82 +22,82 @@ public protocol AuthControllerDelegate: class{
 }
 
 public typealias AuthSuccessHandler<R: Any> = (_ response: R) -> Void
-open class AuthController<R, V: UIView>: NSObject where V: AuthView{
+open class AuthController<R, V: UIView>: NSObject where V: AuthView {
 	open weak var delegate: AuthControllerDelegate?
 	open lazy var authView: V = {  self.createDefaultAuthView() }()
 
 	open var onSuccessHandler: AuthSuccessHandler<R>?
 	open var onFailureHandler: ErrorClosure?
 
-	open func onSuccess(_ closure: @escaping AuthSuccessHandler<R>) -> Self{
+	open func onSuccess(_ closure: @escaping AuthSuccessHandler<R>) -> Self {
 		onSuccessHandler = closure
 		return self
 	}
-	open func onFailure( _ closure: @escaping ErrorClosure) -> Self{
+	open func onFailure( _ closure: @escaping ErrorClosure) -> Self {
 		onFailureHandler = closure
 		return self
 	}
-	open func hasAuthenticated() -> Bool{
+	open func hasAuthenticated() -> Bool {
 		return false
 	}
 
-	//MARK: Initialization
-	public override init(){
+	// MARK: Initialization
+	public override init() {
 		super.init()
 		didInit()
 	}
 
-	public init(delegate: AuthControllerDelegate){
+	public init(delegate: AuthControllerDelegate) {
 		self.delegate = delegate
 		super.init()
 		didInit()
 	}
 
-	open func didInit(){
+	open func didInit() {
 
 	}
 
-	//MARK: Abstract methods
-	open func attemptSessionRestore(success: @escaping AuthSuccessHandler<R>, failure: @escaping (Error?) -> ()){
+	// MARK: Abstract methods
+	open func attemptSessionRestore(success: @escaping AuthSuccessHandler<R>, failure: @escaping (Error?) -> Void) {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 	}
 
 	open func createDefaultAuthView() -> V {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-		return UIView() as! V
+		return V()
 	}
 
-	open func authenticate(){
+	open func authenticate() {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 	}
 
-	private func internalAuthenticate(){
+	private func internalAuthenticate() {
 		authenticationWillBegin()
 		authenticate()
 	}
-	open func authenticationWillBegin(){
+	open func authenticationWillBegin() {
 		self.delegate?.authenticationDidBegin(controller: self)
 	}
 
-	open func authenticate(success: @escaping AuthSuccessHandler<R>, failure: @escaping ErrorClosure){
+	open func authenticate(success: @escaping AuthSuccessHandler<R>, failure: @escaping ErrorClosure) {
 		onSuccessHandler = success
 		onFailureHandler = failure
 		internalAuthenticate()
 	}
 
-	open func fail(error: Error?){
+	open func fail(error: Error?) {
 		let error = error ?? AuthenticationError.unknown(message: "An unknown error occurred.")
 		self.delegate?.authenticationDidFail(controller: self, error: error)
 		self.onFailureHandler?(error)
 	}
 
-	open func succeed(response: R){
+	open func succeed(response: R) {
 		onSuccessHandler?(response)
 		self.delegate?.authenticationDidSucceed(controller: self, successResponse: response)
 	}
 
-	//MARK: Convenience
-	open func setupAuthAction(for authButton: BaseButton){
+	// MARK: Convenience
+	open func setupAuthAction(for authButton: BaseButton) {
 		authButton.onTap = self.internalAuthenticate
 	}
 

@@ -8,8 +8,7 @@
 
 import Swiftest
 
-
-open class PaginatableCollectionViewController<ModelType: Paginatable>: DatasourceManagedCollectionViewController<ModelType>, PaginationManaged{
+open class PaginatableCollectionViewController<ModelType: Paginatable>: DatasourceManagedCollectionViewController<ModelType>, PaginationManaged {
 
     var dependencyEntityId: String?
     public var prefetchedData: [ModelType]?
@@ -17,7 +16,7 @@ open class PaginatableCollectionViewController<ModelType: Paginatable>: Datasour
     open var refreshable: Bool = true
     open var loadsResultsImmediately: Bool = true
     open var appendsIndexPathsOnInfinityScroll: Bool = true
-    open var scrollDirection: InfinityScrollDirection{
+    open var scrollDirection: InfinityScrollDirection {
         return .vertical
     }
 
@@ -34,8 +33,8 @@ open class PaginatableCollectionViewController<ModelType: Paginatable>: Datasour
 
     open lazy var fallbackPaginator: Paginator<ModelType>? = nil
 
-    //MARK: StatefulProtocol
-    open var statefulSuperview: UIView{
+    // MARK: StatefulProtocol
+    open var statefulSuperview: UIView {
         return collectionView ?? UIView()
     }
     
@@ -43,11 +42,11 @@ open class PaginatableCollectionViewController<ModelType: Paginatable>: Datasour
         return .default
     }
     
-    open func refreshDidFail(with: Error){
+    open func refreshDidFail(with: Error) {
         
     }
     
-    open func loadMoreDidFail(with: Error){
+    open func loadMoreDidFail(with: Error) {
         
     }
     
@@ -65,11 +64,11 @@ open class PaginatableCollectionViewController<ModelType: Paginatable>: Datasour
         collectionView?.loadingControls.clear()
     }
 
-	open func didReload(){
+	open func didReload() {
 
 	}
     
-    //MARK: UITableViewControllerDelegate/Datasource
+    // MARK: UITableViewControllerDelegate/Datasource
     override open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.sectionCount
     }

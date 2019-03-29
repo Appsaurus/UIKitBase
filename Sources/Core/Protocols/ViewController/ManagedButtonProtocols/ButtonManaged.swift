@@ -9,7 +9,7 @@ import Foundation
 import Swiftest
 import UIKitTheme
 
-public class ManagedButtonConfiguration: NSObject{
+public class ManagedButtonConfiguration: NSObject {
     var button: BaseButton?
     var position: ManagedButtonPosition
     var size: CGSize?
@@ -21,54 +21,52 @@ public class ManagedButtonConfiguration: NSObject{
     }
 }
 
-
-public protocol ButtonManaged{
+public protocol ButtonManaged {
     func createManagedButton(configuration: ManagedButtonConfiguration) -> BaseButton
     func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton
 }
 
-public enum ManagedButtonPosition{
+public enum ManagedButtonPosition {
     case navBarLeading
     case navBarTrailing
     case floatingFooter
     case custom
 }
 
-extension ButtonManaged where Self: UIViewController{
+extension ButtonManaged where Self: UIViewController {
     
     @discardableResult
-    public func createManagedButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton{
+    public func createManagedButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
         let button: BaseButton = configuration.button ?? defaultButton(configuration: configuration)
         layoutManagedButton(button: button, position: configuration.position, size: configuration.size)
         return button
     }
     
-    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton{
+    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
         let button = BaseButton()
         styleManagedButton(button: button, position: configuration.position)
         return button
     }
-    public func styleManagedButton(button: BaseButton, position: ManagedButtonPosition){
-        switch position{
+    public func styleManagedButton(button: BaseButton, position: ManagedButtonPosition) {
+        switch position {
         case .floatingFooter:
-            button.styleMap = [.normal : .outlined(borderColor: .primaryContrast, backgroundColor: .primary)]
+            button.styleMap = [.normal: .outlined(borderColor: .primaryContrast, backgroundColor: .primary)]
         case .custom:
             break
         default: //Nav bar
-            button.styleMap = [.normal : .barButtonItemStyle]
+            button.styleMap = [.normal: .barButtonItemStyle]
         }
     }
-    internal func layoutManagedButton(button: BaseButton, position: ManagedButtonPosition, size: CGSize? = nil){
+    internal func layoutManagedButton(button: BaseButton, position: ManagedButtonPosition, size: CGSize? = nil) {
         
-        switch position{
+        switch position {
         case .navBarLeading, .navBarTrailing:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
             
-            if position == .navBarTrailing{
+            if position == .navBarTrailing {
                 button.titleLabel.textAlignment =  .right
                 self.navigationItem.rightBarButtonItem = item
-            }
-            else{
+            } else {
                 button.titleLabel.textAlignment =  .left
                 self.navigationItem.leftBarButtonItem = item
             }

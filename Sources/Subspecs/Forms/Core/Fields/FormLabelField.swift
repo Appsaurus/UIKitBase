@@ -9,13 +9,13 @@
 import UIKitTheme
 import Swiftest
 
-open class FormLabelField<ContentView: UIView, Value: Any>: FormField<ContentView, Value> where ContentView : FormFieldViewProtocol{
+open class FormLabelField<ContentView: UIView, Value: Any>: FormField<ContentView, Value> where ContentView: FormFieldViewProtocol {
     
     open lazy var valueLabel: UILabel = {
         return self.labelToManage()
     }()
     
-    open func labelToManage() -> UILabel{
+    open func labelToManage() -> UILabel {
         
         guard let label = self.contentView as? UILabel ?? self.subviews(ofType: UILabel.self).first else {
             assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)

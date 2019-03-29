@@ -6,12 +6,11 @@
 //
 //
 
-
 import UIKitTheme
 import UIKitExtensions
 import Swiftest
 
-open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate{
+open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate {
 
 	open override func didInit() {
 		super.didInit()
@@ -26,17 +25,16 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 		pagingMenuView.invalidateLayout()
 	}
 
-	//MARK: PagingMenuVIew
+	// MARK: PagingMenuVIew
 	open lazy var pagingMenuView: PagingMenuView = {
 		return self.createPagingMenuView()
 	}()
 
-
-	open func createPagingMenuView() -> PagingMenuView{
+	open func createPagingMenuView() -> PagingMenuView {
 		return PagingMenuView(delegate: self, options: pagingMenuViewOptions)
 	}
 
-	open var pagingMenuViewOptions: PagingMenuViewOptions{
+	open var pagingMenuViewOptions: PagingMenuViewOptions {
 		let menuHeight: CGFloat = 50.0
 		return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: .spanWidthCollectively(height: menuHeight), scrollBehavior: .tabBar)
 	}
@@ -46,9 +44,8 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 		pagingMenuView.selectItem(at: index)
 	}
 
-
-	//MARK: PagingMenuViewDelegate
-	open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type]{
+	// MARK: PagingMenuViewDelegate
+	open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
 		return defaultMenuItemCellClasses()
 	}
 
@@ -74,21 +71,18 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 		return true
 	}
 
-	open override func pagesDidReload(){
+	open override func pagesDidReload() {
 		self.pagingMenuView.reloadItems(selectedIndex: self.initialPageIndex.indexPath, animated: false) //Keep menu synced with datasource
 		super.pagesDidReload()
 	}
 
 	//For manually sizing cells when PagingMenuItemSizingBehavior is set to delegateSizing
 
-	open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize{
+	open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
 		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 		return .zero
 	}
 }
-
-
-
 
 ////
 ////  BaseScrollViewParentPagingMenuViewController.swift
@@ -124,7 +118,7 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //
 //	}
 //
-//	//MARK: PagingMenuVIew
+// MARK: PagingMenuVIew
 //	open lazy var pagingMenuView: PagingMenuView = {
 //		return self.createPagingMenuView()
 //	}()
@@ -147,7 +141,7 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //		super.transitionToPage(at: index)
 //	}
 //
-//	//MARK: PagingMenuViewDelegate
+// MARK: PagingMenuViewDelegate
 //	open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type]{
 //		return defaultMenuItemCellClasses()
 //	}

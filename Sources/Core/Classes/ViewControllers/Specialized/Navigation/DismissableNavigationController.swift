@@ -10,10 +10,11 @@ import UIKitTheme
 import UIKitExtensions
 import Layman
 
-open class DismissableNavigationController: BaseNavigationController, DismissButtonManaged, UINavigationControllerDelegate{
+open class DismissableNavigationController: BaseNavigationController, DismissButtonManaged, UINavigationControllerDelegate {
     private var dismissButtonConfiguration: ManagedButtonConfiguration = ManagedButtonConfiguration()
     private var dismissableViewController: (UIViewController & DismissButtonManaged)!
-    public required init<VC: UIViewController & DismissButtonManaged>(dismissableViewController: VC, dismissButtonConfiguration: ManagedButtonConfiguration = ManagedButtonConfiguration()){
+    public required init<VC: UIViewController & DismissButtonManaged>(dismissableViewController: VC,
+                                                                      dismissButtonConfiguration: ManagedButtonConfiguration = ManagedButtonConfiguration()) {
         super.init(rootViewController: dismissableViewController)
         self.dismissButtonConfiguration = dismissButtonConfiguration
         self.dismissableViewController = dismissableViewController
@@ -30,10 +31,9 @@ open class DismissableNavigationController: BaseNavigationController, DismissBut
     }
     
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController === self.viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged{
+        if viewController === self.viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged {
             dismissableViewController.setupDismissButton(configuration: self.dismissButtonConfiguration)
         }
     }
-    
     
 }
