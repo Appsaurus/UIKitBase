@@ -274,7 +274,6 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 				self.restorePreviousSearchState()
 
 		})
-
 	}
 
 	open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false){
@@ -284,19 +283,5 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
 		}
 		if makeSearchBarFirstResponder { searchBar.becomeFirstResponder() }
 		self.searchBar.setShowsCancelButton(searchBar.isFirstResponder, animated: false)
-	}
-}
-
-open class SearchSuggestingViewController<ModelType: Paginatable>: SearchViewController<ModelType>{
-	open lazy var searchSuggestionTableViewController: UITableViewController? = {
-		return self.createSearchSuggestionTableViewController()
-	}()
-
-	var activeSearchViewController: UIViewController{
-		return searchSuggestionTableViewController ?? searchResultsTableViewController
-	}
-
-	open func createSearchSuggestionTableViewController() -> UITableViewController?{
-		return nil
 	}
 }

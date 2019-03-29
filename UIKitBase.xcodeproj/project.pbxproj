@@ -308,10 +308,6 @@
 		E41D71DC224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
 		E41D71DD224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
 		E41D71DE224D663500CA05C4 /* StepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */; };
-		E41D71E2224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
-		E41D71E3224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
-		E41D71E4224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
-		E41D71E5224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */; };
 		E41D71E6224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
 		E41D71E7224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
 		E41D71E8224D663F00CA05C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D71E1224D663F00CA05C4 /* SearchViewController.swift */; };
@@ -813,7 +809,6 @@
 		E41D71D0224D662C00CA05C4 /* NavigationalMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationalMenuTableViewController.swift; sourceTree = "<group>"; };
 		E41D71D1224D662C00CA05C4 /* DismissableNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableNavigationController.swift; sourceTree = "<group>"; };
 		E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepProcessPagingMenuViewController.swift; sourceTree = "<group>"; };
-		E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManagingViewController.swift; sourceTree = "<group>"; };
 		E41D71E1224D663F00CA05C4 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E41D71EB224D664A00CA05C4 /* CustomTabBarItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItemView.swift; sourceTree = "<group>"; };
 		E41D71EC224D664A00CA05C4 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -1321,6 +1316,7 @@
 		E41D7129224D63CD00CA05C4 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
 				E41D712F224D651300CA05C4 /* Pagination */,
 				E41D7133224D651300CA05C4 /* ScrollViewLoadingControls */,
 				E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */,
@@ -1472,7 +1468,6 @@
 				E41D720A224D666D00CA05C4 /* ImageSliderViewController.swift */,
 				E41D7204224D665D00CA05C4 /* WebViewControllers */,
 				E41D71EA224D664A00CA05C4 /* TabBarControllers */,
-				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
 				E41D71DA224D663500CA05C4 /* StepProcessPagingMenuViewController.swift */,
 				E41D71CF224D662C00CA05C4 /* Navigation */,
 			);
@@ -1491,7 +1486,6 @@
 		E41D71DF224D663F00CA05C4 /* SearchViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E41D71E0224D663F00CA05C4 /* SearchManagingViewController.swift */,
 				E41D71E1224D663F00CA05C4 /* SearchViewController.swift */,
 			);
 			path = SearchViewControllers;
@@ -2346,7 +2340,6 @@
 				E41D717B224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
 				E41D72C4224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
 				E41D7277224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
-				E41D71E4224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
 				E41D721E224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C321BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81F021BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
@@ -2528,7 +2521,6 @@
 				E41D717C224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
 				E41D72C5224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
 				E41D7278224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
-				E41D71E5224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
 				E41D721F224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C421BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81F121BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
@@ -2701,7 +2693,6 @@
 				E41D7179224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
 				E41D72C2224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
 				E41D7275224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
-				E41D71E2224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
 				E41D721C224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C121BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81EE21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,
@@ -2883,7 +2874,6 @@
 				E41D717A224D651300CA05C4 /* CircleRefreshAnimator.swift in Sources */,
 				E41D72C3224D7DDE00CA05C4 /* ZoomableImageScrollView.swift in Sources */,
 				E41D7276224D7A2D00CA05C4 /* PassThroughView.swift in Sources */,
-				E41D71E3224D663F00CA05C4 /* SearchManagingViewController.swift in Sources */,
 				E41D721D224D66D300CA05C4 /* ScrollViewHeaderAdornable.swift in Sources */,
 				E4AF80C221BB2D90002D6E86 /* DependencyInjectableMixin.swift in Sources */,
 				E4AF81EF21BF84EF002D6E86 /* StatefulViewControllerEmptyView.swift in Sources */,

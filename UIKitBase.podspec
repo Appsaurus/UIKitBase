@@ -71,6 +71,7 @@ Pod::Spec.new do |s|
   s.subspec 'Location' do |l|
    l.source_files = 'Sources/Subspecs/Location/Source/**/*'
    l.dependency 'UIKitBase/Permission'
+   l.dependency 'UIKitBase/Datasource'
    l.dependency 'Permission/Location'
    l.dependency 'SwiftLocation'
   end

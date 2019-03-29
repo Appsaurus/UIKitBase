@@ -89,5 +89,3 @@ open class DrawingUtils{
 //		let view = UIImageView(image: image)
 	}
 }
-
-
