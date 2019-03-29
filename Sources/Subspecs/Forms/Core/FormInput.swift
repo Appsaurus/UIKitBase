@@ -10,20 +10,19 @@ import Foundation
 import UIKit
 /// FormInput protocol
 /// Handle UITextField and UITextView in the same way.
-public protocol FormInput: class, NSObjectProtocol {
+public protocol FormInput: AnyObject, NSObjectProtocol {
     var _inputAccessoryView: UIView? { get set }
     var responder: UIResponder { get }
 //    var view: UIView { get }
 }
 
 extension FormField: FormInput {
-    
     public var responder: UIResponder {
         return proxyFirstResponder() ?? self
     }
-    
+
     public var view: UIView {
-        return self.canBecomeFirstResponder ? self : self.contentView
+        return canBecomeFirstResponder ? self : contentView
     }
 }
 
@@ -36,17 +35,17 @@ extension UITextField: FormInput {
             inputAccessoryView = newValue
         }
     }
+
     public var responder: UIResponder {
         return self
     }
-    
+
     public var view: UIView {
         return self
     }
 }
 
 extension UITextView: FormInput {
-    
     public var _inputAccessoryView: UIView? {
         get {
             return inputAccessoryView
@@ -55,10 +54,11 @@ extension UITextView: FormInput {
             inputAccessoryView = newValue
         }
     }
+
     public var responder: UIResponder {
         return self
     }
-    
+
     public var view: UIView {
         return self
     }

@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import UIKit
 import ObjectiveC
+import UIKit
 
 // MARK: - UIScrollView Extension
 
-public protocol ScrollViewHeaderAdornable: class {
+public protocol ScrollViewHeaderAdornable: AnyObject {
     associatedtype SVH: ScrollViewHeader
     var scrollView: UIScrollView { get }
     func createScrollViewHeader() -> SVH
@@ -21,9 +21,8 @@ public protocol ScrollViewHeaderAdornable: class {
 
 private var scrollViewHeaderKey: UInt8 = 0
 public extension ScrollViewHeaderAdornable where Self: NSObject {
-    
-    public var scrollViewHeader: SVH? {
-        get {            
+    var scrollViewHeader: SVH? {
+        get {
             return getAssociatedObject(for: &scrollViewHeaderKey)
         }
         set {
@@ -31,11 +30,11 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
         }
     }
 
-    public func setupScrollViewHeader() {
+    func setupScrollViewHeader() {
         addScrollViewHeader(createScrollViewHeader())
     }
-    
-    public func addScrollViewHeader(_ scrollViewHeader: SVH) {
+
+    func addScrollViewHeader(_ scrollViewHeader: SVH) {
         scrollViewHeader.setupObserver(for: scrollView)
         scrollView.addSubview(scrollViewHeader)
         scrollView.bringSubviewToFront(scrollViewHeader)
@@ -46,7 +45,7 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
 //        }
         self.scrollViewHeader = scrollViewHeader
 
-		scrollViewHeader.onBoundsChange = { [weak self] bounds in
+        scrollViewHeader.onBoundsChange = { [weak self] _ in
             DispatchQueue.main.async {
                 self?.headerContentDidChange()
             }
@@ -54,21 +53,21 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
 
         headerContentDidChange()
     }
-    
-    //Called whenever changes are made that could effect the height of the header
-    public func headerContentDidChange() {
+
+    // Called whenever changes are made that could effect the height of the header
+    func headerContentDidChange() {
         adjustContentPositionToAccomodateHeaderHeight()
     }
-    
-    public func adjustContentPositionToAccomodateHeaderHeight() {
+
+    func adjustContentPositionToAccomodateHeaderHeight() {
         guard let scrollViewHeader = scrollViewHeader else { return }
         if scrollView.contentInset.top < scrollViewHeader.expandedHeight {
             scrollView.contentInset.top = scrollViewHeader.expandedHeight
             scrollView.contentOffset.y = -scrollViewHeader.expandedHeight
         }
     }
-    
-    public func removeScrollViewHeader() {
+
+    func removeScrollViewHeader() {
         scrollViewHeader?.clearObservations()
         scrollViewHeader?.removeFromSuperview()
         scrollViewHeader = nil
@@ -79,24 +78,22 @@ extension ScrollViewHeaderAdornable where Self: UITableViewController {
     public var scrollView: UIScrollView {
         return tableView
     }
-    
 }
 
 extension ScrollViewHeaderAdornable where Self: UICollectionViewController {
     public var scrollView: UIScrollView {
         return collectionView!
     }
-    
 }
 
-//extension BaseScrollviewController: ScrollViewHeaderAdornable{
+// extension BaseScrollviewController: ScrollViewHeaderAdornable{
 extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
     public func setupScrollViewHeader() {
         addScrollViewHeader(createScrollViewHeader())
-        headerContentDidChange() //Get initial layout
+        headerContentDidChange() // Get initial layout
     }
-    
-    //Called whenever changes are made that could effect the height of the header
+
+    // Called whenever changes are made that could effect the height of the header
     public func headerContentDidChange() {
         guard let header = scrollViewHeader else { return }
         view.forceAutolayoutPass()

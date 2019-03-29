@@ -1,3 +1,4 @@
+import Nuke
 ////
 ////  ImageDisplayable.swift
 ////  UIKitBase
@@ -7,10 +8,8 @@
 ////
 //
 import UIKit
-import Nuke
 
 extension ImageDisplaying where Self: UIView {
-
     @discardableResult
     public func loadImage(with url: URLConvertible,
                           options: ImageLoadingOptions = .shared,
@@ -58,35 +57,34 @@ extension ImageDisplaying where Self: UIView {
 }
 
 extension UIButton: ImageDisplaying {
-
     public func display(image: Image?) {
-        self.imageView?.image = image
+        imageView?.image = image
     }
 }
 
 //
-//public typealias AsyncCompletion<S, E: Error> = (success: (S) -> Void, failure: (E) -> Void)
+// public typealias AsyncCompletion<S, E: Error> = (success: (S) -> Void, failure: (E) -> Void)
 //
-//public protocol URLImageResolvable{
+// public protocol URLImageResolvable{
 //    func resolve(imageAt url: URL, complete: AsyncCompletion<UIImage, ImageResolverError>)
 //    func cancelRequest(forImageAt url: URL)
-//}
+// }
 //
-//open class URLImageResolver: URLImageResolvable{
+// open class URLImageResolver: URLImageResolvable{
 //    static var `default`: URLImageResolvable = DefaultURLImageResolver()
 //    open func resolve(imageAt url: URL, complete: AsyncCompletion<UIImage, ImageResolverError>) {
 //        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 //    }
-//    
+//
 //    open func cancelRequest(forImageAt url: URL) {
 //        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 //    }
-//}
+// }
 //
-//public class DefaultURLImageResolver: URLImageResolver{
+// public class DefaultURLImageResolver: URLImageResolver{
 //    let imageCache = NSCache<NSString, UIImage>()
 //    let requestCache: [String: [AsyncCompletion<UIImage, ImageResolverError>]] = [:]
-//    
+//
 //    public override func resolve(imageAt url: URL, complete: AsyncCompletion<UIImage, ImageResolverError>) {
 //        let key = url.absoluteString
 //        if let cachedImage = imageCache.object(forKey: key.toNSString) {
@@ -98,28 +96,30 @@ extension UIButton: ImageDisplaying {
 //            guard error == nil else {
 //                complete.failure(ImageResolverError.NetworkError(error!))
 //            }
-//            
+//
 //            guard let imageData = data, let image = UIImage(data: imageData) else {
 //                complete.failure(ImageResolverError.BadImageData(error))
 //            }
-//            
+//
 //            DispatchQueue.main.async {
 //                self.imageCache.setObject(image, forKey: key.toNSString)
 //                complete.success(image)
-//                
+//
 //            }
 //        }).resume()
 //    }
-//    
-//}
+//
+// }
 
 public enum URLConvertibleError: Error {
     case invalidURL
 }
+
 public protocol URLConvertible {
     var toURL: URL? { get }
     func assertURL() throws -> URL
 }
+
 extension URLConvertible {
     public func assertURL() throws -> URL {
         guard let url = toURL else {
@@ -151,45 +151,45 @@ extension String: URLConvertible {
 }
 
 //
-//public protocol ImageDisplayable{
+// public protocol ImageDisplayable{
 //    func display(image: URLConvertible, placeholderImage: UIImage?, processing: ((UIImage) throws -> (UIImage))?)
 //    func display(image: UIImage)
-//}
+// }
 //
-//public enum ImageResolverError: Error{
+// public enum ImageResolverError: Error{
 //    case InvalidURL
 //    case BadImageData(Error?)
 //    case NetworkError(Error)
 //    case ProcessingError(Error)
-//}
+// }
 //
 //
 //
-//extension UIImageView: ImageDisplayable{
-//    
+// extension UIImageView: ImageDisplayable{
+//
 //    public func display(image: URLConvertible,
 //                        placeholderImage: UIImage? = nil,
 //                        processing: ((UIImage) throws -> (UIImage))? = nil) {
-//        
+//
 //        self.image = placeholderImage
-//        
+//
 //    }
-//    
+//
 //    public func display(image: UIImage) {
 //        self.image = image
 //    }
-//}
+// }
 //
-//extension UIButton{
+// extension UIButton{
 //    open func displayImage(withUrlString urlString: String, filter: ImageFilter? = nil, for state: UIControl.State){
 //        resetImage(for: state)
 //        guard let url: URL = URL(string: urlString) else { return }
 //        af_setImage(for: state, url: url)
 //    }
-//    
+//
 //    open func resetImage(for state: UIControl.State){
 //        af_cancelImageRequest(for: state)
 //    }
-//}
+// }
 //
 //

@@ -11,7 +11,7 @@ open class ViewControllerConfiguration {
     open var style: ViewControllerStyle
     open var orientationMask: UIInterfaceOrientationMask
     open var statusBarConfiguration: StatusBarConfiguration
-    
+
     public required init(style: ViewControllerStyle = .default,
                          orientationMask: UIInterfaceOrientationMask = .default,
                          statusBarConfiguration: StatusBarConfiguration = .default) {
@@ -19,10 +19,12 @@ open class ViewControllerConfiguration {
         self.orientationMask = orientationMask
         self.statusBarConfiguration = statusBarConfiguration
     }
-    static public var `default`: ViewControllerConfiguration = ViewControllerConfiguration()
+
+    public static var `default`: ViewControllerConfiguration = ViewControllerConfiguration()
 }
+
 extension UIInterfaceOrientationMask {
-    static public var `default`: UIInterfaceOrientationMask {
+    public static var `default`: UIInterfaceOrientationMask {
         return App.configuration.orientation
     }
 }

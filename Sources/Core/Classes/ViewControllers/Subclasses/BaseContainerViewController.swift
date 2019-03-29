@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import UIKit
 import Layman
+import UIKit
 
 open class BaseContainerViewController: BaseViewController {
-
     open lazy var headerView: UIView? = {
-        return self.createHeaderView()
+        self.createHeaderView()
     }()
 
     /// Hook to create a static header view that is pinned above the containerview.

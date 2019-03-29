@@ -21,30 +21,32 @@ open class CollapsibleLayoutConstraint: NSLayoutConstraint {
             }
         }
     }
+
     open override func awakeFromNib() {
-        self.expandedConstant = self.constant
+        expandedConstant = constant
     }
-    
+
     open func collapse() {
-        self.constant = 0.0
+        constant = 0.0
     }
+
     open func expand() {
-        self.constant = expandedConstant
+        constant = expandedConstant
     }
-    
 }
 
 public extension UIView {
-    //TODO: Add animated collapsing/expanding and func that autocollapses/expands when view is hidden/visible
-    public func collapseConstraints() {
-        for constraint in self.constraints {
+    // TODO: Add animated collapsing/expanding and func that autocollapses/expands when view is hidden/visible
+    func collapseConstraints() {
+        for constraint in constraints {
             if let collapsible = constraint as? CollapsibleLayoutConstraint {
                 collapsible.collapse()
             }
         }
     }
-    public func expandConstraints() {
-        for constraint in self.constraints {
+
+    func expandConstraints() {
+        for constraint in constraints {
             if let collapsible = constraint as? CollapsibleLayoutConstraint {
                 collapsible.expand()
             }

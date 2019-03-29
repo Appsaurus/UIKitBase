@@ -17,22 +17,23 @@ extension BaseSearchBarProtocol where Self: UISearchBar {
 }
 
 open class BaseSearchBar: MixinableSearchBar, BaseSearchBarProtocol {
-    
-    override open func createMixins() -> [LifeCycle] {
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseSearchBarProtocolMixins
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
-    open func didObserve(notification: Notification) {}
-    
-    // MARK: Styleable
-    open func style() {}
 
+    open func didObserve(notification: Notification) {}
+
+    // MARK: Styleable
+
+    open func style() {}
 }

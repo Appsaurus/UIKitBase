@@ -17,35 +17,37 @@ extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell {
 }
 
 open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionViewCellProtocol {
-    
-    override open func createMixins() -> [LifeCycle] {
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseCollectionViewCellProtocolMixins
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
+
     open func didObserve(notification: Notification) {}
-    
+
     // MARK: Styleable
+
     open func style() {
         apply(collectionViewCellStyle: .defaultStyle)
     }
-
 }
 
 open class BaseImageCollectionViewCell: BaseCollectionViewCell {
     open var imageView: BaseImageView = BaseImageView()
-    
+
     open override func createSubviews() {
         super.createSubviews()
         contentView.addSubview(imageView)
     }
+
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         imageView.pinToSuperview()
@@ -54,16 +56,17 @@ open class BaseImageCollectionViewCell: BaseCollectionViewCell {
 
 open class BaseLabeledCollectionViewCell: BaseCollectionViewCell {
     open var label: UILabel = UILabel()
-    
-    override open func didFinishCreatingAllViews() {
+
+    open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
         label.textAlignment = .center
-        
     }
+
     open override func createSubviews() {
         super.createSubviews()
         contentView.addSubview(label)
     }
+
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         label.pinToSuperview()

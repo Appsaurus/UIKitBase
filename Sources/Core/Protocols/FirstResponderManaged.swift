@@ -5,8 +5,8 @@
 //  Created by Brian Strobach on 12/3/18.
 //
 
-import Foundation
 import DarkMagic
+import Foundation
 
 public protocol FirstResponderManaged {
     var endsEditingOnDisappearance: Bool { get set }
@@ -20,8 +20,8 @@ extension FirstResponderManaged {
         responder.becomeFirstResponder()
     }
 }
+
 extension FirstResponderManaged where Self: UIViewController {
-    
     mutating func firstResponderManagedWillDissappear() {
         if persistsFirstResponderBetweenAppearances {
             firstResponderOnNextAppearance = view.firstResponder
@@ -30,7 +30,7 @@ extension FirstResponderManaged where Self: UIViewController {
             view.endEditing(true)
         }
     }
-    
+
     func firstResponderManagedWillAppear() {
         guard persistsFirstResponderBetweenAppearances else { return }
         restoreLastFirstResponder()
@@ -44,8 +44,7 @@ private extension AssociatedObjectKeys {
 }
 
 public extension FirstResponderManaged where Self: NSObject {
-    
-    public var firstResponderOnNextAppearance: UIResponder? {
+    var firstResponderOnNextAppearance: UIResponder? {
         get {
             return self[.lastFirstResponder]
         }
@@ -54,7 +53,7 @@ public extension FirstResponderManaged where Self: NSObject {
         }
     }
 
-    public var persistsFirstResponderBetweenAppearances: Bool {
+    var persistsFirstResponderBetweenAppearances: Bool {
         get {
             return self[.persistsFirstResponderBetweenAppearances, true]
         }
@@ -62,8 +61,8 @@ public extension FirstResponderManaged where Self: NSObject {
             self[.persistsFirstResponderBetweenAppearances] = newValue
         }
     }
-    
-    public var endsEditingOnDisappearance: Bool {
+
+    var endsEditingOnDisappearance: Bool {
         get {
             return self[.endsEditingOnDisappearance, true]
         }

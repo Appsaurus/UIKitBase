@@ -6,27 +6,28 @@
 //
 
 import Foundation
-import Swiftest
 import Layman
+import Swiftest
 
 open class CornerBadgeView<S: Hashable>: StatefulBadgeView<S> {
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        size.equal(to: badgeHeight)		
+        size.equal(to: badgeHeight)
     }
 
     open override func applyCurrentViewStyle() {
-        //Do nothing. Override parent implementation of styling since this needs to be done in draw rect in this case
+        // Do nothing. Override parent implementation of styling since this needs to be done in draw rect in this case
         backgroundColor = .clear
         setNeedsDisplay()
     }
+
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let viewStyle = viewStyleMap[state] else {
             return
         }
 
-        //Only truly supports inside layout
+        // Only truly supports inside layout
         var polygonVertices: [CGPoint] = []
         switch position {
         case .topRight, .topRightInside:

@@ -15,7 +15,7 @@ enum UIBarButtonHiddenItem: Int {
     case next = 102
     case up = 103
     case down = 104
-    
+
     var systemItem: UIBarButtonItem.SystemItem {
         return UIBarButtonItem.SystemItem(rawValue: rawValue)!
     }

@@ -8,9 +8,8 @@
 
 import UIKit
 
-open class AnimatableTextFieldConfiguration {
-    
-}
+open class AnimatableTextFieldConfiguration {}
+
 open class AnimatableTextField: StatefulTextField {
     open var titleLabel: UILabel = UILabel()
     open var secondaryLabel: UILabel = UILabel()
@@ -28,28 +27,26 @@ open class AnimatableTextField: StatefulTextField {
             secondaryLabel.textAlignment = value
         }
     }
-    
+
     /// EdgeInsets for text.
     open var textInset: CGFloat = 0
-/*
-    open override func textRect(forBounds bounds: CGRect) -> CGRect {
-        var b = super.textRect(forBounds: bounds)
-        b.origin.x += textInset
-        b.size.width -= textInset
-        return b
-    }
-    
-    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return textRect(forBounds: bounds)
-    }
-  */
+    /*
+     open override func textRect(forBounds bounds: CGRect) -> CGRect {
+         var b = super.textRect(forBounds: bounds)
+         b.origin.x += textInset
+         b.size.width -= textInset
+         return b
+     }
+
+     open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+         return textRect(forBounds: bounds)
+     }
+     */
 
     open override func layoutSubviews(for state: TextFieldState) {
         super.layoutSubviews(for: state)
         layoutTitleLabel()
     }
-    
-    open func layoutTitleLabel() {
-       
-    }
+
+    open func layoutTitleLabel() {}
 }

@@ -9,20 +9,19 @@
 import UIKit
 
 open class StatefulViewControllerDefaultLoadingView: StatefulViewControllerLoadingView {
+    open var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
 
-	open var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-    
     open override func initialArrangedSubviews() -> [UIView] {
         return [activityIndicator]
     }
-    
-    override open func startLoadingAnimation() {
+
+    open override func startLoadingAnimation() {
         if !activityIndicator.isAnimating {
             activityIndicator.startAnimating()
         }
     }
-    
-    override open func stopLoadingAnimation() {
+
+    open override func stopLoadingAnimation() {
         if activityIndicator.isAnimating {
             activityIndicator.stopAnimating()
         }

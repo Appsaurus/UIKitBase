@@ -17,28 +17,30 @@ extension BaseToolbarProtocol where Self: UIToolbar {
 }
 
 open class BaseToolbar: MixinableToolbar, BaseToolbarProtocol {
-    
-    override open func createMixins() -> [LifeCycle] {
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseToolbarProtocolMixins
     }
-    
+
     // MARK: UIViewLifeCycle Overrides
+
     open override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)        
+        super.willMove(toSuperview: newSuperview)
         bindStyle()
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
-    open func didObserve(notification: Notification) {}
-    
-    // MARK: Styleable
-    open func style() {}
 
+    open func didObserve(notification: Notification) {}
+
+    // MARK: Styleable
+
+    open func style() {}
 }

@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 open class FormLocationField<ContentView: UIView>: FormPickerField<ContentView, LocationData, LocationPickerSearchViewController>
-where ContentView: FormFieldViewProtocol {
-
+    where ContentView: FormFieldViewProtocol {
     open override func didInit() {
         super.didInit()
         pickerViewController = LocationPickerSearchViewController()
         contentView.isUserInteractionEnabled = false
     }
-    
+
     open override func textDescription(for value: LocationData?) -> String? {
         var text: String?
         if let location = value {

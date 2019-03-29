@@ -5,18 +5,16 @@
 //  Created by Brian Strobach on 1/24/18.
 //
 
-import UIKitExtensions
-import UIKitTheme
 import Permission
 import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
 public typealias PermissionSetChange = (_ permissionViewController: PermissionViewController, _ permissionSet: PermissionSet, _ permission: Permission) -> Void
 
-public class PermissionViewModel: AlertViewModel {
+public class PermissionViewModel: AlertViewModel {}
 
-}
 open class PermissionViewController: StackedAlertViewController, PermissionSetDelegate {
-
     open var permissionSet: PermissionSet
     open var permissionButtons: [PermissionButton] = []
     open var onPermissionChange: PermissionSetChange?
@@ -26,8 +24,8 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
                          permissionViewModel: PermissionViewModel = PermissionViewModel(),
                          onPermissionChange: PermissionSetChange? = nil,
                          onDismiss: ClosureIn<PermissionSet>? = nil) {
-        self.permissionButtons = permissions.map({PermissionViewController.createButton(for: $0)})
-        self.permissionSet = PermissionSet(permissionButtons)
+        permissionButtons = permissions.map { PermissionViewController.createButton(for: $0) }
+        permissionSet = PermissionSet(permissionButtons)
         self.onPermissionChange = onPermissionChange
         self.onDismiss = onDismiss
         super.init(viewModel: permissionViewModel)
@@ -38,7 +36,7 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
                          onPermissionChange: PermissionSetChange? = nil,
                          onDismiss: ClosureIn<PermissionSet>? = nil) {
         self.permissionButtons = permissionButtons
-        self.permissionSet = PermissionSet(permissionButtons)
+        permissionSet = PermissionSet(permissionButtons)
         self.onPermissionChange = onPermissionChange
         self.onDismiss = onDismiss
         super.init(viewModel: alertViewModel)
@@ -48,7 +46,7 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
         fatalError("init(viewModel:) has not been implemented")
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(viewModel:) has not been implemented")
     }
 
@@ -67,7 +65,6 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
     }
 
     open class func createButton(for permission: Permission) -> PermissionButton {
-
         let btn = PermissionButton(permission)
         let desc = permission.description
         btn.apply(textStyle: .light(size: .button))
@@ -76,7 +73,7 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
             .authorized: "\(desc) 👍",
             .denied: "\(desc) Denied. 😞",
             .disabled: "\(desc) Disabled. ⚙️ "
-            ])
+        ])
         btn.titleLabel?.textAlignment = .left
 
         btn.setTitleColors([
@@ -84,19 +81,19 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
             .denied: .primaryContrast,
             .disabled: .primaryContrast,
             .notDetermined: .primary
-            ])
+        ])
         btn.contentEdgeInsets = UIEdgeInsets(padding: 20.0)
         setColorsForCurrentState(for: btn)
         return btn
     }
 
     open override func userDidDismiss() {
-        self.onDismiss?(self.permissionSet)
+        onDismiss?(permissionSet)
     }
 
     public func permissionSet(_ permissionSet: PermissionSet, didRequestPermission permission: Permission) {
         onPermissionChange?(self, permissionSet, permission)
-        guard let button = permissionButtons.first(where: {$0.permission == permission}) else { return }
+        guard let button = permissionButtons.first(where: { $0.permission == permission }) else { return }
         type(of: self).setColorsForCurrentState(for: button)
     }
 
@@ -112,7 +109,6 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
         button.cornerRadius = App.layout.roundedCornerRadius
         button.borderWidth = 1
         button.borderColor = button.titleColorForStatus(button.permission.status)
-
     }
 
     @discardableResult
@@ -125,7 +121,7 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
             success()
             return nil
         }
-        let permissionViewController = self.init(permissions: Array(permissions), permissionViewModel: permissionViewModel, onPermissionChange: { (vc, permissionSet, _) in
+        let permissionViewController = self.init(permissions: Array(permissions), permissionViewModel: permissionViewModel, onPermissionChange: { vc, permissionSet, _ in
             guard permissionSet.status == .authorized else {
                 return
             }
@@ -134,5 +130,4 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
         permissionViewController.present(from: presenter)
         return permissionViewController
     }
-
 }

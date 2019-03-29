@@ -9,27 +9,23 @@ import UIKit
 import UIKitTheme
 
 open class StatefulViewControllerLoadingView: StatefulViewControllerView {
-	
     open override func didMoveToWindow() {
         startLoadingAnimation()
     }
-    
+
     deinit {
         stopLoadingAnimation()
     }
-    open func startLoadingAnimation() {
 
-    }
-    open func stopLoadingAnimation() {
+    open func startLoadingAnimation() {}
 
-    }
-    
+    open func stopLoadingAnimation() {}
+
     open override func style() {
         super.style()
-        backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? self.parentViewController?.view.backgroundColor
+        backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? parentViewController?.view.backgroundColor
         if backgroundColor == .clear || backgroundColor == nil {
             backgroundColor = .white
         }
     }
-    
 }

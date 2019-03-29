@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import UIKit
 import Swiftest
+import UIKit
 
 public protocol TabBarChildViewControllerProtocol {
-    //Must be called by TabBarController at proper times
+    // Must be called by TabBarController at proper times
     func tabBarChildViewControllerDidAppear()
     func tabItemWasTappedWhileViewControllerIsVisible()
 }
 
-//Forwards protocol calls to vc at end of navigation stack by default
+// Forwards protocol calls to vc at end of navigation stack by default
 extension TabBarChildViewControllerProtocol {
-    
     public func tabBarChildViewControllerDidAppear() {
         guard let navVC = self as? UINavigationController else {
             return
@@ -28,6 +27,7 @@ extension TabBarChildViewControllerProtocol {
         }
         topOfStackVC.tabBarChildViewControllerDidAppear()
     }
+
     public func tabItemWasTappedWhileViewControllerIsVisible() {
         guard let navVC = self as? UINavigationController else {
             return
@@ -37,7 +37,7 @@ extension TabBarChildViewControllerProtocol {
         }
         topOfStackVC.tabItemWasTappedWhileViewControllerIsVisible()
     }
-    
+
     public func defaultTabBarTappedWhileActiveAction(viewController: TabBarChildViewControllerRefreshable) {
         TabRefreshStepper.performNextRefreshStep(refreshable: viewController)
     }
@@ -47,6 +47,7 @@ extension TabBarChildViewControllerProtocol where Self: BaseNavigationController
     public func refresh() {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
     public func scrollViewToRefresh() -> UIScrollView? {
         return nil
     }
@@ -64,19 +65,18 @@ class TabRefreshStepper {
             refreshable.refresh()
             return
         }
-        
+
         if scrollView.yOffsetPosition == .top {
             refreshable.refresh()
         } else {
             scrollView.scrollToTop()
         }
     }
-    
 }
 
-//Forwards protocol calls to vc at end of navigation stack by default
+// Forwards protocol calls to vc at end of navigation stack by default
 public extension TabBarChildViewControllerRefreshable {
-    public func tabItemWasTappedWhileViewControllerIsVisible() {
+    func tabItemWasTappedWhileViewControllerIsVisible() {
         guard let navVC = self as? UINavigationController else {
             defaultTabBarTappedWhileActiveAction(viewController: self)
             return
@@ -86,13 +86,12 @@ public extension TabBarChildViewControllerRefreshable {
         }
         defaultTabBarTappedWhileActiveAction(viewController: topOfStackVC)
     }
-    
-    public func defaultTabBarTappedWhileActiveAction(viewController: TabBarChildViewControllerRefreshable) {
+
+    func defaultTabBarTappedWhileActiveAction(viewController: TabBarChildViewControllerRefreshable) {
         TabRefreshStepper.performNextRefreshStep(refreshable: viewController)
     }
-    
-    public func refresh() {
-        
+
+    func refresh() {
         guard let navVC = self as? UINavigationController else {
             assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
             return
@@ -102,16 +101,18 @@ public extension TabBarChildViewControllerRefreshable {
         }
         topOfStackVC.refresh()
     }
-    
-    public func scrollViewToRefresh() -> UIScrollView? {
+
+    func scrollViewToRefresh() -> UIScrollView? {
         return nil
     }
 }
+
 extension TabBarChildViewControllerRefreshable where Self: BaseCollectionViewController {
     public func scrollViewToRefresh() -> UIScrollView? {
         return collectionView
     }
 }
+
 extension TabBarChildViewControllerRefreshable where Self: BaseTableViewController {
     public func scrollViewToRefresh() -> UIScrollView? {
         return tableView
@@ -128,6 +129,7 @@ extension TabBarChildViewControllerRefreshable where Self: BaseNavigationControl
     public func refresh() {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
     public func scrollViewToRefresh() -> UIScrollView? {
         return nil
     }

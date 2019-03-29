@@ -8,7 +8,7 @@
 
 import Foundation
 import Swiftest
-public protocol FormFieldProtocol: class {
+public protocol FormFieldProtocol: AnyObject {
     var fieldName: String { get set }
     var validationStatus: ValidationStatus { get set }
     var validationDelegate: FieldValidationDelegate? { get set }
@@ -21,9 +21,8 @@ public protocol FormFieldProtocol: class {
 }
 
 extension FormFieldProtocol {
-    
     func runNetworkValidation(_ success: VoidClosure, failure: VoidClosure) {
-        success()//Effectively make network validation optional by faking success when not implemented by adopting class
+        success() // Effectively make network validation optional by faking success when not implemented by adopting class
     }
 }
 

@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import UIKit
-import UIFontIcons
 import Layman
+import UIFontIcons
+import UIKit
 
 public protocol BackButtonManaged: ButtonManaged {
     func createBackButton<Icon: FontIconEnum>(icon: Icon,
@@ -27,6 +27,7 @@ extension BackButtonManaged {
                                           position: .navBarLeading,
                                           size: CGSize(side: 30))
     }
+
     @discardableResult
     public func createBackButton<Icon: FontIconEnum>(icon: Icon,
                                                      iconConfiguration: FontIconConfiguration? = nil,
@@ -37,20 +38,17 @@ extension BackButtonManaged {
         button.onTap = popViewControllerIfAllowed
         return createManagedButton(configuration: configuration)
     }
-    
+
     public func backButtonShouldPopViewController() -> Bool {
         return true
     }
-    
-    public func backButtonWillPopViewController() {
-        
-    }
-    public func backButtonDidPopViewController() {
-        
-    }
+
+    public func backButtonWillPopViewController() {}
+
+    public func backButtonDidPopViewController() {}
 }
+
 extension BackButtonManaged where Self: UIViewController {
-    
     public func popViewControllerIfAllowed() {
         if backButtonShouldPopViewController() {
             backButtonWillPopViewController()

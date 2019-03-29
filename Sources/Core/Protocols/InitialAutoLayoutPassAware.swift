@@ -5,10 +5,10 @@
 //  Created by Brian Strobach on 12/3/18.
 //
 
-import Foundation
 import DarkMagic
+import Foundation
 
-public protocol InitialAutoLayoutPassAware: class {
+public protocol InitialAutoLayoutPassAware: AnyObject {
     var didInitialAutolayoutPass: Bool { get set }
     func didFinishInitialAutoLayoutPass()
 }
@@ -18,14 +18,12 @@ private extension AssociatedObjectKeys {
 }
 
 public extension InitialAutoLayoutPassAware where Self: NSObject {
-    
-    public var didInitialAutolayoutPass: Bool {
+    var didInitialAutolayoutPass: Bool {
         get {
             return self[.didInitialAutolayoutPass, false]
         }
         set {
             self[.didInitialAutolayoutPass] = newValue
-        }        
+        }
     }
-    
 }

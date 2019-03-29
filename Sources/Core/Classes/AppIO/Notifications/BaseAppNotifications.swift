@@ -34,10 +34,10 @@ open class BaseAppNotification {
 
     @available(iOS 10.0, *)
     public init(unNotification: UNNotification) {
-        self._unNotification = unNotification
+        _unNotification = unNotification
         let request = unNotification.request
-        self.payload = request.content.userInfo
-        self.origin = request.trigger is UNPushNotificationTrigger ? .remote : .local
+        payload = request.content.userInfo
+        origin = request.trigger is UNPushNotificationTrigger ? .remote : .local
     }
 
     public init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote) {
@@ -55,13 +55,13 @@ public enum NotificationParsingError: LocalizedError {
     case missingValueForPayload(key: String)
     public var localizedDescription: String {
         switch self {
-        case .missingValueForPayload(let key):
+        case let .missingValueForPayload(key):
             return "Missing expected value for key \(key)."
         }
     }
 }
-open class AppNotification<ID: AppNotificationID> : BaseAppNotification {
 
+open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
     open var notificationIdentifier: ID?
     open var notificationCenterNotification: Notification? {
         guard let name = notificationIdentifier?.notificationCenterName() else { return nil }
@@ -74,7 +74,7 @@ open class AppNotification<ID: AppNotificationID> : BaseAppNotification {
         guard let notificationStringId = payload[idKey] as? String else {
             return
         }
-        self.notificationIdentifier = ID.from(id: notificationStringId)
+        notificationIdentifier = ID.from(id: notificationStringId)
     }
 
     public required init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote, idKey: String = "notificationId") {
@@ -82,13 +82,12 @@ open class AppNotification<ID: AppNotificationID> : BaseAppNotification {
         guard let notificationStringId = payload[idKey] as? String else {
             return
         }
-        self.notificationIdentifier = ID.from(id: notificationStringId)
+        notificationIdentifier = ID.from(id: notificationStringId)
     }
 
     public convenience init(notification: BaseAppNotification, idKey: String = "notificationId") {
         self.init(payload: notification.payload, origin: notification.origin, idKey: idKey)
     }
-
 }
 
 public protocol AppNotificationID: StringIdentifiableEnum {}
@@ -100,10 +99,10 @@ public protocol StringIdentifiableEnum: CaseIterable, RawRepresentable, Equatabl
 }
 
 extension StringIdentifiableEnum {
-    //Convenience for when rawValues don't match labels.
+    // Convenience for when rawValues don't match labels.
     public static func from(id: String) -> Self? {
         return allCases.first { (enumCase) -> Bool in
-            "\(enumCase)" == id
+            id == "\(enumCase)"
         }
     }
 

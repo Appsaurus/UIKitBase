@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Swiftest
 import Layman
+import Swiftest
 
-public protocol SubmitButtonManaged: class, ButtonManaged {
+public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     var submitButton: BaseButton! { get set }
     func didPressSubmitButton()
     func didPressSubmitButtonWhileDisabled()
@@ -24,81 +24,73 @@ public protocol SubmitButtonManaged: class, ButtonManaged {
 }
 
 extension SubmitButtonManaged where Self: UIViewController {
+    @discardableResult
+    public func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
+        let button = createManagedButton(configuration: configuration)
+        var activityIndicatoPosition: ActivityIndicatorPosition = .center
+        switch configuration.position {
+        case .navBarLeading:
+            activityIndicatoPosition = .leading
+        case .navBarTrailing:
+            activityIndicatoPosition = .trailing
+        default:
+            break
+        }
+        button.disabledBehaviors = [.dropAlpha(to: 0.5)]
+        button.activityBehaviors = [.removeTitle, .showIndicator(style: .white, at: activityIndicatoPosition)]
+        setupSubmitButtonAction(for: button)
+        submitButton = button
+        return button
+    }
 
-	@discardableResult
-	public func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
-		let button = createManagedButton(configuration: configuration)
-		var activityIndicatoPosition: ActivityIndicatorPosition = .center
-		switch configuration.position {
-		case .navBarLeading:
-			activityIndicatoPosition = .leading
-		case .navBarTrailing:
-			activityIndicatoPosition = .trailing
-		default:
-			break
-		}
-		button.disabledBehaviors = [.dropAlpha(to: 0.5)]
-		button.activityBehaviors = [.removeTitle, .showIndicator(style: .white, at: activityIndicatoPosition)]
-		setupSubmitButtonAction(for: button)
-		submitButton = button
-		return button
-	}
+    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
+        let button = BaseButton(buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5)))
+        button.titleMap = [.normal: "Submit"]
+        styleManagedButton(button: button, position: configuration.position)
+        return button
+    }
 
-	public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
-
-		let button = BaseButton(buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5)))
-		button.titleMap = [.normal: "Submit"]
-		styleManagedButton(button: button, position: configuration.position)
-		return button
-	}
-    
     public func setupSubmitButtonAction(for button: BaseButton) {
         button.buttonTapActionMap = [
             .normal: self.didPressSubmitButton,
             .disabled: self.didPressSubmitButtonWhileDisabled
         ]
     }
-    
+
     public func didPressSubmitButton() {
         submissionDidBegin()
         submit(success: { [weak self] in
             self?.submissionDidEnd()
             self?.submissionDidSucceed()
-            }, failure: {[weak self] (error) in
+        }, failure: { [weak self] error in
             self?.submissionDidEnd()
             self?.submissionDidFail(with: error)
         })
     }
-    
-    public func didPressSubmitButtonWhileDisabled() {
 
-    }
-    
+    public func didPressSubmitButtonWhileDisabled() {}
+
     public func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
-        success() //By default, for synchronous cases where no async "submission" is needed
+        success() // By default, for synchronous cases where no async "submission" is needed
     }
-    
+
     public func submissionDidBegin() {
         submitButton.state = .activity
     }
-    
+
     public func submissionDidEnd() {
         updateSubmitButtonState()
     }
-    public func submissionDidSucceed() {
-        
-    }
-    
-    public func submissionDidFail(with error: Error) {
-        
-    }
-    
+
+    public func submissionDidSucceed() {}
+
+    public func submissionDidFail(with error: Error) {}
+
     public func updateSubmitButtonState() {
         submitButton.state = userCanSubmit() ? .normal : .disabled
     }
-    
+
     public func userCanSubmit() -> Bool {
         return true
     }
-    
 }

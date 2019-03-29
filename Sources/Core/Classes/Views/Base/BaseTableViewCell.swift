@@ -18,26 +18,29 @@ extension BaseTableViewCellProtocol where Self: UITableViewCell {
 
 open class BaseTableViewCell: MixinableTableViewCell, BaseTableViewCellProtocol {
 //    open var subviewsUnmodifiedBySelectionState: [UIView] = []
-    
-    override open func createMixins() -> [LifeCycle] {
+
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewCellProtocolMixins
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
+
     open func didObserve(notification: Notification) {}
-    
+
     // MARK: Styleable
+
     open func style() {
         apply(tableViewCellStyle: .defaultStyle)
     }
-    
+
 //    //Selection and highlight behavior
 //    override open func setSelected(_ selected: Bool, animated: Bool) {
 //        let viewStates = subviewsUnmodifiedBySelectionState.map { (view) -> (UIView, UIColor?) in

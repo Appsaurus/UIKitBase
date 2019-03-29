@@ -6,23 +6,22 @@
 //
 //
 
-import Swiftest
-import UIKitTheme
-import UIKitExtensions
 import Layman
+import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
 open class DynamicHeightCell: BaseTableViewCell {
-
     open var mainLayoutView: UIView = UIView()
     open lazy var mainLayoutViewInsets: LayoutPadding = {
-        return .zero
+        .zero
     }()
 
-    override open func didInit() {
+    open override func didInit() {
         super.didInit()
         selectionStyle = .none
     }
-    
+
     open override func createSubviews() {
         super.createSubviews()
         contentView.addSubview(mainLayoutView)
@@ -30,6 +29,6 @@ open class DynamicHeightCell: BaseTableViewCell {
 
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        mainLayoutView.forceSuperviewToMatchContentSize(insetBy: mainLayoutViewInsets)        
+        mainLayoutView.forceSuperviewToMatchContentSize(insetBy: mainLayoutViewInsets)
     }
 }

@@ -14,15 +14,15 @@ public typealias UIPageViewControllerProtocol = UIPageViewControllerDelegate & U
 public typealias UICollectionViewControllerProtocol = UICollectionViewDelegate & UICollectionViewDataSource
 
 public extension UITableView {
-    public func setController<C: UITableViewControllerProtocol>(_ controller: C) {
-        self.delegate = controller
-        self.dataSource = controller
+    func setController<C: UITableViewControllerProtocol>(_ controller: C) {
+        delegate = controller
+        dataSource = controller
     }
 }
 
 public extension UICollectionView {
-    public func setController<C: UICollectionViewControllerProtocol>(_ controller: C) {
-        self.delegate = controller
-        self.dataSource = controller
+    func setController<C: UICollectionViewControllerProtocol>(_ controller: C) {
+        delegate = controller
+        dataSource = controller
     }
 }

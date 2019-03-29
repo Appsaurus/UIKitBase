@@ -2233,7 +2233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/Sources/\" --\n";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/Sources/\" --config \"${SRCROOT}/config.swiftformat\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

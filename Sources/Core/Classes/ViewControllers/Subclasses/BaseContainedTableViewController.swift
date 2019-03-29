@@ -11,8 +11,9 @@ open class BaseContainedTableViewController: BaseContainerViewController, ViewRe
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [ViewRecyclerMixin(self)]
     }
+
     open lazy var tableViewStyle: UITableView.Style = .grouped
-    open lazy var tableView: UITableView = UITableView(frame: .zero, style: self.tableViewStyle).then { (tv) in
+    open lazy var tableView: UITableView = UITableView(frame: .zero, style: self.tableViewStyle).then { tv in
         tv.backgroundColor = .clear
     }
 
@@ -21,6 +22,7 @@ open class BaseContainedTableViewController: BaseContainerViewController, ViewRe
         tableView.setController(self)
         containedView = tableView
     }
+
     open func numberOfSections(in tableView: UITableView) -> Int {
         return 0
     }

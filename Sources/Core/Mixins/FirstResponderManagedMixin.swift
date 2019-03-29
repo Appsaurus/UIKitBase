@@ -11,6 +11,7 @@ open class FirstResponderManagedMixin: UIViewControllerMixin<UIViewController & 
     open override func viewWillAppear(_ animated: Bool) {
         mixable.firstResponderManagedWillAppear()
     }
+
     open override func viewWillDisappear(_ animated: Bool) {
         mixable.firstResponderManagedWillDissappear()
     }

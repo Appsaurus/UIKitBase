@@ -5,12 +5,12 @@
 //  Created by Brian Strobach on 11/29/18.
 //
 
+import DarkMagic
 import UIKitMixinable
 import UIKitTheme
-import DarkMagic
 
 public protocol ViewControllerConfigurable: OrientationLockable, StatusBarConfigurable, NavigationBarStyleable {
-    var viewControllerConfiguration: ViewControllerConfiguration {get set}
+    var viewControllerConfiguration: ViewControllerConfiguration { get set }
 }
 
 private extension AssociatedObjectKeys {
@@ -18,16 +18,15 @@ private extension AssociatedObjectKeys {
 }
 
 public extension ViewControllerConfigurable where Self: UIViewController {
-    
-    public func applyBaseViewStyle() {
-        self.view.apply(viewStyle: viewControllerConfiguration.style.viewStyle)
+    func applyBaseViewStyle() {
+        view.apply(viewStyle: viewControllerConfiguration.style.viewStyle)
     }
-    
-    public var statusBarConfiguration: StatusBarConfiguration {
+
+    var statusBarConfiguration: StatusBarConfiguration {
         return viewControllerConfiguration.statusBarConfiguration
     }
-    
-    public var viewControllerConfiguration: ViewControllerConfiguration {
+
+    var viewControllerConfiguration: ViewControllerConfiguration {
         get {
             return self[.viewControllerConfiguration, .default]
         }
@@ -38,8 +37,7 @@ public extension ViewControllerConfigurable where Self: UIViewController {
 }
 
 public extension ViewControllerConfigurable where Self: UIViewController {
-
-    public var defaultOrientationLock: UIInterfaceOrientationMask? {
+    var defaultOrientationLock: UIInterfaceOrientationMask? {
         return viewControllerConfiguration.orientationMask
     }
 }

@@ -6,9 +6,7 @@
 //  Copyright © 2015 Appsaurus. All rights reserved.
 //
 
-import UIKit
 import Swiftest
+import UIKit
 
-open class StatefulViewControllerErrorView: StatefulViewControllerView {
-    
-}
+open class StatefulViewControllerErrorView: StatefulViewControllerView {}

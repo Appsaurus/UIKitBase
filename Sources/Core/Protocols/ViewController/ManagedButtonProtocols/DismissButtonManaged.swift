@@ -7,10 +7,10 @@
 //
 
 import Foundation
+import Layman
+import UIFontIcons
 import UIKit
 import UIKitTheme
-import UIFontIcons
-import Layman
 
 public protocol DismissButtonManaged: ButtonManaged {
     @discardableResult
@@ -18,15 +18,15 @@ public protocol DismissButtonManaged: ButtonManaged {
     func willDismissViewController()
     func shouldDismissViewController() -> Bool
 }
+
 extension DismissButtonManaged where Self: UIViewController {
-    
     @discardableResult
     public func setupDismissButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
         let button = createManagedButton(configuration: configuration)
         setupDismissButtonAction(for: button)
         return button
     }
-    
+
     public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
         let button = BaseButton()
         switch configuration.position {
@@ -41,6 +41,7 @@ extension DismissButtonManaged where Self: UIViewController {
         styleManagedButton(button: button, position: configuration.position)
         return button
     }
+
     public func setupDismissButtonAction(for button: BaseButton) {
         button.onTap = { [weak self] in
             guard let self = self else { return }
@@ -51,10 +52,9 @@ extension DismissButtonManaged where Self: UIViewController {
             }
         }
     }
-    
-    public func willDismissViewController() {
-        
-    }
+
+    public func willDismissViewController() {}
+
     public func shouldDismissViewController() -> Bool {
         return true
     }

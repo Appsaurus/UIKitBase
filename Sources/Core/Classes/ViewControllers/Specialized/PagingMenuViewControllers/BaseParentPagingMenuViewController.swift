@@ -6,82 +6,82 @@
 //
 //
 
-import UIKitTheme
-import UIKitExtensions
 import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
 open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate {
-
-	open override func didInit() {
-		super.didInit()
+    open override func didInit() {
+        super.didInit()
         pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
-	}
-	override open func createHeaderView() -> UIView? {
-		return pagingMenuView
-	}
+    }
 
-	override open func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
-		pagingMenuView.invalidateLayout()
-	}
+    open override func createHeaderView() -> UIView? {
+        return pagingMenuView
+    }
 
-	// MARK: PagingMenuVIew
-	open lazy var pagingMenuView: PagingMenuView = {
-		return self.createPagingMenuView()
-	}()
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        pagingMenuView.invalidateLayout()
+    }
 
-	open func createPagingMenuView() -> PagingMenuView {
-		return PagingMenuView(delegate: self, options: pagingMenuViewOptions)
-	}
+    // MARK: PagingMenuVIew
 
-	open var pagingMenuViewOptions: PagingMenuViewOptions {
-		let menuHeight: CGFloat = 50.0
-		return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: .spanWidthCollectively(height: menuHeight), scrollBehavior: .tabBar)
-	}
+    open lazy var pagingMenuView: PagingMenuView = {
+        self.createPagingMenuView()
+    }()
 
-	open override func willTransitionToPage(at index: Int) {
-		super.willTransitionToPage(at: index)
-		pagingMenuView.selectItem(at: index)
-	}
+    open func createPagingMenuView() -> PagingMenuView {
+        return PagingMenuView(delegate: self, options: pagingMenuViewOptions)
+    }
 
-	// MARK: PagingMenuViewDelegate
-	open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
-		return defaultMenuItemCellClasses()
-	}
+    open var pagingMenuViewOptions: PagingMenuViewOptions {
+        let menuHeight: CGFloat = 50.0
+        return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: .spanWidthCollectively(height: menuHeight), scrollBehavior: .tabBar)
+    }
 
-	open func pagingMenuNumberOfItems(for menuView: PagingMenuView) -> Int {
-		return pagedViewControllers.count
-	}
+    open override func willTransitionToPage(at index: Int) {
+        super.willTransitionToPage(at: index)
+        pagingMenuView.selectItem(at: index)
+    }
 
-	open func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
-		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-		return PagingMenuItemCell<UIView>()
-	}
+    // MARK: PagingMenuViewDelegate
 
-	open func pagingMenuView(menuView: PagingMenuView, didSelectMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {
-		guard currentPage != index else { return }
-		self.transitionToPage(at: index)
-	}
+    open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
+        return defaultMenuItemCellClasses()
+    }
 
-	open func pagingMenuView(menuView: PagingMenuView, didReselectCurrentMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {
+    open func pagingMenuNumberOfItems(for menuView: PagingMenuView) -> Int {
+        return pagedViewControllers.count
+    }
 
-	}
+    open func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        return PagingMenuItemCell<UIView>()
+    }
 
-	open func pagingMenuView(menuView: PagingMenuView, canSelectItemAtIndex index: Int) -> Bool {
-		return true
-	}
+    open func pagingMenuView(menuView: PagingMenuView, didSelectMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {
+        guard currentPage != index else { return }
+        transitionToPage(at: index)
+    }
 
-	open override func pagesDidReload() {
-		self.pagingMenuView.reloadItems(selectedIndex: self.initialPageIndex.indexPath, animated: false) //Keep menu synced with datasource
-		super.pagesDidReload()
-	}
+    open func pagingMenuView(menuView: PagingMenuView, didReselectCurrentMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {}
 
-	//For manually sizing cells when PagingMenuItemSizingBehavior is set to delegateSizing
+    open func pagingMenuView(menuView: PagingMenuView, canSelectItemAtIndex index: Int) -> Bool {
+        return true
+    }
 
-	open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
-		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-		return .zero
-	}
+    open override func pagesDidReload() {
+        pagingMenuView.reloadItems(selectedIndex: initialPageIndex.indexPath, animated: false) // Keep menu synced with datasource
+        super.pagesDidReload()
+    }
+
+    // For manually sizing cells when PagingMenuItemSizingBehavior is set to delegateSizing
+
+    open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        return .zero
+    }
 }
 
 ////
@@ -92,11 +92,11 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 ////
 ////
 //
-//import Foundation
-//import UIKit
-//import Swiftest
+// import Foundation
+// import UIKit
+// import Swiftest
 //
-//open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate{
+// open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate{
 //
 //	override open func createHeaderView() -> UIView? {
 //		return pagingMenuView
@@ -118,7 +118,9 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //
 //	}
 //
+
 // MARK: PagingMenuVIew
+
 //	open lazy var pagingMenuView: PagingMenuView = {
 //		return self.createPagingMenuView()
 //	}()
@@ -141,7 +143,9 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //		super.transitionToPage(at: index)
 //	}
 //
+
 // MARK: PagingMenuViewDelegate
+
 //	open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type]{
 //		return defaultMenuItemCellClasses()
 //	}
@@ -191,6 +195,6 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //		}
 //
 //	}
-//}
+// }
 //
 //

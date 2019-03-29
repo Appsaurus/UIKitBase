@@ -6,40 +6,42 @@
 //
 //
 
-import UIKit
 import Swiftest
+import UIKit
 
 public protocol FontSizeScalable {
-    var fontSize: CGFloat { get set}
+    var fontSize: CGFloat { get set }
     func scaleFontSizeForDevice()
 }
 
 extension UILabel: FontSizeScalable {
     public func scaleFontSizeForDevice() {
-        fontSize = self.fontSize.scaledForDevice()
-    }
-}
-extension UITextView: FontSizeScalable {
-    public func scaleFontSizeForDevice() {
-        fontSize = self.fontSize.scaledForDevice()
-    }
-}
-extension UIButton: FontSizeScalable {
-    public func scaleFontSizeForDevice() {
-        fontSize = self.fontSize.scaledForDevice()
+        fontSize = fontSize.scaledForDevice()
     }
 }
 
-extension UITextField: FontSizeScalable {   
+extension UITextView: FontSizeScalable {
     public func scaleFontSizeForDevice() {
-        fontSize = self.fontSize.scaledForDevice()
+        fontSize = fontSize.scaledForDevice()
+    }
+}
+
+extension UIButton: FontSizeScalable {
+    public func scaleFontSizeForDevice() {
+        fontSize = fontSize.scaledForDevice()
+    }
+}
+
+extension UITextField: FontSizeScalable {
+    public func scaleFontSizeForDevice() {
+        fontSize = fontSize.scaledForDevice()
     }
 }
 
 extension UIView {
     public func scaleSubviewFontSizesForDevice(excludingViews excludedViews: [UIView]? = nil) {
         let subviews = self.subviews
-        
+
         if subviews.count == 0 {
             return
         }
@@ -58,7 +60,7 @@ extension UIView {
 
 extension Array where Element: FontSizeScalable {
     public func scaleFontSizesForDevice() {
-        self.forEach { (fontScalable) in
+        forEach { fontScalable in
             fontScalable.scaleFontSizeForDevice()
         }
     }
@@ -69,13 +71,13 @@ extension Array where Element: FontSizeScalable {
  */
 
 public extension DoubleConvertible {
-    public func scaledForDevice(scaleDownOnly downOnly: Bool = true) -> CGFloat {
+    func scaledForDevice(scaleDownOnly downOnly: Bool = true) -> CGFloat {
         let iPhone6ScreenHeight: CGFloat = 667.0
         let screenHeight = UIScreen.main.bounds.height
         let scaleRatio = screenHeight / iPhone6ScreenHeight
-        if downOnly && scaleRatio > 1.0 {
-            return self.double.cgFloat
+        if downOnly, scaleRatio > 1.0 {
+            return double.cgFloat
         }
-        return self.double.cgFloat * scaleRatio
+        return double.cgFloat * scaleRatio
     }
 }

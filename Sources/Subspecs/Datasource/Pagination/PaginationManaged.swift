@@ -6,36 +6,35 @@
 //
 //
 
-import Swiftest
-import UIKitTheme
-import UIKitExtensions
 import Layman
-//import DeepDiff
+import Swiftest
+import UIKitExtensions
+import UIKitTheme
+// import DeepDiff
 open class AsyncStateChange {
     func performStateChange(completion: @escaping VoidClosure) {}
 }
 
 public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChangeManager {
-    
     associatedtype PaginatableModel: Paginatable
-    
+
     var activePaginator: Paginator<PaginatableModel> { get set }
     var paginator: Paginator<PaginatableModel> { get set }
     var fallbackPaginator: Paginator<PaginatableModel>? { get set }
     var dataSource: CollectionDataSource<PaginatableModel> { get set }
-    var infiniteScrollable: Bool {get set}
+    var infiniteScrollable: Bool { get set }
     var scrollDirection: InfinityScrollDirection { get }
-    var refreshable: Bool {get set}
+    var refreshable: Bool { get set }
     var paginatableScrollView: UIScrollView { get }
     var prefetchedData: [PaginatableModel]? { get set }
     var loadsResultsImmediately: Bool { get set }
-    var appendsIndexPathsOnInfinityScroll: Bool {get set}
+    var appendsIndexPathsOnInfinityScroll: Bool { get set }
     func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator
     func infiniteScrollTriggered()
     func pullToRefreshTriggered()
     func setupPaginatable()
-    
+
     func refreshDidFail(with error: Error)
     func loadMoreDidFail(with error: Error)
     func fetchNextPage(firstPage: Bool, transitioningState: State?, reloadCompletion: VoidClosure?)
@@ -45,16 +44,14 @@ public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChange
     func reset(to initialState: State, completion: VoidClosure?)
     func reload()
     func reloadDidBegin()
-    
 }
 
 public extension PaginationManaged where Self: UIViewController {
-    
-    public var scrollDirection: InfinityScrollDirection {
+    var scrollDirection: InfinityScrollDirection {
         return .vertical
     }
-    
-    public func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
+
+    func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             self.dataSource.reset()
             self.paginator.reset()
@@ -63,26 +60,24 @@ public extension PaginationManaged where Self: UIViewController {
             self.reloadPaginatableCollectionView(stateAtCompletion: initialState, completion: completion)
         }
     }
-    
-    public func reload() {
+
+    func reload() {
         DispatchQueue.main.async {
-            self.enqueue {[weak self] (complete) in
+            self.enqueue { [weak self] complete in
                 self?.paginatableScrollView.hideNeedsLoadingIndicator()
                 self?.fetchNextPage(firstPage: true, transitioningState: .loading, reloadCompletion: complete)
                 self?.reloadDidBegin()
             }
         }
     }
-    
-    public func reloadPaginatableCollectionView(completion: @escaping VoidClosure) {
+
+    func reloadPaginatableCollectionView(completion: @escaping VoidClosure) {
         reloadPaginatableCollectionView(stateAtCompletion: .loaded, completion: completion)
     }
-    
-    public func reloadDidBegin() {
-        
-    }
-    
-    public func startLoadingData() {
+
+    func reloadDidBegin() {}
+
+    func startLoadingData() {
         if loadsResultsImmediately {
             if let prefetchedData = prefetchedData {
                 if prefetchedData.count == 0 {
@@ -100,48 +95,47 @@ public extension PaginationManaged where Self: UIViewController {
         }
         emptyView()?.set(responseButtonTitle: retryTitle, responseAction: reload)
     }
-    
-    public func infiniteScrollTriggered() {
+
+    func infiniteScrollTriggered() {
         guard !activePaginator.hasLoadedAllPages else {
             debugLog("Triggered infinite scroll when there are no more pages to load.")
             return
         }
-        self.enqueue({[weak self] (completion) in
+        enqueue { [weak self] completion in
             self?.fetchNextPage(firstPage: false, transitioningState: .loadingMore, reloadCompletion: completion)
-        })
+        }
     }
-    
-    public func pullToRefreshTriggered() {
-        self.enqueue({ [weak self] (completion) in
-            guard let `self` = self else { return }
+
+    func pullToRefreshTriggered() {
+        enqueue { [weak self] completion in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.paginatableScrollView.hideNeedsLoadingIndicator()
             }
             self.fetchNextPage(firstPage: true, transitioningState: .refreshing, reloadCompletion: completion)
-        })
-    }
-    
-    public func fetchNextPage(firstPage: Bool = false, transitioningState: State? = .loading, reloadCompletion: VoidClosure? = nil) {
-        if let state = transitioningState {
-            self.transition(to: state)
         }
-        let existingNextPage = self.activePaginator.nextPageToken
-        if firstPage { self.activePaginator.nextPageToken = nil }
-        self.activePaginator.fetchNextPage(success: {[weak self] (items, isLastPage) in
+    }
+
+    func fetchNextPage(firstPage: Bool = false, transitioningState: State? = .loading, reloadCompletion: VoidClosure? = nil) {
+        if let state = transitioningState {
+            transition(to: state)
+        }
+        let existingNextPage = activePaginator.nextPageToken
+        if firstPage { activePaginator.nextPageToken = nil }
+        activePaginator.fetchNextPage(success: { [weak self] items, isLastPage in
             DispatchQueue.main.async {
                 self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
             }
-            }, failure: {[weak self] (error) in
-                DispatchQueue.main.async {
-                    self?.activePaginator.nextPageToken = existingNextPage
-                    self?.didFinishFetching(error: error)
-                    reloadCompletion?()
-                }
+        }, failure: { [weak self] error in
+            DispatchQueue.main.async {
+                self?.activePaginator.nextPageToken = existingNextPage
+                self?.didFinishFetching(error: error)
+                reloadCompletion?()
+            }
         })
     }
-    
-    public func didFinishFetching(result: PaginationResult<PaginatableModel>, isFirstPage: Bool = false, reloadCompletion: VoidClosure? = nil) {
-        
+
+    func didFinishFetching(result: PaginationResult<PaginatableModel>, isFirstPage: Bool = false, reloadCompletion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             if isFirstPage {
                 if self.dataSource.rawModels.count > 0 {
@@ -163,13 +157,10 @@ public extension PaginationManaged where Self: UIViewController {
             }
             self.dataSource.add(models: result.items)
             self.reloadPaginatableCollectionView(stateAtCompletion: result.isLastPage ? .loadedAll : .loaded, completion: reloadCompletion)
-            
         }
-        
     }
-    
-    public func didFinishFetching(error: Error) {
-        
+
+    func didFinishFetching(error: Error) {
         if (error as NSError).code == NSURLErrorCancelled {
             return
         }
@@ -178,7 +169,7 @@ public extension PaginationManaged where Self: UIViewController {
             loadMoreDidFail(with: error)
             return
         }
-        
+
         switch error {
         default:
             guard currentState != .refreshing else {
@@ -193,53 +184,52 @@ public extension PaginationManaged where Self: UIViewController {
             transition(to: .error)
         }
     }
-    
-    public func refreshDidFail(with error: Error) {
-        showError(error: error)
-    }
-    
-    public func loadMoreDidFail(with error: Error) {
+
+    func refreshDidFail(with error: Error) {
         showError(error: error)
     }
 
-    //TODO: Refactor to encapsulate this logic for each state and aviod massive switch
-    //swiftlint:disable:next function_body_length cyclomatic_complexity
-    public func updatePaginatableViews(for state: State) {
+    func loadMoreDidFail(with error: Error) {
+        showError(error: error)
+    }
+
+    // TODO: Refactor to encapsulate this logic for each state and aviod massive switch
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
+    func updatePaginatableViews(for state: State) {
         DispatchQueue.main.async {
             if state != .refreshing {
                 self.paginatableScrollView.loadingControls.pullToRefresh.end()
             }
-            
+
             switch state {
-                
             case .initialized:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = false
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = false
-                
+
             case .loading:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = false
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = false
-                
+
             case .loadedAll:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = true
-                
+
             case .loaded:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.infiniteScrollable
                 self.paginatableScrollView.isScrollEnabled = true
-                
+
             case .loadingMore:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = true
-                
+
             case .refreshing:
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = true
-                
+
             case .refreshingError:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.infiniteScrollable
@@ -255,64 +245,63 @@ public extension PaginationManaged where Self: UIViewController {
             default:
                 break
             }
-            
+
             if state != .loadingMore {
                 self.paginatableScrollView.loadingControls.infiniteScroll.end()
             }
         }
     }
-    
-    public func setupPaginatable() {
+
+    func setupPaginatable() {
         if refreshable {
             addPullToRefresh()
         }
-        
+
         if infiniteScrollable {
             addInfinityScroll()
         }
     }
-    
-    public func setLoadingTriggers(enabled: Bool) {
-        
+
+    func setLoadingTriggers(enabled: Bool) {
         if refreshable {
             addPullToRefresh()
         }
-        
+
         if infiniteScrollable {
             if #available(iOS 11.0, *) {
                 paginatableScrollView.contentInsetAdjustmentBehavior = .never
             } else {
-                self.automaticallyAdjustsScrollViewInsets = false
+                automaticallyAdjustsScrollViewInsets = false
             }
-            paginatableScrollView.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 275.0, right: 0.0)
+            paginatableScrollView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 275.0, right: 0.0)
             addInfinityScroll()
-            
+
             paginatableScrollView.bounces = true
             paginatableScrollView.loadingControls.infiniteScroll.isStickToContent = true
         }
     }
-    
-    public func addPullToRefresh() {
+
+    func addPullToRefresh() {
         paginatableScrollView.loadingControls.pullToRefresh.add(direction: scrollDirection, animator: createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.pullToRefreshTriggered()
             }
         }
     }
-    
-    public func addInfinityScroll() {
+
+    func addInfinityScroll() {
         paginatableScrollView.loadingControls.infiniteScroll.add(direction: scrollDirection, animator: createInfiniteScrollAnimator()) { [unowned self] in
             DispatchQueue.main.async {
                 self.infiniteScrollTriggered()
             }
         }
     }
-    
-    public func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator {
+
+    func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator {
         return DefaultRefreshAnimator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
     }
-    
-    public func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator {
+
+    func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator {
         return CircleInfiniteAnimator(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     }
 }
@@ -321,32 +310,32 @@ extension PaginationManaged where Self: BaseContainedTableViewController {
     public var paginatableScrollView: UIScrollView {
         return tableView
     }
-    
+
     public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-        //https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
-        //Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
+        // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
+        // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
         DispatchQueue.main.async {
-            self.tableView.reloadData {[weak self] in
+            self.tableView.reloadData { [weak self] in
                 self?.tableView.forceAutolayoutPass()
-                if let state = stateAtCompletion { self?.transition(to: state)}
+                if let state = stateAtCompletion { self?.transition(to: state) }
                 completion?()
             }
         }
     }
-    
 }
+
 extension PaginationManaged where Self: UITableViewController {
     public var paginatableScrollView: UIScrollView {
         return tableView
     }
-    
+
     public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-        //https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
-        //Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
+        // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
+        // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
         DispatchQueue.main.async {
-            self.tableView.reloadData {[weak self] in
+            self.tableView.reloadData { [weak self] in
                 self?.tableView.forceAutolayoutPass()
-                if let state = stateAtCompletion { self?.transition(to: state)}
+                if let state = stateAtCompletion { self?.transition(to: state) }
                 completion?()
             }
         }
@@ -357,19 +346,19 @@ extension PaginationManaged where Self: UICollectionViewController {
     public var paginatableScrollView: UIScrollView {
         return collectionView!
     }
-    
+
     public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             self.collectionView!.reloadData { [weak self] in
                 self?.collectionView!.forceAutolayoutPass()
-                if let state = stateAtCompletion { self?.transition(to: state)}
+                if let state = stateAtCompletion { self?.transition(to: state) }
                 completion?()
             }
         }
     }
 }
 
-//TODO: Turn this into protocol
+// TODO: Turn this into protocol
 extension UITableViewCell {
     public func removeFromTableView<M: Paginatable>(model: M, animation: UITableView.RowAnimation = .automatic) {
         guard let tvc = parentViewController as? PaginatableTableViewController<M> else { return }
@@ -377,9 +366,8 @@ extension UITableViewCell {
         if indexPathsToRemove.count > 0 {
             tvc.tableView.beginUpdates()
             tvc.tableView.deleteRows(at: indexPathsToRemove, with: animation)
-            
+
             tvc.tableView.endUpdates()
         }
-        
     }
 }

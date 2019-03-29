@@ -11,21 +11,22 @@ import Swiftest
 
 public typealias AsyncDatasourceChange = (_ completion: @escaping VoidClosure) -> Void
 
-//For queuing collection reloads serially and atomically.
-public protocol AsyncDatasourceChangeManager: class {
+// For queuing collection reloads serially and atomically.
+public protocol AsyncDatasourceChangeManager: AnyObject {
     var asyncDatasourceChangeQueue: [AsyncDatasourceChange] { get set }
-    var uponQueueCompletion: VoidClosure? { get set}
+    var uponQueueCompletion: VoidClosure? { get set }
     func enqueue(_ modification: @escaping AsyncDatasourceChange)
     func performNextModification()
 }
+
 extension AsyncDatasourceChangeManager {
     public func enqueue(_ modification: @escaping AsyncDatasourceChange) {
-        self.asyncDatasourceChangeQueue.enqueue(modification)
+        asyncDatasourceChangeQueue.enqueue(modification)
         if asyncDatasourceChangeQueue.count == 1 {
             performNextModification()
         }
     }
-    
+
     public func performNextModification() {
         guard let modification = asyncDatasourceChangeQueue.peekAtQueue() else {
             uponQueueCompletion?()
@@ -37,6 +38,5 @@ extension AsyncDatasourceChangeManager {
             _ = self.asyncDatasourceChangeQueue.dequeue()
             self.performNextModification()
         }
-        
     }
 }

@@ -18,16 +18,16 @@ import UIKit
 @objc public class ViewStateMachine: NSObject {
     private var viewStore: [State: UIView]
     private let queue = DispatchQueue(label: "com.uiKitBase.viewStateMachine.queue", attributes: .concurrent)
-    
+
     /// The view that should act as the superview for any added views
     public var view: UIView
-    
+
     public private(set) var currentState: State = .uninitialized
-    
+
     public private(set) var previousState: State = .uninitialized
-    
+
     // MARK: Init
-    
+
     ///  Designated initializer.
     ///
     /// - parameter view:        The view that should act as the superview for any added views
@@ -39,7 +39,7 @@ import UIKit
         self.view = view
         viewStore = states ?? [State: UIView]()
     }
-    
+
     /// - parameter view:        The view that should act as the superview for any added views
     ///
     /// - returns:            A view state machine
@@ -47,26 +47,26 @@ import UIKit
     public convenience init(view: UIView) {
         self.init(view: view, states: nil)
     }
-    
+
     // MARK: Add and remove view states
-    
+
     /// - returns: the view for a given state
     public func viewForState(state: State) -> UIView? {
         return viewStore[state]
     }
-    
+
     /// Associates a view for the given state
     public func addView(view: UIView, forState state: State) {
         viewStore[state] = view
     }
-    
+
     ///  Removes the view for the given state
     public func removeViewForState(state: State) {
         viewStore[state] = nil
     }
-    
+
     // MARK: Subscripting
-    
+
     public subscript(state: State) -> UIView? {
         get {
             return viewForState(state: state)
@@ -79,9 +79,9 @@ import UIKit
             }
         }
     }
-    
+
     // MARK: Switch view state
-    
+
     /// Adds and removes views to and from the `view` based on the given state.
     /// Animations are synchronized in order to make sure that there aren't any animation gliches in the UI
     ///
@@ -90,15 +90,14 @@ import UIKit
     /// - parameter completion:    called when all animations are finished and the view has been updated
     ///
     public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
-        
-        if state == self.currentState {
+        if state == currentState {
             if let statefulView = self.viewForState(state: state) {
                 statefulView.superview?.bringSubviewToFront(statefulView)
             }
             completion?()
             return
         }
-        
+
         previousState = currentState
         currentState = state
         // Update the view
@@ -109,19 +108,17 @@ import UIKit
                 self.hideAllViews(animated: animated, completion: completion)
             }
         }
-        
     }
-    
+
     // MARK: Private view updates
-    
+
     public func show(statefulView: UIView, for state: State, animated: Bool, completion: (() -> Void)? = nil) {
-        
         if let previousView = self.viewForState(state: previousState) {
             previousView.removeFromSuperview()
         }
-        
-        let parentView = view //is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
-        
+
+        let parentView = view // is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
+
         statefulView.frame = parentView.bounds
         parentView.addSubview(statefulView)
         if parentView is UIScrollView {
@@ -130,12 +127,12 @@ import UIKit
             statefulView.edges.equal(to: parentView.edges)
         }
         parentView.bringSubviewToFront(statefulView)
-        
+
         completion?()
     }
-    
+
     public func hideAllViews(animated: Bool, completion: (() -> Void)? = nil) {
-        for (_, view) in self.viewStore {
+        for (_, view) in viewStore {
             view.removeFromSuperview()
         }
         completion?()

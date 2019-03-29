@@ -18,7 +18,7 @@ extension BaseImageViewProtocol where Self: UIImageView {
 
 open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
     open var tintsImages: Bool = false
-    
+
     open override var image: UIImage? {
         set {
             if self.tintsImages {
@@ -29,28 +29,30 @@ open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
             return super.image
         }
     }
-    
-    override open func createMixins() -> [LifeCycle] {
+
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseImageViewProtocolMixins
     }
-    
+
     open override func didInit() {
         super.didInit()
         contentMode = .scaleAspectFit
         clipsToBounds = true
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
-    open func didObserve(notification: Notification) {}
-    
-    // MARK: Styleable
-    open func style() {}
 
+    open func didObserve(notification: Notification) {}
+
+    // MARK: Styleable
+
+    open func style() {}
 }

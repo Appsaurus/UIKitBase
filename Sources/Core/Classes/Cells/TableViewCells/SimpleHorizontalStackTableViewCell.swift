@@ -16,8 +16,8 @@ open class SimpleHorizontalStackTableViewCell: DynamicHeightCell {
     open override func createSubviews() {
         super.createSubviews()
         mainLayoutView.addSubview(stackView)
-
     }
+
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         stackView.forceSuperviewToMatchContentSize()

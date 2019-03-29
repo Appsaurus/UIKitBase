@@ -17,22 +17,23 @@ extension BaseScrollViewProtocol where Self: UIScrollView {
 }
 
 open class BaseScrollView: MixinableScrollView, BaseScrollViewProtocol {
-    
-    override open func createMixins() -> [LifeCycle] {
+    open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseScrollViewProtocolMixins
     }
-    
+
     // MARK: NotificationObserver
+
     open func notificationsToObserve() -> [Notification.Name] {
         return []
     }
+
     open func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
-    
-    open func didObserve(notification: Notification) {}
-    
-    // MARK: Styleable
-    open func style() {}
 
+    open func didObserve(notification: Notification) {}
+
+    // MARK: Styleable
+
+    open func style() {}
 }

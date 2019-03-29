@@ -5,10 +5,10 @@
 //  Created by Brian Strobach on 1/24/18.
 //
 
-import Swiftest
-import UIKitTheme
-import UIKitExtensions
 import Layman
+import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
 open class DismissableNavigationController: BaseNavigationController, DismissButtonManaged, UINavigationControllerDelegate {
     private var dismissButtonConfiguration: ManagedButtonConfiguration = ManagedButtonConfiguration()
@@ -21,19 +21,18 @@ open class DismissableNavigationController: BaseNavigationController, DismissBut
         self.dismissableViewController.setupDismissButton(configuration: self.dismissButtonConfiguration)
         delegate = self
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    
+
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController === self.viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged {
-            dismissableViewController.setupDismissButton(configuration: self.dismissButtonConfiguration)
+        if viewController === viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged {
+            dismissableViewController.setupDismissButton(configuration: dismissButtonConfiguration)
         }
     }
-    
 }

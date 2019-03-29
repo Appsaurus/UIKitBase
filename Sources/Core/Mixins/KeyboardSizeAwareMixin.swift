@@ -11,7 +11,7 @@ public class KeyboardSizeAwareMixin: UIViewControllerMixin<UIViewController & Ke
     open override func viewWillAppear(_ animated: Bool) {
         mixable.registerKeyboard()
     }
-    
+
     open override func viewWillDisappear(_ animated: Bool) {
         mixable.deregisterKeyboard()
     }

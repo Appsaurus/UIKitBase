@@ -5,10 +5,10 @@
 //  Created by Brian Strobach on 12/3/18.
 //
 
-import Foundation
 import DarkMagic
+import Foundation
 
-public protocol DependencyInjectable: class {
+public protocol DependencyInjectable: AnyObject {
     func assertDependencies()
     func confirmDependencies() -> Bool
     //    func unresolvedDependencies() -> [String]
@@ -22,8 +22,7 @@ private extension AssociatedObjectKeys {
 }
 
 public extension DependencyInjectable where Self: NSObject {
-    
-    public var requiredDependencies: [Any?] {
+    var requiredDependencies: [Any?] {
         get {
             return self[.requiredDependencies, []]
         }
@@ -31,8 +30,8 @@ public extension DependencyInjectable where Self: NSObject {
             self[.requiredDependencies] = newValue
         }
     }
-    
-    public var requiresOneOfDependencies: [Any?] {
+
+    var requiresOneOfDependencies: [Any?] {
         get {
             return self[.requiresOneOfDependencies, []]
         }
@@ -40,12 +39,13 @@ public extension DependencyInjectable where Self: NSObject {
             self[.requiresOneOfDependencies] = newValue
         }
     }
-    
 }
+
 extension DependencyInjectable {
     public func assertDependencies() {
         assert(confirmDependencies(), "Failed to resolve dependencies for class \(String(describing: self))")
     }
+
     //    public func assertDependencies(){
     //        var unresolvedDependencies: [Any?] = self.unresolvedDependencies()
     //        guard unresolvedDependencies.count == 0 else{
@@ -61,15 +61,15 @@ extension DependencyInjectable {
     //
     //
     //    }
-    
+
     public func unresolvedDependencies() -> [Any?] {
-        var missingReqDependencies: [Any?] = requiredDependencies.filter({ (value) -> Bool in
+        var missingReqDependencies: [Any?] = requiredDependencies.filter { (value) -> Bool in
             value == nil
-        })
-        
+        }
+
         if requiresOneOfDependencies.count != 0 {
             let hasOne = requiresOneOfDependencies.contains { (value) -> Bool in
-                return value != nil
+                value != nil
             }
             if !hasOne {
                 missingReqDependencies.append(contentsOf: requiresOneOfDependencies)
@@ -77,22 +77,21 @@ extension DependencyInjectable {
         }
         return missingReqDependencies
     }
-    
+
     /// Checks if dependency references are instantiated.
     ///
     /// - Returns: True if depdencies are valid. False if any dependency is missing.
     public func confirmDependencies() -> Bool {
-        
         let allRequired = !requiredDependencies.contains { (value) -> Bool in
-            return value == nil
+            value == nil
         }
         if !allRequired { return false }
-        
+
         if requiresOneOfDependencies.count == 0 {
             return true
         }
         return requiresOneOfDependencies.contains { (value) -> Bool in
-            return value != nil
+            value != nil
         }
     }
 }

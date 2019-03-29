@@ -8,9 +8,8 @@
 
 import UIKit
 
-//Custom window that monitors user interactionw with the app
+// Custom window that monitors user interactionw with the app
 open class ActivityMonitoringWindow: UIWindow {
-
     // record the timestamp of the latest touch
     open var lastTouched: Date = Date()
 
@@ -28,6 +27,6 @@ open class ActivityMonitoringWindow: UIWindow {
     }
 
     open func updateLastTouchedTimestamp() {
-        self.lastTouched = Date()
+        lastTouched = Date()
     }
 }

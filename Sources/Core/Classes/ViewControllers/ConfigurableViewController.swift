@@ -5,10 +5,10 @@
 //  Created by Brian Strobach on 4/12/18.
 //
 
-import Swiftest
-import UIKitTheme
-import UIKitExtensions
 import Layman
+import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
 public class FormViewControllerConfiguration: ViewControllerConfiguration {
     public let promptText: String? = "Please enter a phone number."
@@ -24,19 +24,18 @@ public class FormViewControllerStyle: ViewControllerStyle {
 }
 
 open class ConfigurableViewController<Configuration: ViewControllerConfiguration, Style: ViewControllerStyle>: BaseViewController {
-    
     open lazy var config: Configuration = Configuration()
     open lazy var vcStyle: Style = Style()
-    
+
     public required init(config: Configuration? = nil, style: Style? = nil, callDidInit: Bool = true) {
         super.init(nibName: nil, bundle: nil)
         if let config = config {
             self.config = config
         }
         if let style = style {
-            self.vcStyle = style
+            vcStyle = style
         }
-        
+
         if callDidInit {
             didInit()
         }
@@ -46,10 +45,9 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
         super.init(coder: aDecoder)
         didInit()
     }
-    
+
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         didInit()
     }
-
 }

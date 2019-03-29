@@ -10,7 +10,6 @@ import UIFontIcons
 import UIKitTheme
 
 extension UITabBarItem {
-
     public static func item<T: FontIconEnum>(withIcon icon: T,
                                              selectedIcon: T? = nil,
                                              style: TabBarItemStyle = .defaultStyle,

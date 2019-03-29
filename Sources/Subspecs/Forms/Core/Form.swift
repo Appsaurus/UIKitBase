@@ -5,8 +5,8 @@
 //  Created by Brian Strobach on 8/13/17.
 ////  Copyright (c) 2017 Appsaurus. All rights reserved.
 
-import UIKitExtensions
 import Swiftest
+import UIKitExtensions
 
 public enum ValidationStatus {
     case untested
@@ -16,7 +16,6 @@ public enum ValidationStatus {
 }
 
 open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
-
     open weak var formDelegate: FormDelegate?
     open var status: ValidationStatus = .untested {
         didSet {
@@ -39,7 +38,7 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
 
     open var fields: [FormFieldProtocol] = []
     open var allFailures: [ValidationFailure] {
-        //Combines all validation faiures from each text field into a single array
+        // Combines all validation faiures from each text field into a single array
         //        return textFields.map{$0.validationFailures}.flatMap{$0}
 
         var failures: [ValidationFailure] = []
@@ -51,7 +50,6 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
         return failures
 
         //        return flatten(textFields.map{$0.validationFailures})
-
     }
 
     open var customValidationCheck: (() -> ValidationFailure?)?
@@ -73,11 +71,10 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
                 }
             }
         }
-        self.status = initialStatus
+        status = initialStatus
     }
 
     open func fieldFailedValidation(_ field: FormFieldProtocol, failures: [ValidationFailure]) {
-
         formDelegate?.fieldFailedValidation(field, failures: failures)
         status = .invalid
     }
@@ -90,10 +87,10 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
             let fieldStatus = field.validationStatus
             switch fieldStatus {
             case .testingInProgress:
-                self.status = .testingInProgress
+                status = .testingInProgress
                 return
             case .invalid:
-                self.status = .invalid
+                status = .invalid
                 return
             case .valid:
                 break
@@ -101,32 +98,32 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
                 untestedCount += 1
             }
         }
-        
+
         if untestedCount > 0 {
-            self.status = .untested
+            status = .untested
         } else {
             status = customValidationCheck?() == nil ? .valid : .invalid
             //            self.formDelegate?.formPassedValidation(self)
         }
     }
-    
+
     public func fieldDidBeginEditing(_ field: FormFieldProtocol) {
         formDelegate?.fieldDidBeginEditing(field)
     }
 
     public func fieldDidEndEditing(_ field: FormFieldProtocol) {
         formDelegate?.fieldDidEndEditing(field)
-        
+
         switch (field.validationFrequency, field.validationErrorDisplayFrequency) {
-        case (.onDidFinishEditing, let freq):
+        case let (.onDidFinishEditing, freq):
             field.validate(displayErrors: freq.equalToAny(of: .onDidFinishEditing, .onValueChanged))
         case (.onValueChanged, .onDidFinishEditing):
             field.displayValidationFailures()
         default: break
         }
     }
-    open func validate(displayErrors: Bool = true) {
 
+    open func validate(displayErrors: Bool = true) {
         if fields.count == 0 {
             if customValidationCheck?() != nil {
                 status = .invalid
@@ -134,7 +131,7 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
                 status = .valid
             }
         } else {
-            for field in self.fields {
+            for field in fields {
                 field.validate(displayErrors: displayErrors)
             }
         }
@@ -146,6 +143,7 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
     }
 
     // MARK: UITextFieldDelegate methods, forward to delegate or to ValidationGroup's delegate
+
     //    public func textFieldDidBeginEditing(_ textField: UITextField) {
     //        formDelegate?.textFieldDidBeginEditing?(textField)
     //    }
@@ -226,7 +224,6 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
                                               message: errorMessagesString,
                                               actions: "OK")
     }
-
 }
 
 extension Form {
