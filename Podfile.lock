@@ -27,6 +27,7 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
   - SwiftDate (6.0.1)
   - Swiftest (0.0.17)
+  - SwiftFormat/CLI (0.40.4)
   - SwiftLint (0.31.0)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - PhoneNumberKit
   - SwiftDate
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
+  - SwiftFormat/CLI
   - SwiftLint
   - SwiftLocation
   - SwiftTestUtils (from `https://github.com/appsaurus/SwiftTestUtils.git`)
@@ -78,6 +80,7 @@ SPEC REPOS:
     - Nuke
     - PhoneNumberKit
     - SwiftDate
+    - SwiftFormat
     - SwiftLint
     - SwiftLocation
     - SwiftyJSON
@@ -157,6 +160,7 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
   Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
+  SwiftFormat: cc36377840cffa5d0634782875dccf34dc02ff39
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftTestUtils: b8bb7e96dc2e9a356baa42fcee191a049f6f5331
@@ -166,6 +170,6 @@ SPEC CHECKSUMS:
   UIKitMixinable: 59b18c2cc93bc87b40356fe83697c1fceaa9993a
   UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
 
-PODFILE CHECKSUM: 0f20eb0ea9d1d49722f59afe50f951f622426815
+PODFILE CHECKSUM: 4d5d2219760a8590b9f60a61c3a4aa813165a7f9
 
 COCOAPODS: 1.5.3
