@@ -203,22 +203,19 @@ private extension AssociatedObjectKeys {
 extension TextFieldStyleDefaults {
     open var materialTextFieldStyle: MaterialTextFieldStyle {
         get {
-            return getAssociatedObject(for: .materialTextFieldStyle,
-                                       initialValue: MaterialTextFieldStyle(textStyle: self.text.regular()))
+            return self[.materialTextFieldStyle, MaterialTextFieldStyle(textStyle: self.text.regular())]
         }
         set {
-            setAssociatedObject(newValue, for: .materialTextFieldStyle)
+            self[.materialTextFieldStyle] = newValue
         }
     }
 
     open var materialTextFieldMap: TextFieldStyleMap {
         get {
-            return getAssociatedObject(for: .materialTextFieldMap,
-                                       // swiftformat:disable:next redundantSelf
-                                       initialValue: self.textField.materialStyleMap(color: .textDark, titleColor: .textMediumLight))
+            return self[.materialTextFieldMap, self.textField.materialStyleMap(color: .textDark, titleColor: .textMediumLight)]
         }
         set {
-            setAssociatedObject(newValue, for: .materialTextFieldMap)
+            self[.materialTextFieldMap] = newValue
         }
     }
 }

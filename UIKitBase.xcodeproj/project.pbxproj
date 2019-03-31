@@ -851,7 +851,7 @@
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E4AF7F1721BB21EA002D6E86 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIKitBase.podspec; sourceTree = "<group>"; };
+		E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIKitBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E4AF7F1921BB21EB002D6E86 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		E4AF7F1A21BB21EB002D6E86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4AF7F1B21BB21EB002D6E86 /* circle.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
@@ -1901,8 +1901,8 @@
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
 				D5B2E89D1C3A780C00C0327D /* Resources */,
-				E41D72CC224E796000CA05C4 /* SwiftLint */,
 				E466AC44224EC17300CA54F4 /* SwiftFormat */,
+				E41D72CC224E796000CA05C4 /* SwiftLint */,
 			);
 			buildRules = (
 			);

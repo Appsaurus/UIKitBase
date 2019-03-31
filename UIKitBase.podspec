@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
     :git => "https://github.com/appsaurus/UIKitBase.git",
     :tag => s.version.to_s
   }
-  s.social_media_url = 'https://twitter.com/Strobocop'
 
   s.swift_version = '4.2'
   s.requires_arc = true
@@ -68,7 +67,7 @@ Pod::Spec.new do |s|
     end
   end
 
-  s.subspec '   ' do |l|
+  s.subspec 'Location' do |l|
    l.source_files = 'Sources/Subspecs/Location/**/*'
    l.dependency 'UIKitBase/Permission'
    l.dependency 'UIKitBase/Datasource'

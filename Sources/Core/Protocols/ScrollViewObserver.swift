@@ -22,10 +22,10 @@ private extension AssociatedObjectKeys {
 extension ScrollViewObserver where Self: NSObject {
     public internal(set) var scrollView: UIScrollView {
         get {
-            return getAssociatedObject(for: .scrollView, initialValue: UIScrollView())
+            return self[.scrollView, UIScrollView()]
         }
         set {
-            setAssociatedObject(newValue, for: .scrollView)
+            self[.scrollView] = newValue
         }
     }
 

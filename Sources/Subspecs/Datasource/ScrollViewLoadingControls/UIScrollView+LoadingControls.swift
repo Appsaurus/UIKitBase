@@ -25,10 +25,10 @@ private extension AssociatedObjectKeys {
 public extension UIScrollView {
     var loadingControls: ScrollViewLoadingControl {
         get {
-            return getAssociatedObject(for: .loadingControls, initialValue: ScrollViewLoadingControl(scrollView: self))
+            return self[.loadingControls, ScrollViewLoadingControl(scrollView: self)]
         }
         set {
-            setAssociatedObject(newValue, for: .loadingControls)
+            self[.loadingControls] = newValue
         }
     }
 }

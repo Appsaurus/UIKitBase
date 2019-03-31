@@ -78,28 +78,28 @@ extension StatefulViewController where Self: NSObject {
     public var stateMachine: ViewStateMachine {
         get {
             // swiftformat:disable:next redundantSelf
-            return getAssociatedObject(for: .stateMachine, initialValue: self.createViewStateMachine())
+            return self[.stateMachine, self.createViewStateMachine()]
         }
         set {
-            setAssociatedObject(newValue, for: .stateMachine)
+            self[.stateMachine] = newValue
         }
     }
 
     public var logsStateTransitions: Bool {
         get {
-            return getAssociatedObject(for: .logsStateTransitions, initialValue: false)
+            return self[.logsStateTransitions, false]
         }
         set {
-            setAssociatedObject(newValue, for: .logsStateTransitions)
+            self[.logsStateTransitions] = newValue
         }
     }
 
     public var initialState: State? {
         get {
-            return getAssociatedObject(for: .initialState)
+            return self[.initialState]
         }
         set {
-            setAssociatedObject(newValue, for: .initialState)
+            self[.initialState] = newValue
         }
     }
 
