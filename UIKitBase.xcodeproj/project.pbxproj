@@ -844,6 +844,7 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E442FFCF22527A1D0007E691 /* AuthIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuthIcons.ttf; sourceTree = "<group>"; };
 		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
 		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
 		E466AC45224EC1A700CA54F4 /* config.swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.swiftformat; sourceTree = "<group>"; };
@@ -1295,12 +1296,8 @@
 		E41D70FE224D5FB300CA05C4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				E41D70FF224D5FB300CA05C4 /* AuthenticationViewControllers */,
-				E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */,
-				E41D7104224D5FB300CA05C4 /* AuthIcons.swift */,
-				E41D7105224D5FB300CA05C4 /* AuthIcons.svg */,
-				E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */,
-				E41D7107224D5FB300CA05C4 /* AuthController.swift */,
+				E442FFCE225279DF0007E691 /* Resources */,
+				E442FFCD225279CE0007E691 /* Source */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1611,6 +1608,27 @@
 				E41D72AB224D7DDE00CA05C4 /* CellLayoutView.swift */,
 			);
 			path = Specialized;
+			sourceTree = "<group>";
+		};
+		E442FFCD225279CE0007E691 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E41D70FF224D5FB300CA05C4 /* AuthenticationViewControllers */,
+				E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */,
+				E41D7104224D5FB300CA05C4 /* AuthIcons.swift */,
+				E41D7105224D5FB300CA05C4 /* AuthIcons.svg */,
+				E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */,
+				E41D7107224D5FB300CA05C4 /* AuthController.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		E442FFCE225279DF0007E691 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E442FFCF22527A1D0007E691 /* AuthIcons.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E466AC36224EA6F600CA54F4 /* Windows */ = {

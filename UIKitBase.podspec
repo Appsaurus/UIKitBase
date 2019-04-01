@@ -40,10 +40,13 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Authentication' do |a|
-   a.source_files = 'Sources/Subspecs/Authentication/**/*'
+   a.source_files = 'Sources/Subspecs/Authentication/Source/**/*'
    a.dependency 'UIKitBase/Forms'
    a.dependency 'CountryPickerSwift'
    a.dependency 'PhoneNumberKit'
+   a.resource_bundle = {
+       'UIKitBase' => ['Sources/Subspecs/Authentication/Resources/**/*']
+   }
   end
 
   s.subspec 'Datasource' do |d|
