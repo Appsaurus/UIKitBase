@@ -24,7 +24,7 @@ open class BaseAuthControllerManager: AuthControllerDelegate {
         self.delegate = delegate
     }
 
-    weak var delegate: AuthControllerManagerDelegate?
+    public weak var delegate: AuthControllerManagerDelegate?
 
     // MARK: AuthController specific
 
