@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2347B332FBFAA9E7396209A2 /* Pods_UIKitBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B488C54CD927C9D09FA905F /* Pods_UIKitBaseDemo.framework */; };
 		D5C7F74E1C3BC9CE008CDDBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F74C1C3BC9CE008CDDBA /* LaunchScreen.storyboard */; };
 		D5C7F75B1C3BCA1E008CDDBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */; };
 		E41D7245224D686200CA05C4 /* ExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7231224D685D00CA05C4 /* ExampleTableViewController.swift */; };
@@ -33,16 +32,17 @@
 		E41D725D224D686F00CA05C4 /* PagingMenuExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */; };
 		E41D725E224D686F00CA05C4 /* ExamplePagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */; };
 		E41D725F224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */; };
+		F585649AB944C101F2AAE2C8 /* Pods_UIKitBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD35BB4B74DA9DAC0CDEAD5 /* Pods_UIKitBaseDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B488C54CD927C9D09FA905F /* Pods_UIKitBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8729B569258E0D5713F8BFBF /* Pods-UIKitBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBaseDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		2FD35BB4B74DA9DAC0CDEAD5 /* Pods_UIKitBaseDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBaseDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30D9BCA4C8AE38B2989E8AF /* Pods-UIKitBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
+		C46DAE5847BCC2F068CD4E47 /* Pods-UIKitBaseDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBaseDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D5C7F7401C3BC9CE008CDDBA /* UIKitBaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitBaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C7F74D1C3BC9CE008CDDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5C7F74F1C3BC9CE008CDDBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5C7F7571C3BCA1E008CDDBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D96C8E8EC6EBF52828FB11AC /* Pods-UIKitBaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E41D7231224D685D00CA05C4 /* ExampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewController.swift; sourceTree = "<group>"; };
 		E41D7232224D685E00CA05C4 /* ExampleUIViewControllerMixinable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleUIViewControllerMixinable.swift; sourceTree = "<group>"; };
 		E41D7233224D685E00CA05C4 /* ScrollViewParentHeaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewParentHeaderExampleViewController.swift; sourceTree = "<group>"; };
@@ -73,28 +73,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2347B332FBFAA9E7396209A2 /* Pods_UIKitBaseDemo.framework in Frameworks */,
+				F585649AB944C101F2AAE2C8 /* Pods_UIKitBaseDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88C26DE6599B902D1EB12342 /* Frameworks */ = {
+		83553785E70B5AFA9057907B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B488C54CD927C9D09FA905F /* Pods_UIKitBaseDemo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D2FE511B4A6510E5F433A19C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8729B569258E0D5713F8BFBF /* Pods-UIKitBaseDemo.debug.xcconfig */,
-				D96C8E8EC6EBF52828FB11AC /* Pods-UIKitBaseDemo.release.xcconfig */,
+				C46DAE5847BCC2F068CD4E47 /* Pods-UIKitBaseDemo.debug.xcconfig */,
+				C30D9BCA4C8AE38B2989E8AF /* Pods-UIKitBaseDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		88F1C2138DBF4FAF9620AF7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FD35BB4B74DA9DAC0CDEAD5 /* Pods_UIKitBaseDemo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5C7F7371C3BC9CE008CDDBA = {
@@ -102,8 +102,8 @@
 			children = (
 				D5C7F7421C3BC9CE008CDDBA /* UIKitBaseDemo */,
 				D5C7F7411C3BC9CE008CDDBA /* Products */,
-				D2FE511B4A6510E5F433A19C /* Pods */,
-				88C26DE6599B902D1EB12342 /* Frameworks */,
+				83553785E70B5AFA9057907B /* Pods */,
+				88F1C2138DBF4FAF9620AF7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,11 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5C7F7521C3BC9CE008CDDBA /* Build configuration list for PBXNativeTarget "UIKitBaseDemo" */;
 			buildPhases = (
-				D71DC81B9078AF926B2AEF68 /* [CP] Check Pods Manifest.lock */,
+				ED52F602B76306F512A66A28 /* [CP] Check Pods Manifest.lock */,
 				D5C7F73C1C3BC9CE008CDDBA /* Sources */,
 				D5C7F73D1C3BC9CE008CDDBA /* Frameworks */,
 				D5C7F73E1C3BC9CE008CDDBA /* Resources */,
-				D08D44CE25DD8360A0A952F9 /* [CP] Embed Pods Frameworks */,
+				458010F6884598711DC35EC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,7 +250,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D08D44CE25DD8360A0A952F9 /* [CP] Embed Pods Frameworks */ = {
+		458010F6884598711DC35EC7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,6 +263,7 @@
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
 				"${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
@@ -270,6 +271,7 @@
 				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Permission/Permission.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Runtime/Runtime.framework",
 				"${BUILT_PRODUCTS_DIR}/RuntimeExtensions/RuntimeExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -292,6 +294,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssistantKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
@@ -299,6 +302,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Permission.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Runtime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RuntimeExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -318,7 +322,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D71DC81B9078AF926B2AEF68 /* [CP] Check Pods Manifest.lock */ = {
+		ED52F602B76306F512A66A28 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -493,7 +497,7 @@
 		};
 		D5C7F7531C3BC9CE008CDDBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8729B569258E0D5713F8BFBF /* Pods-UIKitBaseDemo.debug.xcconfig */;
+			baseConfigurationReference = C46DAE5847BCC2F068CD4E47 /* Pods-UIKitBaseDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -510,7 +514,7 @@
 		};
 		D5C7F7541C3BC9CE008CDDBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D96C8E8EC6EBF52828FB11AC /* Pods-UIKitBaseDemo.release.xcconfig */;
+			baseConfigurationReference = C30D9BCA4C8AE38B2989E8AF /* Pods-UIKitBaseDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

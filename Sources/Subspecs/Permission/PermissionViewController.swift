@@ -50,8 +50,8 @@ open class PermissionViewController: StackedAlertViewController, PermissionSetDe
         fatalError("init(viewModel:) has not been implemented")
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func setupDelegates() {
+        super.setupDelegates()
         permissionSet.delegate = self
     }
 

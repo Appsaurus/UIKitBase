@@ -152,7 +152,7 @@ extension DeepLinkHandler where Self: UIViewController {
 import UIKitMixinable
 
 open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler> {
-    open override func didInit() {
+    open override func initProperties() {
         mixable.observeDeepLinkNotifications()
     }
 }

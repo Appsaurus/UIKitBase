@@ -11,8 +11,8 @@ import UIKitExtensions
 import UIKitTheme
 
 open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate {
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
     }
 

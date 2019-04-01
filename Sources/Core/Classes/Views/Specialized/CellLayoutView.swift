@@ -62,7 +62,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
         if let config = config {
             self.config = config
         }
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public override init(callDidInit: Bool = true) {
@@ -140,8 +140,8 @@ open class ModularStackView<StackedView: UIView>: CellLayoutView<GrowingStackVie
 }
 
 open class DualModularStackview<StackedView: UIView, RightStackedView: UIView>: ModularStackView<StackedView> {
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         optionalRightView = rightStack
     }
 

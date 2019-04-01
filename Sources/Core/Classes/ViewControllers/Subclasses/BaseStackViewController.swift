@@ -94,7 +94,7 @@ open class StackedAlertViewController: BaseStackViewController {
     public required init(viewModel: AlertViewModel = AlertViewModel()) {
         super.init(callDidInit: false)
         self.viewModel = viewModel
-        didInit()
+        initLifecycle(.programmatically)
     }
 
     public required init?(coder aDecoder: NSCoder) {

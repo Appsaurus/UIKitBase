@@ -11,6 +11,8 @@ import MapKit
 import Swiftest
 import SwiftLocation
 import UIKit
+import UIKitMixinable
+
 open class LocationSearchResultsViewController: PaginatableTableViewController<MKMapItem>, AsyncTaskDelegate {
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
@@ -31,9 +33,13 @@ open class LocationSearchResultsViewController: PaginatableTableViewController<M
         super.init(coder: aDecoder)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         paginator = MKLocalSearchRequestQueryPaginator()
+    }
+
+    open override func didInit(type: InitializationType) {
+        super.didInit(type: type)
         if let location = locationHint {
             (paginator as? MKLocalSearchRequestQueryPaginator)?.locationHint = location
         } else {

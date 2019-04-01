@@ -148,8 +148,8 @@ open class StepProcessPagingMenuView: PagingMenuView {
         return BaseView()
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         selectionIndicatorAnimation = StepProcessBallMenuSelectionIndicatorAnimation()
     }
 

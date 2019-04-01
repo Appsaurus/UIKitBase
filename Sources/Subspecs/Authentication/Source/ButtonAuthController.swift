@@ -17,8 +17,8 @@ open class ThirdPartyAuthButtonViewModel {
 }
 
 open class AuthButton: BaseButton, AuthView {
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         buttonLayout = ButtonLayout(layoutType: .imageLeftTitleCenter)
     }
 

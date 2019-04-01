@@ -97,7 +97,7 @@ open class CodeFormViewController: FormTableViewController {
         super.init(callDidInit: false)
         self.delegate = delegate
         self.configuration =? configuration
-        didInit()
+        initLifecycle(.programmatically)
     }
 
     public required init?(coder aDecoder: NSCoder) {

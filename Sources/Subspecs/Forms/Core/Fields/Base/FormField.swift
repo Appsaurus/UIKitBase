@@ -162,7 +162,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         self.title = title ?? fieldName
         self.value =? value
         updateContentView()
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public override init(callDidInit: Bool = true) {
@@ -177,8 +177,8 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         super.init(coder: aDecoder)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         title = fieldName
         if usesFieldNameAsPlaceholder { placeholder = fieldName }
     }

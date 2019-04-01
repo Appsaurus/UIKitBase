@@ -199,7 +199,7 @@ open class BaseButton: BaseView, ButtonStyleable {
         self.styleMap =? styleMap
         self.buttonLayout = buttonLayout
         self.onTap =? onTap
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public convenience init<T: FontIconEnum>(frame: CGRect = .zero, icon: T, style: ButtonStyle? = nil, buttonLayout: ButtonLayout? = nil, onTap: VoidClosure? = nil) {
@@ -213,7 +213,7 @@ open class BaseButton: BaseView, ButtonStyleable {
         titleMap[.any] = icon.rawValue
         self.buttonLayout =? buttonLayout
         self.onTap =? onTap
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public convenience init(frame: CGRect = .zero, style: ButtonStyle, buttonLayout: ButtonLayout? = nil, onTap: VoidClosure? = nil) {
@@ -221,7 +221,7 @@ open class BaseButton: BaseView, ButtonStyleable {
         styleMap[.any] = style
         self.buttonLayout =? buttonLayout
         self.onTap =? onTap
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public override init(callDidInit: Bool = true) {

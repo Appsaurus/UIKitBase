@@ -95,7 +95,7 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
     public required init(scrollView: UIScrollView) {
         super.init(callDidInit: false)
         setupObserver(for: scrollView)
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     open override func createSubviews() {

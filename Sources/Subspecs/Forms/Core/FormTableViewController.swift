@@ -173,9 +173,13 @@ open class FormTableViewController: BaseFormViewController, UITableViewControlle
         tableView.backgroundColor = containerView.backgroundColor
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         containedView = tableView
+    }
+
+    open override func setupDelegates() {
+        super.setupDelegates()
         tableView.setController(self)
     }
 

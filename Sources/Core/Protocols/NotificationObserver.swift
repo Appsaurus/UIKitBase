@@ -65,7 +65,7 @@ extension NotificationObserver where Self: NSObject {
 }
 
 open class NotificationObserverMixin: InitializableMixin<NotificationObserver> {
-    open override func didInit() {
+    open override func initProperties() {
         mixable.setupNotificationObserverCallback()
     }
 

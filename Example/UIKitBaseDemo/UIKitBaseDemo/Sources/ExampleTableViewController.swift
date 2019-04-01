@@ -64,10 +64,6 @@ class ExampleTableViewController: NavigationalMenuTableViewController {
 		}
 	}
 
-	override func didInit() {
-		super.didInit()
-		observeDeepLinkNotifications()
-	}
 	override func createSubviews() {
 		super.createSubviews()
 		let camButton = UIBarButtonItem.barButtonItemWithFontIcon(MaterialIcons.Camera)

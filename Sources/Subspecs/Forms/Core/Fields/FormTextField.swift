@@ -9,6 +9,7 @@
 import Actions
 import Foundation
 import Swiftest
+import UIKitMixinable
 
 open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView, Value>, FormTextFieldProtocol where ContentView: FormFieldViewProtocol {
     open lazy var autocorrectionType: UITextAutocorrectionType = .no
@@ -65,11 +66,25 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     open var action: Action?
     // End textfield validation config
 
-    open override func didInit() {
+    open override func initProperties() {
+        super.initProperties()
         setupValidationRules()
-        super.didInit()
+    }
+
+    open override func didInit(type: InitializationType) {
+        super.didInit(type: type)
         setupTextField(textField: textField)
     }
+
+//    open override func setupControlActions() {
+//        super.setupControlActions()
+//        setupTextFieldAction()
+//    }
+//
+//    open override func setupDelegates() {
+//        super.setupDelegates()
+//        textField.delegate = self
+//    }
 
     open func setupValidationRules() {}
 

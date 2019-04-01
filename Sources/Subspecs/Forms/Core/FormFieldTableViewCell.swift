@@ -16,7 +16,7 @@ open class FormFieldCell: DynamicHeightCell {
         self.field = field
         super.init(callDidInit: false)
         mainViewInsets =? insets
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
     public required init?(coder aDecoder: NSCoder) {

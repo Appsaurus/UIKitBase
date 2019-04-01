@@ -21,8 +21,8 @@ open class CustomTabBarItemView: BaseButton, ObjectDisplayable {
         display(object: tabBarItem)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         buttonLayout = ButtonLayout(layoutType: .centerTitleUnderImage(padding: 4), imageLayoutType: .stretchWidth)
     }
 

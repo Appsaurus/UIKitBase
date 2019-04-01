@@ -15,8 +15,8 @@ open class BaseButtonExamplesViewController: BaseStackViewController{
 
 //    open override lazy var initialArrangedSubviews: [UIView] = []// self.createButtons()
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         stackView.alignment = .center
     }
     

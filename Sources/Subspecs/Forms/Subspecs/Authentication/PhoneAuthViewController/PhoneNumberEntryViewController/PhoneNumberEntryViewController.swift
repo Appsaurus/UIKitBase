@@ -103,7 +103,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         super.init(callDidInit: false)
         self.delegate = delegate
         self.configuration =? configuration
-        didInit()
+        initLifecycle(.programmatically)
     }
 
     public required init?(coder aDecoder: NSCoder) {

@@ -80,8 +80,8 @@ open class LegalDisclosureView: BaseView {
         super.init(frame: .zero)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         let customType = ActiveType.custom(pattern: viewModel.regularExpressionPattern)
         label.enabledTypes = [customType]
         label.apply(textStyle: .regular(color: .textMedium, size: .button))

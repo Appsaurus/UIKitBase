@@ -9,6 +9,7 @@
 import Layman
 import Swiftest
 import UIKitExtensions
+import UIKitMixinable
 import UIKitTheme
 
 open class DynamicHeightCell: BaseTableViewCell {
@@ -17,8 +18,8 @@ open class DynamicHeightCell: BaseTableViewCell {
         .zero
     }()
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         selectionStyle = .none
     }
 

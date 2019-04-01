@@ -44,11 +44,10 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         self.contentView = contentView
         super.init(frame: .zero)
         addSubview(contentView)
-        didInitProgramatically()
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         showsVerticalScrollIndicator = false
         bounces = false
     }

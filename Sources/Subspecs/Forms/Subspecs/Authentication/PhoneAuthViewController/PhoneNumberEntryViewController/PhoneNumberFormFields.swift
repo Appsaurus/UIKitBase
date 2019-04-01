@@ -9,10 +9,11 @@ import CountryPicker
 import PhoneNumberKit
 import Swiftest
 import UIKit
+import UIKitMixinable
 
 open class PhoneNumberFormTextField<ContentView: UITextField>: FormTextField<ContentView, String> where ContentView: FormFieldViewProtocol {
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         keyboardType = .numberPad
     }
 
@@ -62,10 +63,14 @@ open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, P
         contentView.text = country.phoneCode + " (\(country.name))"
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         disableUserTextEntry = true
         countryPicker.setCountry(Locale.current.regionCode ?? "")
+    }
+
+    open override func didInit(type: InitializationType) {
+        super.didInit(type: type)
         reloadInputViews()
     }
 

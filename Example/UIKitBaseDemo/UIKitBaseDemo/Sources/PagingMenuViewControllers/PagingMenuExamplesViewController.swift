@@ -11,8 +11,8 @@ import UIKitBase
 
 public class PagingMenuExamplesViewController: NavigationalMenuTableViewController{
     
-    public override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         navigationBarStyle = .primaryContrast
     }
 

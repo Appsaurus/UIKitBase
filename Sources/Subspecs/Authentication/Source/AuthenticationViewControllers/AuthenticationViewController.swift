@@ -82,8 +82,8 @@ open class AuthenticationViewController<ACM: BaseAuthControllerManager>: BaseVie
 
     open func setupAuthControllers() {}
 
-    open override func didInit() {
-        super.didInit()
+    open override func setupDelegates() {
+        super.setupDelegates()
         authControllerManager.delegate = self
     }
 

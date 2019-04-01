@@ -79,8 +79,8 @@ open class ExampleFormViewController: FormTableViewController{
 
 class NameTextField: FormTextField<MaterialTextField, String>{
     
-    override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         minCharacterCountLimit = 4
     }
     

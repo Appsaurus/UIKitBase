@@ -11,8 +11,8 @@ import UIKit
 
 open class FormLocationField<ContentView: UIView>: FormPickerField<ContentView, LocationData, LocationPickerSearchViewController>
     where ContentView: FormFieldViewProtocol {
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         pickerViewController = LocationPickerSearchViewController()
         contentView.isUserInteractionEnabled = false
     }

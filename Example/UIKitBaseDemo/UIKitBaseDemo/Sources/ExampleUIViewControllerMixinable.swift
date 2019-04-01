@@ -45,8 +45,8 @@ open class ExampleUIViewControllerMixinable: MixinableViewController{
         }
     }
     
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         navigationBarStyle = .transparent
         extendViewUnderNavigationBar()
     }

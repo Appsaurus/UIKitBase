@@ -152,8 +152,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         subheaderView?.forceAutolayoutPass()
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         clipsToBounds = true
         headerBackgroundImageView.contentMode = .scaleAspectFill
     }

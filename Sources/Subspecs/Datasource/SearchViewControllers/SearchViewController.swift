@@ -110,10 +110,6 @@ open class SearchViewController<ModelType: Paginatable>: BaseParentViewControlle
         searchBar.textField?.subviews.first?.cornerRadius = 10.0
     }
 
-    open override func didInit() {
-        super.didInit()
-    }
-
     open override func setupDelegates() {
         super.setupDelegates()
         searchBar.delegate = self

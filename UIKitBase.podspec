@@ -42,10 +42,8 @@ Pod::Spec.new do |s|
   s.subspec 'Authentication' do |a|
    a.source_files = 'Sources/Subspecs/Authentication/Source/**/*'
    a.dependency 'UIKitBase/Forms'
-   a.dependency 'CountryPickerSwift'
-   a.dependency 'PhoneNumberKit'
    a.resource_bundle = {
-       'UIKitBase' => ['Sources/Subspecs/Authentication/Resources/**/*']
+       'Authentication' => ['Sources/Subspecs/Authentication/Resources/**/*']
    }
   end
 
@@ -60,6 +58,8 @@ Pod::Spec.new do |s|
     f.dependency 'ActiveLabel'
     f.subspec 'Authentication' do |fl|
         fl.source_files = 'Sources/Subspecs/Forms/Subspecs/Authentication/**/*'
+        fl.dependency 'CountryPickerSwift'
+        fl.dependency 'PhoneNumberKit'
     end
     f.subspec 'Date' do |d|
       d.source_files = 'Sources/Subspecs/Forms/Subspecs/Date/**/*'

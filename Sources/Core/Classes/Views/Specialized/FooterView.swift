@@ -19,15 +19,7 @@ open class FooterView<View: UIView>: BaseView {
     public init(contentView: View? = nil) {
         super.init(callDidInit: false)
         self.contentView =? contentView
-        didInitProgramatically()
-    }
-
-    public override init(callDidInit: Bool) {
-        super.init(callDidInit: callDidInit)
-    }
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+        initLifecycle(.programmatically)
     }
 
     public required init?(coder aDecoder: NSCoder) {

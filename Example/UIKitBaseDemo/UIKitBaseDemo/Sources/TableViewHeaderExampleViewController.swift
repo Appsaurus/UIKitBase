@@ -11,8 +11,8 @@ import UIKit
 
 open class TableViewHeaderExampleViewController: FakeDataTableViewController{
     
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         extendViewUnderNavigationBar()
         navigationBarStyle = .transparent
     }

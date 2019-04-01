@@ -15,8 +15,8 @@ public class ExamplePermissionAuthorizedViewController: BaseViewController{
 		return .default
 	}
 
-    public override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         self.initialState = .empty
     }
         

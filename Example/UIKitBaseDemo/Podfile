@@ -6,7 +6,7 @@ platform :ios, '9.0'
 def common_pods
     pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
     pod 'UIKitTheme', :git => 'https://github.com/Appsaurus/UIKitTheme'
-    #    pod 'UIKitMixinable', :path => '../../OpenSource/Swift/UIKitMixinable'
+#    pod 'UIKitMixinable', :path => '../../../UIKitMixinable'
     pod 'UIKitMixinable', :git => 'https://github.com/Appsaurus/UIKitMixinable'
     pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
     pod 'Layman', :git => 'https://github.com/Appsaurus/Layman'
@@ -21,6 +21,7 @@ def common_pods
     pod 'UIKitBase/Location', :path => '../../'
     pod 'UIKitBase/Forms', :path => '../../'
     pod 'UIKitBase/Datasource', :path => '../../'
+    pod 'UIKitBase/Authentication', :path => '../../'
 
     pod 'Fakery'
     pod 'IQKeyboardManagerSwift'

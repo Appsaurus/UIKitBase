@@ -11,9 +11,7 @@ import UIKitBase
 import UIKitBase
 
 public class ScrollViewHeaderExamplesViewController: NavigationalMenuTableViewController{
-	public override func didInit() {
-		super.didInit()
-	}
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         addRow(title: "Tableview with header", createDestinationVC: TableViewHeaderExampleViewController())

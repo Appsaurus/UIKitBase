@@ -19,7 +19,6 @@ public protocol ScrollViewHeaderAdornable: AnyObject {
     func setupScrollViewHeader()
 }
 
-
 private var scrollViewHeaderKey: UInt8 = 0
 public extension ScrollViewHeaderAdornable where Self: NSObject {
     var scrollViewHeader: SVH? {

@@ -21,16 +21,6 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
         childViewControllerContainerView.pinToSuperview()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        didInit()
-    }
-
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        didInit()
-    }
-
     open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
         add(initialChildViewController(), to: childViewControllerContainerView)

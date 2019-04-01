@@ -37,17 +37,15 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
         }
 
         if callDidInit {
-            didInit()
+            initLifecycle(.programmatically)
         }
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        didInit()
     }
 
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        didInit()
     }
 }

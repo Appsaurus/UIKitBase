@@ -14,8 +14,7 @@ class ExampleDeepLinkDestinationViewController: BaseViewController{
 
 	public required init(id: String) {
 		self.id = id
-		super.init(callDidInit: false)
-		didInit()
+		super.init(callDidInit: true)
     }
 
 	required init?(coder aDecoder: NSCoder) {

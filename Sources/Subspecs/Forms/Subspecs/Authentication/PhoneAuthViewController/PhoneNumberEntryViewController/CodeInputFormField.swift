@@ -74,11 +74,11 @@ open class CodeInputTextField: BaseView, FormFieldViewProtocol, UIKeyInput {
     public convenience init(configuration: CodeInputFieldConfiguration? = nil) {
         self.init(callDidInit: false)
         self.configuration =? configuration
-        didInitProgramatically()
+        initLifecycle(.programmatically)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         keyboardType = .numberPad
     }
 

@@ -17,8 +17,8 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
         tableView.register(ExampleStackTableViewCell.self)
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         paginator = ExampleQueryPaginator()
         dataSource = ExampleCollectionDatasource()
     }
@@ -38,19 +38,7 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
     
 }
 
-open class ExampleStackTableViewCell: LabelStackTableViewCell{
-    open override func didInit() {
-        super.didInit()
-    }
-    open override func createSubviews() {
-        super.createSubviews()
-
-    }
-    open override func createAutoLayoutConstraints() {
-        super.createAutoLayoutConstraints()
-
-    }
-}
+open class ExampleStackTableViewCell: LabelStackTableViewCell{}
 
 open class ExampleCollectionDatasource: CollectionDataSource<ExampleObject>{
     open override func filterModels(models: [ExampleObject], searchQuery: String) -> [ExampleObject] {

@@ -27,8 +27,8 @@ open class ScrollViewParentHeaderExampleViewController: BaseScrollviewParentView
     open override func initialChildViewController() -> UIViewController {
         return FakeDataTableViewController()
     }
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         extendViewUnderNavigationBar()
     }
     

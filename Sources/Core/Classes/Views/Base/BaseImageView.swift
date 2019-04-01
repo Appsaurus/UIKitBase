@@ -34,8 +34,8 @@ open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
         return super.createMixins() + baseImageViewProtocolMixins
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         contentMode = .scaleAspectFit
         clipsToBounds = true
     }

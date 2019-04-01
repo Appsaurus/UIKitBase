@@ -63,8 +63,8 @@ open class LocationPickerSearchViewController: SearchViewController<MKMapItem>, 
         return mapVC
     }()
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         preSearchViewController = mapViewController
         searchBarPosition = .navigationTitle
         mapViewController.onDidFinishTask = onDidFinishTask
@@ -164,19 +164,8 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         currentLocationButton.rounded = true
     }
 
-    //    public init(config: C? = nil) {
-    //		if let config = config{
-    //			self.config = config
-    //		}
-    //        super.init(nibName: nil, bundle: nil)
-    //    }
-
-    //    required public init?(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //    }
-    //
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         mapView.mapType = mapType
     }
 

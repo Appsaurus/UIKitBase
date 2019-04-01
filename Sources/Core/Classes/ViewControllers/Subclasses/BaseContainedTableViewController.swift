@@ -17,10 +17,14 @@ open class BaseContainedTableViewController: BaseContainerViewController, ViewRe
         tv.backgroundColor = .clear
     }
 
-    open override func didInit() {
-        super.didInit()
-        tableView.setController(self)
+    open override func initProperties() {
+        super.initProperties()
         containedView = tableView
+    }
+
+    open override func setupDelegates() {
+        super.setupDelegates()
+        tableView.setController(self)
     }
 
     open func numberOfSections(in tableView: UITableView) -> Int {

@@ -20,6 +20,10 @@
 		D284B1481F7908BB00D94AF3 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B12E1F7906DA00D94AF3 /* macOSTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* UIKitBase.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */; };
+		E415C6EA22527DF0007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
+		E415C6EB22527DF1007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
+		E415C6EC22527DF2007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
+		E415C6ED22527DF2007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
 		E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
 		E41D6F7C2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
 		E41D6F7D2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */; };
@@ -164,10 +168,6 @@
 		E41D7119224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
 		E41D711A224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
 		E41D711B224D5FB300CA05C4 /* AuthIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7104224D5FB300CA05C4 /* AuthIcons.swift */; };
-		E41D711C224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
-		E41D711D224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
-		E41D711E224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
-		E41D711F224D5FB300CA05C4 /* AuthIcons.svg in Resources */ = {isa = PBXBuildFile; fileRef = E41D7105224D5FB300CA05C4 /* AuthIcons.svg */; };
 		E41D7120224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
 		E41D7121224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
 		E41D7122224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */; };
@@ -2056,7 +2056,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41D711E224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
+				E415C6EB22527DF1007286A2 /* AuthIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2072,7 +2072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D284B1391F7906DB00D94AF3 /* Info-tvOS-Tests.plist in Resources */,
-				E41D711F224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
+				E415C6EA22527DF0007286A2 /* AuthIcons.ttf in Resources */,
 				D284B1381F7906DB00D94AF3 /* Info-iOS-Tests.plist in Resources */,
 				D284B13B1F7906DB00D94AF3 /* Info-macOS-Tests.plist in Resources */,
 			);
@@ -2082,7 +2082,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41D711C224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
+				E415C6ED22527DF2007286A2 /* AuthIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2097,7 +2097,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41D711D224D5FB300CA05C4 /* AuthIcons.svg in Resources */,
+				E415C6EC22527DF2007286A2 /* AuthIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,18 +12,16 @@ import UIKitExtensions
 import UIKitTheme
 
 open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged {
-    open var titledUrls: SortedDictionary<String, URL>
+    open var titledUrls: SortedDictionary<String, URL> = SortedDictionary<String, URL>()
 
     public required init(titledUrlStrings: SortedDictionary<String, String>) {
-        titledUrls = SortedDictionary<String, URL>()
-        super.init(callDidInit: false)
         for titledUrlString in titledUrlStrings {
             guard let url = titledUrlString.value?.toURL else {
                 continue
             }
             titledUrls.insert(value: url, for: titledUrlString.key)
         }
-        didInit()
+        super.init(callDidInit: true)
     }
 
     public required init?(coder aDecoder: NSCoder) {

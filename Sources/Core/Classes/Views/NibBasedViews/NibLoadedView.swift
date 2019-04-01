@@ -22,12 +22,20 @@ import Swiftest
         return self.className
     }
 
-    open override func didInit() {
-        super.didInit()
+    open override func initProperties() {
+        super.initProperties()
         view = loadNib()
         view.backgroundColor = UIColor.clear
         view.frame = bounds
+    }
+
+    open override func createSubviews() {
+        super.createSubviews()
         addSubview(view)
+    }
+
+    open override func createAutoLayoutConstraints() {
+        super.createAutoLayoutConstraints()
         view.pinToSuperview()
     }
 
