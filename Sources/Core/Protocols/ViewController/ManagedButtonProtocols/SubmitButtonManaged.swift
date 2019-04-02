@@ -58,13 +58,17 @@ extension SubmitButtonManaged where Self: UIViewController {
     }
 
     public func didPressSubmitButton() {
+        performSubmission()
+    }
+
+    public func performSubmission(){
         submissionDidBegin()
         submit(success: { [weak self] in
             self?.submissionDidEnd()
             self?.submissionDidSucceed()
-        }, failure: { [weak self] error in
-            self?.submissionDidEnd()
-            self?.submissionDidFail(with: error)
+            }, failure: { [weak self] error in
+                self?.submissionDidEnd()
+                self?.submissionDidFail(with: error)
         })
     }
 
@@ -92,5 +96,8 @@ extension SubmitButtonManaged where Self: UIViewController {
 
     public func userCanSubmit() -> Bool {
         return true
+    }
+    public func autoSubmitsValidForm() -> Bool {
+        return false
     }
 }

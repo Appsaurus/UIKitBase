@@ -68,36 +68,12 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         customTabBar.transitionToInitialSelectionState()
     }
 
-    //    open override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        customTabBar.rerenderCollectionMenuSelection()
-    //    }
-
     open override func setViewControllers(_ viewControllers: [UIViewController]?, animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
         customTabBar.reloadItems(animated: animated)
         if eagerLoadsViewControllers {
             viewControllers?.loadViewIfNeeded()
         }
-        //        viewControllers?.forEach({ (vc) in
-        //            if let sv = vc.view as? UIScrollView {
-        //                switch tabBarLayout {
-        //                case .bottom(let height):
-        //                    sv.scrollIndicatorInsets.bottom += (height + contentPadding)
-        //                    sv.contentInset.bottom += (height + contentPadding)
-        //                case .top(let height):
-        //                    sv.scrollIndicatorInsets.top += (height + contentPadding)
-        //                    sv.contentInset.top += (height + contentPadding)
-        //                case .left(let width):
-        //                    sv.scrollIndicatorInsets.left += (width + contentPadding)
-        //                    sv.contentInset.left += (width + contentPadding)
-        //                case .right(let width):
-        //                    sv.scrollIndicatorInsets.right += (width + contentPadding)
-        //                    sv.contentInset.right += (width + contentPadding)
-        //                }
-        //
-        //            }
-        //        })
     }
 
     open override func createSubviews() {
@@ -178,20 +154,6 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         super.viewDidLayoutSubviews()
         view.bringSubviewToFront(customTabBar)
         tabBar.isHidden = true
-
-        //        guard let contentView: UIView = view.subviews[0] else {
-        //            return
-        //        }
-        //        switch tabBarLayout{
-        //            case .bottom(let height):
-        //                contentView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height - height)
-        //            case .top(let height):
-        //                contentView.frame = CGRect(x: 0, y: height, width: view.frame.size.width, height: view.frame.size.height - height)
-        //            case .left(let width):
-        //                contentView.frame = CGRect(x: width, y: 0, width: view.frame.size.width - width, height: view.frame.size.height)
-        //            case .right(let width):
-        //                contentView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width - width, height: view.frame.size.height)
-        //        }
     }
 
     // MARK: Convenience

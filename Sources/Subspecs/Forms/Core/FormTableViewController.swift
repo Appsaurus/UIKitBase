@@ -17,6 +17,7 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
 
     open var submitButton: BaseButton!
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
+    open var autoSubmitsValidForm: Bool = false
 
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
@@ -74,6 +75,9 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
 
     open func formPassedValidation(_ form: Form) {
         updateSubmitButtonState()
+        if autoSubmitsValidForm {
+            performSubmission()
+        }
     }
 
     open func formFailedValidation(_ form: Form, failures: [ValidationFailure]) {

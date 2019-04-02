@@ -9,6 +9,7 @@ import Layman
 import Swiftest
 import UIKitExtensions
 import UIKitTheme
+import UIKitMixinable
 
 public protocol CodeFormDelegate: AnyObject {
     // For asyncronous processing or validation, optionally override
@@ -31,6 +32,7 @@ public extension CodeFormDelegate {
 public struct CodeFormViewControllerConfiguration {
     public let promptText: String? = "Please enter verification code."
     public let resendText: String? = "Resend code"
+    public let autoSubmitsWhenInputIsValid = true
     public let style: CodeFormViewControllerStyle = CodeFormViewControllerStyle()
     public let codeInputFieldConfiguration: CodeInputFieldConfiguration = CodeInputFieldConfiguration()
     public init() {}
@@ -78,7 +80,7 @@ open class CodeFormViewController: FormTableViewController {
     open var configuration: CodeFormViewControllerConfiguration = CodeFormViewControllerConfiguration()
     open weak var delegate: CodeFormDelegate?
 
-    open var codeInputField: CodeInputFormField = CodeInputFormField()
+    open var codeInputField: CodeInputFormField = CodeInputFormField<CodeInputTextField>()
 
     open override var fieldCellInsets: LayoutPadding {
         return LayoutPadding(horizontal: 50, vertical: 20)
@@ -98,6 +100,11 @@ open class CodeFormViewController: FormTableViewController {
         self.delegate = delegate
         self.configuration =? configuration
         initLifecycle(.programmatically)
+    }
+
+    open override func didInit(type: InitializationType) {
+        super.didInit(type: type)
+        autoSubmitsValidForm = configuration.autoSubmitsWhenInputIsValid
     }
 
     public required init?(coder aDecoder: NSCoder) {
