@@ -63,9 +63,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
                                      withCompletionHandler completionHandler: @escaping () -> Void) {
         userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
-        }, completionHandler: { _ in
-            completionHandler()
-        })
+        }, completionHandler: completionHandler)
     }
 
     // The method will be called on the delegate when the application is launched in response to the user's request to view in-app notification settings. Add UNAuthorizationOptionProvidesAppNotificationSettings as an option in requestAuthorizationWithOptions:completionHandler: to add a button to inline notification settings view and the notification settings view in Settings. The notification will be nil when opened from Settings.

@@ -1,29 +1,29 @@
+////
+////  FormLocationField.swift
+////  Pods
+////
+////  Created by Brian Strobach on 9/8/17.
+////
+////
 //
-//  FormLocationField.swift
-//  Pods
+// import Foundation
+// import UIKit
 //
-//  Created by Brian Strobach on 9/8/17.
+// open class FormLocationField<ContentView: UIView>: FormPickerField<ContentView, LocationData, LocationPickerSearchViewController>
+//    where ContentView: FormFieldViewProtocol {
+//    open override func initProperties() {
+//        super.initProperties()
+//        pickerViewController = LocationPickerSearchViewController()
+//        contentView.isUserInteractionEnabled = false
+//    }
 //
-//
-
-import Foundation
-import UIKit
-
-open class FormLocationField<ContentView: UIView>: FormPickerField<ContentView, LocationData, LocationPickerSearchViewController>
-    where ContentView: FormFieldViewProtocol {
-    open override func initProperties() {
-        super.initProperties()
-        pickerViewController = LocationPickerSearchViewController()
-        contentView.isUserInteractionEnabled = false
-    }
-
-    open override func textDescription(for value: LocationData?) -> String? {
-        var text: String?
-        if let location = value {
-            let city = location.postalAddress.city
-            let state = location.postalAddress.state
-            text = "\(city), \(state)"
-        }
-        return text
-    }
-}
+//    open override func textDescription(for value: LocationData?) -> String? {
+//        var text: String?
+//        if let location = value {
+//            let city = location.postalAddress.city
+//            let state = location.postalAddress.state
+//            text = "\(city), \(state)"
+//        }
+//        return text
+//    }
+// }
