@@ -20,6 +20,7 @@ open class PaginationConfiguration {
     open var infiniteScrollable: Bool = true
     open var refreshable: Bool = true
     open var loadsResultsImmediately: Bool = true
+    open var scrollDirection: InfinityScrollDirection = .vertical
 }
 
 open class PaginatorGroup<Model: Paginatable> {
@@ -143,7 +144,6 @@ public extension PaginationManaging {
 }
 
 public extension PaginationManaging where Self: UIViewController {
-
     func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             self.paginationManager.reset()
@@ -165,9 +165,7 @@ public extension PaginationManaging where Self: UIViewController {
         reloadPaginatableCollectionView(stateAtCompletion: .loaded, completion: completion)
     }
 
-    func reloadDidBegin() {
-
-    }
+    func reloadDidBegin() {}
 
     func startLoadingData() {
         if paginationConfig.loadsResultsImmediately {
@@ -374,7 +372,8 @@ public extension PaginationManaging where Self: UIViewController {
     }
 
     func addPullToRefresh() {
-        paginatableScrollView.loadingControls.pullToRefresh.add(direction: scrollDirection, animator: createPullToRefreshAnimator()) { [weak self] in
+        paginatableScrollView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
+                                                                animator: createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.pullToRefreshTriggered()
             }
@@ -382,7 +381,8 @@ public extension PaginationManaging where Self: UIViewController {
     }
 
     func addInfinityScroll() {
-        paginatableScrollView.loadingControls.infiniteScroll.add(direction: scrollDirection, animator: createInfiniteScrollAnimator()) { [unowned self] in
+        paginatableScrollView.loadingControls.infiniteScroll.add(direction: paginationConfig.scrollDirection,
+                                                                 animator: createInfiniteScrollAnimator()) { [unowned self] in
             DispatchQueue.main.async {
                 self.infiniteScrollTriggered()
             }

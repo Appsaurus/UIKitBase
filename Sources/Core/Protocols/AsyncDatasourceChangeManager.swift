@@ -6,6 +6,7 @@
 //  Copyright © 2018 Brian Strobach. All rights reserved.
 //
 
+import DarkMagic
 import Foundation
 import Swiftest
 
@@ -18,7 +19,6 @@ public protocol AsyncDatasourceChangeManager: AnyObject {
     func enqueue(_ modification: @escaping AsyncDatasourceChange)
     func performNextModification()
 }
-
 
 extension AsyncDatasourceChangeManager {
     public func enqueue(_ modification: @escaping AsyncDatasourceChange) {
@@ -38,6 +38,31 @@ extension AsyncDatasourceChangeManager {
             guard let self = self else { return }
             _ = self.asyncDatasourceChangeQueue.dequeue()
             self.performNextModification()
+        }
+    }
+}
+
+private extension AssociatedObjectKeys {
+    static let asyncDatasourceChangeQueue = AssociatedObjectKey<[AsyncDatasourceChange]>("asyncDatasourceChangeQueue")
+    static let uponQueueCompletion = AssociatedObjectKey<VoidClosure?>("uponQueueCompletion")
+}
+
+public extension AsyncDatasourceChangeManager where Self: NSObject {
+    var asyncDatasourceChangeQueue: [AsyncDatasourceChange] {
+        get {
+            return self[.asyncDatasourceChangeQueue, []]
+        }
+        set {
+            self[.asyncDatasourceChangeQueue] = newValue
+        }
+    }
+
+    var uponQueueCompletion: VoidClosure? {
+        get {
+            return self[.uponQueueCompletion, nil]
+        }
+        set {
+            self[.uponQueueCompletion] = newValue
         }
     }
 }
