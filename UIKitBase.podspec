@@ -49,6 +49,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Datasource' do |d|
     d.source_files = 'Sources/Subspecs/Datasource/**/*'
+    d.dependency 'DifferenceKit'
     d.dependency 'UIKitBase/Core'
   end
 

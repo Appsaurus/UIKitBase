@@ -146,6 +146,8 @@ extension AppIOManager {
             self.application(application, didRecieveNotificationWhileActive: notification)
         case .inactive, .background: // App was opened via notification
             self.application(application, didLaunchFrom: notification)
+        @unknown default:
+            assertionFailure("Unhandled Enum Case")
         }
     }
 

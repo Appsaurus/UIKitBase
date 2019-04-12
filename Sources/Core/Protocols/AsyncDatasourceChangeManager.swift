@@ -12,7 +12,7 @@ import Swiftest
 public typealias AsyncDatasourceChange = (_ completion: @escaping VoidClosure) -> Void
 
 // For queuing collection reloads serially and atomically.
-public protocol AsyncDatasourceChangeManager: AnyObject {
+public protocol AsyncDatasourceChangeManager: NSObject {
     var asyncDatasourceChangeQueue: [AsyncDatasourceChange] { get set }
     var uponQueueCompletion: VoidClosure? { get set }
     func enqueue(_ modification: @escaping AsyncDatasourceChange)

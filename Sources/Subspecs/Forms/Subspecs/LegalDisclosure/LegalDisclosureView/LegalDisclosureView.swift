@@ -91,7 +91,7 @@ open class LegalDisclosureView: BaseView {
         label.handleCustomTap(for: customType) { [weak self] element in
             guard let self = self else { return }
             let pagingVC = PagingWebViewController(titledUrlStrings: self.viewModel.legalDocuments)
-            pagingVC.initialPageIndex = self.viewModel.legalDocuments.keys.index(of: element) ?? 0
+            pagingVC.initialPageIndex = self.viewModel.legalDocuments.keys.firstIndex(of: element) ?? 0
 
             guard let parent = self.parentViewController else { return }
             if let nav = parent.navigationController {

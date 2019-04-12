@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99A306D672264F25D877FEA3 /* Pods_UIKitBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79419C71C837EB0F808B6EFA /* Pods_UIKitBase_iOS.framework */; };
+		02CC37FAF39767DF333EC34C /* Pods_UIKitBase_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AA5E8D9777FB2137C3359A /* Pods_UIKitBase_iOS.framework */; };
+		B9E0123384139838917AF2F5 /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2FC8938CF16E3A4F21EE4D /* Pods_UIKitBase_iOS_Tests.framework */; };
 		D284B1051F79038B00D94AF3 /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */; };
 		D284B1381F7906DB00D94AF3 /* Info-iOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B12F1F7906DA00D94AF3 /* Info-iOS-Tests.plist */; };
 		D284B1391F7906DB00D94AF3 /* Info-tvOS-Tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = D284B1301F7906DA00D94AF3 /* Info-tvOS-Tests.plist */; };
@@ -428,6 +429,10 @@
 		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E42FBF252260357B00A688F4 /* DatasourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42FBF242260357B00A688F4 /* DatasourceManaged.swift */; };
+		E42FBF262260357B00A688F4 /* DatasourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42FBF242260357B00A688F4 /* DatasourceManaged.swift */; };
+		E42FBF272260357B00A688F4 /* DatasourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42FBF242260357B00A688F4 /* DatasourceManaged.swift */; };
+		E42FBF282260357B00A688F4 /* DatasourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42FBF242260357B00A688F4 /* DatasourceManaged.swift */; };
 		E466AC38224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
 		E466AC39224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
 		E466AC3A224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
@@ -684,11 +689,18 @@
 		E4AF822D21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
 		E4AF822E21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
 		E4AF822F21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
+		E4D03B902260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */; };
+		E4D03B912260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */; };
+		E4D03B922260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */; };
+		E4D03B932260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */; };
+		E4D03B952260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */; };
+		E4D03B962260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */; };
+		E4D03B972260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */; };
+		E4D03B982260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */; };
 		E4D8E42A2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42D2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
-		F5CBBF5FEB03C5EB019110CB /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B4604882D9F38FF0091C97 /* Pods_UIKitBase_iOS_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -716,12 +728,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3738F51404FEC50087563D72 /* Pods-UIKitBase-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		4DCD2208AFC42F5D7F3D5A34 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		79419C71C837EB0F808B6EFA /* Pods_UIKitBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79B4604882D9F38FF0091C97 /* Pods_UIKitBase_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BB2A6ACA59EA08F878173F8 /* Pods-UIKitBase-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		91F143E70D97703F6D24A036 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		88F0DD147EF1F9CE7555C4E3 /* Pods-UIKitBase-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		8FC3675623FBD40FA68FE499 /* Pods-UIKitBase-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS/Pods-UIKitBase-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		95C4545C38990BE437C8E5CD /* Pods-UIKitBase-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		CC2FC8938CF16E3A4F21EE4D /* Pods_UIKitBase_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B0FC1F79038B00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1041F79038B00D94AF3 /* UIKitBase-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1181F79039F00D94AF3 /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -845,6 +855,7 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E42FBF242260357B00A688F4 /* DatasourceManaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasourceManaged.swift; sourceTree = "<group>"; };
 		E442FFCF22527A1D0007E691 /* AuthIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuthIcons.ttf; sourceTree = "<group>"; };
 		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
 		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
@@ -919,7 +930,11 @@
 		E4AF821821C0299D002D6E86 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
 		E4AF822B21C05CE2002D6E86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasourceManagedTableViewController.swift; sourceTree = "<group>"; };
+		E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasourceManagedCollectionViewController.swift; sourceTree = "<group>"; };
 		E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+FontIcons.swift"; sourceTree = "<group>"; };
+		ED2E08935BA712F83BB6B6D6 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F0AA5E8D9777FB2137C3359A /* Pods_UIKitBase_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitBase_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -949,7 +964,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99A306D672264F25D877FEA3 /* Pods_UIKitBase_iOS.framework in Frameworks */,
+				02CC37FAF39767DF333EC34C /* Pods_UIKitBase_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,7 +973,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */,
-				F5CBBF5FEB03C5EB019110CB /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */,
+				B9E0123384139838917AF2F5 /* Pods_UIKitBase_iOS_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,24 +995,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D21550BB068A41E99B2BCC9 /* Frameworks */ = {
+		5A3B04CA41F1B28BA2C25A07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79419C71C837EB0F808B6EFA /* Pods_UIKitBase_iOS.framework */,
-				79B4604882D9F38FF0091C97 /* Pods_UIKitBase_iOS_Tests.framework */,
+				F0AA5E8D9777FB2137C3359A /* Pods_UIKitBase_iOS.framework */,
+				CC2FC8938CF16E3A4F21EE4D /* Pods_UIKitBase_iOS_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AA8990447BC0BA1C965EAD58 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3738F51404FEC50087563D72 /* Pods-UIKitBase-iOS.debug.xcconfig */,
-				7BB2A6ACA59EA08F878173F8 /* Pods-UIKitBase-iOS.release.xcconfig */,
-				91F143E70D97703F6D24A036 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */,
-				4DCD2208AFC42F5D7F3D5A34 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		D284B12D1F7906DA00D94AF3 /* macOS */ = {
@@ -1062,8 +1066,8 @@
 				D5C6296E1C3A809D007F7B7C /* Sources */,
 				D5C6298F1C3A8BDA007F7B7C /* UIKitBaseTests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
-				AA8990447BC0BA1C965EAD58 /* Pods */,
-				3D21550BB068A41E99B2BCC9 /* Frameworks */,
+				FBD83AAF150F5D08F26EA000 /* Pods */,
+				5A3B04CA41F1B28BA2C25A07 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1326,7 +1330,7 @@
 				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
 				E41D712F224D651300CA05C4 /* Pagination */,
 				E41D7133224D651300CA05C4 /* ScrollViewLoadingControls */,
-				E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */,
+				E42FBF222260355700A688F4 /* Datasource */,
 			);
 			path = Datasource;
 			sourceTree = "<group>";
@@ -1610,6 +1614,15 @@
 			path = Specialized;
 			sourceTree = "<group>";
 		};
+		E42FBF222260355700A688F4 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */,
+				E4D03B8E2260D753001EF654 /* DatasourceManaged */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
 		E442FFCD225279CE0007E691 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -1822,6 +1835,27 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E4D03B8E2260D753001EF654 /* DatasourceManaged */ = {
+			isa = PBXGroup;
+			children = (
+				E42FBF242260357B00A688F4 /* DatasourceManaged.swift */,
+				E4D03B8F2260D76F001EF654 /* DatasourceManagedTableViewController.swift */,
+				E4D03B942260D79D001EF654 /* DatasourceManagedCollectionViewController.swift */,
+			);
+			path = DatasourceManaged;
+			sourceTree = "<group>";
+		};
+		FBD83AAF150F5D08F26EA000 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FC3675623FBD40FA68FE499 /* Pods-UIKitBase-iOS.debug.xcconfig */,
+				88F0DD147EF1F9CE7555C4E3 /* Pods-UIKitBase-iOS.release.xcconfig */,
+				ED2E08935BA712F83BB6B6D6 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */,
+				95C4545C38990BE437C8E5CD /* Pods-UIKitBase-iOS-Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1914,7 +1948,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B31C3A780C00C0327D /* Build configuration list for PBXNativeTarget "UIKitBase-iOS" */;
 			buildPhases = (
-				7BCD6B63105CB4066396D09A /* [CP] Check Pods Manifest.lock */,
+				CD54A331B6AFD07B7B674A13 /* [CP] Check Pods Manifest.lock */,
 				D5B2E89A1C3A780C00C0327D /* Sources */,
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
@@ -1935,11 +1969,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B61C3A780C00C0327D /* Build configuration list for PBXNativeTarget "UIKitBase-iOS-Tests" */;
 			buildPhases = (
-				DA8986C62036FD72586B0847 /* [CP] Check Pods Manifest.lock */,
+				C093B23864F949906CB8864E /* [CP] Check Pods Manifest.lock */,
 				D5B2E8A51C3A780C00C0327D /* Sources */,
 				D5B2E8A61C3A780C00C0327D /* Frameworks */,
 				D5B2E8A71C3A780C00C0327D /* Resources */,
-				A87E48708FC684BC2F3BAF20 /* [CP] Embed Pods Frameworks */,
+				1E611CAC974B893E63C2F4AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2030,11 +2064,11 @@
 			};
 			buildConfigurationList = D5B2E8991C3A780C00C0327D /* Build configuration list for PBXProject "UIKitBase" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = D5B2E8951C3A780C00C0327D;
 			productRefGroup = D5B2E8A01C3A780C00C0327D /* Products */;
@@ -2112,29 +2146,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7BCD6B63105CB4066396D09A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UIKitBase-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A87E48708FC684BC2F3BAF20 /* [CP] Embed Pods Frameworks */ = {
+		1E611CAC974B893E63C2F4AC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2152,6 +2164,7 @@
 				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
 				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
+				"${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
@@ -2178,6 +2191,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DifferenceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
@@ -2196,7 +2210,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA8986C62036FD72586B0847 /* [CP] Check Pods Manifest.lock */ = {
+		C093B23864F949906CB8864E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2212,6 +2226,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-UIKitBase-iOS-Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD54A331B6AFD07B7B674A13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIKitBase-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2284,6 +2320,7 @@
 				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810721BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
 				E4AF820521BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4D03B972260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */,
 				E4AF80C721BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AB21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
 				E41D728D224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
@@ -2345,6 +2382,7 @@
 				E4AF812721BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809B21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E41D70F8224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E4D03B922260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */,
 				E41D720D224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
 				E41D7167224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809F21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -2410,6 +2448,7 @@
 				E41D7177224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
 				E41D71AD224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E42FBF272260357B00A688F4 /* DatasourceManaged.swift in Sources */,
 				E41D71E8224D663F00CA05C4 /* SearchViewController.swift in Sources */,
 				E41D70AC224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
 				E41D7208224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
@@ -2466,6 +2505,7 @@
 				E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810821BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
 				E4AF820621BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4D03B982260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */,
 				E4AF80C821BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AC21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
 				E41D728E224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
@@ -2527,6 +2567,7 @@
 				E4AF812821BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809C21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E41D70F9224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E4D03B932260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */,
 				E41D720E224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
 				E41D7168224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF80A021BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -2592,6 +2633,7 @@
 				E41D7178224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
 				E41D71AE224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF813021BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E42FBF282260357B00A688F4 /* DatasourceManaged.swift in Sources */,
 				E41D71E9224D663F00CA05C4 /* SearchViewController.swift in Sources */,
 				E41D70AD224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
 				E41D7209224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
@@ -2639,6 +2681,7 @@
 				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810521BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
 				E4AF820321BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4D03B952260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */,
 				E4AF80C521BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80A921BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
 				E41D728B224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
@@ -2700,6 +2743,7 @@
 				E4AF812521BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809921BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E41D70F6224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E4D03B902260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */,
 				E41D720B224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
 				E41D7165224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -2765,6 +2809,7 @@
 				E41D7175224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
 				E41D71AB224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812D21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E42FBF252260357B00A688F4 /* DatasourceManaged.swift in Sources */,
 				E41D71E6224D663F00CA05C4 /* SearchViewController.swift in Sources */,
 				E41D70AA224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
 				E41D7206224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
@@ -2821,6 +2866,7 @@
 				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810621BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
 				E4AF820421BF8D9F002D6E86 /* BaseButton.swift in Sources */,
+				E4D03B962260D79D001EF654 /* DatasourceManagedCollectionViewController.swift in Sources */,
 				E4AF80C621BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AA21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
 				E41D728C224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
@@ -2882,6 +2928,7 @@
 				E4AF812621BB2D90002D6E86 /* BaseTextField.swift in Sources */,
 				E4AF809A21BB2D90002D6E86 /* BackButtonManaged.swift in Sources */,
 				E41D70F7224D5F5B00CA05C4 /* FormDelegates.swift in Sources */,
+				E4D03B912260D76F001EF654 /* DatasourceManagedTableViewController.swift in Sources */,
 				E41D720C224D666D00CA05C4 /* ImageSliderViewController.swift in Sources */,
 				E41D7166224D651300CA05C4 /* DefaultInfinityAnimator.swift in Sources */,
 				E4AF809E21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
@@ -2947,6 +2994,7 @@
 				E41D7176224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
 				E41D71AC224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
+				E42FBF262260357B00A688F4 /* DatasourceManaged.swift in Sources */,
 				E41D71E7224D663F00CA05C4 /* SearchViewController.swift in Sources */,
 				E41D70AB224D5F5B00CA05C4 /* DatePickerFormField.swift in Sources */,
 				E41D7207224D665D00CA05C4 /* PagingWebViewController.swift in Sources */,
@@ -3022,7 +3070,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3051,7 +3099,7 @@
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3076,7 +3124,7 @@
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3099,7 +3147,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3131,7 +3179,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -3161,7 +3209,7 @@
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -3220,7 +3268,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3273,7 +3321,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3283,7 +3331,7 @@
 		};
 		D5B2E8B41C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3738F51404FEC50087563D72 /* Pods-UIKitBase-iOS.debug.xcconfig */;
+			baseConfigurationReference = 8FC3675623FBD40FA68FE499 /* Pods-UIKitBase-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3298,13 +3346,13 @@
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		D5B2E8B51C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BB2A6ACA59EA08F878173F8 /* Pods-UIKitBase-iOS.release.xcconfig */;
+			baseConfigurationReference = 88F0DD147EF1F9CE7555C4E3 /* Pods-UIKitBase-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3318,13 +3366,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-iOS";
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		D5B2E8B71C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91F143E70D97703F6D24A036 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */;
+			baseConfigurationReference = ED2E08935BA712F83BB6B6D6 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -3337,13 +3385,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UIKitBaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		D5B2E8B81C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DCD2208AFC42F5D7F3D5A34 /* Pods-UIKitBase-iOS-Tests.release.xcconfig */;
+			baseConfigurationReference = 95C4545C38990BE437C8E5CD /* Pods-UIKitBase-iOS-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -3355,7 +3403,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UIKitBaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3379,7 +3427,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3402,7 +3450,7 @@
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3422,7 +3470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3442,7 +3490,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

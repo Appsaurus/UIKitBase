@@ -7,6 +7,12 @@ PODS:
   - CwlPreconditionTesting (1.1.1):
     - CwlCatchException
   - DarkMagic (0.0.4)
+  - DifferenceKit (1.1.1):
+    - DifferenceKit/Core (= 1.1.1)
+    - DifferenceKit/UIKitExtension (= 1.1.1)
+  - DifferenceKit/Core (1.1.1)
+  - DifferenceKit/UIKitExtension (1.1.1):
+    - DifferenceKit/Core
   - DynamicColor (4.0.3)
   - Layman (0.1.18):
     - Layman/Core (= 0.1.18)
@@ -55,6 +61,7 @@ DEPENDENCIES:
   - CwlCatchException (from `https://github.com/mattgallagher/CwlCatchException.git`)
   - CwlPreconditionTesting (from `https://github.com/mattgallagher/CwlPreconditionTesting.git`)
   - DarkMagic (from `https://github.com/Appsaurus/DarkMagic`)
+  - DifferenceKit
   - Layman (from `https://github.com/Appsaurus/Layman`)
   - Nuke
   - Permission/Location (from `https://github.com/pahmed/Permission/`, branch `swift4.2`)
@@ -76,6 +83,7 @@ SPEC REPOS:
     - ActiveLabel
     - Algorithm
     - CountryPickerSwift
+    - DifferenceKit
     - DynamicColor
     - Nuke
     - PhoneNumberKit
@@ -153,6 +161,7 @@ SPEC CHECKSUMS:
   CwlCatchException: 70a52ae44ea5d46db7bd385f801a94942420cd8c
   CwlPreconditionTesting: d33a4e4f285c0b885fddcae5dfedfbb34d4f3961
   DarkMagic: ccb2f3da6cd0b07b96cd44b3033d998dd6a8cddd
+  DifferenceKit: cf1b84e2207ea45c3640381cb229cf46c1647466
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Layman: 558e480982c4fce392d67357c07cfbca5445dfe6
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
@@ -170,6 +179,6 @@ SPEC CHECKSUMS:
   UIKitMixinable: e18f3865c9c26a16ac015c7869a581e83f266d9c
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
-PODFILE CHECKSUM: b9efe72fe7329079b65e0d8c58467cbd531cade1
+PODFILE CHECKSUM: 7459b8b8885c9475e563832670c4585ffb7671c5
 
 COCOAPODS: 1.5.3
