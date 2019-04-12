@@ -19,6 +19,7 @@ public protocol AsyncDatasourceChangeManager: AnyObject {
     func performNextModification()
 }
 
+
 extension AsyncDatasourceChangeManager {
     public func enqueue(_ modification: @escaping AsyncDatasourceChange) {
         asyncDatasourceChangeQueue.enqueue(modification)

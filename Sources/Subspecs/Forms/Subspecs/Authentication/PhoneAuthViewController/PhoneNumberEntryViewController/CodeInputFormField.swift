@@ -14,7 +14,7 @@ import UIKitTheme
 
 public struct CodeInputFieldConfiguration {
     public let codeLength: Int = 6
-    public let style: CodeInputTextFieldStyle = CodeInputTextFieldStyle()    
+    public let style: CodeInputTextFieldStyle = CodeInputTextFieldStyle()
     public init() {}
 }
 

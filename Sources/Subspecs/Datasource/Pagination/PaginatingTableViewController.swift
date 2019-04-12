@@ -1,34 +1,101 @@
 //
-//  PaginationManaged.swift
-//  Pods
+//  PaginatingTableViewController.swift
+//  UIKitBase
 //
-//  Created by Brian Strobach on 3/16/17.
-//
+//  Created by Brian Strobach on 4/12/19.
+//  Copyright © 2019 Brian Strobach. All rights reserved.
 //
 
-import Layman
 import Swiftest
+import UIKit
 import UIKitExtensions
-import UIKitTheme
-// import DeepDiff
-open class AsyncStateChange {
-    func performStateChange(completion: @escaping VoidClosure) {}
+
+open class ExamplePagingModel: Paginatable {
+    public static func == (lhs: ExamplePagingModel, rhs: ExamplePagingModel) -> Bool {
+        return true
+    }
 }
 
-public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChangeManager {
-    associatedtype PaginatableModel: Equatable
+open class PaginationConfiguration {
+    open var infiniteScrollable: Bool = true
+    open var refreshable: Bool = true
+    open var loadsResultsImmediately: Bool = true
+}
 
-    var activePaginator: Paginator<PaginatableModel> { get set }
-    var paginator: Paginator<PaginatableModel> { get set }
-    var fallbackPaginator: Paginator<PaginatableModel>? { get set }
-    var dataSource: CollectionDataSource<PaginatableModel> { get set }
-    var infiniteScrollable: Bool { get set }
-    var scrollDirection: InfinityScrollDirection { get }
-    var refreshable: Bool { get set }
-    var paginatableScrollView: UIScrollView { get }
+open class PaginatorGroup<Model: Paginatable> {
+    open var paginator: Paginator<Model> = Paginator<Model>()
+    open lazy var activePaginator: Paginator<Model> = self.paginator
+    open var fallbackPaginator: Paginator<Model>?
+
+    open func reset() {
+        paginator.reset()
+        fallbackPaginator?.reset()
+        activePaginator = paginator
+    }
+}
+
+open class PaginationManager<Model: Paginatable> {
+    open var config = PaginationConfiguration()
+    open var paginators = PaginatorGroup<Model>()
+    open var datasource = CollectionDataSource<Model>()
+
+    open func reset() {
+        datasource.reset()
+        paginators.reset()
+    }
+}
+
+open class PaginatingTableViewController: BaseTableViewController, PaginationManaging {
+    open var paginationManager: PaginationManager<ExamplePagingModel> = PaginationManager<ExamplePagingModel>()
+
+    open var prefetchedData: [ExamplePagingModel]?
+
+    open var scrollDirection: InfinityScrollDirection {
+        return .vertical
+    }
+
+    // MARK: PaginationManaged
+
+    open func refreshDidFail(with error: Error) {
+        showError(error: error)
+        debugLog(error)
+    }
+
+    open func loadMoreDidFail(with error: Error) {
+        showError(error: error)
+        debugLog(error)
+    }
+
+    open override func createSubviews() {
+        super.createSubviews()
+        setupPaginatable()
+    }
+
+    open override func startLoading() {
+        super.startLoading()
+        startLoadingData()
+    }
+
+    deinit {
+        if tableView != nil {
+            tableView.loadingControls.clear()
+        }
+    }
+
+    open func didReload() {}
+
+    open override func didTransition(to state: State) {
+        updatePaginatableViews(for: state)
+    }
+}
+
+public protocol PaginationManaging: StatefulViewController, AsyncDatasourceChangeManager {
+    associatedtype PaginatableModel: Paginatable
+    typealias PM = PaginationManager<PaginatableModel>
+
+    var paginationManager: PM { get set }
     var prefetchedData: [PaginatableModel]? { get set }
-    var loadsResultsImmediately: Bool { get set }
-    var appendsIndexPathsOnInfinityScroll: Bool { get set }
+    var paginatableScrollView: UIScrollView { get }
     func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator
     func infiniteScrollTriggered()
@@ -46,17 +113,40 @@ public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChange
     func reloadDidBegin()
 }
 
-public extension PaginationManaged where Self: UIViewController {
-    var scrollDirection: InfinityScrollDirection {
-        return .vertical
+public extension PaginationManaging {
+    var dataSource: CollectionDataSource<PaginatableModel> {
+        get {
+            return paginationManager.datasource
+        }
+        set {
+            paginationManager.datasource = newValue
+        }
     }
+
+    var paginationConfig: PaginationConfiguration {
+        get {
+            return paginationManager.config
+        }
+        set {
+            paginationManager.config = newValue
+        }
+    }
+
+    var paginators: PaginatorGroup<PaginatableModel> {
+        get {
+            return paginationManager.paginators
+        }
+        set {
+            paginationManager.paginators = newValue
+        }
+    }
+}
+
+public extension PaginationManaging where Self: UIViewController {
 
     func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
-            self.dataSource.reset()
-            self.paginator.reset()
-            self.fallbackPaginator?.reset()
-            self.activePaginator = self.paginator
+            self.paginationManager.reset()
             self.reloadPaginatableCollectionView(stateAtCompletion: initialState, completion: completion)
         }
     }
@@ -75,10 +165,12 @@ public extension PaginationManaged where Self: UIViewController {
         reloadPaginatableCollectionView(stateAtCompletion: .loaded, completion: completion)
     }
 
-    func reloadDidBegin() {}
+    func reloadDidBegin() {
+
+    }
 
     func startLoadingData() {
-        if loadsResultsImmediately {
+        if paginationConfig.loadsResultsImmediately {
             if let prefetchedData = prefetchedData {
                 if prefetchedData.count == 0 {
                     transition(to: .empty)
@@ -97,7 +189,7 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func infiniteScrollTriggered() {
-        guard !activePaginator.hasLoadedAllPages else {
+        guard !paginators.activePaginator.hasLoadedAllPages else {
             debugLog("Triggered infinite scroll when there are no more pages to load.")
             return
         }
@@ -120,15 +212,15 @@ public extension PaginationManaged where Self: UIViewController {
         if let state = transitioningState {
             transition(to: state)
         }
-        let existingNextPage = activePaginator.nextPageToken
-        if firstPage { activePaginator.nextPageToken = nil }
-        activePaginator.fetchNextPage(success: { [weak self] items, isLastPage in
+        let existingNextPage = paginators.activePaginator.nextPageToken
+        if firstPage { paginators.activePaginator.nextPageToken = nil }
+        paginators.activePaginator.fetchNextPage(success: { [weak self] items, isLastPage in
             DispatchQueue.main.async {
                 self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
             }
         }, failure: { [weak self] error in
             DispatchQueue.main.async {
-                self?.activePaginator.nextPageToken = existingNextPage
+                self?.paginators.activePaginator.nextPageToken = existingNextPage
                 self?.didFinishFetching(error: error)
                 reloadCompletion?()
             }
@@ -142,15 +234,15 @@ public extension PaginationManaged where Self: UIViewController {
                     self.dataSource.reset()
                 }
                 if result.items.count == 0 {
-                    guard let fallbackPaginator = self.fallbackPaginator else {
+                    guard let fallbackPaginator = self.paginators.fallbackPaginator else {
                         self.reloadPaginatableCollectionView(stateAtCompletion: .empty, completion: reloadCompletion)
                         return
                     }
-                    if self.activePaginator === fallbackPaginator {
+                    if self.paginators.activePaginator === fallbackPaginator {
                         self.reloadPaginatableCollectionView(stateAtCompletion: .empty, completion: reloadCompletion)
                         return
                     }
-                    self.activePaginator = fallbackPaginator
+                    self.paginators.activePaginator = fallbackPaginator
                     self.fetchNextPage(firstPage: isFirstPage, transitioningState: self.currentState, reloadCompletion: reloadCompletion)
                     return
                 }
@@ -213,13 +305,13 @@ public extension PaginationManaged where Self: UIViewController {
                 self.paginatableScrollView.isScrollEnabled = false
 
             case .loadedAll:
-                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
+                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.paginationConfig.refreshable
                 self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = false
                 self.paginatableScrollView.isScrollEnabled = true
 
             case .loaded:
-                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
-                self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.infiniteScrollable
+                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.paginationConfig.refreshable
+                self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.paginationConfig.infiniteScrollable
                 self.paginatableScrollView.isScrollEnabled = true
 
             case .loadingMore:
@@ -231,8 +323,8 @@ public extension PaginationManaged where Self: UIViewController {
                 self.paginatableScrollView.isScrollEnabled = true
 
             case .refreshingError:
-                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.refreshable
-                self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.infiniteScrollable
+                self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = self.paginationConfig.refreshable
+                self.paginatableScrollView.loadingControls.infiniteScroll.isEnabled = self.paginationConfig.infiniteScrollable
                 self.paginatableScrollView.isScrollEnabled = true
             case .empty:
                 self.paginatableScrollView.loadingControls.pullToRefresh.isEnabled = false
@@ -253,21 +345,21 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func setupPaginatable() {
-        if refreshable {
+        if paginationConfig.refreshable {
             addPullToRefresh()
         }
 
-        if infiniteScrollable {
+        if paginationConfig.infiniteScrollable {
             addInfinityScroll()
         }
     }
 
     func setLoadingTriggers(enabled: Bool) {
-        if refreshable {
+        if paginationConfig.refreshable {
             addPullToRefresh()
         }
 
-        if infiniteScrollable {
+        if paginationConfig.infiniteScrollable {
             if #available(iOS 11.0, *) {
                 paginatableScrollView.contentInsetAdjustmentBehavior = .never
             } else {
@@ -303,6 +395,58 @@ public extension PaginationManaged where Self: UIViewController {
 
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator {
         return CircleInfiniteAnimator(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    }
+}
+
+extension PaginationManaging where Self: BaseContainedTableViewController {
+    public var paginatableScrollView: UIScrollView {
+        return tableView
+    }
+
+    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+        // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
+        // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
+        DispatchQueue.main.async {
+            self.tableView.reloadData { [weak self] in
+                self?.tableView.forceAutolayoutPass()
+                if let state = stateAtCompletion { self?.transition(to: state) }
+                completion?()
+            }
+        }
+    }
+}
+
+extension PaginationManaging where Self: UITableViewController {
+    public var paginatableScrollView: UIScrollView {
+        return tableView
+    }
+
+    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+        // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
+        // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
+        DispatchQueue.main.async {
+            self.tableView.reloadData { [weak self] in
+                self?.tableView.forceAutolayoutPass()
+                if let state = stateAtCompletion { self?.transition(to: state) }
+                completion?()
+            }
+        }
+    }
+}
+
+extension PaginationManaging where Self: UICollectionViewController {
+    public var paginatableScrollView: UIScrollView {
+        return collectionView!
+    }
+
+    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+        DispatchQueue.main.async {
+            self.collectionView!.reloadData { [weak self] in
+                self?.collectionView!.forceAutolayoutPass()
+                if let state = stateAtCompletion { self?.transition(to: state) }
+                completion?()
+            }
+        }
     }
 }
 
