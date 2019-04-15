@@ -6,25 +6,25 @@
 //
 //
 
- import Actions
- import CoreLocation
- import Layman
- import MapKit
- import Permission
- import Swiftest
- import SwiftLocation
- import UIFontIcons
- import UIKitExtensions
- import UIKitTheme
+import Actions
+import CoreLocation
+import Layman
+import MapKit
+import Permission
+import Swiftest
+import SwiftLocation
+import UIFontIcons
+import UIKitExtensions
+import UIKitTheme
 
- open class LocationPickerSearchConfiguration {
+open class LocationPickerSearchConfiguration {
     public init() {}
     public var useCurrentLocationAsHint = false
     public var searchBarPlaceholder = "Search or enter an address"
     public var searchHistoryLabel = "Search History"
- }
+}
 
- open class LocationPickerSearchViewController: SearchViewController, AsyncTaskDelegate {
+open class LocationPickerSearchViewController: SearchViewController, AsyncTaskDelegate {
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure? {
         didSet {
@@ -74,10 +74,10 @@
             self.mapViewController.location = value
         }, cancelled: {})
     }
- }
+}
 
- public typealias SelectButtonTitleFormatter = (LocationData?) -> String
- public enum SelectButtonTitleBuilder {
+public typealias SelectButtonTitleFormatter = (LocationData?) -> String
+public enum SelectButtonTitleBuilder {
     case staticTitle(title: String)
     case dynamicTitle(formatter: SelectButtonTitleFormatter)
 
@@ -89,9 +89,9 @@
             return formatter(location)
         }
     }
- }
+}
 
- open class LocationPickerMapConfiguration: ViewControllerConfiguration {
+open class LocationPickerMapConfiguration: ViewControllerConfiguration {
     /// default: true
     public var showCurrentLocationButton = true
 
@@ -104,10 +104,10 @@
     public var resultRegionDistance: CLLocationDistance = 600
 
     public var locationDisplayNameFormatter: LocationDisplayNameFormatter?
- }
+}
 
- internal typealias LocationPickerMapViewControllerProtocols = AsyncTaskDelegate & UIGestureRecognizerDelegate & MKMapViewDelegate
- open class LocationPickerMapViewController: ConfigurableViewController<LocationPickerMapConfiguration, ViewControllerStyle>, LocationPickerMapViewControllerProtocols {
+internal typealias LocationPickerMapViewControllerProtocols = AsyncTaskDelegate & UIGestureRecognizerDelegate & MKMapViewDelegate
+open class LocationPickerMapViewController: ConfigurableViewController<LocationPickerMapConfiguration, ViewControllerStyle>, LocationPickerMapViewControllerProtocols {
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
 
@@ -364,9 +364,9 @@
     @nonobjc public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
- }
+}
 
- extension LocationPickerMapViewController: SubmitButtonManaged {
+extension LocationPickerMapViewController: SubmitButtonManaged {
     // MARK: SubmitButtonManaged
 
     public func userCanSubmit() -> Bool {
@@ -377,11 +377,11 @@
         guard let location = location else { return }
         onDidFinishTask?.result(location)
     }
- }
+}
 
 // MARK: Selecting location with gesture
 
- extension LocationPickerMapViewController {
+extension LocationPickerMapViewController {
     func addLocation(_ gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == .began {
             let point = gestureRecognizer.location(in: mapView)
@@ -415,4 +415,4 @@
             //            }
         }
     }
- }
+}

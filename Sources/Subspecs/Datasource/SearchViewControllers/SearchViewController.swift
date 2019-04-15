@@ -52,6 +52,7 @@ open class SearchResultsDisplayingConfiguration {
     var fetchesResultsWithEmptyQuery: Bool = true
     var searchDataSourceType: SearchDataSource = .remote
 }
+
 public protocol SearchResultsDisplaying {
     var loadsSearchResultsImmediately: Bool { get set }
     var searchDataSourceType: SearchDataSource { get set }
@@ -73,28 +74,28 @@ public extension SearchResultsDisplaying where Self: NSObject {
     }
 
     var fetchesResultsWithEmptyQuery: Bool {
-        get{
+        get {
             return searchConfiguration.fetchesResultsWithEmptyQuery
         }
-        set{
+        set {
             searchConfiguration.fetchesResultsWithEmptyQuery = newValue
         }
     }
 
     var loadsSearchResultsImmediately: Bool {
-        get{
+        get {
             return searchConfiguration.loadsSearchResultsImmediately
         }
-        set{
+        set {
             searchConfiguration.loadsSearchResultsImmediately = newValue
         }
     }
 
-    var searchDataSourceType: SearchDataSource{
-        get{
+    var searchDataSourceType: SearchDataSource {
+        get {
             return searchConfiguration.searchDataSourceType
         }
-        set{
+        set {
             searchConfiguration.searchDataSourceType = newValue
         }
     }
@@ -104,10 +105,10 @@ public typealias SearchResultsViewController = UIViewController & SearchResultsD
 
 public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaging {
     func fetchResults(query: String?) {
-        guard let query = query else{
-            switch searchDataSourceType{
+        guard let query = query else {
+            switch searchDataSourceType {
             case .remote:
-                if  fetchesResultsWithEmptyQuery{
+                if fetchesResultsWithEmptyQuery {
                     paginators.activePaginator.searchQuery = nil
                     fetchNextPage(firstPage: true)
                 }
@@ -118,15 +119,14 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
             return
         }
         switch searchDataSourceType {
-            case .remote:
-                reset(to: .loading)
-                paginators.activePaginator.searchQuery = query
-                fetchNextPage(firstPage: true)
-            case .local:
-                dataSource.filterData(searchQuery: query)
-                reloadPaginatableCollectionView(completion: {})
+        case .remote:
+            reset(to: .loading)
+            paginators.activePaginator.searchQuery = query
+            fetchNextPage(firstPage: true)
+        case .local:
+            dataSource.filterData(searchQuery: query)
+            reloadPaginatableCollectionView(completion: {})
         }
-
     }
 }
 

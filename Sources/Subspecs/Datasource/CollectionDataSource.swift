@@ -22,7 +22,7 @@ open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable>
 
     open class Section<SectionKey, Value> {}
 
-    open private(set) ivar searchQuery: String?
+    open private(set) var searchQuery: String?
     open var filterApplied: Bool {
         return searchQuery != nil
     }

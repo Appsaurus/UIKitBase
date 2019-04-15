@@ -63,7 +63,6 @@ open class PaginationManagingMixin: UIViewControllerMixin<UIViewController & Pag
         mixable.setupPaginatable()
     }
 
-
     open override func loadAsyncData() {
         mixable.startLoadingData()
     }

@@ -6,15 +6,14 @@
 //
 //
 
- import Contacts
- import MapKit
- import Swiftest
- import SwiftLocation
- import UIKit
- import UIKitMixinable
+import Contacts
+import MapKit
+import Swiftest
+import SwiftLocation
+import UIKit
+import UIKitMixinable
 
- open class LocationSearchResultsViewController: PaginatableTableViewController, SearchResultsDisplaying, AsyncTaskDelegate {
-
+open class LocationSearchResultsViewController: PaginatableTableViewController, SearchResultsDisplaying, AsyncTaskDelegate {
     public typealias PaginatableModel = MKMapItem
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
@@ -71,15 +70,15 @@
 
         onDidFinishTask?.result(LocationData(placemark: pm.placemark))
     }
- }
+}
 
- extension MKMapItem {
+extension MKMapItem {
     public func toLocation() -> LocationData {
         return LocationData(placemark: placemark)
     }
- }
+}
 
- class MKLocalSearchRequestQueryPaginator: Paginator<MKMapItem> {
+class MKLocalSearchRequestQueryPaginator: Paginator<MKMapItem> {
     // }
 //
     // func showItemsForSearchResult(_ searchResult: MKLocalSearchResponse?) {
@@ -117,4 +116,4 @@
             success((items, true))
         }
     }
- }
+}
