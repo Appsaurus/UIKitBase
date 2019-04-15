@@ -1,5 +1,6 @@
 PODS:
   - Actions (3.0.1)
+  - ActiveLabel (1.0.1)
   - Algorithm (2.1.1)
   - AssistantKit (0.6.1)
   - CRuntime (2.0.1)
@@ -69,6 +70,9 @@ PODS:
   - UIKitBase/Forms/Date (0.0.33):
     - SwiftDate
     - UIKitBase/Core
+  - UIKitBase/Forms/LegalDisclosure (0.0.33):
+    - ActiveLabel
+    - UIKitBase/Core
   - UIKitBase/Location (0.0.33):
     - Permission/Location
     - SwiftLocation
@@ -110,6 +114,7 @@ DEPENDENCIES:
   - UIKitBase/Authentication (from `../../`)
   - UIKitBase/Datasource (from `../../`)
   - UIKitBase/Forms/Date (from `../../`)
+  - UIKitBase/Forms/LegalDisclosure (from `../../`)
   - UIKitBase/Location (from `../../`)
   - UIKitBase/Permission (from `../../`)
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
@@ -119,6 +124,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Actions
+    - ActiveLabel
     - Algorithm
     - AssistantKit
     - CRuntime
@@ -190,6 +196,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Actions: 696288b71e88903a69ec8d04123df05ad16125dc
+  ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   Algorithm: 0fe78be3f31f85e857089685477862bcf20393b8
   AssistantKit: 7dd40c019e9a06e93555ed58498a2d212fcb408d
   CRuntime: d241c1ed31e585333fcf6226b639d043ec7b6b37
@@ -209,11 +216,11 @@ SPEC CHECKSUMS:
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
-  UIKitBase: 10b4ff3e834325830d2e0bf8f3e38cdbd6cf0c57
+  UIKitBase: dee51d7514cbc56f85c427c4529c9df5a2bcfb43
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
   UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
-PODFILE CHECKSUM: a7349207ac06c0b2473a34f32fbbd4779edf5f02
+PODFILE CHECKSUM: c443f6a575d4610660f00b3825f479dfa0b865ff
 
 COCOAPODS: 1.6.1

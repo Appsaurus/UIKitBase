@@ -20,6 +20,7 @@ def common_pods
     pod 'UIKitBase/Permission', :path => '../../'
     pod 'UIKitBase/Location', :path => '../../'
     pod 'UIKitBase/Forms/Date', :path => '../../'
+    pod 'UIKitBase/Forms/LegalDisclosure', :path => '../../'
     pod 'UIKitBase/Datasource', :path => '../../'
     pod 'UIKitBase/Authentication', :path => '../../'
 

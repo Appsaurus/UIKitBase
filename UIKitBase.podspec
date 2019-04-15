@@ -54,24 +54,25 @@ Pod::Spec.new do |s|
 
   s.subspec 'Forms' do |f|
     f.dependency 'UIKitBase/Core'
+    f.source_files = 'Sources/Subspecs/Forms/Core/**/*'
     f.subspec 'Core' do |fc|
         fc.source_files = 'Sources/Subspecs/Forms/Core/**/*'
     end
     f.subspec 'Authentication' do |fa|
-        fa.source_files = 'Sources/Subspecs/Forms/Core/**/*, Sources/Subspecs/Forms/Subspecs/Authentication/**/*'
+        fa.source_files = 'Sources/Subspecs/Forms/Subspecs/Authentication/**/*'
         fa.dependency 'CountryPickerSwift'
         fa.dependency 'PhoneNumberKit'
     end
     f.subspec 'Date' do |d|
-      d.source_files = 'Sources/Subspecs/Forms/Core/**/*, Sources/Subspecs/Forms/Subspecs/Date/**/*'
+      d.source_files = 'Sources/Subspecs/Forms/Subspecs/Date/**/*'
       d.dependency 'SwiftDate'
     end
     f.subspec 'LegalDisclosure' do |l|
-      l.source_files = 'Sources/Subspecs/Forms/Core/**/*, Sources/Subspecs/Forms/Subspecs/LegalDisclosure/**/*'
+      l.source_files = 'Sources/Subspecs/Forms/Subspecs/LegalDisclosure/**/*'
       l.dependency 'ActiveLabel'
     end
     f.subspec 'Location' do |fl|
-        fl.source_files = 'Sources/Subspecs/Forms/Core/**/*, Sources/Subspecs/Forms/Subspecs/Location/**/*'
+        fl.source_files = 'Sources/Subspecs/Forms/Subspecs/Location/**/*'
         fl.dependency 'UIKitBase/Location'
     end
   end
