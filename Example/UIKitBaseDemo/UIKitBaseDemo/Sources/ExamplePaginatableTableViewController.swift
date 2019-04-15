@@ -16,7 +16,7 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
     public typealias PaginatableModel = ExampleObject
 
     open override func createMixins() -> [LifeCycle] {
-        return super.createMixins() + [PaginationManagingMixin(self)]
+        return super.createMixins() + [PaginationManagedMixin(self)]
     }
 
     open override func initProperties() {

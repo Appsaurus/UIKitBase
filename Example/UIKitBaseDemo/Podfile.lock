@@ -56,9 +56,9 @@ PODS:
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
   - UIFontLoader (0.0.3)
-  - UIKitBase/Authentication (0.0.30):
+  - UIKitBase/Authentication (0.0.31):
     - UIKitBase/Forms
-  - UIKitBase/Core (0.0.30):
+  - UIKitBase/Core (0.0.31):
     - Actions
     - Algorithm
     - AssistantKit
@@ -70,37 +70,37 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.30):
+  - UIKitBase/Datasource (0.0.31):
     - UIKitBase/Core
-  - UIKitBase/Forms (0.0.30):
+  - UIKitBase/Forms (0.0.31):
     - ActiveLabel
     - UIKitBase/Core
-    - UIKitBase/Forms/Authentication (= 0.0.30)
-    - UIKitBase/Forms/Date (= 0.0.30)
-    - UIKitBase/Forms/LegalDisclosure (= 0.0.30)
-    - UIKitBase/Forms/Location (= 0.0.30)
-  - UIKitBase/Forms/Authentication (0.0.30):
+    - UIKitBase/Forms/Authentication (= 0.0.31)
+    - UIKitBase/Forms/Date (= 0.0.31)
+    - UIKitBase/Forms/LegalDisclosure (= 0.0.31)
+    - UIKitBase/Forms/Location (= 0.0.31)
+  - UIKitBase/Forms/Authentication (0.0.31):
     - ActiveLabel
     - CountryPickerSwift
     - PhoneNumberKit
     - UIKitBase/Core
-  - UIKitBase/Forms/Date (0.0.30):
+  - UIKitBase/Forms/Date (0.0.31):
     - ActiveLabel
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.30):
+  - UIKitBase/Forms/LegalDisclosure (0.0.31):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Forms/Location (0.0.30):
+  - UIKitBase/Forms/Location (0.0.31):
     - ActiveLabel
     - UIKitBase/Core
     - UIKitBase/Location
-  - UIKitBase/Location (0.0.30):
+  - UIKitBase/Location (0.0.31):
     - Permission/Location
     - SwiftLocation
     - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.30):
+  - UIKitBase/Permission (0.0.31):
     - Permission
     - UIKitBase/Core
   - UIKitExtensions (0.0.20):
@@ -241,7 +241,7 @@ SPEC CHECKSUMS:
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
-  UIKitBase: cd7161eb6565c6e9085f2133fe25a9eda03f89ac
+  UIKitBase: c6009271834649e12cd4a52d03118154a802d30c
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
   UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
