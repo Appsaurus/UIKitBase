@@ -19,7 +19,7 @@ def common_pods
     pod 'Nuke'
     pod 'UIKitBase/Permission', :path => '../../'
     pod 'UIKitBase/Location', :path => '../../'
-    pod 'UIKitBase/Forms', :path => '../../'
+    pod 'UIKitBase/Forms/Date', :path => '../../'
     pod 'UIKitBase/Datasource', :path => '../../'
     pod 'UIKitBase/Authentication', :path => '../../'
 
