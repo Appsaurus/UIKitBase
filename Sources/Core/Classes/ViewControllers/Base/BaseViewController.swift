@@ -71,8 +71,6 @@ open class BaseViewController: MixinableViewController, BaseViewControllerProtoc
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

@@ -61,8 +61,6 @@ open class BaseCollectionViewController: MixinableCollectionViewController, Base
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

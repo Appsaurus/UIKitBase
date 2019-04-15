@@ -59,8 +59,6 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

@@ -58,8 +58,6 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

@@ -15,8 +15,8 @@ open class FakeDataTableViewController: DatasourceManagedTableViewController<Int
         tableView.register(UITableViewCell.self)
     }
 
-    open override func startLoading() {
-        super.startLoading()
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         dataSource.add(models: Array(0...50))
     }
     

@@ -15,8 +15,6 @@ open class BaseStatefulView: BaseView, StatefulViewController {
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

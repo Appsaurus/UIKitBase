@@ -9,6 +9,7 @@
 import Swiftest
 import UIKit
 import UIKitExtensions
+import UIKitMixinable
 
 open class ExamplePagingModel: Paginatable {
     public static func == (lhs: ExamplePagingModel, rhs: ExamplePagingModel) -> Bool {
@@ -46,49 +47,29 @@ open class PaginationManager<Model: Paginatable> {
     }
 }
 
-open class PaginatingTableViewController: BaseTableViewController, PaginationManaging {
-    open var paginationManager: PaginationManager<ExamplePagingModel> = PaginationManager<ExamplePagingModel>()
-
-    open var prefetchedData: [ExamplePagingModel]?
-
-    open var scrollDirection: InfinityScrollDirection {
-        return .vertical
-    }
-
-    // MARK: PaginationManaged
-
-    open func refreshDidFail(with error: Error) {
-        showError(error: error)
-        debugLog(error)
-    }
-
-    open func loadMoreDidFail(with error: Error) {
-        showError(error: error)
-        debugLog(error)
-    }
-
-    open override func createSubviews() {
-        super.createSubviews()
-        setupPaginatable()
-    }
-
-    open override func startLoading() {
-        super.startLoading()
-        startLoadingData()
-    }
-
-    deinit {
-        if tableView != nil {
-            tableView.loadingControls.clear()
+open class PaginationManagingMixin: UIViewControllerMixin<UIViewController & PaginationManaging> {
+    open override func viewDidLoad() {
+        mixable.onDidTransitionMixins.append { [weak mixable] state in
+            guard let mixable = mixable else { return }
+            mixable.updatePaginatableViews(for: state)
         }
     }
 
-    open func didReload() {}
+    open override func willDeinit() {
+        mixable.paginatableScrollView.loadingControls.clear()
+    }
 
-    open override func didTransition(to state: State) {
-        updatePaginatableViews(for: state)
+    open override func createSubviews() {
+        mixable.setupPaginatable()
+    }
+
+
+    open override func loadAsyncData() {
+        mixable.startLoadingData()
     }
 }
+
+public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaging
 
 public protocol PaginationManaging: StatefulViewController, AsyncDatasourceChangeManager {
     associatedtype PaginatableModel: Paginatable
@@ -112,6 +93,29 @@ public protocol PaginationManaging: StatefulViewController, AsyncDatasourceChang
     func reset(to initialState: State, completion: VoidClosure?)
     func reload()
     func reloadDidBegin()
+}
+
+private var associatedPaginationManager: String = "associatedPaginationManager"
+private var associatedPrefetchedData: String = "associatedPrefetchedData"
+
+extension PaginationManaging where Self: NSObject {
+    public var paginationManager: PaginationManager<PaginatableModel> {
+        get {
+            return getAssociatedObject(for: &associatedPaginationManager, initialValue: PaginationManager<PaginatableModel>())
+        }
+        set {
+            setAssociatedObject(newValue, for: &associatedPaginationManager)
+        }
+    }
+
+    public var prefetchedData: [PaginatableModel]? {
+        get {
+            return getAssociatedObject(for: &associatedPrefetchedData, initialValue: nil)
+        }
+        set {
+            setAssociatedObject(newValue, for: &associatedPrefetchedData)
+        }
+    }
 }
 
 public extension PaginationManaging {
@@ -167,6 +171,14 @@ public extension PaginationManaging where Self: UIViewController {
 
     func reloadDidBegin() {}
 
+    func setupDefaultReloadControlsForEmptyState() {
+        var retryTitle: String?
+        if emptyView()?.responseButton.title(for: .normal).isNilOrEmpty == true {
+            retryTitle = "Reload"
+        }
+        emptyView()?.set(responseButtonTitle: retryTitle, responseAction: reload)
+    }
+
     func startLoadingData() {
         if paginationConfig.loadsResultsImmediately {
             if let prefetchedData = prefetchedData {
@@ -179,11 +191,6 @@ public extension PaginationManaging where Self: UIViewController {
                 reload()
             }
         }
-        var retryTitle: String?
-        if emptyView()?.responseButton.title(for: .normal).isNilOrEmpty == true {
-            retryTitle = "Reload"
-        }
-        emptyView()?.set(responseButtonTitle: retryTitle, responseAction: reload)
     }
 
     func infiniteScrollTriggered() {
@@ -422,8 +429,6 @@ extension PaginationManaging where Self: UITableViewController {
     }
 
     public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-        // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
-        // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
         DispatchQueue.main.async {
             self.tableView.reloadData { [weak self] in
                 self?.tableView.forceAutolayoutPass()

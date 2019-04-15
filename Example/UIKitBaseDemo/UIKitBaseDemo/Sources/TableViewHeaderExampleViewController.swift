@@ -26,12 +26,11 @@ open class TableViewHeaderExampleViewController: FakeDataTableViewController{
     open func createSubheaderView() -> UIView?{
         return nil
     }
-    
-    open override func startLoading() {
-        super.startLoading()
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         displayScrollViewHeaderExampleContent()
     }
-    
 }
 
 extension TableViewHeaderExampleViewController: ScrollViewHeaderAdornable{

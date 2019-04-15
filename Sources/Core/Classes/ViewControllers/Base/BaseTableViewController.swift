@@ -62,8 +62,6 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

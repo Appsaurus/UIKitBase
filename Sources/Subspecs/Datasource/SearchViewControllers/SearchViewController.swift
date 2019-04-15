@@ -6,12 +6,13 @@
 //
 //
 
- import Layman
- import Swiftest
- import UIKitExtensions
- import UIKitTheme
+import DarkMagic
+import Layman
+import Swiftest
+import UIKitExtensions
+import UIKitTheme
 
- class SearchBarContainerView: UIView {
+class SearchBarContainerView: UIView {
     let contentView: UIView
     let contentInsets: UIEdgeInsets
 
@@ -30,11 +31,11 @@
         super.layoutSubviews()
         contentView.frame = bounds.inset(by: contentInsets)
     }
- }
+}
 
- public enum SearchBarPosition {
+public enum SearchBarPosition {
     case navigationTitle, header
- }
+}
 
 // public enum SearchBarAppearanceResponderBehavior{
 //    case alwaysRegainFirstResponder
@@ -42,17 +43,96 @@
 //    case neverRegainFirstResponder
 // }
 
- public enum SearchDataSource {
-    case paginator, localDatasource
- }
+public enum SearchDataSource {
+    case remote, local
+}
 
- open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
+open class SearchResultsDisplayingConfiguration {
+    var loadsSearchResultsImmediately: Bool = true
+    var fetchesResultsWithEmptyQuery: Bool = true
+    var searchDataSourceType: SearchDataSource = .remote
+}
+public protocol SearchResultsDisplaying {
+    var loadsSearchResultsImmediately: Bool { get set }
+    var searchDataSourceType: SearchDataSource { get set }
+    func fetchResults(query: String?)
+}
+
+private extension AssociatedObjectKeys {
+    static let searchConfiguration = AssociatedObjectKey<SearchResultsDisplayingConfiguration>("searchConfiguration")
+}
+
+public extension SearchResultsDisplaying where Self: NSObject {
+    var searchConfiguration: SearchResultsDisplayingConfiguration {
+        get {
+            return self[.searchConfiguration, SearchResultsDisplayingConfiguration()]
+        }
+        set {
+            self[.searchConfiguration] = newValue
+        }
+    }
+
+    var fetchesResultsWithEmptyQuery: Bool {
+        get{
+            return searchConfiguration.fetchesResultsWithEmptyQuery
+        }
+        set{
+            searchConfiguration.fetchesResultsWithEmptyQuery = newValue
+        }
+    }
+
+    var loadsSearchResultsImmediately: Bool {
+        get{
+            return searchConfiguration.loadsSearchResultsImmediately
+        }
+        set{
+            searchConfiguration.loadsSearchResultsImmediately = newValue
+        }
+    }
+
+    var searchDataSourceType: SearchDataSource{
+        get{
+            return searchConfiguration.searchDataSourceType
+        }
+        set{
+            searchConfiguration.searchDataSourceType = newValue
+        }
+    }
+}
+
+public typealias SearchResultsViewController = UIViewController & SearchResultsDisplaying
+
+public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaging {
+    func fetchResults(query: String?) {
+        guard let query = query else{
+            switch searchDataSourceType{
+            case .remote:
+                if  fetchesResultsWithEmptyQuery{
+                    paginators.activePaginator.searchQuery = nil
+                    fetchNextPage(firstPage: true)
+                }
+            case .local:
+                dataSource.removeFilter()
+                reloadPaginatableCollectionView(completion: {})
+            }
+            return
+        }
+        switch searchDataSourceType {
+            case .remote:
+                reset(to: .loading)
+                paginators.activePaginator.searchQuery = query
+                fetchNextPage(firstPage: true)
+            case .local:
+                dataSource.filterData(searchQuery: query)
+                reloadPaginatableCollectionView(completion: {})
+        }
+
+    }
+}
+
+open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     open lazy var preSearchViewController: UIViewController? = nil
-    open lazy var searchResultsTableViewController: PaginatingTableViewController = {
-        let searchVC = self.createSearchResultsTableViewController()
-        searchVC.loadsResultsImmediately = self.fetchesResultsWithEmptyQuery
-        return searchVC
-    }()
+    open lazy var searchResultsTableViewController: SearchResultsViewController = self.createSearchResultsTableViewController()
 
     open lazy var searchBar: UISearchBar = UISearchBar()
     open lazy var searchHeaderToolBar: UIToolbar = UIToolbar()
@@ -71,9 +151,7 @@
 
     // MARK: SearchBar layout configuration //TODO: Refactor this into single search config class
 
-    open lazy var searchDataSource: SearchDataSource = .paginator
     open lazy var searchThrottle: Float? = 0.25
-    open lazy var fetchesResultsWithEmptyQuery: Bool = false
     open lazy var clearsResultsOnCancel: Bool = true
     open lazy var restoreSearchStateOnAppearance: Bool = true
     open lazy var searchBarRegainsFirstResponderOnReappear: Bool = true
@@ -88,9 +166,10 @@
         return searchBar.textField?.text.removeEmpty
     }
 
-    open func createSearchResultsTableViewController() -> PaginatingTableViewController {
+    open func createSearchResultsTableViewController() -> SearchResultsViewController {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-        return PaginatableTableViewController<ModelType>()
+        // swiftlint:disable:next force_cast
+        return UIViewController() as! SearchResultsViewController
     }
 
     open override func initialChildViewController() -> UIViewController {
@@ -143,26 +222,8 @@
     }
 
     open func queryInputChanged() {
-        if searchDataSource == .paginator {
-            searchResultsTableViewController.reset(to: .loading)
-        }
-
-        guard let query = searchQuery else {
-            switch searchDataSource {
-            case .paginator:
-                if fetchesResultsWithEmptyQuery {
-                    searchResultsTableViewController.activePaginator.searchQuery = nil
-                    searchResultsTableViewController.fetchNextPage(firstPage: true)
-                }
-            case .localDatasource:
-                searchResultsTableViewController.dataSource.removeFilter()
-                searchResultsTableViewController.tableView.reloadData()
-            }
-            return
-        }
-
         guard let searchThrottle = searchThrottle else {
-            performSearch(query: query)
+            performSearch(query: searchQuery)
             return
         }
 
@@ -173,22 +234,12 @@
     }
 
     @objc private func triggerSearch() {
-        guard let query = searchQuery else {
-            return
-        }
-        performSearch(query: query)
+        performSearch(query: searchQuery)
     }
 
-    open func performSearch(query: String) {
+    open func performSearch(query: String?) {
         DispatchQueue.main.async {
-            switch self.searchDataSource {
-            case .paginator:
-                self.searchResultsTableViewController.activePaginator.searchQuery = query
-                self.searchResultsTableViewController.fetchNextPage(firstPage: true)
-            case .localDatasource:
-                self.searchResultsTableViewController.dataSource.filterData(searchQuery: query)
-                self.searchResultsTableViewController.tableView.reloadData()
-            }
+            self.searchResultsTableViewController.fetchResults(query: query)
         }
     }
 
@@ -213,8 +264,9 @@
              with: preSearchViewController,
              into: containerView,
              completion: { [weak self] in
-                 guard let sSelf = self else { return }
-                 sSelf.searchResultsTableViewController.transition(to: sSelf.searchResultsTableViewController.currentState)
+                 guard let self = self else { return }
+                 guard let statefulVC = self.searchResultsTableViewController as? StatefulViewController else { return }
+                 statefulVC.transition(to: statefulVC.currentState)
         })
     }
 
@@ -279,4 +331,4 @@
         if makeSearchBarFirstResponder { searchBar.becomeFirstResponder() }
         searchBar.setShowsCancelButton(searchBar.isFirstResponder, animated: false)
     }
- }
+}

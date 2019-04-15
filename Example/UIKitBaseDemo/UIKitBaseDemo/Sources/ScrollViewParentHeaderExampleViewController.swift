@@ -41,10 +41,10 @@ open class ScrollViewParentHeaderExampleViewController: BaseScrollviewParentView
         super.didFinishCreatingAllViews()
         setupScrollViewHeader()
     }
-    
-    open override func startLoading() {        
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         displayScrollViewHeaderExampleContent()
-//        headerContentDidChange()
     }
     
     

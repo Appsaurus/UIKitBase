@@ -4,17 +4,18 @@ PODS:
   - Algorithm (2.1.1)
   - AssistantKit (0.6.1)
   - CountryPickerSwift (1.8.0)
-  - DarkMagic (0.0.2)
+  - CRuntime (2.0.1)
+  - DarkMagic (0.0.4)
   - DynamicColor (4.0.3)
   - Fakery (3.4.0)
   - IQKeyboardManagerSwift (6.2.1)
-  - Layman (0.1.17):
-    - Layman/Core (= 0.1.17)
-    - Layman/Operators (= 0.1.17)
-    - Layman/Shorthand (= 0.1.17)
-  - Layman/Core (0.1.17)
-  - Layman/Operators (0.1.17)
-  - Layman/Shorthand (0.1.17)
+  - Layman (0.1.18):
+    - Layman/Core (= 0.1.18)
+    - Layman/Operators (= 0.1.18)
+    - Layman/Shorthand (= 0.1.18)
+  - Layman/Core (0.1.18)
+  - Layman/Operators (0.1.18)
+  - Layman/Shorthand (0.1.18)
   - Nuke (7.5.2)
   - Permission (2.0.4):
     - Permission/Core (= 2.0.4)
@@ -37,26 +38,27 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
   - PhoneNumberKit/UIKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - Runtime (0.7.1)
+  - Runtime (2.0.0):
+    - CRuntime
   - RuntimeExtensions (0.1.3):
     - Runtime
   - SwiftDate (6.0.1)
-  - Swiftest (0.0.17)
+  - Swiftest (0.0.18)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
   - SwiftyJSON (4.0.0)
   - SwiftyTimer (2.1.0)
-  - UIFontIcons (0.0.5):
-    - UIFontIcons/Core (= 0.0.5)
-  - UIFontIcons/Core (0.0.5)
-  - UIFontIcons/Feather (0.0.5):
+  - UIFontIcons (0.0.6):
+    - UIFontIcons/Core (= 0.0.6)
+  - UIFontIcons/Core (0.0.6)
+  - UIFontIcons/Feather (0.0.6):
     - UIFontIcons/Core
-  - UIFontIcons/MaterialIcons (0.0.5):
+  - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
-  - UIFontLoader (0.0.2)
-  - UIKitBase/Authentication (0.0.26):
+  - UIFontLoader (0.0.3)
+  - UIKitBase/Authentication (0.0.28):
     - UIKitBase/Forms
-  - UIKitBase/Core (0.0.26):
+  - UIKitBase/Core (0.0.28):
     - Actions
     - Algorithm
     - AssistantKit
@@ -68,44 +70,44 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.26):
+  - UIKitBase/Datasource (0.0.28):
     - UIKitBase/Core
-  - UIKitBase/Forms (0.0.26):
+  - UIKitBase/Forms (0.0.28):
     - ActiveLabel
     - UIKitBase/Core
-    - UIKitBase/Forms/Authentication (= 0.0.26)
-    - UIKitBase/Forms/Date (= 0.0.26)
-    - UIKitBase/Forms/LegalDisclosure (= 0.0.26)
-    - UIKitBase/Forms/Location (= 0.0.26)
-  - UIKitBase/Forms/Authentication (0.0.26):
+    - UIKitBase/Forms/Authentication (= 0.0.28)
+    - UIKitBase/Forms/Date (= 0.0.28)
+    - UIKitBase/Forms/LegalDisclosure (= 0.0.28)
+    - UIKitBase/Forms/Location (= 0.0.28)
+  - UIKitBase/Forms/Authentication (0.0.28):
     - ActiveLabel
     - CountryPickerSwift
     - PhoneNumberKit
     - UIKitBase/Core
-  - UIKitBase/Forms/Date (0.0.26):
+  - UIKitBase/Forms/Date (0.0.28):
     - ActiveLabel
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.26):
+  - UIKitBase/Forms/LegalDisclosure (0.0.28):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Forms/Location (0.0.26):
+  - UIKitBase/Forms/Location (0.0.28):
     - ActiveLabel
     - UIKitBase/Core
     - UIKitBase/Location
-  - UIKitBase/Location (0.0.26):
+  - UIKitBase/Location (0.0.28):
     - Permission/Location
     - SwiftLocation
     - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.26):
+  - UIKitBase/Permission (0.0.28):
     - Permission
     - UIKitBase/Core
-  - UIKitExtensions (0.0.18):
+  - UIKitExtensions (0.0.20):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.17)
-  - UIKitTheme (0.0.8):
+  - UIKitMixinable (0.0.21)
+  - UIKitTheme (0.0.9):
     - DarkMagic
     - DynamicColor
     - Swiftest
@@ -147,6 +149,7 @@ SPEC REPOS:
     - Algorithm
     - AssistantKit
     - CountryPickerSwift
+    - CRuntime
     - DynamicColor
     - Fakery
     - IQKeyboardManagerSwift
@@ -185,10 +188,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DarkMagic:
-    :commit: 0dd7dbb31d16ef1afd4ccc75b1179a54296aaaed
+    :commit: b6e5a19acc048e21d9caa18a95915137f99beb74
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 8b5d800321a01de5a26eda538611b134edc1496e
+    :commit: 31d510b779f7b417351b57be2420e762eac67bf9
     :git: https://github.com/Appsaurus/Layman
   Permission:
     :commit: 8b47d5febe08557e6cb333d7465fd140a9949e56
@@ -197,22 +200,22 @@ CHECKOUT OPTIONS:
     :commit: 5a95171da8ec26a0e5e4531f4d09e1e44616aac5
     :git: https://github.com/Appsaurus/RuntimeExtensions
   Swiftest:
-    :commit: ff4364013a01916776b54638b64e49149dd31455
+    :commit: 48d78074e32b2d95ae097e1e0ffe96ec6ce66c67
     :git: https://github.com/Appsaurus/Swiftest
   UIFontIcons:
-    :commit: 32c0ba69e0f2b232fa3288b6cdd37b63e2f9eb80
+    :commit: c886860737756bd733561febd8767d1cd0ea5382
     :git: https://github.com/Appsaurus/UIFontIcons
   UIFontLoader:
-    :commit: 3bf2b8ee4a0b0570219089ee333a7d6913d720d6
+    :commit: ee7c29b18ce3d39a4f683a1475831579d32b5dce
     :git: https://github.com/Appsaurus/UIFontLoader
   UIKitExtensions:
-    :commit: 7688c2ed51a03266be87048c0f1c3956240547d7
+    :commit: 1371b88d99a1328de4cd34c76a8283c1373fe26d
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: eb006e2d9ba206e9580236547ab2cee465de1541
+    :commit: 8f32d29e49c3e2e5f7ccce285a787aa2f182ddaa
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: 4115c77a3952135e458def53e32b4788fa839b1b
+    :commit: dc56e5865b60044b839520aa88289f0feb3454d5
     :git: https://github.com/Appsaurus/UIKitTheme
 
 SPEC CHECKSUMS:
@@ -221,28 +224,29 @@ SPEC CHECKSUMS:
   Algorithm: 0fe78be3f31f85e857089685477862bcf20393b8
   AssistantKit: 7dd40c019e9a06e93555ed58498a2d212fcb408d
   CountryPickerSwift: 4c328ae9687322cacf541120f5c43f0e2c1ba194
-  DarkMagic: b71093ea6606dd5737eca437e63aa8a30db213b5
+  CRuntime: d241c1ed31e585333fcf6226b639d043ec7b6b37
+  DarkMagic: ccb2f3da6cd0b07b96cd44b3033d998dd6a8cddd
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Fakery: 885e894a3e7c392e1da96c6e46a1abe5a0b28686
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
-  Layman: 2c21001d6c2cdd8739f2db1b3b395f9eb96d366e
+  Layman: 558e480982c4fce392d67357c07cfbca5445dfe6
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   Permission: c53c7235f14d76cd2851364df0a7cf05b464037f
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
-  Runtime: 6b152eab4773d494041afe5480a84c91d86961b9
+  Runtime: f767872e56015ec545d2eb2f016ac35329821458
   RuntimeExtensions: 71a3b436fa3cdc1cf9bd5624a5c74c8a77f7ee3c
   SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
-  Swiftest: b881cb1efb87a569d13b994af6f3a2907e801c5b
+  Swiftest: 408f5c420196665271cf1cf2a81b6cb1839998c1
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
-  UIFontIcons: f6a308237962058fde493d669d797cdf57ce02c3
-  UIFontLoader: f4e97bbbfdd736f1807c8ca99369895420bea937
-  UIKitBase: 31f0ebbf4b8d48f992ae19446194fa01c66bbf2b
-  UIKitExtensions: 1801f9eab3f7dc4865f31933565b800cbc5ee97c
-  UIKitMixinable: 2c020ca387d287afde028bb1e108c3f5fc4f7d50
-  UIKitTheme: 93bca465985d42017d2de18a99f1a33feb5e0f60
+  UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
+  UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
+  UIKitBase: 98521b1408abf12af4a709503c55a2a49e5ac88d
+  UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
+  UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
+  UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
 PODFILE CHECKSUM: de3978a893cae2b0e32b74fe02fc8235024d8469
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

@@ -47,12 +47,8 @@ public protocol StatefulViewController: AnyObject {
     var statefulSuperview: UIView { get }
     var stateMachine: ViewStateMachine { get set }
     var logsStateTransitions: Bool { get set }
+    var onDidTransitionMixins: [(State) -> Void] { get set }
 
-    // Hook to insert custom logic for first load instead of viewDidLoad.
-    // Does not apply to UIViews that adopt protocol.
-    func startLoading()
-
-    func statefulViewControllerDidLoad()
     func createViewStateMachine() -> ViewStateMachine
     func customizeStatefulViews()
     func createStatefulViews() -> StatefulViewMap
@@ -70,6 +66,7 @@ private extension AssociatedObjectKeys {
     static let stateMachine = AssociatedObjectKey<ViewStateMachine>("stateMachine")
     static let logsStateTransitions = AssociatedObjectKey<Bool>("logsStateTransitions")
     static let initialState = AssociatedObjectKey<State>("initialState")
+    static let onDidTransitionMixins = AssociatedObjectKey<[(State) -> Void]>("onDidTransitionMixins")
 }
 
 // MARK: Default Implementation StatefulViewController
@@ -103,6 +100,15 @@ extension StatefulViewController where Self: NSObject {
         }
     }
 
+    public var onDidTransitionMixins: [(State) -> Void] {
+        get {
+            return self[.onDidTransitionMixins, []]
+        }
+        set {
+            self[.onDidTransitionMixins] = newValue
+        }
+    }
+
     // MARK: Transitioning
 
     public func transitionToInitialState() {
@@ -126,22 +132,6 @@ extension StatefulViewController {
         return stateMachine.previousState
     }
 
-    public func setupStatefulViews() {
-        customizeStatefulViews()
-    }
-
-    public func statefulViewControllerDidLoad() {
-        setupStatefulViews()
-        loadIfNeeded()
-    }
-
-    public func loadIfNeeded() {
-        if currentState == .uninitialized {
-            transitionToInitialState()
-            startLoading()
-        }
-    }
-
     public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
         DispatchQueue.mainSyncSafe {
             self.willTransition(to: state)
@@ -151,7 +141,7 @@ extension StatefulViewController {
             self.stateMachine.transition(to: state, completion: completion)
 
             self.didTransition(to: state)
-
+            self.onDidTransitionMixins.forEach { $0(state) }
             if self.logsStateTransitions {
                 debugLog("\(String(describing: self)) Did transition to: \(state)")
             }
@@ -183,8 +173,6 @@ extension StatefulViewController where Self: UIView {
     public var logsStateTransitions: Bool {
         return false
     }
-
-    public func startLoading() {}
 }
 
 extension StatefulViewController where Self: UIViewController {
@@ -209,16 +197,19 @@ public extension Array where Element: UIViewController {
 
 public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewController> {
     open override func viewDidLoad() {
-        mixable.statefulViewControllerDidLoad()
+        mixable.customizeStatefulViews()
+        loadInitialStateIfNeeded()
     }
 
-//    @objc open func viewWillAppear(_ animated: Bool) {
-//        mixable.statefulViewControllerWillAppear()
-//    }
+    open func loadInitialStateIfNeeded() {
+        if mixable.currentState == .uninitialized {
+            mixable.transitionToInitialState()
+        }
+    }
 }
 
 public class StatefulViewMixin: UIViewMixin<StatefulViewController> {
     open override func didFinishCreatingAllViews() {
-        mixable.setupStatefulViews()
+        mixable.customizeStatefulViews()
     }
 }

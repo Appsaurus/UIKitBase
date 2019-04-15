@@ -74,8 +74,6 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
 
     // MARK: StatefulViewController
 
-    open func startLoading() {}
-
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {

@@ -16,7 +16,7 @@ import Layman
 open class ExampleFormViewController: FormTableViewController{
     let firstNameField = NameTextField(fieldName: "First")
     let lastNameField = NameTextField(fieldName: "Last")
-    let locationField = FormLocationField<MaterialTextField>(fieldName: "Location")
+//    let locationField = FormLocationField<MaterialTextField>(fieldName: "Location")
 	let dateField = DatePickerFormField<MaterialTextField>(fieldName: "Birthdate").then { (field) in
 		field.maxDate = Date() - 21.years
 	}
@@ -35,7 +35,7 @@ open class ExampleFormViewController: FormTableViewController{
         return Form(fields: [firstNameField,
                              lastNameField,
                              dateField,
-                             locationField,
+//                             locationField,
                              disabledField,
                              readOnlyField
                              ])

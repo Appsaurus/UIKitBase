@@ -41,9 +41,9 @@ open class ExampleNeedsLoadingIndicatorTableViewController: ExamplePaginatableTa
 		super.createSubviews()
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: autoLoadSwitch)
 	}
-	open override func startLoading() {
-		super.startLoading()
 
+    open override func viewDidLoad() {
+        super.viewDidLoad()
 		timer.start()
 		titleUpdater.start()
 	}
@@ -53,12 +53,12 @@ open class ExampleNeedsLoadingIndicatorTableViewController: ExamplePaginatableTa
 		self.title = timeLeft > 0 ? String(timeLeft.rounded(numberOfDecimalPlaces: 1)) : "Times up!"
 	}
 
-	open override func didReload(){
-		super.didReload()
-
-		timer = buildTimer()
-		timer.start()
-	}
+//    open override func didReload(){
+//        super.didReload()
+//
+//        timer = buildTimer()
+//        timer.start()
+//    }
 
 
 

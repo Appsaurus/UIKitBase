@@ -10,9 +10,12 @@ import Foundation
 import UIKitBase
 
 
-open class ExampleSearchViewController: SearchViewController<ExampleObject>{
-    open override lazy var searchDataSource: SearchDataSource = .localDatasource
-    open override lazy var searchBarPosition: SearchBarPosition = .navigationTitle
-    open override lazy var searchResultsTableViewController: PaginatableTableViewController<ExampleObject> = ExamplePaginatableTableViewController()
+open class ExampleSearchViewController: SearchViewController {
+    open override func initProperties() {
+        super.initProperties()
+        searchBarPosition = .navigationTitle
+        searchResultsTableViewController = ExamplePaginatableTableViewController()
+        searchResultsTableViewController.searchDataSourceType = .local
+    }
     
 }
