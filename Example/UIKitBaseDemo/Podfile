@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 def common_pods
     pod 'Swiftest', :git => 'https://github.com/Appsaurus/Swiftest'
@@ -27,12 +27,12 @@ def common_pods
     pod 'IQKeyboardManagerSwift'
 
     # Permissions
-    pod 'Permission/Camera', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
-    pod 'Permission/Contacts', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
-    pod 'Permission/Microphone', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
-    pod 'Permission/Notifications', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
-    pod 'Permission/Photos', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
-    pod 'Permission/Location', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Camera', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'Permission/Contacts', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'Permission/Microphone', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'Permission/Notifications', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'Permission/Photos', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'Permission/Location', :git => 'https://github.com/Appsaurus/Permission'
 
 end
 
