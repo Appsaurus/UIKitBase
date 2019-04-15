@@ -14,29 +14,31 @@ import Swiftest
 
 public class ExampleStepProcessPagingMenuViewController: StepProcessPagingMenuViewController {
 
-
     override open func createPagedViewControllers() -> [UIViewController] {
         return self.stepViewControllers
     }
 
-	open override lazy var automaticallyPageToNextStep: Bool = true
-	open override lazy var stepModels: [StepProcessMenuStepViewModel] = {
-		var firstStep = StepProcessMenuStepViewModel(stepTitle: "Do first\nthing")
-		var secondStep = StepProcessMenuStepViewModel(stepTitle: "Do second\nthing")
-		var thirdStep = StepProcessMenuStepViewModel(stepTitle: "Do first\nthing first")
-		var fourthStep = StepProcessMenuStepViewModel(stepTitle: "And\nthis")
 
-		thirdStep.prerequisiteSteps = [firstStep]
-		return [firstStep, secondStep, thirdStep, fourthStep]
-	}()
+    internal lazy var stepViewControllers: [ExampleStepViewController] = {
+        var pages: [ExampleStepViewController] = []
+        stepModels.count.times {
+            pages.append(ExampleStepViewController())
+        }
+        return pages
+    }()
 
-	internal lazy var stepViewControllers: [ExampleStepViewController] = {
-		var pages: [ExampleStepViewController] = []
-		stepModels.count.times {
-			pages.append(ExampleStepViewController())
-		}
-		return pages
-	}()
+    open override func initProperties() {
+        super.initProperties()
+        automaticallyPageToNextStep = true
+        stepModels = {
+            let firstStep = StepProcessMenuStepViewModel(stepTitle: "Do first\nthing")
+            let secondStep = StepProcessMenuStepViewModel(stepTitle: "Do second\nthing")
+            let thirdStep = StepProcessMenuStepViewModel(stepTitle: "Do first\nthing first")
+            let fourthStep = StepProcessMenuStepViewModel(stepTitle: "And\nthis")
+            thirdStep.prerequisiteSteps = [firstStep]
+            return [firstStep, secondStep, thirdStep, fourthStep]
+        }()
+    }
 
 	open override func setupControlActions() {
 		super.setupControlActions()

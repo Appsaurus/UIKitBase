@@ -102,7 +102,7 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator {
     }
 
     open func barItemTapped(sender: CustomTabBarItemView) {
-        let index = items.index(of: sender)!
+        let index = items.firstIndex(of: sender)!
         guard delegate?.customTabBar(self, shouldSelectItemAtIndex: index) == true else { return }
         userDidSelectCollectionMenuItem(at: IndexPath(item: index, section: 0))
     }

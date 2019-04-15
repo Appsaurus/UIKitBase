@@ -120,7 +120,7 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
     }
 
     open func transitionToPage(of viewController: UIViewController) {
-        guard let index = pagedViewControllers.index(of: viewController) else {
+        guard let index = pagedViewControllers.firstIndex(of: viewController) else {
             debugLog("Attempted to page to vc not in page index")
             return
         }
@@ -134,7 +134,7 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
 
     open func pageViewController(_ pageViewController: UIPageViewController,
                                  viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pagedViewControllers.index(of: viewController) else {
+        guard let viewControllerIndex = pagedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
 
@@ -152,7 +152,7 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
     }
 
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pagedViewControllers.index(of: viewController) else {
+        guard let viewControllerIndex = pagedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
 

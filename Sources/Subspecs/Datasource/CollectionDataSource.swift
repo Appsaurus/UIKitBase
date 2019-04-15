@@ -20,8 +20,6 @@ open class CollectionDataSource<Value: Equatable>: SectionedCollectionDataSource
 open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable> {
     public init() {}
 
-    open class Section<SectionKey, Value> {}
-
     open private(set) var searchQuery: String?
     open var filterApplied: Bool {
         return searchQuery != nil

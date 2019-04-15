@@ -103,7 +103,7 @@ public extension SearchResultsDisplaying where Self: NSObject {
 
 public typealias SearchResultsViewController = UIViewController & SearchResultsDisplaying
 
-public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaging {
+public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaged {
     func fetchResults(query: String?) {
         guard let query = query else {
             switch searchDataSourceType {

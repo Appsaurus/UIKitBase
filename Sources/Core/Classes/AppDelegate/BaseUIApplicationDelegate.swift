@@ -63,9 +63,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
                                      withCompletionHandler completionHandler: @escaping () -> Void) {
         userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
-        }, completionHandler: { _ in
-            completionHandler()
-        })
+        }, completionHandler: completionHandler)
     }
 
     // The method will be called on the delegate when the application is launched in response to the user's request to view in-app notification settings. Add UNAuthorizationOptionProvidesAppNotificationSettings as an option in requestAuthorizationWithOptions:completionHandler: to add a button to inline notification settings view and the notification settings view in Settings. The notification will be nil when opened from Settings.
@@ -148,6 +146,8 @@ extension AppIOManager {
             self.application(application, didRecieveNotificationWhileActive: notification)
         case .inactive, .background: // App was opened via notification
             self.application(application, didLaunchFrom: notification)
+        @unknown default:
+            break
         }
     }
 
@@ -223,10 +223,6 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         application.registerForRemoteNotifications()
     }
 
-    open func uiUserNotificationSettings() -> UIUserNotificationSettings {
-        return UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-    }
-
     open func unAuthorizationOptions() -> UNAuthorizationOptions {
         return [.alert, .badge, .sound]
     }
@@ -267,9 +263,7 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
 
     open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Unifying notification methods
-        if let localNotification = launchOptions?[.localNotification] as? UILocalNotification, let userInfo = localNotification.userInfo {
-            mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .local))
-        } else if let remoteNotification = launchOptions?[.remoteNotification] as? [NSObject: AnyObject] {
+        if let remoteNotification = launchOptions?[.remoteNotification] as? [NSObject: AnyObject] {
             mixable.application(application, didRecieve: BaseAppNotification(payload: remoteNotification, origin: .remote))
         }
         return true

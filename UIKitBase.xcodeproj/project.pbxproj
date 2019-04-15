@@ -181,14 +181,6 @@
 		E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
 		E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
 		E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
-		E41D714D224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
-		E41D714E224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
-		E41D714F224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
-		E41D7150224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */; };
-		E41D7151224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
-		E41D7152224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
-		E41D7153224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
-		E41D7154224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */; };
 		E41D7155224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
 		E41D7156224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
 		E41D7157224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
@@ -429,6 +421,14 @@
 		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E430836F226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
+		E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
+		E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
+		E4308372226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
+		E4308374226514AC0032CD17 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4308373226514AC0032CD17 /* PaginationManager.swift */; };
+		E4308375226514AC0032CD17 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4308373226514AC0032CD17 /* PaginationManager.swift */; };
+		E4308376226514AC0032CD17 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4308373226514AC0032CD17 /* PaginationManager.swift */; };
+		E4308377226514AC0032CD17 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4308373226514AC0032CD17 /* PaginationManager.swift */; };
 		E466AC38224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
 		E466AC39224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
 		E466AC3A224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */; };
@@ -437,10 +437,6 @@
 		E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
-		E48F497522612E8E0004408D /* PaginatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F497422612E8E0004408D /* PaginatingTableViewController.swift */; };
-		E48F497622612E8E0004408D /* PaginatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F497422612E8E0004408D /* PaginatingTableViewController.swift */; };
-		E48F497722612E8E0004408D /* PaginatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F497422612E8E0004408D /* PaginatingTableViewController.swift */; };
-		E48F497822612E8E0004408D /* PaginatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F497422612E8E0004408D /* PaginatingTableViewController.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -784,8 +780,6 @@
 		E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierAndPasswordAuthController.swift; sourceTree = "<group>"; };
 		E41D7107224D5FB300CA05C4 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
-		E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatableTableViewController.swift; sourceTree = "<group>"; };
-		E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatableCollectionViewController.swift; sourceTree = "<group>"; };
 		E41D7132224D651300CA05C4 /* PaginationManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationManaged.swift; sourceTree = "<group>"; };
 		E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+LoadingControls.swift"; sourceTree = "<group>"; };
 		E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedsLoadingIndicatorView.swift; sourceTree = "<group>"; };
@@ -847,11 +841,12 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E430836E226514580032CD17 /* PaginationManagedMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManagedMixin.swift; sourceTree = "<group>"; };
+		E4308373226514AC0032CD17 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		E442FFCF22527A1D0007E691 /* AuthIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuthIcons.ttf; sourceTree = "<group>"; };
 		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
 		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
 		E466AC45224EC1A700CA54F4 /* config.swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.swiftformat; sourceTree = "<group>"; };
-		E48F497422612E8E0004408D /* PaginatingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatingTableViewController.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1339,10 +1334,9 @@
 		E41D712F224D651300CA05C4 /* Pagination */ = {
 			isa = PBXGroup;
 			children = (
-				E41D7130224D651300CA05C4 /* PaginatableTableViewController.swift */,
-				E41D7131224D651300CA05C4 /* PaginatableCollectionViewController.swift */,
 				E41D7132224D651300CA05C4 /* PaginationManaged.swift */,
-				E48F497422612E8E0004408D /* PaginatingTableViewController.swift */,
+				E430836E226514580032CD17 /* PaginationManagedMixin.swift */,
+				E4308373226514AC0032CD17 /* PaginationManager.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -2296,12 +2290,12 @@
 				E4AF80EF21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
 				E41D70B4224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
 				E41D71CC224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
+				E4308376226514AC0032CD17 /* PaginationManager.swift in Sources */,
 				E4AF810B21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
 				E41D70A0224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
 				E41D71F6224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
 				E41D7287224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F421BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
-				E41D714F224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CF21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E41D7193224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
 				E41D72A9224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
@@ -2372,7 +2366,6 @@
 				E41D7173224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
 				E41D70BC224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CB21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
-				E41D7153224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
 				E41D71F2224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
 				E41D719B224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
 				E41D72BC224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
@@ -2397,7 +2390,6 @@
 				E41D70F0224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7298224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
-				E48F497722612E8E0004408D /* PaginatingTableViewController.swift in Sources */,
 				E41D7282224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2409,6 +2401,7 @@
 				E41D70C4224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
 				E41D71D4224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B4224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D7268224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B8224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D4224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
@@ -2479,12 +2472,12 @@
 				E4AF80F021BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
 				E41D70B5224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
 				E41D71CD224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
+				E4308377226514AC0032CD17 /* PaginationManager.swift in Sources */,
 				E4AF810C21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
 				E41D70A1224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
 				E41D71F7224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
 				E41D7288224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
-				E41D7150224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80D021BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E41D7194224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
 				E41D72AA224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
@@ -2555,7 +2548,6 @@
 				E41D7174224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
 				E41D70BD224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
-				E41D7154224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
 				E41D71F3224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
 				E41D719C224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
 				E41D72BD224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
@@ -2580,7 +2572,6 @@
 				E41D70F1224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7299224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
-				E48F497822612E8E0004408D /* PaginatingTableViewController.swift in Sources */,
 				E41D7283224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811C21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808C21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2592,6 +2583,7 @@
 				E41D70C5224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
 				E41D71D5224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B5224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E4308372226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D7269224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B9224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
@@ -2653,12 +2645,12 @@
 				E4AF80ED21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
 				E41D70B2224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
 				E41D71CA224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
+				E4308374226514AC0032CD17 /* PaginationManager.swift in Sources */,
 				E4AF810921BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
 				E41D709E224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
 				E41D71F4224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
 				E41D7285224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F221BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
-				E41D714D224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CD21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E41D7191224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
 				E41D72A7224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
@@ -2729,7 +2721,6 @@
 				E41D7171224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
 				E41D70BA224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80C921BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
-				E41D7151224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
 				E41D71F0224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
 				E41D7199224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
 				E41D72BA224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
@@ -2754,7 +2745,6 @@
 				E41D70EE224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7296224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
-				E48F497522612E8E0004408D /* PaginatingTableViewController.swift in Sources */,
 				E41D7280224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811921BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808921BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2766,6 +2756,7 @@
 				E41D70C2224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
 				E41D71D2224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B2224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E430836F226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D7266224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B6224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D2224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
@@ -2836,12 +2827,12 @@
 				E4AF80EE21BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
 				E41D70B3224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
 				E41D71CB224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
+				E4308375226514AC0032CD17 /* PaginationManager.swift in Sources */,
 				E4AF810A21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
 				E41D709F224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
 				E41D71F5224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
 				E41D7286224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F321BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
-				E41D714E224D651300CA05C4 /* PaginatableTableViewController.swift in Sources */,
 				E4AF80CE21BB2D90002D6E86 /* DeepLinkHandlerMixin.swift in Sources */,
 				E41D7192224D651300CA05C4 /* GIFRefreshAnimator.swift in Sources */,
 				E41D72A8224D7D7D00CA05C4 /* AppStyleGuideExtensions.swift in Sources */,
@@ -2912,7 +2903,6 @@
 				E41D7172224D651300CA05C4 /* NormalRefreshAnimator.swift in Sources */,
 				E41D70BB224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CA21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
-				E41D7152224D651300CA05C4 /* PaginatableCollectionViewController.swift in Sources */,
 				E41D71F1224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
 				E41D719A224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
 				E41D72BB224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
@@ -2937,7 +2927,6 @@
 				E41D70EF224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7297224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
-				E48F497622612E8E0004408D /* PaginatingTableViewController.swift in Sources */,
 				E41D7281224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2949,6 +2938,7 @@
 				E41D70C3224D5F5B00CA05C4 /* CodeInputFormField.swift in Sources */,
 				E41D71D3224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B3224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
+				E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D7267224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B7224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D3224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
@@ -3025,6 +3015,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-tvOS";
 				PRODUCT_NAME = UIKitBase;
@@ -3032,7 +3023,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3056,12 +3047,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-tvOS";
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3080,13 +3072,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-tvOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3105,11 +3098,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-tvOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -3134,6 +3128,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-watchOS";
 				PRODUCT_NAME = UIKitBase;
@@ -3141,7 +3136,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -3166,12 +3161,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-watchOS";
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -3225,7 +3221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3279,7 +3275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -3303,12 +3299,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-iOS";
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3324,11 +3320,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-iOS";
 				PRODUCT_NAME = UIKitBase;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3343,11 +3339,12 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-iOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UIKitBaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3362,10 +3359,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-iOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.UIKitBaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3382,6 +3380,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-macOS";
@@ -3389,7 +3388,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3406,13 +3405,14 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Info/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.UIKitBase.demo.UIKitBase-macOS";
 				PRODUCT_NAME = UIKitBase;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3427,12 +3427,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-macOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3447,12 +3448,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIKitBaseTests/Info-macOS-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.UIKitBase-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -67,7 +67,7 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
 
     open func nextAvailbleStepIndex(after index: Int = -1) -> Int? {
         guard let step = nextAvailableStep(after: index) else { return nil }
-        return stepModels.index(of: step)
+        return stepModels.firstIndex(of: step)
     }
 
     open func nextAvailableStep(after index: Int = -1) -> StepProcessMenuStepViewModel? {
@@ -90,7 +90,7 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
     open func hintUncompletedSteps(steps: [StepProcessMenuStepViewModel]? = nil) {
         let steps = steps ?? stepModels.filter { !$0.complete }
         steps.forEach { step in
-            guard let index = stepModels.index(where: { $0 === step })?.indexPath,
+            guard let index = stepModels.firstIndex(where: { $0 === step })?.indexPath,
                 let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell else {
                 return
             }

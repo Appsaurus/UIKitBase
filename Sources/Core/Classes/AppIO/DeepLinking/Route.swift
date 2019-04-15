@@ -6,7 +6,6 @@
 //
 
 import UIKit
-// swiftlint:disable force_try legacy_hashing
 open class Route {
     enum Pattern: String {
         case RouteParam = ":[a-zA-Z0-9-_]+"
@@ -27,8 +26,10 @@ open class Route {
         }
     }
 
+    // swiftlint:disable force_try
     let routeParameter = try! NSRegularExpression(pattern: .RouteParam, options: .caseInsensitive)
     let urlParameter = try! NSRegularExpression(pattern: .UrlParam, options: .caseInsensitive)
+    // swiftlint:enable force_try
 
     // parameterized route, ie: /video/:id
     public let route: String
@@ -97,8 +98,8 @@ open class Route {
 // MARK: Hashable
 
 extension Route: Hashable {
-    public var hashValue: Int {
-        return route.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(route)
     }
 }
 

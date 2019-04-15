@@ -58,7 +58,7 @@ extension UIScrollView {
     }
 }
 
-extension PaginationManaging where Self: UIViewController {
+extension PaginationManaged where Self: UIViewController {
     public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil) {
         let shouldLoad = reloadTest?() ?? (currentState == .empty || !isCurrentlyVisibleToUser)
         guard shouldLoad else {

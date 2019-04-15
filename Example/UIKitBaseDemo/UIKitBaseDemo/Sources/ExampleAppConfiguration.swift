@@ -11,29 +11,32 @@ import UIKitBase
 import UIKitBase
 
 public class ExampleAppConfiguration: AppConfiguration{
-	override public lazy var style: AppStyleGuide = SemyStyleGuide()
+    public override func didInit() {
+        super.didInit()
+        style = ExampleStyleGuide()
+    }
 }
 
 
 
 //MARK: Example
 
-open class SemyColorScheme: ColorScheme{
+open class ExampleColorScheme: ColorScheme{
     
-    internal var s: SemyColorScheme.Type{
-        return SemyColorScheme.self
+    internal var s: ExampleColorScheme.Type{
+        return ExampleColorScheme.self
     }
     open override func overrideStoredDefaults(){
         super.overrideStoredDefaults()
         primary = s.mintMojitoGreen
         secondary = s.strawberryDaiquiriRed
         primaryContrast = s.whiteRussian
-        neutrals = SemyNeutralsColorScheme()
-        text = SemyTextColorScheme()
-        functional = SemyFunctionalColorScheme()
+        neutrals = ExampleNeutralsColorScheme()
+        text = ExampleTextColorScheme()
+        functional = ExampleFunctionalColorScheme()
     }
 
-	open class SemyNeutralsColorScheme: NeutralColorScheme{
+	open class ExampleNeutralsColorScheme: NeutralColorScheme{
         
         open override func overrideStoredDefaults() {
             super.overrideStoredDefaults()
@@ -47,7 +50,7 @@ open class SemyColorScheme: ColorScheme{
     
 	}
 
-	open class SemyTextColorScheme: NeutralTextColorScheme{
+	open class ExampleTextColorScheme: NeutralTextColorScheme{
         
         open override func overrideStoredDefaults() {
             super.overrideStoredDefaults()
@@ -60,7 +63,7 @@ open class SemyColorScheme: ColorScheme{
         }
 	}
 
-	open class SemyFunctionalColorScheme: FunctionalColorScheme{
+	open class ExampleFunctionalColorScheme: FunctionalColorScheme{
         
         open override func overrideStoredDefaults() {
             super.overrideStoredDefaults()
@@ -104,20 +107,30 @@ open class SemyColorScheme: ColorScheme{
 
 }
 
-open class SemyVendorColorScheme: SemyColorScheme{
-	open override lazy var primary: UIColor = s.whiteRussian
+open class ExampleVendorColorScheme: ExampleColorScheme{
+    open override func overrideStoredDefaults() {
+        super.overrideStoredDefaults()
+        primary = s.whiteRussian
+    }
 }
 
-open class SemyStyleGuide: AppStyleGuide{
-	open override lazy var colors: ColorScheme = SemyColorScheme()
-	open override lazy var typography: TypographyGuide = SemyTypographyGuide()
+open class ExampleStyleGuide: AppStyleGuide{
+
+    open override func overrideStoredDefaults() {
+        super.overrideStoredDefaults()
+        colors = ExampleColorScheme()
+        typography = ExampleTypographyGuide()
+    }
 }
 
-open class SemyTypographyGuide: TypographyGuide{
-	open override lazy var fonts: FontGuide = SemyFontGuide()
+open class ExampleTypographyGuide: TypographyGuide{
+    open override func overrideStoredDefaults() {
+        super.overrideStoredDefaults()
+        fonts = ExampleFontGuide()
+    }
 }
 
-open class SemyFontGuide: FontGuide{
+open class ExampleFontGuide: FontGuide{
 //	open override lazy var thinName: String? = "Wavehaus-28Thin"
 //	open override lazy var lightName: String? = "Wavehaus-42Light"
 //	open override lazy var regularName: String? = "Wavehaus-66Book"

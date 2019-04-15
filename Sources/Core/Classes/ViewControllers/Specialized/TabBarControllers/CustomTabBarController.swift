@@ -159,7 +159,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
     // MARK: Convenience
 
     open func transition(to childViewController: UIViewController) {
-        guard let index = childViewController.tabBarItem?.tag ?? viewControllers?.index(of: childViewController),
+        guard let index = childViewController.tabBarItem?.tag ?? viewControllers?.firstIndex(of: childViewController),
             index != selectedIndex else { return }
         selectedIndex = index
     }

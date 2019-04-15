@@ -34,11 +34,13 @@ public class ExampleCustomTabBarController: CustomTabBarController {
 		vc.tabBarItem = UITabBarItem.item(withIcon: MaterialIcons.Airline_Seat_Flat, selectedIcon: MaterialIcons.Airline_Seat_Flat_Angled, title: "TAB 5")
 	}
 
-	override open lazy var initialViewControllers: [UIViewController] = [vc1, vc2, vc3, vc4, vc5]
+    open override func initProperties() {
+        super.initProperties()
+        initialViewControllers = [vc1, vc2, vc3, vc4, vc5]
+        customTabBar = ExampleCustomTabBar(datasource: self, delegate: self)
+        initialSelectedIndex = 2
+    }
 
-	override open lazy var customTabBar: CustomTabBar = ExampleCustomTabBar(datasource: self, delegate: self)
-
-	override open lazy var initialSelectedIndex: Int? = 2
 //	open override lazy var tabBarLayout: CustomTabBarLayout = CustomTabBarLayout.left(width: 50.0)
 
 	public override func tabBarItemViewForItem(at index: Int) -> CustomTabBarItemView {
@@ -63,11 +65,14 @@ public class ExampleCustomTabBarController: CustomTabBarController {
 }
 
 public class ExampleCustomTabBar: CustomTabBar{
-	open override lazy var selectionIndicatorView: UIView? = PassThroughView().then { (v) in
-		v.backgroundColor = .clear
-		v.borderColor = .black
-		v.borderWidth = 4.0
-	}
+    open override func initProperties() {
+        super.initProperties()
+        selectionIndicatorView = PassThroughView().then { (v) in
+            v.backgroundColor = .clear
+            v.borderColor = .black
+            v.borderWidth = 4.0
+        }
+    }
 }
 
 public class ExampleCustomTabBarItemView: CustomTabBarItemView{
