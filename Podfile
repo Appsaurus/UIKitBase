@@ -27,7 +27,7 @@ def libaryShared
     pod 'CountryPickerSwift'
     pod 'PhoneNumberKit'
 
-    pod 'Permission/Location', :git => 'https://github.com/pahmed/Permission/', :branch => 'swift4.2' #Temp until main repo merges
+    pod 'Permission/Location', :git => 'https://github.com/Appsaurus/Permission'
 end
 
 def testShared

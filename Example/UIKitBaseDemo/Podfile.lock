@@ -8,13 +8,13 @@ PODS:
   - DynamicColor (4.0.3)
   - Fakery (3.4.0)
   - IQKeyboardManagerSwift (6.2.1)
-  - Layman (0.1.18):
-    - Layman/Core (= 0.1.18)
-    - Layman/Operators (= 0.1.18)
-    - Layman/Shorthand (= 0.1.18)
-  - Layman/Core (0.1.18)
-  - Layman/Operators (0.1.18)
-  - Layman/Shorthand (0.1.18)
+  - Layman (0.1.19):
+    - Layman/Core (= 0.1.19)
+    - Layman/Operators (= 0.1.19)
+    - Layman/Shorthand (= 0.1.19)
+  - Layman/Core (0.1.19)
+  - Layman/Operators (0.1.19)
+  - Layman/Shorthand (0.1.19)
   - Nuke (7.6.1)
   - Permission (2.2.0):
     - Permission/Core (= 2.2.0)
@@ -35,7 +35,7 @@ PODS:
     - CRuntime
   - RuntimeExtensions (0.1.3):
     - Runtime
-  - SwiftDate (6.0.1)
+  - SwiftDate (6.0.2)
   - Swiftest (0.0.18)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
@@ -49,9 +49,9 @@ PODS:
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
   - UIFontLoader (0.0.3)
-  - UIKitBase/Authentication (0.0.33):
+  - UIKitBase/Authentication (0.0.34):
     - UIKitBase/Forms/Core
-  - UIKitBase/Core (0.0.33):
+  - UIKitBase/Core (0.0.34):
     - Actions
     - Algorithm
     - AssistantKit
@@ -63,22 +63,22 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.33):
+  - UIKitBase/Datasource (0.0.34):
     - UIKitBase/Core
-  - UIKitBase/Forms/Core (0.0.33):
+  - UIKitBase/Forms/Core (0.0.34):
     - UIKitBase/Core
-  - UIKitBase/Forms/Date (0.0.33):
+  - UIKitBase/Forms/Date (0.0.34):
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.33):
+  - UIKitBase/Forms/LegalDisclosure (0.0.34):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Location (0.0.33):
+  - UIKitBase/Location (0.0.34):
     - Permission/Location
     - SwiftLocation
     - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.33):
+  - UIKitBase/Permission (0.0.34):
     - Permission
     - UIKitBase/Core
   - UIKitExtensions (0.0.20):
@@ -167,7 +167,7 @@ CHECKOUT OPTIONS:
     :commit: b6e5a19acc048e21d9caa18a95915137f99beb74
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 31d510b779f7b417351b57be2420e762eac67bf9
+    :commit: 140f0792b9d5908a5c5ce028fd04a0a7d7f4bdd4
     :git: https://github.com/Appsaurus/Layman
   Permission:
     :commit: 651883c3bf54fb09034ded7f9021e94201f6b824
@@ -204,19 +204,19 @@ SPEC CHECKSUMS:
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Fakery: 885e894a3e7c392e1da96c6e46a1abe5a0b28686
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
-  Layman: 558e480982c4fce392d67357c07cfbca5445dfe6
+  Layman: 42da60e84192d3f4d293b807f657a1608caff48f
   Nuke: d0782693c570cb4f79e2a187859ef7f06f19365d
   Permission: f6452f9050020b58abe246b94100e6c0ff6af97c
   Runtime: f767872e56015ec545d2eb2f016ac35329821458
   RuntimeExtensions: 71a3b436fa3cdc1cf9bd5624a5c74c8a77f7ee3c
-  SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
+  SwiftDate: bbed9b23bfec599bd62b9a305afc554f7bd0eb6f
   Swiftest: 408f5c420196665271cf1cf2a81b6cb1839998c1
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
-  UIKitBase: dee51d7514cbc56f85c427c4529c9df5a2bcfb43
+  UIKitBase: eb1be777972267b5411111ea3064058a92765efa
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
   UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4

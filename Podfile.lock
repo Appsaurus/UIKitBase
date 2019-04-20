@@ -16,8 +16,8 @@ PODS:
   - Layman/Operators (0.1.18)
   - Layman/Shorthand (0.1.18)
   - Nuke (7.5.2)
-  - Permission/Core (2.0.4)
-  - Permission/Location (2.0.4):
+  - Permission/Core (2.2.0)
+  - Permission/Location (2.2.0):
     - Permission/Core
   - PhoneNumberKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
@@ -57,7 +57,7 @@ DEPENDENCIES:
   - DarkMagic (from `https://github.com/Appsaurus/DarkMagic`)
   - Layman (from `https://github.com/Appsaurus/Layman`)
   - Nuke
-  - Permission/Location (from `https://github.com/pahmed/Permission/`, branch `swift4.2`)
+  - Permission/Location (from `https://github.com/Appsaurus/Permission`)
   - PhoneNumberKit
   - SwiftDate
   - Swiftest (from `https://github.com/Appsaurus/Swiftest`)
@@ -95,8 +95,7 @@ EXTERNAL SOURCES:
   Layman:
     :git: https://github.com/Appsaurus/Layman
   Permission:
-    :branch: swift4.2
-    :git: https://github.com/pahmed/Permission/
+    :git: https://github.com/Appsaurus/Permission
   Swiftest:
     :git: https://github.com/Appsaurus/Swiftest
   SwiftTestUtils:
@@ -124,8 +123,8 @@ CHECKOUT OPTIONS:
     :commit: 31d510b779f7b417351b57be2420e762eac67bf9
     :git: https://github.com/Appsaurus/Layman
   Permission:
-    :commit: 8b47d5febe08557e6cb333d7465fd140a9949e56
-    :git: https://github.com/pahmed/Permission/
+    :commit: 651883c3bf54fb09034ded7f9021e94201f6b824
+    :git: https://github.com/Appsaurus/Permission
   Swiftest:
     :commit: 48d78074e32b2d95ae097e1e0ffe96ec6ce66c67
     :git: https://github.com/Appsaurus/Swiftest
@@ -156,7 +155,7 @@ SPEC CHECKSUMS:
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
   Layman: 558e480982c4fce392d67357c07cfbca5445dfe6
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
-  Permission: c53c7235f14d76cd2851364df0a7cf05b464037f
+  Permission: f6452f9050020b58abe246b94100e6c0ff6af97c
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
   Swiftest: 408f5c420196665271cf1cf2a81b6cb1839998c1
@@ -170,6 +169,6 @@ SPEC CHECKSUMS:
   UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
-PODFILE CHECKSUM: 95e758104d55212aa86c23c480ca488d2e7f75a9
+PODFILE CHECKSUM: 94bcdd5d54b017f7d270a5f997626c46a5a9d28c
 
 COCOAPODS: 1.6.1
