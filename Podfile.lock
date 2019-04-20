@@ -8,13 +8,13 @@ PODS:
     - CwlCatchException
   - DarkMagic (0.0.4)
   - DynamicColor (4.0.3)
-  - Layman (0.1.18):
-    - Layman/Core (= 0.1.18)
-    - Layman/Operators (= 0.1.18)
-    - Layman/Shorthand (= 0.1.18)
-  - Layman/Core (0.1.18)
-  - Layman/Operators (0.1.18)
-  - Layman/Shorthand (0.1.18)
+  - Layman (0.1.19):
+    - Layman/Core (= 0.1.19)
+    - Layman/Operators (= 0.1.19)
+    - Layman/Shorthand (= 0.1.19)
+  - Layman/Core (0.1.19)
+  - Layman/Operators (0.1.19)
+  - Layman/Shorthand (0.1.19)
   - Nuke (7.5.2)
   - Permission/Core (2.2.0)
   - Permission/Location (2.2.0):
@@ -25,9 +25,9 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
   - PhoneNumberKit/UIKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - SwiftDate (6.0.1)
+  - SwiftDate (6.0.2)
   - Swiftest (0.0.18)
-  - SwiftFormat/CLI (0.40.7)
+  - SwiftFormat/CLI (0.40.8)
   - SwiftLint (0.31.0)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
@@ -39,7 +39,7 @@ PODS:
   - UIKitExtensions (0.0.20):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.21)
+  - UIKitMixinable (0.0.22)
   - UIKitTheme (0.0.9):
     - DarkMagic
     - DynamicColor
@@ -120,7 +120,7 @@ CHECKOUT OPTIONS:
     :commit: b6e5a19acc048e21d9caa18a95915137f99beb74
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 31d510b779f7b417351b57be2420e762eac67bf9
+    :commit: 140f0792b9d5908a5c5ce028fd04a0a7d7f4bdd4
     :git: https://github.com/Appsaurus/Layman
   Permission:
     :commit: 651883c3bf54fb09034ded7f9021e94201f6b824
@@ -138,7 +138,7 @@ CHECKOUT OPTIONS:
     :commit: 1371b88d99a1328de4cd34c76a8283c1373fe26d
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: 8f32d29e49c3e2e5f7ccce285a787aa2f182ddaa
+    :commit: 8cfb8f45cbda345b6f591f47470d45d64827acd9
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :commit: dc56e5865b60044b839520aa88289f0feb3454d5
@@ -153,22 +153,22 @@ SPEC CHECKSUMS:
   CwlPreconditionTesting: d33a4e4f285c0b885fddcae5dfedfbb34d4f3961
   DarkMagic: ccb2f3da6cd0b07b96cd44b3033d998dd6a8cddd
   DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
-  Layman: 558e480982c4fce392d67357c07cfbca5445dfe6
+  Layman: 42da60e84192d3f4d293b807f657a1608caff48f
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   Permission: f6452f9050020b58abe246b94100e6c0ff6af97c
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
-  SwiftDate: 2b3ef6b8fc30c22391033d1acad5622a51660016
+  SwiftDate: bbed9b23bfec599bd62b9a305afc554f7bd0eb6f
   Swiftest: 408f5c420196665271cf1cf2a81b6cb1839998c1
-  SwiftFormat: 93264523d31b70e5bc109c00ceeda3ae613a59d1
+  SwiftFormat: d9e5ca1aed735164fe9d26510ec508ddb8a93598
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftTestUtils: 5ef53082f4c5db4aea76f697904c44cb0940cbd2
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
-  UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
+  UIKitMixinable: 914b8e15d135e1ce3c73a1f57cbde417a823b574
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
 PODFILE CHECKSUM: 94bcdd5d54b017f7d270a5f997626c46a5a9d28c
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.5.3

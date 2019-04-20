@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "UIKitBase"
   s.summary          = "A short description of UIKitBase."
-  s.version          = "0.0.35"
+  s.version          = "0.0.36"
   s.homepage         = "github.com/Strobocop/UIKitBase"
   s.license          = 'MIT'
   s.author           = { "Brian Strobach" => "brian@appsaurus.io" }
@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
   s.default_subspec = 'Core'
-
+  s.exclude_files = '**/*.{svg, py}'
   s.subspec 'Core' do |core|
     core.source_files = 'Sources/Core/**/*'
-    core.exclude_files = 'Sources/**/**/*.{svg, .py}'
+
     core.resource_bundle = {
         'UIKitBase' => ['Sources/Core/Assets/**/*.{ttf,bundle,xib,nib}']
     }
@@ -41,6 +41,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Authentication' do |a|
    a.source_files = 'Sources/Subspecs/Authentication/Source/**/*'
+   a.exclude_files = '**/*.{svg}'
    a.dependency 'UIKitBase/Forms/Core'
    a.resource_bundle = {
        'Authentication' => ['Sources/Subspecs/Authentication/Resources/**/*']

@@ -13,6 +13,7 @@ import UIKitExtensions
 import UIKitMixinable
 
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
+
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
 
 public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChangeManager {
@@ -349,12 +350,12 @@ public extension PaginationManaged where Self: UIViewController {
     }
 }
 
-extension PaginationManaged where Self: BaseContainedTableViewController {
-    public var paginatableScrollView: UIScrollView {
+public extension PaginationManaged where Self: BaseContainedTableViewController {
+    var paginatableScrollView: UIScrollView {
         return tableView
     }
 
-    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+    func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
         // https://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
         // Multiple reload calls fixes autolayout bug where dynamic cell height is incorrect on first load
         DispatchQueue.main.async {
@@ -367,12 +368,12 @@ extension PaginationManaged where Self: BaseContainedTableViewController {
     }
 }
 
-extension PaginationManaged where Self: UITableViewController {
-    public var paginatableScrollView: UIScrollView {
+public extension PaginationManaged where Self: UITableViewController {
+    var paginatableScrollView: UIScrollView {
         return tableView
     }
 
-    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+    func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             self.tableView.reloadData { [weak self] in
                 self?.tableView.forceAutolayoutPass()
@@ -381,14 +382,26 @@ extension PaginationManaged where Self: UITableViewController {
             }
         }
     }
+
+    func removeCells(boundTo models: [PaginatableModel], withAnimation rowAnimation: UITableView.RowAnimation = .automatic) {
+        enqueue { [weak self] _ in
+            guard let self = self else { return }
+            let indexPathsToRemove = self.dataSource.removeAndReturnIndexes(models: models)
+            if indexPathsToRemove.count > 0 {
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: indexPathsToRemove, with: rowAnimation)
+                self.tableView.endUpdates()
+            }
+        }
+    }
 }
 
-extension PaginationManaged where Self: UICollectionViewController {
-    public var paginatableScrollView: UIScrollView {
+public extension PaginationManaged where Self: UICollectionViewController {
+    var paginatableScrollView: UIScrollView {
         return collectionView!
     }
 
-    public func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
+    func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
         DispatchQueue.main.async {
             self.collectionView!.reloadData { [weak self] in
                 self?.collectionView!.forceAutolayoutPass()
@@ -398,17 +411,3 @@ extension PaginationManaged where Self: UICollectionViewController {
         }
     }
 }
-
-// TODO: Turn this into protocol
-// extension UITableViewCell {
-//    public func removeFromTableView<M: Paginatable>(model: M, animation: UITableView.RowAnimation = .automatic) {
-//        guard let tvc = parentViewController as? PaginatableTableViewController<M> else { return }
-//        let indexPathsToRemove = tvc.dataSource.removeAndReturnIndexes(models: [model])
-//        if indexPathsToRemove.count > 0 {
-//            tvc.tableView.beginUpdates()
-//            tvc.tableView.deleteRows(at: indexPathsToRemove, with: animation)
-//
-//            tvc.tableView.endUpdates()
-//        }
-//    }
-// }

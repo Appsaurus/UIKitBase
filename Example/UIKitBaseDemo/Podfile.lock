@@ -49,9 +49,9 @@ PODS:
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
   - UIFontLoader (0.0.3)
-  - UIKitBase/Authentication (0.0.34):
+  - UIKitBase/Authentication (0.0.36):
     - UIKitBase/Forms/Core
-  - UIKitBase/Core (0.0.34):
+  - UIKitBase/Core (0.0.36):
     - Actions
     - Algorithm
     - AssistantKit
@@ -63,28 +63,28 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.34):
+  - UIKitBase/Datasource (0.0.36):
     - UIKitBase/Core
-  - UIKitBase/Forms/Core (0.0.34):
+  - UIKitBase/Forms/Core (0.0.36):
     - UIKitBase/Core
-  - UIKitBase/Forms/Date (0.0.34):
+  - UIKitBase/Forms/Date (0.0.36):
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.34):
+  - UIKitBase/Forms/LegalDisclosure (0.0.36):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Location (0.0.34):
+  - UIKitBase/Location (0.0.36):
     - Permission/Location
     - SwiftLocation
     - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.34):
+  - UIKitBase/Permission (0.0.36):
     - Permission
     - UIKitBase/Core
   - UIKitExtensions (0.0.20):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.21)
+  - UIKitMixinable (0.0.22)
   - UIKitTheme (0.0.9):
     - DarkMagic
     - DynamicColor
@@ -188,7 +188,7 @@ CHECKOUT OPTIONS:
     :commit: 1371b88d99a1328de4cd34c76a8283c1373fe26d
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: 8f32d29e49c3e2e5f7ccce285a787aa2f182ddaa
+    :commit: 8cfb8f45cbda345b6f591f47470d45d64827acd9
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
     :commit: dc56e5865b60044b839520aa88289f0feb3454d5
@@ -216,11 +216,11 @@ SPEC CHECKSUMS:
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
-  UIKitBase: eb1be777972267b5411111ea3064058a92765efa
+  UIKitBase: 95aa2b6d09ec94d441667b3a320c514fc0e0f68a
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
-  UIKitMixinable: 8b2c1a946e76c179fc6a2fc95f0ae288307fc3eb
+  UIKitMixinable: 914b8e15d135e1ce3c73a1f57cbde417a823b574
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
 PODFILE CHECKSUM: c443f6a575d4610660f00b3825f479dfa0b865ff
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.5.3
