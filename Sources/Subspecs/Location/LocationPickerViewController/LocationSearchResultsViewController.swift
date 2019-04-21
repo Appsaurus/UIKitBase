@@ -15,6 +15,11 @@ import UIKitMixinable
 
 open class LocationSearchResultsViewController: PaginatableTableViewController, SearchResultsDisplaying, AsyncTaskDelegate {
     public typealias PaginatableModel = MKMapItem
+
+    open override func createMixins() -> [LifeCycle] {
+        return super.createMixins() + PaginationManagedMixin(self)
+    }
+
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
 
