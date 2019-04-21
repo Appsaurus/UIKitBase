@@ -13,6 +13,7 @@ import UIKitExtensions
 import UIKitMixinable
 
 open class PaginationManagedMixin: UIViewControllerMixin<UIViewController & PaginationManaged> {
+
     open override func viewDidLoad() {
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }

@@ -11,12 +11,14 @@ import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
+import DarkMagic
 
-public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
+public protocol CollectionDataSourceManaging {
+    var managedSectionCount: Int { get }
+    func managedNumberOfItems(section: Int) -> Int
+}
 
-public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
-
-public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChangeManager {
+public protocol PaginationManaged: StatefulViewController, CollectionDataSourceManaging, AsyncDatasourceChangeManager {
     associatedtype PaginatableModel: Paginatable
     typealias PM = PaginationManager<PaginatableModel>
 
@@ -40,11 +42,27 @@ public protocol PaginationManaged: StatefulViewController, AsyncDatasourceChange
     func reloadDidBegin()
 }
 
+public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
+public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
+
+//MARK: CollectionDataSourceManaging
+public extension PaginationManaged {
+
+    var managedSectionCount: Int {
+        return dataSource.sectionCount
+    }
+
+    func managedNumberOfItems(section: Int) -> Int {
+        return dataSource.numberOfItems(section: section)
+    }
+}
+
 private var associatedPaginationManager: String = "associatedPaginationManager"
 private var associatedPrefetchedData: String = "associatedPrefetchedData"
 
-extension PaginationManaged where Self: NSObject {
-    public var paginationManager: PaginationManager<PaginatableModel> {
+public extension PaginationManaged where Self: NSObject {
+
+     var paginationManager: PaginationManager<PaginatableModel> {
         get {
             return getAssociatedObject(for: &associatedPaginationManager, initialValue: PaginationManager<PaginatableModel>())
         }
@@ -53,7 +71,7 @@ extension PaginationManaged where Self: NSObject {
         }
     }
 
-    public var prefetchedData: [PaginatableModel]? {
+     var prefetchedData: [PaginatableModel]? {
         get {
             return getAssociatedObject(for: &associatedPrefetchedData, initialValue: nil)
         }
@@ -64,6 +82,7 @@ extension PaginationManaged where Self: NSObject {
 }
 
 public extension PaginationManaged {
+
     var dataSource: CollectionDataSource<PaginatableModel> {
         get {
             return paginationManager.datasource

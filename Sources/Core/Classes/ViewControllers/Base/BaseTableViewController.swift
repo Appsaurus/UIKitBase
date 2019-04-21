@@ -19,6 +19,7 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 }
 
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
+
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
@@ -71,4 +72,13 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     open func willTransition(to state: State) {}
 
     open func didTransition(to state: State) {}
+
+    // MARK: UITableViewDataSource
+    open override func numberOfSections(in tableView: UITableView) -> Int {
+        return (self as? CollectionDataSourceManaging)?.managedSectionCount ?? 0
+    }
+
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self as? CollectionDataSourceManaging)?.managedNumberOfItems(section: section) ?? 0
+    }
 }
