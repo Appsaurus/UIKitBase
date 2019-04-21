@@ -13,12 +13,12 @@ import UIKitExtensions
 import UIKitMixinable
 import DarkMagic
 
-public protocol CollectionDataSourceManaging {
+public protocol DataSourceManaged {
     var managedSectionCount: Int { get }
     func managedNumberOfItems(section: Int) -> Int
 }
 
-public protocol PaginationManaged: StatefulViewController, CollectionDataSourceManaging, AsyncDatasourceChangeManager {
+public protocol PaginationManaged: StatefulViewController, DataSourceManaged, AsyncDatasourceChangeManager {
     associatedtype PaginatableModel: Paginatable
     typealias PM = PaginationManager<PaginatableModel>
 

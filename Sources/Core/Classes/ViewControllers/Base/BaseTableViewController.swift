@@ -75,10 +75,10 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     // MARK: UITableViewDataSource
     open override func numberOfSections(in tableView: UITableView) -> Int {
-        return (self as? CollectionDataSourceManaging)?.managedSectionCount ?? 0
+        return (self as? DataSourceManaged)?.managedSectionCount ?? 0
     }
 
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self as? CollectionDataSourceManaging)?.managedNumberOfItems(section: section) ?? 0
+        return (self as? DataSourceManaged)?.managedNumberOfItems(section: section) ?? 0
     }
 }
