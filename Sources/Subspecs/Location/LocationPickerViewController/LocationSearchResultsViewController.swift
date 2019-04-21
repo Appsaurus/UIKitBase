@@ -75,6 +75,10 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
 
         onDidFinishTask?.result(LocationData(placemark: pm.placemark))
     }
+
+    open func reloadDidBegin() {}
+
+    open func didReload() {}
 }
 
 extension MKMapItem {

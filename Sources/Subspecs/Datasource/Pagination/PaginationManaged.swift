@@ -39,6 +39,7 @@ public protocol PaginationManaged: StatefulViewController, CollectionDataSourceM
     func reloadPaginatableCollectionView(stateAtCompletion: State?, completion: VoidClosure?)
     func reset(to initialState: State, completion: VoidClosure?)
     func reload()
+    func didReload()
     func reloadDidBegin()
 }
 
@@ -123,17 +124,21 @@ public extension PaginationManaged where Self: UIViewController {
         DispatchQueue.main.async {
             self.enqueue { [weak self] complete in
                 self?.paginatableScrollView.hideNeedsLoadingIndicator()
-                self?.fetchNextPage(firstPage: true, transitioningState: .loading, reloadCompletion: complete)
                 self?.reloadDidBegin()
+                self?.fetchNextPage(firstPage: true, transitioningState: .loading, reloadCompletion: {
+                    self?.didReload()
+                    complete()
+                })
             }
         }
     }
-
     func reloadPaginatableCollectionView(completion: @escaping VoidClosure) {
         reloadPaginatableCollectionView(stateAtCompletion: .loaded, completion: completion)
     }
 
     func reloadDidBegin() {}
+
+    func didReload() {}
 
     func setupDefaultReloadControlsForEmptyState() {
         var retryTitle: String?
