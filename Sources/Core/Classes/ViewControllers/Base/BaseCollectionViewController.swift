@@ -64,7 +64,7 @@ open class BaseCollectionViewController: MixinableCollectionViewController, Base
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {
-        return [:]
+        return .default
     }
 
     open func willTransition(to state: State) {}
