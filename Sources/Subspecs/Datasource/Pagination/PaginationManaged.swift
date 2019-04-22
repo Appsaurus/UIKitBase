@@ -6,17 +6,12 @@
 //
 //
 
+import DarkMagic
 import Layman
 import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
-import DarkMagic
-
-public protocol DataSourceManaged {
-    var delegatedSectionCount: Closure<UITableView, Int>? { get set }
-    var delegatedNumberOfItems: Closure<(UITableView, Int), Int>? { get set }
-}
 
 public protocol PaginationManaged: StatefulViewController, DataSourceManaged, AsyncDatasourceChangeManager {
     associatedtype PaginatableModel: Paginatable
@@ -46,10 +41,10 @@ public protocol PaginationManaged: StatefulViewController, DataSourceManaged, As
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
 
-//MARK: CollectionDataSourceManaging
-public extension PaginationManaged {
+// MARK: CollectionDataSourceManaging
 
-    var managedSectionCount: Int {
+public extension PaginationManaged {
+    func managedSectionCount() -> Int {
         return dataSource.sectionCount
     }
 
@@ -62,8 +57,7 @@ private var associatedPaginationManager: String = "associatedPaginationManager"
 private var associatedPrefetchedData: String = "associatedPrefetchedData"
 
 public extension PaginationManaged where Self: NSObject {
-
-     var paginationManager: PaginationManager<PaginatableModel> {
+    var paginationManager: PaginationManager<PaginatableModel> {
         get {
             return getAssociatedObject(for: &associatedPaginationManager, initialValue: PaginationManager<PaginatableModel>())
         }
@@ -72,7 +66,7 @@ public extension PaginationManaged where Self: NSObject {
         }
     }
 
-     var prefetchedData: [PaginatableModel]? {
+    var prefetchedData: [PaginatableModel]? {
         get {
             return getAssociatedObject(for: &associatedPrefetchedData, initialValue: nil)
         }
@@ -83,7 +77,6 @@ public extension PaginationManaged where Self: NSObject {
 }
 
 public extension PaginationManaged {
-
     var dataSource: CollectionDataSource<PaginatableModel> {
         get {
             return paginationManager.datasource
@@ -132,6 +125,7 @@ public extension PaginationManaged where Self: UIViewController {
             }
         }
     }
+
     func reloadPaginatableCollectionView(completion: @escaping VoidClosure) {
         reloadPaginatableCollectionView(stateAtCompletion: .loaded, completion: completion)
     }

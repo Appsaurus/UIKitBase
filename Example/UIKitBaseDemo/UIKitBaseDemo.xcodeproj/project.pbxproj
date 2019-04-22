@@ -258,7 +258,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Actions/Actions.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
@@ -317,7 +317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UIKitBaseDemo/Pods-UIKitBaseDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED52F602B76306F512A66A28 /* [CP] Check Pods Manifest.lock */ = {

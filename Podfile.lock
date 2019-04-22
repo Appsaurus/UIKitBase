@@ -39,8 +39,8 @@ PODS:
   - UIKitExtensions (0.0.20):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.0.22)
-  - UIKitTheme (0.0.9):
+  - UIKitMixinable (0.0.24)
+  - UIKitTheme (0.0.10):
     - DarkMagic
     - DynamicColor
     - Swiftest
@@ -138,10 +138,10 @@ CHECKOUT OPTIONS:
     :commit: 1371b88d99a1328de4cd34c76a8283c1373fe26d
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: 8cfb8f45cbda345b6f591f47470d45d64827acd9
+    :commit: 440555a53fcb0ef92fe192775b38df7400d77f1d
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: dc56e5865b60044b839520aa88289f0feb3454d5
+    :commit: 9414dd2d4258e540d1e90d307c7d8ca0325c4e86
     :git: https://github.com/Appsaurus/UIKitTheme
 
 SPEC CHECKSUMS:
@@ -166,9 +166,9 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
-  UIKitMixinable: 914b8e15d135e1ce3c73a1f57cbde417a823b574
-  UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
+  UIKitMixinable: 45594c9f6a1a5c53d3b9e4e87c4f9a3fd9afa329
+  UIKitTheme: a943688f62c42ae3133a81354833d95709d7bf89
 
 PODFILE CHECKSUM: 94bcdd5d54b017f7d270a5f997626c46a5a9d28c
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

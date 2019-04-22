@@ -13,6 +13,11 @@ import UIKitExtensions
 import UIKitMixinable
 
 open class PaginationManagedMixin: UIViewControllerMixin<UIViewController & PaginationManaged> {
+    open override func didInit(type: InitializationType) {
+        super.didInit(type: type)
+        mixable.dataSourceDelegate.numberOfItems = mixable.managedNumberOfItems
+        mixable.dataSourceDelegate.sectionCount = mixable.managedSectionCount
+    }
 
     open override func viewDidLoad() {
         mixable.onDidTransitionMixins.append { [weak mixable] state in

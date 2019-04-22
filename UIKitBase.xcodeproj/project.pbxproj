@@ -421,6 +421,9 @@
 		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
+		E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
+		E42075F9226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
+		E42075FA226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
 		E430836F226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
 		E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
 		E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
@@ -841,6 +844,7 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceManaged.swift; sourceTree = "<group>"; };
 		E430836E226514580032CD17 /* PaginationManagedMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManagedMixin.swift; sourceTree = "<group>"; };
 		E4308373226514AC0032CD17 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		E442FFCF22527A1D0007E691 /* AuthIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuthIcons.ttf; sourceTree = "<group>"; };
@@ -1657,6 +1661,7 @@
 				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
 				E4AF81D121BF84EF002D6E86 /* Stateful */,
 				E4AF805421BB2D90002D6E86 /* ViewController */,
+				E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2142,7 +2147,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Swiftest/Swiftest.framework",
 				"${BUILT_PRODUCTS_DIR}/CwlCatchException/CwlCatchException.framework",
 				"${BUILT_PRODUCTS_DIR}/CwlPreconditionTesting/CwlPreconditionTesting.framework",
@@ -2193,7 +2198,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D8EF14C3BC96DD8EC58D18CE /* [CP] Check Pods Manifest.lock */ = {
@@ -2263,6 +2268,7 @@
 			files = (
 				E41D70A4224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E42075FA226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
@@ -2618,6 +2624,7 @@
 			files = (
 				E41D70A2224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
@@ -2800,6 +2807,7 @@
 			files = (
 				E41D70A3224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
+				E42075F9226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import UIKitMixinable
 
 public protocol BaseTableViewControllerProtocol: BaseViewControllerProtocol
+    & DataSourceManaged
     & ViewRecycler {}
 
 extension BaseTableViewControllerProtocol where Self: UITableViewController {
@@ -19,9 +20,6 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 }
 
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
-    open var delegatedSectionCount: Closure<UITableView, Int>?
-    open var delegatedNumberOfItems: Closure<(UITableView, Int), Int>?
-
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
@@ -76,11 +74,12 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     open func didTransition(to state: State) {}
 
     // MARK: UITableViewDataSource
+
     open override func numberOfSections(in tableView: UITableView) -> Int {
-        return delegatedSectionCount?(tableView) ?? 0
+        return dataSourceDelegate.sectionCount()
     }
 
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return delegatedNumberOfItems?((tableView, section)) ?? 0
+        return dataSourceDelegate.numberOfItems(section)
     }
 }

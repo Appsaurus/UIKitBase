@@ -49,9 +49,9 @@ PODS:
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
   - UIFontLoader (0.0.3)
-  - UIKitBase/Authentication (0.0.36):
+  - UIKitBase/Authentication (0.0.41):
     - UIKitBase/Forms/Core
-  - UIKitBase/Core (0.0.36):
+  - UIKitBase/Core (0.0.41):
     - Actions
     - Algorithm
     - AssistantKit
@@ -63,22 +63,22 @@ PODS:
     - UIKitExtensions
     - UIKitMixinable
     - UIKitTheme
-  - UIKitBase/Datasource (0.0.36):
+  - UIKitBase/Datasource (0.0.41):
     - UIKitBase/Core
-  - UIKitBase/Forms/Core (0.0.36):
+  - UIKitBase/Forms/Core (0.0.41):
     - UIKitBase/Core
-  - UIKitBase/Forms/Date (0.0.36):
+  - UIKitBase/Forms/Date (0.0.41):
     - SwiftDate
     - UIKitBase/Core
-  - UIKitBase/Forms/LegalDisclosure (0.0.36):
+  - UIKitBase/Forms/LegalDisclosure (0.0.41):
     - ActiveLabel
     - UIKitBase/Core
-  - UIKitBase/Location (0.0.36):
+  - UIKitBase/Location (0.0.41):
     - Permission/Location
     - SwiftLocation
     - UIKitBase/Datasource
     - UIKitBase/Permission
-  - UIKitBase/Permission (0.0.36):
+  - UIKitBase/Permission (0.0.41):
     - Permission
     - UIKitBase/Core
   - UIKitExtensions (0.0.20):
@@ -216,11 +216,11 @@ SPEC CHECKSUMS:
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
   UIFontIcons: 1119f75d4545e2aed3a4434fcde000716f14cf4a
   UIFontLoader: df06440b24c51384676dc9ec54aecc3aff5a7a97
-  UIKitBase: 95aa2b6d09ec94d441667b3a320c514fc0e0f68a
+  UIKitBase: a747b70cd07e8e546c4964005680916954b986fd
   UIKitExtensions: 60898001f5af87877442bae61a3b8cb1423d27d1
   UIKitMixinable: 914b8e15d135e1ce3c73a1f57cbde417a823b574
   UIKitTheme: c09f071963d076f43ddffc01e54bda1fb299dbf4
 
 PODFILE CHECKSUM: c443f6a575d4610660f00b3825f479dfa0b865ff
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
