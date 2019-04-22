@@ -19,6 +19,8 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 }
 
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
+    open var delegatedSectionCount: Closure<UITableView, Int>?
+    open var delegatedNumberOfItems: Closure<(UITableView, Int), Int>?
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
@@ -75,10 +77,10 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     // MARK: UITableViewDataSource
     open override func numberOfSections(in tableView: UITableView) -> Int {
-        return (self as? DataSourceManaged)?.managedSectionCount ?? 0
+        return delegatedSectionCount?(tableView) ?? 0
     }
 
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self as? DataSourceManaged)?.managedNumberOfItems(section: section) ?? 0
+        return delegatedNumberOfItems?((tableView, section)) ?? 0
     }
 }

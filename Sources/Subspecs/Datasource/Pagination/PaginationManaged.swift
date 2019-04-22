@@ -14,8 +14,8 @@ import UIKitMixinable
 import DarkMagic
 
 public protocol DataSourceManaged {
-    var managedSectionCount: Int { get }
-    func managedNumberOfItems(section: Int) -> Int
+    var delegatedSectionCount: Closure<UITableView, Int>? { get set }
+    var delegatedNumberOfItems: Closure<(UITableView, Int), Int>? { get set }
 }
 
 public protocol PaginationManaged: StatefulViewController, DataSourceManaged, AsyncDatasourceChangeManager {
