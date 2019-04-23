@@ -18,6 +18,9 @@ public class ScrollViewHeaderExamplesViewController: NavigationalMenuTableViewCo
         addRow(title: "Tableview with header & subheader", createDestinationVC: TableViewSubheaderExampleViewController())
         addRow(title: "Nested scrollviews with header", createDestinationVC: ScrollViewParentHeaderExampleViewController())
         addRow(title: "Nested scrollviews with header & subheader", createDestinationVC: ScrollViewParentHeaderExampleViewController(includeSubheader: true))
+        addRow(title: "Nested PagingMenuViewController with header", createDestinationVC: ScrollViewParentHeaderWithPagerExampleViewController())
+        addRow(title: "Nested PagingMenuViewController with header & subheader", createDestinationVC: ScrollViewParentHeaderWithPagerExampleViewController(includeSubheader: true))
+
     }
 }
 

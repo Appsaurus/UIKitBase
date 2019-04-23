@@ -20,7 +20,7 @@ class ExamplePagingMenuViewController: BaseParentPagingMenuViewController {
     override open func createPagedViewControllers() -> [UIViewController] {
         var pages: [UIViewController] = []
         5.times {
-            pages.append(ExamplePagedViewController())
+            pages.append(ExamplePaginatableTableViewController())
         }
         return pages
     }

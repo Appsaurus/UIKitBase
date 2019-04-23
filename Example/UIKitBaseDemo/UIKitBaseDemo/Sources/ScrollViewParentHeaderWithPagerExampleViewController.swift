@@ -1,5 +1,5 @@
 //
-//  ScrollViewParentHeaderExampleViewController.swift
+//  ScrollViewParentHeaderWithPagerExampleViewController.swift
 //  UIKitBase
 //
 //  Created by Brian Strobach on 9/4/17.
@@ -12,7 +12,7 @@ import UIKitBase
 import UIKitBase
 import UIKitMixinable
 
-open class ScrollViewParentHeaderExampleViewController: BaseScrollviewParentViewController{
+open class ScrollViewParentHeaderWithPagerExampleViewController: BaseScrollviewParentViewController{
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [ScrollViewHeaderAdornableMixin(self)]
@@ -29,7 +29,7 @@ open class ScrollViewParentHeaderExampleViewController: BaseScrollviewParentView
     }
     
     open override func initialChildViewController() -> UIViewController {
-        return FakeDataTableViewController()
+        return ExamplePagingMenuViewController()
     }
 
     open override func style() {
@@ -54,7 +54,7 @@ open class ScrollViewParentHeaderExampleViewController: BaseScrollviewParentView
     
 }
 
-extension ScrollViewParentHeaderExampleViewController: ScrollViewHeaderAdornable{
+extension ScrollViewParentHeaderWithPagerExampleViewController: ScrollViewHeaderAdornable{
 //    public typealias SVH = ScrollViewHeader
     open func createScrollViewHeader() -> ScrollViewHeader {
         return createExampleScrollViewHeader(subheaderView: includeSubheader ? createExampleSubheaderView() : nil)

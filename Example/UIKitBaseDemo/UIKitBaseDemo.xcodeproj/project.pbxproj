@@ -32,6 +32,7 @@
 		E41D725D224D686F00CA05C4 /* PagingMenuExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */; };
 		E41D725E224D686F00CA05C4 /* ExamplePagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */; };
 		E41D725F224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */; };
+		E420769B226F5008007B74D4 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E420769A226F5008007B74D4 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */; };
 		F585649AB944C101F2AAE2C8 /* Pods_UIKitBaseDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD35BB4B74DA9DAC0CDEAD5 /* Pods_UIKitBaseDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		E41D725A224D686F00CA05C4 /* PagingMenuExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuExamplesViewController.swift; sourceTree = "<group>"; };
 		E41D725B224D686F00CA05C4 /* ExamplePagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePagingMenuViewController.swift; sourceTree = "<group>"; };
 		E41D725C224D686F00CA05C4 /* ExampleStepProcessPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleStepProcessPagingMenuViewController.swift; sourceTree = "<group>"; };
+		E420769A226F5008007B74D4 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewParentHeaderWithPagerExampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				E41D7236224D686000CA05C4 /* FakeDataTableViewController.swift */,
 				E41D7239224D686100CA05C4 /* ScrollViewHeaderExamplesViewController.swift */,
 				E41D7233224D685E00CA05C4 /* ScrollViewParentHeaderExampleViewController.swift */,
+				E420769A226F5008007B74D4 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */,
 				E41D7235224D685F00CA05C4 /* TableViewHeaderExampleViewController.swift */,
 				E41D7237224D686000CA05C4 /* TableViewSubheaderExampleViewController.swift */,
 			);
@@ -357,6 +360,7 @@
 				E41D7251224D686200CA05C4 /* ExampleAuthenticationViewController.swift in Sources */,
 				E41D7248224D686200CA05C4 /* ExamplePaginatableTableViewController.swift in Sources */,
 				E41D724E224D686200CA05C4 /* ExampleCustomTabBarController.swift in Sources */,
+				E420769B226F5008007B74D4 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */,
 				E41D724A224D686200CA05C4 /* FakeDataTableViewController.swift in Sources */,
 				E41D7250224D686200CA05C4 /* ExampleObject.swift in Sources */,
 				E41D7258224D686200CA05C4 /* ExampleAppConfiguration.swift in Sources */,
