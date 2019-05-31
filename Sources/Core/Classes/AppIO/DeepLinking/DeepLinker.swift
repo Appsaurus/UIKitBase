@@ -39,7 +39,7 @@ public extension Notification.Name {
 
 internal var singletonsStore: [String: AnyObject] = [:]
 open class DeepLinker<R: DeepLinkRoute> {
-    class var shared: DeepLinker<R> {
+    public class var shared: DeepLinker<R> {
         let storeKey = String(describing: R.self)
         if let singleton = singletonsStore[storeKey] {
             // swiftlint:disable:next force_cast
@@ -51,7 +51,7 @@ open class DeepLinker<R: DeepLinkRoute> {
         }
     }
 
-    open var router: Router = Router()
+    open var router: DeepLinkRouter = DeepLinkRouter()
     open var registeredDeepLinks: [DeepLink<R>] = []
 
     public init() {}
@@ -125,7 +125,7 @@ extension DeepLinkHandler {
     }
 }
 
-extension DeepLinkHandler where Self: UIViewController {
+extension DeepLinkHandler where Self: NSObject {
     public func handleDeepLink() {
         guard let request = deepLinker.request, request.link.isActionable else {
             return

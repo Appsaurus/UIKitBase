@@ -40,8 +40,8 @@ open class Route {
     // url params found in route
     var urlParamKeys = [String]()
 
-    init(aRoute: String) throws {
-        route = aRoute
+    init(route: String) throws {
+        self.route = route
         switch regex() {
         case let .success(regex):
             routePattern = regex

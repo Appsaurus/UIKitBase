@@ -9,7 +9,7 @@ import Swiftest
 import UIKit
 public typealias RouteHandler = (_ req: Request) -> Void
 
-open class Router {
+open class DeepLinkRouter {
     private var orderedRoutes = [Route]()
     private var routes = [Route: RouteHandler]()
 
@@ -17,18 +17,20 @@ open class Router {
     /**
      Binds a route to a router
 
-     - parameter aRoute: A string reprsentation of the route. It can include url params, for example id in /video/:id
+     - parameter route: A string reprsentation of the route. It can include url params, for example id in /video/:id
      - parameter callback: Triggered when a route is matched
      */
-    open func bind(_ aRoute: String, callback: RouteHandler? = nil) {
+    open func bind(_ route: String, callback: RouteHandler? = nil) {
+        print("BINDING: \(route)")
         do {
-            let route = try Route(aRoute: aRoute)
+            let route = try Route(route: route)
+            print("Route: \(route)")
             orderedRoutes.append(route)
             if let callback = callback { routes[route] = callback }
         } catch let error as Route.RegexResult {
             debugLog(error)
         } catch {
-            fatalError("[\(aRoute)] unknown bind error")
+            fatalError("[\(route)] unknown bind error")
         }
     }
 
@@ -81,7 +83,9 @@ open class Router {
 
                 // fire callback
                 if let callback = routes[route] {
-                    callback(Request(aRoute: route, urlParams: urlParams, queryParams: queryParams))
+                    callback(Request(route: route,
+                                     urlParams: urlParams,
+                                     queryParams: queryParams))
                 }
 
                 // return route that was matched

@@ -9,24 +9,21 @@ import UIKit
 
 open class Request {
     public let route: Route
+    public var urlParams: [URLQueryItem]
+    public var queryParams: [URLQueryItem]
+    private lazy var urlParamsDict: [String: String] = {
+        return self.urlParams.dictionary
+    }()
+    private lazy var queryParamsDict: [String: String] = {
+        return self.queryParams.dictionary
+    }()
 
-    private var urlParams = [String: String]()
-    private var queryParams = [String: String]()
-
-    init(aRoute: Route, urlParams: [URLQueryItem], queryParams: [URLQueryItem]?) {
-        route = aRoute
-        for param in urlParams {
-            if let value = param.value {
-                self.urlParams[param.name] = value
-            }
-        }
-
-        guard let queryParams = queryParams else { return }
-        for param in queryParams {
-            if let value = param.value {
-                self.queryParams[param.name] = value
-            }
-        }
+    init(route: Route,
+         urlParams: [URLQueryItem]? = nil,
+         queryParams: [URLQueryItem]? = nil) {
+        self.route = route
+        self.urlParams = urlParams ?? []
+        self.queryParams = queryParams ?? []
     }
 
     /**
@@ -36,7 +33,7 @@ open class Request {
      - returns: value of the the param
      */
     open func param(_ name: String) -> String? {
-        return urlParams[name]
+        return urlParamsDict[name]
     }
 
     /**
@@ -46,6 +43,18 @@ open class Request {
      - returns: value of the the param
      */
     open func query(_ name: String) -> String? {
-        return queryParams[name]
+        return queryParamsDict[name]
+    }
+}
+
+public extension Array where Element == URLQueryItem {
+    var dictionary: [String: String] {
+        var urlParams: [String: String] = [:]
+        for param in self {
+            if let value = param.value {
+                urlParams[param.name] = value
+            }
+        }
+        return urlParams
     }
 }
