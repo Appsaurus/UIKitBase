@@ -56,7 +56,7 @@ open class Route {
      - returns: string representation of the regex
      */
     func regex() -> RegexResult {
-        let _route = "^\(route)/?$"
+        let _route = "^\(route)?$"
         var _routeRegex = NSString(string: _route)
         let matches = routeParameter.matches(in: _route, options: [],
                                              range: NSRange(location: 0, length: _route.count))

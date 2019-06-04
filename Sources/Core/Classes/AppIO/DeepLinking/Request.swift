@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 open class Request {
     public let route: Route
     public var urlParams: [URLQueryItem]
@@ -47,7 +48,7 @@ open class Request {
     }
 }
 
-public extension Array where Element == URLQueryItem {
+private extension Array where Element == URLQueryItem {
     var dictionary: [String: String] {
         var urlParams: [String: String] = [:]
         for param in self {
