@@ -33,151 +33,95 @@ class SearchBarContainerView: UIView {
     }
 }
 
+open class SearchState {
+    open var lastSearchQuery: String?
+}
+
+open class SearchControls {
+    open var searchBar: UISearchBar = UISearchBar()
+    open var toolbar: UIToolbar = UIToolbar()
+}
+
+open class SearchResultsControllers {
+
+    open var resultsViewController: SearchResultsViewController
+    open var preSearchViewController: UIViewController?
+
+    public init(resultsViewController: SearchResultsViewController,
+                preSearchViewController: UIViewController? = nil) {
+        self.resultsViewController = resultsViewController
+        self.preSearchViewController = preSearchViewController
+    }
+}
+
 public enum SearchBarPosition {
     case navigationTitle, header
 }
 
-// public enum SearchBarAppearanceResponderBehavior{
-//    case alwaysRegainFirstResponder
-//    case regainFirstResponderIfQueryPresent
-//    case neverRegainFirstResponder
-// }
+open class SearchViewControllerConfiguration {
+    open var searchThrottle: Float?
+    open var clearsResultsOnCancel: Bool = true
+    open var restoreSearchStateOnAppearance: Bool = true
+    open var searchBarRegainsFirstResponderOnReappear: Bool = true
+    open var cachesQueryOnResignation: Bool = false
 
-public enum SearchDataSource {
-    case remote, local
-}
-
-open class SearchResultsDisplayingConfiguration {
-    var loadsSearchResultsImmediately: Bool = true
-    var fetchesResultsWithEmptyQuery: Bool = true
-    var searchDataSourceType: SearchDataSource = .remote
-}
-
-public protocol SearchResultsDisplaying {
-    var loadsSearchResultsImmediately: Bool { get set }
-    var searchDataSourceType: SearchDataSource { get set }
-    func fetchResults(query: String?)
-}
-
-private extension AssociatedObjectKeys {
-    static let searchConfiguration = AssociatedObjectKey<SearchResultsDisplayingConfiguration>("searchConfiguration")
-}
-
-public extension SearchResultsDisplaying where Self: NSObject {
-    var searchConfiguration: SearchResultsDisplayingConfiguration {
-        get {
-            return self[.searchConfiguration, SearchResultsDisplayingConfiguration()]
-        }
-        set {
-            self[.searchConfiguration] = newValue
-        }
-    }
-
-    var fetchesResultsWithEmptyQuery: Bool {
-        get {
-            return searchConfiguration.fetchesResultsWithEmptyQuery
-        }
-        set {
-            searchConfiguration.fetchesResultsWithEmptyQuery = newValue
-        }
-    }
-
-    var loadsSearchResultsImmediately: Bool {
-        get {
-            return searchConfiguration.loadsSearchResultsImmediately
-        }
-        set {
-            searchConfiguration.loadsSearchResultsImmediately = newValue
-        }
-    }
-
-    var searchDataSourceType: SearchDataSource {
-        get {
-            return searchConfiguration.searchDataSourceType
-        }
-        set {
-            searchConfiguration.searchDataSourceType = newValue
-        }
+    public init(searchThrottle: Float? = 0.25,
+                clearsResultsOnCancel: Bool? = nil,
+                restoreSearchStateOnAppearance: Bool? = nil,
+                searchBarRegainsFirstResponderOnReappear: Bool? = nil,
+                cachesQueryOnResignation: Bool? = nil) {
+        self.searchThrottle = searchThrottle
+        self.clearsResultsOnCancel =? clearsResultsOnCancel
+        self.restoreSearchStateOnAppearance =? restoreSearchStateOnAppearance
+        self.searchBarRegainsFirstResponderOnReappear =? searchBarRegainsFirstResponderOnReappear
+        self.cachesQueryOnResignation =? cachesQueryOnResignation
     }
 }
+open class SearchViewControllerLayoutConfiguration {
+    open var searchBarPosition: SearchBarPosition
+    open var searchBarInsets: UIEdgeInsets // This can mess with corner radius of search bar's text field, may need to tweak accordingly
+    open var displaysNavigationbarSearchControls: Bool
 
-public typealias SearchResultsViewController = UIViewController & SearchResultsDisplaying
-
-public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaged {
-    func fetchResults(query: String?) {
-        guard let query = query else {
-            switch searchDataSourceType {
-            case .remote:
-                if fetchesResultsWithEmptyQuery {
-                    paginators.activePaginator.searchQuery = nil
-                    fetchNextPage(firstPage: true)
-                }
-            case .local:
-                dataSource.removeFilter()
-                reloadPaginatableCollectionView(completion: {})
-            }
-            return
-        }
-        switch searchDataSourceType {
-        case .remote:
-            reset(to: .loading)
-            paginators.activePaginator.searchQuery = query
-            fetchNextPage(firstPage: true)
-        case .local:
-            dataSource.filterData(searchQuery: query)
-            reloadPaginatableCollectionView(completion: {})
-        }
+    public init(searchBarPosition: SearchBarPosition = .header,
+                searchBarInsets: UIEdgeInsets = .zero,
+                displaysNavigationbarSearchControls: Bool = true) {
+        self.searchBarPosition = searchBarPosition
+        self.searchBarInsets = searchBarInsets
+        self.displaysNavigationbarSearchControls = displaysNavigationbarSearchControls
     }
 }
 
 open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
-    open lazy var preSearchViewController: UIViewController? = nil
-    open lazy var searchResultsTableViewController: SearchResultsViewController = self.createSearchResultsTableViewController()
 
-    open lazy var searchBar: UISearchBar = UISearchBar()
-    open lazy var searchHeaderToolBar: UIToolbar = UIToolbar()
+    open lazy var resultsController: SearchResultsControllers = self.createSearchResultsControllers()
+
+    open var config = SearchViewControllerConfiguration()
+    open var layoutConfig = SearchViewControllerLayoutConfiguration()
+    open var searchState = SearchState()
+    open var controls = SearchControls()
+
     open lazy var searchLayoutView: UIView = {
-        let searchLayoutView = UIView()
         let searchViews: [UIView] = [searchBar, searchHeaderToolBar]
+        let searchLayoutView = UIView()
         searchLayoutView.addSubviews(searchViews)
         searchViews.stack(.leadingToTrailing, in: searchLayoutView)
         return searchLayoutView
     }()
 
-    // MARK: SearchBar layout configuration //TODO: Refactor this into single layout config class
 
-    open lazy var searchBarPosition: SearchBarPosition = .header
-    open lazy var searchBarInsets: UIEdgeInsets = .zero // This can mess with corner radius of search bar's text field, may need to tweak accordingly
-
-    // MARK: SearchBar layout configuration //TODO: Refactor this into single search config class
-
-    open lazy var searchThrottle: Float? = 0.25
-    open lazy var clearsResultsOnCancel: Bool = true
-    open lazy var restoreSearchStateOnAppearance: Bool = true
-    open lazy var searchBarRegainsFirstResponderOnReappear: Bool = true
-    open lazy var cachesQueryOnResignation: Bool = false
-    open var lastSearchQuery: String?
-
-    open var userHasEnteredSearchQuery: Bool {
-        return searchQuery != nil
-    }
-
-    open var searchQuery: String? {
-        return searchBar.textField?.text.removeEmpty
-    }
-
-    open func createSearchResultsTableViewController() -> SearchResultsViewController {
+    open func createSearchResultsControllers() -> SearchResultsControllers {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         // swiftlint:disable:next force_cast
-        return UIViewController() as! SearchResultsViewController
+        return SearchResultsControllers(resultsViewController: UIViewController() as! SearchResultsViewController,
+                                            preSearchViewController: UIViewController())
     }
 
     open override func initialChildViewController() -> UIViewController {
-        return preSearchViewController ?? searchResultsTableViewController
+        return resultsController.preSearchViewController ?? resultsController.resultsViewController
     }
 
     open override func createHeaderView() -> UIView? {
-        guard searchBarPosition == .header else {
+        guard layoutConfig.searchBarPosition == .header else {
             return nil
         }
         return searchLayoutView
@@ -195,9 +139,14 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open override func createSubviews() {
         super.createSubviews()
-        switch searchBarPosition {
+        switch layoutConfig.searchBarPosition {
+        case .header:
+            if layoutConfig.displaysNavigationbarSearchControls{
+                navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", action: didTapNavigationCancelBar)
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", action: didTapNavigationSearchBar)
+            }
         case .navigationTitle:
-            let searchBarContainer = SearchBarContainerView(contentView: searchBar, contentInsets: searchBarInsets)
+            let searchBarContainer = SearchBarContainerView(contentView: searchBar, contentInsets: layoutConfig.searchBarInsets)
             searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
             navigationItem.titleView = searchBarContainer
 
@@ -205,7 +154,16 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         }
     }
 
-    private var searchBarWasActiveWhenLastVisible: Bool = false
+
+    open func didTapNavigationCancelBar() {
+
+    }
+
+    open func didTapNavigationSearchBar() {
+
+    }
+
+    var searchBarWasActiveWhenLastVisible: Bool = false
 
     open override func viewWillDisappear(_ animated: Bool) {
         searchBarWasActiveWhenLastVisible = searchBar.isFirstResponder
@@ -217,12 +175,12 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let shouldBecomeFirstResponder = searchBarRegainsFirstResponderOnReappear && searchBarWasActiveWhenLastVisible
+        let shouldBecomeFirstResponder = config.searchBarRegainsFirstResponderOnReappear && searchBarWasActiveWhenLastVisible
         restorePreviousSearchState(makeSearchBarFirstResponder: shouldBecomeFirstResponder)
     }
 
     open func queryInputChanged() {
-        guard let searchThrottle = searchThrottle else {
+        guard let searchThrottle = config.searchThrottle else {
             performSearch(query: searchQuery)
             return
         }
@@ -239,7 +197,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open func performSearch(query: String?) {
         DispatchQueue.main.async {
-            self.searchResultsTableViewController.fetchResults(query: query)
+            self.resultsController.resultsViewController.fetchResults(query: query)
         }
     }
 
@@ -249,30 +207,30 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open func resignSearch(forceClearQuery: Bool? = nil) {
         DispatchQueue.main.async {
-            let clearQuery = forceClearQuery ?? self.clearsResultsOnCancel
+            let clearQuery = forceClearQuery ?? self.config.clearsResultsOnCancel
             self.resignSearchBar(forceClearQuery: clearQuery)
             self.hideSearchResultsViewController() // If there is a preSearchViewController, swap it back in
         }
     }
 
     open func hideSearchResultsViewController() {
-        guard let preSearchViewController = preSearchViewController, preSearchViewController != children.first else {
+        guard let preSearchViewController = resultsController.preSearchViewController, preSearchViewController != children.first else {
             return
         }
-
-        swap(out: searchResultsTableViewController,
+        let resultsViewController = resultsController.resultsViewController
+        swap(out: resultsViewController,
              with: preSearchViewController,
              into: containerView,
              completion: { [weak self] in
-                 guard let self = self else { return }
-                 guard let statefulVC = self.searchResultsTableViewController as? StatefulViewController else { return }
-                 statefulVC.transition(to: statefulVC.currentState)
+                guard let self = self else { return }
+                guard let statefulVC = resultsViewController as? StatefulViewController else { return }
+                statefulVC.transition(to: statefulVC.currentState)
         })
     }
 
     open func resignSearchBar(forceClearQuery: Bool = false) {
-        if cachesQueryOnResignation {
-            lastSearchQuery = searchBar.text
+        if config.cachesQueryOnResignation {
+            searchState.lastSearchQuery = searchBar.text
         }
         if forceClearQuery {
             clearSearchQuery()
@@ -288,7 +246,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     }
 
     open func clearSearchQuery() {
-        lastSearchQuery = nil
+        searchState.lastSearchQuery = nil
         searchBar.text = nil
     }
 
@@ -314,21 +272,54 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         }
 
         swap(out: preSearchViewController,
-             with: searchResultsTableViewController,
+             with: resultsViewController,
              into: containerView,
              completion: { [weak self] in
-                 guard let self = self else { return }
-                 self.restorePreviousSearchState()
+                guard let self = self else { return }
+                self.restorePreviousSearchState()
 
         })
     }
 
     open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false) {
-        if let query = self.lastSearchQuery, self.searchBar.text != query {
+        if let query = searchState.lastSearchQuery, self.searchBar.text != query {
             searchBar.text = query
             queryInputChanged()
         }
         if makeSearchBarFirstResponder { searchBar.becomeFirstResponder() }
         searchBar.setShowsCancelButton(searchBar.isFirstResponder, animated: false)
+    }
+}
+
+extension SearchViewController {
+    open var searchBar: UISearchBar {
+        return controls.searchBar
+    }
+
+    open var searchHeaderToolBar: UIToolbar {
+        return controls.toolbar
+    }
+
+    open var searchQuery: String? {
+        return searchBar.searchQuery
+    }
+
+    open var resultsViewController: SearchResultsViewController {
+        return self.resultsController.resultsViewController
+    }
+
+    open var preSearchViewController: UIViewController? {
+        return self.resultsController.preSearchViewController
+    }
+}
+
+
+fileprivate extension UISearchBar {
+    var searchQuery: String? {
+        return textField?.text.removeEmpty
+    }
+    var hasSearchQuery: Bool {
+        guard let searchQuery = searchQuery else { return false }
+        return true
     }
 }
