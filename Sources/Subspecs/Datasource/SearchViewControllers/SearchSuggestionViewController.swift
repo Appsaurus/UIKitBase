@@ -35,12 +35,31 @@ open class ManagedSearchViewController: NSObject {
     }
 }
 
+public protocol DualSearchViewControllerDelegate: class {
+    func didCancelSearch()
+    func userDidSubmitSearch(from dualSearchViewController: DualSearchViewController)
+}
+
 open class DualSearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open lazy var currentSearchController: ManagedSearchViewController = self.primarySearchViewController
     open lazy var primarySearchViewController: ManagedSearchViewController = self.createPrimarySearchViewController()
     open lazy var secondarySearchViewController: ManagedSearchViewController = self.createSecondarySearchViewController()
+    public weak var delegate: DualSearchViewControllerDelegate?
 
+    public required init(primarySearchViewController: ManagedSearchViewController? = nil,
+                         secondarySearchViewController: ManagedSearchViewController? = nil,
+                         delegate: DualSearchViewControllerDelegate? = nil) {
+        super.init(callDidInit: false)
+        self.primarySearchViewController =? primarySearchViewController
+        self.secondarySearchViewController =? secondarySearchViewController
+        self.delegate =? delegate
+        didInit(type: .programmatically)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 
     open lazy var searchLayoutView: UIView = {
@@ -97,13 +116,16 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
 
 
     open func didTapNavigationCancelBar() {
-
+        dismiss(animated: true, completion: self.delegate?.didCancelSearch)
     }
 
     open func didTapNavigationSearchBar() {
-
+        submitSearch()
     }
 
+    open func submitSearch() {
+        delegate?.userDidSubmitSearch(from: self)
+    }
 
     private var lastActiveSearchBar: UISearchBar?
 

@@ -12,22 +12,22 @@ import Swiftest
 import UIKitExtensions
 import UIKitTheme
 
-class SearchBarContainerView: UIView {
-    let contentView: UIView
-    let contentInsets: UIEdgeInsets
+open class SearchBarContainerView: UIView {
+    public let contentView: UIView
+    public let contentInsets: UIEdgeInsets
 
-    init(contentView: UIView, contentInsets: UIEdgeInsets = .zero) {
+    public init(contentView: UIView, contentInsets: UIEdgeInsets = .zero) {
         self.contentView = contentView
         self.contentInsets = contentInsets
         super.init(frame: CGRect.zero)
         addSubview(contentView)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds.inset(by: contentInsets)
     }
