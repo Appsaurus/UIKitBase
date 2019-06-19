@@ -11,13 +11,13 @@ import Swiftest
 import UIKitExtensions
 import UIKitTheme
 
-open class CollectionDataSource<Value: Equatable>: SectionedCollectionDataSource<String, Value> {
+open class CollectionDataSource<Value: Identifiable>: SectionedCollectionDataSource<String, Value> {
     open override func group(values: [Value]) -> [String: [Value]] {
         return ["": values] // Defaults to single section collection
     }
 }
 
-open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable> {
+open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Identifiable> {
     public init() {}
 
     open private(set) var searchQuery: String?
@@ -97,7 +97,7 @@ open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable>
 
     open func remove(models: [Value]) {
         rawModels = rawModels.filter { (model: Value) -> Bool in
-            !models.contains(model)
+            !models.contains(where: { $0.id == model.id })
         }
         reindex()
     }
@@ -180,7 +180,7 @@ open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable>
                 emptySectionCount += 1 // Need to adjust for empty sections
             }
             if let models = currentModels[sectionKey]?.enumerated() {
-                for (modelIndex, modelToCheck) in models where modelToCheck == model {
+                for (modelIndex, modelToCheck) in models where modelToCheck.id == model.id {
                     let indexPath = IndexPath(item: modelIndex, section: sectionIndex - emptySectionCount)
                     return indexPath
                 }
@@ -223,12 +223,10 @@ open class SectionedCollectionDataSource<SectionKey: Hashable, Value: Equatable>
     }
 }
 
-open class DatasourceManagedTableViewController<ModelType: Equatable>: BaseTableViewController, AsyncDatasourceChangeManager {
+open class DatasourceManagedTableViewController<ModelType: Identifiable>: BaseTableViewController, AsyncDatasourceChangeManager {
     // AsyncStateManagementQueue
     public var asyncDatasourceChangeQueue: [AsyncDatasourceChange] = []
     public var uponQueueCompletion: VoidClosure?
-
-    open var dependencyEntityId: String?
 
     open lazy var dataSource: CollectionDataSource<ModelType> = CollectionDataSource<ModelType>()
 
@@ -284,7 +282,8 @@ open class DatasourceManagedTableViewController<ModelType: Equatable>: BaseTable
     }
 
     open func removeCells(boundTo models: [ModelType], withAnimation rowAnimation: UITableView.RowAnimation = .automatic) {
-        let models = models.filter { dataSource.rawModels.contains($0) }
+        let indexedModels = dataSource.rawModels.indexed(on: \.id)
+        let models = models.filter {  indexedModels[$0.id] != nil }
         dataSource.remove(models: models)
         tableView.reloadData()
         if dataSource.rawModels.count == 0 {
@@ -293,7 +292,8 @@ open class DatasourceManagedTableViewController<ModelType: Equatable>: BaseTable
     }
 
     open func insertCells(boundTo models: [ModelType], withAnimation rowAnimation: UITableView.RowAnimation = .automatic) {
-        let models = models.filter { dataSource.rawModels.contains($0) == false }
+        let indexedModels = dataSource.rawModels.indexed(on: \.id)
+        let models = models.filter {  indexedModels[$0.id] == nil }
         /* let indices =*/ dataSource.add(models: models)
         tableView.reloadData()
         if currentState != .loaded, dataSource.rawModels.count > 0 {
@@ -302,7 +302,7 @@ open class DatasourceManagedTableViewController<ModelType: Equatable>: BaseTable
     }
 }
 
-open class DatasourceManagedCollectionViewController<ModelType: Equatable>: BaseCollectionViewController {
+open class DatasourceManagedCollectionViewController<ModelType: Identifiable>: BaseCollectionViewController {
     open lazy var dataSource: CollectionDataSource<ModelType> = CollectionDataSource<ModelType>()
 
     open override func createStatefulViews() -> StatefulViewMap {

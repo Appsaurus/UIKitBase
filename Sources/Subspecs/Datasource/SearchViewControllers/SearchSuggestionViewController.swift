@@ -158,8 +158,8 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
 
         // Throttle network activity
         let performSearchSelector = #selector(DualSearchViewController.triggerSearch(resultsController:))
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: performSearchSelector, object: resultsController)
-        perform(performSearchSelector, with: nil, afterDelay: TimeInterval(searchThrottle))
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: performSearchSelector, object: nil)
+        perform(performSearchSelector, with: resultsController, afterDelay: TimeInterval(searchThrottle))
     }
 
     @objc private func triggerSearch(resultsController: ManagedSearchViewController) {

@@ -180,15 +180,15 @@ public extension PaginationManaged where Self: UIViewController {
         if let state = transitioningState {
             transition(to: state)
         }
-        let existingNextPage = paginators.activePaginator.nextPageToken
-        if firstPage { paginators.activePaginator.nextPageToken = nil }
+        let existingNextPage = !paginators.activePaginator.hasLoadedAllPages
+        if firstPage { paginators.activePaginator.reset(stashingLastPageInfo: true) }
         paginators.activePaginator.fetchNextPage(success: { [weak self] items, isLastPage in
             DispatchQueue.main.async {
                 self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
             }
         }, failure: { [weak self] error in
             DispatchQueue.main.async {
-                self?.paginators.activePaginator.nextPageToken = existingNextPage
+                self?.paginators.activePaginator.restoreLastPageInfo()
                 self?.didFinishFetching(error: error)
                 reloadCompletion?()
             }
