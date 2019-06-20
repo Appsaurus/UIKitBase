@@ -39,7 +39,8 @@ open class SearchState {
 
 open class SearchControls {
     open var searchBar: UISearchBar = UISearchBar()
-    open var toolbar: UIToolbar = UIToolbar()
+    open var additionalRightViews: [UIView] = []
+    open var additionalLeftViews: [UIView] = []
 }
 
 open class SearchResultsControllers {
@@ -100,12 +101,13 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     open var searchState = SearchState()
     open var controls = SearchControls()
 
-    open lazy var searchLayoutView: UIView = {
-        let searchViews: [UIView] = [searchBar, searchHeaderToolBar]
-        let searchLayoutView = UIView()
-        searchLayoutView.addSubviews(searchViews)
-        searchViews.stack(.leadingToTrailing, in: searchLayoutView)
-        return searchLayoutView
+    open lazy var searchLayoutView: StackView = {
+        let searchStack = StackView()
+
+        searchStack
+            .on(.horizontal)
+            .stack([controls.additionalLeftViews + [controls.searchBar] + controls.additionalRightViews])
+        return searchStack
     }()
 
 
@@ -294,10 +296,6 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 extension SearchViewController {
     open var searchBar: UISearchBar {
         return controls.searchBar
-    }
-
-    open var searchHeaderToolBar: UIToolbar {
-        return controls.toolbar
     }
 
     open var searchQuery: String? {

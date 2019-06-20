@@ -11,7 +11,7 @@ import UIKit
 
 public protocol FormPickerFieldProtocol {}
 open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController>: FormField<ContentView, Value>, FormPickerFieldProtocol
-    where VC: AsyncTaskDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol {
+    where VC: TaskResultDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol {
     open lazy var pickerViewController: VC = VC(nibName: nil, bundle: nil)
 
     open override var canBecomeFirstResponder: Bool {
@@ -40,6 +40,7 @@ open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController
     open func configurePickerTaskHandler(picker: VC) {
         picker.onDidFinishTask = (result: { [weak self] value in
             guard let self = self else { return }
+            
             self.value = value
             self.parentViewController?.navigationController?.popViewController(animated: true)
         }, cancelled: { [weak self] in

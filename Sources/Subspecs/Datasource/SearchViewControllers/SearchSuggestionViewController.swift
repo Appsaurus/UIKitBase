@@ -35,26 +35,31 @@ open class ManagedSearchViewController: NSObject {
     }
 }
 
-public protocol DualSearchViewControllerDelegate: class {
-    func didCancelSearch()
-    func userDidSubmitSearch(from dualSearchViewController: DualSearchViewController)
+extension DualSearchViewController: TaskResultDelegate
+{
+    public typealias TaskResult = QueryType
 }
-
-open class DualSearchViewController: BaseParentViewController, UISearchBarDelegate {
+open class DualSearchViewController<QueryType>: BaseParentViewController, UISearchBarDelegate {
 
     open lazy var currentSearchController: ManagedSearchViewController = self.primarySearchViewController
     open lazy var primarySearchViewController: ManagedSearchViewController = self.createPrimarySearchViewController()
     open lazy var secondarySearchViewController: ManagedSearchViewController = self.createSecondarySearchViewController()
-    public weak var delegate: DualSearchViewControllerDelegate?
+
+    public var result: QueryType?
+
+    public var onDidFinishTask: (result: (QueryType) -> Void, cancelled: VoidClosure)?
 
     public required init(primarySearchViewController: ManagedSearchViewController? = nil,
                          secondarySearchViewController: ManagedSearchViewController? = nil,
-                         delegate: DualSearchViewControllerDelegate? = nil) {
+                         existingQuery: QueryType? = nil,
+                         onDidFinishTask: TaskCompletionClosure? = nil) {
+        self.result = existingQuery
         super.init(callDidInit: false)
         self.primarySearchViewController =? primarySearchViewController
         self.secondarySearchViewController =? secondarySearchViewController
-        self.delegate =? delegate
-        didInit(type: .programmatically)
+        self.onDidFinishTask =? onDidFinishTask
+        self.didInit(type: .programmatically)
+
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -62,12 +67,12 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
     }
 
 
-    open lazy var searchLayoutView: UIView = {
+    open lazy var searchLayoutView: StackView = {
         let searchStackView = StackView()
         searchStackView
             .on(.vertical)
-            .stack([[primaryControls.searchBar, primaryControls.toolbar],
-                    [secondaryControls.searchBar, secondaryControls.toolbar]])
+            .stack(primaryControls.additionalLeftViews + [primaryControls.searchBar] + primaryControls.additionalRightViews,
+                   secondaryControls.additionalLeftViews + [secondaryControls.searchBar] + secondaryControls.additionalRightViews)
         return searchStackView
     }()
 
@@ -86,6 +91,12 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
         let resultsVC = SearchResultsControllers(resultsViewController: UIViewController() as! SearchResultsViewController,
                                                  preSearchViewController: UIViewController())
         return ManagedSearchViewController(resultsController: resultsVC)
+    }
+
+    open func resolveQuery() -> QueryType {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        return "" as! QueryType
+        
     }
 
     open override func initialChildViewController() -> UIViewController {
@@ -116,7 +127,7 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
 
 
     open func didTapNavigationCancelBar() {
-        dismiss(animated: true, completion: self.delegate?.didCancelSearch)
+        dismiss(animated: true, completion: self.onDidFinishTask?.cancelled)
     }
 
     open func didTapNavigationSearchBar() {
@@ -124,7 +135,15 @@ open class DualSearchViewController: BaseParentViewController, UISearchBarDelega
     }
 
     open func submitSearch() {
-        delegate?.userDidSubmitSearch(from: self)
+        finishTask()
+    }
+
+    public func finishTask() {
+        onDidFinishTask?.result(resolveQuery())
+    }
+
+    public func cancelTask() {
+        onDidFinishTask?.cancelled()
     }
 
     private var lastActiveSearchBar: UISearchBar?
@@ -291,13 +310,6 @@ extension DualSearchViewController {
     }
     open var primarySearchBar: UISearchBar {
         return primaryControls.searchBar
-    }
-
-    open var secondaryToolbar: UIToolbar {
-        return secondaryControls.toolbar
-    }
-    open var primaryToolbar: UIToolbar {
-        return primaryControls.toolbar
     }
 
     open var searchBars: [UISearchBar] {
