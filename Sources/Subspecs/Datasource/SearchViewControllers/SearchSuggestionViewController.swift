@@ -66,14 +66,17 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         fatalError("init(coder:) has not been implemented")
     }
 
+    public let searchStackView = StackView()
 
-    open lazy var searchLayoutView: StackView = {
-        let searchStackView = StackView()
+    open lazy var searchLayoutView: UIView = {
+        let layoutView = UIView()
+        layoutView.addSubview(searchStackView)
+        searchStackView.pinToSuperview()
         searchStackView
             .on(.vertical)
             .stack(primaryControls.additionalLeftViews + [primaryControls.searchBar] + primaryControls.additionalRightViews,
                    secondaryControls.additionalLeftViews + [secondaryControls.searchBar] + secondaryControls.additionalRightViews)
-        return searchStackView
+        return layoutView
     }()
 
 
@@ -259,6 +262,10 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let resultsController = searchResultsController(for: searchBar)
         queryInputChanged(resultsController: resultsController)
+        guard searchBar.hasSearchQuery else {
+            searchBarDidClear(searchBar)
+            return
+        }
     }
 
     open func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -283,6 +290,11 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
                 self.restorePreviousSearchState(to: self.currentSearchController)
 
         })
+    }
+
+    open func searchBarDidClear(_ searchBar: UISearchBar) {
+        print("Search bar did clear \(searchBar)")
+        currentSearchController = searchResultsController(for: searchBar)
     }
 
     open func restorePreviousSearchState(to resultsController: ManagedSearchViewController,
