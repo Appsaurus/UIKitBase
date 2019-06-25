@@ -46,8 +46,8 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     open lazy var secondarySearchViewController: ManagedSearchViewController = self.createSecondarySearchViewController()
 
     public var result: QueryType?
-
     public var onDidFinishTask: (result: (QueryType) -> Void, cancelled: VoidClosure)?
+    public var previousQuery: String?
 
     public required init(primarySearchViewController: ManagedSearchViewController? = nil,
                          secondarySearchViewController: ManagedSearchViewController? = nil,
@@ -58,7 +58,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         self.primarySearchViewController =? primarySearchViewController
         self.secondarySearchViewController =? secondarySearchViewController
         self.onDidFinishTask =? onDidFinishTask
-        self.didInit(type: .programmatically)
+        self.initLifecycle(.programmatically)
 
     }
 
@@ -138,11 +138,12 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     }
 
     open func submitSearch() {
-        finishTask()
+        finishTask(with: self.result ?? resolveQuery())
     }
 
     public func finishTask() {
-        onDidFinishTask?.result(resolveQuery())
+        guard let result = result else { return }
+        onDidFinishTask?.result(result)
     }
 
     public func cancelTask() {
@@ -258,13 +259,39 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
             resignSearchBar(resultsController: currentSearchController, forceClearQuery: forceClearQuery)
         }
     }
+    public var previousPrimaryQuery: String?
+    public var previousSecondaryQuery: String?
+
+    //MARK: UISearchBar Delegate
+    open func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+
+    open func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {}
+
+//    open func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+//        return true
+//    }
+
+    open func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {}
 
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let resultsController = searchResultsController(for: searchBar)
+
+        let isEmpty = !searchBar.hasSearchQuery
+        var wasManuallyClearedByDeleteKeystroke = false
+        if searchBar === primarySearchBar {
+            wasManuallyClearedByDeleteKeystroke = previousPrimaryQuery?.count == 1 && !primarySearchBar.hasSearchQuery
+            previousPrimaryQuery = searchText
+        }
+        if searchBar === secondarySearchBar {
+            wasManuallyClearedByDeleteKeystroke = previousSecondaryQuery?.count == 1 && !secondarySearchBar.hasSearchQuery
+            previousSecondaryQuery = searchText
+        }
         queryInputChanged(resultsController: resultsController)
-        guard searchBar.hasSearchQuery else {
+
+        if isEmpty && !wasManuallyClearedByDeleteKeystroke {
             searchBarDidClear(searchBar)
-            return
         }
     }
 
