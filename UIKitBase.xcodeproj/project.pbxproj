@@ -37,10 +37,6 @@
 		E41D6F892249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
 		E41D6F8A2249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
 		E41D6F8B2249731200CA05C4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F842249731100CA05C4 /* Route.swift */; };
-		E41D6F8C2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
-		E41D6F8D2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
-		E41D6F8E2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
-		E41D6F8F2249731200CA05C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F852249731100CA05C4 /* Router.swift */; };
 		E41D6F902249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
 		E41D6F912249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
 		E41D6F922249731200CA05C4 /* DeepLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D6F862249731200CA05C4 /* DeepLinker.swift */; };
@@ -349,10 +345,6 @@
 		E41D7262224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
 		E41D7263224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
 		E41D7264224D707C00CA05C4 /* BaseStackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7260224D707C00CA05C4 /* BaseStackViews.swift */; };
-		E41D7266224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
-		E41D7267224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
-		E41D7268224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
-		E41D7269224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */; };
 		E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
 		E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
 		E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */; };
@@ -746,7 +738,6 @@
 		E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIApplicationDelegate.swift; sourceTree = "<group>"; };
 		E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAppNotifications.swift; sourceTree = "<group>"; };
 		E41D6F842249731100CA05C4 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		E41D6F852249731100CA05C4 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E41D6F862249731200CA05C4 /* DeepLinker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinker.swift; sourceTree = "<group>"; };
 		E41D6F872249731200CA05C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E41D7079224D5F5B00CA05C4 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -825,7 +816,6 @@
 		E41D7225224D66DE00CA05C4 /* NibLoadedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadedView.swift; sourceTree = "<group>"; };
 		E41D722C224D674600CA05C4 /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		E41D7260224D707C00CA05C4 /* BaseStackViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackViews.swift; sourceTree = "<group>"; };
-		E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTaskDelegate.swift; sourceTree = "<group>"; };
 		E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewObserver.swift; sourceTree = "<group>"; };
 		E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeScalable.swift; sourceTree = "<group>"; };
 		E41D7274224D7A2D00CA05C4 /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
@@ -1130,7 +1120,6 @@
 				E41D6F862249731200CA05C4 /* DeepLinker.swift */,
 				E41D6F872249731200CA05C4 /* Request.swift */,
 				E41D6F842249731100CA05C4 /* Route.swift */,
-				E41D6F852249731100CA05C4 /* Router.swift */,
 			);
 			path = DeepLinking;
 			sourceTree = "<group>";
@@ -1648,7 +1637,6 @@
 			children = (
 				E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */,
 				E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */,
-				E41D7265224D77A500CA05C4 /* AsyncTaskDelegate.swift */,
 				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
 				E4AF805221BB2D90002D6E86 /* DependencyInjectable.swift */,
 				E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */,
@@ -2322,7 +2310,6 @@
 				E4AF81EC21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810F21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
-				E41D6F8E2249731200CA05C4 /* Router.swift in Sources */,
 				E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E41D71BD224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DC21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
@@ -2408,7 +2395,6 @@
 				E41D71D4224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B4224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
-				E41D7268224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B8224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D4224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
@@ -2504,7 +2490,6 @@
 				E4AF81ED21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821721BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF811021BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
-				E41D6F8F2249731200CA05C4 /* Router.swift in Sources */,
 				E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E41D71BE224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DD21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
@@ -2590,7 +2575,6 @@
 				E41D71D5224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B5224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308372226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
-				E41D7269224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B9224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715C224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
@@ -2678,7 +2662,6 @@
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
-				E41D6F8C2249731200CA05C4 /* Router.swift in Sources */,
 				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E41D71BB224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
@@ -2764,7 +2747,6 @@
 				E41D71D2224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B2224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E430836F226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
-				E41D7266224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B6224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D2224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D7159224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
@@ -2861,7 +2843,6 @@
 				E4AF81EB21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
 				E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810E21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
-				E41D6F8D2249731200CA05C4 /* Router.swift in Sources */,
 				E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E41D71BC224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DB21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
@@ -2947,7 +2928,6 @@
 				E41D71D3224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B3224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
-				E41D7267224D77A600CA05C4 /* AsyncTaskDelegate.swift in Sources */,
 				E41D70B7224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D3224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
