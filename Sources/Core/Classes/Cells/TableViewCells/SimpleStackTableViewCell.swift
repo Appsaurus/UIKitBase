@@ -83,3 +83,8 @@ open class ButtonStackTableViewCell: SimpleStackTableViewCell<UIButton> {
         tertiaryButton.apply(textStyle: TextStyle(color: .textMedium, font: .regular(13.0)))
     }
 }
+
+
+final class UserCellLayoutView: ModularLabelStackView {
+
+}
