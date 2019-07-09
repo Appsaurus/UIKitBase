@@ -9,7 +9,7 @@ import Nuke
 //
 import UIKit
 
-extension ImageDisplaying where Self: UIView {
+extension Nuke_ImageDisplaying where Self: UIView {
     @discardableResult
     public func loadImage(with url: URLConvertible,
                           options: ImageLoadingOptions = .shared,
@@ -27,7 +27,7 @@ extension ImageDisplaying where Self: UIView {
         do {
             return try loadImage(with: url, options: options, progress: progress, completion: completion)
         } catch {
-            display(image: errorImage)
+            nuke_display(image: errorImage)
             return nil
         }
     }
@@ -52,12 +52,15 @@ extension ImageDisplaying where Self: UIView {
 
     public func resetImage() {
         Nuke.cancelRequest(for: self)
-        display(image: nil)
+        nuke_display(image: nil)
     }
 }
 
-extension UIButton: ImageDisplaying {
+extension UIButton: Nuke_ImageDisplaying {
     public func display(image: Image?) {
+        imageView?.image = image
+    }
+    public func nuke_display(image: Image?) {
         imageView?.image = image
     }
 }
