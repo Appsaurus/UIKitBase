@@ -14,9 +14,9 @@ public enum SearchDataSource {
 }
 
 open class SearchResultsDisplayingConfiguration {
-    var loadsSearchResultsImmediately: Bool = true
-    var fetchesResultsWithEmptyQuery: Bool = true
-    var searchDataSourceType: SearchDataSource = .remote
+    public var loadsSearchResultsImmediately: Bool = true
+    public var fetchesResultsWithEmptyQuery: Bool = true
+    public var searchDataSourceType: SearchDataSource = .remote
 }
 
 public protocol SearchResultsDisplaying {
