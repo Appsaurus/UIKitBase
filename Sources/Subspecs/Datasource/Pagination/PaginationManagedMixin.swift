@@ -27,7 +27,7 @@ open class PaginationManagedMixin: UIViewControllerMixin<UIViewController & Pagi
     }
 
     open override func willDeinit() {
-        mixable.datasourceConsumingView.loadingControls.clear()
+        mixable.paginatingView.loadingControls.clear()
     }
 
     open override func createSubviews() {

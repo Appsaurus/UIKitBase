@@ -173,10 +173,6 @@
 		E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
 		E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
 		E41D7127224D5FB300CA05C4 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7107224D5FB300CA05C4 /* AuthController.swift */; };
-		E41D712B224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
-		E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
-		E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
-		E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */; };
 		E41D7155224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
 		E41D7156224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
 		E41D7157224D651300CA05C4 /* PaginationManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7132224D651300CA05C4 /* PaginationManaged.swift */; };
@@ -416,6 +412,10 @@
 		E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
 		E42075F9226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
 		E42075FA226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
+		E42E9A7322D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
+		E42E9A7422D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
+		E42E9A7522D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
+		E42E9A7622D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
 		E430836F226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
 		E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
 		E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E430836E226514580032CD17 /* PaginationManagedMixin.swift */; };
@@ -790,7 +790,6 @@
 		E41D7105224D5FB300CA05C4 /* AuthIcons.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AuthIcons.svg; sourceTree = "<group>"; };
 		E41D7106224D5FB300CA05C4 /* IdentifierAndPasswordAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierAndPasswordAuthController.swift; sourceTree = "<group>"; };
 		E41D7107224D5FB300CA05C4 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
-		E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
 		E41D7132224D651300CA05C4 /* PaginationManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationManaged.swift; sourceTree = "<group>"; };
 		E41D7134224D651300CA05C4 /* UIScrollView+LoadingControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+LoadingControls.swift"; sourceTree = "<group>"; };
 		E41D7135224D651300CA05C4 /* NeedsLoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedsLoadingIndicatorView.swift; sourceTree = "<group>"; };
@@ -852,6 +851,7 @@
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceManaged.swift; sourceTree = "<group>"; };
+		E42E9A7222D78248006FC120 /* DiffableDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableDatasource.swift; sourceTree = "<group>"; };
 		E430836E226514580032CD17 /* PaginationManagedMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManagedMixin.swift; sourceTree = "<group>"; };
 		E4308373226514AC0032CD17 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		E442FFCF22527A1D0007E691 /* AuthIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuthIcons.ttf; sourceTree = "<group>"; };
@@ -1339,10 +1339,10 @@
 		E41D7129224D63CD00CA05C4 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				E42E9A7222D78248006FC120 /* DiffableDatasource.swift */,
 				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
 				E41D712F224D651300CA05C4 /* Pagination */,
 				E41D7133224D651300CA05C4 /* ScrollViewLoadingControls */,
-				E41D712A224D64E900CA05C4 /* CollectionDataSource.swift */,
 			);
 			path = Datasource;
 			sourceTree = "<group>";
@@ -2302,6 +2302,7 @@
 				E41D70C8224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
 				E41D710A224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
+				E42E9A7522D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -2332,7 +2333,6 @@
 				E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70B0224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
-				E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E475F5F522D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */,
@@ -2517,7 +2517,6 @@
 				E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70B1224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
-				E41D712E224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
@@ -2576,6 +2575,7 @@
 				E41D70BD224D5F5B00CA05C4 /* UIBarButtonItem+Hidden.swift in Sources */,
 				E4AF80CC21BB2D90002D6E86 /* ViewControllerConfigurableMixin.swift in Sources */,
 				E41D71F3224D664A00CA05C4 /* CustomTabBarItemView.swift in Sources */,
+				E42E9A7622D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E41D719C224D651300CA05C4 /* InfiniteScroller.swift in Sources */,
 				E41D72BD224D7DDE00CA05C4 /* CornerBadgeView.swift in Sources */,
 				E41D7113224D5FB300CA05C4 /* AuthenticationViewController.swift in Sources */,
@@ -2666,6 +2666,7 @@
 				E4AF821E21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
+				E42E9A7322D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E4AF810521BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
 				E4AF820321BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C521BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
@@ -2692,7 +2693,6 @@
 				E4AF820921BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70AE224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D716D224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
-				E41D712B224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70CE224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E466AC3D224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
@@ -2848,6 +2848,7 @@
 				E41D70C7224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
 				E41D7109224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
+				E42E9A7422D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -2878,7 +2879,6 @@
 				E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70AF224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
-				E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E475F5F422D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */,

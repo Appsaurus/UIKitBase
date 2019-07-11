@@ -126,7 +126,7 @@ open class ExampleStyleGuide: AppStyleGuide{
 open class ExampleTypographyGuide: TypographyGuide{
     open override func overrideStoredDefaults() {
         super.overrideStoredDefaults()
-        fonts = ExampleFontGuide()
+        font = ExampleFontGuide()
     }
 }
 

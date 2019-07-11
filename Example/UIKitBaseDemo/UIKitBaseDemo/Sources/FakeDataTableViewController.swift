@@ -8,21 +8,23 @@
 
 import UIKitBase
 import UIKit
+import DiffableDataSources
 
-open class FakeDataTableViewController: DatasourceManagedTableViewController<Int>{
-    
+open class FakeDataTableViewController: BaseTableViewController, DatasourceManaged{
+
     open func registerReusables() {
         tableView.register(UITableViewCell.self)
     }
 
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        dataSource.add(models: Array(0...50))
-    }
-    
-    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public lazy var datasource = TableViewDatasource<Int>(tableView: tableView) { tableView, indexPath, model in
         let cell: UITableViewCell = tableView.dequeueReusableCell(indexPath)
-        cell.textLabel?.text = dataSource[indexPath]?.string
+        cell.textLabel?.text = "\(model)"
         return cell
     }
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        datasource.add(models: Array(0...50))
+    }
+
 }

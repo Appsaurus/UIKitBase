@@ -13,9 +13,9 @@ import UIKitBase
 open class ExampleSearchViewController: SearchViewController {
     open override func initProperties() {
         super.initProperties()
-        searchBarPosition = .navigationTitle
-        searchResultsTableViewController = ExamplePaginatableTableViewController()
-        searchResultsTableViewController.searchDataSourceType = .local
+        layoutConfig.searchBarPosition = .navigationTitle
+        resultsController = SearchResultsControllers(resultsViewController: ExamplePaginatableTableViewController())
+        resultsController.resultsViewController.searchDataSourceType = .local
     }
     
 }

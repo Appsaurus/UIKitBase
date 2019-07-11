@@ -19,6 +19,9 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 }
 
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
+
+    private var cellHeightsDictionary: [String: CGFloat] = [:]
+
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
@@ -71,4 +74,19 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     open func willTransition(to state: State) {}
 
     open func didTransition(to state: State) {}
+
+
+    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height
+    }
+
+    override open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
+    }
+}
+
+private extension IndexPath {
+    var cacheKey: String {
+        return String(describing: self)
+    }
 }
