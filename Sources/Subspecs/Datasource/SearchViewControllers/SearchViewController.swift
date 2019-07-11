@@ -27,7 +27,7 @@ open class SearchBarContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds.inset(by: contentInsets)
     }
@@ -44,7 +44,6 @@ open class SearchControls {
 }
 
 open class SearchResultsControllers {
-
     open var resultsViewController: SearchResultsViewController
     open var preSearchViewController: UIViewController?
 
@@ -78,6 +77,7 @@ open class SearchViewControllerConfiguration {
         self.cachesQueryOnResignation =? cachesQueryOnResignation
     }
 }
+
 open class SearchViewControllerLayoutConfiguration {
     open var searchBarPosition: SearchBarPosition
     open var searchBarInsets: UIEdgeInsets // This can mess with corner radius of search bar's text field, may need to tweak accordingly
@@ -93,7 +93,6 @@ open class SearchViewControllerLayoutConfiguration {
 }
 
 open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
-
     open lazy var resultsController: SearchResultsControllers = self.createSearchResultsControllers()
 
     open var config = SearchViewControllerConfiguration()
@@ -110,12 +109,11 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         return searchStack
     }()
 
-
     open func createSearchResultsControllers() -> SearchResultsControllers {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         // swiftlint:disable:next force_cast
         return SearchResultsControllers(resultsViewController: UIViewController() as! SearchResultsViewController,
-                                            preSearchViewController: UIViewController())
+                                        preSearchViewController: UIViewController())
     }
 
     open override func initialChildViewController() -> UIViewController {
@@ -143,7 +141,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         super.createSubviews()
         switch layoutConfig.searchBarPosition {
         case .header:
-            if layoutConfig.displaysNavigationbarSearchControls{
+            if layoutConfig.displaysNavigationbarSearchControls {
                 navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", action: didTapNavigationCancelBar)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", action: didTapNavigationSearchBar)
             }
@@ -156,14 +154,9 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         }
     }
 
+    open func didTapNavigationCancelBar() {}
 
-    open func didTapNavigationCancelBar() {
-
-    }
-
-    open func didTapNavigationSearchBar() {
-
-    }
+    open func didTapNavigationSearchBar() {}
 
     var searchBarWasActiveWhenLastVisible: Bool = false
 
@@ -224,9 +217,9 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
              with: preSearchViewController,
              into: containerView,
              completion: { [weak self] in
-                guard let self = self else { return }
-                guard let statefulVC = resultsViewController as? StatefulViewController else { return }
-                statefulVC.transition(to: statefulVC.currentState)
+                 guard let self = self else { return }
+                 guard let statefulVC = resultsViewController as? StatefulViewController else { return }
+                 statefulVC.transition(to: statefulVC.currentState)
         })
     }
 
@@ -277,8 +270,8 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
              with: resultsViewController,
              into: containerView,
              completion: { [weak self] in
-                guard let self = self else { return }
-                self.restorePreviousSearchState()
+                 guard let self = self else { return }
+                 self.restorePreviousSearchState()
 
         })
     }
@@ -307,15 +300,15 @@ extension SearchViewController {
     }
 
     open var preSearchViewController: UIViewController? {
-        return self.resultsController.preSearchViewController
+        return resultsController.preSearchViewController
     }
 }
 
-
-fileprivate extension UISearchBar {
+private extension UISearchBar {
     var searchQuery: String? {
         return textField?.text.removeEmpty
     }
+
     var hasSearchQuery: Bool {
         guard let searchQuery = searchQuery else { return false }
         return true

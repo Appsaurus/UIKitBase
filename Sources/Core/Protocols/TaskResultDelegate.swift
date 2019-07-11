@@ -22,7 +22,6 @@ public extension OptionalTaskResultDelegate {
         onDidFinishTask = completion
     }
 
-
     func finishTask() {
         onDidFinishTask?.result(result)
     }
@@ -31,6 +30,7 @@ public extension OptionalTaskResultDelegate {
         self.result = result
         finishTask()
     }
+
     func cancelTask() {
         onDidFinishTask?.cancelled()
     }
@@ -44,6 +44,7 @@ public protocol TaskResultDelegate: AnyObject {
 
 public extension TaskResultDelegate {
     typealias TaskCompletionClosure = (result: ClosureIn<TaskResult>, cancelled: VoidClosure)
+
     func setOnDidFinishTask(_ completion: TaskCompletionClosure) {
         onDidFinishTask = completion
     }

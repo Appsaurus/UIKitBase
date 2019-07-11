@@ -11,7 +11,6 @@ import Swiftest
 import UIKitExtensions
 import UIKitTheme
 
-
 open class ManagedSearchViewController: NSObject {
     open var resultsController: SearchResultsControllers
     open var config = SearchViewControllerConfiguration()
@@ -35,12 +34,11 @@ open class ManagedSearchViewController: NSObject {
     }
 }
 
-extension DualSearchViewController: TaskResultDelegate
-{
+extension DualSearchViewController: TaskResultDelegate {
     public typealias TaskResult = QueryType
 }
-open class DualSearchViewController<QueryType>: BaseParentViewController, UISearchBarDelegate {
 
+open class DualSearchViewController<QueryType>: BaseParentViewController, UISearchBarDelegate {
     open lazy var currentSearchController: ManagedSearchViewController = self.primarySearchViewController
     open lazy var primarySearchViewController: ManagedSearchViewController = self.createPrimarySearchViewController()
     open lazy var secondarySearchViewController: ManagedSearchViewController = self.createSecondarySearchViewController()
@@ -53,16 +51,15 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
                          secondarySearchViewController: ManagedSearchViewController? = nil,
                          existingQuery: QueryType? = nil,
                          onDidFinishTask: TaskCompletionClosure? = nil) {
-        self.result = existingQuery
+        result = existingQuery
         super.init(callDidInit: false)
         self.primarySearchViewController =? primarySearchViewController
         self.secondarySearchViewController =? secondarySearchViewController
         self.onDidFinishTask =? onDidFinishTask
-        self.initLifecycle(.programmatically)
-
+        initLifecycle(.programmatically)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -79,12 +76,11 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         return layoutView
     }()
 
-
     open func createPrimarySearchViewController() -> ManagedSearchViewController {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         // swiftlint:disable:next force_cast
         let resultsVC = SearchResultsControllers(resultsViewController: UIViewController() as! SearchResultsViewController,
-                                        preSearchViewController: UIViewController())
+                                                 preSearchViewController: UIViewController())
         return ManagedSearchViewController(resultsController: resultsVC)
     }
 
@@ -98,12 +94,10 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
 
     open func resolveQuery() -> QueryType {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-        return "" as! QueryType
-        
+        return "" as! QueryType // swiftlint:disable:this force_cast
     }
 
     open override func initialChildViewController() -> UIViewController {
-
         return primarySearchViewController.preSearchViewController ?? primarySearchViewController.resultsViewController
     }
 
@@ -113,7 +107,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
 
     open override func style() {
         super.style()
-        searchBars.forEach{$0.textField?.subviews.first?.cornerRadius = 10.0 }
+        searchBars.forEach { $0.textField?.subviews.first?.cornerRadius = 10.0 }
     }
 
     open override func setupDelegates() {
@@ -121,16 +115,14 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         searchBars.forEach { $0.delegate = self }
     }
 
-
     open override func createSubviews() {
         super.createSubviews()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", action: didTapNavigationCancelBar)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", action: didTapNavigationSearchBar)
     }
 
-
     open func didTapNavigationCancelBar() {
-        dismiss(animated: true, completion: self.onDidFinishTask?.cancelled)
+        dismiss(animated: true, completion: onDidFinishTask?.cancelled)
     }
 
     open func didTapNavigationSearchBar() {
@@ -138,7 +130,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     }
 
     open func submitSearch() {
-        finishTask(with: self.result ?? resolveQuery())
+        finishTask(with: result ?? resolveQuery())
     }
 
     public func finishTask() {
@@ -155,6 +147,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     private var searchBarWasActiveWhenLastVisible: Bool {
         return lastActiveSearchBar != nil
     }
+
     open override func viewWillDisappear(_ animated: Bool) {
         lastActiveSearchBar = searchBars.first(where: { $0.isFirstResponder })
         super.viewWillDisappear(animated)
@@ -175,7 +168,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
 
     open func queryInputChanged(resultsController: ManagedSearchViewController) {
         guard let searchThrottle = resultsController.config.searchThrottle else {
-            performSearch(query: resultsController.searchBar.searchQuery, on : resultsController)
+            performSearch(query: resultsController.searchBar.searchQuery, on: resultsController)
             return
         }
 
@@ -199,7 +192,6 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         resignSearch()
     }
 
-
     open func resignSearch(forceClearQuery: Bool? = nil) {
         resignSearch(resultsController: currentSearchController, forceClearQuery: forceClearQuery)
     }
@@ -221,9 +213,9 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
              with: preSearchViewController,
              into: containerView,
              completion: { [weak self] in
-                guard let self = self else { return }
-                guard let statefulVC = self.currentSearchController.resultsViewController as? StatefulViewController else { return }
-                statefulVC.transition(to: statefulVC.currentState)
+                 guard let self = self else { return }
+                 guard let statefulVC = self.currentSearchController.resultsViewController as? StatefulViewController else { return }
+                 statefulVC.transition(to: statefulVC.currentState)
         })
     }
 
@@ -249,6 +241,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         clearSearchQuery(resultsController: primarySearchViewController)
         clearSearchQuery(resultsController: secondarySearchViewController)
     }
+
     open func clearSearchQuery(resultsController: ManagedSearchViewController) {
         resultsController.controls.searchBar.text = nil
         resultsController.searchState.lastSearchQuery = nil
@@ -259,10 +252,12 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
             resignSearchBar(resultsController: currentSearchController, forceClearQuery: forceClearQuery)
         }
     }
+
     public var previousPrimaryQuery: String?
     public var previousSecondaryQuery: String?
 
-    //MARK: UISearchBar Delegate
+    // MARK: UISearchBar Delegate
+
     open func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         return true
     }
@@ -290,7 +285,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         }
         queryInputChanged(resultsController: resultsController)
 
-        if isEmpty && !wasManuallyClearedByDeleteKeystroke {
+        if isEmpty, !wasManuallyClearedByDeleteKeystroke {
             searchBarDidClear(searchBar)
         }
     }
@@ -313,8 +308,8 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
              with: currentSearchController.resultsViewController,
              into: containerView,
              completion: { [weak self] in
-                guard let self = self else { return }
-                self.restorePreviousSearchState(to: self.currentSearchController)
+                 guard let self = self else { return }
+                 self.restorePreviousSearchState(to: self.currentSearchController)
 
         })
     }
@@ -335,11 +330,11 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     }
 }
 
-
 extension DualSearchViewController {
     open var secondaryControls: SearchControls {
         return secondarySearchViewController.controls
     }
+
     open var primaryControls: SearchControls {
         return primarySearchViewController.controls
     }
@@ -347,6 +342,7 @@ extension DualSearchViewController {
     open var secondarySearchBar: UISearchBar {
         return secondaryControls.searchBar
     }
+
     open var primarySearchBar: UISearchBar {
         return primaryControls.searchBar
     }
@@ -364,9 +360,8 @@ extension DualSearchViewController {
     }
 
     private func searchResultsController(for searchBar: UISearchBar) -> ManagedSearchViewController {
-
         switch searchBar {
-        case self.primarySearchBar:
+        case primarySearchBar:
             return primarySearchViewController
         case secondarySearchBar:
             return secondarySearchViewController
@@ -377,27 +372,27 @@ extension DualSearchViewController {
     }
 }
 
-fileprivate extension UISearchBar {
+private extension UISearchBar {
     var searchQuery: String? {
         return textField?.text.removeEmpty
     }
+
     var hasSearchQuery: Bool {
         guard let searchQuery = searchQuery else { return false }
         return true
     }
 }
 
-
-//open class SearchViewControllerCoordinator: BaseParentViewController {
+// open class SearchViewControllerCoordinator: BaseParentViewController {
 //
 //    open lazy var primarySearchViewController: SearchViewController
 //    open lazy var secondarySearchViewController: SearchViewController
 //
 //
-//}
+// }
 
 //
-//open class SearchViewControllerCoordinator: BaseParentViewController {
+// open class SearchViewControllerCoordinator: BaseParentViewController {
 //
 //    open lazy var primarySearchViewController: SearchViewController
 //    open lazy var secondarySearchViewController: SearchViewController
@@ -474,9 +469,9 @@ fileprivate extension UISearchBar {
 //        default: break
 //        }
 //    }
-//}
+// }
 //
-//open class SearchResultController: NSObject {
+// open class SearchResultController: NSObject {
 //    open var searchBar: UISearchBar = UISearchBar()
 //    open var searchHeaderToolBar: UIToolbar = UIToolbar()
 //    open var config: SearchResultsViewControllerConfiguration
@@ -501,9 +496,9 @@ fileprivate extension UISearchBar {
 //        lastSearchQuery = nil
 //        searchBar.text = nil
 //    }
-//}
+// }
 //
-//open class SearchResultsViewControllerConfiguration {
+// open class SearchResultsViewControllerConfiguration {
 //    open var searchThrottle: Float?
 //    open var clearsResultsOnCancel: Bool = true
 //    open var restoreSearchStateOnAppearance: Bool = true
@@ -523,8 +518,8 @@ fileprivate extension UISearchBar {
 //    }
 //
 //
-//}
-//fileprivate extension UISearchBar {
+// }
+// fileprivate extension UISearchBar {
 //    var searchQuery: String? {
 //        return textField?.text.removeEmpty
 //    }
@@ -532,4 +527,4 @@ fileprivate extension UISearchBar {
 //        guard let searchQuery = searchQuery else { return false }
 //        return true
 //    }
-//}
+// }

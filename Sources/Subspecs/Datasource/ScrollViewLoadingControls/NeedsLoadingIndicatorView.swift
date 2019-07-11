@@ -85,7 +85,7 @@ extension PaginationManaged where Self: UIViewController {
     }
 
     public func showNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onTap: VoidClosure? = nil) {
-        paginatableScrollView.showNeedsLoadingIndicator(title: title, onTap: onTap)
+        datasourceConsumingView.showNeedsLoadingIndicator(title: title, onTap: onTap)
     }
 }
 

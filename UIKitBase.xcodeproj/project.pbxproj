@@ -432,6 +432,23 @@
 		E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
+		E475F5F122D6CF5400FE1007 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */; };
+		E475F5F322D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
+		E475F5F422D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
+		E475F5F522D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
+		E475F5F622D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
+		E475F5F822D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */; };
+		E475F5F922D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */; };
+		E475F5FA22D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */; };
+		E475F5FB22D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */; };
+		E475F60822D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */; };
+		E475F60922D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */; };
+		E475F60A22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */; };
+		E475F60B22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */; };
+		E475F60C22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E475F60D22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E475F60E22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E475F60F22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -841,6 +858,11 @@
 		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
 		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
 		E466AC45224EC1A700CA54F4 /* config.swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.swiftformat; sourceTree = "<group>"; };
+		E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
+		E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskResultDelegate.swift; sourceTree = "<group>"; };
+		E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornableMixin.swift; sourceTree = "<group>"; };
+		E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsDisplaying.swift; sourceTree = "<group>"; };
+		E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewController.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1117,6 +1139,7 @@
 		E41D6F782245F05400CA05C4 /* DeepLinking */ = {
 			isa = PBXGroup;
 			children = (
+				E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */,
 				E41D6F862249731200CA05C4 /* DeepLinker.swift */,
 				E41D6F872249731200CA05C4 /* Request.swift */,
 				E41D6F842249731100CA05C4 /* Route.swift */,
@@ -1486,6 +1509,8 @@
 		E41D71DF224D663F00CA05C4 /* SearchViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */,
+				E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */,
 				E41D71E1224D663F00CA05C4 /* SearchViewController.swift */,
 			);
 			path = SearchViewControllers;
@@ -1635,6 +1660,7 @@
 		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */,
 				E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */,
 				E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */,
 				E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */,
@@ -1693,6 +1719,7 @@
 		E4AF805D21BB2D90002D6E86 /* Mixins */ = {
 			isa = PBXGroup;
 			children = (
+				E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */,
 				E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */,
 				E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */,
 				E4AF806021BB2D90002D6E86 /* BackButtonManagedMixin.swift */,
@@ -2145,6 +2172,8 @@
 				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
 				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
+				"${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
 				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
@@ -2152,7 +2181,6 @@
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UIFontIcons/UIFontIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitExtensions/UIKitExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitMixinable/UIKitMixinable.framework",
@@ -2171,6 +2199,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DiffableDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DifferenceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
@@ -2178,7 +2208,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitMixinable.framework",
@@ -2277,6 +2306,7 @@
 				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BF21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810721BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E475F60E22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */,
 				E4AF820521BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C721BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AB21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
@@ -2304,6 +2334,7 @@
 				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712D224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E475F5F522D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715F224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
@@ -2383,6 +2414,7 @@
 				E41D70F0224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7298224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E475F5FA22D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
 				E41D7282224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811B21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808B21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2400,6 +2432,7 @@
 				E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */,
 				E41D7177224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E475F60A22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D71AD224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
 				E41D71E8224D663F00CA05C4 /* SearchViewController.swift in Sources */,
@@ -2463,10 +2496,12 @@
 				E41D728E224D7CDF00CA05C4 /* VerbalExpressions.swift in Sources */,
 				E4AF80F021BB2D90002D6E86 /* BaseCollectionViewController.swift in Sources */,
 				E41D70B5224D5F5B00CA05C4 /* LegalDisclosureView.swift in Sources */,
+				E475F60F22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */,
 				E41D71CD224D657500CA05C4 /* AnimatableTextField.swift in Sources */,
 				E4308377226514AC0032CD17 /* PaginationManager.swift in Sources */,
 				E4AF810C21BB2D90002D6E86 /* BaseTableViewCell.swift in Sources */,
 				E41D70A1224D5F5B00CA05C4 /* LocationPickerViewController.swift in Sources */,
+				E475F5F622D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E41D71F7224D664A00CA05C4 /* CustomTabBar.swift in Sources */,
 				E41D7288224D7C8D00CA05C4 /* Int+IndexPath.swift in Sources */,
 				E4AF81F521BF84EF002D6E86 /* StatefulViewControllerLoadingView.swift in Sources */,
@@ -2509,6 +2544,7 @@
 				E41D70DD224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E4AF820121BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7E2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
+				E475F5FB22D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
 				E4AF811821BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
 				E4AF809821BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift in Sources */,
 				E4AF821C21C0299D002D6E86 /* FooterView.swift in Sources */,
@@ -2560,6 +2596,7 @@
 				E41D71FB224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
 				E41D71B6224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D821BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E475F60B22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D70F1224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7299224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
@@ -2607,6 +2644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D70A2224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E475F60822D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */,
@@ -2663,11 +2701,14 @@
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
+				E475F5F322D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E41D71BB224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E41D7292224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
 				E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
+				E475F5F822D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
+				E475F5F122D6CF5400FE1007 /* DeepLinkRouter.swift in Sources */,
 				E41D727C224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F942249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,
@@ -2732,6 +2773,7 @@
 				E41D71F8224D664A00CA05C4 /* CustomTabBarController.swift in Sources */,
 				E41D71B3224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D521BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
+				E475F60C22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */,
 				E41D70EE224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7296224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811121BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
@@ -2810,6 +2852,7 @@
 				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BE21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
 				E4AF810621BB2D90002D6E86 /* BaseUIButton.swift in Sources */,
+				E475F60D22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */,
 				E4AF820421BF8D9F002D6E86 /* BaseButton.swift in Sources */,
 				E4AF80C621BB2D90002D6E86 /* KeyboardSizeAwareMixin.swift in Sources */,
 				E4AF80AA21BB2D90002D6E86 /* OrientationLockable.swift in Sources */,
@@ -2837,6 +2880,7 @@
 				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D712C224D64E900CA05C4 /* CollectionDataSource.swift in Sources */,
 				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E475F5F422D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715E224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
@@ -2916,6 +2960,7 @@
 				E41D70EF224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7297224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
+				E475F5F922D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
 				E41D7281224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
 				E4AF811A21BB2D90002D6E86 /* BaseBarButtonItem.swift in Sources */,
 				E4AF808A21BB2D90002D6E86 /* ViewRecycler.swift in Sources */,
@@ -2933,6 +2978,7 @@
 				E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */,
 				E41D7176224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E475F60922D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D71AC224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
 				E41D71E7224D663F00CA05C4 /* SearchViewController.swift in Sources */,

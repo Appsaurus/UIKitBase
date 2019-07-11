@@ -26,6 +26,7 @@ def libaryShared
     pod 'SwiftDate'
     pod 'CountryPickerSwift'
     pod 'PhoneNumberKit'
+    pod 'DiffableDataSources'
 
     pod 'Permission/Location', :git => 'https://github.com/Appsaurus/Permission'
 end
@@ -35,13 +36,13 @@ def testShared
 end
 
 target 'UIKitBase-iOS' do
-    platform :ios, '9.0'
+    platform :ios, '10.0'
     shared
     libaryShared
 end
 
 target 'UIKitBase-iOS-Tests' do
-    platform :ios, '9.0'
+    platform :ios, '10.0'
     shared
     testShared
     pod 'CwlPreconditionTesting', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'

@@ -75,11 +75,12 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
             switch searchDataSourceType {
             case .remote:
                 if fetchesResultsWithEmptyQuery {
-                    paginators.activePaginator.searchQuery = nil
+                    paginator.searchQuery = nil
                     fetchNextPage(firstPage: true)
                 }
             case .local:
-                dataSource.removeFilter()
+
+//                datasource.removeFilter()
                 reloadPaginatableCollectionView(completion: {})
             }
             return
@@ -87,10 +88,10 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
         switch searchDataSourceType {
         case .remote:
             reset(to: .loading)
-            paginators.activePaginator.searchQuery = query
+            paginator.searchQuery = query
             fetchNextPage(firstPage: true)
         case .local:
-            dataSource.filterData(searchQuery: query)
+//            datasource.filterData(searchQuery: query)
             reloadPaginatableCollectionView(completion: {})
         }
     }

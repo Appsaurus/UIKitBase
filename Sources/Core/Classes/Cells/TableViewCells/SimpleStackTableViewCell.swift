@@ -8,30 +8,29 @@
 
 import Layman
 import Swiftest
+import UIFontIcons
 import UIKitExtensions
 import UIKitTheme
-import UIFontIcons
 
 open class ModularTableViewCell<MV: UIView>: ViewBasedTableViewCell<CellLayoutView<MV>> {
-        open var config: CellLayoutViewConfiguration?
+    open var config: CellLayoutViewConfiguration?
 
-        open var leftImageView: BaseImageView {
-            return self.view.leftImageView
-        }
+    open var leftImageView: BaseImageView {
+        return self.view.leftImageView
+    }
 
-        open var optionalRightView: UIView? {
-            return nil
-        }
+    open var optionalRightView: UIView? {
+        return nil
+    }
 
-        open override func createMainView() -> CellLayoutView<MV> {
-            return CellLayoutView<MV>(config: config, optionalRightView: optionalRightView)
-        }
+    open override func createMainView() -> CellLayoutView<MV> {
+        return CellLayoutView<MV>(config: config, optionalRightView: optionalRightView)
+    }
 }
 
 open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
-
 //    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
-////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
+    ////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
 //    }
     open var mainLabel: UILabel {
         return view.middleView
@@ -51,7 +50,7 @@ open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
     }
 }
 
-//open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV> {
+// open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV> {
 //    open var config: CellLayoutViewConfiguration?
 //
 //    open lazy var stackView: GrowingStackView<StackedView> = {
@@ -69,19 +68,19 @@ open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
 //    open override func createMainView() -> MSV {
 //        return MSV(config: config, optionalRightView: optionalRightView)
 //    }
-//}
+// }
 //
-//open class ModularTextFieldStackTableViewCell<MSV: ModularStackView<UITextField>>: ModularStackTableViewCell<UITextField, MSV> {}
-//open class ModularLabelStackTableViewCell<MSV: ModularStackView<UILabel>>: ModularStackTableViewCell<UILabel, MSV> {}
-//open class ModularButtonStackTableViewCell<MSV: ModularStackView<BaseButton>>: ModularStackTableViewCell<BaseButton, MSV> {}
+// open class ModularTextFieldStackTableViewCell<MSV: ModularStackView<UITextField>>: ModularStackTableViewCell<UITextField, MSV> {}
+// open class ModularLabelStackTableViewCell<MSV: ModularStackView<UILabel>>: ModularStackTableViewCell<UILabel, MSV> {}
+// open class ModularButtonStackTableViewCell<MSV: ModularStackView<BaseButton>>: ModularStackTableViewCell<BaseButton, MSV> {}
 //
-//open class SimpleStackTableViewCell<StackedView: UIView>: ModularStackTableViewCell<StackedView, ModularStackView<StackedView>> {
+// open class SimpleStackTableViewCell<StackedView: UIView>: ModularStackTableViewCell<StackedView, ModularStackView<StackedView>> {
 //    open override func createMainView() -> ModularStackView<StackedView> {
 //        return ModularStackView<StackedView>(config: config, optionalRightView: optionalRightView)
 //    }
-//}
+// }
 //
-//open class DualStackTableViewCell<StackedView: UIView, RightStackedView: UIView>: ModularStackTableViewCell<StackedView, DualModularStackview<StackedView, RightStackedView>> {
+// open class DualStackTableViewCell<StackedView: UIView, RightStackedView: UIView>: ModularStackTableViewCell<StackedView, DualModularStackview<StackedView, RightStackedView>> {
 //    open lazy var rightStack: GrowingStackView<RightStackedView> = {
 //        self.view.rightStack
 //    }()
@@ -94,9 +93,9 @@ open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
 //    open var rightStackLayoutStyle: StackViewConfiguration {
 //        return .equalSpacingVertical(spacing: 3.0)
 //    }
-//}
+// }
 //
-//open class LabelStackTableViewCell: SimpleStackTableViewCell<UILabel> {
+// open class LabelStackTableViewCell: SimpleStackTableViewCell<UILabel> {
 //    open var primaryLabel: UILabel { return self.stackView.stackedView(at: 0) }
 //    open var secondaryLabel: UILabel { return self.stackView.stackedView(at: 1) }
 //    open var tertiaryLabel: UILabel { return self.stackView.stackedView(at: 2) }
@@ -107,9 +106,9 @@ open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
 //        secondaryLabel.apply(textStyle: TextStyle(color: .textMedium, font: .regular(14.0)))
 //        tertiaryLabel.apply(textStyle: TextStyle(color: .textMedium, font: .regular(14.0)))
 //    }
-//}
+// }
 //
-//open class ButtonStackTableViewCell: SimpleStackTableViewCell<UIButton> {
+// open class ButtonStackTableViewCell: SimpleStackTableViewCell<UIButton> {
 //    open var primaryButton: UIButton { return self.stackView.stackedView(at: 0) }
 //    open var secondaryButton: UIButton { return self.stackView.stackedView(at: 0) }
 //    open var tertiaryButton: UIButton { return self.stackView.stackedView(at: 0) }
@@ -120,9 +119,9 @@ open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
 //        secondaryButton.apply(textStyle: TextStyle(color: .textMedium, font: .regular(13.0)))
 //        tertiaryButton.apply(textStyle: TextStyle(color: .textMedium, font: .regular(13.0)))
 //    }
-//}
+// }
 //
 //
-//final class UserCellLayoutView: ModularLabelStackView {
+// final class UserCellLayoutView: ModularLabelStackView {
 //
-//}
+// }

@@ -24,8 +24,9 @@ open class LocationPickerSearchConfiguration {
     public var searchHistoryLabel = "Search History"
 }
 
-open class LocationPickerSearchViewController: SearchViewController, AsyncTaskDelegate {
-    public typealias TaskResult = LocationData
+open class LocationPickerSearchViewController: SearchViewController, TaskResultDelegate {
+    public var result: LocationData?
+
     public var onDidFinishTask: TaskCompletionClosure? {
         didSet {
             mapViewController.onDidFinishTask = onDidFinishTask
@@ -54,8 +55,9 @@ open class LocationPickerSearchViewController: SearchViewController, AsyncTaskDe
         return resultsVC
     }()
 
-    open override func createSearchResultsTableViewController() -> SearchResultsViewController {
-        return searchResultsViewController
+    open override func createSearchResultsControllers() -> SearchResultsControllers {
+        return SearchResultsControllers(resultsViewController: searchResultsViewController,
+                                        preSearchViewController: mapViewController)
     }
 
     lazy var mapViewController: LocationPickerMapViewController = {
@@ -65,8 +67,7 @@ open class LocationPickerSearchViewController: SearchViewController, AsyncTaskDe
 
     open override func initProperties() {
         super.initProperties()
-        preSearchViewController = mapViewController
-        searchBarPosition = .navigationTitle
+        layoutConfig.searchBarPosition = .navigationTitle
         mapViewController.onDidFinishTask = onDidFinishTask
         searchResultsViewController.onDidFinishTask = (result: { [weak self] value in
             guard let self = self else { return }
@@ -106,8 +107,10 @@ open class LocationPickerMapConfiguration: ViewControllerConfiguration {
     public var locationDisplayNameFormatter: LocationDisplayNameFormatter?
 }
 
-internal typealias LocationPickerMapViewControllerProtocols = AsyncTaskDelegate & UIGestureRecognizerDelegate & MKMapViewDelegate
+internal typealias LocationPickerMapViewControllerProtocols = TaskResultDelegate & UIGestureRecognizerDelegate & MKMapViewDelegate
 open class LocationPickerMapViewController: ConfigurableViewController<LocationPickerMapConfiguration, ViewControllerStyle>, LocationPickerMapViewControllerProtocols {
+    public var result: LocationData?
+
     public typealias TaskResult = LocationData
     public var onDidFinishTask: TaskCompletionClosure?
 
@@ -196,12 +199,17 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
             guard let self = self else { return }
             self.authorize {
                 self.currentLocationButton.showActivityIndicator()
-                Locator.currentPosition(accuracy: .neighborhood, onSuccess: { [weak self] location in
-                    self?.currentLocationButton.hideActivityIndicator()
-                    self?.reversGeocodeAndDropPin(at: location)
-                }, onFail: { [weak self] error, _ in
-                    self?.currentLocationButton.hideActivityIndicator()
-                    self?.showErrorAlert(error)
+                LocationManager.shared.locateFromGPS(.oneShot, accuracy: .neighborhood, result: { [weak self] result in
+                    guard let self = self else { return }
+                    do {
+                        let location = try result.get()
+                        debugLog("Found location \(location)")
+                        self.currentLocationButton.hideActivityIndicator()
+                        self.reversGeocodeAndDropPin(at: location.coordinate)
+                    } catch {
+                        self.currentLocationButton.hideActivityIndicator()
+                        self.showErrorAlert(error)
+                    }
                 })
             }
         }
@@ -210,13 +218,17 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
     open override func loadAsyncData() {
         super.loadAsyncData()
         if config.dropPinAtInitialLocation {
-            Locator.currentPosition(usingIP: .freeGeoIP, onSuccess: { [weak self] location in
-                guard let self = self else { return }
-                debugLog("Found location \(location)")
-                self.reversGeocodeAndDropPin(at: location)
-            }, onFail: { error, _ in
-                debugLog("Something bad has occurred \(error)")
-            })
+            LocationManager.shared.locateFromIP(service: .ipAPI) { [weak self] result in
+                do {
+                    guard let self = self else { return }
+                    let location = try result.get()
+                    debugLog("Found location \(location.coordinates)")
+
+                    self.reversGeocodeAndDropPin(at: location.coordinates!)
+                } catch {
+                    debugLog("Something bad has occurred \(error)")
+                }
+            }
         }
     }
 
@@ -273,17 +285,21 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         mapView.setRegion(displayRegion, animated: animated)
     }
 
-    func reversGeocodeAndDropPin(at location: CLLocation) {
-        dropPin(at: location.coordinate)
-        Locator.location(fromCoordinates: location.coordinate, using: .apple, onSuccess: { [weak self] places in
+    func reversGeocodeAndDropPin(at location: CLLocationCoordinate2D) {
+        dropPin(at: location)
+        LocationManager.shared.locateFromCoordinates(location) { [weak self] result in
             guard let self = self else { return }
-            self.currentLocationButton.hideActivityIndicator() // In case this was triggered by gps lookup
-            guard let placemark = places.first?.placemark else { return }
-            self.location = LocationData(location: location, placemark: placemark)
-        }, onFail: { [weak self] error in
-            self?.currentLocationButton.hideActivityIndicator()
-            self?.showErrorAlert(error)
-        })
+            do {
+                let places = try result.get()
+                debugLog("Found location \(location)")
+                self.currentLocationButton.hideActivityIndicator() // In case this was triggered by gps lookup
+                guard let placemark = places.first?.placemark else { return }
+                self.location = LocationData(location: CLLocation(latitude: location.latitude, longitude: location.longitude), placemark: placemark)
+            } catch {
+                self.currentLocationButton.hideActivityIndicator()
+                self.showErrorAlert(error)
+            }
+        }
     }
 
     func dropPin(at coordinate: CLLocationCoordinate2D) {

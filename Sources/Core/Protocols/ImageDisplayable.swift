@@ -60,6 +60,7 @@ extension UIButton: Nuke_ImageDisplaying {
     public func display(image: Image?) {
         imageView?.image = image
     }
+
     public func nuke_display(image: Image?) {
         imageView?.image = image
     }

@@ -40,7 +40,7 @@ open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController
     open func configurePickerTaskHandler(picker: VC) {
         picker.onDidFinishTask = (result: { [weak self] value in
             guard let self = self else { return }
-            
+
             self.value = value
             self.parentViewController?.navigationController?.popViewController(animated: true)
         }, cancelled: { [weak self] in

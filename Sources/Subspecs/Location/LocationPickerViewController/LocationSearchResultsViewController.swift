@@ -7,13 +7,19 @@
 //
 
 import Contacts
+import DiffableDataSources
 import MapKit
 import Swiftest
 import SwiftLocation
 import UIKit
 import UIKitMixinable
+open class LocationSearchResultsViewController: PaginatableTableViewController, SearchResultsDisplaying, TaskResultDelegate {
+    public var result: LocationData?
 
-open class LocationSearchResultsViewController: PaginatableTableViewController, SearchResultsDisplaying, AsyncTaskDelegate {
+    private let locationSearchPaginator = MKLocalSearchRequestQueryPaginator()
+    public lazy var paginator: Paginator<MKMapItem> = self.locationSearchPaginator
+    public var paginationConfig: PaginationConfiguration = PaginationConfiguration()
+
     public typealias PaginatableModel = MKMapItem
 
     open override func createMixins() -> [LifeCycle] {
@@ -39,10 +45,18 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
         super.init(coder: aDecoder)
     }
 
-    private let locationSearchPaginator = MKLocalSearchRequestQueryPaginator()
+    public lazy var datasource = TableViewDiffableDataSource<String, MKMapItem>(tableView: tableView) { tableView, _, mapItem in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell")
+            ?? UITableViewCell(style: .subtitle, reuseIdentifier: "LocationCell")
+        let location = mapItem.toLocation()
+        cell.textLabel?.text = location.title
+        cell.detailTextLabel?.text = location.subtitle
+        return cell
+    }
+
     open override func initProperties() {
         super.initProperties()
-        paginators.paginator = locationSearchPaginator
+        paginator = locationSearchPaginator
     }
 
     open override func didInit(type: InitializationType) {
@@ -50,29 +64,21 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
         if let location = locationHint {
             locationSearchPaginator.locationHint = location
         } else {
-            Locator.currentPosition(usingIP: .freeGeoIP, onSuccess: { [weak self] location in
+            LocationManager.shared.locateFromIP(service: .ipAPI) { [weak self] result in
                 guard let self = self else { return }
-                debugLog("Setting search location hint \(location)")
-                self.locationSearchPaginator.locationHint = location.coordinate
-            }, onFail: { error, _ in
-                debugLog("Something bad has occurred \(error)")
-            })
+                do {
+                    guard let location = try result.get().coordinates else { return }
+                    debugLog("Setting search location hint \(location)")
+                    self.locationSearchPaginator.locationHint = location
+                } catch {
+                    debugLog("Something bad has occurred \(error)")
+                }
+            }
         }
     }
 
-    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell")
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: "LocationCell")
-
-        let location = dataSource[indexPath.row]!.toLocation()
-        cell.textLabel?.text = location.title
-        cell.detailTextLabel?.text = location.subtitle
-        return cell
-    }
-
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pm = dataSource[indexPath]!
-
+        guard let pm = datasource[indexPath] else { return }
         onDidFinishTask?.result(LocationData(placemark: pm.placemark))
     }
 

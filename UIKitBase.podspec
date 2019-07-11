@@ -31,8 +31,7 @@ Pod::Spec.new do |s|
     core.dependency 'UIFontIcons'
     core.dependency 'Actions'
     core.dependency 'Nuke'
-
-    #core.dependency 'DeepDiff'
+    core.dependency 'DiffableDataSources'
     core.dependency 'Algorithm'
 
     core.ios.dependency 'AssistantKit'

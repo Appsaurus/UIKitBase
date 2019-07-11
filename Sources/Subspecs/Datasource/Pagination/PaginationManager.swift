@@ -16,25 +16,26 @@ open class PaginationConfiguration {
     open var scrollDirection: InfinityScrollDirection = .vertical
 }
 
-open class PaginatorGroup<Model: Paginatable> {
-    open var paginator: Paginator<Model> = Paginator<Model>()
-    open lazy var activePaginator: Paginator<Model> = self.paginator
-    open var fallbackPaginator: Paginator<Model>?
-
-    open func reset() {
-        paginator.reset()
-        fallbackPaginator?.reset()
-        activePaginator = paginator
-    }
-}
-
-open class PaginationManager<Model: Paginatable> {
-    open var config = PaginationConfiguration()
-    open var paginators = PaginatorGroup<Model>()
-    open var datasource = CollectionDataSource<Model>()
-
-    open func reset() {
-        datasource.reset()
-        paginators.reset()
-    }
-}
+//
+// open class PaginatorGroup<Model: Paginatable> {
+//    open var paginator: Paginator<Model> = Paginator<Model>()
+//    open lazy var activePaginator: Paginator<Model> = self.paginator
+//    open var fallbackPaginator: Paginator<Model>?
+//
+//    open func reset() {
+//        paginator.reset()
+//        fallbackPaginator?.reset()
+//        activePaginator = paginator
+//    }
+// }
+//
+// open class PaginationManager<Model: Paginatable> {
+//    open var config = PaginationConfiguration()
+//    open var paginators = PaginatorGroup<Model>()
+//    open var datasource = CollectionDataSource<Model>()
+//
+//    open func reset() {
+//        datasource.reset()
+//        paginators.reset()
+//    }
+// }

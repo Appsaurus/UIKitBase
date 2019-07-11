@@ -7,16 +7,16 @@
 
 import UIKit
 
-
 open class Request {
     public let route: Route
     public var urlParams: [URLQueryItem]
     public var queryParams: [URLQueryItem]
     private lazy var urlParamsDict: [String: String] = {
-        return self.urlParams.dictionary
+        self.urlParams.dictionary
     }()
+
     private lazy var queryParamsDict: [String: String] = {
-        return self.queryParams.dictionary
+        self.queryParams.dictionary
     }()
 
     init(route: Route,
