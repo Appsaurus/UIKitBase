@@ -62,16 +62,18 @@ open class ExampleQueryPaginator: CursorPaginator<ExampleObject>{
 
     
     open override func fetchNextPage(success: @escaping ((items: [ExampleObject], isLastPage: Bool)) -> Void, failure: @escaping ErrorClosure) {
-//        MockableNetwork.makeFakeNetworkCall(delay: 1, chanceOfSuccess: 100, success: { [weak self] in
-//            guard let `self` = self else { return }
-            self.pageCount += 1
-            var objs: [ExampleObject] = []
-            20.times {
-                objs.append(ExampleObject())
+        MockableNetwork.makeFakeNetworkCall(delay: 1, chanceOfSuccess: 100, success: { [weak self] in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.pageCount += 1
+                var objs: [ExampleObject] = []
+                20.times {
+                    objs.append(ExampleObject())
+                }
+                success((objs, false))
             }
-            success((objs, false))
-//        }) {
-//            failure(BasicError.error)
-//        }
+        }) {
+            failure(BasicError.error)
+        }
     }
 }

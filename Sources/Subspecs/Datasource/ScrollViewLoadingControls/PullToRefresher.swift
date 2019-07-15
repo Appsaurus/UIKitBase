@@ -82,7 +82,7 @@ class PullToRefresher: NSObject {
     var containerView: HeaderContainerView
     var direction: InfinityScrollDirection
     var action: (() -> Void)?
-    var enable = true
+    var enable = false
 
     var animatorOffset: UIOffset = UIOffset() {
         didSet {

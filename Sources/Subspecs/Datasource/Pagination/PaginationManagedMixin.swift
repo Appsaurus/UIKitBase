@@ -12,14 +12,10 @@ import UIKit
 import UIKitExtensions
 import UIKitMixinable
 
-open class PaginationManagedMixin: UIViewControllerMixin<UIViewController & PaginationManaged> {
-    open override func didInit(type: InitializationType) {
-        super.didInit(type: type)
-//        mixable.dataSourceDelegate.numberOfItems = mixable.managedNumberOfItems
-//        mixable.dataSourceDelegate.sectionCount = mixable.managedSectionCount
-    }
+open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
 
     open override func viewDidLoad() {
+        super.viewDidLoad()
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
             mixable.updatePaginatableViews(for: state)
@@ -27,14 +23,35 @@ open class PaginationManagedMixin: UIViewControllerMixin<UIViewController & Pagi
     }
 
     open override func willDeinit() {
-        mixable.paginatingView.loadingControls.clear()
+        super.willDeinit()
+        mixable.datasourceManagedView.loadingControls.clear()
     }
 
     open override func createSubviews() {
+        super.createSubviews()
         mixable.setupPaginatable()
     }
 
     open override func loadAsyncData() {
+        super.loadAsyncData()
         mixable.startLoadingData()
     }
 }
+
+
+//open class PaginatableTableViewMixin<TVC: UITableViewController & PaginationManaged>: PaginationManagedMixin<TVC>
+//    where TVC.Datasource: UITableViewDataSource{
+//
+//    open override func setupDelegates() {
+//        super.setupDelegates()
+//        mixable.tableView.dataSource = mixable.datasource
+//    }
+//}
+//
+//
+//open class PaginatableCollectionViewMixin<CVC: UICollectionViewController & PaginationManaged>: PaginationManagedMixin<CVC>
+//    where CVC.Datasource: UICollectionViewDataSource{
+//    open override func setupDelegates() {
+//        mixable.collectionView.dataSource = mixable.datasource
+//    }
+//}

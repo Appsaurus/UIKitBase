@@ -47,12 +47,18 @@ open class IdentifierAndPasswordAuthView: BaseView, AuthView {
         let identifierField: UITextField = IdentifierAndPasswordAuthView.createTextField("Email or phone number")
         identifierField.autocorrectionType = .no
         identifierField.autocapitalizationType = .none
+        if #available(iOS 11.0, *) {
+            identifierField.textContentType = .username
+        }
         return identifierField
     }()
 
     open var passwordTextField: UITextField = {
         let passwordField = IdentifierAndPasswordAuthView.createTextField("Password")
         passwordField.isSecureTextEntry = true
+        if #available(iOS 11.0, *) {
+            passwordField.textContentType = .password
+        }
         return passwordField
     }()
 

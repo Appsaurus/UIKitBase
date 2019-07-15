@@ -24,7 +24,7 @@ open class FakeDataTableViewController: BaseTableViewController, DatasourceManag
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        datasource.add(models: Array(0...50))
+        datasource.load(Array(0...50))
     }
 
 }

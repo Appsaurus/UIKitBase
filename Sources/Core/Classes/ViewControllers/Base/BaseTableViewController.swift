@@ -26,6 +26,11 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
 
+    open override func setupDelegates() {
+        super.setupDelegates()
+        self.tableView.delegate = self
+    }
+
     // MARK: Orientation
 
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -74,7 +79,6 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     open func willTransition(to state: State) {}
 
     open func didTransition(to state: State) {}
-
 
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height

@@ -79,20 +79,21 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
                     fetchNextPage(firstPage: true)
                 }
             case .local:
-
+                assertionFailure()
 //                datasource.removeFilter()
-                reloadPaginatableCollectionView(completion: {})
+//                reloadPaginatableCollectionView(completion: {})
             }
             return
         }
         switch searchDataSourceType {
         case .remote:
-            reset(to: .loading)
+//            reset(to: .loading)
             paginator.searchQuery = query
             fetchNextPage(firstPage: true)
         case .local:
+            assertionFailure()
 //            datasource.filterData(searchQuery: query)
-            reloadPaginatableCollectionView(completion: {})
+//            reloadPaginatableCollectionView(completion: {})
         }
     }
 }
