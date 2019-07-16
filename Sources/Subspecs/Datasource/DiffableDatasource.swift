@@ -20,7 +20,7 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 
-    @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    @objc   public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles else { return nil }
         return snapshot().sectionIdentifiers[section]
     }

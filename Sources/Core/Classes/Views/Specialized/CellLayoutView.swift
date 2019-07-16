@@ -22,7 +22,7 @@ public struct CellLayoutViewConfiguration {
                 leftImageViewSize: CGSize = CGSize(side: 45.0),
                 innerPadding: CGFloat = 10.0,
                 marginInsets: LayoutPadding = LayoutPadding(10.0),
-                optionalRightViewMinimumWidth: CGFloat = 90.0,
+                optionalRightViewMinimumWidth: CGFloat = 60.0,
                 mainLayoutViewInsets: LayoutPadding = .zero) {
         self.showsLeftImageView = showsLeftImageView
         self.leftImageViewSize = leftImageViewSize
@@ -39,6 +39,8 @@ open class CellLayoutView<MV: UIView>: BaseView {
     open lazy var config: CellLayoutViewConfiguration = CellLayoutViewConfiguration()
 
     open lazy var optionalRightView: UIView? = nil
+    open var prioritizeMiddleViewWidthOverRightView: Bool = true
+
 
     open lazy var leftImageView: BaseImageView = {
         let iv = BaseImageView()
@@ -113,11 +115,13 @@ open class CellLayoutView<MV: UIView>: BaseView {
         if let optionalRightView = optionalRightView {
             optionalRightView.equal(to: mainLayoutView.edges.excluding(.leading).inset(config.marginInsets))
             optionalRightView.resistCompression()
-            optionalRightView.width.greaterThanOrEqual(to: config.optionalRightViewMinimumWidth)
+            let rightViewPriority: LayoutPriority = prioritizeMiddleViewWidthOverRightView ? .high : .required
+            optionalRightView.width.greaterThanOrEqual(to: config.optionalRightViewMinimumWidth ~ rightViewPriority)
             optionalRightView.height.greaterThanOrEqual(to: 0.0)
-            middleView.trailing.equal(to: optionalRightView.leading.inset(config.innerPadding))
+            middleView.trailing.lessThanOrEqual(to: optionalRightView.leading.inset(config.innerPadding))
 
-            middleView.width.greaterThanOrEqual(to: 0.0 ~ .high) // Give right view's width priority over middle stack
+            let middleViewPriority: LayoutPriority = prioritizeMiddleViewWidthOverRightView ? .required : .high
+            middleView.width.greaterThanOrEqual(to: 0.0 ~ middleViewPriority)
             contentHeightBoundaryViews.append(optionalRightView)
         } else {
             middleView.trailing.equal(to: .inset(config.marginInsets.trailing))
