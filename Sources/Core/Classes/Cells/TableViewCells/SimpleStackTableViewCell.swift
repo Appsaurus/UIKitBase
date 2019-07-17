@@ -12,43 +12,43 @@ import UIFontIcons
 import UIKitExtensions
 import UIKitTheme
 
-open class ModularTableViewCell<MV: UIView>: ViewBasedTableViewCell<CellLayoutView<MV>> {
-    open var config: CellLayoutViewConfiguration?
-
-    open var leftImageView: BaseImageView {
-        return self.view.leftImageView
-    }
-
-    open var optionalRightView: UIView? {
-        return nil
-    }
-
-    open override func createMainView() -> CellLayoutView<MV> {
-        return CellLayoutView<MV>(config: config, optionalRightView: optionalRightView)
-    }
-}
-
-open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
-//    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
-    ////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
+//open class ModularTableViewCell<MV: UIView>: ViewBasedTableViewCell<CellLayoutView<MV>> {
+//    open var config: CellLayoutViewConfiguration?
+//
+//    open var leftImageView: BaseImageView {
+//        return self.view.leftImageView
 //    }
-    open var mainLabel: UILabel {
-        return view.middleView
-    }
-
-    open var detailLabel: UILabel = UILabel()
-
-    open override func initProperties() {
-        super.initProperties()
-        config = CellLayoutViewConfiguration(showsLeftImageView: true, leftImageViewSize: .init(side: 25))
-    }
-
-    open override func style() {
-        super.style()
-        mainLabel.apply(textStyle: .caption1())
-        detailLabel.apply(textStyle: .caption1())
-    }
-}
+//
+//    open var optionalRightView: UIView? {
+//        return nil
+//    }
+//
+//    open override func createMainView() -> CellLayoutView<MV> {
+//        return CellLayoutView<MV>(config: config, optionalRightView: optionalRightView)
+//    }
+//}
+//
+//open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
+////    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
+//    ////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
+////    }
+//    open var mainLabel: UILabel {
+//        return view.middleView
+//    }
+//
+//    open var detailLabel: UILabel = UILabel()
+//
+//    open override func initProperties() {
+//        super.initProperties()
+//        config = CellLayoutViewConfiguration(showsLeftImageView: true, leftImageViewSize: .init(side: 25))
+//    }
+//
+//    open override func style() {
+//        super.style()
+//        mainLabel.apply(textStyle: .caption1())
+//        detailLabel.apply(textStyle: .caption1())
+//    }
+//}
 
 // open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV> {
 //    open var config: CellLayoutViewConfiguration?
