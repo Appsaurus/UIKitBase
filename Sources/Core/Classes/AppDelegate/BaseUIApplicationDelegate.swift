@@ -203,6 +203,10 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
 
     // MARK: Registration
 
+    open override func didInit() {
+        super.didInit()
+        UNUserNotificationCenter.current().delegate = mixable
+    }
     open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
         let application = UIApplication.shared
         remoteNotificationRegistrationSuccess = success
@@ -214,7 +218,6 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         }
 
         // Set delegate to owning mixable object, which will ultimately call these mixed methods upon delegation from UNUserNotificationCenter.
-        UNUserNotificationCenter.current().delegate = mixable
         UNUserNotificationCenter.current().requestAuthorization(
             options: unAuthorizationOptions(),
             completionHandler: { _, _ in }
