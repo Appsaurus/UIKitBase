@@ -8,14 +8,17 @@
 import Layman
 import Swiftest
 import UIKitTheme
+import KeychainAccess
 
-open class IdentifierAndPasswordAuthController<R, V>: AuthController<Any, IdentifierAndPasswordAuthView> {
+
+open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
     // MARK: Initialization
 
     open override func didInit() {
         super.didInit()
         setupAuthAction(for: authView.logInButton)
     }
+
 
     open override func createDefaultAuthView() -> IdentifierAndPasswordAuthView {
         let identifierView = IdentifierAndPasswordAuthView(frame: CGRect.zero)
@@ -25,6 +28,7 @@ open class IdentifierAndPasswordAuthController<R, V>: AuthController<Any, Identi
     }
 
     // MARK: Abastract methods
+ 
 
     open func authenticate(identifier: String, password: String, success: @escaping AuthSuccessHandler<R>, failure: @escaping ErrorClosure) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)

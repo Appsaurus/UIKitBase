@@ -6,6 +6,7 @@
 //
 
 import Swiftest
+import KeychainAccess
 
 public protocol AuthControllerManagerDelegate: AuthControllerDelegate {
     func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>)
@@ -20,6 +21,7 @@ public protocol AuthControllerManagerDelegate: AuthControllerDelegate {
 }
 
 open class BaseAuthControllerManager: AuthControllerDelegate {
+
     public required init(delegate: AuthControllerManagerDelegate) {
         self.delegate = delegate
     }
@@ -85,23 +87,68 @@ open class BaseAuthControllerManager: AuthControllerDelegate {
         logout(success: logoutDidSucceed, failure: logoutDidFail)
     }
 
-    open func logout(success: VoidClosure, failure: OptionalErrorClosure) {
+    open func logout(success: @escaping VoidClosure, failure: @escaping OptionalErrorClosure) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
 
     //	open func attemptSessionRestoreForMostRecentAuthController(){
     //		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     //	}
-    open func attemptSessionRestore<R, V>(for authController: AuthController<R, V>) {
-        authController.attemptSessionRestore(success: { [weak self] (user: Any) in
-            self?.authenticationDidSucceed(controller: authController, successResponse: user)
-        }, failure: { [weak self] error in
-            guard let error = error else {
-                // No session exists
-                self?.noExistingAuthenticationSessionFound(for: authController)
+
+}
+
+
+public enum AuthKey: String {
+    case credentials
+}
+
+public extension Keychain {
+    subscript <V: Codable>(key: AuthKey) -> V? {
+        get {
+            do {
+                guard let data = try self.getData(key.rawValue) else { return nil }
+                return try JSONDecoder().decode(V.self, from: data)
+            }
+            catch {
+                return nil
+            }
+        }
+        set {
+            let jsonEncoder = JSONEncoder()
+            guard let data = try? newValue else {
+                try? self.remove(key.rawValue)
                 return
             }
-            self?.authenticationDidFail(controller: authController, error: error)
-        })
+            try? self.set(try jsonEncoder.encode(data), key: key.rawValue)
+        }
+    }
+
+    func save(accountIdentifier: String, password: String) {
+        self[accountIdentifier] = password
+        setSharedPassword(password, account: accountIdentifier)
+    }
+}
+
+public protocol KeychainCredentialStoring {
+    associatedtype Credential: Codable
+    var keychain: Keychain { get }
+    func saveCredentialsToKeychain(_ credentials: Credential)
+    func getSavedCredentialsFromKeychain() -> Credential?
+}
+
+public extension KeychainCredentialStoring {
+    var keychain: Keychain {
+        return Keychain(service: Bundle.main.bundleIdentifier!).synchronizable(true)
+    }
+    func saveCredentialsToKeychain(_ credentials: Credential){
+        keychain[.credentials] = credentials
+    }
+
+    func removeCredentialsFromKeychain() throws {
+        try keychain.remove(AuthKey.credentials.rawValue)
+    }
+
+    func getSavedCredentialsFromKeychain() -> Credential? {
+        return keychain[.credentials]
     }
 }

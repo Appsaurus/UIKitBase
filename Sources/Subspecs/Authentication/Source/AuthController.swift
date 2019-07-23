@@ -6,6 +6,7 @@
 //
 
 import Swiftest
+
 public protocol AuthView {
     func authenticationDidBegin()
     func authenticationDidFail(_ error: Error)
@@ -21,8 +22,9 @@ public protocol AuthControllerDelegate: AnyObject {
     func logoutDidSucceed<R, V>(for controller: AuthController<R, V>)
 }
 
-public typealias AuthSuccessHandler<R: Any> = (_ response: R) -> Void
-open class AuthController<R, V: UIView>: NSObject where V: AuthView {
+public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
+open class AuthController<R: Codable, V: UIView>: NSObject where V: AuthView {
+
     open weak var delegate: AuthControllerDelegate?
     open lazy var authView: V = { self.createDefaultAuthView() }()
 
@@ -59,10 +61,6 @@ open class AuthController<R, V: UIView>: NSObject where V: AuthView {
     open func didInit() {}
 
     // MARK: Abstract methods
-
-    open func attemptSessionRestore(success: @escaping AuthSuccessHandler<R>, failure: @escaping (Error?) -> Void) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-    }
 
     open func createDefaultAuthView() -> V {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)

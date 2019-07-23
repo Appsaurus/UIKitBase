@@ -42,6 +42,7 @@ Pod::Spec.new do |s|
    a.source_files = 'Sources/Subspecs/Authentication/Source/**/*'
    a.exclude_files = '**/*.{svg}'
    a.dependency 'UIKitBase/Forms/Core'
+   a.dependency 'KeychainAccess'
    a.resource_bundle = {
        'Authentication' => ['Sources/Subspecs/Authentication/Resources/**/*']
    }

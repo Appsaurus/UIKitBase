@@ -29,7 +29,7 @@ open class AuthButton: BaseButton, AuthView {
     open func authenticationDidFail(_ error: Error) {}
 }
 
-open class ButtonAuthController<R, V>: AuthController<Any, AuthButton> {
+open class ButtonAuthController<R: Codable, V>: AuthController<R, AuthButton> {
     open override func didInit() {
         setupAuthAction(for: authView)
     }
