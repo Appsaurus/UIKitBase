@@ -15,7 +15,6 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         self.createFormToolbar()
     }()
 
-    open var submitButton: BaseButton!
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
     open var autoSubmitsValidForm: Bool = false
 

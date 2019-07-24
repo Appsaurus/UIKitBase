@@ -30,7 +30,7 @@ open class DismissableNavigationController: BaseNavigationController, DismissBut
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    open func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged {
             dismissableViewController.setupDismissButton(configuration: dismissButtonConfiguration)
         }

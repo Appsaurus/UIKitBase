@@ -89,7 +89,6 @@ Pod::Spec.new do |s|
   s.subspec 'Permission' do |p|
    p.source_files = 'Sources/Subspecs/Permission/**/*'
    p.dependency 'UIKitBase/Core'
-   p.dependency 'Permission'
   end
 
 end

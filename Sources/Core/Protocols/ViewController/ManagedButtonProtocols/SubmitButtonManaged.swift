@@ -11,7 +11,7 @@ import Layman
 import Swiftest
 
 public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
-    var submitButton: BaseButton! { get set }
+    var submitButton: BaseButton { get set }
     func didPressSubmitButton()
     func didPressSubmitButtonWhileDisabled()
     func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure)
@@ -100,5 +100,23 @@ extension SubmitButtonManaged where Self: UIViewController {
 
     public func autoSubmitsValidForm() -> Bool {
         return false
+    }
+}
+
+import DarkMagic
+
+private extension AssociatedObjectKeys{
+    static let submitButton = AssociatedObjectKey<BaseButton>("submitButton")
+}
+
+public extension SubmitButtonManaged where Self: NSObject{
+
+    public var submitButton: BaseButton{
+        get{
+            return self[.submitButton, BaseButton()]
+        }
+        set{
+            self[.submitButton] = newValue
+        }
     }
 }
