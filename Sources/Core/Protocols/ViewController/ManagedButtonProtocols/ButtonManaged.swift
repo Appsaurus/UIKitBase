@@ -10,14 +10,19 @@ import Swiftest
 import UIKitTheme
 
 public class ManagedButtonConfiguration: NSObject {
-    var button: BaseButton?
-    var position: ManagedButtonPosition
-    var size: CGSize?
+    public var button: BaseButton?
+    public var position: ManagedButtonPosition
+    public var size: CGSize?
+    public var activityIndicatorStyle: UIActivityIndicatorView.Style
 
-    public init(button: BaseButton? = nil, position: ManagedButtonPosition = .navBarTrailing, size: CGSize? = nil) {
+    public init(button: BaseButton? = nil,
+                position: ManagedButtonPosition = .navBarTrailing,
+                size: CGSize? = nil,
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .white) {
         self.button = button
         self.position = position
         self.size = size
+        self.activityIndicatorStyle = activityIndicatorStyle
     }
 }
 

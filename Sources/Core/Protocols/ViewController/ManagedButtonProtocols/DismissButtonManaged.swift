@@ -11,20 +11,20 @@ import Layman
 import UIFontIcons
 import UIKit
 import UIKitTheme
+import DarkMagic
 
 public protocol DismissButtonManaged: ButtonManaged {
-    @discardableResult
-    func setupDismissButton(configuration: ManagedButtonConfiguration) -> BaseButton
+    var dismissButton: BaseButton { get set }
+    mutating func setupDismissButton(configuration: ManagedButtonConfiguration)
     func willDismissViewController()
     func shouldDismissViewController() -> Bool
 }
 
 extension DismissButtonManaged where Self: UIViewController {
-    @discardableResult
-    public func setupDismissButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
+    public mutating func setupDismissButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) {
         let button = createManagedButton(configuration: configuration)
         setupDismissButtonAction(for: button)
-        return button
+        self.dismissButton = button
     }
 
     public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
@@ -57,5 +57,21 @@ extension DismissButtonManaged where Self: UIViewController {
 
     public func shouldDismissViewController() -> Bool {
         return true
+    }
+}
+
+private extension AssociatedObjectKeys{
+    static let dismissButton = AssociatedObjectKey<BaseButton>("dismissButton")
+}
+
+public extension DismissButtonManaged where Self: NSObject{
+
+    var dismissButton: BaseButton{
+        get{
+            return self[.dismissButton, BaseButton()]
+        }
+        set{
+            self[.dismissButton] = newValue
+        }
     }
 }

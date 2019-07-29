@@ -31,7 +31,8 @@ open class DismissableNavigationController: BaseNavigationController, DismissBut
     }
 
     open func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController === viewControllers.first, let dismissableViewController = viewController as? UIViewController & DismissButtonManaged {
+        if viewController === viewControllers.first,
+            var dismissableViewController = viewController as? DismissButtonManaged {
             dismissableViewController.setupDismissButton(configuration: dismissButtonConfiguration)
         }
     }

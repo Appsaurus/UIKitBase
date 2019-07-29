@@ -37,7 +37,9 @@ extension SubmitButtonManaged where Self: UIViewController {
             break
         }
         button.disabledBehaviors = [.dropAlpha(to: 0.5)]
-        button.activityBehaviors = [.removeTitle, .showIndicator(style: .white, at: activityIndicatoPosition)]
+        button.activityBehaviors = [.removeTitle,
+                                    .showIndicator(style: .white,
+                                                   at: activityIndicatoPosition)]
         setupSubmitButtonAction(for: button)
         submitButton = button
         return button

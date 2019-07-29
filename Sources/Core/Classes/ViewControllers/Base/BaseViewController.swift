@@ -13,7 +13,6 @@ import UIKitTheme
 public protocol BaseViewControllerProtocol: BaseNSObjectProtocol
     & ViewControllerConfigurable
     & FirstResponderManaged
-    & NavigationBarStyleable
     & StatefulViewController
     & Styleable {}
 
@@ -21,7 +20,6 @@ extension BaseViewControllerProtocol where Self: UIViewController {
     public var baseViewControllerProtocolMixins: [LifeCycle] {
         return [ViewControllerConfigurableMixin(self),
                 FirstResponderManagedMixin(self),
-                NavigationBarStyleableMixin(self),
                 StatefulViewControllerMixin(self),
                 StyleableViewControllerMixin(self)]
             + baseNSObjectProtocolMixins
