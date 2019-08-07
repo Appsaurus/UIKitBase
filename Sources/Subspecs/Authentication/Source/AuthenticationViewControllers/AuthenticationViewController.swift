@@ -133,7 +133,8 @@ open class AuthenticationViewController<ACM: BaseAuthControllerManager>: BaseVie
 
         // For developer use, no reason to necessarily show error message when user cancels.
         let ignorableErrors: [AuthError] = [.userCancelled, .userCancelledSignup]
-        guard let authError = error as? AuthError, !authError.equalToAny(of: ignorableErrors) else {
+
+        if let authError = error as? AuthError, authError.equalToAny(of: ignorableErrors) {
             authenticationWasCancelledByUser(error)
             return
         }
