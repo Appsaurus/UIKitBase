@@ -58,11 +58,19 @@ public protocol DiffableDatasource {
 
 public extension DiffableDatasource {
     // Assumes single section datasource
-    subscript(row: Int) -> ItemIdentifierType? {
+    subscript(row: Int) -> ItemIdentifierType {
+        return itemIdentifier(for: row.indexPath)!
+    }
+
+    subscript(indexPath: IndexPath) -> ItemIdentifierType {
+        return itemIdentifier(for: indexPath)!
+    }
+
+    subscript(safe row: Int) -> ItemIdentifierType? {
         return itemIdentifier(for: row.indexPath)
     }
 
-    subscript(indexPath: IndexPath) -> ItemIdentifierType? {
+    subscript(safe indexPath: IndexPath) -> ItemIdentifierType? {
         return itemIdentifier(for: indexPath)
     }
 

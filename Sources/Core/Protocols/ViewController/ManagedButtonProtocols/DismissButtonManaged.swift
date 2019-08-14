@@ -14,6 +14,61 @@ import UIKitTheme
 import DarkMagic
 import UIKitMixinable
 
+
+public class NavigationBarButtonConfiguration: NSObject {
+    public var position: NavigationBarButtonPosition
+    public var size: CGSize?
+    public var activityIndicatorStyle: UIActivityIndicatorView.Style
+
+    public init(position: NavigationBarButtonPosition = .trailing,
+                size: CGSize? = nil,
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .white) {
+        self.position = position
+        self.size = size
+        self.activityIndicatorStyle = activityIndicatorStyle
+    }
+}
+public enum NavigationBarButtonPosition {
+    case leading
+    case trailing
+    case title
+}
+
+public protocol NavigationBarButtonManaged {
+    func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration)
+}
+
+public extension NavigationBarButtonManaged where Self: UIViewController {
+
+    func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration) {
+        let position = configuration.position
+        switch position {
+        case .leading, .trailing:
+            let item: UIBarButtonItem = UIBarButtonItem(customView: button)
+
+            if position == .trailing {
+                button.setTitle("Done", for: .normal)
+//                button.titleLabel.textAlignment = .right
+                navigationItem.rightBarButtonItem = item
+            } else {
+//                button.titleLabel.textAlignment = .left
+                navigationItem.leftBarButtonItem = item
+            }
+
+//            let size = configuration.size ?? button.calculateMaxButtonSize()
+//            item.customView?.frame.size = button.frame.size
+//            item.width = size.width
+//
+//            if #available(iOS 11, *) {
+//                item.customView?.size.equal(to: size)
+//            }
+//
+//            navigationController?.navigationBar.forceAutolayoutPass()
+        case .title:
+            self.navigationItem.titleView = button
+        }
+    }
+}
 open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
     open override func createSubviews() {
         super.createSubviews()
@@ -21,37 +76,24 @@ open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged
     }
 }
 
-public protocol DismissButtonManaged: ButtonManaged {
-    var dismissButton: BaseButton { get set }
-    mutating func setupDismissButton(configuration: ManagedButtonConfiguration)
+public protocol DismissButtonManaged: NavigationBarButtonManaged {
+    var dismissButton: BaseUIButton { get set }
+    var dismissButtonConfiguration: NavigationBarButtonConfiguration { get set }
+    mutating func setupDismissButton()
     func willDismissViewController()
     func shouldDismissViewController() -> Bool
 }
 
+
 extension DismissButtonManaged where Self: UIViewController {
-    public mutating func setupDismissButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) {
-        let button = createManagedButton(configuration: configuration)
-        setupDismissButtonAction(for: button)
-        self.dismissButton = button
+
+    public mutating func setupDismissButton() {
+        setupNavigationBar(button: dismissButton, configuration: dismissButtonConfiguration)
+        setupDismissButtonAction(for: self.dismissButton)
     }
 
-    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
-        let button = BaseButton()
-        switch configuration.position {
-        case .floatingFooter:
-            button.titleMap = [.normal: "Dismiss"]
-            button.buttonLayout = ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5))
-        default:
-            button.buttonLayout = ButtonLayout(layoutType: .imageCentered, marginInsets: LayoutPadding(5))
-            let style = App.style.barButtonItemStyle
-            button.imageMap = [.normal: UIImage.iconImage(MaterialIcons.Close, color: style.textStyle.color, fontSize: style.textStyle.font.pointSize)]
-        }
-        styleManagedButton(button: button, position: configuration.position)
-        return button
-    }
-
-    public func setupDismissButtonAction(for button: BaseButton) {
-        button.onTap = { [weak self] in
+    public func setupDismissButtonAction(for button: BaseUIButton) {
+        button.addAction { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
             if self.shouldDismissViewController() {
@@ -69,14 +111,35 @@ extension DismissButtonManaged where Self: UIViewController {
 }
 
 private extension AssociatedObjectKeys{
-    static let dismissButton = AssociatedObjectKey<BaseButton>("dismissButton")
+    static let dismissButton = AssociatedObjectKey<BaseUIButton>("dismissButton")
+    static let dismissButtonConfiguration = AssociatedObjectKey<NavigationBarButtonConfiguration>("dismissButtonConfiguration")
 }
 
 public extension DismissButtonManaged where Self: NSObject{
 
-    var dismissButton: BaseButton{
+    public func defaultButton(configuration: NavigationBarButtonConfiguration) -> BaseUIButton {
+        let button = BaseUIButton()
+        switch configuration.position {
+        case .title:
+            break
+        default:
+            break
+        }
+        return button
+    }
+
+    var dismissButtonConfiguration: NavigationBarButtonConfiguration{
         get{
-            return self[.dismissButton, BaseButton()]
+            return self[.dismissButtonConfiguration, NavigationBarButtonConfiguration()]
+        }
+        set{
+            self[.dismissButtonConfiguration] = newValue
+        }
+    }
+
+    var dismissButton: BaseUIButton{
+        get{
+            return self[.dismissButton, self.defaultButton(configuration: self.dismissButtonConfiguration)]
         }
         set{
             self[.dismissButton] = newValue
