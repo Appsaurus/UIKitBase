@@ -12,6 +12,14 @@ import UIFontIcons
 import UIKit
 import UIKitTheme
 import DarkMagic
+import UIKitMixinable
+
+open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
+    open override func createSubviews() {
+        super.createSubviews()
+        mixable.setupDismissButton()
+    }
+}
 
 public protocol DismissButtonManaged: ButtonManaged {
     var dismissButton: BaseButton { get set }
