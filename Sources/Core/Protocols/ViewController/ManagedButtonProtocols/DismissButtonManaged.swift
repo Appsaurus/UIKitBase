@@ -13,7 +13,7 @@ import UIKit
 import UIKitTheme
 import DarkMagic
 import UIKitMixinable
-
+import UIKitTheme
 
 public class NavigationBarButtonConfiguration: NSObject {
     public var position: NavigationBarButtonPosition
@@ -38,7 +38,7 @@ public protocol NavigationBarButtonManaged {
     func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration)
 }
 
-public extension NavigationBarButtonManaged where Self: UIViewController {
+public extension NavigationBarButtonManaged where Self: UIViewController & NavigationBarStyleable {
 
     func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration) {
         let position = configuration.position
@@ -46,8 +46,11 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
         case .leading, .trailing:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
 
+            button.setTitle("Done", for: .normal)
+            if let style = navigationBarStyle?.titleTextStyle ?? self.navigationController?.navigationBarStyle?.titleTextStyle {
+                button.apply(textStyle: style)
+            }
             if position == .trailing {
-                button.setTitle("Done", for: .normal)
 //                button.titleLabel.textAlignment = .right
                 navigationItem.rightBarButtonItem = item
             } else {

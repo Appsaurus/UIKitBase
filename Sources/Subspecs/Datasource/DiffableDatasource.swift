@@ -21,7 +21,9 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
     }
 
     @objc   public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard usesSectionsAsHeaderTitles else { return nil }
+        guard usesSectionsAsHeaderTitles,
+        self.numberOfItems(inSection: section) > 0 else { return nil }
+
         return snapshot().sectionIdentifiers[section]
     }
 

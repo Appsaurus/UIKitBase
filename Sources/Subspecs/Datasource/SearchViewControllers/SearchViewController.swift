@@ -85,7 +85,7 @@ open class SearchViewControllerLayoutConfiguration {
 
     public init(searchBarPosition: SearchBarPosition = .header,
                 searchBarInsets: UIEdgeInsets = .zero,
-                displaysNavigationbarSearchControls: Bool = true) {
+                displaysNavigationbarSearchControls: Bool = false) {
         self.searchBarPosition = searchBarPosition
         self.searchBarInsets = searchBarInsets
         self.displaysNavigationbarSearchControls = displaysNavigationbarSearchControls

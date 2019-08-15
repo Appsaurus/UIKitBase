@@ -148,7 +148,8 @@ public extension PaginationManaged where Self: UIViewController {
 
         let completion = { [weak self] in
             guard let self = self else { return }
-            self.transition(to: result.isLastPage ? .loadedAll : .loaded, animated: true, completion: reloadCompletion)
+            let lastPageState: State = result.items.count > 0 ? .loadedAll : .empty
+            self.transition(to: result.isLastPage ? lastPageState : .loaded, animated: true, completion: reloadCompletion)
         }
 
         if isFirstPage {
