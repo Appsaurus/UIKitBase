@@ -38,6 +38,7 @@ open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
         super.initProperties()
         contentMode = .scaleAspectFit
         clipsToBounds = true
+        layer.masksToBounds = true
     }
 
     // MARK: NotificationObserver

@@ -20,11 +20,11 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 
-    @objc   public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles,
         self.numberOfItems(inSection: section) > 0 else { return nil }
 
-        return snapshot().sectionIdentifiers[section]
+        return "  \(snapshot().sectionIdentifiers[section])"
     }
 
 }
@@ -132,7 +132,6 @@ public extension DiffableDatasource {
     }
 
     func apply(_ snapshot: Snapshot, animatingDifferences: Bool = true, completion: @escaping VoidClosure) {
-
         UIView.animate(withDuration: 0, animations: {
             self.apply(snapshot, animatingDifferences: animatingDifferences)
         }, completion: { _ in completion() })

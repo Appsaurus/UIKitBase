@@ -160,6 +160,7 @@ public extension PaginationManaged where Self: UIViewController {
             })
         }
         else {
+            datasourceManagedView.setContentOffset(datasourceManagedView.contentOffset, animated: false)
             datasource.append(result.items, completion: {
                 DispatchQueue.main.async {
                     completion()
