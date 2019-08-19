@@ -81,24 +81,25 @@ public extension DiffableDatasource {
         apply(Snapshot(), animatingDifferences: animated, completion: completion)
     }
 
-    func load(_ sectionedItems: [SectionIdentifierType: [ItemIdentifierType]],
+    func load(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
               animated: Bool = true,
               completion: @escaping VoidClosure = {}){
         append(sectionedItems, to: Snapshot(), animated: animated, completion: completion)
     }
 
-    func append(_ sectionedItems: [SectionIdentifierType: [ItemIdentifierType]],
+    func append(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
                 animated: Bool = true,
                 completion: @escaping VoidClosure = {}) {
         append(sectionedItems, to: self.snapshot(), animated: animated, completion: completion)
     }
 
-    private func append(_ sectionedItems: [SectionIdentifierType: [ItemIdentifierType]],
+    private func append(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
                         to snapshot: Snapshot,
                         animated: Bool = true,
                         completion: @escaping VoidClosure = {}) {
-        snapshot.appendSections(Array(sectionedItems.keys))
+
         for itemSection in sectionedItems {
+            snapshot.appendSections([itemSection.key])
             snapshot.appendItems(itemSection.value, toSection: itemSection.key)
         }
         apply(snapshot, animatingDifferences: animated, completion: completion)

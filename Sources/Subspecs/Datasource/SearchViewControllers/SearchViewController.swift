@@ -12,24 +12,42 @@ import Swiftest
 import UIKitExtensions
 import UIKitTheme
 
-open class SearchBarContainerView: UIView {
-    public let contentView: UIView
+open class SearchBarContainerView: BaseView {
+    public let contentView: UISearchBar
     public let contentInsets: UIEdgeInsets
+    public let horizontalStackView: UIStackView = UIStackView(layout: .fillProportionatelyHorizontal)
+    private let rightStackedViews: [UIView]
 
-    public init(contentView: UIView, contentInsets: UIEdgeInsets = .zero) {
+    public init(contentView: UISearchBar, contentInsets: UIEdgeInsets = .zero, rightStackedViews: [UIView] = []) {
         self.contentView = contentView
         self.contentInsets = contentInsets
+        self.rightStackedViews = rightStackedViews
         super.init(frame: CGRect.zero)
-        addSubview(contentView)
+    }
+
+    open override func createSubviews() {
+        super.createSubviews()
+        addSubview(horizontalStackView)
+        var stackedViews = [contentView] + rightStackedViews
+        horizontalStackView.addArrangedSubviews(stackedViews)
+
+    }
+    open override func createAutoLayoutConstraints() {
+        super.createAutoLayoutConstraints()
+        contentView.height.equalToSuperview()
+        contentView.width ≥ 1
+        contentView.resistCompression()
+        rightStackedViews.hugContent()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+
     open override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = bounds.inset(by: contentInsets)
+        horizontalStackView.frame = bounds.inset(by: contentInsets)
     }
 }
 

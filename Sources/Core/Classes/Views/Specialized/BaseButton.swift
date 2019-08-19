@@ -95,7 +95,7 @@ public enum ButtonDisableBehavior {
 
 public enum ButtonActivityBehavior {
     case removeTitle
-    case showIndicator(style: UIActivityIndicatorView.Style, at: ActivityIndicatorPosition)
+    case showIndicator(style: UIActivityIndicatorView.Style, color: UIColor?, at: ActivityIndicatorPosition)
 }
 
 extension BaseButton: TextStyleable {
@@ -119,7 +119,7 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     open lazy var buttonLayout: ButtonLayout = ButtonLayout()
-    open var activityBehaviors: [ButtonActivityBehavior] = [.removeTitle, .showIndicator(style: .white, at: .center)]
+    open var activityBehaviors: [ButtonActivityBehavior] = [.removeTitle, .showIndicator(style: .white, color: nil, at: .center)]
     open var disabledBehaviors: [ButtonDisableBehavior] = [.dropAlpha(to: 0.5)]
     open var buttonTapActionMap: ButtonTapActionMap = [:]
     open var attributedTitleMap: ButtonAttributedTitleMap = [:] {
@@ -451,8 +451,8 @@ open class BaseButton: BaseView, ButtonStyleable {
             case .removeTitle:
                 cachedTitleAlpha ??= titleLabel.alpha
                 titleLabel.alpha = 0.0
-            case let .showIndicator(style, position):
-                showActivityIndicator(style: style, useAutoLayout: false, position: position)
+            case let .showIndicator(style, color, position):
+                showActivityIndicator(style: style, color: color, useAutoLayout: false, position: position)
             }
         }
     }

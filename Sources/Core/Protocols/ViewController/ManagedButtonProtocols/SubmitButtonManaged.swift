@@ -37,8 +37,10 @@ extension SubmitButtonManaged where Self: UIViewController {
             break
         }
         button.disabledBehaviors = [.dropAlpha(to: 0.5)]
+        let navBarTintColor = navigationController?.navigationBar.tintColor
         button.activityBehaviors = [.removeTitle,
-                                    .showIndicator(style: .white,
+                                    .showIndicator(style: .gray,
+                                                   color: navBarTintColor,
                                                    at: activityIndicatoPosition)]
         setupSubmitButtonAction(for: button)
         submitButton = button
@@ -93,7 +95,9 @@ extension SubmitButtonManaged where Self: UIViewController {
     public func submissionDidFail(with error: Error) {}
 
     public func updateSubmitButtonState() {
-        submitButton.state = userCanSubmit() ? .normal : .disabled
+        DispatchQueue.main.async {
+            self.submitButton.state = self.userCanSubmit() ? .normal : .disabled
+        }
     }
 
     public func userCanSubmit() -> Bool {

@@ -38,6 +38,7 @@ extension UIView {
      */
 
     public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
+                                      color: UIColor? = nil,
                                       useAutoLayout: Bool = true,
                                       position: ActivityIndicatorPosition = .center) {
         // Indicator already exists, make sure it is visible but do not create another
@@ -47,6 +48,7 @@ extension UIView {
             return
         }
         let indicator = UIActivityIndicatorView(style: style)
+        indicator.color = color
         indicator.apply(viewStyle: viewStyle())
         while let superview = superview, indicator.backgroundColor == .clear {
             indicator.backgroundColor = superview.backgroundColor
