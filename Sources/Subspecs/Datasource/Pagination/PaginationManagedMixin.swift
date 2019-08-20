@@ -13,7 +13,6 @@ import UIKitExtensions
 import UIKitMixinable
 
 open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
-
     open override func viewDidLoad() {
         super.viewDidLoad()
         mixable.onDidTransitionMixins.append { [weak mixable] state in
@@ -38,20 +37,19 @@ open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: Dat
     }
 }
 
-
-//open class PaginatableTableViewMixin<TVC: UITableViewController & PaginationManaged>: PaginationManagedMixin<TVC>
+// open class PaginatableTableViewMixin<TVC: UITableViewController & PaginationManaged>: PaginationManagedMixin<TVC>
 //    where TVC.Datasource: UITableViewDataSource{
 //
 //    open override func setupDelegates() {
 //        super.setupDelegates()
 //        mixable.tableView.dataSource = mixable.datasource
 //    }
-//}
+// }
 //
 //
-//open class PaginatableCollectionViewMixin<CVC: UICollectionViewController & PaginationManaged>: PaginationManagedMixin<CVC>
+// open class PaginatableCollectionViewMixin<CVC: UICollectionViewController & PaginationManaged>: PaginationManagedMixin<CVC>
 //    where CVC.Datasource: UICollectionViewDataSource{
 //    open override func setupDelegates() {
 //        mixable.collectionView.dataSource = mixable.datasource
 //    }
-//}
+// }

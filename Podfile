@@ -27,7 +27,7 @@ def libaryShared
     pod 'CountryPickerSwift'
     pod 'PhoneNumberKit'
     pod 'DiffableDataSources'
-
+    pod 'KeychainAccess'
     pod 'Permission/Location', :git => 'https://github.com/Appsaurus/Permission'
 end
 
@@ -45,6 +45,6 @@ target 'UIKitBase-iOS-Tests' do
     platform :ios, '10.0'
     shared
     testShared
-    pod 'CwlPreconditionTesting', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'
-    pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlCatchException.git'
+    pod 'CwlPreconditionTesting', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git', :tag => '1.2.0'
+    pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlCatchException.git', :tag => '1.2.0'
 end

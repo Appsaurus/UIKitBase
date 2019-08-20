@@ -30,8 +30,8 @@ open class SearchBarContainerView: BaseView {
         addSubview(horizontalStackView)
         var stackedViews = [contentView] + rightStackedViews
         horizontalStackView.addArrangedSubviews(stackedViews)
-
     }
+
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         contentView.height.equalToSuperview()
@@ -43,7 +43,6 @@ open class SearchBarContainerView: BaseView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     open override func layoutSubviews() {
         super.layoutSubviews()

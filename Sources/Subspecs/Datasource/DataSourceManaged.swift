@@ -17,7 +17,6 @@ public protocol DatasourceManaged {
     func setManagedDatasource()
 }
 
-
 public extension DatasourceManaged where Self: BaseContainedTableViewController {
     var datasourceManagedView: UITableView {
         return tableView
@@ -28,14 +27,12 @@ public extension DatasourceManaged where Self: UITableViewController {
     var datasourceManagedView: UITableView {
         return tableView
     }
-
 }
 
 public extension DatasourceManaged where Self: UICollectionViewController {
     var datasourceManagedView: UICollectionView {
         return collectionView!
     }
-
 }
 
 public extension DatasourceManaged where Self: UITableViewController, Datasource: UITableViewDataSource {
@@ -56,9 +53,7 @@ public extension DatasourceManaged where Self: UICollectionViewController, Datas
     }
 }
 
-
 open class DatasourceManagedMixin<VC: DatasourceManaged>: UIViewControllerMixin<VC> {
-
     open override func setupDelegates() {
         super.setupDelegates()
         mixable.setManagedDatasource()

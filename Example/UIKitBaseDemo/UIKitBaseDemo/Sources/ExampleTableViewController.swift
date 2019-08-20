@@ -73,13 +73,13 @@ class ExampleTableViewController: NavigationalMenuTableViewController {
 	}
 
 	@objc func showCamera(){
-		let permissionViewModel = PermissionViewModel(alertTitle: "Real quick...", message: "We need your permission before you can do that.", dismissButtonTitle: "Maybe later.")
-		PermissionViewController.authorize(permissions: .camera, .microphone, permissionViewModel: permissionViewModel, from: self, success: { [weak self] in
-			guard let `self` = self else { return }
-			self.push(ExamplePermissionAuthorizedViewController())
-		}) { (set) in
-			debugLog("Permissions cancelled.")
-		}
+//        let permissionViewModel = PermissionViewModel(alertTitle: "Real quick...", message: "We need your permission before you can do that.", dismissButtonTitle: "Maybe later.")
+//        PermissionViewController.authorize(permissions: .camera, .microphone, permissionViewModel: permissionViewModel, from: self, success: { [weak self] in
+//            guard let `self` = self else { return }
+//            self.push(ExamplePermissionAuthorizedViewController())
+//        }) { (set) in
+//            debugLog("Permissions cancelled.")
+//        }
 	}
 }
 

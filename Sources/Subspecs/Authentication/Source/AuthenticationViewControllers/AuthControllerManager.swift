@@ -5,8 +5,8 @@
 //  Created by Brian Strobach on 4/10/18.
 //
 
-import Swiftest
 import KeychainAccess
+import Swiftest
 
 public protocol AuthControllerManagerDelegate: AuthControllerDelegate {
     func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>)
@@ -21,7 +21,6 @@ public protocol AuthControllerManagerDelegate: AuthControllerDelegate {
 }
 
 open class BaseAuthControllerManager: AuthControllerDelegate {
-
     public required init(delegate: AuthControllerManagerDelegate) {
         self.delegate = delegate
     }
@@ -94,32 +93,29 @@ open class BaseAuthControllerManager: AuthControllerDelegate {
     //	open func attemptSessionRestoreForMostRecentAuthController(){
     //		assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     //	}
-
 }
-
 
 public enum AuthKey: String {
     case credentials
 }
 
 public extension Keychain {
-    subscript <V: Codable>(key: AuthKey) -> V? {
+    subscript<V: Codable>(key: AuthKey) -> V? {
         get {
             do {
                 guard let data = try self.getData(key.rawValue) else { return nil }
                 return try JSONDecoder().decode(V.self, from: data)
-            }
-            catch {
+            } catch {
                 return nil
             }
         }
         set {
             let jsonEncoder = JSONEncoder()
             guard let data = try? newValue else {
-                try? self.remove(key.rawValue)
+                try? remove(key.rawValue)
                 return
             }
-            try? self.set(try jsonEncoder.encode(data), key: key.rawValue)
+            try? set(try jsonEncoder.encode(data), key: key.rawValue)
         }
     }
 
@@ -140,7 +136,8 @@ public extension KeychainCredentialStoring {
     var keychain: Keychain {
         return Keychain(service: Bundle.main.bundleIdentifier!).synchronizable(true)
     }
-    func saveCredentialsToKeychain(_ credentials: Credential){
+
+    func saveCredentialsToKeychain(_ credentials: Credential) {
         keychain[.credentials] = credentials
     }
 

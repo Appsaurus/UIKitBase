@@ -19,7 +19,6 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 }
 
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
-
     private var cellHeightsDictionary: [String: CGFloat] = [:]
 
     open override func createMixins() -> [LifeCycle] {
@@ -28,7 +27,7 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     open override func setupDelegates() {
         super.setupDelegates()
-        self.tableView.delegate = self
+        tableView.delegate = self
     }
 
     // MARK: Orientation
@@ -80,11 +79,11 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     open func didTransition(to state: State) {}
 
-    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    open override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height
     }
 
-    override open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
     }
 }

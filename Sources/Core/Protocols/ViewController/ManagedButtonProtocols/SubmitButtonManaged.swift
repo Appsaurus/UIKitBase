@@ -111,17 +111,16 @@ extension SubmitButtonManaged where Self: UIViewController {
 
 import DarkMagic
 
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let submitButton = AssociatedObjectKey<BaseButton>("submitButton")
 }
 
-public extension SubmitButtonManaged where Self: NSObject{
-
-    public var submitButton: BaseButton{
-        get{
+public extension SubmitButtonManaged where Self: NSObject {
+    var submitButton: BaseButton {
+        get {
             return self[.submitButton, BaseButton()]
         }
-        set{
+        set {
             self[.submitButton] = newValue
         }
     }

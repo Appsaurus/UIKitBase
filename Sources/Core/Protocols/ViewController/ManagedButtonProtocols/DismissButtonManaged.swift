@@ -6,12 +6,11 @@
 //  Copyright © 2018 Brian Strobach. All rights reserved.
 //
 
+import DarkMagic
 import Foundation
 import Layman
 import UIFontIcons
 import UIKit
-import UIKitTheme
-import DarkMagic
 import UIKitMixinable
 import UIKitTheme
 
@@ -28,6 +27,7 @@ public class NavigationBarButtonConfiguration: NSObject {
         self.activityIndicatorStyle = activityIndicatorStyle
     }
 }
+
 public enum NavigationBarButtonPosition {
     case leading
     case trailing
@@ -39,7 +39,6 @@ public protocol NavigationBarButtonManaged {
 }
 
 public extension NavigationBarButtonManaged where Self: UIViewController & NavigationBarStyleable {
-
     func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration) {
         let position = configuration.position
         switch position {
@@ -68,10 +67,11 @@ public extension NavigationBarButtonManaged where Self: UIViewController & Navig
 //
 //            navigationController?.navigationBar.forceAutolayoutPass()
         case .title:
-            self.navigationItem.titleView = button
+            navigationItem.titleView = button
         }
     }
 }
+
 open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
     open override func createSubviews() {
         super.createSubviews()
@@ -87,12 +87,10 @@ public protocol DismissButtonManaged: NavigationBarButtonManaged {
     func shouldDismissViewController() -> Bool
 }
 
-
 extension DismissButtonManaged where Self: UIViewController {
-
     public mutating func setupDismissButton() {
         setupNavigationBar(button: dismissButton, configuration: dismissButtonConfiguration)
-        setupDismissButtonAction(for: self.dismissButton)
+        setupDismissButtonAction(for: dismissButton)
     }
 
     public func setupDismissButtonAction(for button: BaseUIButton) {
@@ -113,14 +111,13 @@ extension DismissButtonManaged where Self: UIViewController {
     }
 }
 
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let dismissButton = AssociatedObjectKey<BaseUIButton>("dismissButton")
     static let dismissButtonConfiguration = AssociatedObjectKey<NavigationBarButtonConfiguration>("dismissButtonConfiguration")
 }
 
-public extension DismissButtonManaged where Self: NSObject{
-
-    public func defaultButton(configuration: NavigationBarButtonConfiguration) -> BaseUIButton {
+public extension DismissButtonManaged where Self: NSObject {
+    func defaultButton(configuration: NavigationBarButtonConfiguration) -> BaseUIButton {
         let button = BaseUIButton()
         switch configuration.position {
         case .title:
@@ -131,20 +128,20 @@ public extension DismissButtonManaged where Self: NSObject{
         return button
     }
 
-    var dismissButtonConfiguration: NavigationBarButtonConfiguration{
-        get{
+    var dismissButtonConfiguration: NavigationBarButtonConfiguration {
+        get {
             return self[.dismissButtonConfiguration, NavigationBarButtonConfiguration()]
         }
-        set{
+        set {
             self[.dismissButtonConfiguration] = newValue
         }
     }
 
-    var dismissButton: BaseUIButton{
-        get{
+    var dismissButton: BaseUIButton {
+        get {
             return self[.dismissButton, self.defaultButton(configuration: self.dismissButtonConfiguration)]
         }
-        set{
+        set {
             self[.dismissButton] = newValue
         }
     }

@@ -5,11 +5,10 @@
 //  Created by Brian Strobach on 4/10/18.
 //
 
+import KeychainAccess
 import Layman
 import Swiftest
 import UIKitTheme
-import KeychainAccess
-
 
 open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
     // MARK: Initialization
@@ -19,7 +18,6 @@ open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R,
         setupAuthAction(for: authView.logInButton)
     }
 
-
     open override func createDefaultAuthView() -> IdentifierAndPasswordAuthView {
         let identifierView = IdentifierAndPasswordAuthView(frame: CGRect.zero)
         identifierView.setContentCompressionResistancePriority(.required, for: NSLayoutConstraint.Axis.vertical)
@@ -28,7 +26,6 @@ open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R,
     }
 
     // MARK: Abastract methods
- 
 
     open func authenticate(identifier: String, password: String, success: @escaping AuthSuccessHandler<R>, failure: @escaping ErrorClosure) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)

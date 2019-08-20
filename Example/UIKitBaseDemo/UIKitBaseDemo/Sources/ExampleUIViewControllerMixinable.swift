@@ -25,8 +25,7 @@ extension ExampleUIViewMixinable: Styleable{
 }
 
 extension ExampleUIViewControllerMixinable:
-KeyboardSizeAware
-& NavigationBarStyleable {}
+KeyboardSizeAware {}
 
 open class ExampleUIViewControllerMixinable: MixinableViewController{
     
@@ -34,9 +33,7 @@ open class ExampleUIViewControllerMixinable: MixinableViewController{
     let mixedView = ExampleUIViewMixinable()
     
     open override func createMixins() -> [LifeCycle] {
-        return [KeyboardSizeAwareMixin(self),
-                NavigationBarStyleableMixin(self),
-                StyleableViewControllerMixin(self)]
+        return [KeyboardSizeAwareMixin(self)]
     }
     
     public var keyboardHeight: CGFloat?{

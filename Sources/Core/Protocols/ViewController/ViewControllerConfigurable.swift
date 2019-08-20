@@ -13,7 +13,7 @@ public protocol ViewControllerConfigurable: OrientationLockable, StatusBarConfig
     var viewControllerConfiguration: ViewControllerConfiguration { get set }
 }
 
-//public extension ViewControllerConfigurable where Self: UIViewController {
+// public extension ViewControllerConfigurable where Self: UIViewController {
 //    var navigationBarStyle: NavigationBarStyle? {
 //        get {
 //            return viewControllerConfiguration.style.navigationBarStyle
@@ -23,7 +23,7 @@ public protocol ViewControllerConfigurable: OrientationLockable, StatusBarConfig
 ////            applyDefaultNavigationBarStyle()
 //        }
 //    }
-//}
+// }
 private extension AssociatedObjectKeys {
     static let viewControllerConfiguration = AssociatedObjectKey<ViewControllerConfiguration>("viewControllerConfiguration")
 }
@@ -52,5 +52,3 @@ public extension ViewControllerConfigurable where Self: UIViewController {
         return viewControllerConfiguration.orientationMask
     }
 }
-
-

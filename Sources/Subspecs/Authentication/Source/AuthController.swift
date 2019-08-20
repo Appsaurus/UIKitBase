@@ -24,7 +24,6 @@ public protocol AuthControllerDelegate: AnyObject {
 
 public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
 open class AuthController<R: Codable, V: UIView>: NSObject where V: AuthView {
-
     open weak var delegate: AuthControllerDelegate?
     open lazy var authView: V = { self.createDefaultAuthView() }()
 

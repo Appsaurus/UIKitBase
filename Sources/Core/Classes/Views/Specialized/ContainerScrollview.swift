@@ -36,9 +36,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     var recognizesParentScroll: Bool = true
     var bouncesBottom: Bool = false
 
-    /// When an inner scroll hits content bounds, it will continue scrolling in the outer scrollview.
-    /// For now this only scrolls to top until I can find a more seameless velocity/pan based approch.
-    var transfersInertiaBetweenScrollViews: Bool = true
+
 
     public required init(contentView: UIView = UIView()) {
         self.contentView = contentView
@@ -59,46 +57,12 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
 
     var childScrollViews: Set<UIScrollView> = Set<UIScrollView>()
     //    var observers: [KeyValueObserver] = []
-    func catpureDelegateIfNeeded(scrollView: UIScrollView) {
+
+    func captureScrollViewIfNeeded(scrollView: UIScrollView) {
         guard !childScrollViews.contains(scrollView) else { return }
         childScrollViews.update(with: scrollView)
-        scrollView.delegate = self // TODO: implement delegate splitter so that we don't have to hijack this
 
-        // WIP: Investigating velocity transfer of scroll
-        //        scrollView.panGestureRecognizer.onRecognition {
-        //            let innerScrollViewPanGestureRecognizer = scrollView.panGestureRecognizer
-        //            switch scrollView.panGestureRecognizer.state {
-        //            case .ended:
-        //                print("otherstate: ended)")
-        //                print("innerScrollView position: \(scrollView.yOffsetPosition)")
-        //                print("other scroll: \(self.pointer(scrollView))")
-        //                print("Other vel \(innerScrollViewPanGestureRecognizer.velocity(in: self).y)")
-        //                print("Other translation \(innerScrollViewPanGestureRecognizer.translation(in: self).y)")
-        //                print("Other offset for top \(scrollView.verticalOffsetForTop)")
-        //                print("Other offset \(scrollView.contentOffset.y)")
-        //                let distance = scrollView.verticalOffsetForTop - scrollView.contentOffset.y
-        //                print("Distance \(distance)")
-        ////                scrollView.panGestureRecognizer.setTranslation(_ translation: CGPoint, in view: UIView?)
-        //
-        //
-        //            case .began:
-        //                print("otherstate: began)")
-        //                print("Other offset for top \(scrollView.verticalOffsetForTop)")
-        //                print("Other offset \(scrollView.contentOffset.y)")
-        //            case .cancelled:
-        //                print("otherstate: cancelled)")
-        //            case .failed:
-        //                print("otherstate: failed)")
-        //            case .possible:
-        //                print("otherstate: possible)")
-        //            case .changed:
-        ////                print("otherstate: changed)")
-        //                break
-        //            default:
-        //                print("otherstate: default)")
-        //                break
-        //            }
-        //        }
+
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -110,7 +74,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
             let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView else { return false }
         guard innerScrollView.isDescendant(of: contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return false }
 
-        catpureDelegateIfNeeded(scrollView: innerScrollView)
+        captureScrollViewIfNeeded(scrollView: innerScrollView)
 
         if innerScrollViewPanGestureRecognizer.velocity(in: self).y < 0, innerScrollView.hasReachedBottomOfContent, !bounces {
             // Reached bottom of inner scrollview
@@ -135,17 +99,17 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     }
 }
 
-extension ContainerScrollView: UIScrollViewDelegate {
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if transfersInertiaBetweenScrollViews, scrollView != self {
-            let position = scrollView.calculateYOffsetPostition(for: targetContentOffset.pointee.y)
-            switch position {
-            case .top, .bouncingTop:
-                if velocity.y < 0 { scrollToTop() }
-            case .bottom, .bouncingBottom:
-                if velocity.y > 0 { scrollToBottom() }
-            default: break
-            }
-        }
-    }
-}
+//extension ContainerScrollView: UIScrollViewDelegate {
+//    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        if transfersInertiaBetweenScrollViews, scrollView != self {
+//            let position = scrollView.calculateYOffsetPostition(for: targetContentOffset.pointee.y)
+//            switch position {
+//            case .top, .bouncingTop:
+//                if velocity.y < 0 { scrollToTop() }
+//            case .bottom, .bouncingBottom:
+//                if velocity.y > 0 { scrollToBottom() }
+//            default: break
+//            }
+//        }
+//    }
+//}

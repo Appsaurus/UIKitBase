@@ -34,12 +34,10 @@ open class CellLayoutView<MV: UIView>: BaseView {
         .align(.center)
         .spacing(4)
 
-
     open lazy var config: CellLayoutViewConfiguration = CellLayoutViewConfiguration()
 
     open lazy var optionalRightView: UIView? = nil
     open var prioritizeMiddleViewWidthOverRightView: Bool = true
-
 
     open lazy var leftImageView: BaseImageView = {
         let iv = BaseImageView()

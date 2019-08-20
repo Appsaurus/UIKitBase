@@ -207,6 +207,7 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         super.didInit()
         UNUserNotificationCenter.current().delegate = mixable
     }
+
     open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
         let application = UIApplication.shared
         remoteNotificationRegistrationSuccess = success

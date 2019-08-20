@@ -12,7 +12,7 @@ import UIFontIcons
 import UIKitExtensions
 import UIKitTheme
 
-//open class ModularTableViewCell<MV: UIView>: ViewBasedTableViewCell<CellLayoutView<MV>> {
+// open class ModularTableViewCell<MV: UIView>: ViewBasedTableViewCell<CellLayoutView<MV>> {
 //    open var config: CellLayoutViewConfiguration?
 //
 //    open var leftImageView: BaseImageView {
@@ -26,9 +26,9 @@ import UIKitTheme
 //    open override func createMainView() -> CellLayoutView<MV> {
 //        return CellLayoutView<MV>(config: config, optionalRightView: optionalRightView)
 //    }
-//}
+// }
 //
-//open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
+// open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
 ////    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
 //    ////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
 ////    }
@@ -48,7 +48,7 @@ import UIKitTheme
 //        mainLabel.apply(textStyle: .caption1())
 //        detailLabel.apply(textStyle: .caption1())
 //    }
-//}
+// }
 
 // open class ModularStackTableViewCell<StackedView, MSV: ModularStackView<StackedView>>: ViewBasedTableViewCell<MSV> {
 //    open var config: CellLayoutViewConfiguration?

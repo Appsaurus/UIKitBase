@@ -10,7 +10,6 @@ import DiffableDataSources
 import Swiftest
 import UIKitExtensions
 
-
 /// Simplified TableViewDiffableDatasource that assumes a single section
 open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableDataSource<String, ItemIdentifierType> {
     public var usesSectionsAsHeaderTitles: Bool = false
@@ -22,11 +21,10 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
 
     @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles,
-        self.numberOfItems(inSection: section) > 0 else { return nil }
+            numberOfItems(inSection: section) > 0 else { return nil }
 
         return "  \(snapshot().sectionIdentifiers[section])"
     }
-
 }
 
 /// Simplified TableViewDiffableDatasource that assumes a single section
@@ -77,27 +75,26 @@ public extension DiffableDatasource {
     }
 
     func clearData(animated: Bool = true,
-                   completion: @escaping VoidClosure = {}){
+                   completion: @escaping VoidClosure = {}) {
         apply(Snapshot(), animatingDifferences: animated, completion: completion)
     }
 
     func load(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
               animated: Bool = true,
-              completion: @escaping VoidClosure = {}){
+              completion: @escaping VoidClosure = {}) {
         append(sectionedItems, to: Snapshot(), animated: animated, completion: completion)
     }
 
     func append(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
                 animated: Bool = true,
                 completion: @escaping VoidClosure = {}) {
-        append(sectionedItems, to: self.snapshot(), animated: animated, completion: completion)
+        append(sectionedItems, to: snapshot(), animated: animated, completion: completion)
     }
 
     private func append(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
                         to snapshot: Snapshot,
                         animated: Bool = true,
                         completion: @escaping VoidClosure = {}) {
-
         for itemSection in sectionedItems {
             snapshot.appendSections([itemSection.key])
             snapshot.appendItems(itemSection.value, toSection: itemSection.key)
@@ -105,12 +102,10 @@ public extension DiffableDatasource {
         apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
-
-
     func load(_ items: [ItemIdentifierType],
               into section: SectionIdentifierType? = nil,
               animated: Bool = true,
-              completion: @escaping VoidClosure = {}){
+              completion: @escaping VoidClosure = {}) {
         append(items, to: section, using: Snapshot(), animated: animated, completion: completion)
     }
 
@@ -118,14 +113,14 @@ public extension DiffableDatasource {
                 to section: SectionIdentifierType? = nil,
                 animated: Bool = true,
                 completion: @escaping VoidClosure = {}) {
-        append(items, to: section, using: self.snapshot(), animated: animated, completion: completion)
+        append(items, to: section, using: snapshot(), animated: animated, completion: completion)
     }
 
     private func append(_ items: [ItemIdentifierType],
-                to section: SectionIdentifierType? = nil,
-                using snapshot: Snapshot,
-                animated: Bool = true,
-                completion: @escaping VoidClosure = {}) {
+                        to section: SectionIdentifierType? = nil,
+                        using snapshot: Snapshot,
+                        animated: Bool = true,
+                        completion: @escaping VoidClosure = {}) {
         snapshot.append(section: section, fallback: defaultSection())
             .appendItems(items, toSection: section ?? defaultSection())
 
@@ -141,13 +136,11 @@ public extension DiffableDatasource {
 //    func append(sections: [SectionIdentifierType], animated: Bool = true, completion: @escaping VoidClosure = {}) {
 //        let snapshot = self.snapshot()
 //        snapshot.appendSections(sections)
-////        UIView.animate(withDuration: 0, animations: {
+    ////        UIView.animate(withDuration: 0, animations: {
 //            self.apply(snapshot, animatingDifferences: animated)
-////        }, completion: { _ in completion() })
+    ////        }, completion: { _ in completion() })
 //        completion()
 //    }
-
-
 
     func defaultSection() -> SectionIdentifierType? {
         return "DefaultSection" as? SectionIdentifierType ?? 0 as? SectionIdentifierType
@@ -164,17 +157,16 @@ public extension DiffableDatasource {
 }
 
 public extension DiffableDatasource {
-
     func load(_ items: ItemIdentifierType...,
               into section: SectionIdentifierType? = nil,
-              animated: Bool = true){
+              animated: Bool = true) {
         append(items, to: section, using: Snapshot(), animated: animated)
     }
 
     func append(_ items: ItemIdentifierType...,
                 to section: SectionIdentifierType? = nil,
                 animated: Bool = true) {
-        append(items, to: section, using: self.snapshot(), animated: animated)
+        append(items, to: section, using: snapshot(), animated: animated)
     }
 }
 
@@ -183,8 +175,7 @@ public extension DiffableDataSourceSnapshot {
     func append(section: SectionIdentifierType?, fallback: SectionIdentifierType?) -> Self {
         if let section = section {
             append(section: section)
-        }
-        else if let defaultSection = fallback {
+        } else if let defaultSection = fallback {
             addDefaultSectionIfNeeded(section: defaultSection)
         }
         return self
@@ -197,6 +188,7 @@ public extension DiffableDataSourceSnapshot {
         }
         return self
     }
+
     @discardableResult
     func addDefaultSectionIfNeeded(section: SectionIdentifierType?) -> Self {
         if sectionIdentifiers.count == 0, let section = section {
@@ -207,13 +199,13 @@ public extension DiffableDataSourceSnapshot {
 
     @discardableResult
     /// Deletes the all sections in the snapshot.
-    public func deleteAllSections() -> Self {
+    func deleteAllSections() -> Self {
         deleteSections(sectionIdentifiers)
         return self
     }
 
     /// Deletes the all data in the snapshot.
-    public func deleteAllData() -> Self {
+    func deleteAllData() -> Self {
         deleteAllItems()
         deleteAllSections()
         return self
@@ -236,6 +228,4 @@ extension TableViewDiffableDataSource: DiffableDatasource {
 
     public typealias DatasourceConsumer = UITableView
     public typealias CellType = UITableViewCell
-
 }
-

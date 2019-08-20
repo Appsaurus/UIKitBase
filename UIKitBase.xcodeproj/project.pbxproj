@@ -409,9 +409,6 @@
 		E41D72C9224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CA224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
 		E41D72CB224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */; };
-		E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
-		E42075F9226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
-		E42075FA226E0E70007B74D4 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */; };
 		E42E9A7322D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
 		E42E9A7422D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
 		E42E9A7522D78249006FC120 /* DiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E9A7222D78248006FC120 /* DiffableDatasource.swift */; };
@@ -697,6 +694,10 @@
 		E4AF822D21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
 		E4AF822E21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
 		E4AF822F21C05CE2002D6E86 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF822B21C05CE2002D6E86 /* GradientView.swift */; };
+		E4C119E9230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
+		E4C119EA230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
+		E4C119EB230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
+		E4C119EC230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
 		E4D8E42A2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
@@ -850,7 +851,6 @@
 		E41D72B1224D7DDE00CA05C4 /* ZoomableImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomableImageScrollView.swift; sourceTree = "<group>"; };
 		E41D72C7224DA1B300CA05C4 /* ConfigurableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableViewController.swift; sourceTree = "<group>"; };
 		E41D72CD224E7A0800CA05C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceManaged.swift; sourceTree = "<group>"; };
 		E42E9A7222D78248006FC120 /* DiffableDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableDatasource.swift; sourceTree = "<group>"; };
 		E430836E226514580032CD17 /* PaginationManagedMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManagedMixin.swift; sourceTree = "<group>"; };
 		E4308373226514AC0032CD17 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
@@ -933,6 +933,7 @@
 		E4AF821821C0299D002D6E86 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
 		E4AF822B21C05CE2002D6E86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceManaged.swift; sourceTree = "<group>"; };
 		E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+FontIcons.swift"; sourceTree = "<group>"; };
 		F018CB104CC5EB988E7C787A /* Pods-UIKitBase-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F8228D948861F5C321E62D15 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1339,6 +1340,7 @@
 		E41D7129224D63CD00CA05C4 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */,
 				E42E9A7222D78248006FC120 /* DiffableDatasource.swift */,
 				E41D71DF224D663F00CA05C4 /* SearchViewControllers */,
 				E41D712F224D651300CA05C4 /* Pagination */,
@@ -1675,7 +1677,6 @@
 				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
 				E4AF81D121BF84EF002D6E86 /* Stateful */,
 				E4AF805421BB2D90002D6E86 /* ViewController */,
-				E42075F7226E0E70007B74D4 /* DataSourceManaged.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2159,8 +2160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Swiftest/Swiftest.framework",
@@ -2175,6 +2174,7 @@
 				"${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Layman/Layman.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Permission/Permission.framework",
@@ -2187,8 +2187,6 @@
 				"${BUILT_PRODUCTS_DIR}/UIKitTheme/UIKitTheme.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swiftest.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CwlCatchException.framework",
@@ -2202,6 +2200,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DiffableDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DifferenceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Layman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Permission.framework",
@@ -2285,7 +2284,6 @@
 			files = (
 				E41D70A4224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
-				E42075FA226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F321BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
@@ -2294,6 +2292,7 @@
 				E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E41D71C1224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
 				E41D72A3224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
+				E4C119EB230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710E224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
@@ -2478,6 +2477,7 @@
 				E4AF808821BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E41D71C2224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
 				E41D72A4224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
+				E4C119EC230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710F224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
@@ -2646,7 +2646,6 @@
 				E41D70A2224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E475F60822D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D7114224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
-				E42075F8226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7195224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726B224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F121BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
@@ -2698,6 +2697,7 @@
 				E4AF80F921BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D715D224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
 				E4AF81EA21BF84EF002D6E86 /* StatefulViewControllerErrorView.swift in Sources */,
+				E4C119E9230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
@@ -2831,7 +2831,6 @@
 			files = (
 				E41D70A3224D5F5B00CA05C4 /* LocationData.swift in Sources */,
 				E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
-				E42075F9226E0E70007B74D4 /* DataSourceManaged.swift in Sources */,
 				E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
 				E4AF80F221BB2D90002D6E86 /* BaseTabBarController.swift in Sources */,
@@ -2840,6 +2839,7 @@
 				E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */,
 				E41D71C0224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
 				E41D72A2224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
+				E4C119EA230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
 				E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710D224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,

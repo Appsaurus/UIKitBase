@@ -78,8 +78,7 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
     }
 
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let pm = datasource[indexPath] else { return }
-        onDidFinishTask?.result(LocationData(placemark: pm.placemark))
+        onDidFinishTask?.result(LocationData(placemark: datasource[indexPath].placemark))
     }
 
     open func reloadDidBegin() {}

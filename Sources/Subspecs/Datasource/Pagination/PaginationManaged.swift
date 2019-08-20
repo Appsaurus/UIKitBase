@@ -67,6 +67,7 @@ public extension PaginationManaged where Self: NSObject {
         reload(completion: {})
     }
 }
+
 public extension PaginationManaged where Self: UIViewController {
     func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
         datasource.clearData(animated: false) { [weak self] in
@@ -74,8 +75,6 @@ public extension PaginationManaged where Self: UIViewController {
             self.transition(to: initialState, animated: true, completion: completion)
         }
     }
-
-
 
     func reload(completion: @escaping VoidClosure) {
         datasourceManagedView.hideNeedsLoadingIndicator()
@@ -127,9 +126,8 @@ public extension PaginationManaged where Self: UIViewController {
     func fetchNextPage(firstPage: Bool = false,
                        transitioningState: State? = .loading,
                        reloadCompletion: VoidClosure? = nil) {
-
         if let state = transitioningState {
-            self.transition(to: state)
+            transition(to: state)
         }
 
         if firstPage { paginator.reset(stashingLastPageInfo: true) }
@@ -145,7 +143,6 @@ public extension PaginationManaged where Self: UIViewController {
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>,
                            isFirstPage: Bool = false,
                            reloadCompletion: VoidClosure? = nil) {
-
         let completion = { [weak self] in
             guard let self = self else { return }
             let lastPageState: State = result.items.count > 0 ? .loadedAll : .empty
@@ -158,8 +155,7 @@ public extension PaginationManaged where Self: UIViewController {
                     completion()
                 }
             })
-        }
-        else {
+        } else {
             datasourceManagedView.setContentOffset(datasourceManagedView.contentOffset, animated: false)
             datasource.append(result.items, completion: {
                 DispatchQueue.main.async {
@@ -167,7 +163,6 @@ public extension PaginationManaged where Self: UIViewController {
                 }
             })
         }
-
     }
 
     func didFinishFetching(error: Error) {
@@ -293,7 +288,7 @@ public extension PaginationManaged where Self: UIViewController {
 
     func addPullToRefresh() {
         datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
-                                                                  animator: createPullToRefreshAnimator()) { [weak self] in
+                                                                animator: createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.pullToRefreshTriggered()
             }
@@ -302,7 +297,7 @@ public extension PaginationManaged where Self: UIViewController {
 
     func addInfinityScroll() {
         datasourceManagedView.loadingControls.infiniteScroll.add(direction: paginationConfig.scrollDirection,
-                                                                   animator: createInfiniteScrollAnimator()) { [weak self] in
+                                                                 animator: createInfiniteScrollAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.infiniteScrollTriggered()
             }
