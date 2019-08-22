@@ -10,7 +10,7 @@ import Swiftest
 import UIKitTheme
 
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
-open class BaseFormViewController: BaseContainerViewController, FormDelegate, SubmitButtonManaged {
+open class BaseFormViewController<Submission, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     open lazy var formToolbar: FormToolbar? = {
         self.createFormToolbar()
     }()
@@ -74,9 +74,7 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
 
     open func formPassedValidation(_ form: Form) {
         updateSubmitButtonState()
-        if autoSubmitsValidForm {
-            performSubmission()
-        }
+        autoSubmitIfAllowed()
     }
 
     open func formFailedValidation(_ form: Form, failures: [ValidationFailure]) {
@@ -104,26 +102,7 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
 
     // MARK: SubmitButtonManaged
 
-    open func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-    }
-
     open func didPressSubmitButtonWhileDisabled() {}
-
-    open func submissionDidBegin() {
-        submitButton.state = .activity
-        view.endEditing(true)
-    }
-
-    open func submissionDidSucceed() {
-        view.isUserInteractionEnabled = true
-        updateSubmitButtonState()
-    }
-
-    open func submissionDidFail(with error: Error) {
-        view.isUserInteractionEnabled = true
-        updateSubmitButtonState()
-    }
 
     open func updateSubmitButtonState() {
         switch form.status {
@@ -145,9 +124,17 @@ open class BaseFormViewController: BaseContainerViewController, FormDelegate, Su
         }
         form.presentFormErrorsAlertView(self)
     }
+
+    open func submit(_ submission: Submission, _ resultClosure: @escaping (Result<Response, Error>) -> Void) {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
+    open func createSubmission() throws -> Submission {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        return try createSubmission()
+    }
 }
 
-open class FormTableViewController: BaseFormViewController, UITableViewControllerProtocol {
+open class FormTableViewController<Submission, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
 
     open var tableView: UITableView = UITableView().then { tv in

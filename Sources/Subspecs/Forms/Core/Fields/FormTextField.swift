@@ -58,6 +58,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     open var maxCharacterCountLimit: Int = Int.max
     open var parkedText: (prepended: String?, appended: String?)
     open var forbiddenCharacterSet: CharacterSet?
+    open var allowedCharacterSet: CharacterSet?
 
     open var limitsInputToMaxCharacterCount: Bool = true
     open var allowsSpaces: Bool = true
@@ -282,7 +283,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
     }
 
-    override func runValidationTests() -> [ValidationFailure] {
+    override open func runValidationTests() -> [ValidationFailure] {
         var failures: [ValidationFailure] = super.runValidationTests()
         if requiresValue, textField.text?.isEmpty == true {
             let failureType = ValidationFailureType.isBlank
@@ -360,6 +361,10 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     func illegalCharactersInText(_ text: String) -> String? {
         // range will be nil if no letters are found
         if let cForbiddenCharacterSet = forbiddenCharacterSet, let range = text.rangeOfCharacter(from: cForbiddenCharacterSet) {
+            return String(text[range])
+        }
+
+        if let cAllowedCharacterSet = allowedCharacterSet, let range = text.rangeOfCharacter(from: cAllowedCharacterSet.inverted) {
             return String(text[range])
         }
         return nil

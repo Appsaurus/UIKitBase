@@ -10,20 +10,92 @@ import Foundation
 import Layman
 import Swiftest
 
+public protocol SubmissionManaged: SubmitButtonManaged {
+    associatedtype Submission
+    associatedtype Response
+    func createSubmission() throws -> Submission
+    func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>)
+    func submissionDidBegin()
+    func submissionDidEnd(with result: Result<Response, Error>)
+    func submissionDidSucceed(with response: Response)
+    func submissionDidFail(with error: Error)
+
+}
+public enum SubmissionError: Error {
+    case unableToCreateSubmissionError
+}
+extension SubmissionManaged where Self: UIViewController {
+
+    public func performSubmission() {
+        do {
+            submissionDidBegin()
+            submit(try createSubmission()) { [weak self] result in
+                self?.submissionDidEnd(with: result)
+            }
+        }
+        catch {
+            submissionDidEnd(with: .failure(error))
+        }
+    }
+
+    public func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>) {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
+    public func submissionDidEnd(with result: Result<Response, Error>) {
+        submissionDidEnd()
+        switch result {
+        case .success(let response):
+            submissionDidSucceed(with: response)
+        case .failure(let error):
+            submissionDidFail(with: error)
+        }
+    }
+
+    public func submissionDidBegin() {
+        submitButton.state = .activity
+        view.endEditing(true)
+        view.isUserInteractionEnabled = false
+    }
+
+    public func submissionDidEnd() {
+        view.isUserInteractionEnabled = true
+        updateSubmitButtonState()
+    }
+
+    public func submissionDidSucceed(with response: Response) {}
+    public func submissionDidFail(with error: Error) {
+        self.showError(error: error)
+    }
+
+
+
+}
 public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     var submitButton: BaseButton { get set }
+    var autoSubmitsValidForm: Bool { get set }
     func didPressSubmitButton()
     func didPressSubmitButtonWhileDisabled()
-    func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure)
-    func submissionDidBegin()
-    func submissionDidEnd()
-    func submissionDidSucceed()
-    func submissionDidFail(with error: Error)
     func updateSubmitButtonState()
     func userCanSubmit() -> Bool
+    func performSubmission()
+    func autoSubmitIfAllowed()
+
 }
 
 extension SubmitButtonManaged where Self: UIViewController {
+    public func performSubmission() {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
+    public func didPressSubmitButton() {
+        performSubmission()
+    }
+
+    public func autoSubmitIfAllowed(){
+        if autoSubmitsValidForm {
+            performSubmission()
+        }
+    }
+
     @discardableResult
     public func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
         let button = createManagedButton(configuration: configuration)
@@ -61,38 +133,10 @@ extension SubmitButtonManaged where Self: UIViewController {
         ]
     }
 
-    public func didPressSubmitButton() {
-        performSubmission()
-    }
-
-    public func performSubmission() {
-        submissionDidBegin()
-        submit(success: { [weak self] in
-            self?.submissionDidEnd()
-            self?.submissionDidSucceed()
-        }, failure: { [weak self] error in
-            self?.submissionDidEnd()
-            self?.submissionDidFail(with: error)
-        })
-    }
 
     public func didPressSubmitButtonWhileDisabled() {}
 
-    public func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
-        success() // By default, for synchronous cases where no async "submission" is needed
-    }
 
-    public func submissionDidBegin() {
-        submitButton.state = .activity
-    }
-
-    public func submissionDidEnd() {
-        updateSubmitButtonState()
-    }
-
-    public func submissionDidSucceed() {}
-
-    public func submissionDidFail(with error: Error) {}
 
     public func updateSubmitButtonState() {
         DispatchQueue.main.async {
@@ -104,15 +148,13 @@ extension SubmitButtonManaged where Self: UIViewController {
         return true
     }
 
-    public func autoSubmitsValidForm() -> Bool {
-        return false
-    }
 }
 
 import DarkMagic
 
 private extension AssociatedObjectKeys {
     static let submitButton = AssociatedObjectKey<BaseButton>("submitButton")
+    static let autoSubmitsValidForm = AssociatedObjectKey<Bool>("autoSubmitsValidForm")
 }
 
 public extension SubmitButtonManaged where Self: NSObject {
@@ -122,6 +164,15 @@ public extension SubmitButtonManaged where Self: NSObject {
         }
         set {
             self[.submitButton] = newValue
+        }
+    }
+
+    var autoSubmitsValidForm: Bool {
+        get {
+            return self[.autoSubmitsValidForm, false]
+        }
+        set {
+            self[.autoSubmitsValidForm] = newValue
         }
     }
 }

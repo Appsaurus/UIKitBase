@@ -5,7 +5,7 @@
 //  Created by Brian Strobach on 8/8/17.
 //
 //
-
+import Swiftest
 public enum ValidationFailureType {
     case missingRequiredValue
     case containsIllegalCharacters
@@ -43,7 +43,7 @@ public struct ValidationFailure {
 
 open class AbstractFormField: BaseView, FormFieldProtocol {
     open var isEnabled: Bool = true
-    open var fieldName: String = ""
+    open lazy var fieldName: String = className.stringAfterRemoving(substrings: "Field").camelCaseToWords
     open var validationFrequency: FieldValidationFrequency = .onValueChanged
     open var validationErrorDisplayFrequency: FieldValidationFrequency = .onValueChanged
     open var displayErrorOnNextValidation: Bool = false // If you want to validate form once from the start, without showing errors
@@ -130,7 +130,7 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
         }
     }
 
-    func runValidationTests() -> [ValidationFailure] {
+    open func runValidationTests() -> [ValidationFailure] {
         return []
     }
 
@@ -150,5 +150,9 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
     open func outputValueToJSON() -> Any? {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return nil
+    }
+
+    open func runNetworkValidation(_ success: VoidClosure, failure: VoidClosure) {
+        success() // Effectively make network validation optional by faking success when not implemented by adopting class
     }
 }

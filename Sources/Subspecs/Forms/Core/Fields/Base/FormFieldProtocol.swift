@@ -20,12 +20,6 @@ public protocol FormFieldProtocol: AnyObject {
     func outputValueToJSON() -> Any?
 }
 
-extension FormFieldProtocol {
-    func runNetworkValidation(_ success: VoidClosure, failure: VoidClosure) {
-        success() // Effectively make network validation optional by faking success when not implemented by adopting class
-    }
-}
-
 public protocol FormTextFieldProtocol: UITextFieldDelegate {
     var textField: UITextField { get set }
     var confirmationField: FormTextFieldProtocol? { get set }
