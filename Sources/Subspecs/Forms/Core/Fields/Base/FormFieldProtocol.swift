@@ -18,6 +18,7 @@ public protocol FormFieldProtocol: AnyObject {
     func validate(displayErrors: Bool)
     func displayValidationFailures()
     func outputValueToJSON() -> Any?
+    func responder() -> UIResponder?
 }
 
 public protocol FormTextFieldProtocol: UITextFieldDelegate {

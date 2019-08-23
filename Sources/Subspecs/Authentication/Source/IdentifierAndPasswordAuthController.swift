@@ -9,6 +9,7 @@ import KeychainAccess
 import Layman
 import Swiftest
 import UIKitTheme
+import UIFontIcons
 
 open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
     // MARK: Initialization
@@ -60,12 +61,21 @@ open class IdentifierAndPasswordAuthView: BaseView, AuthView {
         if #available(iOS 11.0, *) {
             passwordField.textContentType = .password
         }
+        var rightButton  = UIButton(type: .custom)
+        rightButton.frame = CGRect(x:0, y:0, width:30, height:30)
+        rightButton.setFontIconTitle(MaterialIcons.Visibility, forState: .normal)
+        rightButton.setFontIconTitle(MaterialIcons.Visibility_Off, forState: .selected)
+        rightButton.addAction {
+            passwordField.isSecureTextEntry.toggle()
+        }
+        passwordField.rightViewMode = .always
+        passwordField.rightView = rightButton
         return passwordField
     }()
 
-    open var logInButton: BaseButton = {
-        BaseButton(titles: [.normal: "Sign in"])
-    }()
+    open var logInButton = UIButton().then {
+        $0.setTitle("Sign in", for: .normal)
+    }
 
     open var textFieldGroupLayoutView: UIView = UIView()
 

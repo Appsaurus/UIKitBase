@@ -8,7 +8,7 @@ import Layman
 ////
 import Swiftest
 import UIKitTheme
-
+import UIKitMixinable
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     open lazy var formToolbar: FormToolbar? = {
@@ -17,7 +17,7 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
 
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
     open var autoSubmitsValidForm: Bool = false
-
+    open var autoAssignFirstResponder: Bool = false
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
     open override func style() {
@@ -41,6 +41,9 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
         form.formDelegate = self
         form.validate(displayErrors: false)
         updateSubmitButtonState()
+        if autoAssignFirstResponder {
+            assignFirstResponderToNextInvalidField()
+        }
     }
 
     open override func createSubviews() {
@@ -68,6 +71,11 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
         return toolbar
     }
 
+    open func assignFirstResponderToNextInvalidField() {
+        if let field = form.fields.first(where: {$0.validationStatus != .valid && $0.responder() != nil})?.responder() {
+            field.becomeFirstResponder()
+        }
+    }
     open func formIsValidating(_ form: Form) {
         updateSubmitButtonState()
     }
@@ -132,11 +140,26 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return try createSubmission()
     }
+
+    open func submissionDidSucceed(with response: Response) {
+
+    }
+    open func submissionDidFail(with error: Error) {
+        self.showError(error: error)
+    }
 }
 
+extension FormTableViewController: UITableViewReferencing {
+    public var managedTableView: UITableView {
+        return tableView
+    }
+}
 open class FormTableViewController<Submission, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
 
+    open override func createMixins() -> [LifeCycle] {
+        return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
+    }
     open var tableView: UITableView = UITableView().then { tv in
         tv.backgroundColor = .clear
     }
@@ -159,8 +182,9 @@ open class FormTableViewController<Submission, Response>: BaseFormViewController
 
     open override func style() {
         super.style()
-        headerPromptLabel?.apply(textStyle: .ultraLight(color: .primaryContrast, size: (UIFont.labelFontSize * 1.5).scaledForDevice(scaleDownOnly: true)))
         tableView.backgroundColor = containerView.backgroundColor
+        let backgroundContrast = view.backgroundColor?.contrastingColor(fromCandidates: [.primary, .primaryContrast]) ?? .primary
+        headerPromptLabel?.apply(textStyle: .displayHeadline(color: backgroundContrast))
     }
 
     open override func initProperties() {
@@ -176,7 +200,7 @@ open class FormTableViewController<Submission, Response>: BaseFormViewController
     open override func createSubviews() {
         super.createSubviews()
         guard let label = headerPromptLabel else { return }
-        tableView.setupDynamicHeightTableHeaderView(fittingContentView: label)
+        tableView.setupDynamicHeader(label)
     }
 
     open override func viewDidLoad() {
@@ -187,12 +211,12 @@ open class FormTableViewController<Submission, Response>: BaseFormViewController
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        tableView.layoutDynamicHeightHeaderView(width: size.width)
+        tableView.dynamicallySizeHeight(of: .header, .footer)
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.layoutDynamicHeightHeaderView(width: tableView.bounds.width)
+        tableView.dynamicallySizeHeight(of: .header, .footer)
     }
 
     open func numberOfSections(in tableView: UITableView) -> Int {

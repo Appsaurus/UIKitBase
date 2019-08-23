@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+public protocol UITableViewReferencing {
+    var managedTableView: UITableView { get }
+}
+
+extension UITableViewController: UITableViewReferencing {
+    public var managedTableView: UITableView {
+        return tableView
+    }
+}
 public typealias UITableViewControllerProtocol = UITableViewDelegate & UITableViewDataSource
 public typealias UIPageViewControllerProtocol = UIPageViewControllerDelegate & UIPageViewControllerDataSource
 public typealias UICollectionViewControllerProtocol = UICollectionViewDelegate & UICollectionViewDataSource

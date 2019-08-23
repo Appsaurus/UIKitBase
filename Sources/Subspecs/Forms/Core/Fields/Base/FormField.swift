@@ -89,6 +89,7 @@ public enum FormFieldState {
 }
 
 open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol {
+
     // Makes accessoryview assignable
     open var _inputAccessoryView: UIView? {
         didSet {

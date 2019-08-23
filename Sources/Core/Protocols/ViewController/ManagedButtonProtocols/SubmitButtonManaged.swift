@@ -109,10 +109,9 @@ extension SubmitButtonManaged where Self: UIViewController {
             break
         }
         button.disabledBehaviors = [.dropAlpha(to: 0.5)]
-        let navBarTintColor = navigationController?.navigationBar.tintColor
         button.activityBehaviors = [.removeTitle,
                                     .showIndicator(style: .gray,
-                                                   color: navBarTintColor,
+                                                   color: navigationBarStyle?.barItemColor,
                                                    at: activityIndicatoPosition)]
         setupSubmitButtonAction(for: button)
         submitButton = button

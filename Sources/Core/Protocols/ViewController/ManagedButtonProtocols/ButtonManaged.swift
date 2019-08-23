@@ -59,7 +59,8 @@ extension ButtonManaged where Self: UIViewController {
         case .custom:
             break
         default: // Nav bar
-            button.styleMap = [.normal: .barButtonItemStyle]
+            button.styleMap = [.normal: .flat(textStyle: TextStyle(color: navigationBarStyle?.barItemColor ?? .primaryContrast,
+                                                                   font: .regular(.barButtonFontSize)))]
         }
     }
 

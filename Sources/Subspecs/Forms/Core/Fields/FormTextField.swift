@@ -221,9 +221,9 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         if let prependedCount = self.parkedText.prepended?.count, range.location < prependedCount {
             return false
         }
-        if !allowsSpaces, string == " " {
-            return false
-        }
+//        if !allowsSpaces, string == " " {
+//            return true
+//        }
 
         let prevCharCount = textField.text!.count
 
@@ -277,9 +277,18 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
     }
 
-    func textDidChange() {
+    open func textDidChange() {
+        //Allow for copy and paste of email which automatically appends space - see https://stackoverflow.com/questions/51252525/ios-textfield-autocomplete-adds-blank-character?rq=1
+        if !allowsSpaces, textField.text?.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+            textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
         if Value.self is String.Type {
             value = textField.text as? Value
+        }
+
+        if validationFrequency == .onValueChanged {
+            runValidationTests()
         }
     }
 

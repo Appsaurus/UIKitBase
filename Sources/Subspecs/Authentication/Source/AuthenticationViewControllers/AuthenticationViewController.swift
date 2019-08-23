@@ -60,7 +60,7 @@ open class AuthenticationViewController<ACM: BaseAuthControllerManager>: BaseVie
     open lazy var authControllerManager: ACM = ACM(delegate: self)
 
     open var mainAuthView: UIView?
-    open var authButtons: [AuthButton]?
+    open var authButtons: [AuthButton] = []
 
     deinit {}
 

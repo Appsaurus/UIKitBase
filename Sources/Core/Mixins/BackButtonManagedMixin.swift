@@ -7,9 +7,14 @@
 
 import UIFontIcons
 import UIKitMixinable
-
-open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged> {
+import UIKitTheme
+import UIFontIcons
+open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged & UIViewController> {
     open override func createSubviews() {
-        mixable.createBackButton(icon: MaterialIcons.Arrow_Back)
+        var fontIconConfiguration: FontIconConfiguration?
+        if let barItemColor = mixable.navigationBarStyle?.barItemColor {
+            fontIconConfiguration = FontIconConfiguration(style: .init(color: barItemColor))
+        }
+        mixable.createBackButton(icon: MaterialIcons.Arrow_Back, iconConfiguration: fontIconConfiguration)
     }
 }

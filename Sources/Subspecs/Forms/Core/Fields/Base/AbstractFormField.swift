@@ -45,12 +45,14 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
     open var isEnabled: Bool = true
     open lazy var fieldName: String = className.stringAfterRemoving(substrings: "Field").camelCaseToWords
     open var validationFrequency: FieldValidationFrequency = .onValueChanged
-    open var validationErrorDisplayFrequency: FieldValidationFrequency = .onValueChanged
+    open var validationErrorDisplayFrequency: FieldValidationFrequency = .onDidFinishEditing
     open var displayErrorOnNextValidation: Bool = false // If you want to validate form once from the start, without showing errors
     open var requiresValue: Bool = false
     open var requiresNetworkValidation: Bool = false
     open weak var validationDelegate: FieldValidationDelegate?
-
+    open func responder() -> UIResponder? {
+        return self as? UIResponder
+    }
     open var hasValue: Bool {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return false

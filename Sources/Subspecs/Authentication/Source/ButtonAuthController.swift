@@ -6,31 +6,13 @@
 //
 
 import Swiftest
+import UIKitExtensions
 
-open class ThirdPartyAuthButtonViewModel {
-    open var icon: AuthIcons?
-    open var fullLoginButtonTitle: String
-    public init(icon: AuthIcons?, fullLoginButtonTitle: String) {
-        self.icon = icon
-        self.fullLoginButtonTitle = fullLoginButtonTitle
-    }
-}
+public typealias AuthButton = BaseUIButton & AuthView
 
-open class AuthButton: BaseButton, AuthView {
-    open override func initProperties() {
-        super.initProperties()
-        buttonLayout = ButtonLayout(layoutType: .imageLeftTitleCenter)
-    }
-
-    open func authenticationDidBegin() {}
-
-    open func authenticationDidSucceed() {}
-
-    open func authenticationDidFail(_ error: Error) {}
-}
-
-open class ButtonAuthController<R: Codable, V>: AuthController<R, AuthButton> {
+open class ButtonAuthController<R: Codable, V: AuthButton>: AuthController<R, V> {
     open override func didInit() {
+        super.didInit()
         setupAuthAction(for: authView)
     }
 }

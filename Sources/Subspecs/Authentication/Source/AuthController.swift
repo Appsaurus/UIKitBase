@@ -6,8 +6,9 @@
 //
 
 import Swiftest
+import UIKitExtensions
 
-public protocol AuthView {
+public protocol AuthView: UIView {
     func authenticationDidBegin()
     func authenticationDidFail(_ error: Error)
     func authenticationDidSucceed()
@@ -70,7 +71,7 @@ open class AuthController<R: Codable, V: UIView>: NSObject where V: AuthView {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
 
-    private func internalAuthenticate() {
+    internal func internalAuthenticate() {
         authenticationWillBegin()
         authenticate()
     }
@@ -97,8 +98,10 @@ open class AuthController<R: Codable, V: UIView>: NSObject where V: AuthView {
     }
 
     // MARK: Convenience
-
-    open func setupAuthAction(for authButton: BaseButton) {
-        authButton.onTap = internalAuthenticate
+    open func setupAuthAction(for button: UIButton) {
+        button.addAction { [weak self] in
+            self?.internalAuthenticate()
+        }
     }
+
 }

@@ -147,6 +147,10 @@ extension StatefulViewController {
             }
         }
     }
+    public func transitionToErrorState(_ error: Error, retry: VoidClosure? = nil) {
+        errorView()?.show(error: error, retry: retry)
+        transition(to: .error)
+    }
 }
 
 // MARK: Default Stateful Views

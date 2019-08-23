@@ -39,8 +39,8 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
 
     public let layoutView: UIView = UIView()
 
-    open var authButtonStackView: UIStackView?
-    open var additionalActionsStackView: UIStackView?
+    open var authButtonStackView = StackView(layout: .equalSpacingVerticalFill)
+    open var additionalActionsStackView = StackView(layout: .fillProportionatelyHorizontal)
 
     // MARK: Notifications
 
@@ -65,9 +65,8 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
     open override func createSubviews() {
         view.addSubview(layoutView)
 
-        authButtonStackView = createAuthButtonStackView()
-        additionalActionsStackView = createAdditionalActionsStackView()
-        let optionalMiddleViews: [UIView?] = [authButtonStackView, mainAuthView]
+        authButtonStackView.addArrangedSubviews(authButtons)
+
         middleStackView.addArrangedSubviews(optionalMiddleViews.removeNils())
         let optionalViews: [UIView?] = [imageView, middleStackView, additionalActionsStackView]
         mainStackView.addArrangedSubviews(optionalViews.removeNils())
@@ -105,7 +104,6 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
 
     open override func style() {
         super.style()
-        view.backgroundColor = .primary
         layoutView.backgroundColor = UIColor.clear
     }
 
@@ -128,19 +126,6 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
         let bottomPadding: CGFloat = 50.0
         let topPadding: CGFloat = 50.0
         return LayoutPadding(top: topPadding, leading: sidePadding, bottom: bottomPadding, trailing: sidePadding)
-    }
-
-    func createAuthButtonStackView() -> UIStackView? {
-        guard let authButtons = authButtons else {
-            return nil
-        }
-        let stackView = UIStackView(arrangedSubviews: authButtons)
-        stackView.alignment = UIStackView.Alignment.fill
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.axis = NSLayoutConstraint.Axis.horizontal
-        stackView.height.equal(to: 45.0)
-
-        return stackView
     }
 
     open func createAdditionalActionsStackView() -> UIStackView {
