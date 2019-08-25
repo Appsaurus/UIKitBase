@@ -98,10 +98,10 @@ open class AuthController<R: Codable, V: UIView>: NSObject where V: AuthView {
     }
 
     // MARK: Convenience
+
     open func setupAuthAction(for button: UIButton) {
         button.addAction { [weak self] in
             self?.internalAuthenticate()
         }
     }
-
 }

@@ -446,6 +446,10 @@
 		E475F60D22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60E22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60F22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E489F0B923131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
+		E489F0BA23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
+		E489F0BB23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
+		E489F0BC23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -863,6 +867,7 @@
 		E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornableMixin.swift; sourceTree = "<group>"; };
 		E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsDisplaying.swift; sourceTree = "<group>"; };
 		E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewController.swift; sourceTree = "<group>"; };
+		E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableViewAccessoriesMixins.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -1720,6 +1725,7 @@
 		E4AF805D21BB2D90002D6E86 /* Mixins */ = {
 			isa = PBXGroup;
 			children = (
+				E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */,
 				E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */,
 				E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */,
 				E4AF805F21BB2D90002D6E86 /* FirstResponderManagedMixin.swift */,
@@ -2333,6 +2339,7 @@
 				E41D70B0224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E489F0BB23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
 				E475F5F522D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FB21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
@@ -2518,6 +2525,7 @@
 				E41D70B1224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E489F0BC23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
 				E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FC21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,
 				E41D7160224D651300CA05C4 /* NeedsLoadingIndicatorView.swift in Sources */,
@@ -2736,6 +2744,7 @@
 				E4AF809D21BB2D90002D6E86 /* ButtonManaged.swift in Sources */,
 				E41D6F902249731200CA05C4 /* DeepLinker.swift in Sources */,
 				E41D70EA224D5F5B00CA05C4 /* AbstractFormField.swift in Sources */,
+				E489F0B923131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
 				E41D718D224D651300CA05C4 /* GIFInfinityAnimator.swift in Sources */,
 				E41D70D6224D5F5B00CA05C4 /* FormToolbar.swift in Sources */,
 				E4AF812121BB2D90002D6E86 /* BaseStatefulView.swift in Sources */,
@@ -2880,6 +2889,7 @@
 				E41D70AF224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
 				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
+				E489F0BA23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
 				E475F5F422D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */,
 				E4AF80FA21BB2D90002D6E86 /* BaseTableViewController.swift in Sources */,

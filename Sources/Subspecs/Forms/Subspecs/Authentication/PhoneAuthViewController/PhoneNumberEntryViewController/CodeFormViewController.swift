@@ -13,18 +13,18 @@ import UIKitTheme
 
 public protocol CodeFormDelegate: AnyObject {
     // For asyncronous processing or validation, optionally override
-    func processVerification(of code: String, success: @escaping VoidClosure, failure: @escaping ErrorClosure)
+    func processVerification(of code: String, resultClosure: @escaping ResultClosure<Any?>)
     // For cases where you may need rerequest a code, like SMS verification when the text does not arrive
-    func requestCode(success: @escaping VoidClosure, failure: @escaping ErrorClosure)
+    func requestCode(resultClosure: @escaping ResultClosure<Any?>)
     func codeVerificationViewControllerDidVerifyCode()
 }
 
 public extension CodeFormDelegate {
-    func processVerification(of code: String, success: @escaping VoidClosure, failure: @escaping ErrorClosure) { // Make this effectively optional
-        success()
+    func processVerification(of code: String, resultClosure: @escaping ResultClosure<Any?>) { // Make this effectively optional
+        resultClosure(.success(nil))
     }
 
-    func requestCode(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
+    func requestCode(resultClosure: @escaping ResultClosure<Any?>) {
         assertionFailure()
     }
 }
@@ -76,7 +76,7 @@ public enum CodeFormViewControllerError: LocalizedError {
     }
 }
 
-open class CodeFormViewController: FormTableViewController {
+open class CodeFormViewController: FormTableViewController<String, Any?> {
     open var configuration: CodeFormViewControllerConfiguration = CodeFormViewControllerConfiguration()
     open weak var delegate: CodeFormDelegate?
 
@@ -133,17 +133,17 @@ open class CodeFormViewController: FormTableViewController {
         _ = codeInputField.becomeFirstResponder()
     }
 
-    open override func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
+    open override func submit(_ submission: String, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
         guard let delegate = delegate, let code = codeInputField.value else {
             assertionFailure("No delegate or value set.")
             return
         }
-        delegate.processVerification(of: code, success: success, failure: failure)
+        delegate.processVerification(of: code, resultClosure: resultClosure)
     }
 
-    open override func submissionDidSucceed() {
+    open override func submissionDidSucceed(with response: Any?) {
         submitButton.isHidden = true
-        super.submissionDidSucceed()
+        super.submissionDidSucceed(with: response)
         delegate?.codeVerificationViewControllerDidVerifyCode()
     }
 

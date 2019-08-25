@@ -36,8 +36,6 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     var recognizesParentScroll: Bool = true
     var bouncesBottom: Bool = false
 
-
-
     public required init(contentView: UIView = UIView()) {
         self.contentView = contentView
         super.init(frame: .zero)
@@ -61,8 +59,6 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     func captureScrollViewIfNeeded(scrollView: UIScrollView) {
         guard !childScrollViews.contains(scrollView) else { return }
         childScrollViews.update(with: scrollView)
-
-
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -99,7 +95,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     }
 }
 
-//extension ContainerScrollView: UIScrollViewDelegate {
+// extension ContainerScrollView: UIScrollViewDelegate {
 //    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //        if transfersInertiaBetweenScrollViews, scrollView != self {
 //            let position = scrollView.calculateYOffsetPostition(for: targetContentOffset.pointee.y)
@@ -112,4 +108,4 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
 //            }
 //        }
 //    }
-//}
+// }

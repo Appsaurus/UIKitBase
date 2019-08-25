@@ -278,7 +278,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     }
 
     open func textDidChange() {
-        //Allow for copy and paste of email which automatically appends space - see https://stackoverflow.com/questions/51252525/ios-textfield-autocomplete-adds-blank-character?rq=1
+        // Allow for copy and paste of email which automatically appends space - see https://stackoverflow.com/questions/51252525/ios-textfield-autocomplete-adds-blank-character?rq=1
         if !allowsSpaces, textField.text?.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
             textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
@@ -292,7 +292,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
     }
 
-    override open func runValidationTests() -> [ValidationFailure] {
+    open override func runValidationTests() -> [ValidationFailure] {
         var failures: [ValidationFailure] = super.runValidationTests()
         if requiresValue, textField.text?.isEmpty == true {
             let failureType = ValidationFailureType.isBlank

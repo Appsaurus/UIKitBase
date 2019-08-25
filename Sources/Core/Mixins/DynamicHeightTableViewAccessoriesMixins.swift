@@ -5,16 +5,15 @@
 //  Created by Brian Strobach on 8/23/19.
 //
 
-import UIKitMixinable
 import Layman
 import UIKitExtensions
+import UIKitMixinable
 
 public class DynamicHeightTableViewAccessoriesMixins: UIViewControllerMixin<UITableViewReferencing> {
     var viewTypes: [TableViewAccesoryView] = TableViewAccesoryView.allCases
-    override open func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
-
     }
 
 //        open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -33,7 +32,7 @@ public enum TableViewAccesoryView: CaseIterable {
 
 public extension UITableView {
     private func dynamicallySizeHeight(of view: UIView, withWidth width: LayoutConstant? = nil) {
-        view.layoutDynamicHeight(forWidth: width ?? self.bounds.width)
+        view.layoutDynamicHeight(forWidth: width ?? bounds.width)
 //        let height = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
 //        var viewFrame = view.frame
 //        // If we don't have this check, viewDidLayoutSubviews() will recurse
@@ -47,6 +46,7 @@ public extension UITableView {
     func dynamicallySizeHeight(of views: TableViewAccesoryView...) {
         dynamicallySizeHeight(of: views)
     }
+
     func dynamicallySizeHeight(of views: [TableViewAccesoryView]) {
         for view in views {
             switch view {
@@ -63,13 +63,12 @@ public extension UITableView {
     }
 
     func setupDynamicHeader(_ view: View,
-                                   insets: LayoutPadding = LayoutPadding(20)) {
+                            insets: LayoutPadding = LayoutPadding(20)) {
         tableHeaderView = View.parentViewFittingContent(of: view, insetBy: insets)
-
     }
 
     func setupDynamicFooter(_ view: View,
-                                   insets: LayoutPadding = LayoutPadding(20)) {
+                            insets: LayoutPadding = LayoutPadding(20)) {
         tableFooterView = View.parentViewFittingContent(of: view, insetBy: insets)
     }
 }

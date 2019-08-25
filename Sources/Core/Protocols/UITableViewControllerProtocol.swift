@@ -18,6 +18,7 @@ extension UITableViewController: UITableViewReferencing {
         return tableView
     }
 }
+
 public typealias UITableViewControllerProtocol = UITableViewDelegate & UITableViewDataSource
 public typealias UIPageViewControllerProtocol = UIPageViewControllerDelegate & UIPageViewControllerDataSource
 public typealias UICollectionViewControllerProtocol = UICollectionViewDelegate & UICollectionViewDataSource

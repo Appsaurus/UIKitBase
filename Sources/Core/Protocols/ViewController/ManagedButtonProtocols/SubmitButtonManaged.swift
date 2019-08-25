@@ -19,21 +19,20 @@ public protocol SubmissionManaged: SubmitButtonManaged {
     func submissionDidEnd(with result: Result<Response, Error>)
     func submissionDidSucceed(with response: Response)
     func submissionDidFail(with error: Error)
-
 }
+
 public enum SubmissionError: Error {
     case unableToCreateSubmissionError
 }
-extension SubmissionManaged where Self: UIViewController {
 
+extension SubmissionManaged where Self: UIViewController {
     public func performSubmission() {
         do {
             submissionDidBegin()
             submit(try createSubmission()) { [weak self] result in
                 self?.submissionDidEnd(with: result)
             }
-        }
-        catch {
+        } catch {
             submissionDidEnd(with: .failure(error))
         }
     }
@@ -41,12 +40,13 @@ extension SubmissionManaged where Self: UIViewController {
     public func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
     public func submissionDidEnd(with result: Result<Response, Error>) {
         submissionDidEnd()
         switch result {
-        case .success(let response):
+        case let .success(response):
             submissionDidSucceed(with: response)
-        case .failure(let error):
+        case let .failure(error):
             submissionDidFail(with: error)
         }
     }
@@ -64,12 +64,10 @@ extension SubmissionManaged where Self: UIViewController {
 
     public func submissionDidSucceed(with response: Response) {}
     public func submissionDidFail(with error: Error) {
-        self.showError(error: error)
+        showError(error: error)
     }
-
-
-
 }
+
 public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     var submitButton: BaseButton { get set }
     var autoSubmitsValidForm: Bool { get set }
@@ -79,18 +77,18 @@ public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     func userCanSubmit() -> Bool
     func performSubmission()
     func autoSubmitIfAllowed()
-
 }
 
 extension SubmitButtonManaged where Self: UIViewController {
     public func performSubmission() {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
     public func didPressSubmitButton() {
         performSubmission()
     }
 
-    public func autoSubmitIfAllowed(){
+    public func autoSubmitIfAllowed() {
         if autoSubmitsValidForm {
             performSubmission()
         }
@@ -132,10 +130,7 @@ extension SubmitButtonManaged where Self: UIViewController {
         ]
     }
 
-
     public func didPressSubmitButtonWhileDisabled() {}
-
-
 
     public func updateSubmitButtonState() {
         DispatchQueue.main.async {
@@ -146,7 +141,6 @@ extension SubmitButtonManaged where Self: UIViewController {
     public func userCanSubmit() -> Bool {
         return true
     }
-
 }
 
 import DarkMagic

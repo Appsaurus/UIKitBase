@@ -53,6 +53,7 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
     open func responder() -> UIResponder? {
         return self as? UIResponder
     }
+
     open var hasValue: Bool {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return false

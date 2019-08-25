@@ -50,9 +50,6 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
 
     open override func didObserve(notification: Notification) {
         super.didObserve(notification: notification)
-        guard let authButtonStackView = authButtonStackView else {
-            return
-        }
         switch notification.name {
         case UIResponder.keyboardWillHideNotification:
             middleStackView.insertArrangedSubview(authButtonStackView, at: 0)
@@ -66,8 +63,6 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
         view.addSubview(layoutView)
 
         authButtonStackView.addArrangedSubviews(authButtons)
-
-        middleStackView.addArrangedSubviews(optionalMiddleViews.removeNils())
         let optionalViews: [UIView?] = [imageView, middleStackView, additionalActionsStackView]
         mainStackView.addArrangedSubviews(optionalViews.removeNils())
         layoutView.addSubview(mainStackView)
@@ -97,7 +92,7 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
         imageView.height.lessThanOrEqual(to: layoutView.width.times(0.5))
         imageView.width.equal(to: imageView.height)
 
-        [middleStackView, additionalActionsStackView].removeNils().width.equal(to: mainStackView.width)
+        [middleStackView, additionalActionsStackView].width.equal(to: mainStackView.width)
         mainStackView.pinToSuperview()
         view.addActiveConstraints([topKeyboardConstraint, bottomKeyboardConstraint])
     }
@@ -166,7 +161,7 @@ open class StackedAuthenticationViewController<ACM: BaseAuthControllerManager>: 
     // MARK: Convenience
 
     open var bottomStacks: [UIStackView] {
-        return [middleStackView, additionalActionsStackView].removeNils()
+        return [middleStackView, additionalActionsStackView]
     }
 
     let stackVisibilityAnimationDuration: Double = 0.3

@@ -85,7 +85,7 @@ open class CodeInputFormField<ContentView: CodeInputTextField>: FormTextField<Co
         textField.text = nil
     }
 
-    override func runValidationTests() -> [ValidationFailure] {
+    open override func runValidationTests() -> [ValidationFailure] {
         var failures = super.runValidationTests()
         if !inputFilled {
             failures.append(ValidationFailure(failureType: .customValidation, explanationMessage: "Code too short."))

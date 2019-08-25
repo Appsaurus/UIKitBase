@@ -131,7 +131,8 @@ public extension DiffableDatasource {
         apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
-    //MARK: Removing items
+    // MARK: Removing items
+
     func remove(_ items: ItemIdentifierType...,
                 animated: Bool = true,
                 completion: @escaping VoidClosure = {}) {
@@ -146,17 +147,17 @@ public extension DiffableDatasource {
         apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
-    //MARK: Inserting items
+    // MARK: Inserting items
 
     /// Inserts the given item identifiers before the specified item.
     ///
     /// - Parameters:
     ///   - identifiers: The item identifiers to be inserted.
     ///   - beforeIdentifier: An identifier of item.
-    public func insertItems(_ identifiers: [ItemIdentifierType],
-                            beforeItem beforeIdentifier: ItemIdentifierType,
-                            animated: Bool = true,
-                            completion: @escaping VoidClosure = {}) {
+    func insertItems(_ identifiers: [ItemIdentifierType],
+                     beforeItem beforeIdentifier: ItemIdentifierType,
+                     animated: Bool = true,
+                     completion: @escaping VoidClosure = {}) {
         let snapshot = self.snapshot()
         snapshot.insertItems(identifiers, beforeItem: beforeIdentifier)
         apply(snapshot, animatingDifferences: animated, completion: completion)
@@ -167,19 +168,19 @@ public extension DiffableDatasource {
     /// - Parameters:
     ///   - identifiers: The item identifiers to be inserted.
     ///   - afterIdentifier: An identifier of item.
-    public func insertItems(_ identifiers: [ItemIdentifierType],
-                            afterItem afterIdentifier: ItemIdentifierType,
-                            animated: Bool = true,
-                            completion: @escaping VoidClosure = {}) {
+    func insertItems(_ identifiers: [ItemIdentifierType],
+                     afterItem afterIdentifier: ItemIdentifierType,
+                     animated: Bool = true,
+                     completion: @escaping VoidClosure = {}) {
         let snapshot = self.snapshot()
         snapshot.insertItems(identifiers, afterItem: afterIdentifier)
         apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
-    public func insertItem(_ identifier: ItemIdentifierType,
-                           at indexPath: IndexPath,
-                           animated: Bool = true,
-                           completion: @escaping VoidClosure = {}) {
+    func insertItem(_ identifier: ItemIdentifierType,
+                    at indexPath: IndexPath,
+                    animated: Bool = true,
+                    completion: @escaping VoidClosure = {}) {
         let snapshot = self.snapshot()
         if snapshot.insert(identifier, at: indexPath) {
             apply(snapshot, animatingDifferences: animated, completion: completion)
@@ -255,13 +256,13 @@ public extension DiffableDataSourceSnapshot {
         return self
     }
 
-    //MARK: Snapshot Insert
+    // MARK: Snapshot Insert
 
     @discardableResult
     func insert(_ identifier: ItemIdentifierType,
                 at indexPath: IndexPath) -> Bool {
         guard let section = sectionIdentifiers[safe: indexPath.section] else { return false }
-        let sectionItems = self.itemIdentifiers(inSection: section)
+        let sectionItems = itemIdentifiers(inSection: section)
 
         if let currentItem = sectionItems[safe: indexPath.item] {
             insertItems([identifier], beforeItem: currentItem)
@@ -275,7 +276,6 @@ public extension DiffableDataSourceSnapshot {
 
         return false
     }
-
 
     @discardableResult
     func addDefaultSectionIfNeeded(section: SectionIdentifierType?) -> Self {

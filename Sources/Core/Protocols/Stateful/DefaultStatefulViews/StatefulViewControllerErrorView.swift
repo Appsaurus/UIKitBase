@@ -10,7 +10,6 @@ import Swiftest
 import UIKit
 
 open class StatefulViewControllerErrorView: StatefulViewControllerView {
-
     public func show(error: Error, retry: VoidClosure? = nil) {
         guard let retry = retry else {
             set(message: error.localizedDescription)

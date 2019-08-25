@@ -8,8 +8,8 @@
 import KeychainAccess
 import Layman
 import Swiftest
-import UIKitTheme
 import UIFontIcons
+import UIKitTheme
 
 open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
     // MARK: Initialization
@@ -61,8 +61,8 @@ open class IdentifierAndPasswordAuthView: BaseView, AuthView {
         if #available(iOS 11.0, *) {
             passwordField.textContentType = .password
         }
-        var rightButton  = UIButton(type: .custom)
-        rightButton.frame = CGRect(x:0, y:0, width:30, height:30)
+        var rightButton = UIButton(type: .custom)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         rightButton.setFontIconTitle(MaterialIcons.Visibility, forState: .normal)
         rightButton.setFontIconTitle(MaterialIcons.Visibility_Off, forState: .selected)
         rightButton.addAction {

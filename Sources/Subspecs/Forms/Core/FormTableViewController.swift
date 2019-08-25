@@ -7,8 +7,8 @@ import Layman
 ////
 ////
 import Swiftest
-import UIKitTheme
 import UIKitMixinable
+import UIKitTheme
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     open lazy var formToolbar: FormToolbar? = {
@@ -72,10 +72,11 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     }
 
     open func assignFirstResponderToNextInvalidField() {
-        if let field = form.fields.first(where: {$0.validationStatus != .valid && $0.responder() != nil})?.responder() {
+        if let field = form.fields.first(where: { $0.validationStatus != .valid && $0.responder() != nil })?.responder() {
             field.becomeFirstResponder()
         }
     }
+
     open func formIsValidating(_ form: Form) {
         updateSubmitButtonState()
     }
@@ -136,16 +137,16 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     open func submit(_ submission: Submission, _ resultClosure: @escaping (Result<Response, Error>) -> Void) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
+
     open func createSubmission() throws -> Submission {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return try createSubmission()
     }
 
-    open func submissionDidSucceed(with response: Response) {
+    open func submissionDidSucceed(with response: Response) {}
 
-    }
     open func submissionDidFail(with error: Error) {
-        self.showError(error: error)
+        showError(error: error)
     }
 }
 
@@ -154,12 +155,14 @@ extension FormTableViewController: UITableViewReferencing {
         return tableView
     }
 }
+
 open class FormTableViewController<Submission, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
     }
+
     open var tableView: UITableView = UITableView().then { tv in
         tv.backgroundColor = .clear
     }

@@ -12,14 +12,14 @@ import UIKitMixinable
 import UIKitTheme
 
 public protocol PhoneNumberFormDelegate: AnyObject {
-    func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) // For asyncronous processing or validation, optionally override
+    func processSelected(phoneNumber: PhoneNumber, resultClosure: @escaping ResultClosure<Any?>) // For asyncronous processing or validation, optionally override
     func phoneNumberFormViewController(didSelect phoneNumber: PhoneNumber)
     func phoneNumberFormViewControllerDidCancel()
 }
 
 public extension PhoneNumberFormDelegate {
-    func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) { // Make this effectively optional
-        success()
+    func processSelected(phoneNumber: PhoneNumber, resultClosure: @escaping ResultClosure<Any?>) { // Make this effectively optional
+        resultClosure(.success(nil))
     }
 }
 
@@ -44,7 +44,7 @@ public class PhoneNumberFormViewControllerStyle {
 }
 
 extension PhoneNumberFormViewController: BackButtonManaged {}
-open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewController where TextField: FormFieldViewProtocol {
+open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewController<PhoneNumber, Any?> where TextField: FormFieldViewProtocol {
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [BackButtonManagedMixin(self)]
     }
@@ -141,16 +141,17 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         return form
     }
 
-    open override func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
+    open override func submit(_ submission: PhoneNumber, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
         guard let delegate = delegate, let phoneNumber = phoneNumber else {
-            success()
+            resultClosure(.success(nil))
             return
         }
-        delegate.processSelected(phoneNumber: phoneNumber, success: success, failure: failure)
+
+        delegate.processSelected(phoneNumber: phoneNumber, resultClosure: resultClosure)
     }
 
-    open override func submissionDidSucceed() {
-        super.submissionDidSucceed()
+    open override func submissionDidSucceed(with response: Any?) {
+        super.submissionDidSucceed(with: response)
         guard let delegate = delegate, let phoneNumber = phoneNumber else {
             return
         }
