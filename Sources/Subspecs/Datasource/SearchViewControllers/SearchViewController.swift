@@ -28,7 +28,7 @@ open class SearchBarContainerView: BaseView {
     open override func createSubviews() {
         super.createSubviews()
         addSubview(horizontalStackView)
-        var stackedViews = [contentView] + rightStackedViews
+        let stackedViews = [contentView] + rightStackedViews
         horizontalStackView.addArrangedSubviews(stackedViews)
     }
 
@@ -166,8 +166,6 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
             let searchBarContainer = SearchBarContainerView(contentView: searchBar, contentInsets: layoutConfig.searchBarInsets)
             searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
             navigationItem.titleView = searchBarContainer
-
-        default: break
         }
     }
 
@@ -233,8 +231,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         swap(out: resultsViewController,
              with: preSearchViewController,
              into: containerView,
-             completion: { [weak self] in
-                 guard let self = self else { return }
+             completion: {
                  guard let statefulVC = resultsViewController as? StatefulViewController else { return }
                  statefulVC.transition(to: statefulVC.currentState)
         })
@@ -327,7 +324,7 @@ private extension UISearchBar {
     }
 
     var hasSearchQuery: Bool {
-        guard let searchQuery = searchQuery else { return false }
+        guard let _ = searchQuery else { return false }
         return true
     }
 }

@@ -163,23 +163,23 @@ open class AuthenticationViewController<ACM: BaseAuthControllerManager>: BaseVie
 
     // MARK: AuthControllerManagerDelegate
 
-    open func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>) where V: UIView, V: AuthView {}
+    open func didBeginSessionRestore<R, V>(for authController: AuthController<R, V>) where V: AuthView {}
 
     open func noExistingAuthenticationSessionFound() {}
 
-    open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V: UIView, V: AuthView {}
+    open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V: AuthView {}
 
-    open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V: UIView, V: AuthView {}
+    open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V: AuthView {}
 
-    open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V: UIView, V: AuthView {}
+    open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V: AuthView {}
 
-    open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {
+    open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V: AuthView {
         showAuthViews()
     }
 
-    open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V: UIView, V: AuthView {}
+    open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V: AuthView {}
 
-    open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {}
+    open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V: AuthView {}
 
     // MARK: Presenting/Dismissing initial ViewControllers
 

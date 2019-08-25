@@ -288,7 +288,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
 
         if validationFrequency == .onValueChanged {
-            runValidationTests()
+            validate(displayErrors: validationErrorDisplayFrequency == .onValueChanged)
         }
     }
 

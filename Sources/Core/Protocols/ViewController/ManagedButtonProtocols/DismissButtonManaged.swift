@@ -38,7 +38,7 @@ public protocol NavigationBarButtonManaged {
     func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration)
 }
 
-public extension NavigationBarButtonManaged where Self: UIViewController & NavigationBarStyleable {
+public extension NavigationBarButtonManaged where Self: UIViewController {
     func setupNavigationBar(button: BaseUIButton, configuration: NavigationBarButtonConfiguration) {
         let position = configuration.position
         switch position {

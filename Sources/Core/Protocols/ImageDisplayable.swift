@@ -41,13 +41,14 @@ extension Nuke_ImageDisplaying where Self: UIView {
     }
 
     @discardableResult
-    public func loadImage<P: ImageProcessing>(with url: URL,
-                                              options: ImageLoadingOptions = .shared,
-                                              progress: ImageTask.ProgressHandler? = nil,
-                                              processing: P,
-                                              completion: ImageTask.Completion? = nil) -> ImageTask? {
-        let request = ImageRequest(url: url, processor: processing)
-        return Nuke.loadImage(with: request, options: options, into: self, progress: progress, completion: completion)
+    public func loadImage(with url: URL,
+                          requestOptions: ImageRequestOptions? = nil,
+                          loadingOptions: ImageLoadingOptions = .shared,
+                          progress: ImageTask.ProgressHandler? = nil,
+                          processors: [ImageProcessing],
+                          completion: ImageTask.Completion? = nil) -> ImageTask? {
+        let request = ImageRequest(url: url, processors: processors, options: requestOptions ?? .init())
+        return Nuke.loadImage(with: request, options: loadingOptions, into: self, progress: progress, completion: completion)
     }
 
     public func resetImage() {

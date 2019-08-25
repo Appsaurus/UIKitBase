@@ -29,31 +29,31 @@ open class BaseAuthControllerManager: AuthControllerDelegate {
 
     // MARK: AuthController specific
 
-    open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {
+    open func noExistingAuthenticationSessionFound<R, V>(for controller: AuthController<R, V>) where V: AuthView {
         delegate?.noExistingAuthenticationSessionFound(for: controller)
     }
 
-    open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V: UIView, V: AuthView {
+    open func authenticationDidBegin<R, V>(controller: AuthController<R, V>) where V: AuthView {
         delegate?.authenticationDidBegin(controller: controller)
         authenticationDidBegin()
     }
 
-    open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V: UIView, V: AuthView {
+    open func authenticationDidFail<R, V>(controller: AuthController<R, V>, error: Error) where V: AuthView {
         delegate?.authenticationDidFail(controller: controller, error: error)
         authenticationDidFail(error: error)
     }
 
-    open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V: UIView, V: AuthView {
+    open func authenticationDidSucceed<R, V>(controller: AuthController<R, V>, successResponse: Any) where V: AuthView {
         delegate?.authenticationDidSucceed(controller: controller, successResponse: successResponse)
         authenticationDidSucceed(successResponse: successResponse)
     }
 
-    open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V: UIView, V: AuthView {
+    open func logoutDidFail<R, V>(for controller: AuthController<R, V>, with error: Error?) where V: AuthView {
         delegate?.logoutDidFail(for: controller, with: error)
         logoutDidFail(error: error)
     }
 
-    open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V: UIView, V: AuthView {
+    open func logoutDidSucceed<R, V>(for controller: AuthController<R, V>) where V: AuthView {
         delegate?.logoutDidSucceed(for: controller)
         logoutDidSucceed()
     }
@@ -111,7 +111,7 @@ public extension Keychain {
         }
         set {
             let jsonEncoder = JSONEncoder()
-            guard let data = try? newValue else {
+            guard let data = newValue else {
                 try? remove(key.rawValue)
                 return
             }

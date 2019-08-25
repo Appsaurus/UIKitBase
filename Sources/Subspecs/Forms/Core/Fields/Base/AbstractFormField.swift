@@ -51,7 +51,7 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
     open var requiresNetworkValidation: Bool = false
     open weak var validationDelegate: FieldValidationDelegate?
     open func responder() -> UIResponder? {
-        return self as? UIResponder
+        return self
     }
 
     open var hasValue: Bool {

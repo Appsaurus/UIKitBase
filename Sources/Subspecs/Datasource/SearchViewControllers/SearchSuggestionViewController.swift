@@ -378,7 +378,7 @@ private extension UISearchBar {
     }
 
     var hasSearchQuery: Bool {
-        guard let searchQuery = searchQuery else { return false }
+        guard let _ = searchQuery else { return false }
         return true
     }
 }

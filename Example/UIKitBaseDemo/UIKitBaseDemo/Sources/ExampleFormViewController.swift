@@ -13,7 +13,7 @@ import SwiftDate
 import Layman
 
 
-open class ExampleFormViewController: FormTableViewController{
+open class ExampleFormViewController: FormTableViewController<Any?, Any?>{
     let firstNameField = NameTextField(fieldName: "First")
     let lastNameField = NameTextField(fieldName: "Last")
 //    let locationField = FormLocationField<MaterialTextField>(fieldName: "Location")
@@ -68,11 +68,13 @@ open class ExampleFormViewController: FormTableViewController{
 		legalDisclosure.frame = CGRect(x: 0.0, y: 0, width: tableView.frame.size.width, height: 75.0)
 		tableView.tableFooterView = legalDisclosure
 	}
-    open override func submit(success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
-        MockableNetwork.makeFakeNetworkCall(delay: 1,
-                                        chanceOfSuccess: 75,
-                                        success: success,
-                                        failure: {failure(BasicError.unknown)})
+
+    open override func submit(_ submission: Any?, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
+        resultClosure(.success(nil))
+//        MockableNetwork.makeFakeNetworkCall(delay: 1,
+//                                        chanceOfSuccess: 75,
+//                                        success: success,
+//                                        failure: {failure(BasicError.unknown)})
     }
 }
 

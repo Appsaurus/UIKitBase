@@ -222,7 +222,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
                 do {
                     guard let self = self else { return }
                     let location = try result.get()
-                    debugLog("Found location \(location.coordinates)")
+                    debugLog("Found location \(String(describing: location.coordinates))")
 
                     self.reversGeocodeAndDropPin(at: location.coordinates!)
                 } catch {
