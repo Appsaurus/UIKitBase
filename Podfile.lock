@@ -15,13 +15,13 @@ PODS:
     - DifferenceKit/Core
   - DynamicColor (4.1.0)
   - KeychainAccess (3.2.0)
-  - Layman (0.1.21):
-    - Layman/Core (= 0.1.21)
-    - Layman/Operators (= 0.1.21)
-    - Layman/Shorthand (= 0.1.21)
-  - Layman/Core (0.1.21)
-  - Layman/Operators (0.1.21)
-  - Layman/Shorthand (0.1.21)
+  - Layman (0.1.23):
+    - Layman/Core (= 0.1.23)
+    - Layman/Operators (= 0.1.23)
+    - Layman/Shorthand (= 0.1.23)
+  - Layman/Core (0.1.23)
+  - Layman/Operators (0.1.23)
+  - Layman/Shorthand (0.1.23)
   - Nuke (8.1)
   - Permission/Core (2.2.0)
   - Permission/Location (2.2.0):
@@ -131,7 +131,7 @@ CHECKOUT OPTIONS:
     :commit: b6e5a19acc048e21d9caa18a95915137f99beb74
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 52d57fde3d5c2f5589c1f38a1b502eb7c4c7ed07
+    :commit: d6b3e1079362f97cec7e5985f8d879a675070c92
     :git: https://github.com/Appsaurus/Layman
   Permission:
     :commit: 651883c3bf54fb09034ded7f9021e94201f6b824
@@ -167,7 +167,7 @@ SPEC CHECKSUMS:
   DifferenceKit: 5018791b6c1fc839921a3c171a0a539ace6ea60c
   DynamicColor: e72fcf4174518c514e862bb4bdea794c1865b412
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
-  Layman: 5e9fee936508321df0e604b9de06ae584c00b3d0
+  Layman: 66ea839f151019104d459c3bed1e70dc17b4dffa
   Nuke: bdf9670042513ede94ea9bd97e902936e055ff64
   Permission: f6452f9050020b58abe246b94100e6c0ff6af97c
   PhoneNumberKit: 86019c972ef6904bcad11b46a6b8a91184d51117
