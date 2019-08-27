@@ -38,10 +38,6 @@ extension SubmissionManaged where Self: UIViewController {
         }
     }
 
-    public func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-    }
-
     public func submissionDidEnd(with result: Result<Response, Error>) {
         submissionDidEnd()
         switch result {

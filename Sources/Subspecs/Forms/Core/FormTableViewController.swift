@@ -59,11 +59,15 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
         if autoPrefillsForm {
             prefillForm()
         }
+    }
+
+
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if autoAssignFirstResponder {
             assignFirstResponderToNextInvalidField()
         }
     }
-
     open override func createSubviews() {
         super.createSubviews()
         setupSubmitButton(configuration: ManagedButtonConfiguration(position: submitButtonPosition))
