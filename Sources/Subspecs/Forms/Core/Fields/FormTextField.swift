@@ -96,7 +96,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public var confirmationField: FormTextFieldProtocol? {
         didSet {
-            confirmsField?.confirmsField = self
+            confirmationField?.confirmsField = self
         }
     }
 
@@ -300,15 +300,15 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 
-        confirmsField?.validate(displayErrors: displayErrorOnNextValidation)
-
-        if let confirmationField = confirmationField {
-            let confirmationText = confirmationField.textField.text
-            if confirmationText != textField.text {
+        if let confirmationField = confirmationField,
+            confirmationField.textField.text?.isEmpty == false{
+            confirmationField.validate(displayErrors: displayErrorOnNextValidation)
+        }
+        else if let confirmsField = confirmsField,
+                confirmsField.textField.text != textField.text {
                 let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
-                let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field and \(confirmationField.fieldName) field must match."
+                let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field and \(confirmsField.fieldName) field must match."
                 failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
-            }
         }
 
         let lengthValidity = textLengthValidity()

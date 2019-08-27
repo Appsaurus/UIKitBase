@@ -13,6 +13,7 @@ import Swiftest
 public protocol SubmissionManaged: SubmitButtonManaged {
     associatedtype Submission
     associatedtype Response
+    var onCompletion: ResultClosure<Response>? { get set }
     func createSubmission() throws -> Submission
     func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>)
     func submissionDidBegin()
@@ -49,6 +50,7 @@ extension SubmissionManaged where Self: UIViewController {
         case let .failure(error):
             submissionDidFail(with: error)
         }
+        onCompletion?(result)
     }
 
     public func submissionDidBegin() {

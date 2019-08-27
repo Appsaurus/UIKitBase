@@ -11,12 +11,15 @@ import UIKitMixinable
 import UIKitTheme
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
+    public var onCompletion: ResultClosure<Response>?
+
     open lazy var formToolbar: FormToolbar? = {
         self.createFormToolbar()
     }()
 
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
     open var autoSubmitsValidForm: Bool = false
+    open var autoPrefillsForm: Bool = true
     open var autoAssignFirstResponder: Bool = false
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
@@ -36,11 +39,26 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
         }
     }
 
+    open func prefillForm(){
+
+    }
+
+    public init(onCompletion: ResultClosure<Response>? = nil) {
+        self.onCompletion = onCompletion
+        super.init(callDidInit: true)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     open override func viewDidLoad() {
         super.viewDidLoad()
         form.formDelegate = self
         form.validate(displayErrors: false)
         updateSubmitButtonState()
+        if autoPrefillsForm {
+            prefillForm()
+        }
         if autoAssignFirstResponder {
             assignFirstResponderToNextInvalidField()
         }

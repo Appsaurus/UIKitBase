@@ -24,8 +24,6 @@ public protocol Authenticator: class {
     associatedtype Result
     var delegate: AuthControllerDelegate? { get set }
     func hasAuthenticated() -> Bool
-    func authenticate(onCompletion: @escaping ResultClosure<Result>)
-
 }
 
 public extension Authenticator {
@@ -33,6 +31,16 @@ public extension Authenticator {
         delegate?.authenticationDidBegin(authenticator: self)
     }
 
+    func hasAuthenticated() -> Bool {
+        return false
+    }
+}
+
+public protocol OAuthAuthenticator: Authenticator {
+    func authenticate(onCompletion: @escaping ResultClosure<Result>)
+}
+
+public extension OAuthAuthenticator {
     func _authenticate() {
         authenticationWillBegin()
         authenticate(onCompletion: { [weak self] result in
@@ -40,59 +48,54 @@ public extension Authenticator {
             self.delegate?.authenticationDidComplete(authenticator: self, with: result)
         })
     }
-
-    func hasAuthenticated() -> Bool {
-        return false
-    }
 }
 
 public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
 
 
-open class AuthController<R: Codable>: NSObject, Authenticator {
-
-
-    public typealias AuthResult = R
-
-    open weak var delegate: AuthControllerDelegate?
-    open var onCompletionHandler: ResultClosure<R>
-//    open lazy var authView: V = { self.createDefaultAuthView() }()
-
-
-    open func onCompletion(_ closure: @escaping ResultClosure<R>) -> Self {
-        onCompletionHandler = closure
-        return self
-    }
-    open func hasAuthenticated() -> Bool {
-        return false
-    }
-
-    // MARK: Initialization
-
-    required public init(delegate: AuthControllerDelegate, onCompletionHandler: @escaping ResultClosure<R>) {
-        self.delegate = delegate
-        self.onCompletionHandler = onCompletionHandler
-        super.init()
-        didInit()
-    }
-
-    open func didInit() {}
-
-    open func authenticationWillBegin() {
-        delegate?.authenticationDidBegin(authenticator: self)
-    }
-
-    public func _authenticate() {
-        authenticationWillBegin()
-        authenticate(onCompletion: { [weak self] result in
-            guard let self = self else { return }
-            self.delegate?.authenticationDidComplete(authenticator: self, with: result)
-        })
-    }
-    
-    open func authenticate(onCompletion: @escaping ResultClosure<R>) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-    }
-
-
-}
+//open class AuthController<R: Codable>: NSObject, Authenticator {
+//
+//    public typealias AuthResult = R
+//
+//    open weak var delegate: AuthControllerDelegate?
+//    open var onCompletionHandler: ResultClosure<R>
+////    open lazy var authView: V = { self.createDefaultAuthView() }()
+//
+//
+//    open func onCompletion(_ closure: @escaping ResultClosure<R>) -> Self {
+//        onCompletionHandler = closure
+//        return self
+//    }
+//    open func hasAuthenticated() -> Bool {
+//        return false
+//    }
+//
+//    // MARK: Initialization
+//
+//    required public init(delegate: AuthControllerDelegate, onCompletionHandler: @escaping ResultClosure<R>) {
+//        self.delegate = delegate
+//        self.onCompletionHandler = onCompletionHandler
+//        super.init()
+//        didInit()
+//    }
+//
+//    open func didInit() {}
+//
+//    open func authenticationWillBegin() {
+//        delegate?.authenticationDidBegin(authenticator: self)
+//    }
+//
+//    public func _authenticate() {
+//        authenticationWillBegin()
+//        authenticate(onCompletion: { [weak self] result in
+//            guard let self = self else { return }
+//            self.delegate?.authenticationDidComplete(authenticator: self, with: result)
+//        })
+//    }
+//    
+//    open func authenticate(onCompletion: @escaping ResultClosure<R>) {
+//        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+//    }
+//
+//
+//}
