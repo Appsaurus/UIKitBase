@@ -18,13 +18,18 @@ public class NavigationBarButtonConfiguration: NSObject {
     public var position: NavigationBarButtonPosition
     public var size: CGSize?
     public var activityIndicatorStyle: UIActivityIndicatorView.Style
-
+    public var buttonTitle: String
+    public var buttonAttributedTitle: NSAttributedString?
     public init(position: NavigationBarButtonPosition = .trailing,
                 size: CGSize? = nil,
-                activityIndicatorStyle: UIActivityIndicatorView.Style = .white) {
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .white,
+                buttonTitle: String = "Done",
+                buttonAttributedTitle: NSAttributedString? = nil) {
         self.position = position
         self.size = size
         self.activityIndicatorStyle = activityIndicatorStyle
+        self.buttonTitle = buttonTitle
+        self.buttonAttributedTitle = buttonAttributedTitle
     }
 }
 
@@ -44,10 +49,13 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
         switch position {
         case .leading, .trailing:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
-
-            button.setTitle("Done", for: .normal)
+            button.setTitle(configuration.buttonTitle, for: .normal)
             if let style = navigationBarStyle?.titleTextStyle ?? self.navigationController?.navigationBarStyle?.titleTextStyle {
                 button.apply(textStyle: style)
+            }
+
+            if let attributedTitle = configuration.buttonAttributedTitle {
+                button.setAttributedTitle(attributedTitle, for: .normal)
             }
             if position == .trailing {
 //                button.titleLabel.textAlignment = .right

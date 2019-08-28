@@ -84,9 +84,9 @@ open class LegalDisclosureView: BaseView {
         super.initProperties()
         let customType = ActiveType.custom(pattern: viewModel.regularExpressionPattern)
         label.enabledTypes = [customType]
-        label.apply(textStyle: .regular(color: .textMedium, size: .button))
-        label.customColor[customType] = .deselected
-        label.customSelectedColor[customType] = .primary
+        label.apply(textStyle: .regular(color: .deselected, size: .button))
+        label.customColor[customType] = .primary
+        label.customSelectedColor[customType] = .selected
 
         label.handleCustomTap(for: customType) { [weak self] element in
             guard let self = self else { return }

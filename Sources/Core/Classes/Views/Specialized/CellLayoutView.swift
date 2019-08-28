@@ -32,7 +32,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
         .on(.horizontal)
         .distribute(.fill)
         .align(.center)
-        .spacing(4)
+        .spacing(6)
 
     open lazy var config: CellLayoutViewConfiguration = CellLayoutViewConfiguration()
 

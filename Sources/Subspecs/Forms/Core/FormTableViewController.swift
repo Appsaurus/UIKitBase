@@ -10,7 +10,8 @@ import Swiftest
 import UIKitMixinable
 import UIKitTheme
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
-open class BaseFormViewController<Submission, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
+open class BaseFormViewController<Submission: Equatable, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
+
     public var onCompletion: ResultClosure<Response>?
 
     open lazy var formToolbar: FormToolbar? = {
@@ -18,9 +19,13 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     }()
 
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
-    open var autoSubmitsValidForm: Bool = false
-    open var autoPrefillsForm: Bool = true
-    open var autoAssignFirstResponder: Bool = false
+    open var autoSubmitsValidForm = false
+    open var autoPrefillsForm = true
+    open var autoAssignFirstResponder = false
+    open var showsValidationErrorsOnDisbledSubmit = true
+    open var cachedSubmissionState: Submission?
+
+
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
     open override func style() {
@@ -43,6 +48,10 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
 
     }
 
+    public func cacheSubmission() {
+        self.cachedSubmissionState = try? createSubmission()
+    }
+
     public init(onCompletion: ResultClosure<Response>? = nil) {
         self.onCompletion = onCompletion
         super.init(callDidInit: true)
@@ -54,11 +63,14 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     open override func viewDidLoad() {
         super.viewDidLoad()
         form.formDelegate = self
-        form.validate(displayErrors: false)
-        updateSubmitButtonState()
         if autoPrefillsForm {
             prefillForm()
         }
+        if noEditsBehavior != nil {
+            cacheSubmission()
+        }
+        form.validate(displayErrors: false)
+        updateSubmitButtonState()
     }
 
 
@@ -133,7 +145,11 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
 
     // MARK: SubmitButtonManaged
 
-    open func didPressSubmitButtonWhileDisabled() {}
+    open func didPressSubmitButtonWhileDisabled() {
+        if showsValidationErrorsOnDisbledSubmit {
+            displayFormErrors()
+        }
+    }
 
     open func updateSubmitButtonState() {
         switch form.status {
@@ -145,15 +161,20 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     }
 
     open func userCanSubmit() -> Bool {
-        return form.status == .valid
+        let formIsValid = form.status == .valid
+        guard noEditsBehavior == .disableSubmit else {
+            return formIsValid
+        }
+        return submissionHasBeenEdited() && formIsValid
     }
 
-    @objc open func displayFormErrors(_ sender: UIBarButtonItem) {
-        _ = [String]()
+    open func displayFormErrors(withAlert: Bool = true) {
         for field in form.fields {
             field.validate(displayErrors: true)
         }
-        form.presentFormErrorsAlertView(self)
+        if withAlert {
+            form.presentFormErrorsAlertView(self)
+        }
     }
 
     open func submit(_ submission: Submission, _ resultClosure: @escaping (Result<Response, Error>) -> Void) {
@@ -168,9 +189,25 @@ open class BaseFormViewController<Submission, Response>: BaseContainerViewContro
     open func submissionDidSucceed(with response: Response) {}
 
     open func submissionDidFail(with error: Error) {
-        showError(error: error)
+        switch error {
+        case SubmissionError.submittedNoEdits:
+            //No need to report back to user, just dismiss
+            break
+        default:
+            showError(error: error)
+        }
+    }
+
+    open func submissionHasBeenEdited() -> Bool {
+        guard let cachedSubmissionState = cachedSubmissionState,
+            let submission = try? createSubmission() else {
+                return true
+        }
+        return cachedSubmissionState != submission
     }
 }
+
+
 
 extension FormTableViewController: UITableViewReferencing {
     public var managedTableView: UITableView {
@@ -178,7 +215,7 @@ extension FormTableViewController: UITableViewReferencing {
     }
 }
 
-open class FormTableViewController<Submission, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
+open class FormTableViewController<Submission: Equatable, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
 
     open override func createMixins() -> [LifeCycle] {
@@ -215,6 +252,7 @@ open class FormTableViewController<Submission, Response>: BaseFormViewController
     open override func initProperties() {
         super.initProperties()
         containedView = tableView
+        tableView.separatorStyle = .none
     }
 
     open override func setupDelegates() {

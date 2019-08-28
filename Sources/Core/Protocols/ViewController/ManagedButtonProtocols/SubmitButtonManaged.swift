@@ -10,24 +10,39 @@ import Foundation
 import Layman
 import Swiftest
 
+public enum UneditedSubmissionBehavior {
+    case disableSubmit
+    case skipSubmit
+}
 public protocol SubmissionManaged: SubmitButtonManaged {
     associatedtype Submission
     associatedtype Response
     var onCompletion: ResultClosure<Response>? { get set }
+    var noEditsBehavior: UneditedSubmissionBehavior? { get set }
+    var autoSubmitsValidForm: Bool { get set }
     func createSubmission() throws -> Submission
     func submit(_ submission: Submission, _ resultClosure: @escaping ResultClosure<Response>)
     func submissionDidBegin()
     func submissionDidEnd(with result: Result<Response, Error>)
     func submissionDidSucceed(with response: Response)
     func submissionDidFail(with error: Error)
+    func autoSubmitIfAllowed()
+    func submissionHasBeenEdited() -> Bool
 }
 
 public enum SubmissionError: Error {
     case unableToCreateSubmissionError
+    case userCancelled
+    case submittedNoEdits
 }
 
 extension SubmissionManaged where Self: UIViewController {
     public func performSubmission() {
+        let isNoEditSubmission = noEditsBehavior == .skipSubmit && !submissionHasBeenEdited()
+        if isNoEditSubmission {
+            submissionDidEnd(with: .failure(SubmissionError.submittedNoEdits))
+            return
+        }
         do {
             submissionDidBegin()
             submit(try createSubmission()) { [weak self] result in
@@ -62,19 +77,42 @@ extension SubmissionManaged where Self: UIViewController {
 
     public func submissionDidSucceed(with response: Response) {}
     public func submissionDidFail(with error: Error) {
-        showError(error: error)
+        switch error {
+            case SubmissionError.submittedNoEdits:
+            popOrDismiss()
+            //No need to report back to user
+            break
+        default:
+            showError(error: error)
+        }
+    }
+
+
+    public func autoSubmitIfAllowed() {
+        if autoSubmitsValidForm {
+            performSubmission()
+        }
+    }
+
+    public func userCanSubmit() -> Bool {
+        guard noEditsBehavior == .disableSubmit else {
+            return true
+        }
+        return submissionHasBeenEdited()
+    }
+
+    public func submissionHasBeenEdited() -> Bool {
+        return true
     }
 }
 
 public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     var submitButton: BaseButton { get set }
-    var autoSubmitsValidForm: Bool { get set }
     func didPressSubmitButton()
     func didPressSubmitButtonWhileDisabled()
     func updateSubmitButtonState()
     func userCanSubmit() -> Bool
     func performSubmission()
-    func autoSubmitIfAllowed()
 }
 
 extension SubmitButtonManaged where Self: UIViewController {
@@ -86,11 +124,7 @@ extension SubmitButtonManaged where Self: UIViewController {
         performSubmission()
     }
 
-    public func autoSubmitIfAllowed() {
-        if autoSubmitsValidForm {
-            performSubmission()
-        }
-    }
+    public func didPressSubmitButtonWhileDisabled() {}
 
     @discardableResult
     public func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
@@ -128,8 +162,6 @@ extension SubmitButtonManaged where Self: UIViewController {
         ]
     }
 
-    public func didPressSubmitButtonWhileDisabled() {}
-
     public func updateSubmitButtonState() {
         DispatchQueue.main.async {
             self.submitButton.state = self.userCanSubmit() ? .normal : .disabled
@@ -144,6 +176,7 @@ extension SubmitButtonManaged where Self: UIViewController {
 import DarkMagic
 
 private extension AssociatedObjectKeys {
+    static let noEditsBehavior = AssociatedObjectKey<UneditedSubmissionBehavior>("noEditsBehavior")
     static let submitButton = AssociatedObjectKey<BaseButton>("submitButton")
     static let autoSubmitsValidForm = AssociatedObjectKey<Bool>("autoSubmitsValidForm")
 }
@@ -157,13 +190,24 @@ public extension SubmitButtonManaged where Self: NSObject {
             self[.submitButton] = newValue
         }
     }
+}
 
+public extension SubmissionManaged where Self: NSObject {
     var autoSubmitsValidForm: Bool {
         get {
             return self[.autoSubmitsValidForm, false]
         }
         set {
             self[.autoSubmitsValidForm] = newValue
+        }
+    }
+
+    var noEditsBehavior: UneditedSubmissionBehavior?{
+        get {
+            return self[.noEditsBehavior]
+        }
+        set {
+            self[.noEditsBehavior] = newValue
         }
     }
 }

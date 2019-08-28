@@ -23,7 +23,7 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
         guard usesSectionsAsHeaderTitles,
             numberOfItems(inSection: section) > 0 else { return nil }
 
-        return "  \(snapshot().sectionIdentifiers[section])"
+        return snapshot().sectionIdentifiers[section]
     }
 }
 
