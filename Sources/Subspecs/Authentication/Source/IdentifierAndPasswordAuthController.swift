@@ -5,13 +5,13 @@
 ////  Created by Brian Strobach on 4/10/18.
 ////
 //
-//import KeychainAccess
-//import Layman
-//import Swiftest
-//import UIFontIcons
-//import UIKitTheme
+// import KeychainAccess
+// import Layman
+// import Swiftest
+// import UIFontIcons
+// import UIKitTheme
 //
-//open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
+// open class IdentifierAndPasswordAuthController<R: Codable, V>: AuthController<R, IdentifierAndPasswordAuthView> {
 //    // MARK: Initialization
 //
 //    open override func didInit() {
@@ -42,9 +42,9 @@
 //            self.fail(error: error)
 //        })
 //    }
-//}
+// }
 //
-//open class IdentifierAndPasswordAuthView: BaseView, AuthView {
+// open class IdentifierAndPasswordAuthView: BaseView, AuthView {
 //    open var userIdentifierTextField: UITextField = {
 //        let identifierField: UITextField = IdentifierAndPasswordAuthView.createTextField("Email or phone number")
 //        identifierField.autocorrectionType = .no
@@ -138,4 +138,4 @@
 //    open func authenticationDidSucceed() {}
 //
 //    open func authenticationDidFail(_ error: Error) {}
-//}
+// }

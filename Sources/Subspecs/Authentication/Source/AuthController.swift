@@ -20,7 +20,7 @@ public protocol AuthControllerDelegate: AnyObject {
     func logoutDidComplete<A: Authenticator>(authenticator: A, with result: Result<Any?, Error>)
 }
 
-public protocol Authenticator: class {
+public protocol Authenticator: AnyObject {
     associatedtype Result
     var delegate: AuthControllerDelegate? { get set }
     func hasAuthenticated() -> Bool
@@ -52,8 +52,7 @@ public extension OAuthAuthenticator {
 
 public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
 
-
-//open class AuthController<R: Codable>: NSObject, Authenticator {
+// open class AuthController<R: Codable>: NSObject, Authenticator {
 //
 //    public typealias AuthResult = R
 //
@@ -92,10 +91,10 @@ public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
 //            self.delegate?.authenticationDidComplete(authenticator: self, with: result)
 //        })
 //    }
-//    
+//
 //    open func authenticate(onCompletion: @escaping ResultClosure<R>) {
 //        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
 //    }
 //
 //
-//}
+// }

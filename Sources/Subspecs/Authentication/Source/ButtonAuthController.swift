@@ -10,7 +10,7 @@ import UIKitExtensions
 
 public typealias AuthButton = BaseButton & AuthView
 
-//open class ButtonAuthController<R: Codable, V: AuthButton>: AuthController<R> {
+// open class ButtonAuthController<R: Codable, V: AuthButton>: AuthController<R> {
 //
 //    public required init(button: V,
 //                         delegate: AuthControllerDelegate,
@@ -27,4 +27,4 @@ public typealias AuthButton = BaseButton & AuthView
 //    open func setupAuthAction(for button: BaseButton) {
 //        button.onTap = _authenticate
 //    }
-//}
+// }

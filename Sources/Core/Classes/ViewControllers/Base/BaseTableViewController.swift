@@ -9,12 +9,11 @@ import Swiftest
 import UIKit
 import UIKitMixinable
 
-public protocol BaseTableViewControllerProtocol: BaseViewControllerProtocol
-    & ViewRecycler {}
+public protocol BaseTableViewControllerProtocol: BaseViewControllerProtocol {}
 
 extension BaseTableViewControllerProtocol where Self: UITableViewController {
     public var baseTableViewControllerProtocolMixins: [LifeCycle] {
-        return baseViewControllerProtocolMixins + [ViewRecyclerMixin(self)]
+        return baseViewControllerProtocolMixins
     }
 }
 

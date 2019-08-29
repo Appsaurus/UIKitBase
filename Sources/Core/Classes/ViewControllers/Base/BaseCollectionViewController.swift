@@ -8,12 +8,11 @@
 
 import UIKitMixinable
 
-public protocol BaseCollectionViewControllerProtocol: BaseViewControllerProtocol
-    & ViewRecycler {}
+public protocol BaseCollectionViewControllerProtocol: BaseViewControllerProtocol {}
 
 extension BaseCollectionViewControllerProtocol where Self: UICollectionViewController {
     public var baseCollectionViewControllerProtocolMixins: [LifeCycle] {
-        return baseViewControllerProtocolMixins + [ViewRecyclerMixin(self)]
+        return baseViewControllerProtocolMixins
     }
 }
 

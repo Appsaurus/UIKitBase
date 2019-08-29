@@ -7,11 +7,7 @@
 import Foundation
 import UIKitMixinable
 
-open class BaseContainedTableViewController: BaseContainerViewController, ViewRecycler, UITableViewControllerProtocol {
-    open override func createMixins() -> [LifeCycle] {
-        return super.createMixins() + [ViewRecyclerMixin(self)]
-    }
-
+open class BaseContainedTableViewController: BaseContainerViewController, UITableViewControllerProtocol {
     open lazy var tableViewStyle: UITableView.Style = .grouped
     open lazy var tableView: UITableView = UITableView(frame: .zero, style: self.tableViewStyle).then { tv in
         tv.backgroundColor = .clear

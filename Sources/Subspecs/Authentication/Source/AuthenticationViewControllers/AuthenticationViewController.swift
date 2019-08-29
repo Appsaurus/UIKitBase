@@ -56,8 +56,6 @@ open class AuthenticationViewControllerConfiguration {
 }
 
 open class AuthenticationViewController: BaseViewController, AuthControllerDelegate {
-
-    
     open lazy var config: AuthenticationViewControllerConfiguration = AuthenticationViewControllerConfiguration()
 
     deinit {}
@@ -76,7 +74,6 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
         }
     }
 
-
     // MARK: ViewController lifecycle
 
     open func setupAuthControllers() {}
@@ -89,13 +86,13 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     // MARK: Abstract methods
 
     open func logout() {
-        self.logout(onCompletion: logoutDidComplete)
+        logout(onCompletion: logoutDidComplete)
     }
 
     open func logout(onCompletion: @escaping ResultClosure<Any?>) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
-    
+
     open func beginSignup(success: @escaping (Any) -> Void, failure: @escaping ErrorClosure) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
@@ -115,28 +112,22 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     // MARK: AuthControllerDelegate
 
-    open func authenticationDidBegin<A: Authenticator>(authenticator: A){
+    open func authenticationDidBegin<A: Authenticator>(authenticator: A) {}
 
-
-    }
-    open func authenticationDidComplete<A: Authenticator>(authenticator: A, with result: Result<A.Result, Error>){
+    open func authenticationDidComplete<A: Authenticator>(authenticator: A, with result: Result<A.Result, Error>) {
         switch result {
-        case .success(let value):
+        case let .success(value):
             authenticationDidSucceed(successResponse: value)
-        case .failure(let error):
+        case let .failure(error):
             authenticationDidFail(error: error)
         }
     }
 
-
-    open func logoutDidComplete<A: Authenticator>(authenticator: A, with result: Result<Any?, Error>){
+    open func logoutDidComplete<A: Authenticator>(authenticator: A, with result: Result<Any?, Error>) {
         logoutDidComplete(with: result)
     }
 
-    open func didBeginSessionRestore<A: Authenticator>(for authenticator: A) {
-        
-    }
-
+    open func didBeginSessionRestore<A: Authenticator>(for authenticator: A) {}
 
     open func logoutDidComplete(with result: Result<Any?, Error>) {
         onAnyLogoutAttempt()
@@ -216,7 +207,6 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
             authenticator.delegate = self
         }
     }
-
 
     // Stateful convenience
     public func transition(to state: AuthenticationState, animated: Bool = true, completion: (() -> Void)? = nil) {

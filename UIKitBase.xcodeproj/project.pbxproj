@@ -145,10 +145,6 @@
 		E41D70FB224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
 		E41D70FC224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
 		E41D70FD224D5F5B00CA05C4 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */; };
-		E41D7108224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
-		E41D7109224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
-		E41D710A224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
-		E41D710B224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */; };
 		E41D710C224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
 		E41D710D224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
 		E41D710E224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */; };
@@ -787,7 +783,6 @@
 		E41D7097224D5F5B00CA05C4 /* FormFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFieldProtocol.swift; sourceTree = "<group>"; };
 		E41D7098224D5F5B00CA05C4 /* FormDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDelegates.swift; sourceTree = "<group>"; };
 		E41D7099224D5F5B00CA05C4 /* FormFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFieldTableViewCell.swift; sourceTree = "<group>"; };
-		E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedAuthenticationViewController.swift; sourceTree = "<group>"; };
 		E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthControllerManager.swift; sourceTree = "<group>"; };
 		E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		E41D7103224D5FB300CA05C4 /* ButtonAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAuthController.swift; sourceTree = "<group>"; };
@@ -1327,7 +1322,6 @@
 		E41D70FF224D5FB300CA05C4 /* AuthenticationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E41D7100224D5FB300CA05C4 /* StackedAuthenticationViewController.swift */,
 				E41D7101224D5FB300CA05C4 /* AuthControllerManager.swift */,
 				E41D7102224D5FB300CA05C4 /* AuthenticationViewController.swift */,
 			);
@@ -2306,7 +2300,6 @@
 				E41D71A9224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
 				E41D70C8224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A321BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
-				E41D710A224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E42E9A7522D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E4AF822021C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B321BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
@@ -2492,7 +2485,6 @@
 				E41D71AA224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
 				E41D70C9224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A421BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
-				E41D710B224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF822121C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B421BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80C021BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -2669,7 +2661,6 @@
 				E41D71A7224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
 				E41D70C6224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A121BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
-				E41D7108224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E4AF821E21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B121BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,
 				E4AF80BD21BB2D90002D6E86 /* InitialAutoLayoutPassAwareMixin.swift in Sources */,
@@ -2856,7 +2847,6 @@
 				E41D71A8224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
 				E41D70C7224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
 				E4AF80A221BB2D90002D6E86 /* SubmitButtonManaged.swift in Sources */,
-				E41D7109224D5FB300CA05C4 /* StackedAuthenticationViewController.swift in Sources */,
 				E42E9A7422D78249006FC120 /* DiffableDatasource.swift in Sources */,
 				E4AF821F21C02CA6002D6E86 /* ImageDisplayable.swift in Sources */,
 				E4AF80B221BB2D90002D6E86 /* ViewRecyclerMixin.swift in Sources */,

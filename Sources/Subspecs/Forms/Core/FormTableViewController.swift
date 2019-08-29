@@ -11,7 +11,6 @@ import UIKitMixinable
 import UIKitTheme
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission: Equatable, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
-
     public var onCompletion: ResultClosure<Response>?
 
     open lazy var formToolbar: FormToolbar? = {
@@ -24,7 +23,6 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open var autoAssignFirstResponder = false
     open var showsValidationErrorsOnDisbledSubmit = true
     open var cachedSubmissionState: Submission?
-
 
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
@@ -44,12 +42,10 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         }
     }
 
-    open func prefillForm(){
-
-    }
+    open func prefillForm() {}
 
     public func cacheSubmission() {
-        self.cachedSubmissionState = try? createSubmission()
+        cachedSubmissionState = try? createSubmission()
     }
 
     public init(onCompletion: ResultClosure<Response>? = nil) {
@@ -57,9 +53,14 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         super.init(callDidInit: true)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public override init(callDidInit: Bool) {
+        super.init(callDidInit: callDidInit)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         form.formDelegate = self
@@ -73,13 +74,13 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         updateSubmitButtonState()
     }
 
-
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if autoAssignFirstResponder {
             assignFirstResponderToNextInvalidField()
         }
     }
+
     open override func createSubviews() {
         super.createSubviews()
         setupSubmitButton(configuration: ManagedButtonConfiguration(position: submitButtonPosition))
@@ -191,7 +192,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open func submissionDidFail(with error: Error) {
         switch error {
         case SubmissionError.submittedNoEdits:
-            //No need to report back to user, just dismiss
+            // No need to report back to user, just dismiss
             break
         default:
             showError(error: error)
@@ -201,13 +202,11 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open func submissionHasBeenEdited() -> Bool {
         guard let cachedSubmissionState = cachedSubmissionState,
             let submission = try? createSubmission() else {
-                return true
+            return true
         }
         return cachedSubmissionState != submission
     }
 }
-
-
 
 extension FormTableViewController: UITableViewReferencing {
     public var managedTableView: UITableView {

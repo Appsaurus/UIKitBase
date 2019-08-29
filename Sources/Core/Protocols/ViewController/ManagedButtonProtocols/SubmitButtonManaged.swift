@@ -14,6 +14,7 @@ public enum UneditedSubmissionBehavior {
     case disableSubmit
     case skipSubmit
 }
+
 public protocol SubmissionManaged: SubmitButtonManaged {
     associatedtype Submission
     associatedtype Response
@@ -78,15 +79,13 @@ extension SubmissionManaged where Self: UIViewController {
     public func submissionDidSucceed(with response: Response) {}
     public func submissionDidFail(with error: Error) {
         switch error {
-            case SubmissionError.submittedNoEdits:
+        case SubmissionError.submittedNoEdits:
             popOrDismiss()
-            //No need to report back to user
-            break
+        // No need to report back to user
         default:
             showError(error: error)
         }
     }
-
 
     public func autoSubmitIfAllowed() {
         if autoSubmitsValidForm {
@@ -202,7 +201,7 @@ public extension SubmissionManaged where Self: NSObject {
         }
     }
 
-    var noEditsBehavior: UneditedSubmissionBehavior?{
+    var noEditsBehavior: UneditedSubmissionBehavior? {
         get {
             return self[.noEditsBehavior]
         }

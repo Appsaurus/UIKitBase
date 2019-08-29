@@ -14,6 +14,7 @@ public protocol BaseViewControllerProtocol: BaseNSObjectProtocol
     & ViewControllerConfigurable
     & FirstResponderManaged
     & StatefulViewController
+    & ViewRecycler
     & Styleable {}
 
 extension BaseViewControllerProtocol where Self: UIViewController {
@@ -21,6 +22,7 @@ extension BaseViewControllerProtocol where Self: UIViewController {
         return [ViewControllerConfigurableMixin(self),
                 FirstResponderManagedMixin(self),
                 StatefulViewControllerMixin(self),
+                ViewRecyclerMixin(self),
                 StyleableViewControllerMixin(self)]
             + baseNSObjectProtocolMixins
     }

@@ -301,14 +301,13 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
 
         if let confirmationField = confirmationField,
-            confirmationField.textField.text?.isEmpty == false{
+            confirmationField.textField.text?.isEmpty == false {
             confirmationField.validate(displayErrors: displayErrorOnNextValidation)
-        }
-        else if let confirmsField = confirmsField,
-                confirmsField.textField.text != textField.text {
-                let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
-                let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field and \(confirmsField.fieldName) field must match."
-                failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
+        } else if let confirmsField = confirmsField,
+            confirmsField.textField.text != textField.text {
+            let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field and \(confirmsField.fieldName) field must match."
+            failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 
         let lengthValidity = textLengthValidity()
