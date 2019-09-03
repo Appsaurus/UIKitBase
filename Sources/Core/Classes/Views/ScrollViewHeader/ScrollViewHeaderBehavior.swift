@@ -25,7 +25,9 @@ open class ScrollViewHeaderBehavior {
         }
     }
 
-    open func adjustViews(for scrollViewHeader: ScrollViewHeader) {}
+    open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+
+    }
 
     open func setup() {}
 }
@@ -164,7 +166,13 @@ open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHe
 
     open override func setup() {
         super.setup()
-        scrollViewHeader.insertSubview(fillView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
+
+        if !scrollViewHeader.subheaderCollapses {
+            scrollViewHeader.insertSubview(fillView, belowSubview: scrollViewHeader.subheaderBackgroundView)
+        }
+        else {
+            scrollViewHeader.insertSubview(fillView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
+        }
         fillView.pinToSuperview()
         fillView.backgroundColor = fillColor
         fillView.alpha = 0.0

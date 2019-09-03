@@ -13,6 +13,7 @@ import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
+import Actions
 
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
@@ -26,7 +27,7 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator
     func infiniteScrollTriggered()
-    func pullToRefreshTriggered()
+    @objc func pullToRefreshTriggered()
     func setupPaginatable()
 
     func refreshDidFail(with error: Error)
@@ -34,6 +35,7 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     func fetchNextPage(firstPage: Bool, transitioningState: State?, reloadCompletion: VoidClosure?)
     func didFinishFetching(error: Error)
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>, isFirstPage: Bool, reloadCompletion: VoidClosure?)
+    func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType> 
 //    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure?)
     func reset(to initialState: State, completion: VoidClosure?)
     func reload(completion: @escaping VoidClosure)
@@ -118,7 +120,7 @@ public extension PaginationManaged where Self: UIViewController {
                       transitioningState: .loadingMore)
     }
 
-    func pullToRefreshTriggered() {
+    @objc func pullToRefreshTriggered() {
         datasourceManagedView.hideNeedsLoadingIndicator()
         fetchNextPage(firstPage: true, transitioningState: .refreshing)
     }
@@ -143,6 +145,8 @@ public extension PaginationManaged where Self: UIViewController {
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>,
                            isFirstPage: Bool = false,
                            reloadCompletion: VoidClosure? = nil) {
+        var result = modifyFetched(result: result)
+
         let completion = { [weak self] in
             guard let self = self else { return }
             let lastPageState: State = result.items.count > 0 ? .loadedAll : .empty
@@ -163,6 +167,10 @@ public extension PaginationManaged where Self: UIViewController {
                 }
             })
         }
+    }
+
+    func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType> {
+        return result
     }
 
     func didFinishFetching(error: Error) {
@@ -203,7 +211,8 @@ public extension PaginationManaged where Self: UIViewController {
     func updatePaginatableViews(for state: State) {
         DispatchQueue.main.async {
             if state != .refreshing {
-                self.datasourceManagedView.loadingControls.pullToRefresh.end()
+//                self.datasourceManagedView.loadingControls.pullToRefresh.end()
+                self.datasourceManagedView.refreshControl?.endRefreshing()
             }
 
             switch state {
@@ -287,12 +296,19 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func addPullToRefresh() {
-        datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
-                                                                animator: createPullToRefreshAnimator()) { [weak self] in
-            DispatchQueue.main.async {
-                self?.pullToRefreshTriggered()
-            }
+        let refreshControl = UIRefreshControl()
+        datasourceManagedView.refreshControl = refreshControl
+//        refreshControl.addTarget(self, action: #selector(pullToRefreshTriggered), for: .valueChanged)
+        refreshControl.on(.valueChanged) {
+            print("Triggered pull to refresh")
+            self.pullToRefreshTriggered()
         }
+//        datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
+//                                                                animator: createPullToRefreshAnimator()) { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.pullToRefreshTriggered()
+//            }
+//        }
     }
 
     func addInfinityScroll() {

@@ -103,6 +103,15 @@ public class ScrollViewLoadingControl {
                 scrollView.pullToRefresher?.animatorOffset = newValue
             }
         }
+
+        public var distanceToTrigger: CGFloat {
+            get {
+                return  scrollView.pullToRefresher?.distanceToTrigger ?? 0
+            }
+            set {
+                scrollView.pullToRefresher?.distanceToTrigger = newValue
+            }
+        }
     }
 
     public class InfiniteScrollWrapper {

@@ -36,7 +36,13 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     }
 
     public var expandedHeaderHeight: CGFloat
-    public var collapsedHeaderHeight: CGFloat = 0.0
+    public var _collapsedHeaderHeight: CGFloat = 0.0
+    public var collapsedHeaderHeight: CGFloat {
+        guard let subheader = subheaderView, !subheaderCollapses else {
+            return _collapsedHeaderHeight
+        }
+        return _collapsedHeaderHeight + subheader.frame.h
+    }
 
     open var headerLayoutHeightConstraint: NSLayoutConstraint?
     open var viewConstraints: ConstraintAttributeMap = [:]
@@ -58,7 +64,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
 
     open var subheaderView: UIView?
     open lazy var subheaderBackgroundView: UIView = UIView()
-    var subheaderBackgroundViewConstraints: ConstraintAttributeMap = [:]
+    open var subheaderBackgroundViewConstraints: ConstraintAttributeMap = [:]
     open var subheaderCollapses: Bool = true
 
     open var headerLayoutView: UIView = UIView()
@@ -100,27 +106,32 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
                          width: CGFloat,
                          collapsedHeaderHeight: CGFloat = 0.0,
                          subheaderView: UIView? = nil,
+                         subheaderCollapses: Bool = true,
                          behaviors: [ScrollViewHeaderBehavior] = []) {
-        self.collapsedHeaderHeight = collapsedHeaderHeight
+        self._collapsedHeaderHeight = collapsedHeaderHeight
         autoExpandingContentView.layoutDynamicHeight(forWidth: width)
         expandedHeaderHeight = autoExpandingContentView.frame.h
         self.subheaderView = subheaderView
-//                print("subheaderView.h: \(subheaderView?.h)")
-//                print("expandedHeaderHeight: \(expandedHeaderHeight)")
-//                print("collapsedHeaderHeight: \(collapsedHeaderHeight)")
+        self.subheaderCollapses = subheaderCollapses
         self.behaviors = behaviors
         super.init(frame: .zero)
         setupBehaviors()
     }
 
-    public required init(expandedHeaderHeight: CGFloat, collapsedHeaderHeight: CGFloat = 0.0, subheaderView: UIView? = nil, behaviors: [ScrollViewHeaderBehavior] = []) {
-        self.collapsedHeaderHeight = collapsedHeaderHeight
+    public required init(expandedHeaderHeight: CGFloat,
+                         collapsedHeaderHeight: CGFloat = 0.0,
+                         subheaderView: UIView? = nil,
+                         subheaderCollapses: Bool = true,
+                         behaviors: [ScrollViewHeaderBehavior] = []) {
+        self._collapsedHeaderHeight = collapsedHeaderHeight
         self.expandedHeaderHeight = expandedHeaderHeight
         self.subheaderView = subheaderView
+        self.subheaderCollapses = subheaderCollapses
         self.behaviors = behaviors
         super.init(frame: .zero)
         setupBehaviors()
     }
+
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -199,43 +210,44 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         backgroundViewConstraints[.height]?.first?.constant = 0.0
     }
 
-//    func debugPrintDescription(){
-//        print("frame \(self.frame)")
-//        print("image frame: \(headerBackgroundImageView.frame)")
-//
-//        print("Header state: \(headerState)")
-//        print("Offset: \(offset)")
-//        print("VisibleHeaderHeight \(visibleHeaderHeight)")
-//        print("ExpandedHeight: \(expandedHeight)")
-//        print("ExpandedHeaderHeight: \(expandedHeaderHeight)")
-//        print("SubheaderHeight: \(subheaderBackgroundView.frame.h)")
-//        print("Percent collapsed: \(percentCollapsed)")
-//        print("Percent expanded: \(percentExpanded)")
-//        printSubheaderBackgroundViewConstraints()
-//        printBackgroundViewConstraints()
-//        printViewConstraints()
-//    }
-//
-//    func printSubheaderBackgroundViewConstraints(){
-//        print("Subheader backgroundview constriants")
-//        print("height: \(String(describing: subheaderBackgroundViewConstraints[.height]?.constant))")
-//        print("top: \(String(describing: subheaderBackgroundViewConstraints[.top]?.constant))")
-//    }
-//
-//    func printBackgroundViewConstraints(){
-//        print("Background constriants")
-//        print("centerX: \(String(describing: backgroundViewConstraints[.centerX]?.constant))")
-//        print("centerY: \(String(describing: backgroundViewConstraints[.centerY]?.constant))")
-//        print("width: \(String(describing: backgroundViewConstraints[.width]?.constant))")
-//        print("height: \(String(describing: backgroundViewConstraints[.height]?.constant))")
-//    }
-//
-//    func printViewConstraints(){
-//
-//        print("View constraints")
-//        print("centerX: \(String(describing: viewConstraints[.centerX]?.constant))")
-//        print("top: \(String(describing: viewConstraints[.top]?.constant))")
-//        print("width: \(String(describing: viewConstraints[.width]?.constant))")
-//        print("headerLayoutHeightConstraint: \(String(describing: headerLayoutHeightConstraint?.constant))")
-//    }
+    func debugPrintDescription(){
+        print("frame \(self.frame)")
+        print("image frame: \(headerBackgroundImageView.frame)")
+
+        print("Header state: \(headerState)")
+        print("Offset: \(offset)")
+        print("VisibleHeaderHeight \(visibleHeaderHeight)")
+        print("collapsedHeaderHeight: \(collapsedHeaderHeight)")
+        print("ExpandedHeight: \(expandedHeight)")
+        print("ExpandedHeaderHeight: \(expandedHeaderHeight)")
+        print("SubheaderHeight: \(subheaderBackgroundView.frame.h)")
+        print("Percent collapsed: \(percentCollapsed)")
+        print("Percent expanded: \(percentExpanded)")
+        printSubheaderBackgroundViewConstraints()
+        printBackgroundViewConstraints()
+        printViewConstraints()
+    }
+
+    func printSubheaderBackgroundViewConstraints(){
+        print("Subheader backgroundview constriants")
+        print("height: \(String(describing: subheaderBackgroundViewConstraints[.height]?.first?.constant))")
+        print("top: \(String(describing: subheaderBackgroundViewConstraints[.top]?.first?.constant))")
+    }
+
+    func printBackgroundViewConstraints(){
+        print("Background constriants")
+        print("centerX: \(String(describing: backgroundViewConstraints[.centerX]?.first?.constant))")
+        print("centerY: \(String(describing: backgroundViewConstraints[.centerY]?.first?.constant))")
+        print("width: \(String(describing: backgroundViewConstraints[.width]?.first?.constant))")
+        print("height: \(String(describing: backgroundViewConstraints[.height]?.first?.constant))")
+    }
+
+    func printViewConstraints(){
+
+        print("View constraints")
+        print("centerX: \(String(describing: viewConstraints[.centerX]?.first?.constant))")
+        print("top: \(String(describing: viewConstraints[.top]?.first?.constant))")
+        print("width: \(String(describing: viewConstraints[.width]?.first?.constant))")
+        print("headerLayoutHeightConstraint: \(String(describing: headerLayoutHeightConstraint?.constant))")
+    }
 }
