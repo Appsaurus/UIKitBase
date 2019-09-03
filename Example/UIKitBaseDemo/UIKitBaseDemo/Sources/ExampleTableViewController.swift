@@ -24,7 +24,7 @@ class ExampleTableViewController: NavigationalMenuTableViewController {
 
 		addRow(title: "Custom Tab Bar Controller", createDestinationVC: ExampleCustomTabBarController())
 		addRow(title: "Dismissable Navigation Controller", createDestinationVC: DismissableNavigationController(dismissableViewController: ExamplePaginatableTableViewController()), presentModally: true)
-		addRow(title: "Forms", createDestinationVC: ExampleFormViewController())
+//        addRow(title: "Forms", createDestinationVC: ExampleFormViewController())
 		addRow(title: "Needs Loading Indicator", createDestinationVC: ExampleNeedsLoadingIndicatorTableViewController())
 		addRow(title: "Pagination", createDestinationVC: ExamplePaginatableTableViewController())
         addRow(title: "Paging Menu ViewControllers", createDestinationVC: PagingMenuExamplesViewController())
