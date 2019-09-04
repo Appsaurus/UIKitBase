@@ -7,7 +7,7 @@
 import Foundation
 import UIKitMixinable
 
-open class BaseContainedTableViewController: BaseContainerViewController, UITableViewControllerProtocol {
+open class BaseContainedTableViewController: BaseContainerViewController, BaseTableViewControllerProtocol, UITableViewDelegate {
     open lazy var tableViewStyle: UITableView.Style = .grouped
     open lazy var tableView: UITableView = UITableView(frame: .zero, style: self.tableViewStyle).then { tv in
         tv.backgroundColor = .clear
@@ -20,18 +20,6 @@ open class BaseContainedTableViewController: BaseContainerViewController, UITabl
 
     open override func setupDelegates() {
         super.setupDelegates()
-        tableView.setController(self)
-    }
-
-    open func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
-
-    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-
-    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        tableView.delegate = self
     }
 }

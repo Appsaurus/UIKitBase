@@ -42,7 +42,11 @@ open class BaseContainerViewController: BaseViewController {
     }
 
     open func createContainerViewLayoutConstraints() {
+        
+        view.removeLayoutMarginsInset(removingSafeAreaInset: true)
+        containerView.removeLayoutMarginsInset(removingSafeAreaInset: true)
         view.layoutMargins = .zero
+        containerView.layoutMargins = .zero
         if #available(iOS 11.0, *) {
             view.directionalLayoutMargins = .zero
             viewRespectsSystemMinimumLayoutMargins = false

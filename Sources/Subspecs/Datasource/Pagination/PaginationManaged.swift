@@ -211,8 +211,8 @@ public extension PaginationManaged where Self: UIViewController {
     func updatePaginatableViews(for state: State) {
         DispatchQueue.main.async {
             if state != .refreshing {
-//                self.datasourceManagedView.loadingControls.pullToRefresh.end()
-                self.datasourceManagedView.refreshControl?.endRefreshing()
+                self.datasourceManagedView.loadingControls.pullToRefresh.end()
+//                self.datasourceManagedView.refreshControl?.endRefreshing()
             }
 
             switch state {
@@ -296,19 +296,19 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func addPullToRefresh() {
-        let refreshControl = UIRefreshControl()
-        datasourceManagedView.refreshControl = refreshControl
-//        refreshControl.addTarget(self, action: #selector(pullToRefreshTriggered), for: .valueChanged)
-        refreshControl.on(.valueChanged) {
-            print("Triggered pull to refresh")
-            self.pullToRefreshTriggered()
-        }
-//        datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
-//                                                                animator: createPullToRefreshAnimator()) { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.pullToRefreshTriggered()
-//            }
+//        let refreshControl = UIRefreshControl()
+//        datasourceManagedView.refreshControl = refreshControl
+////        refreshControl.addTarget(self, action: #selector(pullToRefreshTriggered), for: .valueChanged)
+//        refreshControl.on(.valueChanged) {
+//            print("Triggered pull to refresh")
+//            self.pullToRefreshTriggered()
 //        }
+        datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
+                                                                animator: createPullToRefreshAnimator()) { [weak self] in
+            DispatchQueue.main.async {
+                self?.pullToRefreshTriggered()
+            }
+        }
     }
 
     func addInfinityScroll() {

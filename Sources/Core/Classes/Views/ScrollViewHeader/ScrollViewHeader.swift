@@ -140,7 +140,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     open override func createSubviews() {
         super.createSubviews()
         headerLayoutView.addSubview(headerBackgroundImageView)
-        headerLayoutView.insertSubview(headerLabel, aboveSubview: headerBackgroundImageView)
+//        headerLayoutView.insertSubview(headerLabel, aboveSubview: headerBackgroundImageView)
         addSubview(headerLayoutView)
         headerLayoutView.frame = bounds
         insertSubview(subheaderBackgroundView, aboveSubview: headerLayoutView)
@@ -156,7 +156,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         backgroundViewConstraints.update(with: headerBackgroundImageView.centerInSuperview())
         backgroundViewConstraints.update(with: headerBackgroundImageView.width.greaterThanOrEqual(to: headerLayoutView))
         backgroundViewConstraints.update(with: headerBackgroundImageView.height.equal(to: headerLayoutView))
-        headerLabel.forceSuperviewToMatchContentSize(insetBy: LayoutPadding(20))
+//        headerLabel.forceSuperviewToMatchContentSize(insetBy: LayoutPadding(20))
         subheaderBackgroundViewConstraints.update(with: subheaderBackgroundView.equal(to: edges.excluding(.top)))
         subheaderBackgroundViewConstraints.update(with: subheaderBackgroundView.top.equal(to: headerLayoutView.bottom))
         subheaderView?.forceSuperviewToMatchContentSize()
@@ -201,8 +201,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
             behavior.adjustViews(for: self)
         }
 
-//        printViewConstraints()
-//        debugPrintDescription()
+        //        printViewConstraints()
+        //        debugPrintDescription()
     }
 
     func resetBackgroundViewSizeConstraints() {

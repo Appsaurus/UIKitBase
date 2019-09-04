@@ -78,8 +78,8 @@ open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior {
         super.adjustViews(for: scrollViewHeader)
         scrollViewHeader.scrollView.bringSubviewToFront(scrollViewHeader)
 //        var topConstant = -scrollView.contentInset.top
-//        if(visibleHeaderHeight <= collapsedHeaderHeight){
-//            topConstant = scrollView.contentOffset.y + collapsedHeaderHeight - expandedHeight
+//        if(visibleHeaderHeight <= collapsedHeight){
+//            topConstant = scrollView.contentOffset.y + collapsedHeight - expandedHeight
 //        }
 //        viewConstraints[.top]?.constant = topConstant
         scrollViewHeader.backgroundViewConstraints[.top]?.first?.constant = scrollViewHeader.offset
@@ -162,17 +162,13 @@ open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderB
 @available(iOS 10.0, *)
 open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     var fillColor: UIColor
-    var fillView: UIView = UIView()
+    var fillView: PassThroughView = PassThroughView()
 
     open override func setup() {
         super.setup()
 
-        if !scrollViewHeader.subheaderCollapses {
-            scrollViewHeader.insertSubview(fillView, belowSubview: scrollViewHeader.subheaderBackgroundView)
-        }
-        else {
-            scrollViewHeader.insertSubview(fillView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
-        }
+        scrollViewHeader.addSubview(fillView)
+        fillView.moveToFront()
         fillView.pinToSuperview()
         fillView.backgroundColor = fillColor
         fillView.alpha = 0.0

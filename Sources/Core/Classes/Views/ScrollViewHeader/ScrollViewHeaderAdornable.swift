@@ -38,15 +38,11 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
         scrollViewHeader.setupObserver(for: scrollView)
         scrollView.addSubview(scrollViewHeader)
         scrollView.bringSubviewToFront(scrollViewHeader)
-        if let refresh = scrollView.refreshControl {
-            scrollView.bringSubviewToFront(refresh)
-            refresh.frame.y += scrollViewHeader.expandedHeight
-        }
         scrollViewHeader.setupScrollViewRelatedConstraints()
         scrollViewHeader.forceAutolayoutPass()
-//        for view in scrollView.subviews{
-//            view.frame.y += scrollViewHeader.expandedHeight
-//        }
+        //        for view in scrollView.subviews{
+        //            view.frame.y += scrollViewHeader.expandedHeight
+        //        }
         self.scrollViewHeader = scrollViewHeader
 
         scrollViewHeader.onBoundsChange = { [weak self] _ in

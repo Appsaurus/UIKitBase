@@ -179,6 +179,7 @@ class PullToRefresher: NSObject {
                         self.scrollView?.setContentInset(inset, completion: { [unowned self] (_) -> Void in
                             self.updatingState = false
                         })
+                        PullToRefresherImpacter.impact()
                         self.action?()
                     }
                 default:
@@ -229,5 +230,27 @@ extension UIView {
             responder = responder?.next
         }
         return nil
+    }
+}
+
+
+fileprivate class PullToRefresherImpacter {
+    static private var impacter: AnyObject? = {
+        if #available(iOS 10.0, *) {
+            if NSClassFromString("UIFeedbackGenerator") != nil {
+                let generator = UIImpactFeedbackGenerator.init(style: .light)
+                generator.prepare()
+                return generator
+            }
+        }
+        return nil
+    }()
+
+    static public func impact() -> Void {
+        if #available(iOS 10.0, *) {
+            if let impacter = impacter as? UIImpactFeedbackGenerator {
+                impacter.impactOccurred()
+            }
+        }
     }
 }

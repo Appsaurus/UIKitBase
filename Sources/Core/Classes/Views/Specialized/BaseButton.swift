@@ -243,10 +243,11 @@ open class BaseButton: BaseView, ButtonStyleable {
         titleLabel.lineBreakMode = .byTruncatingTail
         applyCurrentStateConfiguration()
 
-        addTap { [weak self] view in
+        let tap = addTap { [weak self] view in
             guard let self = self else { return }
             self.buttonWasTapped(view: view)
         }
+        tap.cancelsTouchesInView = false
     }
 
     open func buttonWasTapped<V: UIView>(view: V) {

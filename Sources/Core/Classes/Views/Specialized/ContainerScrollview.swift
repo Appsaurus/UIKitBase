@@ -36,17 +36,20 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     var recognizesParentScroll: Bool = true
     var bouncesBottom: Bool = false
 
+    
     public required init(contentView: UIView = UIView()) {
         self.contentView = contentView
         super.init(frame: .zero)
         addSubview(contentView)
     }
 
+
     open override func initProperties() {
         super.initProperties()
         showsVerticalScrollIndicator = false
         bounces = false
     }
+
 
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -93,6 +96,15 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     public func pointer(_ reference: AnyObject) -> UnsafeMutableRawPointer {
         return Unmanaged.passUnretained(reference).toOpaque()
     }
+
+//    open override func touchesShouldCancel(in view: UIView) -> Bool {
+//
+//        if view is UIButton || view is UIImageView {
+//            return  true
+//        }
+//
+//        return  super.touchesShouldCancel(in: view)
+//    }
 }
 
 // extension ContainerScrollView: UIScrollViewDelegate {
