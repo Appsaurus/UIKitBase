@@ -68,7 +68,8 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                  shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let innerScrollViewPanGestureRecognizer = otherGestureRecognizer as? UIPanGestureRecognizer,
             let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView else { return false }
         guard innerScrollView.isDescendant(of: contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return false }
@@ -96,15 +97,6 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     public func pointer(_ reference: AnyObject) -> UnsafeMutableRawPointer {
         return Unmanaged.passUnretained(reference).toOpaque()
     }
-
-//    open override func touchesShouldCancel(in view: UIView) -> Bool {
-//
-//        if view is UIButton || view is UIImageView {
-//            return  true
-//        }
-//
-//        return  super.touchesShouldCancel(in: view)
-//    }
 }
 
 // extension ContainerScrollView: UIScrollViewDelegate {

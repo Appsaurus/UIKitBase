@@ -40,7 +40,8 @@ extension UIView {
     public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
                                       color: UIColor? = nil,
                                       useAutoLayout: Bool = true,
-                                      position: ActivityIndicatorPosition = .center) {
+                                      position: ActivityIndicatorPosition = .center,
+                                      disablingUserInteraction: Bool = true) {
         // Indicator already exists, make sure it is visible but do not create another
         if let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
             bringSubviewToFront(indicator)
@@ -84,17 +85,23 @@ extension UIView {
         }
         bringSubviewToFront(indicator)
         indicator.startAnimating()
+        if disablingUserInteraction {
+            isUserInteractionEnabled = false
+        }
     }
 
     /**
      Stops and removes an UIActivityIndicator in any UIView
      */
-    public func hideActivityIndicator() {
+    public func hideActivityIndicator(enablingUserInteraction: Bool = true) {
         guard let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
             return
         }
         indicator.stopAnimating()
         indicator.removeFromSuperview()
+        if enablingUserInteraction {
+            isUserInteractionEnabled = true
+        }
     }
 }
 
