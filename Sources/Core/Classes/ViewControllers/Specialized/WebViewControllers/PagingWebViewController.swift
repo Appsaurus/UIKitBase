@@ -10,6 +10,7 @@ import SafariServices
 import Swiftest
 import UIKitExtensions
 import UIKitTheme
+import WebKit
 
 open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged {
     open var titledUrls: SortedDictionary<String, URL> = SortedDictionary<String, URL>()
@@ -37,9 +38,9 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
         for titledUrl in titledUrls {
             guard let url = titledUrl.value else { continue }
             let vc = UIViewController()
-            let webView = UIWebView()
+            let webView = WKWebView()
             vc.view = webView
-            webView.loadRequest(URLRequest(url: url))
+            webView.load(URLRequest(url: url))
             vc.title = titledUrl.key
             vcs.append(vc)
         }
