@@ -50,11 +50,11 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     public init(onCompletion: ResultClosure<Response>? = nil) {
         self.onCompletion = onCompletion
-        super.init(callDidInit: true)
+        super.init(callInitLifecycle: true)
     }
 
-    public override init(callDidInit: Bool) {
-        super.init(callDidInit: callDidInit)
+    public override init(callInitLifecycle: Bool) {
+        super.init(callInitLifecycle: callInitLifecycle)
     }
 
     public required init?(coder aDecoder: NSCoder) {

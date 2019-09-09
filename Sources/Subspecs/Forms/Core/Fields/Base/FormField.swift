@@ -156,7 +156,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     // MARK: Initialization
 
     public init(contentView: ContentView? = nil, fieldName: String, title: String? = nil, placeholder: String? = nil, value: Value? = nil) {
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         self.contentView =? contentView
         self.fieldName = fieldName
         self.title = title ?? fieldName
@@ -165,8 +165,8 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         initLifecycle(.programmatically)
     }
 
-    public override init(callDidInit: Bool = true) {
-        super.init(callDidInit: callDidInit)
+    public override init(callInitLifecycle: Bool = true) {
+        super.init(callInitLifecycle: callInitLifecycle)
     }
 
     public override init(frame: CGRect) {

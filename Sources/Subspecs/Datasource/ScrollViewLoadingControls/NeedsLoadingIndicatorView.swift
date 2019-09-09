@@ -93,7 +93,7 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
     weak var topConstraint: NSLayoutConstraint?
     let padding: CGFloat = 20.0
     public required init(scrollView: UIScrollView) {
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         setupObserver(for: scrollView)
         initLifecycle(.programmatically)
     }

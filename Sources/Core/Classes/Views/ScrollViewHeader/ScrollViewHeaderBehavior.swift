@@ -25,9 +25,7 @@ open class ScrollViewHeaderBehavior {
         }
     }
 
-    open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
-
-    }
+    open func adjustViews(for scrollViewHeader: ScrollViewHeader) {}
 
     open func setup() {}
 }

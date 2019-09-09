@@ -106,7 +106,7 @@ public class ScrollViewLoadingControl {
 
         public var distanceToTrigger: CGFloat {
             get {
-                return  scrollView.pullToRefresher?.distanceToTrigger ?? 0
+                return scrollView.pullToRefresher?.distanceToTrigger ?? 0
             }
             set {
                 scrollView.pullToRefresher?.distanceToTrigger = newValue

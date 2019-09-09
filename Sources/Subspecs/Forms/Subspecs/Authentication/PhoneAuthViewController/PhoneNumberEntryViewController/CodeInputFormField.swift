@@ -46,7 +46,7 @@ open class CodeInputFormField<ContentView: CodeInputTextField>: FormTextField<Co
     }
 
     public convenience init(configuration: CodeInputFieldConfiguration? = nil) {
-        self.init(callDidInit: false)
+        self.init(callInitLifecycle: false)
         self.configuration =? configuration
         initLifecycle(.programmatically)
     }

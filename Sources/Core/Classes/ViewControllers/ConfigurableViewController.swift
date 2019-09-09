@@ -27,7 +27,7 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
     open lazy var config: Configuration = Configuration()
     open lazy var vcStyle: Style = Style()
 
-    public required init(config: Configuration? = nil, style: Style? = nil, callDidInit: Bool = true) {
+    public required init(config: Configuration? = nil, style: Style? = nil, callInitLifecycle: Bool = true) {
         super.init(nibName: nil, bundle: nil)
         if let config = config {
             self.config = config
@@ -36,7 +36,7 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
             vcStyle = style
         }
 
-        if callDidInit {
+        if callInitLifecycle {
             initLifecycle(.programmatically)
         }
     }

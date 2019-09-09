@@ -17,7 +17,7 @@ open class FooterView<View: UIView>: BaseView {
     }()
 
     public init(contentView: View? = nil) {
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         self.contentView =? contentView
         initLifecycle(.programmatically)
     }

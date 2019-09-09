@@ -96,7 +96,7 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
     }
 
     public required init(delegate: CodeFormDelegate, configuration: CodeFormViewControllerConfiguration? = nil) {
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         self.delegate = delegate
         self.configuration =? configuration
         initLifecycle(.programmatically)

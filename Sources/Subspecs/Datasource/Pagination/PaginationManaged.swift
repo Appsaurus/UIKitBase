@@ -6,6 +6,7 @@
 //
 //
 
+import Actions
 import DarkMagic
 import DiffableDataSources
 import Layman
@@ -13,10 +14,12 @@ import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
-import Actions
 
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged
+
+public typealias PaginatableContainedTableViewController = BaseContainedTableViewController & PaginationManaged
+public typealias PaginatableContainedCollectionViewController = BaseContainedCollectionViewController & PaginationManaged
 
 public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     typealias ItemIdentifierType = Datasource.ItemIdentifierType
@@ -27,7 +30,7 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator
     func infiniteScrollTriggered()
-    @objc func pullToRefreshTriggered()
+    func pullToRefreshTriggered()
     func setupPaginatable()
 
     func refreshDidFail(with error: Error)
@@ -35,7 +38,7 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     func fetchNextPage(firstPage: Bool, transitioningState: State?, reloadCompletion: VoidClosure?)
     func didFinishFetching(error: Error)
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>, isFirstPage: Bool, reloadCompletion: VoidClosure?)
-    func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType> 
+    func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType>
 //    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure?)
     func reset(to initialState: State, completion: VoidClosure?)
     func reload(completion: @escaping VoidClosure)
@@ -120,7 +123,7 @@ public extension PaginationManaged where Self: UIViewController {
                       transitioningState: .loadingMore)
     }
 
-    @objc func pullToRefreshTriggered() {
+    func pullToRefreshTriggered() {
         datasourceManagedView.hideNeedsLoadingIndicator()
         fetchNextPage(firstPage: true, transitioningState: .refreshing)
     }
@@ -296,13 +299,6 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func addPullToRefresh() {
-//        let refreshControl = UIRefreshControl()
-//        datasourceManagedView.refreshControl = refreshControl
-////        refreshControl.addTarget(self, action: #selector(pullToRefreshTriggered), for: .valueChanged)
-//        refreshControl.on(.valueChanged) {
-//            print("Triggered pull to refresh")
-//            self.pullToRefreshTriggered()
-//        }
         datasourceManagedView.loadingControls.pullToRefresh.add(direction: paginationConfig.scrollDirection,
                                                                 animator: createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
@@ -327,64 +323,4 @@ public extension PaginationManaged where Self: UIViewController {
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator {
         return CircleInfiniteAnimator(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     }
-}
-
-public extension PaginationManaged where Self: BaseContainedTableViewController {
-    var datasourceManagedView: UIScrollView {
-        return tableView
-    }
-
-//    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData { [weak self] in
-//                self?.tableView.forceAutolayoutPass()
-//                if let state = stateAtCompletion { self?.transition(to: state) }
-//                completion?()
-//            }
-//        }
-//    }
-}
-
-public extension PaginationManaged where Self: UITableViewController {
-    var datasourceManagedView: UIScrollView {
-        return tableView
-    }
-
-//    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData { [weak self] in
-//                self?.tableView.forceAutolayoutPass()
-//                if let state = stateAtCompletion { self?.transition(to: state) }
-//                completion?()
-//            }
-//        }
-//    }
-
-//    func removeCells(boundTo models: [ItemIdentifierType], withAnimation rowAnimation: UITableView.RowAnimation = .automatic) {
-//        enqueue { [weak self] _ in
-//            guard let self = self else { return }
-//            let indexPathsToRemove = self.dataSource.removeAndReturnIndexes(models: models)
-//            if indexPathsToRemove.count > 0 {
-//                self.tableView.beginUpdates()
-//                self.tableView.deleteRows(at: indexPathsToRemove, with: rowAnimation)
-//                self.tableView.endUpdates()
-//            }
-//        }
-//    }
-}
-
-public extension PaginationManaged where Self: UICollectionViewController {
-    var datasourceManagedView: UIScrollView {
-        return collectionView!
-    }
-
-//    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure? = nil) {
-//        DispatchQueue.main.async {
-//            self.collectionView!.reloadData { [weak self] in
-//                self?.collectionView!.forceAutolayoutPass()
-//                if let state = stateAtCompletion { self?.transition(to: state) }
-//                completion?()
-//            }
-//        }
-//    }
 }

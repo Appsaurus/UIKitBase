@@ -233,12 +233,11 @@ extension UIView {
     }
 }
 
-
-fileprivate class PullToRefresherImpacter {
-    static private var impacter: AnyObject? = {
+private class PullToRefresherImpacter {
+    private static var impacter: AnyObject? = {
         if #available(iOS 10.0, *) {
             if NSClassFromString("UIFeedbackGenerator") != nil {
-                let generator = UIImpactFeedbackGenerator.init(style: .light)
+                let generator = UIImpactFeedbackGenerator(style: .light)
                 generator.prepare()
                 return generator
             }
@@ -246,7 +245,7 @@ fileprivate class PullToRefresherImpacter {
         return nil
     }()
 
-    static public func impact() -> Void {
+    public static func impact() {
         if #available(iOS 10.0, *) {
             if let impacter = impacter as? UIImpactFeedbackGenerator {
                 impacter.impactOccurred()

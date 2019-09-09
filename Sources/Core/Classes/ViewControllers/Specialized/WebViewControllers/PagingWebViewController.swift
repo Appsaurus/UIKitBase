@@ -22,7 +22,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
             }
             titledUrls.insert(value: url, for: titledUrlString.key)
         }
-        super.init(callDidInit: true)
+        super.init(callInitLifecycle: true)
     }
 
     public required init?(coder aDecoder: NSCoder) {

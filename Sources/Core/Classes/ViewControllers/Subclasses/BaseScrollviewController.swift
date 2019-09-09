@@ -17,10 +17,10 @@ open class BaseScrollviewController: BaseViewController, UIScrollViewDelegate {
         super.setupDelegates()
         scrollView.delegate = self
     }
+
     open var scrollViewContentView: UIView {
         return containerScrollView.contentView
     }
-
 
     fileprivate var additionalPaddingForScrollViewHeaderContent: CGFloat = 0.0
     fileprivate var expandContentSizeHeight: CGFloat = 0.0

@@ -52,7 +52,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
                          existingQuery: QueryType? = nil,
                          onDidFinishTask: TaskCompletionClosure? = nil) {
         result = existingQuery
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         self.primarySearchViewController =? primarySearchViewController
         self.secondarySearchViewController =? secondarySearchViewController
         self.onDidFinishTask =? onDidFinishTask

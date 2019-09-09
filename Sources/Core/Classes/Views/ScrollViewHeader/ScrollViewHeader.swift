@@ -108,7 +108,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
                          subheaderView: UIView? = nil,
                          subheaderCollapses: Bool = true,
                          behaviors: [ScrollViewHeaderBehavior] = []) {
-        self._collapsedHeaderHeight = collapsedHeaderHeight
+        _collapsedHeaderHeight = collapsedHeaderHeight
         autoExpandingContentView.layoutDynamicHeight(forWidth: width)
         expandedHeaderHeight = autoExpandingContentView.frame.h
         self.subheaderView = subheaderView
@@ -123,7 +123,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
                          subheaderView: UIView? = nil,
                          subheaderCollapses: Bool = true,
                          behaviors: [ScrollViewHeaderBehavior] = []) {
-        self._collapsedHeaderHeight = collapsedHeaderHeight
+        _collapsedHeaderHeight = collapsedHeaderHeight
         self.expandedHeaderHeight = expandedHeaderHeight
         self.subheaderView = subheaderView
         self.subheaderCollapses = subheaderCollapses
@@ -131,7 +131,6 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         super.init(frame: .zero)
         setupBehaviors()
     }
-
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -210,8 +209,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         backgroundViewConstraints[.height]?.first?.constant = 0.0
     }
 
-    func debugPrintDescription(){
-        print("frame \(self.frame)")
+    func debugPrintDescription() {
+        print("frame \(frame)")
         print("image frame: \(headerBackgroundImageView.frame)")
 
         print("Header state: \(headerState)")
@@ -228,13 +227,13 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         printViewConstraints()
     }
 
-    func printSubheaderBackgroundViewConstraints(){
+    func printSubheaderBackgroundViewConstraints() {
         print("Subheader backgroundview constriants")
         print("height: \(String(describing: subheaderBackgroundViewConstraints[.height]?.first?.constant))")
         print("top: \(String(describing: subheaderBackgroundViewConstraints[.top]?.first?.constant))")
     }
 
-    func printBackgroundViewConstraints(){
+    func printBackgroundViewConstraints() {
         print("Background constriants")
         print("centerX: \(String(describing: backgroundViewConstraints[.centerX]?.first?.constant))")
         print("centerY: \(String(describing: backgroundViewConstraints[.centerY]?.first?.constant))")
@@ -242,8 +241,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         print("height: \(String(describing: backgroundViewConstraints[.height]?.first?.constant))")
     }
 
-    func printViewConstraints(){
-
+    func printViewConstraints() {
         print("View constraints")
         print("centerX: \(String(describing: viewConstraints[.centerX]?.first?.constant))")
         print("top: \(String(describing: viewConstraints[.top]?.first?.constant))")

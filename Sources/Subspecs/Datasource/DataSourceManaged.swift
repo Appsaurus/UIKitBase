@@ -35,6 +35,12 @@ public extension DatasourceManaged where Self: UICollectionViewController {
     }
 }
 
+public extension DatasourceManaged where Self: BaseContainedCollectionViewController {
+    var datasourceManagedView: UIScrollView {
+        return collectionView
+    }
+}
+
 public extension DatasourceManaged where Self: UITableViewController, Datasource: UITableViewDataSource {
     func setManagedDatasource() {
         tableView.dataSource = datasource
@@ -48,6 +54,12 @@ public extension DatasourceManaged where Self: BaseContainedTableViewController,
 }
 
 public extension DatasourceManaged where Self: UICollectionViewController, Datasource: UICollectionViewDataSource {
+    func setManagedDatasource() {
+        collectionView.dataSource = datasource
+    }
+}
+
+public extension DatasourceManaged where Self: BaseContainedCollectionViewController, Datasource: UICollectionViewDataSource {
     func setManagedDatasource() {
         collectionView.dataSource = datasource
     }

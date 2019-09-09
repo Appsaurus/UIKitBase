@@ -191,7 +191,7 @@ open class BaseButton: BaseView, ButtonStyleable {
                             styleMap: ButtonStyleMap? = nil,
                             buttonLayout: ButtonLayout = ButtonLayout(),
                             onTap: VoidClosure? = nil) {
-        self.init(callDidInit: false)
+        self.init(callInitLifecycle: false)
         titleMap =? titles
         attributedTitleMap =? attributedTitles
         self.imageMap =? imageMap
@@ -203,7 +203,7 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     public convenience init<T: FontIconEnum>(frame: CGRect = .zero, icon: T, style: ButtonStyle? = nil, buttonLayout: ButtonLayout? = nil, onTap: VoidClosure? = nil) {
-        self.init(callDidInit: false)
+        self.init(callInitLifecycle: false)
         let font = icon.getFont(style?.textStyle.font.pointSize ?? fontSize)
         if style?.textStyle.font.fontName != icon.fontName {
             style?.textStyle.font = font
@@ -217,15 +217,15 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     public convenience init(frame: CGRect = .zero, style: ButtonStyle, buttonLayout: ButtonLayout? = nil, onTap: VoidClosure? = nil) {
-        self.init(callDidInit: false)
+        self.init(callInitLifecycle: false)
         styleMap[.any] = style
         self.buttonLayout =? buttonLayout
         self.onTap =? onTap
         initLifecycle(.programmatically)
     }
 
-    public override init(callDidInit: Bool = true) {
-        super.init(callDidInit: callDidInit)
+    public override init(callInitLifecycle: Bool = true) {
+        super.init(callInitLifecycle: callInitLifecycle)
     }
 
     public override init(frame: CGRect) {

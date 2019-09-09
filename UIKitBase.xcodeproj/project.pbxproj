@@ -21,6 +21,10 @@
 		D284B1481F7908BB00D94AF3 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B12E1F7906DA00D94AF3 /* macOSTests.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* UIKitBase.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* UIKitBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */; };
+		E414048523270B180000349E /* BaseContainedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E414048423270B180000349E /* BaseContainedCollectionViewController.swift */; };
+		E414048623270B180000349E /* BaseContainedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E414048423270B180000349E /* BaseContainedCollectionViewController.swift */; };
+		E414048723270B180000349E /* BaseContainedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E414048423270B180000349E /* BaseContainedCollectionViewController.swift */; };
+		E414048823270B180000349E /* BaseContainedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E414048423270B180000349E /* BaseContainedCollectionViewController.swift */; };
 		E415C6EA22527DF0007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
 		E415C6EB22527DF1007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
 		E415C6EC22527DF2007286A2 /* AuthIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E442FFCF22527A1D0007E691 /* AuthIcons.ttf */; };
@@ -753,6 +757,7 @@
 		D5B2E8A91C3A780C00C0327D /* UIKitBase-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629401C3A7FAA007F7B7C /* UIKitBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* UIKitBase-macOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKitBase-macOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E414048423270B180000349E /* BaseContainedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainedCollectionViewController.swift; sourceTree = "<group>"; };
 		E41D6F7A2245F17000CA05C4 /* BaseUIApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIApplicationDelegate.swift; sourceTree = "<group>"; };
 		E41D6F7F2245F20700CA05C4 /* BaseAppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAppNotifications.swift; sourceTree = "<group>"; };
 		E41D6F842249731100CA05C4 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -1754,6 +1759,7 @@
 				E4AF806C21BB2D90002D6E86 /* BaseContainerViewController.swift */,
 				E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */,
 				E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */,
+				E414048423270B180000349E /* BaseContainedCollectionViewController.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -2283,6 +2289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D70A4224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E414048723270B180000349E /* BaseContainedCollectionViewController.swift in Sources */,
 				E41D7116224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7197224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726D224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
@@ -2468,6 +2475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D70A5224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E414048823270B180000349E /* BaseContainedCollectionViewController.swift in Sources */,
 				E41D7117224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7198224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726E224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,
@@ -2701,6 +2709,7 @@
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
 				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E475F5F322D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
+				E414048523270B180000349E /* BaseContainedCollectionViewController.swift in Sources */,
 				E41D71BB224D654800CA05C4 /* DynamicSizeCollectionViewCell.swift in Sources */,
 				E4AF81DA21BF84EF002D6E86 /* StatefulViewController.swift in Sources */,
 				E41D7292224D7D5200CA05C4 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -2830,6 +2839,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D70A3224D5F5B00CA05C4 /* LocationData.swift in Sources */,
+				E414048623270B180000349E /* BaseContainedCollectionViewController.swift in Sources */,
 				E41D7115224D5FB300CA05C4 /* ButtonAuthController.swift in Sources */,
 				E41D7196224D651300CA05C4 /* PullToRefresher.swift in Sources */,
 				E41D726C224D785A00CA05C4 /* ScrollViewObserver.swift in Sources */,

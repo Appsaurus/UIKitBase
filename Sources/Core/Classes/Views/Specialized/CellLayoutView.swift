@@ -56,7 +56,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
     // MARK: Initialization
 
     public required init(config: CellLayoutViewConfiguration? = nil, optionalRightView: UIView? = nil) {
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         self.optionalRightView = optionalRightView
         if let config = config {
             self.config = config
@@ -64,8 +64,8 @@ open class CellLayoutView<MV: UIView>: BaseView {
         initLifecycle(.programmatically)
     }
 
-    public override init(callDidInit: Bool = true) {
-        super.init(callDidInit: callDidInit)
+    public override init(callInitLifecycle: Bool = true) {
+        super.init(callInitLifecycle: callInitLifecycle)
     }
 
     public override init(frame: CGRect) {

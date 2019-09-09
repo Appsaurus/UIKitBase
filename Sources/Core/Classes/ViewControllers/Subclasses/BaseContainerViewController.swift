@@ -42,7 +42,6 @@ open class BaseContainerViewController: BaseViewController {
     }
 
     open func createContainerViewLayoutConstraints() {
-        
         view.removeLayoutMarginsInset(removingSafeAreaInset: true)
         containerView.removeLayoutMarginsInset(removingSafeAreaInset: true)
         view.layoutMargins = .zero

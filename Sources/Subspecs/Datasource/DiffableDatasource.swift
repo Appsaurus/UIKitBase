@@ -240,7 +240,6 @@ public extension DiffableDatasource {
 }
 
 public extension DiffableDataSourceSnapshot {
-
     mutating func append(section: SectionIdentifierType?, fallback: SectionIdentifierType?) -> DiffableDataSourceSnapshot {
         if let section = section {
             append(section: section)
@@ -249,7 +248,6 @@ public extension DiffableDataSourceSnapshot {
         }
         return self
     }
-
 
     mutating func append(section: SectionIdentifierType?) -> DiffableDataSourceSnapshot {
         if let section = section, !sectionIdentifiers.contains(section) {
@@ -262,7 +260,7 @@ public extension DiffableDataSourceSnapshot {
 
     @discardableResult
     mutating func insert(_ identifier: ItemIdentifierType,
-                at indexPath: IndexPath) -> Bool {
+                         at indexPath: IndexPath) -> Bool {
         guard let section = sectionIdentifiers[safe: indexPath.section] else { return false }
         let sectionItems = itemIdentifiers(inSection: section)
 

@@ -30,5 +30,4 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return UIViewController()
     }
-    
 }

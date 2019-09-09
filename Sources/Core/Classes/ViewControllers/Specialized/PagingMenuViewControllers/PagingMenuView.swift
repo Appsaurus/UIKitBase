@@ -120,7 +120,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     open override func initProperties() {
         super.initProperties()
         delegate.pagingMenuItemCellClasses(for: self).forEach { cellClass in
-            pagingMenuCollectionView.registerReusable(cellClass: cellClass)
+            pagingMenuCollectionView.register(cellClass)
         }
     }
 

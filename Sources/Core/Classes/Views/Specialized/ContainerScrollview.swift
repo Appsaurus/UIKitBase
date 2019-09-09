@@ -36,20 +36,17 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     var recognizesParentScroll: Bool = true
     var bouncesBottom: Bool = false
 
-    
     public required init(contentView: UIView = UIView()) {
         self.contentView = contentView
         super.init(frame: .zero)
         addSubview(contentView)
     }
 
-
     open override func initProperties() {
         super.initProperties()
         showsVerticalScrollIndicator = false
         bounces = false
     }
-
 
     open override func layoutSubviews() {
         super.layoutSubviews()

@@ -14,7 +14,7 @@ open class FormFieldCell: DynamicHeightCell {
 
     public init(field: View, insets: LayoutPadding? = nil) {
         self.field = field
-        super.init(callDidInit: false)
+        super.init(callInitLifecycle: false)
         mainViewInsets =? insets
         initLifecycle(.programmatically)
     }
