@@ -1,16 +1,17 @@
 //
-import Algorithm
-import Layman
-import SafariServices
 //  PagingWebViewController.swift
 //  UIKitBase
 //
 //  Created by Brian Strobach on 1/30/18.
 //
+
 import Swiftest
 import UIKitExtensions
 import UIKitTheme
 import WebKit
+import Algorithm
+import Layman
+import SafariServices
 
 open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged {
     open var titledUrls: SortedDictionary<String, URL> = SortedDictionary<String, URL>()

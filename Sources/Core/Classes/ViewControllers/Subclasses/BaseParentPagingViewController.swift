@@ -58,6 +58,7 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
     }
 
     open var currentPage: Int?
+    private var pendingPage: Int?
 
     open override func didTransition(to state: State) {
         super.didTransition(to: state)
@@ -78,19 +79,23 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
             initialPageIndex = index
             return
         }
-        transition(to: .loading)
-        willTransitionToPage(at: index)
-        //		if asyncDatasourceChangeQueue.count > 0{
-        //			uponQueueCompletion = { [weak self] in
-        //				self?._performTransitionToPage(at: index)
-        //			}
-        //		}
-        //		else{
+//        transition(to: .loading)
+        let page = currentPage
+        willPage(from: page, to: index)
         _performTransitionToPage(at: index)
-        //		}
+        didPage(from: page, to: index)
     }
 
-    open func willTransitionToPage(at index: Int) {}
+    open func willPage(from page: Int?, to nextPage: Int?) {
+        pendingPage = nextPage
+        print("Will page from: \(page) to: \(nextPage)")
+    }
+
+    open func didCancelPaging(from page: Int?, to nextPage: Int?) {
+        print("Did cancel paging from: \(page) to: \(nextPage)")
+        pendingPage = nil
+    }
+    
 
     private func _performTransitionToPage(at index: Int) {
         currentPagedViewController?.view.endEditing(true)
@@ -101,12 +106,14 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
         }
         pageViewController.setViewControllers([vc], direction: direction, animated: animatesPageTransitions, completion: nil)
         currentPage = index
-        didTransitionToPage(at: index)
     }
 
-    open func didTransitionToPage(at index: Int) {
-        transition(to: .loaded)
+    open func didPage(from page: Int?, to nextPage: Int?) {
+        print("Did page from: \(page) to: \(nextPage)")
+        currentPage = nextPage
+        pendingPage = nil
     }
+
 
     open func eagerLoadViewControllers(surrounding index: Int, by buffer: Int) {
         let minIndex = 0
@@ -168,6 +175,28 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
         }
 
         return pagedViewControllers[nextIndex]
+    }
+
+    public func pageViewController(_ pageViewController: UIPageViewController,
+                                   didFinishAnimating finished: Bool,
+                                   previousViewControllers: [UIViewController],
+                                   transitionCompleted completed: Bool) {
+
+        guard let lastVC = self.pageViewController.viewControllers?.last else { return }
+
+        guard finished else { return }
+
+        guard completed else {
+            didCancelPaging(from: currentPage, to: pendingPage)
+            return
+        }
+        let newIndex = pagedViewControllers.index(of: lastVC)
+        didPage(from: currentPage, to: newIndex)
+    }
+
+    public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let lastVC = pendingViewControllers.last else { return }
+        willPage(from: currentPage, to: pagedViewControllers.index(of: lastVC))
     }
 
     open func reloadPageDatasource() {
