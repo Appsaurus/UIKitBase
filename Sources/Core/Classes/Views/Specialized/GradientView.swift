@@ -8,7 +8,7 @@
 
 import UIKitTheme
 /// Simple view for drawing gradients and borders.
-@IBDesignable open class GradientView: UIView {
+@IBDesignable open class GradientView: BaseView {
     // MARK: - Types
 
     /// The mode of the gradient.
@@ -267,6 +267,8 @@ public extension GradientView {
                                             alpha: CGFloat = 1.0) -> GradientView {
         let gradientView = gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
         view.insertSubview(gradientView, at: 0)
+        gradientView.clipsToBounds = true
+        gradientView.cornerRadius = view.cornerRadius
         gradientView.pinToSuperview()
         return gradientView
     }

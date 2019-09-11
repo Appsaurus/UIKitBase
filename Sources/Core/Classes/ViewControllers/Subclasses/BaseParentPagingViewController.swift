@@ -9,8 +9,14 @@
 import Foundation
 import Swiftest
 import UIKit
+import Layman
 
-open class BaseParentPagingViewController: BaseParentViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, AsyncDatasourceChangeManager {
+extension BaseParentPagingViewController:
+    UIPageViewControllerDataSource,
+    UIPageViewControllerDelegate,
+    AsyncDatasourceChangeManager
+{}
+open class BaseParentPagingViewController: BaseParentViewController {
     open lazy var eagerLoadBuffer: Int? = nil
     open lazy var initialPageIndex: Int = 0
     open var loadsPagesImmediately: Bool = true
@@ -23,14 +29,12 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
     open var asyncDatasourceChangeQueue: [AsyncDatasourceChange] = []
     open var uponQueueCompletion: VoidClosure?
 
-    open lazy var pageViewController: BasePageViewController = {
-        let pageVC = self.createPageViewController()
-        if self.animatesPageTransitions {
-            pageVC.dataSource = self
-        }
-        pageVC.delegate = self
-        return pageVC
-    }()
+    open lazy var pageControl = UIPageControl().then{
+        $0.isHidden = true
+        $0.isUserInteractionEnabled = false
+    }
+
+    open lazy var pageViewController: BasePageViewController = self.createPageViewController()
 
     open var animatesPageTransitions: Bool {
         return false
@@ -57,8 +61,51 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
         return self.pageViewController.viewControllers?.first
     }
 
-    open var currentPage: Int?
-    private var pendingPage: Int?
+    
+    open var currentPage: Int? {
+        didSet {
+            DispatchQueue.main.async {
+                if let currentPage = self.currentPage { self.pageControl.currentPage = currentPage }
+            }
+        }
+    }
+    open var pendingPage: Int?
+
+    open override func setupDelegates(){
+        pageViewController.dataSource = self
+        pageViewController.delegate = self
+    }
+
+    open override func style() {
+        super.style()
+        self.pageControl.pageIndicatorTintColor = .deselected
+        self.pageControl.currentPageIndicatorTintColor = .primaryLight
+//        self.pageControl.apply(viewStyle: .card)
+    }
+    open override func createSubviews() {
+        super.createSubviews()
+        view.addSubview(pageControl)
+    }
+
+    open override func createAutoLayoutConstraints() {
+        super.createAutoLayoutConstraints()
+        layoutPageControl()
+    }
+
+    open func layoutPageControl() {
+        pageControl.enforceContentSize()
+//        pageControl.height.equal(to: 30)
+//        pageControl.width.equal(to: self.view.width.times(0.5))
+        pageControl.centerX.equal(to: self.view.centerX)
+        pageControl.bottom.equal(to: self.bottom.inset(20))
+    }
+
+
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        pageControl.moveToFront()
+
+    }
 
     open override func didTransition(to state: State) {
         super.didTransition(to: state)
@@ -219,6 +266,16 @@ open class BaseParentPagingViewController: BaseParentViewController, UIPageViewC
     }
 
     open func pagesDidReload() {
+        pageControl.numberOfPages = pagedViewControllers.count
+        pageControl.currentPage = currentPage ?? 0
         //		transitionToPage(at: defaultReloadIndex())
+    }
+
+    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return self.pagedViewControllers.count
+    }
+
+    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return self.pagedViewControllers.index(of: pageViewController) ?? 0
     }
 }
