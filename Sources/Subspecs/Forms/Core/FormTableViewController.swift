@@ -22,6 +22,8 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open var autoPrefillsForm = true
     open var autoAssignFirstResponder = false
     open var showsValidationErrorsOnDisbledSubmit = true
+    open var popsOrDismissesOnSuccess: Bool = false
+
     open var cachedSubmissionState: Submission?
 
     open lazy var form: Form = self.createForm()
@@ -187,7 +189,10 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         return try createSubmission()
     }
 
-    open func submissionDidSucceed(with response: Response) {}
+    open func submissionDidSucceed(with response: Response) {
+        guard popsOrDismissesOnSuccess else { return }
+        popOrDismiss()
+    }
 
     open func submissionDidFail(with error: Error) {
         switch error {

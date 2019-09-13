@@ -105,7 +105,8 @@ public protocol AppIOManager: UIApplicationDelegateMixinable, UNUserNotification
     /// Hook to implement registering of push notifications with backend
     ///
     /// - Parameter token: the device token to register
-    func registerDevice(withToken token: String, success: VoidClosure?, failure: ErrorClosure?)
+    func registerDevice(withToken token: String, serviceToken: String?, success: VoidClosure?, failure: ErrorClosure?)
+
 
     // MARK: DeepLinking
 
@@ -251,7 +252,10 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
     }
 
     open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        mixable.registerDevice(withToken: String(deviceToken: deviceToken), success: remoteNotificationRegistrationSuccess, failure: remoteNotificationRegistrationFailure)
+        mixable.registerDevice(withToken: String(deviceToken: deviceToken),
+                               serviceToken: nil,
+                               success: remoteNotificationRegistrationSuccess,
+                               failure: remoteNotificationRegistrationFailure)
     }
 
     open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
