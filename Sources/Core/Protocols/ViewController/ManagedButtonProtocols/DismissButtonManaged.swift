@@ -20,16 +20,19 @@ public class NavigationBarButtonConfiguration: NSObject {
     public var activityIndicatorStyle: UIActivityIndicatorView.Style
     public var buttonTitle: String
     public var buttonAttributedTitle: NSAttributedString?
+    public var showsDismissButton: Bool
     public init(position: NavigationBarButtonPosition = .trailing,
                 size: CGSize? = nil,
                 activityIndicatorStyle: UIActivityIndicatorView.Style = .white,
                 buttonTitle: String = "Done",
-                buttonAttributedTitle: NSAttributedString? = nil) {
+                buttonAttributedTitle: NSAttributedString? = nil,
+                showsDismissButton: Bool = true) {
         self.position = position
         self.size = size
         self.activityIndicatorStyle = activityIndicatorStyle
         self.buttonTitle = buttonTitle
         self.buttonAttributedTitle = buttonAttributedTitle
+        self.showsDismissButton = showsDismissButton
     }
 }
 
@@ -83,7 +86,9 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
 open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
     open override func createSubviews() {
         super.createSubviews()
-        mixable.setupDismissButton()
+        if mixable.dismissButtonConfiguration.showsDismissButton {
+            mixable.setupDismissButton()
+        }
     }
 }
 

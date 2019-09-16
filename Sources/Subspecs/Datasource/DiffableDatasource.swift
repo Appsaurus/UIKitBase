@@ -13,6 +13,7 @@ import UIKitExtensions
 /// Simplified TableViewDiffableDatasource that assumes a single section
 open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableDataSource<String, ItemIdentifierType> {
     public var usesSectionsAsHeaderTitles: Bool = false
+    public weak var secondaryDatasource: UITableViewDataSource?
 
     public override init(tableView: UITableView,
                          cellProvider: @escaping TableViewDiffableDataSource<SectionIdentifierType, ItemIdentifierType>.CellProvider) {
@@ -20,9 +21,11 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
     }
 
     @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard usesSectionsAsHeaderTitles,
-            numberOfItems(inSection: section) > 0 else { return nil }
+        guard usesSectionsAsHeaderTitles else {
+                return secondaryDatasource?.tableView?(tableView, titleForHeaderInSection: section)
+        }
 
+        guard numberOfItems(inSection: section) > 0 else { return nil}
         return snapshot().sectionIdentifiers[section]
     }
 }
