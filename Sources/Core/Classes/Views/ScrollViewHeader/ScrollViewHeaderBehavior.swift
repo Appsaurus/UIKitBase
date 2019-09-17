@@ -43,7 +43,11 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
         self.strength = strength
         self.timing = timing
         super.init()
+        if #available(iOS 11.0, *) {
+            animator.pausesOnCompletion = true
+        }
     }
+    
 
     deinit {
         animator.stopAnimation(true)
