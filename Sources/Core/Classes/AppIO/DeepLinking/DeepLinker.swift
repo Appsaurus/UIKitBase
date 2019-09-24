@@ -120,7 +120,7 @@ public protocol DeepLinkHandler: DeepLinkObserver {
 }
 
 extension DeepLinkHandler {
-    var deepLinker: DeepLinker<RouteType> {
+    public var deepLinker: DeepLinker<RouteType> {
         return DeepLinker<RouteType>.shared
     }
 }
