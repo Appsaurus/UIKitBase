@@ -94,7 +94,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
 
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        stackView.forceSuperviewToMatchContentSize(insetBy: config.mainLayoutViewInsets, usingMargins: true)
+        stackView.forceSuperviewToMatchContentSize(insetBy: config.mainLayoutViewInsets)
         middleView.width.greaterThanOrEqual(to: 0)
         middleView.resistCompression()
         middleView.hugContent(.low)
