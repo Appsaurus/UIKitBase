@@ -8,7 +8,7 @@ import Nuke
 ////
 //
 import UIKit
-
+import Swiftest
 extension Nuke_ImageDisplaying where Self: UIView {
     @discardableResult
     public func loadImage(with url: URLConvertible,
@@ -115,45 +115,45 @@ extension UIButton: Nuke_ImageDisplaying {
 //    }
 //
 // }
-
-public enum URLConvertibleError: Error {
-    case invalidURL
-}
-
-public protocol URLConvertible {
-    var toURL: URL? { get }
-    func assertURL() throws -> URL
-}
-
-extension URLConvertible {
-    public func assertURL() throws -> URL {
-        guard let url = toURL else {
-            throw URLConvertibleError.invalidURL
-        }
-        return url
-    }
-}
-
-extension URL: URLConvertible {
-    public var toURL: URL? {
-        return self
-    }
-}
-
-extension URLComponents: URLConvertible {
-    public var toURL: URL? {
-        return url
-    }
-}
-
-extension String: URLConvertible {
-    public var toURL: URL? {
-        if let string = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            return URL(string: string)
-        }
-        return URL(string: self)
-    }
-}
+//
+//public enum URLConvertibleError: Error {
+//    case invalidURL
+//}
+//
+//public protocol URLConvertible {
+//    var toURL: URL? { get }
+//    func assertURL() throws -> URL
+//}
+//
+//extension URLConvertible {
+//    public func assertURL() throws -> URL {
+//        guard let url = toURL else {
+//            throw URLConvertibleError.invalidURL
+//        }
+//        return url
+//    }
+//}
+//
+//extension URL: URLConvertible {
+//    public var toURL: URL? {
+//        return self
+//    }
+//}
+//
+//extension URLComponents: URLConvertible {
+//    public var toURL: URL? {
+//        return url
+//    }
+//}
+//
+//extension String: URLConvertible {
+//    public var toURL: URL? {
+//        if let string = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+//            return URL(string: string)
+//        }
+//        return URL(string: self)
+//    }
+//}
 
 //
 // public protocol ImageDisplayable{

@@ -37,7 +37,8 @@ public extension Authenticator {
 }
 
 public protocol OAuthAuthenticator: Authenticator {
-    func authenticate(onCompletion: @escaping ResultClosure<Result>)
+    func getAccessToken(onCompletion: @escaping ResultClosure<String>)
+    func authenticate(with accessToken: String, onCompletion: @escaping ResultClosure<Result>)
 }
 
 public extension OAuthAuthenticator {
@@ -46,6 +47,19 @@ public extension OAuthAuthenticator {
         authenticate(onCompletion: { [weak self] result in
             guard let self = self else { return }
             self.delegate?.authenticationDidComplete(authenticator: self, with: result)
+        })
+    }
+
+    public func authenticate(onCompletion: @escaping ResultClosure<Result>) {
+        getAccessToken(onCompletion: { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let token: String = try result.get()
+                self.authenticate(with: token, onCompletion: onCompletion)
+            }
+            catch {
+                onCompletion(.failure(error))
+            }
         })
     }
 }
