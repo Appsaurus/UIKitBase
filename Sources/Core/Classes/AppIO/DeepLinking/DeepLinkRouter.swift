@@ -21,10 +21,8 @@ open class DeepLinkRouter {
      - parameter callback: Triggered when a route is matched
      */
     open func bind(_ route: String, callback: RouteHandler? = nil) {
-        print("BINDING: \(route)")
         do {
             let route = try Route(route: route)
-            print("Route: \(route)")
             orderedRoutes.append(route)
             if let callback = callback { routes[route] = callback }
         } catch let error as Route.RegexResult {

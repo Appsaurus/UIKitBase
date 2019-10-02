@@ -157,17 +157,12 @@ open class MaterialTextField: AnimatableTextField {
 
         guard shouldPositionAbove else {
             titleLabel.transform = CGAffineTransform.identity
-//            print("Bounds: \(bounds)")
-//            print("frame: \(frame)")
-//            print("textRect \(textRect(forBounds: bounds))")
             titleLabel.frame = textRect(forBounds: bounds.height == 0 ? CGRect(x: 0, y: 0, width: frame.w, height: frame.h) : bounds)
-//            print("titleFrame: \(titleLabel.frame)")
             return
         }
 
         titleLabel.frame = CGRect(x: 0, y: 0, width: frame.w, height: layoutHeights.titleLabel)
         titleLabel.transform = CGAffineTransform(scaleX: placeholderActiveScale, y: placeholderActiveScale)
-//        print("titleFrame: \(titleLabel.frame)")
     }
 }
 

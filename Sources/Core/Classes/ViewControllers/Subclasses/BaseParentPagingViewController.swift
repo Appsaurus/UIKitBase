@@ -142,11 +142,9 @@ open class BaseParentPagingViewController: BaseParentViewController {
 
     open func willPage(from page: Int?, to nextPage: Int?) {
         pendingPage = nextPage
-//        print("Will page from: \(page) to: \(nextPage)")
     }
 
     open func didCancelPaging(from page: Int?, to nextPage: Int?) {
-//        print("Did cancel paging from: \(page) to: \(nextPage)")
         pendingPage = nil
     }
     
