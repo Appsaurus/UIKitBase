@@ -20,7 +20,10 @@ open class BaseParentPagingViewController: BaseParentViewController {
     open lazy var eagerLoadBuffer: Int? = nil
     open lazy var initialPageIndex: Int = 0
     open var loadsPagesImmediately: Bool = true
-
+    open var showsPageControl: Bool = false
+    open lazy var customPageControl = UIPageControl().then{
+        $0.isUserInteractionEnabled = false
+    }
     public func defaultReloadIndex() -> Int {
         return currentPage ?? initialPageIndex
     }
@@ -28,11 +31,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
     // AsyncStateManagementQueue
     open var asyncDatasourceChangeQueue: [AsyncDatasourceChange] = []
     open var uponQueueCompletion: VoidClosure?
-
-    open lazy var pageControl = UIPageControl().then{
-        $0.isHidden = true
-        $0.isUserInteractionEnabled = false
-    }
 
     open lazy var pageViewController: BasePageViewController = self.createPageViewController()
 
@@ -65,7 +63,7 @@ open class BaseParentPagingViewController: BaseParentViewController {
     open var currentPage: Int? {
         didSet {
             DispatchQueue.main.async {
-                if let currentPage = self.currentPage { self.pageControl.currentPage = currentPage }
+                if let currentPage = self.currentPage { self.customPageControl.currentPage = currentPage }
             }
         }
     }
@@ -78,13 +76,16 @@ open class BaseParentPagingViewController: BaseParentViewController {
 
     open override func style() {
         super.style()
-        self.pageControl.pageIndicatorTintColor = .deselected
-        self.pageControl.currentPageIndicatorTintColor = .primaryLight
-//        self.pageControl.apply(viewStyle: .card)
+        customPageControl.pageIndicatorTintColor = .deselected
+        customPageControl.currentPageIndicatorTintColor = .primaryLight
     }
     open override func createSubviews() {
         super.createSubviews()
-        view.addSubview(pageControl)
+        pageViewController.hidePageControl() //Hide default page control
+        guard showsPageControl else {
+            return
+        }
+        view.addSubview(customPageControl)
     }
 
     open override func createAutoLayoutConstraints() {
@@ -93,17 +94,23 @@ open class BaseParentPagingViewController: BaseParentViewController {
     }
 
     open func layoutPageControl() {
-        pageControl.enforceContentSize()
+        guard showsPageControl else {
+            return
+        }
+        customPageControl.enforceContentSize()
 //        pageControl.height.equal(to: 30)
 //        pageControl.width.equal(to: self.view.width.times(0.5))
-        pageControl.centerX.equal(to: self.view.centerX)
-        pageControl.bottom.equal(to: self.bottom.inset(20))
+        customPageControl.centerX.equal(to: self.view.centerX)
+        customPageControl.bottom.equal(to: self.bottom.inset(20))
     }
 
 
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        pageControl.moveToFront()
+        guard showsPageControl else {
+            return
+        }
+        customPageControl.moveToFront()
 
     }
 
@@ -266,16 +273,16 @@ open class BaseParentPagingViewController: BaseParentViewController {
     }
 
     open func pagesDidReload() {
-        pageControl.numberOfPages = pagedViewControllers.count
-        pageControl.currentPage = currentPage ?? 0
+        customPageControl.numberOfPages = pagedViewControllers.count
+        customPageControl.currentPage = currentPage ?? 0
         //		transitionToPage(at: defaultReloadIndex())
     }
 
-    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pagedViewControllers.count
-    }
-
-    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return self.pagedViewControllers.index(of: pageViewController) ?? 0
-    }
+//    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return self.pagedViewControllers.count
+//    }
+//
+//    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//        return self.pagedViewControllers.index(of: pageViewController) ?? 0
+//    }
 }
