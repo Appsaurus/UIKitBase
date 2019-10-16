@@ -376,13 +376,11 @@ extension DualSearchViewController {
 
 public extension UISearchBar {
     var searchQuery: String? {
-        print("Text: \(textField?.text)")
         return textField?.text.removeEmpty
     }
 
     var hasSearchQuery: Bool {
-        guard let _ = searchQuery else { return false }
-        return true
+        return searchQuery != nil
     }
 }
 

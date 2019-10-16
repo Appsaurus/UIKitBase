@@ -322,6 +322,4 @@ public protocol SearchBarReferencing {
     var searchBar: UISearchBar { get }
 }
 
-extension SearchBarReferencing {
-
-}
+extension SearchBarReferencing {}

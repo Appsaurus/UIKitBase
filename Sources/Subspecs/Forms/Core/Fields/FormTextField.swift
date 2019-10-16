@@ -11,7 +11,8 @@ import Foundation
 import Swiftest
 import UIKitMixinable
 
-open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView, Value>, FormTextFieldProtocol where ContentView: FormFieldViewProtocol {
+open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView, Value>, FormTextFieldProtocol
+    where ContentView: FormFieldViewProtocol {
     open lazy var autocorrectionType: UITextAutocorrectionType = .no
     open lazy var keyboardType: UIKeyboardType = .default
 

@@ -239,13 +239,13 @@ open class BaseParentPagingViewController: BaseParentViewController {
             didCancelPaging(from: currentPage, to: pendingPage)
             return
         }
-        let newIndex = pagedViewControllers.index(of: lastVC)
+        let newIndex = pagedViewControllers.firstIndex(of: lastVC)
         didPage(from: currentPage, to: newIndex)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         guard let lastVC = pendingViewControllers.last else { return }
-        willPage(from: currentPage, to: pagedViewControllers.index(of: lastVC))
+        willPage(from: currentPage, to: pagedViewControllers.firstIndex(of: lastVC))
     }
 
     open func reloadPageDatasource() {

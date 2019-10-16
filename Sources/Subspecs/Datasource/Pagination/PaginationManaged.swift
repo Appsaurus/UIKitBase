@@ -148,7 +148,7 @@ public extension PaginationManaged where Self: UIViewController {
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>,
                            isFirstPage: Bool = false,
                            reloadCompletion: VoidClosure? = nil) {
-        var result = modifyFetched(result: result)
+        let result = modifyFetched(result: result)
 
         let completion = { [weak self] in
             guard let self = self else { return }

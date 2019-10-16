@@ -203,7 +203,7 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     open func configure<A: Authenticator>(authenticators: A...) {
         authenticators.forEach { authenticator in
-            var authenticator = authenticator
+//            var authenticator = authenticator
             authenticator.delegate = self
         }
     }
