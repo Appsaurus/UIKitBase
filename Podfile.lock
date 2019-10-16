@@ -41,7 +41,7 @@ PODS:
   - UIFontIcons/Core (0.0.6)
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.24):
+  - UIKitExtensions (0.0.27):
     - DarkMagic
     - Swiftest
   - UIKitMixinable (0.0.25)
@@ -146,7 +146,7 @@ CHECKOUT OPTIONS:
     :commit: c886860737756bd733561febd8767d1cd0ea5382
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: 654d7217a31596578ef5d2c24f4533e0bbbee9f0
+    :commit: 75c0d5e0d7fc99802b2ae3e39e50364deaa74e0a
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
     :commit: d9c0157a227b8bfde8e8d30733fb3571c6fb139a
@@ -178,7 +178,7 @@ SPEC CHECKSUMS:
   SwiftLocation: e89dd4dbebbce1755836154103546f4ab3d92aae
   SwiftTestUtils: 69c483e473582bc9f166b682b6f28d0e7ca9efd0
   UIFontIcons: d4a72e705e2ce1f7ef60e6107e12500893a0b67a
-  UIKitExtensions: 86fa39c55feea9c16cd1af9540f1c6831ac075fb
+  UIKitExtensions: 65cceec6a8c8b31042eb9ae1d65025d7c28eadaa
   UIKitMixinable: fa1f0de569032d62e4150c3d0c6b30514a2acc0d
   UIKitTheme: fe520b2a9ffbc59545116f06966c1d0c14e172a9
 
