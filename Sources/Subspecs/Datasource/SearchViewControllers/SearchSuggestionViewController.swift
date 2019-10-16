@@ -285,6 +285,8 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         }
         queryInputChanged(resultsController: resultsController)
 
+        print("isEmpty: \(isEmpty)")
+        print("wasManuallyClearedByDeleteKeystroke: \(wasManuallyClearedByDeleteKeystroke)")
         if isEmpty, !wasManuallyClearedByDeleteKeystroke {
             searchBarDidClear(searchBar)
         }
@@ -372,8 +374,9 @@ extension DualSearchViewController {
     }
 }
 
-private extension UISearchBar {
+public extension UISearchBar {
     var searchQuery: String? {
+        print("Text: \(textField?.text)")
         return textField?.text.removeEmpty
     }
 

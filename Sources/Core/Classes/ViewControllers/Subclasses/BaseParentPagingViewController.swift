@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import Layman
 import Swiftest
 import UIKit
-import Layman
 
 extension BaseParentPagingViewController:
     UIPageViewControllerDataSource,
@@ -21,9 +21,10 @@ open class BaseParentPagingViewController: BaseParentViewController {
     open lazy var initialPageIndex: Int = 0
     open var loadsPagesImmediately: Bool = true
     open var showsPageControl: Bool = false
-    open lazy var customPageControl = UIPageControl().then{
+    open lazy var customPageControl = UIPageControl().then {
         $0.isUserInteractionEnabled = false
     }
+
     public func defaultReloadIndex() -> Int {
         return currentPage ?? initialPageIndex
     }
@@ -59,7 +60,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
         return self.pageViewController.viewControllers?.first
     }
 
-    
     open var currentPage: Int? {
         didSet {
             DispatchQueue.main.async {
@@ -67,9 +67,10 @@ open class BaseParentPagingViewController: BaseParentViewController {
             }
         }
     }
+
     open var pendingPage: Int?
 
-    open override func setupDelegates(){
+    open override func setupDelegates() {
         pageViewController.dataSource = self
         pageViewController.delegate = self
     }
@@ -79,9 +80,10 @@ open class BaseParentPagingViewController: BaseParentViewController {
         customPageControl.pageIndicatorTintColor = .deselected
         customPageControl.currentPageIndicatorTintColor = .primaryLight
     }
+
     open override func createSubviews() {
         super.createSubviews()
-        pageViewController.hidePageControl() //Hide default page control
+        pageViewController.hidePageControl() // Hide default page control
         guard showsPageControl else {
             return
         }
@@ -100,10 +102,9 @@ open class BaseParentPagingViewController: BaseParentViewController {
         customPageControl.enforceContentSize()
 //        pageControl.height.equal(to: 30)
 //        pageControl.width.equal(to: self.view.width.times(0.5))
-        customPageControl.centerX.equal(to: self.view.centerX)
-        customPageControl.bottom.equal(to: self.bottom.inset(20))
+        customPageControl.centerX.equal(to: view.centerX)
+        customPageControl.bottom.equal(to: bottom.inset(20))
     }
-
 
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -111,7 +112,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
             return
         }
         customPageControl.moveToFront()
-
     }
 
     open override func didTransition(to state: State) {
@@ -147,7 +147,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
     open func didCancelPaging(from page: Int?, to nextPage: Int?) {
         pendingPage = nil
     }
-    
 
     private func _performTransitionToPage(at index: Int) {
         currentPagedViewController?.view.endEditing(true)
@@ -165,7 +164,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
         currentPage = nextPage
         pendingPage = nil
     }
-
 
     open func eagerLoadViewControllers(surrounding index: Int, by buffer: Int) {
         let minIndex = 0
@@ -233,7 +231,6 @@ open class BaseParentPagingViewController: BaseParentViewController {
                                    didFinishAnimating finished: Bool,
                                    previousViewControllers: [UIViewController],
                                    transitionCompleted completed: Bool) {
-
         guard let lastVC = self.pageViewController.viewControllers?.last else { return }
 
         guard finished else { return }

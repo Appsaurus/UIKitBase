@@ -47,7 +47,6 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
             animator.pausesOnCompletion = true
         }
     }
-    
 
     deinit {
         animator.stopAnimation(true)

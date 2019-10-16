@@ -191,7 +191,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open func queryInputChanged() {
         guard let searchThrottle = config.searchThrottle else {
-            performSearch(query: searchQuery)
+            performSearch(query: searchQuery())
             return
         }
 
@@ -202,7 +202,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     }
 
     @objc private func triggerSearch() {
-        performSearch(query: searchQuery)
+        performSearch(query: searchQuery())
     }
 
     open func performSearch(query: String?) {
@@ -305,8 +305,8 @@ extension SearchViewController {
         return controls.searchBar
     }
 
-    open var searchQuery: String? {
-        return searchBar.searchQuery
+    open func searchQuery(filterEmpty: Bool = true) -> String? {
+        return searchBar.searchQuery(filterEmpty: filterEmpty)
     }
 
     open var resultsViewController: SearchResultsViewController {
@@ -318,13 +318,10 @@ extension SearchViewController {
     }
 }
 
-private extension UISearchBar {
-    var searchQuery: String? {
-        return textField?.text.removeEmpty
-    }
+public protocol SearchBarReferencing {
+    var searchBar: UISearchBar { get }
+}
 
-    var hasSearchQuery: Bool {
-        guard let _ = searchQuery else { return false }
-        return true
-    }
+extension SearchBarReferencing {
+
 }

@@ -22,10 +22,10 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
 
     @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles else {
-                return secondaryDatasource?.tableView?(tableView, titleForHeaderInSection: section)
+            return secondaryDatasource?.tableView?(tableView, titleForHeaderInSection: section)
         }
 
-        guard numberOfItems(inSection: section) > 0 else { return nil}
+        guard numberOfItems(inSection: section) > 0 else { return nil }
         return snapshot().sectionIdentifiers[section]
     }
 }

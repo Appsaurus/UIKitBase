@@ -50,14 +50,13 @@ public extension OAuthAuthenticator {
         })
     }
 
-    public func authenticate(onCompletion: @escaping ResultClosure<Result>) {
+    func authenticate(onCompletion: @escaping ResultClosure<Result>) {
         getAccessToken(onCompletion: { [weak self] result in
             guard let self = self else { return }
             do {
                 let token: String = try result.get()
                 self.authenticate(with: token, onCompletion: onCompletion)
-            }
-            catch {
+            } catch {
                 onCompletion(.failure(error))
             }
         })

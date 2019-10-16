@@ -107,7 +107,6 @@ public protocol AppIOManager: UIApplicationDelegateMixinable, UNUserNotification
     /// - Parameter token: the device token to register
     func registerDevice(withToken token: String, serviceToken: String?, success: VoidClosure?, failure: ErrorClosure?)
 
-
     // MARK: DeepLinking
 
     associatedtype DeepLinkRouteType: DeepLinkRoute
