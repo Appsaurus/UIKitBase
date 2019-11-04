@@ -8,7 +8,7 @@
 import DarkMagic
 import Foundation
 
-public protocol FirstResponderManaged {
+public protocol FirstResponderManaged: class {
     var endsEditingOnDisappearance: Bool { get set }
     var persistsFirstResponderBetweenAppearances: Bool { get set }
     var firstResponderOnNextAppearance: UIResponder? { get set }
@@ -22,7 +22,7 @@ extension FirstResponderManaged {
 }
 
 extension FirstResponderManaged where Self: UIViewController {
-    mutating func firstResponderManagedWillDissappear() {
+     func firstResponderManagedWillDissappear() {
         if persistsFirstResponderBetweenAppearances {
             firstResponderOnNextAppearance = view.firstResponder
         }

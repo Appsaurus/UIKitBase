@@ -135,6 +135,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func fieldDidBeginEditing(_ field: FormFieldProtocol) {
         formToolbar?.update()
+
     }
 
     open func fieldDidEndEditing(_ field: FormFieldProtocol) {}
@@ -221,6 +222,7 @@ extension FormTableViewController: UITableViewReferencing {
 
 open class FormTableViewController<Submission: Equatable, Response>: BaseFormViewController<Submission, Response>, UITableViewControllerProtocol {
 //    public typealias SVH = ScrollViewHeader
+    private var keyboardAvoiding: KeyboardAvoiding!
 
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
@@ -257,6 +259,7 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
         super.initProperties()
         containedView = tableView
         tableView.separatorStyle = .none
+//        containedViewAvoidsKeyboard = true
     }
 
     open override func setupDelegates() {
@@ -274,6 +277,24 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
         super.viewDidLoad()
         tableView.automaticallySizeCellHeights(200)
         tableView.reloadData()
+
+
+        self.keyboardAvoiding = KeyboardAvoiding()
+        .onKeyboardWillShow { [weak self] rect in
+            guard let self = self else { return }
+            self.tableView.contentInset.bottom = rect.height
+        }
+        .onKeyboardDidShow { rect in
+
+        }
+        .onKeyboardWillHide { [weak self] in
+            guard let self = self else { return }
+            self.tableView.contentInset.bottom = 0
+        }
+        .onKeyboardDidHide {
+
+        }
+
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -284,8 +305,13 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.dynamicallySizeHeight(of: .header, .footer)
+        self.keyboardAvoiding.start()
     }
 
+    override open func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.keyboardAvoiding.stop()
+    }
     open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -304,6 +330,141 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
     open func customize(fieldCell: FormFieldCell, at indexPath: IndexPath) {
         if fieldCell.field is FormPickerFieldProtocol {
             fieldCell.accessoryType = .disclosureIndicator
+        }
+    }
+
+}
+
+
+
+open class KeyboardAvoiding {
+
+    open var willShow: ((CGRect) -> Void)?
+    open var didShow: ((CGRect) -> Void)?
+    open var willHide: (() -> Void)?
+    open var didHide: (() -> Void)?
+
+    public init(willShow: ((CGRect) -> Void)? = nil,
+                didShow: ((CGRect) -> Void)? = nil,
+                willHide: (() -> Void)? = nil,
+                didHide: (() -> Void)? = nil) {
+
+        self.willShow = willShow
+        self.didShow = didShow
+        self.willHide = willHide
+        self.didHide = didHide
+    }
+
+    public func onKeyboardWillShow(_ willShow: @escaping ((CGRect) -> Void)) -> KeyboardAvoiding {
+        self.willShow = willShow
+        return self
+    }
+
+    public func onKeyboardDidShow(_ didShow: @escaping ((CGRect) -> Void)) -> KeyboardAvoiding {
+        self.didShow = didShow
+        return self
+    }
+
+    public func onKeyboardWillHide(_ willHide: @escaping (() -> Void)) -> KeyboardAvoiding {
+        self.willHide = willHide
+        return self
+    }
+
+    public func onKeyboardDidHide(_ didHide: @escaping (() -> Void)) -> KeyboardAvoiding {
+        self.didHide = didHide
+        return self
+    }
+
+    public func start() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardDidShow(_:)),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardDidHide(_:)),
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
+    }
+
+    public func stop() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    private func animate(curve: Int, duration: Double, _ block: @escaping (() -> Void)) {
+        let animationCurve = UIView.AnimationCurve(rawValue: curve) ?? .linear
+        let animationOptions = UIView.AnimationOptions(rawValue: UInt(animationCurve.rawValue << 16))
+
+        UIView.animate(withDuration: duration, delay: 0, options: animationOptions, animations: block, completion: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int,
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+        else {
+            return
+        }
+
+        self.animate(curve: curve, duration: duration) {
+            self.willShow?(frame)
+        }
+    }
+
+    @objc func keyboardDidShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int,
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+        else {
+            return
+        }
+
+        self.animate(curve: curve, duration: duration) {
+            self.didShow?(frame)
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int
+        else {
+            return
+        }
+        self.animate(curve: curve, duration: duration) {
+            self.willHide?()
+        }
+    }
+
+    @objc func keyboardDidHide(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int
+        else {
+            return
+        }
+
+        self.animate(curve: curve, duration: duration) {
+            self.didHide?()
         }
     }
 }
