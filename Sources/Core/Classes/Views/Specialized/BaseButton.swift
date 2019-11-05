@@ -297,12 +297,12 @@ open class BaseButton: BaseView, ButtonStyleable {
             titleLabel.textAlignment = .center
 
         case let .imageLeftTitleStackedRight(padding):
-            [imageView, titleLabel].stack(.leftToRight, in: contentLayoutView)
-//            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
+//            [imageView, titleLabel].stack(.leftToRight, in: contentLayoutView)
+            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-//            titleLabel.equal(to: contentLayoutView.edges.excluding(.leading))
-//            imageView.trailing.equal(to: titleLabel.leading.inset(padding))
-//            titleLabel.textAlignment = .left
+            titleLabel.edges.excluding(.leading).equal(to: contentLayoutView)
+            imageView.trailing.equal(to: titleLabel.leading.inset(padding))
+            titleLabel.textAlignment = .left
         case let .imageRightTitleStackedLeft(padding):
             imageView.equal(to: contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
             createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)

@@ -112,7 +112,9 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     // MARK: AuthControllerDelegate
 
-    open func authenticationDidBegin<A: Authenticator>(authenticator: A) {}
+    open func authenticationDidBegin<A: Authenticator>(authenticator: A) {
+        authenticationDidBegin()
+    }
 
     open func authenticationDidComplete<A: Authenticator>(authenticator: A, with result: Result<A.Result, Error>) {
         switch result {
@@ -127,29 +129,57 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
         logoutDidComplete(with: result)
     }
 
-    open func didBeginSessionRestore<A: Authenticator>(for authenticator: A) {}
+    open func didBeginSessionRestore<A: Authenticator>(for authenticator: A) {
+//        showAuthenticatingState(animated: false)
+    }
 
     open func logoutDidComplete(with result: Result<Any?, Error>) {
         onAnyLogoutAttempt()
     }
 
     open func authenticationDidBegin() {
-        hideAuthViews(animated: true)
-        startAuthenticationInProgressAnimation()
-        view.endEditing(true)
+        showAuthenticatingState()
+    }
+
+    open func showReadyToAuthenticateState(animated: Bool = true) {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = true
+            self.showAuthViews(animated: animated)
+            self.stopAuthenticationInProgressAnimation()
+        }
+
+    }
+
+    open func showSessionRestoreState() {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = false
+            self.hideAuthViews(animated: false)
+            self.startAuthenticationInProgressAnimation()
+        }
+    }
+    
+    open func showAuthenticatingState(animated: Bool = true) {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = false
+            self.startAuthenticationInProgressAnimation()
+            self.view.endEditing(true)
+        }
     }
 
     open func authenticationDidSucceed(successResponse: Any) {
         stopAuthenticationInProgressAnimation()
-        guard config.automaticallySeguesAfterAuthentication else { return }
+        guard config.automaticallySeguesAfterAuthentication else {
+            self.view.isUserInteractionEnabled = true
+            return
+        }
         presentInitialViewController { [weak self] in
-            self?.showAuthViews(animated: false)
+            self?.showReadyToAuthenticateState()
+            self?.view.isUserInteractionEnabled = true
         }
     }
 
     open func authenticationDidFail(error: Error) {
-        stopAuthenticationInProgressAnimation()
-        showAuthViews(animated: true)
+        showReadyToAuthenticateState()
 
         // For developer use, no reason to necessarily show error message when user cancels.
         let ignorableErrors: [AuthError] = [.userCancelled, .userCancelledSignup]
@@ -162,14 +192,13 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     }
 
     open func authenticationWasCancelledByUser(_ error: Error? = nil) {
-        stopAuthenticationInProgressAnimation()
-        showAuthViews(animated: true)
+        showReadyToAuthenticateState()
     }
 
     open func onAnyLogoutAttempt() {
         guard config.dimissesInitialViewControllerOnLogoutAttempt else { return }
         dimissInitialViewController { [weak self] in
-            self?.showAuthViews(animated: true)
+            self?.showReadyToAuthenticateState()
         }
     }
 
