@@ -44,6 +44,7 @@ public struct ValidationFailure {
 open class AbstractFormField: BaseView, FormFieldProtocol {
     open var isEnabled: Bool = true
     open lazy var fieldName: String = className.stringAfterRemoving(substrings: "Field").camelCaseToWords.trimmed
+    open var behaviors: Set<FormFieldBehavior> = []
     open var validationFrequency: FieldValidationFrequency = .onValueChanged
     open var validationErrorDisplayFrequency: FieldValidationFrequency = .onDidFinishEditing
     open var displayErrorOnNextValidation: Bool = false // If you want to validate form once from the start, without showing errors

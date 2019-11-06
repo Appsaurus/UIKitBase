@@ -10,6 +10,7 @@ import Foundation
 import Swiftest
 public protocol FormFieldProtocol: AnyObject {
     var fieldName: String { get set }
+    var behaviors: Set<FormFieldBehavior> { get set }
     var validationStatus: ValidationStatus { get set }
     var validationDelegate: FieldValidationDelegate? { get set }
     var validationFailures: [ValidationFailure] { get set }

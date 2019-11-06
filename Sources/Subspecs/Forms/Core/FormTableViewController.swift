@@ -9,6 +9,11 @@ import Layman
 import Swiftest
 import UIKitMixinable
 import UIKitTheme
+
+public enum FormFieldBehavior {
+    case indicatesOptionalFields
+    case indicatesRequiredFields
+}
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission: Equatable, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     public var onCompletion: ResultClosure<Response>?
@@ -23,9 +28,12 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open var autoAssignFirstResponder = false
     open var showsValidationErrorsOnDisbledSubmit = true
     open var popsOrDismissesOnSuccess: Bool = false
-
     open var cachedSubmissionState: Submission?
-
+    open var formFieldBehaviors: Set<FormFieldBehavior> = [] {
+        didSet {
+            self.updateFieldBehaviors()
+        }
+    }
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
     open override func style() {
@@ -89,7 +97,11 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     }
 
     open func createForm() -> Form {
-        return Form(fields: createFields())
+        let fields = createFields()
+        for field in fields {
+             field.behaviors = formFieldBehaviors
+         }
+        return Form(fields: fields)
     }
 
     open func createFields() -> [FormFieldProtocol] {
@@ -211,6 +223,12 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
             return true
         }
         return cachedSubmissionState != submission
+    }
+
+    open func updateFieldBehaviors() {
+        for field in form.fields {
+            field.behaviors = formFieldBehaviors
+        }
     }
 }
 

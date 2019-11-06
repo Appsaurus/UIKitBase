@@ -89,6 +89,12 @@ public enum FormFieldState {
 }
 
 open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol {
+
+    open override var behaviors: Set<FormFieldBehavior> {
+        didSet {
+            updateContentView()
+        }
+    }
     // Makes accessoryview assignable
     open var _inputAccessoryView: UIView? {
         didSet {
@@ -256,7 +262,17 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     // MARK: Content View Updating
 
     open func updateContentView() {
-        contentView.display(title: title)
+        var fullTitle = title
+        for behavior in behaviors {
+            switch (behavior, requiresValue) {
+            case (.indicatesOptionalFields, false):
+                fullTitle += " (optional)"
+            case (.indicatesRequiredFields, true):
+                fullTitle += " *"
+            default: break
+            }
+        }
+        contentView.display(title: fullTitle)
         contentView.display(placeholder: placeholder)
         contentView.display(valueDescription: textDescription(for: value))
     }
