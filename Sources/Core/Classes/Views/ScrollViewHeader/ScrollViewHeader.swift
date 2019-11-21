@@ -174,7 +174,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         viewConstraints.update(with: width.equal(to: scrollView.width))
         viewConstraints.update(with: top.equal(to: scrollView.top.inset(initialInsetTop)))
         viewConstraints.update(with: centerX.equal(to: scrollView.centerX))
-        headerLayoutHeightConstraint = headerLayoutView.height.equal(to: expandedHeight)
+        headerLayoutHeightConstraint = headerLayoutView.height.equal(to: expandedHeight).priority(.required)
     }
 
     open override func layoutSubviews() {
@@ -194,6 +194,9 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         if visibleHeaderHeight <= collapsedHeaderHeight {
             topConstant = scrollViewOffset.y + collapsedHeaderHeight - expandedHeight
         }
+//        if visibleHeaderHeight >= expandedHeight {
+//            topConstant = scrollViewOffset.y + expandedHeight
+//        }
         viewConstraints[.top]?.first?.constant = topConstant
 
         behaviors.forEach { behavior in
@@ -201,7 +204,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         }
 
         //        printViewConstraints()
-        //        debugPrintDescription()
+                debugPrintDescription()
     }
 
     func resetBackgroundViewSizeConstraints() {
