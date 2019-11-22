@@ -89,17 +89,26 @@ open class CellLayoutView<MV: UIView>: BaseView {
             items.append(optionalRightView)
         }
 
-        stackView.stack(items)
+        stackView.stack(items).distribute(.fillProportionally)
     }
 
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         stackView.forceSuperviewToMatchContentSize(insetBy: config.mainLayoutViewInsets)
         middleView.width.greaterThanOrEqual(to: 0)
-        middleView.resistCompression()
-        middleView.hugContent(.low)
-        optionalRightView?.resistCompression(.low)
-        optionalRightView?.hugContent()
+        optionalRightView?.width.greaterThanOrEqual(to: 0)
+        if prioritizeMiddleViewWidthOverRightView {
+            middleView.enforceContentSize()
+            optionalRightView?.resistCompression(.high)
+            optionalRightView?.hugContent(.high)
+        }
+        else {
+            middleView.resistCompression(.high)
+            middleView.hugContent(.high)
+            optionalRightView?.resistCompression()
+            optionalRightView?.hugContent()
+        }
+
         leftImageView.size.equal(to: config.leftImageViewSize)
         leftImageView.enforceContentSize()
     }

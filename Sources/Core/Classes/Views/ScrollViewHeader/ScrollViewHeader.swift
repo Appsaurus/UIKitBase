@@ -166,6 +166,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         super.initProperties()
         clipsToBounds = true
         headerBackgroundImageView.contentMode = .scaleAspectFill
+        headerBackgroundImageView.isUserInteractionEnabled = true
     }
 
     open func setupScrollViewRelatedConstraints() {

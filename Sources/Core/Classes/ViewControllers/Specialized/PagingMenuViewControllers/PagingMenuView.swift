@@ -108,7 +108,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
 
     open override func style() {
         super.style()
-        pagingMenuCollectionView.backgroundColor = .primaryContrast
+        pagingMenuCollectionView.backgroundView?.backgroundColor = .primaryContrast
     }
 
     public init(delegate: PagingMenuViewDelegate, options: PagingMenuViewOptions) {
@@ -129,6 +129,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
         addSubview(pagingMenuCollectionView)
         guard let indicator = selectionIndicatorView else { return }
         pagingMenuCollectionView.addSubview(indicator)
+        pagingMenuCollectionView.backgroundView = UIView(frame: pagingMenuCollectionView.bounds)
     }
 
     //	open override func willMove(toWindow newWindow: UIWindow?) {
