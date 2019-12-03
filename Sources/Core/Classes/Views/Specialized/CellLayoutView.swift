@@ -97,19 +97,17 @@ open class CellLayoutView<MV: UIView>: BaseView {
         stackView.forceSuperviewToMatchContentSize(insetBy: config.mainLayoutViewInsets)
         middleView.width.greaterThanOrEqual(to: 0)
         optionalRightView?.width.greaterThanOrEqual(to: 0)
+        middleView.enforceContentSize()
+        optionalRightView?.enforceContentSize()
         if prioritizeMiddleViewWidthOverRightView {
-            middleView.enforceContentSize()
-            optionalRightView?.resistCompression(.high)
-            optionalRightView?.hugContent(.high)
+            middleView.resistCompression(.high, forAxes: [.horizontal])
         }
         else {
-            middleView.resistCompression(.high)
-            middleView.hugContent(.high)
-            optionalRightView?.resistCompression()
-            optionalRightView?.hugContent()
+            optionalRightView?.resistCompression(.high, forAxes: [.horizontal])
         }
 
         leftImageView.size.equal(to: config.leftImageViewSize)
         leftImageView.enforceContentSize()
+        stackView.height.greaterThanOrEqual(to: stackView.arrangedSubviews)
     }
 }

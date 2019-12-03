@@ -205,7 +205,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         }
 
         //        printViewConstraints()
-                debugPrintDescription()
+//                debugPrintDescription()
     }
 
     func resetBackgroundViewSizeConstraints() {
