@@ -163,7 +163,7 @@ public extension PaginationManaged where Self: UIViewController {
                 }
             })
         } else {
-            datasourceManagedView.setContentOffset(datasourceManagedView.contentOffset, animated: false)
+//            datasourceManagedView.setContentOffset(datasourceManagedView.contentOffset, animated: false)
             datasource.append(result.items, completion: {
                 DispatchQueue.main.async {
                     completion()
@@ -285,11 +285,6 @@ public extension PaginationManaged where Self: UIViewController {
         }
 
         if paginationConfig.infiniteScrollable {
-            if #available(iOS 11.0, *) {
-                datasourceManagedView.contentInsetAdjustmentBehavior = .never
-            } else {
-                automaticallyAdjustsScrollViewInsets = false
-            }
             datasourceManagedView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 275.0, right: 0.0)
             addInfinityScroll()
 

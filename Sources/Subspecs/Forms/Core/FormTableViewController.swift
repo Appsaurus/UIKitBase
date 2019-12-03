@@ -242,9 +242,9 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
 //    public typealias SVH = ScrollViewHeader
     private var keyboardAvoiding: KeyboardAvoiding!
 
-    open override func createMixins() -> [LifeCycle] {
-        return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
-    }
+//    open override func createMixins() -> [LifeCycle] {
+//        return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
+//    }
 
     open var tableView: UITableView = UITableView().then { tv in
         tv.backgroundColor = .clear
@@ -315,14 +315,8 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
 
     }
 
-    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        tableView.dynamicallySizeHeight(of: .header, .footer)
-    }
-
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.dynamicallySizeHeight(of: .header, .footer)
         self.keyboardAvoiding.start()
     }
 

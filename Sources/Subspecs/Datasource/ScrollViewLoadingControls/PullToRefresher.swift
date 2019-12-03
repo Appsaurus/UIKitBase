@@ -216,7 +216,7 @@ class HeaderContainerView: UIView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
 
-        firstResponderViewController()?.automaticallyAdjustsScrollViewInsets = false
+        firstResponderViewController()?.manuallyManageScrollViewContentInsets()
     }
 }
 

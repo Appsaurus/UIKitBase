@@ -99,7 +99,7 @@ extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
         view.forceAutolayoutPass()
         var contentSize = view.bounds.size
         contentSize.height -= header.collapsedHeaderHeight
-        //        scrollView.contentSize = contentSize
+        scrollView.contentSize = contentSize
         scrollViewContentView.frame.size = contentSize
         adjustContentPositionToAccomodateHeaderHeight()
     }

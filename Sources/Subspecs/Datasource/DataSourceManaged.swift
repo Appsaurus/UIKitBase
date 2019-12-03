@@ -16,30 +16,34 @@ public protocol DatasourceManaged {
     var datasourceManagedView: DatasourceManagedView { get }
     func setManagedDatasource()
 }
-
-public extension DatasourceManaged where Self: BaseContainedTableViewController {
-    var datasourceManagedView: UITableView {
-        return tableView
-    }
-}
-
-public extension DatasourceManaged where Self: UITableViewController {
-    var datasourceManagedView: UITableView {
-        return tableView
-    }
-}
-
-public extension DatasourceManaged where Self: UICollectionViewController {
-    var datasourceManagedView: UICollectionView {
-        return collectionView!
-    }
-}
-
-public extension DatasourceManaged where Self: BaseContainedCollectionViewController {
+public extension DatasourceManaged where Self: ScrollViewReferencing {
     var datasourceManagedView: UIScrollView {
-        return collectionView
+        return scrollView
     }
 }
+//public extension DatasourceManaged where Self: BaseContainedTableViewController {
+//    var datasourceManagedView: UITableView {
+//        return tableView
+//    }
+//}
+//
+//public extension DatasourceManaged where Self: UITableViewController {
+//    var datasourceManagedView: UITableView {
+//        return tableView
+//    }
+//}
+//
+//public extension DatasourceManaged where Self: UICollectionViewController {
+//    var datasourceManagedView: UICollectionView {
+//        return collectionView!
+//    }
+//}
+//
+//public extension DatasourceManaged where Self: BaseContainedCollectionViewController {
+//    var datasourceManagedView: UIScrollView {
+//        return collectionView
+//    }
+//}
 
 public extension DatasourceManaged where Self: UITableViewController, Datasource: UITableViewDataSource {
     func setManagedDatasource() {

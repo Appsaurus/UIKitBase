@@ -23,7 +23,9 @@ extension BaseViewControllerProtocol where Self: UIViewController {
                 FirstResponderManagedMixin(self),
                 StatefulViewControllerMixin(self),
                 ViewRecyclerMixin(self),
-                StyleableViewControllerMixin(self)]
+                StyleableViewControllerMixin(self),
+                ViewEdgesLayoutMixin(self),
+                ManualScrollViewContentManagerMixin(self)]
             + baseNSObjectProtocolMixins
     }
 }
