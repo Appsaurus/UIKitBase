@@ -196,6 +196,14 @@ extension AppIOManager {
     }
 }
 
+public extension UNAuthorizationOptions {
+    static var basicAlerts: UNAuthorizationOptions {
+        return [.alert, .badge, .sound]
+    }
+    static var silentNotifications: UNAuthorizationOptions {
+        return []
+    }
+}
 @available(iOS 10.0, *)
 open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager> {
     open var remoteNotificationRegistrationFailure: ErrorClosure?
@@ -208,7 +216,7 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         UNUserNotificationCenter.current().delegate = mixable
     }
 
-    open func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
+    open func registerForRemoteNotifications(options: UNAuthorizationOptions = .basicAlerts, success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
         let application = UIApplication.shared
         remoteNotificationRegistrationSuccess = success
         remoteNotificationRegistrationFailure = failure
@@ -217,18 +225,15 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
             assertionFailure()
             return
         }
+        
 
         // Set delegate to owning mixable object, which will ultimately call these mixed methods upon delegation from UNUserNotificationCenter.
         UNUserNotificationCenter.current().requestAuthorization(
-            options: unAuthorizationOptions(),
+            options: options,
             completionHandler: { _, _ in }
         )
 
         application.registerForRemoteNotifications()
-    }
-
-    open func unAuthorizationOptions() -> UNAuthorizationOptions {
-        return [.alert, .badge, .sound]
     }
 
     open override func userNotificationCenter(_ center: UNUserNotificationCenter,
