@@ -297,7 +297,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         var failures: [ValidationFailure] = super.runValidationTests()
         if requiresValue, textField.text?.isEmpty == true {
             let failureType = ValidationFailureType.isBlank
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field must not be blank."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) must not be blank."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 
@@ -307,7 +307,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         } else if let confirmsField = confirmsField,
             confirmsField.textField.text != textField.text {
             let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field and \(confirmsField.fieldName) field must match."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) and \(confirmsField.fieldName) must match."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 
@@ -315,11 +315,11 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         switch lengthValidity {
         case .tooLong:
             let failureType = ValidationFailureType.tooManyCharacters
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field must be less than \(maxCharacterCountLimit) characters."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) must be less than \(maxCharacterCountLimit) characters."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         case .tooShort:
             let failureType = ValidationFailureType.tooFewCharacters
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field must be at least \(minCharacterCountLimit) characters."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) must be at least \(minCharacterCountLimit) characters."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         case .justRight:
             break
@@ -333,13 +333,13 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
         if let minNumberCount = minNumberCount, textField.text?.count(of: .decimalDigits) ?? 0 < minNumberCount {
             let failureType = ValidationFailureType.tooFewNumbers
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field must have at least \(minNumberCount) numbers."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) must have at least \(minNumberCount) numbers."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 
         if let minLetterCount = minLetterCount, textField.text?.count(of: .letters) ?? 0 < minLetterCount {
             let failureType = ValidationFailureType.tooFewLetters
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) field must have at least \(minLetterCount) letters."
+            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) must have at least \(minLetterCount) letters."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
 

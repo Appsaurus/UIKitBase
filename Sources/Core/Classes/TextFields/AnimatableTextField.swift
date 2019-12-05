@@ -14,7 +14,7 @@ open class AnimatableTextField: StatefulTextField {
     open var titleLabel: UILabel = UILabel()
     open var secondaryLabel: UILabel = UILabel()
     open var leftViewWidth: CGFloat = 0.0
-    open var layoutHeights: (titleLabel: CGFloat, textField: CGFloat, secondaryLabel: CGFloat) = (15.0, 30.0, 15.0)
+    open var layoutHeights: (titleLabel: CGFloat, textField: CGFloat, secondaryLabel: CGFloat) = (17.0, 34.0, 17.0)
 
     /// Sync up textAlignment of all labels
     open override var textAlignment: NSTextAlignment {

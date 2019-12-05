@@ -219,13 +219,13 @@ extension TextFieldStyleGuide {
     open func materialStyleMap(color: UIColor? = nil,
                                titleColor: UIColor? = nil,
                                disabledColor: UIColor? = nil,
-                               textSize: CGFloat = 14.0,
-                               secondarySize: CGFloat = 10.0) -> TextFieldStyleMap {
+                               textSize: CGFloat = 16.0,
+                               secondarySize: CGFloat = 12.0) -> TextFieldStyleMap {
         let color = color ?? colors.primary
         let titleColor = titleColor ?? color
 
-        let inactive = text.regular(color: color, size: textSize)
-        let inactiveTitle = text.regular(color: titleColor, size: textSize)
+        let inactive = text.regular(color: color.adjustedAlpha(amount: -0.2), size: textSize)
+        let inactiveTitle = text.regular(color: titleColor.adjustedAlpha(amount: -0.2), size: textSize)
         let inactiveSmall = text.regular(color: colors.functional.error, size: secondarySize)
 
         let active = text.bold(color: color, size: textSize)
@@ -262,8 +262,8 @@ extension Dictionary where Key: T, Value: TextFieldStyle {
     public static func materialStyleMap(color: UIColor? = nil,
                                         titleColor: UIColor? = nil,
                                         disabledColor: UIColor? = nil,
-                                        textSize: CGFloat = 14.0,
-                                        secondarySize: CGFloat = 10.0) -> TextFieldStyleMap {
+                                        textSize: CGFloat = 16.0,
+                                        secondarySize: CGFloat = 12.0) -> TextFieldStyleMap {
         return App.style.textField.materialStyleMap(color: color, titleColor: titleColor, disabledColor: disabledColor, textSize: textSize, secondarySize: secondarySize)
     }
 
