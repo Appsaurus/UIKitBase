@@ -62,6 +62,7 @@ public enum NotificationParsingError: LocalizedError {
 }
 
 open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
+
     open var notificationIdentifier: ID?
     open var notificationCenterNotification: Notification? {
         guard let name = notificationIdentifier?.notificationCenterName() else { return nil }
@@ -69,7 +70,7 @@ open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
     }
 
     @available(iOS 10.0, *)
-    public required init(unNotification: UNNotification, idKey: String = "notificationId") {
+    public required init(unNotification: UNNotification, idKey: String = ID.notificationIdentifierKey) {
         super.init(unNotification: unNotification)
         guard let notificationStringId = payload[idKey] as? String else {
             return
@@ -77,7 +78,7 @@ open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
         notificationIdentifier = ID.from(id: notificationStringId)
     }
 
-    public required init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote, idKey: String = "notificationId") {
+    public required init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote, idKey: String = ID.notificationIdentifierKey) {
         super.init(payload: payload, origin: origin)
         guard let notificationStringId = payload[idKey] as? String else {
             return
@@ -85,12 +86,20 @@ open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
         notificationIdentifier = ID.from(id: notificationStringId)
     }
 
-    public convenience init(notification: BaseAppNotification, idKey: String = "notificationId") {
+    public convenience init(notification: BaseAppNotification, idKey: String = ID.notificationIdentifierKey) {
         self.init(payload: notification.payload, origin: notification.origin, idKey: idKey)
     }
 }
 
-public protocol AppNotificationID: StringIdentifiableEnum {}
+public protocol AppNotificationID: StringIdentifiableEnum {
+    static var notificationIdentifierKey: String { get }
+}
+
+extension AppNotificationID {
+    public static var notificationIdentifierKey: String {
+        return "notificationID"
+    }
+}
 
 public protocol StringIdentifiableEnum: CaseIterable, RawRepresentable, Equatable {
     var rawValue: String { get }

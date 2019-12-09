@@ -38,6 +38,7 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged {
     func fetchNextPage(firstPage: Bool, transitioningState: State?, reloadCompletion: VoidClosure?)
     func didFinishFetching(error: Error)
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>, isFirstPage: Bool, reloadCompletion: VoidClosure?)
+    func state(afterFetching result: PaginationResult<ItemIdentifierType>) -> State
     func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType>
 //    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure?)
     func reset(to initialState: State, completion: VoidClosure?)
@@ -152,8 +153,7 @@ public extension PaginationManaged where Self: UIViewController {
 
         let completion = { [weak self] in
             guard let self = self else { return }
-            let lastPageState: State = result.items.count > 0 ? .loadedAll : .empty
-            self.transition(to: result.isLastPage ? lastPageState : .loaded, animated: true, completion: reloadCompletion)
+            self.transition(to: self.state(afterFetching: result), animated: true, completion: reloadCompletion)
         }
 
         if isFirstPage {
@@ -170,6 +170,11 @@ public extension PaginationManaged where Self: UIViewController {
                 }
             })
         }
+    }
+
+    func state(afterFetching result: PaginationResult<ItemIdentifierType>) -> State {
+        let lastPageState: State = result.items.count > 0 ? .loadedAll : .empty
+        return result.isLastPage ? lastPageState : .loaded
     }
 
     func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType> {
