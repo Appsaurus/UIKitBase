@@ -185,7 +185,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
 
     open override func initProperties() {
         super.initProperties()
-        title = fieldName
+        if title.isEmpty { title = fieldName }
         if usesFieldNameAsPlaceholder { placeholder = fieldName }
     }
 

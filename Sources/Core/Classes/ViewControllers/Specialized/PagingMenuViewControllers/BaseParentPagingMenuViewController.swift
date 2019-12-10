@@ -40,10 +40,16 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
         return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: .spanWidthCollectively(height: menuHeight), scrollBehavior: .tabBar)
     }
 
-    open override func willPage(from page: Int?, to nextPage: Int?) {
-        super.willPage(from: page, to: nextPage)
+    open override func didPage(from page: Int?, to nextPage: Int?) {
+        super.didPage(from: page, to: nextPage)
         guard let nextPage = nextPage else { return }
         pagingMenuView.selectItem(at: nextPage)
+    }
+
+    open override func didCancelPaging(from page: Int?, to nextPage: Int?) {
+        super.didCancelPaging(from: page, to: nextPage)
+        guard let page = page else { return }
+        pagingMenuView.selectItem(at: page)
     }
 
     // MARK: PagingMenuViewDelegate
@@ -62,7 +68,7 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
     }
 
     open func pagingMenuView(menuView: PagingMenuView, didSelectMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {
-        guard currentPage != index else { return }
+        guard currentPage != index, pendingPage == nil else { return }
         transitionToPage(at: index)
     }
 
