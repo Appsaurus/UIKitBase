@@ -108,7 +108,7 @@ open class WebViewPagingMenuItemCell: PagingMenuButtonCell {
         super.style()
         let viewStyle = ViewStyle(backgroundColor: .clear)
 
-        let fontSize: CGFloat = CGFloat(12.0).scaledForDevice(scaleDownOnly: true)
+        let fontSize: CGFloat = 12.0.scaledForDevice(option: .upOnly)
         let font: UIFont = .regular(fontSize)
         let textStyle = TextStyle(color: .textMedium, font: font)
         let selectedTextStyle = TextStyle(color: .primary, font: font)
