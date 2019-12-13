@@ -62,7 +62,7 @@ class InfiniteScroller: NSObject {
 
     var animator: CustomInfiniteScrollAnimator
     var containerView: FooterContainerView
-    var direction: InfinityScrollDirection
+    var direction: ScrollDirection
     var action: (() -> Void)?
     var enable = true
 
@@ -75,7 +75,7 @@ class InfiniteScroller: NSObject {
         }
     }
 
-    init(height: CGFloat, direction: InfinityScrollDirection, animator: CustomInfiniteScrollAnimator) {
+    init(height: CGFloat, direction: ScrollDirection, animator: CustomInfiniteScrollAnimator) {
         defaultDistanceToTrigger = height
         self.animator = animator
         containerView = FooterContainerView()

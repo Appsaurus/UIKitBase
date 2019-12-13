@@ -13,7 +13,8 @@ open class PaginationConfiguration {
     open var infiniteScrollable: Bool = true
     open var refreshable: Bool = true
     open var loadsResultsImmediately: Bool = true
-    open var scrollDirection: InfinityScrollDirection = .vertical
+    open var scrollDirection: ScrollDirection = .vertical
+    open var animatesDatasourceChanges: Bool = true
 }
 
 //

@@ -126,11 +126,11 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
 
     open func customTabBarDidReselectItemAtCurrentIndex(_ tabBar: CustomTabBar) {
         guard let index = tabBar.selectedMenuIndexPath?.intIndex else { return }
-        guard let childVC = self.viewControllers?[index] as? TabBarChildViewControllerProtocol else {
+        guard let childVC = self.viewControllers?[index] as? TabBarChild else {
             return
         }
 
-        childVC.tabItemWasTappedWhileViewControllerIsVisible()
+        childVC.tabItemWasTappedWhileActive()
     }
 
     open func customTabBar(_ tabBar: CustomTabBar, didSelectItemAtIndex index: Int) {

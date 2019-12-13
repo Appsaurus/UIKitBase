@@ -11,7 +11,6 @@ import UIKit
 public protocol CustomPullToRefreshAnimator {
     func animateState(_ state: PullToRefreshState)
 }
-
 public enum PullToRefreshState: Equatable, CustomStringConvertible {
     case none
     case releasing(progress: CGFloat)
@@ -80,7 +79,7 @@ class PullToRefresher: NSObject {
 
     var animator: CustomPullToRefreshAnimator
     var containerView: HeaderContainerView
-    var direction: InfinityScrollDirection
+    var direction: ScrollDirection
     var action: (() -> Void)?
     var enable = false
 
@@ -97,7 +96,7 @@ class PullToRefresher: NSObject {
     public var distanceToTrigger: CGFloat = 0.0
     var scrollbackImmediately = false
 
-    init(height: CGFloat, direction: InfinityScrollDirection, animator: CustomPullToRefreshAnimator) {
+    init(height: CGFloat, direction: ScrollDirection, animator: CustomPullToRefreshAnimator) {
         distanceToTrigger = height
         self.animator = animator
         containerView = HeaderContainerView()

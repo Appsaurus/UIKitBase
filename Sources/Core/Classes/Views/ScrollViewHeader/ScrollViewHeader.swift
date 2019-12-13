@@ -183,6 +183,11 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         adjustViews(for: scrollView.contentOffset)
     }
 
+//    open override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        adjustViews(for: scrollView.contentOffset)
+//    }
+
     // swiftlint:disable:next block_based_kvo
     open override func observeValue(forKeyPath _: String?, of _: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         setNeedsLayout()

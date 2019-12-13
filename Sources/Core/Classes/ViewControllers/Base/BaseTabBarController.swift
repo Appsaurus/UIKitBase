@@ -87,11 +87,11 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     // MARK: UITabBarControllerDelegate
 
     open func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        guard let childVC = viewController as? TabBarChildViewControllerProtocol else {
+        guard let childVC = viewController as? TabBarChild else {
             return
         }
 
-        childVC.tabBarChildViewControllerDidAppear()
+        childVC.tabBarChildDidAppear()
     }
 
     open override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -102,10 +102,10 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     }
 
     open func tabBar(_ tabBar: UITabBar, didReselect viewController: UIViewController) {
-        guard let childVC = self.selectedViewController as? TabBarChildViewControllerProtocol else {
+        guard let childVC = self.selectedViewController as? TabBarChild else {
             return
         }
-        childVC.tabItemWasTappedWhileViewControllerIsVisible()
+        childVC.tabItemWasTappedWhileActive()
     }
 
     open func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

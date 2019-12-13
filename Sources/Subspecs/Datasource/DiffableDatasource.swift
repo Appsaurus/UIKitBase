@@ -20,7 +20,7 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 
-    @objc public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    @objc public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles else {
             return secondaryDatasource?.tableView?(tableView, titleForHeaderInSection: section)
         }
@@ -47,7 +47,8 @@ public protocol DiffableDatasource {
     associatedtype CellProvider = (DatasourceConsumer, IndexPath, ItemIdentifierType) -> CellType?
 
     func apply(_ snapshot: DiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>,
-               animatingDifferences: Bool)
+               animatingDifferences: Bool,
+               completion: (() -> Void)?)
 
     func snapshot() -> DiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>
     func itemIdentifier(for indexPath: IndexPath) -> ItemIdentifierType?
@@ -199,11 +200,10 @@ public extension DiffableDatasource {
         append([identifier], to: sectionIdentifier, animated: animated, completion: completion)
     }
 
-    func apply(_ snapshot: Snapshot, animatingDifferences: Bool = true, completion: @escaping VoidClosure) {
-        UIView.animate(withDuration: 0, animations: {
-            self.apply(snapshot, animatingDifferences: animatingDifferences)
-        }, completion: { _ in completion() })
-    }
+//    func apply(_ snapshot: Snapshot, animatingDifferences: Bool = true, completion: @escaping VoidClosure = {}) {
+//
+//        self.apply(snapshot, animatingDifferences: animatingDifferences, completion: completion)
+//    }
 
 //    func append(sections: [SectionIdentifierType], animated: Bool = true, completion: @escaping VoidClosure = {}) {
 //        let snapshot = self.snapshot()
