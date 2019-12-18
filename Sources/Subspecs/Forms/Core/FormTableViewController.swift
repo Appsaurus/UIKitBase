@@ -184,12 +184,15 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         return submissionHasBeenEdited() && formIsValid
     }
 
-    open func displayFormErrors(withAlert: Bool = true) {
+    open func displayFormErrors(withAlert: Bool = false) {
         for field in form.fields {
             field.validate(displayErrors: true)
         }
         if withAlert {
             form.presentFormErrorsAlertView(self)
+        }
+        else {
+            assignFirstResponderToNextInvalidField()
         }
     }
 
