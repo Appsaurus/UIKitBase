@@ -14,7 +14,7 @@ open class PaginationConfiguration {
     open var refreshable: Bool = true
     open var loadsResultsImmediately: Bool = true
     open var scrollDirection: ScrollDirection = .vertical
-    open var animatesDatasourceChanges: Bool = true
+    open var animatesDatasourceChanges: Bool = false
 }
 
 //
