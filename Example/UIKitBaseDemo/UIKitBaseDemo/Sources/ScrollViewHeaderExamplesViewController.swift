@@ -20,6 +20,9 @@ public class ScrollViewHeaderExamplesViewController: NavigationalMenuTableViewCo
         addRow(title: "Nested scrollviews with header & subheader", createDestinationVC: ScrollViewParentHeaderExampleViewController(includeSubheader: true))
         addRow(title: "Nested PagingMenuViewController with header", createDestinationVC: ScrollViewParentHeaderWithPagerExampleViewController())
         addRow(title: "Nested PagingMenuViewController with header & subheader", createDestinationVC: ScrollViewParentHeaderWithPagerExampleViewController(includeSubheader: true))
+        addRow(title: "Nested inside tableviews", createDestinationVC: ScrollViewParentHeaderWithPagerExampleViewController(includeSubheader: true))
+        addRow(title: "Nested inside UITabViewController", createDestinationVC: MainNavigationTabBarController(), presentModally: true)
+
 
     }
 }
@@ -76,4 +79,46 @@ public class ExampleSubheaderView: BaseView{
         backgroundColor = .yellow
         
     }
+}
+
+public class TabBarRootNavigationController: BaseNavigationController, TabBarChild {
+    public override func initProperties() {
+        super.initProperties()
+        extendViewUnderNavigationBar()
+    }
+
+}
+
+public class MainNavigationTabBarController: BaseTabBarController {
+
+    lazy var vc1 = TableViewSubheaderExampleViewController()
+    lazy var vc2 = ScrollViewParentHeaderExampleViewController()
+    lazy var vc3 = ScrollViewParentHeaderExampleViewController(includeSubheader: true)
+    lazy var vc4 = ScrollViewParentHeaderWithPagerExampleViewController()
+    lazy var vc5 = ScrollViewParentHeaderWithPagerExampleViewController(includeSubheader: true)
+
+    // MARK: NavigationControllers
+
+    lazy var nav1 = TabBarRootNavigationController(rootViewController: self.vc1)
+    lazy var nav2 = TabBarRootNavigationController(rootViewController: self.vc2)
+    lazy var nav3 = TabBarRootNavigationController(rootViewController: self.vc3)
+    lazy var nav4 = TabBarRootNavigationController(rootViewController: self.vc4)
+    lazy var nav5 = TabBarRootNavigationController(rootViewController: self.vc5)
+
+
+    lazy var initialViewControllers = [
+        nav1,
+        nav2,
+        nav3,
+        nav4,
+        nav5
+    ]
+
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        setViewControllers(initialViewControllers, animated: false)
+    }
+
+
 }

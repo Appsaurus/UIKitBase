@@ -34,5 +34,10 @@ open class BaseScrollviewController: BaseViewController, UIScrollViewDelegate {
         super.createAutoLayoutConstraints()
         scrollView.pinToSuperview()
         scrollView.bringSubviewToFront(scrollViewContentView)
+//        scrollView.top.greaterThanOrEqual(to: 0)
     }
+//    open override func didFinishCreatingAllViews() {
+//        super.didFinishCreatingAllViews()
+//        containerScrollView.childScrollViews.forEach { $0.contentInset = self.scrollView.contentInset}
+//    }
 }

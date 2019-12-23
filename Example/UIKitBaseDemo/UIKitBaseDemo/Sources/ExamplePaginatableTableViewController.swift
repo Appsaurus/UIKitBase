@@ -38,6 +38,8 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
     open override func viewDidLoad() {
         super.viewDidLoad()
         tableView.automaticallySizeCellHeights(100)
+        edgesForExtendedLayout = []
+        extendedLayoutIncludesOpaqueBars = false
     }
 
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -39,12 +39,17 @@ open class ScrollViewParentHeaderWithPagerExampleViewController: BaseScrollviewP
 
     open override func initProperties() {
         super.initProperties()
-        extendViewUnderNavigationBar()
+//        automaticallyAdjustScrollViewContentInsets()
     }
 
     open override func viewDidLoad() {
         super.viewDidLoad()
         displayScrollViewHeaderExampleContent()
+        extendViewUnderNavigationBar()
+        if let tabBar = tabBarController?.tabBar {
+            scrollView.contentInset.bottom -= tabBar.frame.height
+            scrollView.clipsToBounds = false
+        }
     }
     
     

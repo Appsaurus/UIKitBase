@@ -10,6 +10,7 @@ import Actions
 import Swiftest
 import UIKit
 open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
+
     open var lastContentOffset: CGPoint = .zero {
         didSet {
             if contentOffset.y < lastContentOffset.y {
@@ -32,7 +33,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         }
     }
 
-    var contentView: UIView
+    public var contentView: UIView
     var recognizesParentScroll: Bool = true
     var bouncesBottom: Bool = false
 
@@ -48,13 +49,15 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         bounces = false
     }
 
+
+
     open override func layoutSubviews() {
         super.layoutSubviews()
 //        print("contentView.frame.size: \(contentView.frame.size)")
         contentSize = contentView.frame.size
     }
 
-    var childScrollViews: Set<UIScrollView> = Set<UIScrollView>()
+    public var childScrollViews: Set<UIScrollView> = Set<UIScrollView>()
     //    var observers: [KeyValueObserver] = []
 
     func captureScrollViewIfNeeded(scrollView: UIScrollView) {
@@ -68,26 +71,22 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
 
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+
+        guard gestureRecognizers?.contains(pan) == true else { return true }
+
         guard let innerScrollViewPanGestureRecognizer = otherGestureRecognizer as? UIPanGestureRecognizer,
-            let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView else { return false }
-        guard innerScrollView.isDescendant(of: contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return false }
+            let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView,
+            innerScrollView.gestureRecognizers?.contains(innerScrollViewPanGestureRecognizer) == true else { return true }
+
+        guard innerScrollView.isDescendant(of: contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return true }
 
         captureScrollViewIfNeeded(scrollView: innerScrollView)
 
-        if innerScrollViewPanGestureRecognizer.velocity(in: self).y < 0, innerScrollView.hasReachedBottomOfContent, !bounces {
-            // Reached bottom of inner scrollview
+        if hasReachedBottomOfContent, !innerScrollView.hasReachedTopOfContent {
             return false
         }
 
-        if innerScrollViewPanGestureRecognizer.velocity(in: self).y > 0, innerScrollView.hasReachedTopOfContent {
-            // Simultaneously recognizing gestures, has reached top of content
-            return true
-        }
-
-        if yOffsetPosition == .bottom, !innerScrollView.hasReachedTopOfContent {
-            // Disbling simultaneous gestures, outer scroll hit bottom and inner scroll has not reached top.
-            return false
-        }
 
         return true
     }
@@ -96,6 +95,23 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         return Unmanaged.passUnretained(reference).toOpaque()
     }
 }
+
+//extension UIPanGestureRecognizer {
+//    var verticalScrollDirection: UIPanGestureVerticalScrollDirection {
+//        switch velocity(in: view).y {
+//            case 0: return .none
+//            case 0...CGFloat.max: return .down
+//            default: return .up
+//
+//        }
+//    }
+//}
+//
+//enum UIPanGestureVerticalScrollDirection {
+//    case up
+//    case down
+//    case none
+//}
 
 // extension ContainerScrollView: UIScrollViewDelegate {
 //    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

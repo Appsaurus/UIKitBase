@@ -99,6 +99,10 @@ public enum ExampleDeepLinkEnum: String, DeepLinkRoute{
 }
 
 extension AppDelegate: AppIOManager {
+    func registerDevice(withToken token: String, serviceToken: String?, success: VoidClosure?, failure: ErrorClosure?) {
+        
+    }
+
 
 	public typealias AppNotificationIDType = ExampleNotificationId
 	public typealias DeepLinkRouteType = ExampleDeepLinkEnum

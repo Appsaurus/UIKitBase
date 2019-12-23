@@ -11,6 +11,11 @@ import Swiftest
 import UIKitTheme
 
 open class NavigationalMenuTableViewController: BaseTableViewController {
+
+    open override func initProperties() {
+        super.initProperties()
+        self.navigationBarStyle = .primary
+    }
     open var cells: [NavigationalMenuTableViewCellDatasource] = []
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +48,9 @@ open class NavigationalMenuTableViewController: BaseTableViewController {
         if !cellData.presentModally, let navVC = self.navigationController {
             navVC.pushViewController(cellData.createDestinationVC(), animated: true)
         } else {
-            present(cellData.createDestinationVC(), animated: true, completion: nil)
+            let destinationVC = cellData.createDestinationVC()
+            destinationVC.modalPresentationStyle = .fullScreen
+            present(destinationVC, animated: true, completion: nil)
         }
     }
 
