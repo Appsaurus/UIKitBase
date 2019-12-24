@@ -26,6 +26,14 @@ public protocol TabBarChild {
     // Must be called by TabBarController at proper times
     func tabBarChildDidAppear()
     func tabItemWasTappedWhileActive()
+    func defaultTabItemWasTappedWhileActive()
+}
+
+
+public extension TabBarChild {
+    func tabItemWasTappedWhileActive() {
+        defaultTabItemWasTappedWhileActive()
+    }
 }
 
 // Forwards protocol calls to vc at end of navigation stack by default
@@ -33,9 +41,11 @@ public extension TabBarChild where Self: UINavigationController {
     private var stackedChild: TabBarChild? {
         return viewControllers.last as? TabBarChild
     }
-    func tabItemWasTappedWhileActive() {
+
+    func defaultTabItemWasTappedWhileActive() {
         stackedChild?.tabItemWasTappedWhileActive()
     }
+
     func tabBarChildDidAppear() {
         stackedChild?.tabBarChildDidAppear()
     }
@@ -43,7 +53,7 @@ public extension TabBarChild where Self: UINavigationController {
 
 // Scroll to top, then reload by default
 public extension TabBarChild where Self: ScrollViewReferencing {
-    func tabItemWasTappedWhileActive() {
+    func defaultTabItemWasTappedWhileActive() {
         guard scrollView.hasReachedTopOfContent else {
             scrollView.scrollToTop()
             return
@@ -61,7 +71,7 @@ public extension TabBarChild where Self: BaseParentPagingViewController {
     private var pagedChild: TabBarChild? {
         return currentPagedViewController as? TabBarChild
     }
-    func tabItemWasTappedWhileActive() {
+    func defaultTabItemWasTappedWhileActive() {
         pagedChild?.tabItemWasTappedWhileActive()
     }
 
@@ -75,7 +85,7 @@ public extension TabBarChild where Self: BaseScrollviewParentViewController {
         return self.children.first as? TabBarChild
     }
 
-    func tabItemWasTappedWhileActive() {        
+    func defaultTabItemWasTappedWhileActive() {
         guard scrollView.hasReachedTopOfContent else {
             scrollView.scrollToTop()
             return
@@ -93,7 +103,7 @@ public extension TabBarChild where Self: BaseParentViewController {
         return self.children.first as? TabBarChild
     }
 
-    func tabItemWasTappedWhileActive() {
+    func defaultTabItemWasTappedWhileActive() {
         contentChild?.tabItemWasTappedWhileActive()
     }
 
