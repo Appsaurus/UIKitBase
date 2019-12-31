@@ -90,18 +90,22 @@ import UIKit
     /// - parameter completion:    called when all animations are finished and the view has been updated
     ///
     public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
-        if state == currentState {
-            if let statefulView = self.viewForState(state: state) {
-                statefulView.superview?.bringSubviewToFront(statefulView)
-            }
-            completion?()
-            return
-        }
-
-        previousState = currentState
-        currentState = state
-        // Update the view
         DispatchQueue.main.async {
+            if state == self.currentState {
+                if let statefulView = self.viewForState(state: state) {
+                    statefulView.superview?.bringSubviewToFront(statefulView)
+                    completion?()
+                }
+                else {
+                    self.hideAllViews(animated: animated, completion: completion)
+                }
+                return
+            }
+
+            self.previousState = self.currentState
+            self.currentState = state
+        // Update the view
+
             if let statefulView = self.viewForState(state: state) {
                 self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
             } else {
@@ -113,9 +117,10 @@ import UIKit
     // MARK: Private view updates
 
     public func show(statefulView: UIView, for state: State, animated: Bool, completion: (() -> Void)? = nil) {
-        if let previousView = self.viewForState(state: previousState) {
-            previousView.removeFromSuperview()
-        }
+//        if let previousView = self.viewForState(state: previousState) {
+//            previousView.removeFromSuperview()
+//        }
+        self.hideAllViews(animated: animated)
 
         let parentView = view // is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
 
@@ -127,7 +132,6 @@ import UIKit
             statefulView.edges.equal(to: parentView.edges)
         }
         parentView.bringSubviewToFront(statefulView)
-
         completion?()
     }
 

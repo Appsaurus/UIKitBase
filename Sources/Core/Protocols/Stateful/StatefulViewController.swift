@@ -152,6 +152,13 @@ extension StatefulViewController {
         errorView()?.show(error: error, retry: retry)
         transition(to: .error)
     }
+
+    public func enforceCurrentState() {
+        if self.logsStateTransitions {
+            debugLog("\(String(describing: self)) Enforcing current state state: \(currentState)")
+        }
+        self.stateMachine.transition(to: self.currentState)
+    }
 }
 
 // MARK: Default Stateful Views
@@ -211,6 +218,12 @@ public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewCont
             mixable.transitionToInitialState()
         }
     }
+//    open override func viewWillAppear(_ animated: Bool){
+//        //In some cases, view did not update due to model state change in background
+//        DispatchQueue.main.async {
+//            self.mixable.enforceCurrentState()
+//        }
+//    }
 }
 
 public class StatefulViewMixin: UIViewMixin<StatefulViewController> {

@@ -11,21 +11,66 @@ import UIKit
 import UIKitExtensions
 import UIKitTheme
 
+open class StatefulViewButtonViewModel {
+    public var title: String
+    public var action: VoidClosure
+    public var style: ButtonStyle?
+
+    public init(title: String, action: @escaping VoidClosure, style: ButtonStyle? = nil) {
+        self.title = title
+        self.action = action
+        self.style = style
+    }
+}
+
+open class StatefulViewViewModel {
+    public var image: UIImage?
+    public var imageURL: URLConvertible?
+    public var headline: String?
+    public var message: String?
+    public var buttonViewModels: [StatefulViewButtonViewModel]
+    
+    public init(image: UIImage? = nil,
+                imageURL: URLConvertible? = nil,
+                headline: String? = nil,
+                message: String? = nil,
+                buttonViewModels: [StatefulViewButtonViewModel] = []) {
+        self.image = image
+        self.imageURL = imageURL
+        self.headline = headline
+        self.message = message
+        self.buttonViewModels = buttonViewModels
+    }
+}
 open class StatefulViewControllerView: BaseView {
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
     open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
 
+//    var viewModel: StatefulViewViewModel
+
     open func initialArrangedSubviews() -> [UIView] {
-        return [mainLabel, responseButton]
+        var views: [UIView] = []
+
+        return [messageLabel, responseButton]
     }
 
-    open lazy var mainLabel: UILabel = {
+    open lazy var imageView = BaseImageView()
+    open lazy var headlineLabel: UILabel = self.createLabel()
+    open lazy var messageLabel: UILabel = self.createLabel()
+
+
+    open func createLabel() -> UILabel {
         let label = UILabel()
         label.wrapWords()
         label.textAlignment = .center
         return label
-    }()
+    }
 
+    open func createButton(_ viewModel: StatefulViewButtonViewModel) -> BaseUIButton {
+        let button = BaseUIButton()
+        
+        return label
+    }
     open var responseButton: BaseUIButton = BaseUIButton()
     public var responseAction: VoidClosure?
 
@@ -52,12 +97,12 @@ open class StatefulViewControllerView: BaseView {
     }
 
     open func set(message: String) {
-        mainLabel.text = message
+        messageLabel.text = message
     }
 
     open func set(message: String? = nil, responseButtonTitle: String? = nil, responseAction: VoidClosure? = nil) {
         if let message = message {
-            mainLabel.text = message
+            messageLabel.text = message
         }
         if let buttonTitle = responseButtonTitle {
             responseButton.setTitle(buttonTitle, for: .normal)
@@ -84,7 +129,7 @@ open class StatefulViewControllerView: BaseView {
 
     open override func style() {
         super.style()
-        mainLabel.apply(textStyle: .regular())
+        messageLabel.apply(textStyle: .regular())
         responseButton.apply(buttonStyle: .flat(textStyle: .regular(color: .primary)))
         backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? parentViewController?.view.backgroundColor
         if backgroundColor == .clear || backgroundColor == nil {

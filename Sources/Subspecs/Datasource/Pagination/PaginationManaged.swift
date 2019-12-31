@@ -81,6 +81,11 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func reload(completion: @escaping VoidClosure) {
+        guard isViewLoaded else {
+            completion()
+            return
+        }
+        debugLog("\(String(describing: self)) is reloading from state \(currentState)")
         datasourceManagedView.hideNeedsLoadingIndicator()
         reloadDidBegin()
         let reloadCompletion = { [weak self] in
@@ -109,7 +114,7 @@ public extension PaginationManaged where Self: UIViewController {
 
     func startLoadingData() {
         if paginationConfig.loadsResultsImmediately {
-            reload()
+            fetchNextPage(firstPage: true)
         }
     }
 
