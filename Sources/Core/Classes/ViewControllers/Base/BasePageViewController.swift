@@ -56,6 +56,12 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
         view.backgroundColor = currentStyle.pagingViewControllerBaseViewBackgroundColor
     }
 
+    // MARK: Reloadable
+
+    open func reload(completion: @escaping () -> Void) {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
+
     // MARK: StatefulViewController
 
     open func customizeStatefulViews() {}
@@ -67,4 +73,8 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
     open func willTransition(to state: State) {}
 
     open func didTransition(to state: State) {}
+
+    open func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
+        return .error(error, retry: loadAsyncData)
+    }
 }

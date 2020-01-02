@@ -66,17 +66,27 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         tableView.apply(tableViewStyle: .defaultStyle)
     }
 
+    // MARK: Reloadable
+
+    open func reload(completion: @escaping () -> Void) {
+        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+    }
+    
     // MARK: StatefulViewController
 
     open func customizeStatefulViews() {}
 
     open func createStatefulViews() -> StatefulViewMap {
-        return .default
+        return .default(for: self)
     }
 
     open func willTransition(to state: State) {}
 
     open func didTransition(to state: State) {}
+
+    open func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
+        return .error(error, retry: loadAsyncData)
+    }
 
     open override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height

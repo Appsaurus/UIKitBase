@@ -9,7 +9,36 @@ import Swiftest
 ////
 //
 import UIKit
+
 extension Nuke_ImageDisplaying where Self: UIView {
+
+    @discardableResult
+    public func loadImage(_ imageResolving: ImageResolving,
+                          options: ImageLoadingOptions = .shared,
+                          progress: ImageTask.ProgressHandler? = nil,
+                          completion: ImageTask.Completion? = nil) throws -> ImageTask? {
+      switch imageResolving {
+          case .image(let image):
+              nuke_display(image: image)
+              return nil
+          case .url(let urlConvertible):
+              return try loadImage(with: urlConvertible, options: options, progress: progress, completion: completion)
+      }
+    }
+
+    @discardableResult
+    public func loadImage(_ imageResolving: ImageResolving,
+                          options: ImageLoadingOptions = .shared,
+                          progress: ImageTask.ProgressHandler? = nil,
+                          completion: ImageTask.Completion? = nil,
+                          errorImage: Image?) -> ImageTask? {
+        do {
+            return try loadImage(imageResolving, options: options, progress: progress, completion: completion)
+        } catch {
+            nuke_display(image: errorImage)
+            return nil
+        }
+    }
     @discardableResult
     public func loadImage(with url: URLConvertible,
                           options: ImageLoadingOptions = .shared,
@@ -45,7 +74,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           requestOptions: ImageRequestOptions? = nil,
                           loadingOptions: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
-                          processors: [ImageProcessing],
+                          processors: [ImageProcessing] = [],
                           completion: ImageTask.Completion? = nil) -> ImageTask? {
         let request = ImageRequest(url: url, processors: processors, options: requestOptions ?? .init())
         return Nuke.loadImage(with: request, options: loadingOptions, into: self, progress: progress, completion: completion)
@@ -65,6 +94,11 @@ extension UIButton: Nuke_ImageDisplaying {
     public func nuke_display(image: Image?) {
         imageView?.image = image
     }
+}
+
+public enum ImageResolving {
+    case image(UIImage)
+    case url(URLConvertible)
 }
 
 //

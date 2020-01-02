@@ -10,7 +10,7 @@ import DarkMagic
 import Swiftest
 import UIKit
 import UIKitMixinable
-
+import UIKitExtensions
 public typealias State = String
 
 extension State {
@@ -30,20 +30,20 @@ extension State {
 public typealias StatefulViewMap = [State: UIView]
 
 extension Dictionary where Key == State, Value == UIView {
-    public static var `default`: StatefulViewMap {
-        return StatefulViewControllerDefaults.defaultStatefulViews()
+    public static func `default`(for statefulViewController: StatefulViewController) -> StatefulViewMap {
+        return StatefulViewControllerDefaults.statefulViews(statefulViewController)
     }
 }
 
 public class StatefulViewControllerDefaults {
-    public static var defaultStatefulViews: () -> StatefulViewMap = {
-        [.empty: StatefulViewControllerEmptyView(frame: .zero),
-         .loading: StatefulViewControllerDefaultLoadingView(frame: .zero),
-         .error: StatefulViewControllerErrorView(frame: .zero)]
+    public static var statefulViews: (StatefulViewController) -> StatefulViewMap = { vc in
+        [.empty: StatefulViewControllerView(viewModel: .empty(retry: vc.reload)),
+         .loading: StatefulViewControllerView.defaultLoading,
+         .error: StatefulViewControllerView(viewModel: .error)]
     }
 }
 
-public protocol StatefulViewController: AnyObject {
+public protocol StatefulViewController: AnyObject, Reloadable {
     var statefulSuperview: UIView { get }
     var stateMachine: ViewStateMachine { get set }
     var logsStateTransitions: Bool { get set }
@@ -60,6 +60,21 @@ public protocol StatefulViewController: AnyObject {
     func transition(to state: State, animated: Bool, completion: (() -> Void)?)
     func willTransition(to state: State)
     func didTransition(to state: State)
+
+    func shouldShowStatefulErrorView(for error: Error) -> Bool
+    func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel
+}
+
+public extension StatefulViewController {
+    func shouldShowStatefulErrorView(for error: Error) -> Bool {
+        return true
+    }
+}
+public extension StatefulViewController where Self: Reloadable {
+    func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
+        return .init(message: error.localizedDescription,
+                     buttonViewModels: ["Reload" => reload])
+    }
 }
 
 private extension AssociatedObjectKeys {
@@ -119,20 +134,22 @@ extension StatefulViewController where Self: NSObject {
     }
 }
 
-extension StatefulViewController {
-    public func createViewStateMachine() -> ViewStateMachine {
+public extension StatefulViewController {
+
+
+    func createViewStateMachine() -> ViewStateMachine {
         return ViewStateMachine(view: statefulSuperview, states: createStatefulViews())
     }
 
-    public var currentState: State {
+    var currentState: State {
         return stateMachine.currentState
     }
 
-    public var previousState: State {
+    var previousState: State {
         return stateMachine.previousState
     }
 
-    public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
         DispatchQueue.mainSyncSafe {
             self.willTransition(to: state)
             if self.logsStateTransitions {
@@ -148,12 +165,15 @@ extension StatefulViewController {
         }
     }
 
-    public func transitionToErrorState(_ error: Error, retry: VoidClosure? = nil) {
-        errorView()?.show(error: error, retry: retry)
+    func transitionToErrorState(_ error: Error) {
+        guard shouldShowStatefulErrorView(for: error) else {
+            return
+        }
+        errorView()?.display(viewModelForErrorState(error))
         transition(to: .error)
     }
 
-    public func enforceCurrentState() {
+    func enforceCurrentState() {
         if self.logsStateTransitions {
             debugLog("\(String(describing: self)) Enforcing current state state: \(currentState)")
         }
@@ -168,12 +188,12 @@ extension StatefulViewController {
         return stateMachine[.loading] as? StatefulViewControllerDefaultLoadingView
     }
 
-    public func errorView() -> StatefulViewControllerErrorView? {
-        return stateMachine[.error] as? StatefulViewControllerErrorView
+    public func errorView() -> StatefulViewControllerView? {
+        return stateMachine[.error] as? StatefulViewControllerView
     }
 
-    public func emptyView() -> StatefulViewControllerEmptyView? {
-        return stateMachine[.empty] as? StatefulViewControllerEmptyView
+    public func emptyView() -> StatefulViewControllerView? {
+        return stateMachine[.empty] as? StatefulViewControllerView
     }
 }
 

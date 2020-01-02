@@ -11,9 +11,6 @@ import UIKit
 open class StatefulViewControllerDefaultLoadingView: StatefulViewControllerLoadingView {
     open var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
 
-    open override func initialArrangedSubviews() -> [UIView] {
-        return [activityIndicator]
-    }
 
     open override func startLoadingAnimation() {
         if !activityIndicator.isAnimating {
@@ -25,5 +22,20 @@ open class StatefulViewControllerDefaultLoadingView: StatefulViewControllerLoadi
         if activityIndicator.isAnimating {
             activityIndicator.stopAnimating()
         }
+    }
+
+    open override func createSubviews() {
+        super.createSubviews()
+        addSubview(activityIndicator)
+    }
+    open override func createAutoLayoutConstraints() {
+        activityIndicator.centerInSuperview()
+    }
+}
+
+
+extension StatefulViewControllerView {
+    static var defaultLoading: StatefulViewControllerDefaultLoadingView {
+        return StatefulViewControllerDefaultLoadingView()
     }
 }

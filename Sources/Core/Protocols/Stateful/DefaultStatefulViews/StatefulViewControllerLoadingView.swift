@@ -1,5 +1,5 @@
 //
-//  StatefulViewControllerEmptyView.swift
+//  StatefulViewControllerLoadingView.swift
 //  UIKitBase
 //
 //  Created by Brian Strobach on 11/5/15.
@@ -8,7 +8,7 @@
 import UIKit
 import UIKitTheme
 
-open class StatefulViewControllerLoadingView: StatefulViewControllerView {
+open class StatefulViewControllerLoadingView: BaseView {
     open override func didMoveToWindow() {
         startLoadingAnimation()
     }

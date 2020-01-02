@@ -7,14 +7,8 @@
 
 import Foundation
 import UIKitMixinable
+import Swiftest
 
-public protocol Reloadable {
-    func reload()
-    func reload(completion: @escaping VoidClosure)
-    func reloadAsyncData(completion: @escaping VoidClosure)
-    func reloadDidBegin()
-    func didReload()
-}
 public protocol DatasourceManaged {
     associatedtype Datasource: DiffableDatasource
     associatedtype DatasourceManagedView: UIScrollView

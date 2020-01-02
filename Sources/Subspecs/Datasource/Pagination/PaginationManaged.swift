@@ -15,13 +15,40 @@ import UIKit
 import UIKitExtensions
 import UIKitMixinable
 
+//public protocol Reloadable {
+//    func reload()
+//    func reload(completion: @escaping VoidClosure)
+//    func reloadAsyncData(completion: @escaping VoidClosure)
+//    func reloadDidBegin()
+//    func didReload()
+//}
+//
+//public extension Reloadable where Self: UIViewController {
+//    func reload() {
+//        reload(completion: {})
+//    }
+//    func reload(completion: @escaping VoidClosure) {
+//        guard isViewLoaded else {
+//            completion()
+//            return
+//        }
+//        reloadDidBegin()
+//        let reloadCompletion = { [weak self] in
+//            guard let self = self else { return }
+//            completion()
+//            self.didReload()
+//        }
+//        reloadAsyncData(completion: completion)
+//    }
+//}
+
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged & Refreshable
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged & Refreshable
 
 public typealias PaginatableContainedTableViewController = BaseContainedTableViewController & PaginationManaged & Refreshable
 public typealias PaginatableContainedCollectionViewController = BaseContainedCollectionViewController & PaginationManaged & Refreshable
 
-public protocol PaginationManaged: StatefulViewController, DatasourceManaged, InfiniteScrollable, PullToRefreshable, ScrollViewReferencing {
+public protocol PaginationManaged: StatefulViewController, DatasourceManaged, Reloadable, InfiniteScrollable, PullToRefreshable, ScrollViewReferencing {
     typealias ItemIdentifierType = Datasource.ItemIdentifierType
     typealias SectionIdentifierType = Datasource.SectionIdentifierType
 
@@ -38,11 +65,11 @@ public protocol PaginationManaged: StatefulViewController, DatasourceManaged, In
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>, isFirstPage: Bool, reloadCompletion: VoidClosure?)
     func state(afterFetching result: PaginationResult<ItemIdentifierType>) -> State
     func modifyFetched(result: PaginationResult<ItemIdentifierType>) -> PaginationResult<ItemIdentifierType>
-//    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure?)
+    //    func reloadPaginatingView(stateAtCompletion: State?, completion: VoidClosure?)
     func reset(to initialState: State, completion: VoidClosure?)
-    func reload(completion: @escaping VoidClosure)
-    func reloadDidBegin()
-    func didReload()
+//    func reload(completion: @escaping VoidClosure)
+//    func reloadDidBegin()
+//    func didReload()
 }
 
 private var associatedPaginator: String = "associatedPaginator"
@@ -66,10 +93,6 @@ public extension PaginationManaged where Self: NSObject {
             setAssociatedObject(newValue, for: &associatedPaginationConfig)
         }
     }
-
-    func reload() {
-        reload(completion: {})
-    }
 }
 
 public extension PaginationManaged where Self: UIViewController {
@@ -80,37 +103,15 @@ public extension PaginationManaged where Self: UIViewController {
         }
     }
 
-    func reload(completion: @escaping VoidClosure) {
-        guard isViewLoaded else {
-            completion()
-            return
-        }
-        debugLog("\(String(describing: self)) is reloading from state \(currentState)")
-        datasourceManagedView.hideNeedsLoadingIndicator()
-        reloadDidBegin()
-        let reloadCompletion = { [weak self] in
-            guard let self = self else { return }
-            completion()
-            self.didReload()
-        }
-        fetchNextPage(firstPage: true, reloadCompletion: reloadCompletion)
-    }
-
-//    func reloadPaginatableCollectionView(completion: @escaping VoidClosure) {
-//        reloadPaginatingView(stateAtCompletion: .loaded, completion: completion)
+//    public func reloadAsyncData(completion: @escaping VoidClosure) {
+//        fetchNextPage(firstPage: true, reloadCompletion: completion)
 //    }
-
-    func reloadDidBegin() {}
-
-    func didReload() {}
-
-    func setupDefaultReloadControlsForEmptyState() {
-        var retryTitle: String?
-        if emptyView()?.responseButton.title(for: .normal).isNilOrEmpty == true {
-            retryTitle = "Reload"
-        }
-        emptyView()?.set(responseButtonTitle: retryTitle, responseAction: reload)
-    }
+//
+//    func reloadDidBegin() {
+//        datasourceManagedView.hideNeedsLoadingIndicator()
+//    }
+//
+//    func didReload() {}
 
     func startLoadingData() {
         if paginationConfig.loadsResultsImmediately {
@@ -142,10 +143,10 @@ public extension PaginationManaged where Self: UIViewController {
         if firstPage { paginator.reset(stashingLastPageInfo: true) }
         paginator.fetchNextPage(success: { [weak self] items, isLastPage in
             self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
-        }, failure: { [weak self] error in
-            self?.paginator.restoreLastPageInfo()
-            self?.didFinishFetching(error: error)
-            reloadCompletion?()
+            }, failure: { [weak self] error in
+                self?.paginator.restoreLastPageInfo()
+                self?.didFinishFetching(error: error)
+                reloadCompletion?()
         })
     }
 
@@ -193,11 +194,7 @@ public extension PaginationManaged where Self: UIViewController {
                 refreshDidFail(with: error)
                 return
             }
-            errorView()?.set(message: "Error: \(error.localizedDescription)", responseButtonTitle: "Try again", responseAction: { [weak self] in
-                guard let sSelf = self else { return }
-                sSelf.fetchNextPage()
-            })
-            transition(to: .error)
+            transitionToErrorState(error)            
         }
     }
 
@@ -215,7 +212,7 @@ public extension PaginationManaged where Self: UIViewController {
         DispatchQueue.main.async {
             if state != .refreshing {
                 self.datasourceManagedView.loadingControls.pullToRefresh.end()
-//                self.datasourceManagedView.refreshControl?.endRefreshing()
+                //                self.datasourceManagedView.refreshControl?.endRefreshing()
             }
 
             switch state {
@@ -302,28 +299,28 @@ public protocol PullToRefreshable: class, ScrollViewReferencing, Refreshable {
 }
 
 extension PullToRefreshable where Self: StatefulViewController {
-        func updatePullToRefreshableViews(for state: State) {
-            var loadingControls = scrollView.loadingControls
+    func updatePullToRefreshableViews(for state: State) {
+        var loadingControls = scrollView.loadingControls
 
-                if state != .refreshing {
-                    loadingControls.pullToRefresh.end()
-                }
-
-                switch state {
-                case .initialized, .loading, .empty, .error:
-                    loadingControls.pullToRefresh.isEnabled = false
-                    scrollView.isScrollEnabled = false
-                case .loadedAll, .loaded, .refreshingError:
-                    loadingControls.pullToRefresh.isEnabled = true
-                    scrollView.isScrollEnabled = true
-                case .loadingMore:
-                    loadingControls.pullToRefresh.isEnabled = false
-                case .refreshing:
-                    scrollView.isScrollEnabled = true
-                default:
-                    break
-                }
+        if state != .refreshing {
+            loadingControls.pullToRefresh.end()
         }
+
+        switch state {
+        case .initialized, .loading, .empty, .error:
+            loadingControls.pullToRefresh.isEnabled = false
+            scrollView.isScrollEnabled = false
+        case .loadedAll, .loaded, .refreshingError:
+            loadingControls.pullToRefresh.isEnabled = true
+            scrollView.isScrollEnabled = true
+        case .loadingMore:
+            loadingControls.pullToRefresh.isEnabled = false
+        case .refreshing:
+            scrollView.isScrollEnabled = true
+        default:
+            break
+        }
+    }
 }
 //MARK: - Refreshable
 public extension PullToRefreshable{

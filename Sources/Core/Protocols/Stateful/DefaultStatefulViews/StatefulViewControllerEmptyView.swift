@@ -9,9 +9,9 @@
 import Swiftest
 import UIKit
 
-open class StatefulViewControllerEmptyView: StatefulViewControllerView {
-    open override func didFinishCreatingAllViews() {
-        super.didFinishCreatingAllViews()
-        set(message: "No results")
-    }
-}
+//open class StatefulViewControllerEmptyView: StatefulViewControllerView {
+//    open override func didFinishCreatingAllViews() {
+//        super.didFinishCreatingAllViews()
+//        set(message: "No results")
+//    }
+//}
