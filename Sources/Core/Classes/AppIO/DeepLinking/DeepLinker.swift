@@ -85,6 +85,13 @@ open class DeepLinker<R: DeepLinkRoute> {
         }
     }
 
+    open func route(to route: R) {
+        guard let url = URL(string: route.fullPath), let match = router.match(url) else {
+            return
+        }
+
+    }
+
     open func postDeepLinkNotification() {
         guard let request = self.request, request.link.isActionable else {
             return
@@ -107,7 +114,14 @@ open class DeepLinker<R: DeepLinkRoute> {
     }
 }
 
-public protocol DeepLinkRoute: StringIdentifiableEnum {}
+public protocol DeepLinkRoute: StringIdentifiableEnum {
+    static var scheme: String { get }
+}
+extension DeepLinkRoute {
+    public var fullPath: String {
+        return  "\(Self.scheme)//\(self)"
+     }
+}
 public protocol DeepLinkObserver: AnyObject {
     func observeDeepLinkNotifications()
 }

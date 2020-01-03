@@ -168,7 +168,7 @@ public extension StatefulViewController {
         guard shouldShowStatefulErrorView(for: error) else {
             return
         }
-        errorView()?.display(viewModelForErrorState(error))
+        errorView?.bind(model: viewModelForErrorState(error))
         transition(to: .error)
     }
 
@@ -183,15 +183,15 @@ public extension StatefulViewController {
 // MARK: Default Stateful Views
 
 extension StatefulViewController {
-    public func loadingView() -> StatefulViewControllerDefaultLoadingView? {
+    public var loadingView: StatefulViewControllerDefaultLoadingView? {
         return stateMachine[.loading] as? StatefulViewControllerDefaultLoadingView
     }
 
-    public func errorView() -> StatefulViewControllerView? {
+    public var errorView: StatefulViewControllerView? {
         return stateMachine[.error] as? StatefulViewControllerView
     }
 
-    public func emptyView() -> StatefulViewControllerView? {
+    public var emptyView: StatefulViewControllerView? {
         return stateMachine[.empty] as? StatefulViewControllerView
     }
 }

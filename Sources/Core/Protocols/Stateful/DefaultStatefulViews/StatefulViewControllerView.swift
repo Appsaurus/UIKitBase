@@ -66,19 +66,20 @@ extension StatefulViewViewModel {
     }
 }
 
-open class StatefulViewControllerView: BaseView {
+open class StatefulViewControllerView: BaseView, ViewModelBound {
+    public typealias Model = StatefulViewViewModel
+
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
     open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
-
-    open var viewModel: StatefulViewViewModel
 
     open lazy var imageView = BaseImageView()
     open lazy var headlineLabel: UILabel = self.createLabel()
     open lazy var messageLabel: UILabel = self.createLabel()
 
     public required init(viewModel: StatefulViewViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
+        super.init(callInitLifecycle: false)
+        self.bind(model: viewModel)
+        initLifecycle()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -115,33 +116,29 @@ open class StatefulViewControllerView: BaseView {
         stackView.apply(stackViewConfiguration: defaultStackViewConfiguration)
     }
 
-    open override func didFinishCreatingAllViews() {
-        super.didFinishCreatingAllViews()
-        display(viewModel)
-    }
+//    open override func didFinishCreatingAllViews() {
+//        super.didFinishCreatingAllViews()
+//        display(viewModel)
+//    }
 
-    open func display(_ viewModel: StatefulViewViewModel) {
+    open func display(model: StatefulViewViewModel) {
         var arrangedViews: [LayoutStackable] = []
-        if let image = viewModel.image {
+        if let image = model.image {
             arrangedViews.append(imageView)
             _ = try? imageView.loadImage(image)
         }
 
-        if let headline = viewModel.headline {
+        if let headline = model.headline {
             headlineLabel.text = headline
             arrangedViews.append(headlineLabel)
         }
 
-        if let message = viewModel.message {
+        if let message = model.message {
             messageLabel.text = message
             arrangedViews.append(messageLabel)
         }
 
-        if arrangedViews.count > 0 {
-            arrangedViews.append(UIStackView.Spacer.flexible)
-        }
-
-        arrangedViews += viewModel.buttonViewModels.map { self.createButton($0) }
+        arrangedViews += model.buttonViewModels.map { self.createButton($0) }
         stackView.stack(arrangedViews)
     }
 
@@ -157,8 +154,8 @@ open class StatefulViewControllerView: BaseView {
 
     open override func style() {
         super.style()
-        messageLabel.apply(textStyle: viewModel.messageStyle ?? .regular())
-        headlineLabel.apply(textStyle: viewModel.headlineStyle ?? .displayHeadline(color: .primary))
+        messageLabel.apply(textStyle: model.messageStyle ?? .regular())
+        headlineLabel.apply(textStyle: model.headlineStyle ?? .displayHeadline(color: .primary))
         backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? parentViewController?.view.backgroundColor
         if backgroundColor == .clear || backgroundColor == nil {
             backgroundColor = .white
