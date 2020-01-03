@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by Brian Strobach on 8/13/17.
-////  Copyright (c) 2017 Appsaurus. All rights reserved.
+/// /  Copyright (c) 2017 Appsaurus. All rights reserved.
 
 import Swiftest
 import UIKitExtensions

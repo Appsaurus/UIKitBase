@@ -29,7 +29,6 @@ public protocol TabBarChild {
     func defaultTabItemWasTappedWhileActive()
 }
 
-
 public extension TabBarChild {
     func tabItemWasTappedWhileActive() {
         defaultTabItemWasTappedWhileActive()
@@ -67,10 +66,10 @@ public extension TabBarChild where Self: ScrollViewReferencing {
 
 // Forwards protocol calls to paged vc by default
 public extension TabBarChild where Self: BaseParentPagingViewController {
-
     private var pagedChild: TabBarChild? {
         return currentPagedViewController as? TabBarChild
     }
+
     func defaultTabItemWasTappedWhileActive() {
         pagedChild?.tabItemWasTappedWhileActive()
     }
@@ -82,7 +81,7 @@ public extension TabBarChild where Self: BaseParentPagingViewController {
 
 public extension TabBarChild where Self: BaseScrollviewParentViewController {
     private var contentChild: TabBarChild? {
-        return self.children.first as? TabBarChild
+        return children.first as? TabBarChild
     }
 
     func defaultTabItemWasTappedWhileActive() {
@@ -100,7 +99,7 @@ public extension TabBarChild where Self: BaseScrollviewParentViewController {
 
 public extension TabBarChild where Self: BaseParentViewController {
     private var contentChild: TabBarChild? {
-        return self.children.first as? TabBarChild
+        return children.first as? TabBarChild
     }
 
     func defaultTabItemWasTappedWhileActive() {

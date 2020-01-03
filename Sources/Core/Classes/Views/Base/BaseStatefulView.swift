@@ -9,7 +9,6 @@ import UIKit
 import UIKitMixinable
 
 open class BaseStatefulView: BaseView, StatefulViewController {
-    
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + [StatefulViewMixin(self)]
     }
@@ -30,7 +29,8 @@ open class BaseStatefulView: BaseView, StatefulViewController {
         return .error(error)
     }
 
-    //MARK: - Reloadable
+    // MARK: - Reloadable
+
     open func reload(completion: @escaping () -> Void) {
         reloadFunction?(completion)
     }

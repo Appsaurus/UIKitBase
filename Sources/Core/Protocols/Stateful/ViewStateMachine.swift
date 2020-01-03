@@ -95,8 +95,7 @@ import UIKit
                 if let statefulView = self.viewForState(state: state) {
                     statefulView.superview?.bringSubviewToFront(statefulView)
                     completion?()
-                }
-                else {
+                } else {
                     self.hideAllViews(animated: animated, completion: completion)
                 }
                 return
@@ -104,7 +103,7 @@ import UIKit
 
             self.previousState = self.currentState
             self.currentState = state
-        // Update the view
+            // Update the view
 
             if let statefulView = self.viewForState(state: state) {
                 self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
@@ -120,7 +119,7 @@ import UIKit
 //        if let previousView = self.viewForState(state: previousState) {
 //            previousView.removeFromSuperview()
 //        }
-        self.hideAllViews(animated: animated)
+        hideAllViews(animated: animated)
 
         let parentView = view // is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
 

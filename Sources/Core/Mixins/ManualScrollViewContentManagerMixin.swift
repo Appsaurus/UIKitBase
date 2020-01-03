@@ -9,38 +9,9 @@ import Foundation
 import UIKitMixinable
 
 public class ManualScrollViewContentManagerMixin: UIViewControllerMixin<UIViewController> {
-    
     open override func viewDidLoad() {
         super.viewDidLoad()
         mixable.manuallyManageScrollViewContentInsets()
-    }
-}
-
-public protocol ScrollViewReferencing {
-    var scrollView: UIScrollView { get }
-}
-
-extension UITableViewController: ScrollViewReferencing  {
-    public var scrollView: UIScrollView {
-        return tableView
-    }
-}
-
-extension UICollectionViewController: ScrollViewReferencing {
-    public var scrollView: UIScrollView {
-        return collectionView!
-    }
-}
-
-extension BaseContainedTableViewController: ScrollViewReferencing {
-    public var scrollView: UIScrollView {
-        return tableView
-    }
-}
-
-extension BaseContainedCollectionViewController: ScrollViewReferencing {
-    public var scrollView: UIScrollView {
-        return collectionView
     }
 }
 
@@ -63,8 +34,7 @@ public extension UIViewController {
     }
 }
 
-
-open class ViewEdgesLayoutMixin: UIViewControllerMixin<UIViewController>{
+open class ViewEdgesLayoutMixin: UIViewControllerMixin<UIViewController> {
     open override func initProperties() {
         super.initProperties()
         mixable.edgesForExtendedLayout = .all

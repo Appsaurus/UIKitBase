@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
     core.dependency 'UIKitExtensions'
     core.dependency 'Layman'
     core.dependency 'DarkMagic'
+    core.dependency 'RuntimeExtensions'
     core.dependency 'UIFontIcons'
     core.dependency 'Actions'
     core.dependency 'Nuke'

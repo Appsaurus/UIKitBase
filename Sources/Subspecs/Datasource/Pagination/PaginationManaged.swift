@@ -15,15 +15,15 @@ import UIKit
 import UIKitExtensions
 import UIKitMixinable
 
-//public protocol Reloadable {
+// public protocol Reloadable {
 //    func reload()
 //    func reload(completion: @escaping VoidClosure)
 //    func reloadAsyncData(completion: @escaping VoidClosure)
 //    func reloadDidBegin()
 //    func didReload()
-//}
+// }
 //
-//public extension Reloadable where Self: UIViewController {
+// public extension Reloadable where Self: UIViewController {
 //    func reload() {
 //        reload(completion: {})
 //    }
@@ -40,7 +40,7 @@ import UIKitMixinable
 //        }
 //        reloadAsyncData(completion: completion)
 //    }
-//}
+// }
 
 public typealias PaginatableTableViewController = BaseTableViewController & PaginationManaged & Refreshable
 public typealias PaginatableCollectionViewController = BaseCollectionViewController & PaginationManaged & Refreshable
@@ -48,7 +48,7 @@ public typealias PaginatableCollectionViewController = BaseCollectionViewControl
 public typealias PaginatableContainedTableViewController = BaseContainedTableViewController & PaginationManaged & Refreshable
 public typealias PaginatableContainedCollectionViewController = BaseContainedCollectionViewController & PaginationManaged & Refreshable
 
-public protocol PaginationManaged: StatefulViewController, DatasourceManaged, Reloadable, InfiniteScrollable, PullToRefreshable, ScrollViewReferencing {
+public protocol PaginationManaged: StatefulViewController, DatasourceManaged, InfiniteScrollable, PullToRefreshable {
     typealias ItemIdentifierType = Datasource.ItemIdentifierType
     typealias SectionIdentifierType = Datasource.SectionIdentifierType
 
@@ -76,7 +76,6 @@ private var associatedPaginator: String = "associatedPaginator"
 private var associatedPaginationConfig: String = "associatedPaginationConfig"
 
 public extension PaginationManaged where Self: NSObject {
-
     var paginator: Paginator<ItemIdentifierType> {
         get {
             return getAssociatedObject(for: &associatedPaginator, initialValue: Paginator<ItemIdentifierType>())
@@ -95,7 +94,6 @@ public extension PaginationManaged where Self: NSObject {
         }
     }
 }
-
 
 public extension PaginationManaged where Self: UIViewController {
     func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {
@@ -145,10 +143,10 @@ public extension PaginationManaged where Self: UIViewController {
         if firstPage { paginator.reset(stashingLastPageInfo: true) }
         paginator.fetchNextPage(success: { [weak self] items, isLastPage in
             self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
-            }, failure: { [weak self] error in
-                self?.paginator.restoreLastPageInfo()
-                self?.didFinishFetching(error: error)
-                reloadCompletion?()
+        }, failure: { [weak self] error in
+            self?.paginator.restoreLastPageInfo()
+            self?.didFinishFetching(error: error)
+            reloadCompletion?()
         })
     }
 
@@ -163,9 +161,9 @@ public extension PaginationManaged where Self: UIViewController {
         }
 
         if isFirstPage {
-            datasource.load(result.items, animated: true, completion: completion)            
+            datasource.load(result.items, animated: true, completion: completion)
         } else {
-            //Turning off animation for now, causing conflicts with ScrollView headers at the moment
+            // Turning off animation for now, causing conflicts with ScrollView headers at the moment
             datasource.append(result.items, animated: paginationConfig.animatesDatasourceChanges, completion: completion)
         }
     }
@@ -196,7 +194,7 @@ public extension PaginationManaged where Self: UIViewController {
                 refreshDidFail(with: error)
                 return
             }
-            transitionToErrorState(error)            
+            transitionToErrorState(error)
         }
     }
 
@@ -293,8 +291,7 @@ public extension PaginationManaged where Self: UIViewController {
     }
 }
 
-
-public protocol PullToRefreshable: class, ScrollViewReferencing, Refreshable {
+public protocol PullToRefreshable: AnyObject, ScrollViewReferencing, Refreshable {
     func addPullToRefresh(direction: ScrollDirection, animator: CustomPullToRefreshAnimator?)
     func pullToRefreshTriggered()
     func createPullToRefreshAnimator() -> CustomPullToRefreshAnimator
@@ -302,7 +299,7 @@ public protocol PullToRefreshable: class, ScrollViewReferencing, Refreshable {
 
 extension PullToRefreshable where Self: StatefulViewController {
     func updatePullToRefreshableViews(for state: State) {
-        var loadingControls = scrollView.loadingControls
+        let loadingControls = scrollView.loadingControls
 
         if state != .refreshing {
             loadingControls.pullToRefresh.end()
@@ -324,15 +321,16 @@ extension PullToRefreshable where Self: StatefulViewController {
         }
     }
 }
-//MARK: - Refreshable
-public extension PullToRefreshable{
+
+// MARK: - Refreshable
+
+public extension PullToRefreshable {
     func refresh() {
         scrollView.beginRefreshing()
     }
 }
 
-
-public extension PullToRefreshable{
+public extension PullToRefreshable {
     func addPullToRefresh(direction: ScrollDirection = .vertical, animator: CustomPullToRefreshAnimator? = nil) {
         scrollView.loadingControls.pullToRefresh.add(direction: direction, animator: animator ?? createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
@@ -346,7 +344,7 @@ public extension PullToRefreshable{
     }
 }
 
-public protocol InfiniteScrollable: class, ScrollViewReferencing {
+public protocol InfiniteScrollable: AnyObject, ScrollViewReferencing {
     func addInfinityScroll(direction: ScrollDirection, animator: CustomInfiniteScrollAnimator?)
     func infiniteScrollTriggered()
     func createInfiniteScrollAnimator() -> CustomInfiniteScrollAnimator

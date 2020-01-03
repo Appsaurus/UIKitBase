@@ -62,7 +62,6 @@ public enum NotificationParsingError: LocalizedError {
 }
 
 open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
-
     open var notificationIdentifier: ID?
     open var notificationCenterNotification: Notification? {
         guard let name = notificationIdentifier?.notificationCenterName() else { return nil }

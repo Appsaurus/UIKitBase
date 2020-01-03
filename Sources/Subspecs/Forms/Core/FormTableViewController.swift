@@ -1,11 +1,11 @@
 import Layman
-////
-////  FormTableViewController.swift
-////  Pods
-////
-////  Created by Brian Strobach on 8/8/17.
-////
-////
+/// /
+/// /  FormTableViewController.swift
+/// /  Pods
+/// /
+/// /  Created by Brian Strobach on 8/8/17.
+/// /
+/// /
 import Swiftest
 import UIKitMixinable
 import UIKitTheme
@@ -14,6 +14,7 @@ public enum FormFieldBehavior {
     case indicatesOptionalFields
     case indicatesRequiredFields
 }
+
 // Basis for any form viewcontroller. Doesn't implement any view logic for fields.
 open class BaseFormViewController<Submission: Equatable, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     public var onCompletion: ResultClosure<Response>?
@@ -34,6 +35,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
             self.updateFieldBehaviors()
         }
     }
+
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
     open override func style() {
@@ -99,8 +101,8 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open func createForm() -> Form {
         let fields = createFields()
         for field in fields {
-             field.behaviors = formFieldBehaviors
-         }
+            field.behaviors = formFieldBehaviors
+        }
         return Form(fields: fields)
     }
 
@@ -147,7 +149,6 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func fieldDidBeginEditing(_ field: FormFieldProtocol) {
         formToolbar?.update()
-
     }
 
     open func fieldDidEndEditing(_ field: FormFieldProtocol) {}
@@ -190,8 +191,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         }
         if withAlert {
             form.presentFormErrorsAlertView(self)
-        }
-        else {
+        } else {
             assignFirstResponderToNextInvalidField()
         }
     }
@@ -299,34 +299,30 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
         tableView.automaticallySizeCellHeights(200)
         tableView.reloadData()
 
-
-        self.keyboardAvoiding = KeyboardAvoiding()
-        .onKeyboardWillShow { [weak self] rect in
-            guard let self = self else { return }
-            self.tableView.contentInset.bottom = rect.height
-        }
-        .onKeyboardDidShow { rect in
-
-        }
-        .onKeyboardWillHide { [weak self] in
-            guard let self = self else { return }
-            self.tableView.contentInset.bottom = 0
-        }
-        .onKeyboardDidHide {
-
-        }
-
+        keyboardAvoiding = KeyboardAvoiding()
+            .onKeyboardWillShow { [weak self] rect in
+                guard let self = self else { return }
+                self.tableView.contentInset.bottom = rect.height
+            }
+            .onKeyboardDidShow { _ in
+            }
+            .onKeyboardWillHide { [weak self] in
+                guard let self = self else { return }
+                self.tableView.contentInset.bottom = 0
+            }
+            .onKeyboardDidHide {}
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.keyboardAvoiding.start()
+        keyboardAvoiding.start()
     }
 
-    override open func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.keyboardAvoiding.stop()
+        keyboardAvoiding.stop()
     }
+
     open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -347,13 +343,9 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
             fieldCell.accessoryType = .disclosureIndicator
         }
     }
-
 }
 
-
-
 open class KeyboardAvoiding {
-
     open var willShow: ((CGRect) -> Void)?
     open var didShow: ((CGRect) -> Void)?
     open var willHide: (() -> Void)?
@@ -363,7 +355,6 @@ open class KeyboardAvoiding {
                 didShow: ((CGRect) -> Void)? = nil,
                 willHide: (() -> Void)? = nil,
                 didHide: (() -> Void)? = nil) {
-
         self.willShow = willShow
         self.didShow = didShow
         self.willHide = willHide
@@ -392,22 +383,22 @@ open class KeyboardAvoiding {
 
     public func start() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillShow(_:)),
+                                               selector: #selector(keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillHide(_:)),
+                                               selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardDidShow(_:)),
+                                               selector: #selector(keyboardDidShow(_:)),
                                                name: UIResponder.keyboardDidShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardDidHide(_:)),
+                                               selector: #selector(keyboardDidHide(_:)),
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
     }
@@ -436,7 +427,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        self.animate(curve: curve, duration: duration) {
+        animate(curve: curve, duration: duration) {
             self.willShow?(frame)
         }
     }
@@ -451,7 +442,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        self.animate(curve: curve, duration: duration) {
+        animate(curve: curve, duration: duration) {
             self.didShow?(frame)
         }
     }
@@ -464,7 +455,7 @@ open class KeyboardAvoiding {
         else {
             return
         }
-        self.animate(curve: curve, duration: duration) {
+        animate(curve: curve, duration: duration) {
             self.willHide?()
         }
     }
@@ -478,7 +469,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        self.animate(curve: curve, duration: duration) {
+        animate(curve: curve, duration: duration) {
             self.didHide?()
         }
     }

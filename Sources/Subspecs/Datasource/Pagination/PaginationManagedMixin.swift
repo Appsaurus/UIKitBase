@@ -6,12 +6,12 @@
 //  Copyright © 2019 Brian Strobach. All rights reserved.
 //
 
+import DarkMagic
 import Layman
 import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
-import DarkMagic
 
 open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
     open override func viewDidLoad() {

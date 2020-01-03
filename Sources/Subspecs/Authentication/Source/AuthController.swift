@@ -71,7 +71,7 @@ public typealias AuthSuccessHandler<R> = (_ response: R) -> Void
 //
 //    open weak var delegate: AuthControllerDelegate?
 //    open var onCompletionHandler: ResultClosure<R>
-////    open lazy var authView: V = { self.createDefaultAuthView() }()
+/// /    open lazy var authView: V = { self.createDefaultAuthView() }()
 //
 //
 //    open func onCompletion(_ closure: @escaping ResultClosure<R>) -> Self {

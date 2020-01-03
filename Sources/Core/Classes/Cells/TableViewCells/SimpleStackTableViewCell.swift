@@ -29,9 +29,9 @@ import UIKitTheme
 // }
 //
 // open class SimpleTableViewCell: ModularTableViewCell<UILabel> {
-////    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
+/// /    public init<F: FontIconEnum>(icon: F, text: String, detailText: String? = nil) {
 //    ////        leftImageView.image = UIImage(icon: icon, configuration: <#T##FontIconConfiguration#>)
-////    }
+/// /    }
 //    open var mainLabel: UILabel {
 //        return view.middleView
 //    }

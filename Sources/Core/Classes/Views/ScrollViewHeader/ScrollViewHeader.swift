@@ -76,7 +76,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     var backgroundViewConstraints: ConstraintAttributeMap = [:]
 
     public var offset: CGFloat {
-        return  scrollView.contentOffset.y + scrollView.contentInset.top
+        return scrollView.contentOffset.y + scrollView.contentInset.top
     }
 
     public var headerHeightRange: CGFloat {
@@ -234,7 +234,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         print("ScrollView header frame \(frame)")
         print("headerBackgroundImageView.frame: \(headerBackgroundImageView.frame)")
 //        print("Screen Height \(UIScreen.screenHeight)")
-        print("Parent vc height \(scrollView.parentViewController?.view.frame.height)")
+        print("Parent vc height \(String(describing: scrollView.parentViewController?.view.frame.height))")
         print("Screen Height - content height \(UIScreen.screenHeight - scrollView.contentSize.height)")
 //        print("Header state: \(headerState)")
         print("Offset: \(offset)")

@@ -11,11 +11,11 @@ import Swiftest
 import UIKitTheme
 
 open class NavigationalMenuTableViewController: BaseTableViewController {
-
     open override func initProperties() {
         super.initProperties()
-        self.navigationBarStyle = .primary
+        navigationBarStyle = .primary
     }
+
     open var cells: [NavigationalMenuTableViewCellDatasource] = []
     open override func viewDidLoad() {
         super.viewDidLoad()

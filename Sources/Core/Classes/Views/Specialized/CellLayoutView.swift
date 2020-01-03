@@ -101,8 +101,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
         optionalRightView?.enforceContentSize()
         if prioritizeMiddleViewWidthOverRightView {
             optionalRightView?.resistCompression(.high, forAxes: [.horizontal])
-        }
-        else {
+        } else {
             middleView.resistCompression(.high, forAxes: [.horizontal])
         }
 

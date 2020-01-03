@@ -77,7 +77,7 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     open func reload(completion: @escaping () -> Void) {
         reloadFunction?(completion)
     }
-    
+
     // MARK: StatefulViewController
 
     open func customizeStatefulViews() {}

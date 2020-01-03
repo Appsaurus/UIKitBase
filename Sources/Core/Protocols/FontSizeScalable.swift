@@ -70,13 +70,12 @@ extension Array where Element: FontSizeScalable {
  Assumes base size was set for iPhone 6, scales up or down from there accordingly.
  */
 
-import AssistantKit
-
 public enum FontScalingOption {
     case downOnly
     case upOnly
     case upAndDown
 }
+
 public extension DoubleConvertible {
     func scaledForDevice(baselineScreenHeight: CGFloat = 667.0, option: FontScalingOption = .downOnly) -> CGFloat {
         let screenHeight = UIScreen.main.bounds.height

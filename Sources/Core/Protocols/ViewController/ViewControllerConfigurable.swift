@@ -20,7 +20,7 @@ public protocol ViewControllerConfigurable: OrientationLockable, StatusBarConfig
 //        }
 //        set {
 //            viewControllerConfiguration.style.navigationBarStyle = newValue
-////            applyDefaultNavigationBarStyle()
+/// /            applyDefaultNavigationBarStyle()
 //        }
 //    }
 // }

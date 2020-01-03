@@ -207,9 +207,9 @@ public extension DiffableDatasource {
 //    func append(sections: [SectionIdentifierType], animated: Bool = false, completion: @escaping VoidClosure = {}) {
 //        let snapshot = self.snapshot()
 //        snapshot.appendSections(sections)
-    ////        UIView.animate(withDuration: 0, animations: {
+    /// /        UIView.animate(withDuration: 0, animations: {
 //            self.apply(snapshot, animatingDifferences: animated)
-    ////        }, completion: { _ in completion() })
+    /// /        }, completion: { _ in completion() })
 //        completion()
 //    }
 

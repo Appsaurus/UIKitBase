@@ -200,10 +200,12 @@ public extension UNAuthorizationOptions {
     static var basicAlerts: UNAuthorizationOptions {
         return [.alert, .badge, .sound]
     }
+
     static var silentNotifications: UNAuthorizationOptions {
         return []
     }
 }
+
 @available(iOS 10.0, *)
 open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager> {
     open var remoteNotificationRegistrationFailure: ErrorClosure?
@@ -225,7 +227,6 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
             assertionFailure()
             return
         }
-        
 
         // Set delegate to owning mixable object, which will ultimately call these mixed methods upon delegation from UNUserNotificationCenter.
         UNUserNotificationCenter.current().requestAuthorization(

@@ -9,8 +9,8 @@
 import DarkMagic
 import Swiftest
 import UIKit
-import UIKitMixinable
 import UIKitExtensions
+import UIKitMixinable
 public typealias State = String
 
 extension State {
@@ -70,6 +70,7 @@ public extension StatefulViewController {
         return true
     }
 }
+
 public extension StatefulViewController where Self: Reloadable {
     func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
         return .init(message: error.localizedDescription,
@@ -135,8 +136,6 @@ extension StatefulViewController where Self: NSObject {
 }
 
 public extension StatefulViewController {
-
-
     func createViewStateMachine() -> ViewStateMachine {
         return ViewStateMachine(view: statefulSuperview, states: createStatefulViews())
     }
@@ -174,10 +173,10 @@ public extension StatefulViewController {
     }
 
     func enforceCurrentState() {
-        if self.logsStateTransitions {
+        if logsStateTransitions {
             debugLog("\(String(describing: self)) Enforcing current state state: \(currentState)")
         }
-        self.stateMachine.transition(to: self.currentState)
+        stateMachine.transition(to: currentState)
     }
 }
 
@@ -238,6 +237,7 @@ public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewCont
             mixable.transitionToInitialState()
         }
     }
+
 //    open override func viewWillAppear(_ animated: Bool){
 //        //In some cases, view did not update due to model state change in background
 //        DispatchQueue.main.async {

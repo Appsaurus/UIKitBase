@@ -78,16 +78,6 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         setupTextField(textField: textField)
     }
 
-//    open override func setupControlActions() {
-//        super.setupControlActions()
-//        setupTextFieldAction()
-//    }
-//
-//    open override func setupDelegates() {
-//        super.setupDelegates()
-//        textField.delegate = self
-//    }
-
     open func setupValidationRules() {}
 
     func resetField() {

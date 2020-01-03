@@ -71,7 +71,7 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     open func reload(completion: @escaping () -> Void) {
         reloadFunction?(completion)
     }
-    
+
     // MARK: StatefulViewController
 
     open func customizeStatefulViews() {}

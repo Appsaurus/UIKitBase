@@ -446,10 +446,23 @@
 		E475F60D22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60E22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60F22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E48838C523BFB6EC00F8CE72 /* TabBarChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48838C423BFB6EC00F8CE72 /* TabBarChild.swift */; };
 		E489F0B923131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
 		E489F0BA23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
 		E489F0BB23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
 		E489F0BC23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
+		E49C4EAE23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */; };
+		E49C4EAF23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */; };
+		E49C4EB023BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */; };
+		E49C4EB123BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */; };
+		E49C4EB423BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */; };
+		E49C4EB523BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */; };
+		E49C4EB623BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */; };
+		E49C4EB723BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */; };
+		E49C4EBA23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */; };
+		E49C4EBB23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */; };
+		E49C4EBC23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */; };
+		E49C4EBD23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */; };
 		E4AF808521BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808621BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
 		E4AF808721BB2D90002D6E86 /* FirstResponderManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF804F21BB2D90002D6E86 /* FirstResponderManaged.swift */; };
@@ -678,10 +691,6 @@
 		E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
 		E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
 		E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */; };
-		E4AF820E21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
-		E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
-		E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
-		E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */; };
 		E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 		E4AF821521BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
 		E4AF821621BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */; };
@@ -702,6 +711,14 @@
 		E4C119EA230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
 		E4C119EB230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
 		E4C119EC230C865F009F3FB0 /* DataSourceManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */; };
+		E4D7095B23BFB49500F47C21 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095923BFB49500F47C21 /* Bindable.swift */; };
+		E4D7095C23BFB49500F47C21 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095923BFB49500F47C21 /* Bindable.swift */; };
+		E4D7095D23BFB49500F47C21 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095923BFB49500F47C21 /* Bindable.swift */; };
+		E4D7095E23BFB49500F47C21 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095923BFB49500F47C21 /* Bindable.swift */; };
+		E4D7095F23BFB49500F47C21 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095A23BFB49500F47C21 /* Synchronizable.swift */; };
+		E4D7096023BFB49500F47C21 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095A23BFB49500F47C21 /* Synchronizable.swift */; };
+		E4D7096123BFB49500F47C21 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095A23BFB49500F47C21 /* Synchronizable.swift */; };
+		E4D7096223BFB49500F47C21 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D7095A23BFB49500F47C21 /* Synchronizable.swift */; };
 		E4D8E42A2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
 		E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */; };
@@ -867,12 +884,16 @@
 		E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornableMixin.swift; sourceTree = "<group>"; };
 		E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsDisplaying.swift; sourceTree = "<group>"; };
 		E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewController.swift; sourceTree = "<group>"; };
+		E48838C423BFB6EC00F8CE72 /* TabBarChild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarChild.swift; sourceTree = "<group>"; };
 		E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableViewAccessoriesMixins.swift; sourceTree = "<group>"; };
+		E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualScrollViewContentManagerMixin.swift; sourceTree = "<group>"; };
+		E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewReferencing.swift; sourceTree = "<group>"; };
+		E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewModel.swift; sourceTree = "<group>"; };
 		E4AF7F1421BB21EA002D6E86 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		E4AF7F1521BB21EA002D6E86 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		E4AF7F1621BB21EA002D6E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E4AF7F1721BB21EA002D6E86 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIKitBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E4AF7F1821BB21EA002D6E86 /* UIKitBase.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIKitBase.podspec; sourceTree = "<group>"; };
 		E4AF7F1921BB21EB002D6E86 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		E4AF7F1A21BB21EB002D6E86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4AF7F1B21BB21EB002D6E86 /* circle.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
@@ -933,12 +954,13 @@
 		E4AF81FD21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDatasourceChangeManager.swift; sourceTree = "<group>"; };
 		E4AF820221BF8D9F002D6E86 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		E4AF820821BF90AF002D6E86 /* ContainerScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScrollview.swift; sourceTree = "<group>"; };
-		E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarChildViewControllerProtocol.swift; sourceTree = "<group>"; };
 		E4AF821321BF95F6002D6E86 /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		E4AF821821C0299D002D6E86 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E4AF821D21C02CA6002D6E86 /* ImageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayable.swift; sourceTree = "<group>"; };
 		E4AF822B21C05CE2002D6E86 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E4C119E8230C865F009F3FB0 /* DataSourceManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceManaged.swift; sourceTree = "<group>"; };
+		E4D7095923BFB49500F47C21 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		E4D7095A23BFB49500F47C21 /* Synchronizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
 		E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+FontIcons.swift"; sourceTree = "<group>"; };
 		F018CB104CC5EB988E7C787A /* Pods-UIKitBase-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F8228D948861F5C321E62D15 /* Pods-UIKitBase-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitBase-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIKitBase-iOS-Tests/Pods-UIKitBase-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1163,6 +1185,7 @@
 		E41D7071224D5DA000CA05C4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E4D7095823BFB49500F47C21 /* ModelBinding */,
 				E41D72A5224D7D7D00CA05C4 /* ThemeExtensions */,
 				E41D729A224D7D7500CA05C4 /* Utils */,
 				E41D728F224D7D5200CA05C4 /* LayoutConstraints */,
@@ -1663,9 +1686,19 @@
 			path = Windows;
 			sourceTree = "<group>";
 		};
+		E49C4EB823BFB9AC002A87A9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E49C4EB923BFB9AC002A87A9 /* ButtonViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E4AF804E21BB2D90002D6E86 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E49C4EB323BFB951002A87A9 /* ScrollViewReferencing.swift */,
+				E48838C423BFB6EC00F8CE72 /* TabBarChild.swift */,
 				E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */,
 				E41D726F224D78C500CA05C4 /* FontSizeScalable.swift */,
 				E41D726A224D785A00CA05C4 /* ScrollViewObserver.swift */,
@@ -1676,7 +1709,6 @@
 				E4AF805321BB2D90002D6E86 /* InitialAutoLayoutPassAware.swift */,
 				E4AF805121BB2D90002D6E86 /* KeyboardSizeAware.swift */,
 				E4AF813521BB2F78002D6E86 /* NotificationObserver.swift */,
-				E4AF820D21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift */,
 				E4AF813A21BB2F93002D6E86 /* UITableViewControllerProtocol.swift */,
 				E4AF805021BB2D90002D6E86 /* ViewRecycler.swift */,
 				E4AF81D121BF84EF002D6E86 /* Stateful */,
@@ -1710,6 +1742,7 @@
 		E4AF805C21BB2D90002D6E86 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E49C4EB823BFB9AC002A87A9 /* ViewModels */,
 				E41D6F762245EDE500CA05C4 /* AppDelegate */,
 				E4AF807621BB2D90002D6E86 /* AppIO */,
 				E41D719D224D654800CA05C4 /* Cells */,
@@ -1724,6 +1757,7 @@
 		E4AF805D21BB2D90002D6E86 /* Mixins */ = {
 			isa = PBXGroup;
 			children = (
+				E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */,
 				E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */,
 				E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */,
 				E4AF805E21BB2D90002D6E86 /* ViewRecyclerMixin.swift */,
@@ -1847,6 +1881,15 @@
 				E4D8E4292239FC4300403D59 /* UITabBarItem+FontIcons.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E4D7095823BFB49500F47C21 /* ModelBinding */ = {
+			isa = PBXGroup;
+			children = (
+				E4D7095923BFB49500F47C21 /* Bindable.swift */,
+				E4D7095A23BFB49500F47C21 /* Synchronizable.swift */,
+			);
+			path = ModelBinding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2175,6 +2218,7 @@
 				"${BUILT_PRODUCTS_DIR}/Actions/Actions.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Algorithm/Algorithm.framework",
+				"${BUILT_PRODUCTS_DIR}/CRuntime/CRuntime.framework",
 				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DarkMagic/DarkMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/DiffableDataSources/DiffableDataSources.framework",
@@ -2185,6 +2229,8 @@
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Permission/Permission.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Runtime/Runtime.framework",
+				"${BUILT_PRODUCTS_DIR}/RuntimeExtensions/RuntimeExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/UIFontIcons/UIFontIcons.framework",
@@ -2201,6 +2247,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Actions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Algorithm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRuntime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DarkMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DiffableDataSources.framework",
@@ -2211,6 +2258,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Permission.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Runtime.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RuntimeExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIFontIcons.framework",
@@ -2301,7 +2350,6 @@
 				E41D72A3224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4C119EB230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D321BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF821021BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710E224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DB21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E41D71A9224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
@@ -2337,6 +2385,7 @@
 				E4D8E42C2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820B21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70B0224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E49C4EBC23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */,
 				E41D716F224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70D0224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E489F0BB23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
@@ -2404,6 +2453,7 @@
 				E41D7216224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70E0224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D718B224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E4D7095D23BFB49500F47C21 /* Bindable.swift in Sources */,
 				E466AC3A224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813321BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CC224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
@@ -2419,6 +2469,7 @@
 				E4AF80D721BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
 				E41D70F0224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7298224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
+				E49C4EB023BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */,
 				E4AF811321BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E475F5FA22D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
 				E41D7282224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
@@ -2438,6 +2489,7 @@
 				E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */,
 				E41D7177224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E49C4EB623BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */,
 				E475F60A22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D71AD224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812F21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
@@ -2453,6 +2505,7 @@
 				E4AF80F721BB2D90002D6E86 /* BaseViewController.swift in Sources */,
 				E41D716B224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
 				E41D70A8224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E4D7096123BFB49500F47C21 /* Synchronizable.swift in Sources */,
 				E41D70F4224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813821BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 				E41D70C0224D5F5B00CA05C4 /* FormInput.swift in Sources */,
@@ -2487,7 +2540,6 @@
 				E41D72A4224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4C119EC230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D421BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF821121BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710F224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DC21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E41D71AA224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
@@ -2523,6 +2575,7 @@
 				E4D8E42D2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820C21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70B1224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E49C4EBD23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */,
 				E41D7170224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70D1224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E489F0BC23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
@@ -2590,6 +2643,7 @@
 				E4AF80B821BB2D90002D6E86 /* FirstResponderManagedMixin.swift in Sources */,
 				E41D7217224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70E1224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
+				E4D7095E23BFB49500F47C21 /* Bindable.swift in Sources */,
 				E41D718C224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
 				E466AC3B224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813421BB2D90002D6E86 /* BaseView.swift in Sources */,
@@ -2605,6 +2659,7 @@
 				E41D71B6224D654800CA05C4 /* DynamicHeightCell.swift in Sources */,
 				E4AF80D821BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
 				E475F60B22D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
+				E49C4EB123BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */,
 				E41D70F1224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7299224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
 				E4AF811421BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
@@ -2624,6 +2679,7 @@
 				E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715C224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7127224D5FB300CA05C4 /* AuthController.swift in Sources */,
+				E49C4EB723BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */,
 				E41D7178224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
 				E41D71AE224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF813021BB2D90002D6E86 /* BaseImageView.swift in Sources */,
@@ -2639,6 +2695,7 @@
 				E4AF80F821BB2D90002D6E86 /* BaseViewController.swift in Sources */,
 				E41D716C224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
 				E41D70A9224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E4D7096223BFB49500F47C21 /* Synchronizable.swift in Sources */,
 				E41D70F5224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813921BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 				E41D70C1224D5F5B00CA05C4 /* FormInput.swift in Sources */,
@@ -2663,8 +2720,8 @@
 				E41D71BF224D654800CA05C4 /* ViewBasedCollectionViewCell.swift in Sources */,
 				E41D72A1224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4AF80D121BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF820E21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710C224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
+				E48838C523BFB6EC00F8CE72 /* TabBarChild.swift in Sources */,
 				E4AF80D921BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E41D71A7224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
 				E41D70C6224D5F5B00CA05C4 /* CodeFormViewController.swift in Sources */,
@@ -2707,6 +2764,7 @@
 				E4C119E9230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF821421BF95F6002D6E86 /* UIView+ActivityIndicator.swift in Sources */,
 				E4AF810D21BB2D90002D6E86 /* BaseSearchBar.swift in Sources */,
+				E49C4EBA23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */,
 				E41D72C8224DA1B300CA05C4 /* ConfigurableViewController.swift in Sources */,
 				E475F5F322D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */,
 				E414048523270B180000349E /* BaseContainedCollectionViewController.swift in Sources */,
@@ -2728,6 +2786,7 @@
 				E41D717D224D651300CA05C4 /* SparkRefreshAnimator.swift in Sources */,
 				E41D71AF224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
 				E41D70DA224D5F5B00CA05C4 /* Form.swift in Sources */,
+				E49C4EAE23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */,
 				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
@@ -2817,7 +2876,10 @@
 				E4AF80F521BB2D90002D6E86 /* BaseViewController.swift in Sources */,
 				E41D7169224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
 				E41D70A6224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E4D7095F23BFB49500F47C21 /* Synchronizable.swift in Sources */,
+				E4D7095B23BFB49500F47C21 /* Bindable.swift in Sources */,
 				E41D70F2224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
+				E49C4EB423BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */,
 				E4AF813621BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 				E41D70BE224D5F5B00CA05C4 /* FormInput.swift in Sources */,
 				E41D70E6224D5F5B00CA05C4 /* FormPickerField.swift in Sources */,
@@ -2851,7 +2913,6 @@
 				E41D72A2224D7D7500CA05C4 /* DrawingUtils.swift in Sources */,
 				E4C119EA230C865F009F3FB0 /* DataSourceManaged.swift in Sources */,
 				E4AF80D221BB2D90002D6E86 /* BaseScrollviewController.swift in Sources */,
-				E4AF820F21BF93CA002D6E86 /* TabBarChildViewControllerProtocol.swift in Sources */,
 				E41D710D224D5FB300CA05C4 /* AuthControllerManager.swift in Sources */,
 				E4AF80DA21BB2D90002D6E86 /* BaseParentPagingViewController.swift in Sources */,
 				E41D71A8224D654800CA05C4 /* SimpleHorizontalStackTableViewCell.swift in Sources */,
@@ -2887,6 +2948,7 @@
 				E4D8E42B2239FC4300403D59 /* UITabBarItem+FontIcons.swift in Sources */,
 				E4AF820A21BF90AF002D6E86 /* ContainerScrollview.swift in Sources */,
 				E41D70AF224D5F5B00CA05C4 /* LegalDisclosureViewController.swift in Sources */,
+				E49C4EBB23BFB9AC002A87A9 /* ButtonViewModel.swift in Sources */,
 				E41D716E224D651300CA05C4 /* NormalInfinityAnimator.swift in Sources */,
 				E41D70CF224D5F5B00CA05C4 /* PhoneNumberFormFields.swift in Sources */,
 				E489F0BA23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */,
@@ -2954,6 +3016,7 @@
 				E41D7215224D66D300CA05C4 /* ScrollViewHeader.swift in Sources */,
 				E41D70DF224D5F5B00CA05C4 /* FormTextField.swift in Sources */,
 				E41D718A224D651300CA05C4 /* SnakeInfinityAnimator.swift in Sources */,
+				E4D7095C23BFB49500F47C21 /* Bindable.swift in Sources */,
 				E466AC39224EA71000CA54F4 /* ActivityMonitoringWindow.swift in Sources */,
 				E4AF813221BB2D90002D6E86 /* BaseView.swift in Sources */,
 				E41D70CB224D5F5B00CA05C4 /* PhoneNumberEntryViewController.swift in Sources */,
@@ -2969,6 +3032,7 @@
 				E4AF80D621BB2D90002D6E86 /* BaseStackViewController.swift in Sources */,
 				E41D70EF224D5F5B00CA05C4 /* FormField.swift in Sources */,
 				E41D7297224D7D5200CA05C4 /* CollapsibleLayoutConstraint.swift in Sources */,
+				E49C4EAF23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */,
 				E4AF811221BB2D90002D6E86 /* BaseCollectionViewCell.swift in Sources */,
 				E475F5F922D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
 				E41D7281224D7C0300CA05C4 /* PagingMenuView.swift in Sources */,
@@ -2988,6 +3052,7 @@
 				E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */,
 				E41D7176224D651300CA05C4 /* CircleInfinityAnimator.swift in Sources */,
+				E49C4EB523BFB951002A87A9 /* ScrollViewReferencing.swift in Sources */,
 				E475F60922D6D1E000FE1007 /* SearchResultsDisplaying.swift in Sources */,
 				E41D71AC224D654800CA05C4 /* DynamicHeightStackTableViewCell.swift in Sources */,
 				E4AF812E21BB2D90002D6E86 /* BaseImageView.swift in Sources */,
@@ -3003,6 +3068,7 @@
 				E4AF80F621BB2D90002D6E86 /* BaseViewController.swift in Sources */,
 				E41D716A224D651300CA05C4 /* DefaultRefreshAnimator.swift in Sources */,
 				E41D70A7224D5F5B00CA05C4 /* SearchHistoryManager.swift in Sources */,
+				E4D7096023BFB49500F47C21 /* Synchronizable.swift in Sources */,
 				E41D70F3224D5F5B00CA05C4 /* FormFieldProtocol.swift in Sources */,
 				E4AF813721BB2F78002D6E86 /* NotificationObserver.swift in Sources */,
 				E41D70BF224D5F5B00CA05C4 /* FormInput.swift in Sources */,

@@ -6,11 +6,11 @@
 //  Copyright © 2016 Appsaurus LLC. All rights reserved.
 //
 
+import Layman
 import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitTheme
-import Layman
 
 open class StatefulViewViewModel {
     public var image: ImageResolving?
@@ -19,7 +19,7 @@ open class StatefulViewViewModel {
     public var message: String?
     public var messageStyle: TextStyle?
     public var buttonViewModels: [ButtonViewModel]
-    
+
     public init(image: ImageResolving? = nil,
                 _ headline: String? = nil,
                 headlineStyle: TextStyle? = nil,
@@ -34,9 +34,7 @@ open class StatefulViewViewModel {
         self.buttonViewModels = buttonViewModels.map { $0.toButtonViewModel() }
     }
 
-    open class Defaults {
-
-    }
+    open class Defaults {}
 }
 
 extension StatefulViewViewModel {
@@ -67,11 +65,12 @@ extension StatefulViewViewModel {
                      buttons)
     }
 }
+
 open class StatefulViewControllerView: BaseView {
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
     open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
 
-    var viewModel: StatefulViewViewModel
+    open var viewModel: StatefulViewViewModel
 
     open lazy var imageView = BaseImageView()
     open lazy var headlineLabel: UILabel = self.createLabel()
@@ -81,11 +80,10 @@ open class StatefulViewControllerView: BaseView {
         self.viewModel = viewModel
         super.init(frame: .zero)
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
+
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     open func createLabel() -> UILabel {
         let label = UILabel()
@@ -111,7 +109,7 @@ open class StatefulViewControllerView: BaseView {
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         stackView.centerInSuperview()
-        stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors)
+        stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors.inset(20))
         stackView.sizeAnchors.greaterThanOrEqual(to: 0)
         stackView.arrangedSubviews.enforceContentSize()
         stackView.apply(stackViewConfiguration: defaultStackViewConfiguration)
@@ -119,14 +117,14 @@ open class StatefulViewControllerView: BaseView {
 
     open override func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        display(self.viewModel)
+        display(viewModel)
     }
 
     open func display(_ viewModel: StatefulViewViewModel) {
-        var arrangedViews: [UIView] = []
+        var arrangedViews: [LayoutStackable] = []
         if let image = viewModel.image {
             arrangedViews.append(imageView)
-            try? imageView.loadImage(image)
+            _ = try? imageView.loadImage(image)
         }
 
         if let headline = viewModel.headline {
@@ -139,9 +137,14 @@ open class StatefulViewControllerView: BaseView {
             arrangedViews.append(messageLabel)
         }
 
-        arrangedViews += viewModel.buttonViewModels.map { self.createButton($0)}
-        stackView.swapArrangedSubviews(for: arrangedViews)
+        if arrangedViews.count > 0 {
+            arrangedViews.append(UIStackView.Spacer.flexible)
+        }
+
+        arrangedViews += viewModel.buttonViewModels.map { self.createButton($0) }
+        stackView.stack(arrangedViews)
     }
+
     open func set(message: String) {
         messageLabel.text = message
     }

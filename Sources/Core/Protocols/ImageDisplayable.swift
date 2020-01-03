@@ -1,29 +1,28 @@
 import Nuke
 import Swiftest
-////
-////  ImageDisplayable.swift
-////  UIKitBase
-////
-////  Created by Brian Strobach on 12/11/18.
-////  Copyright © 2018 Brian Strobach. All rights reserved.
-////
+/// /
+/// /  ImageDisplayable.swift
+/// /  UIKitBase
+/// /
+/// /  Created by Brian Strobach on 12/11/18.
+/// /  Copyright © 2018 Brian Strobach. All rights reserved.
+/// /
 //
 import UIKit
 
 extension Nuke_ImageDisplaying where Self: UIView {
-
     @discardableResult
     public func loadImage(_ imageResolving: ImageResolving,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil) throws -> ImageTask? {
-      switch imageResolving {
-          case .image(let image):
-              nuke_display(image: image)
-              return nil
-          case .url(let urlConvertible):
-              return try loadImage(with: urlConvertible, options: options, progress: progress, completion: completion)
-      }
+        switch imageResolving {
+        case let .image(image):
+            nuke_display(image: image)
+            return nil
+        case let .url(urlConvertible):
+            return try loadImage(with: urlConvertible, options: options, progress: progress, completion: completion)
+        }
     }
 
     @discardableResult
@@ -31,7 +30,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil,
-                          errorImage: Image?) -> ImageTask? {
+                          errorImage: PlatformImage?) -> ImageTask? {
         do {
             return try loadImage(imageResolving, options: options, progress: progress, completion: completion)
         } catch {
@@ -39,6 +38,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
             return nil
         }
     }
+
     @discardableResult
     public func loadImage(with url: URLConvertible,
                           options: ImageLoadingOptions = .shared,
@@ -52,7 +52,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil,
-                          errorImage: Image?) -> ImageTask? {
+                          errorImage: PlatformImage?) -> ImageTask? {
         do {
             return try loadImage(with: url, options: options, progress: progress, completion: completion)
         } catch {
@@ -87,11 +87,11 @@ extension Nuke_ImageDisplaying where Self: UIView {
 }
 
 extension UIButton: Nuke_ImageDisplaying {
-    public func display(image: Image?) {
+    public func display(image: PlatformImage?) {
         imageView?.image = image
     }
 
-    public func nuke_display(image: Image?) {
+    public func nuke_display(image: PlatformImage?) {
         imageView?.image = image
     }
 }

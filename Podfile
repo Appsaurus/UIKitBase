@@ -16,6 +16,7 @@ def libaryShared
     pod 'UIKitExtensions', :git => 'https://github.com/Appsaurus/UIKitExtensions'
     pod 'Layman', :git => 'https://github.com/Appsaurus/Layman'
     pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
+    pod 'RuntimeExtensions', :git => 'https://github.com/Appsaurus/RuntimeExtensions'
     pod 'UIFontIcons/MaterialIcons', :git => 'https://github.com/Appsaurus/UIFontIcons'
     pod 'Actions'
     pod 'Nuke'

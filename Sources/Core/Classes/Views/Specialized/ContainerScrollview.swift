@@ -10,7 +10,6 @@ import Actions
 import Swiftest
 import UIKit
 open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
-
     open var lastContentOffset: CGPoint = .zero {
         didSet {
             if contentOffset.y < lastContentOffset.y {
@@ -49,8 +48,6 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         bounces = false
     }
 
-
-
     open override func layoutSubviews() {
         super.layoutSubviews()
 //        print("contentView.frame.size: \(contentView.frame.size)")
@@ -87,7 +84,6 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
             return false
         }
 
-
         return true
     }
 
@@ -96,7 +92,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
     }
 }
 
-//extension UIPanGestureRecognizer {
+// extension UIPanGestureRecognizer {
 //    var verticalScrollDirection: UIPanGestureVerticalScrollDirection {
 //        switch velocity(in: view).y {
 //            case 0: return .none
@@ -105,13 +101,13 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
 //
 //        }
 //    }
-//}
+// }
 //
-//enum UIPanGestureVerticalScrollDirection {
+// enum UIPanGestureVerticalScrollDirection {
 //    case up
 //    case down
 //    case none
-//}
+// }
 
 // extension ContainerScrollView: UIScrollViewDelegate {
 //    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

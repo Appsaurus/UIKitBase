@@ -16,6 +16,7 @@ extension BaseParentPagingViewController:
     UIPageViewControllerDelegate,
     AsyncDatasourceChangeManager
 {}
+
 open class BaseParentPagingViewController: BaseParentViewController {
     open lazy var eagerLoadBuffer: Int? = nil
     open lazy var initialPageIndex: Int = 0

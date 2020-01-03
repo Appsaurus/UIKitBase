@@ -6,28 +6,28 @@
 //
 //
 
+import DarkMagic
 import Swiftest
 import UIKitMixinable
 import UIKitTheme
-import DarkMagic
 
 public protocol Reloadable {
     func reload(completion: @escaping () -> Void)
     var reloadFunction: ReloadFunction? { get set }
 }
+
 public typealias ReloadFunction = ((@escaping VoidClosure) -> Void)
 
-private extension AssociatedObjectKeys{
+private extension AssociatedObjectKeys {
     static let reloadFunction = AssociatedObjectKey<ReloadFunction?>("reloadFunction")
 }
 
-public extension Reloadable where Self: NSObject{
-
-    public var reloadFunction: ReloadFunction?{
-        get{
+public extension Reloadable where Self: NSObject {
+    var reloadFunction: ReloadFunction? {
+        get {
             return self[.reloadFunction, nil]
         }
-        set{
+        set {
             self[.reloadFunction] = newValue
         }
     }
@@ -61,7 +61,6 @@ extension BaseViewControllerProtocol where Self: UIViewController {
 }
 
 open class BaseViewController: MixinableViewController, BaseViewControllerProtocol {
-
     open override func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseViewControllerProtocolMixins
     }

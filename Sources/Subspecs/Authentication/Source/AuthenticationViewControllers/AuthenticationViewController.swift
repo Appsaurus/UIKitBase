@@ -147,7 +147,6 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
             self.showAuthViews(animated: animated)
             self.stopAuthenticationInProgressAnimation()
         }
-
     }
 
     open func showSessionRestoreState() {
@@ -157,7 +156,7 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
             self.startAuthenticationInProgressAnimation()
         }
     }
-    
+
     open func showAuthenticatingState(animated: Bool = true) {
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = false
@@ -169,7 +168,7 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     open func authenticationDidSucceed(successResponse: Any) {
         stopAuthenticationInProgressAnimation()
         guard config.automaticallySeguesAfterAuthentication else {
-            self.view.isUserInteractionEnabled = true
+            view.isUserInteractionEnabled = true
             return
         }
         presentInitialViewController { [weak self] in

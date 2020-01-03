@@ -1,10 +1,10 @@
-////
-////  ImageSliderViewController.swift
-////  Pods
-////
-////  Created by Brian Strobach on 7/17/17.
-////
-////
+/// /
+/// /  ImageSliderViewController.swift
+/// /  Pods
+/// /
+/// /  Created by Brian Strobach on 7/17/17.
+/// /
+/// /
 //
 // import Layman
 // import Swiftest

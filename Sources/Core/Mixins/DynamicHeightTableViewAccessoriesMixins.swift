@@ -17,12 +17,12 @@ public class DynamicHeightTableViewAccessoriesMixins: UIViewControllerMixin<UITa
         super.viewDidLayoutSubviews()
         mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
     }
-    
+
 //    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
 //    }
 
-    override open func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
     }
 }

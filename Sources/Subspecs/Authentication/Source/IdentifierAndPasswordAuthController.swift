@@ -1,9 +1,9 @@
-////
-////  IdentifierAndPasswordAuthController.swift
-////  AppsaurusUIKit
-////
-////  Created by Brian Strobach on 4/10/18.
-////
+/// /
+/// /  IdentifierAndPasswordAuthController.swift
+/// /  AppsaurusUIKit
+/// /
+/// /  Created by Brian Strobach on 4/10/18.
+/// /
 //
 // import KeychainAccess
 // import Layman

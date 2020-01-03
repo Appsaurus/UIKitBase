@@ -38,8 +38,8 @@ public enum ScrollDirection {
 }
 
 public class ScrollViewLoadingControl {
-    public static let defaultInfiniteScrollAnimator: () -> CustomInfiniteScrollAnimator = { return CircleInfiniteAnimator(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) }
-    public static let defaultPullToRefreshAnimator: () -> CustomPullToRefreshAnimator = { return DefaultRefreshAnimator(frame: CGRect(x: 0, y: 0, width: 24, height: 24)) }
+    public static let defaultInfiniteScrollAnimator: () -> CustomInfiniteScrollAnimator = { CircleInfiniteAnimator(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) }
+    public static let defaultPullToRefreshAnimator: () -> CustomPullToRefreshAnimator = { DefaultRefreshAnimator(frame: CGRect(x: 0, y: 0, width: 24, height: 24)) }
 
     public let pullToRefresh: PullToRefreshWrapper
     public let infiniteScroll: InfiniteScrollWrapper

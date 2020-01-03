@@ -26,7 +26,6 @@ open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestu
         add(initialChildViewController(), to: childViewControllerContainerView)
     }
 
-
     open func initialChildViewController() -> UIViewController {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return UIViewController()

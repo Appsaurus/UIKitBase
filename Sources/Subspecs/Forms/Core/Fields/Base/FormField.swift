@@ -1,11 +1,11 @@
 import Actions
-////
-////  FormField.swift
-////  Pods
-////
-////  Created by Brian Strobach on 8/8/17.
-////
-////
+/// /
+/// /  FormField.swift
+/// /  Pods
+/// /
+/// /  Created by Brian Strobach on 8/8/17.
+/// /
+/// /
 //
 import Foundation
 import Swiftest
@@ -89,12 +89,12 @@ public enum FormFieldState {
 }
 
 open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol {
-
     open override var behaviors: Set<FormFieldBehavior> {
         didSet {
             updateContentView()
         }
     }
+
     // Makes accessoryview assignable
     open var _inputAccessoryView: UIView? {
         didSet {

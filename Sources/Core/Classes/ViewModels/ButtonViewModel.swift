@@ -5,9 +5,9 @@
 //  Created by Brian Strobach on 1/2/20.
 //
 
-import UIKitTheme
-import UIKitExtensions
 import Actions
+import UIKitExtensions
+import UIKitTheme
 
 public func .~ (lhs: TitledAction, rhs: ButtonStyle) -> ButtonViewModel {
     return ButtonViewModel(title: lhs.title, action: lhs.action, style: rhs)
@@ -49,8 +49,9 @@ public extension BaseButton {
 public protocol ButtonViewModelConvertible {
     func toButtonViewModel() -> ButtonViewModel
 }
+
 extension TitledAction: ButtonViewModelConvertible {
     public func toButtonViewModel() -> ButtonViewModel {
-        return  ButtonViewModel(title: title, action: action)
+        return ButtonViewModel(title: title, action: action)
     }
 }

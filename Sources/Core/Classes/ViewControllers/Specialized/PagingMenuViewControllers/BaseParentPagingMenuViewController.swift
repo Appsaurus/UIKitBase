@@ -91,13 +91,13 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
     }
 }
 
-////
-////  BaseScrollViewParentPagingMenuViewController.swift
-////  Pods
-////
-////  Created by Brian Strobach on 7/9/17.
-////
-////
+/// /
+/// /  BaseScrollViewParentPagingMenuViewController.swift
+/// /  Pods
+/// /
+/// /  Created by Brian Strobach on 7/9/17.
+/// /
+/// /
 //
 // import Foundation
 // import UIKit
@@ -109,11 +109,11 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //		return pagingMenuView
 //	}
 //
-////	open override func viewDidLoad() {
-////		super.viewDidLoad()
-////		pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
-////		pagingMenuView.transitionToInitialSelectionState()
-////	}
+/// /	open override func viewDidLoad() {
+/// /		super.viewDidLoad()
+/// /		pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
+/// /		pagingMenuView.transitionToInitialSelectionState()
+/// /	}
 //
 //	open override func viewDidAppear(_ animated: Bool) {
 //		super.viewDidAppear(animated)
@@ -167,9 +167,9 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 //	}
 //
 //	open func pagingMenuView(menuView: PagingMenuView, didSelectMenuItemCell: PagingMenuItemCell<UIView>, at index: Int) {
-////		guard index != currentPage else {
-////			return
-////		}
+/// /		guard index != currentPage else {
+/// /			return
+/// /		}
 //		DispatchQueue.main.async {
 //			super.transitionToPage(at: index)
 //		}

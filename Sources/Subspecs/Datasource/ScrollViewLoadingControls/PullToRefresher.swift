@@ -11,6 +11,7 @@ import UIKit
 public protocol CustomPullToRefreshAnimator {
     func animateState(_ state: PullToRefreshState)
 }
+
 public enum PullToRefreshState: Equatable, CustomStringConvertible {
     case none
     case releasing(progress: CGFloat)
