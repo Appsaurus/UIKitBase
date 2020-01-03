@@ -76,6 +76,7 @@ private var associatedPaginator: String = "associatedPaginator"
 private var associatedPaginationConfig: String = "associatedPaginationConfig"
 
 public extension PaginationManaged where Self: NSObject {
+
     var paginator: Paginator<ItemIdentifierType> {
         get {
             return getAssociatedObject(for: &associatedPaginator, initialValue: Paginator<ItemIdentifierType>())
@@ -94,6 +95,7 @@ public extension PaginationManaged where Self: NSObject {
         }
     }
 }
+
 
 public extension PaginationManaged where Self: UIViewController {
     func reset(to initialState: State = .initialized, completion: VoidClosure? = nil) {

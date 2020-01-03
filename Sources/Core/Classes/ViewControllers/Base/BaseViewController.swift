@@ -9,10 +9,28 @@
 import Swiftest
 import UIKitMixinable
 import UIKitTheme
-
+import DarkMagic
 
 public protocol Reloadable {
     func reload(completion: @escaping () -> Void)
+    var reloadFunction: ReloadFunction? { get set }
+}
+public typealias ReloadFunction = ((@escaping VoidClosure) -> Void)
+
+private extension AssociatedObjectKeys{
+    static let reloadFunction = AssociatedObjectKey<ReloadFunction?>("reloadFunction")
+}
+
+public extension Reloadable where Self: NSObject{
+
+    public var reloadFunction: ReloadFunction?{
+        get{
+            return self[.reloadFunction, nil]
+        }
+        set{
+            self[.reloadFunction] = newValue
+        }
+    }
 }
 
 public extension Reloadable {
@@ -87,7 +105,7 @@ open class BaseViewController: MixinableViewController, BaseViewControllerProtoc
     // MARK: Reloadable
 
     open func reload(completion: @escaping () -> Void) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        reloadFunction?(completion)
     }
 
     // MARK: StatefulViewController

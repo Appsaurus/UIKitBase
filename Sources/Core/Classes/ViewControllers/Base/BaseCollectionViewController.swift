@@ -61,7 +61,7 @@ open class BaseCollectionViewController: MixinableCollectionViewController, Base
     // MARK: Reloadable
 
     open func reload(completion: @escaping () -> Void) {
-        assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
+        reloadFunction?(completion)
     }
 
     // MARK: StatefulViewController

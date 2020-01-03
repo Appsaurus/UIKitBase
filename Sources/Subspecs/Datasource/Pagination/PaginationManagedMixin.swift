@@ -11,6 +11,7 @@ import Swiftest
 import UIKit
 import UIKitExtensions
 import UIKitMixinable
+import DarkMagic
 
 open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
     open override func viewDidLoad() {
@@ -18,6 +19,12 @@ open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: Dat
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
             mixable.updatePaginatableViews(for: state)
+        }
+        mixable.reloadFunction = { [weak self] completion in
+            guard let self = self else { return }
+            self.mixable.fetchNextPage(firstPage: true,
+                                       transitioningState: .loading,
+                                       reloadCompletion: { completion() })
         }
     }
 

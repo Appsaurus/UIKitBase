@@ -21,11 +21,11 @@ open class StatefulViewViewModel {
     public var buttonViewModels: [ButtonViewModel]
     
     public init(image: ImageResolving? = nil,
-                headline: String? = nil,
+                _ headline: String? = nil,
                 headlineStyle: TextStyle? = nil,
                 message: String? = nil,
                 messageStyle: TextStyle? = nil,
-                buttonViewModels: [ButtonViewModelConvertible] = []) {
+                _ buttonViewModels: [ButtonViewModelConvertible] = []) {
         self.image = image
         self.headline = headline
         self.headlineStyle = headlineStyle
@@ -47,12 +47,12 @@ extension StatefulViewViewModel {
         if let retry = retry {
             buttons.append(retryTitle => retry)
         }
-        return .init(headline: headline,
-                     buttonViewModels: buttons)
+        return .init(headline,
+                     buttons)
     }
 
     static var error: StatefulViewViewModel {
-        return .init(headline: "Error")
+        return .init("Error")
     }
 
     static func error(_ error: Error,
@@ -62,9 +62,9 @@ extension StatefulViewViewModel {
         if let retry = retry {
             buttons.append(retryTitle => retry)
         }
-        return .init(headline: "Error",
+        return .init("Error",
                      message: error.localizedDescription,
-                     buttonViewModels: buttons)
+                     buttons)
     }
 }
 open class StatefulViewControllerView: BaseView {
@@ -111,7 +111,7 @@ open class StatefulViewControllerView: BaseView {
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         stackView.centerInSuperview()
-        stackView.edgeAnchors.insetOrEqual(to: edgeAnchors)
+        stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors)
         stackView.sizeAnchors.greaterThanOrEqual(to: 0)
         stackView.arrangedSubviews.enforceContentSize()
         stackView.apply(stackViewConfiguration: defaultStackViewConfiguration)
