@@ -86,10 +86,11 @@ open class DeepLinker<R: DeepLinkRoute> {
     }
 
     open func route(to route: R) {
-        guard let url = URL(string: route.fullPath), let match = router.match(url) else {
+        guard let url = URL(string: route.rawValue) else {
             return
         }
 
+        router.match(url)
     }
 
     open func postDeepLinkNotification() {

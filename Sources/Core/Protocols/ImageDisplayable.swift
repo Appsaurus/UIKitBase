@@ -11,6 +11,7 @@ import Swiftest
 import UIKit
 
 extension Nuke_ImageDisplaying where Self: UIView {
+
     @discardableResult
     public func loadImage(_ imageResolving: ImageResolving,
                           options: ImageLoadingOptions = .shared,

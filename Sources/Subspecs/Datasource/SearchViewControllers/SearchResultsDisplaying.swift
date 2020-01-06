@@ -74,9 +74,12 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
         guard let query = query else {
             switch searchDataSourceType {
             case .remote:
+                paginator.searchQuery = nil
                 if fetchesResultsWithEmptyQuery {
-                    paginator.searchQuery = nil
                     fetchNextPage(firstPage: true)
+                }
+                else {
+                    datasource.clearData()
                 }
             case .local:
                 assertionFailure()
