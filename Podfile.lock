@@ -39,8 +39,8 @@ PODS:
     - Runtime
   - SwiftDate (6.1.0)
   - Swiftest (0.0.36)
-  - SwiftFormat/CLI (0.43.4)
-  - SwiftLint (0.38.0)
+  - SwiftFormat/CLI (0.43.5)
+  - SwiftLint (0.38.1)
   - SwiftLocation (4.2.0)
   - SwiftTestUtils (0.1.7)
   - UIFontIcons/Core (0.0.6)
@@ -189,8 +189,8 @@ SPEC CHECKSUMS:
   RuntimeExtensions: 1d94c50270e77754ab1e2bca97c05c9a6f0e2a0b
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   Swiftest: 86f5e427a6380566399f712daa66dd732dfa60c2
-  SwiftFormat: bb8e5b2634142cd00a3eb52743d9ead8e4b5f54d
-  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
+  SwiftFormat: 352ea545e3e13cfd7a449e621c1f3c2e244d4906
+  SwiftLint: 0aeb99ca7ccfc222ef93e2560a35e669f5465e6c
   SwiftLocation: 609ac8859f2c5d48a6cadd2a58c63b1dae02dc25
   SwiftTestUtils: 69c483e473582bc9f166b682b6f28d0e7ca9efd0
   UIFontIcons: d4a72e705e2ce1f7ef60e6107e12500893a0b67a
