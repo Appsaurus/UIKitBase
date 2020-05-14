@@ -41,7 +41,8 @@ extension UIView {
                                       color: UIColor? = nil,
                                       useAutoLayout: Bool = true,
                                       position: ActivityIndicatorPosition = .center,
-                                      disablingUserInteraction: Bool = true) {
+                                      disablingUserInteraction: Bool = true,
+                                      disablingGlobalUserInteraction: Bool = false) {
         // Indicator already exists, make sure it is visible but do not create another
         if let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
             bringSubviewToFront(indicator)
@@ -88,12 +89,15 @@ extension UIView {
         if disablingUserInteraction {
             isUserInteractionEnabled = false
         }
+        if disablingGlobalUserInteraction {
+            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
     }
 
     /**
      Stops and removes an UIActivityIndicator in any UIView
      */
-    public func hideActivityIndicator(enablingUserInteraction: Bool = true) {
+    public func hideActivityIndicator(enablingUserInteraction: Bool = true, enablingGlobbalUserInteraction: Bool = true) {
         guard let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
             return
         }
@@ -101,6 +105,9 @@ extension UIView {
         indicator.removeFromSuperview()
         if enablingUserInteraction {
             isUserInteractionEnabled = true
+        }
+        if enablingGlobbalUserInteraction {
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 }
