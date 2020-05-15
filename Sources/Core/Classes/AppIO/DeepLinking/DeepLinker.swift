@@ -120,7 +120,7 @@ public protocol DeepLinkRoute: StringIdentifiableEnum {
 }
 extension DeepLinkRoute {
     public var fullPath: String {
-        return  "\(Self.scheme)//\(self)"
+        return  "\(Self.scheme)//\(self.rawValue)"
      }
 }
 public protocol DeepLinkObserver: AnyObject {
