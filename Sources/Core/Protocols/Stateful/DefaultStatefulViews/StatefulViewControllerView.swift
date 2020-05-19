@@ -67,6 +67,10 @@ extension StatefulViewViewModel {
 }
 
 open class StatefulViewControllerView: BaseView, ViewModelBound {
+    public enum Layout {
+        case center
+        case topCenter
+    }
     public typealias Model = StatefulViewViewModel
 
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
@@ -75,8 +79,10 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
     open lazy var imageView = BaseImageView()
     open lazy var headlineLabel: UILabel = self.createLabel()
     open lazy var messageLabel: UILabel = self.createLabel()
+    open var layout: Layout
 
-    public required init(viewModel: StatefulViewViewModel) {
+    public required init(viewModel: StatefulViewViewModel, layout: Layout = .topCenter) {
+        self.layout = layout
         super.init(callInitLifecycle: false)
         self.bind(model: viewModel)
         initLifecycle()
@@ -109,11 +115,21 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
 
     open override func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        stackView.centerInSuperview()
-        stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors.inset(20))
+        let margin: LayoutConstant = 20
+        switch layout {
+            case .center:
+                stackView.centerInSuperview()
+                stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors.inset(margin))
+            case .topCenter:
+                stackView.centerX.equalToSuperview()
+                stackView.edgeAnchors.excluding(.top).insetOrEqual(to: margins.edgeAnchors.inset(margin))
+                stackView.top.equal(to: margins.top.inset(margin))
+        }
+        
         stackView.sizeAnchors.greaterThanOrEqual(to: 0)
         stackView.arrangedSubviews.enforceContentSize()
         stackView.apply(stackViewConfiguration: defaultStackViewConfiguration)
+
     }
 
 //    open override func didFinishCreatingAllViews() {

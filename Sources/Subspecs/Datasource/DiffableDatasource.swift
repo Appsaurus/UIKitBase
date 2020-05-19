@@ -20,7 +20,7 @@ open class TableViewDatasource<ItemIdentifierType: Hashable>: TableViewDiffableD
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 
-    @objc public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    @objc open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard usesSectionsAsHeaderTitles else {
             return secondaryDatasource?.tableView?(tableView, titleForHeaderInSection: section)
         }
