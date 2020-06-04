@@ -16,7 +16,7 @@ open class MaterialTextField: AnimatableTextField {
     open var underlineView: UIView = UIView()
     open var placeholderActiveScale: CGFloat = 0.7
 
-    open override var placeholder: String? {
+    override open var placeholder: String? {
         set {
             _internalPlaceholder = newValue
         }
@@ -62,7 +62,7 @@ open class MaterialTextField: AnimatableTextField {
         return errorText ?? hintText
     }
 
-    open override func didMoveToWindow() {
+    override open func didMoveToWindow() {
         super.didMoveToWindow()
         guard styleMap.keys.count == 0, let parentColor = firstVisibleParentBackgroundColor else {
             return
@@ -70,46 +70,46 @@ open class MaterialTextField: AnimatableTextField {
         styleMap = .materialStyleMap(contrasting: parentColor)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubviews([titleLabel, secondaryLabel, underlineView])
+        addSubviews([titleLabel, secondaryLabel, self.underlineView])
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         secondaryLabel.equal(to: edges.excluding(.top))
         secondaryLabel.height.equal(to: layoutHeights.secondaryLabel)
-        underlineView.horizontalEdges.equal(to: horizontalEdges)
-        underlineView.bottom.equal(to: bottom.inset(layoutHeights.secondaryLabel))
-        underlineView.height.equal(to: 2.0)
+        self.underlineView.horizontalEdges.equal(to: horizontalEdges)
+        self.underlineView.bottom.equal(to: bottom.inset(layoutHeights.secondaryLabel))
+        self.underlineView.height.equal(to: 2.0)
         height.equal(to: layoutHeights.titleLabel + layoutHeights.textField + layoutHeights.secondaryLabel)
     }
 
-    open override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         super.draw(rect)
         guard currentState == .disabled else { return }
         let dotColor = (styleMap[.disabled] as? MaterialTextFieldStyle)?.underlineViewStyle.backgroundColor
-        underlineView.backgroundColor = nil
-        DrawingUtils.drawDottedUnderline(strokeColor: dotColor, in: underlineView)
+        self.underlineView.backgroundColor = nil
+        DrawingUtils.drawDottedUnderline(strokeColor: dotColor, in: self.underlineView)
     }
 
-    open override func apply(textFieldStyle: TextFieldStyle) {
+    override open func apply(textFieldStyle: TextFieldStyle) {
         super.apply(textFieldStyle: textFieldStyle)
         guard let materialStyle = textFieldStyle as? MaterialTextFieldStyle else { return }
-        underlineView.apply(viewStyle: materialStyle.underlineViewStyle)
+        self.underlineView.apply(viewStyle: materialStyle.underlineViewStyle)
         titleLabel.apply(textStyle: materialStyle.titleLabelTextStyle)
         secondaryLabel.apply(textStyle: materialStyle.secondaryLabelTextStyle)
     }
 
-    open override func applyCurrentStateConfiguration(animated: Bool = false) {
+    override open func applyCurrentStateConfiguration(animated: Bool = false) {
         super.applyCurrentStateConfiguration(animated: animated)
-        displayPlaceholderIfNeeded()
-        displayTitleLabelIfNeeded()
-        updateSecondaryLabel()
+        self.displayPlaceholderIfNeeded()
+        self.displayTitleLabelIfNeeded()
+        self.updateSecondaryLabel()
     }
 
     open func displayTitleLabelIfNeeded(animated: Bool = true) {
-        guard title.hasNonEmptyValue else {
+        guard self.title.hasNonEmptyValue else {
             titleLabel.alpha = 0.0
             return
         }
@@ -135,8 +135,8 @@ open class MaterialTextField: AnimatableTextField {
     }
 
     open func updateSecondaryLabel(animated: Bool = true) {
-        secondaryLabel.text = secondaryText
-        guard secondaryText.hasNonEmptyValue else {
+        secondaryLabel.text = self.secondaryText
+        guard self.secondaryText.hasNonEmptyValue else {
             //  hideSecondaryLabel(animated: animated)
             return
         }
@@ -150,19 +150,19 @@ open class MaterialTextField: AnimatableTextField {
         return positionAbove
     }
 
-    open override func layoutTitleLabel() {
+    override open func layoutTitleLabel() {
         // let insetX = leftViewWidth + textInset
 
         titleLabel.layer.anchorPoint = .zero
 
-        guard shouldPositionAbove else {
+        guard self.shouldPositionAbove else {
             titleLabel.transform = CGAffineTransform.identity
             titleLabel.frame = textRect(forBounds: bounds.height == 0 ? CGRect(x: 0, y: 0, width: frame.w, height: frame.h) : bounds)
             return
         }
 
         titleLabel.frame = CGRect(x: 0, y: 0, width: frame.w, height: layoutHeights.titleLabel)
-        titleLabel.transform = CGAffineTransform(scaleX: placeholderActiveScale, y: placeholderActiveScale)
+        titleLabel.transform = CGAffineTransform(scaleX: self.placeholderActiveScale, y: self.placeholderActiveScale)
     }
 }
 
@@ -280,9 +280,9 @@ extension Dictionary where Key: T, Value: TextFieldStyle {
     }
 
     public static func materialStyleMap(contrasting color: UIColor) -> TextFieldStyleMap {
-        if color == .primary { return materialStyleMap(color: .primaryContrast) }
-        if color == .primaryContrast { return materialStyleMap(color: .primary) }
+        if color == .primary { return self.materialStyleMap(color: .primaryContrast) }
+        if color == .primaryContrast { return self.materialStyleMap(color: .primary) }
         let contrast = color.contrastingColor(fromCandidates: [.textDark, .textLight, .primary, .primaryContrast])
-        return materialStyleMap(color: contrast)
+        return self.materialStyleMap(color: contrast)
     }
 }

@@ -164,20 +164,20 @@ open class BaseButton: BaseView, ButtonStyleable {
     open var previousState: ButtonState?
 
     open func stateDidChange() {
-        applyCurrentStateConfiguration()
-        additionalStateChangeActions()
+        self.applyCurrentStateConfiguration()
+        self.additionalStateChangeActions()
     }
 
     open func additionalStateChangeActions() {
-        if state == .disabled {
-            applyDisabledStateBehaviors()
-        } else if previousState == .disabled {
-            removeDisabledStateBehaviors()
+        if self.state == .disabled {
+            self.applyDisabledStateBehaviors()
+        } else if self.previousState == .disabled {
+            self.removeDisabledStateBehaviors()
         }
-        if state == .activity {
-            applyActivityStateBehaviors()
-        } else if previousState == .activity {
-            removeActivityStateBehaviors()
+        if self.state == .activity {
+            self.applyActivityStateBehaviors()
+        } else if self.previousState == .activity {
+            self.removeActivityStateBehaviors()
         }
     }
 
@@ -192,8 +192,8 @@ open class BaseButton: BaseView, ButtonStyleable {
                             buttonLayout: ButtonLayout = ButtonLayout(),
                             onTap: VoidClosure? = nil) {
         self.init(callInitLifecycle: false)
-        titleMap =? titles
-        attributedTitleMap =? attributedTitles
+        self.titleMap =? titles
+        self.attributedTitleMap =? attributedTitles
         self.imageMap =? imageMap
         self.imageUrlMap =? imageUrlMap
         self.styleMap =? styleMap
@@ -209,8 +209,8 @@ open class BaseButton: BaseView, ButtonStyleable {
             style?.textStyle.font = font
         }
 
-        styleMap[.any] = style ?? ButtonStyle(textStyle: TextStyle(color: .primaryContrast, font: font), viewStyle: ViewStyle())
-        titleMap[.any] = icon.rawValue
+        self.styleMap[.any] = style ?? ButtonStyle(textStyle: TextStyle(color: .primaryContrast, font: font), viewStyle: ViewStyle())
+        self.titleMap[.any] = icon.rawValue
         self.buttonLayout =? buttonLayout
         self.onTap =? onTap
         initLifecycle(.programmatically)
@@ -218,17 +218,17 @@ open class BaseButton: BaseView, ButtonStyleable {
 
     public convenience init(frame: CGRect = .zero, style: ButtonStyle, buttonLayout: ButtonLayout? = nil, onTap: VoidClosure? = nil) {
         self.init(callInitLifecycle: false)
-        styleMap[.any] = style
+        self.styleMap[.any] = style
         self.buttonLayout =? buttonLayout
         self.onTap =? onTap
         initLifecycle(.programmatically)
     }
 
-    public override init(callInitLifecycle: Bool = true) {
+    override public init(callInitLifecycle: Bool = true) {
         super.init(callInitLifecycle: callInitLifecycle)
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -236,12 +236,12 @@ open class BaseButton: BaseView, ButtonStyleable {
         super.init(coder: aDecoder)
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        imageView.tintsImages = tintsImagesToMatchTextColor
-        titleLabel.baselineAdjustment = .alignCenters
-        titleLabel.lineBreakMode = .byTruncatingTail
-        applyCurrentStateConfiguration()
+        self.imageView.tintsImages = self.tintsImagesToMatchTextColor
+        self.titleLabel.baselineAdjustment = .alignCenters
+        self.titleLabel.lineBreakMode = .byTruncatingTail
+        self.applyCurrentStateConfiguration()
 
         let tap = addTap { [weak self] view in
             guard let self = self else { return }
@@ -251,28 +251,28 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     open func buttonWasTapped<V: UIView>(view: V) {
-        let action = buttonTapActionMap.firstValue(for: .overrideAll, state, .any) ?? onTap
+        let action = self.buttonTapActionMap.firstValue(for: .overrideAll, self.state, .any) ?? self.onTap
         action?()
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(contentLayoutView)
-        contentLayoutView.addSubviews([titleLabel, imageView])
+        addSubview(self.contentLayoutView)
+        self.contentLayoutView.addSubviews([self.titleLabel, self.imageView])
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        apply(buttonLayout: buttonLayout)
+        self.apply(buttonLayout: self.buttonLayout)
     }
 
     // MARK: Touch handling, passing along touches when disabled
 
-    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if state == .disabled, buttonTapActionMap[.disabled] == nil {
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if self.state == .disabled, self.buttonTapActionMap[.disabled] == nil {
             return false
         }
-        if state == .activity, buttonTapActionMap[.activity] == nil {
+        if self.state == .activity, self.buttonTapActionMap[.activity] == nil {
             return false
         }
         return super.point(inside: point, with: event)
@@ -281,75 +281,75 @@ open class BaseButton: BaseView, ButtonStyleable {
     // TODO: Refactor this into a visitor pattern
     // swiftlint:disable:next function_body_length
     open func apply(buttonLayout: ButtonLayout) {
-        contentLayoutView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.marginInsets)
+        self.contentLayoutView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.marginInsets)
 
         switch buttonLayout.layoutType {
         case let .centerTitleUnderImage(padding):
-            imageView.equal(to: contentLayoutView.top.inset(buttonLayout.imageInsets.top))
-            imageView.insetOrEqual(to: contentLayoutView.horizontalEdges.inset(buttonLayout.imageInsets.horizontal))
-            imageView.equal(to: contentLayoutView.centerX)
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
+            self.imageView.equal(to: self.contentLayoutView.top.inset(buttonLayout.imageInsets.top))
+            self.imageView.insetOrEqual(to: self.contentLayoutView.horizontalEdges.inset(buttonLayout.imageInsets.horizontal))
+            self.imageView.equal(to: self.contentLayoutView.centerX)
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType)
 
-            titleLabel.enforceContentSize()
-            titleLabel.equal(to: contentLayoutView.edges.excluding(.top))
-            titleLabel.height.greaterThanOrEqual(to: 0)
-            titleLabel.top.equal(to: imageView.bottom.plus(padding))
-            titleLabel.textAlignment = .center
+            self.titleLabel.enforceContentSize()
+            self.titleLabel.equal(to: self.contentLayoutView.edges.excluding(.top))
+            self.titleLabel.height.greaterThanOrEqual(to: 0)
+            self.titleLabel.top.equal(to: self.imageView.bottom.plus(padding))
+            self.titleLabel.textAlignment = .center
 
         case let .imageLeftTitleStackedRight(padding):
 //            [imageView, titleLabel].stack(.leftToRight, in: contentLayoutView)
-            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.verticalEdges.equal(to: contentLayoutView)
-            titleLabel.trailing.equal(to: contentLayoutView.trailing.inset(padding))
-            imageView.trailing.equal(to: titleLabel.leading.inset(padding))
-            titleLabel.textAlignment = .left
+            self.imageView.equal(to: self.contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType)
+            self.titleLabel.verticalEdges.equal(to: self.contentLayoutView)
+            self.titleLabel.trailing.equal(to: self.contentLayoutView.trailing.inset(padding))
+            self.imageView.trailing.equal(to: self.titleLabel.leading.inset(padding))
+            self.titleLabel.textAlignment = .left
         case let .imageRightTitleStackedLeft(padding):
-            imageView.equal(to: contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType)
-            titleLabel.verticalEdges.equal(to: contentLayoutView)
-            titleLabel.leading.equal(to: contentLayoutView.leading.inset(padding))
-            titleLabel.trailing.equal(to: imageView.leading.plus(padding))
-            titleLabel.textAlignment = .right
+            self.imageView.equal(to: self.contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType)
+            self.titleLabel.verticalEdges.equal(to: self.contentLayoutView)
+            self.titleLabel.leading.equal(to: self.contentLayoutView.leading.inset(padding))
+            self.titleLabel.trailing.equal(to: self.imageView.leading.plus(padding))
+            self.titleLabel.textAlignment = .right
         case .imageLeftTitleCenter:
-            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
-            titleLabel.pinToSuperview()
-            titleLabel.textAlignment = .center
+            self.imageView.equal(to: self.contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
+            self.titleLabel.pinToSuperview()
+            self.titleLabel.textAlignment = .center
         case .imageRightTitleCenter:
-            imageView.equal(to: contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
-            titleLabel.pinToSuperview()
-            titleLabel.textAlignment = .center
+            self.imageView.equal(to: self.contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
+            self.titleLabel.pinToSuperview()
+            self.titleLabel.textAlignment = .center
         case .titleCentered:
-            titleLabel.forceSuperviewToMatchContentSize()
-            titleLabel.textAlignment = .center
+            self.titleLabel.forceSuperviewToMatchContentSize()
+            self.titleLabel.textAlignment = .center
         case .imageCentered:
-            imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
-            imageView.size.greaterThanOrEqual(to: 0.0)
+            self.imageView.forceSuperviewToMatchContentSize(insetBy: buttonLayout.imageInsets)
+            self.imageView.size.greaterThanOrEqual(to: 0.0)
         case .imageCenteredSquare:
-            imageView.insetOrEqual(to: contentLayoutView.edges.inset(buttonLayout.imageInsets))
-            imageView.centerInSuperview()
-            imageView.size.greaterThanOrEqual(to: 0.0)
-            imageView.aspectRatio.equal(to: .square)
+            self.imageView.insetOrEqual(to: self.contentLayoutView.edges.inset(buttonLayout.imageInsets))
+            self.imageView.centerInSuperview()
+            self.imageView.size.greaterThanOrEqual(to: 0.0)
+            self.imageView.aspectRatio.equal(to: .square)
         case .imageCenteredRound:
-            imageView.insetOrEqual(to: contentLayoutView.edges.inset(buttonLayout.imageInsets))
-            imageView.centerInSuperview()
-            imageView.size.greaterThanOrEqual(to: 0.0)
-            imageView.aspectRatio.equal(to: .square)
-            imageView.rounded = true
+            self.imageView.insetOrEqual(to: self.contentLayoutView.edges.inset(buttonLayout.imageInsets))
+            self.imageView.centerInSuperview()
+            self.imageView.size.greaterThanOrEqual(to: 0.0)
+            self.imageView.aspectRatio.equal(to: .square)
+            self.imageView.rounded = true
         case let .imageAndTitleCentered(padding):
 
-            imageView.enforceContentSize()
-            imageView.equal(to: contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
-            titleLabel.leading.equal(to: imageView.trailing.plus(padding + buttonLayout.imageInsets.trailing))
-            createImageLayoutConstraints(for: imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
+            self.imageView.enforceContentSize()
+            self.imageView.equal(to: self.contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
+            self.titleLabel.leading.equal(to: self.imageView.trailing.plus(padding + buttonLayout.imageInsets.trailing))
+            self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType, masterAttribute: .height)
 
-            titleLabel.equal(to: contentLayoutView.verticalEdges)
-            titleLabel.insetOrEqual(to: contentLayoutView.trailing)
-            titleLabel.width.greaterThanOrEqual(to: 0)
-            titleLabel.enforceContentSize()
-            titleLabel.textAlignment = .center
+            self.titleLabel.equal(to: self.contentLayoutView.verticalEdges)
+            self.titleLabel.insetOrEqual(to: self.contentLayoutView.trailing)
+            self.titleLabel.width.greaterThanOrEqual(to: 0)
+            self.titleLabel.enforceContentSize()
+            self.titleLabel.textAlignment = .center
         }
     }
 
@@ -367,94 +367,94 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     open func applyCurrentStateConfiguration() {
-        applyCurrentButtonStyle()
-        applyCurrentImage()
-        applyCurrentTitle()
+        self.applyCurrentButtonStyle()
+        self.applyCurrentImage()
+        self.applyCurrentTitle()
     }
 
     open func applyCurrentTitle() {
-        guard attributedTitleMap[.overrideAll] == nil else {
-            titleLabel.attributedText = attributedTitleMap[.overrideAll]
+        guard self.attributedTitleMap[.overrideAll] == nil else {
+            self.titleLabel.attributedText = self.attributedTitleMap[.overrideAll]
             return
         }
 
-        guard titleMap[.overrideAll] == nil else {
-            titleLabel.text = titleMap[.overrideAll]
+        guard self.titleMap[.overrideAll] == nil else {
+            self.titleLabel.text = self.titleMap[.overrideAll]
             return
         }
 
         if let attributedTitle = attributedTitleMap.firstValue(for: state, .any) {
-            titleLabel.attributedText = attributedTitle
+            self.titleLabel.attributedText = attributedTitle
         } else if let title = titleMap.firstValue(for: state, .any) {
-            titleLabel.text = title
+            self.titleLabel.text = title
         }
     }
 
     open func applyCurrentImage() {
-        if tintsImagesToMatchTextColor {
-            imageView.tintColor = titleLabel.textColor
+        if self.tintsImagesToMatchTextColor {
+            self.imageView.tintColor = self.titleLabel.textColor
         }
 
         if let imageUrl = imageUrlMap[.overrideAll]?.toURL {
-            imageView.loadImage(with: imageUrl)
+            self.imageView.loadImage(with: imageUrl)
             return
         }
 
         if let image = imageMap[.overrideAll] {
-            imageView.image = image
+            self.imageView.image = image
             return
         }
 
         if let imageUrl = imageUrlMap.firstValue(for: state, .any)?.toURL {
-            imageView.loadImage(with: imageUrl)
+            self.imageView.loadImage(with: imageUrl)
         } else if let image = imageMap.firstValue(for: state, .any) {
-            imageView.image = image
+            self.imageView.image = image
         }
     }
 
     public func setTitle(_ title: String?, for state: ButtonState = .any) {
-        titleMap[state] = title
+        self.titleMap[state] = title
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        applyCurrentButtonStyle()
+        self.applyCurrentButtonStyle()
     }
 
     open func applyCurrentButtonStyle() {
         if let buttonStyle = styleMap.firstValue(for: .overrideAll, state, .any) {
-            apply(buttonStyle: buttonStyle)
+            self.apply(buttonStyle: buttonStyle)
         }
     }
 
     internal var cachedAlpha: CGFloat?
     open func applyDisabledStateBehaviors() {
-        for behavior in disabledBehaviors {
+        for behavior in self.disabledBehaviors {
             switch behavior {
             case let .dropAlpha(value):
-                cachedAlpha ??= alpha
+                self.cachedAlpha ??= alpha
                 alpha = value
             }
         }
     }
 
     open func removeDisabledStateBehaviors() {
-        for behavior in disabledBehaviors {
+        for behavior in self.disabledBehaviors {
             switch behavior {
             case .dropAlpha:
-                alpha =? cachedAlpha
-                cachedAlpha = nil
+                alpha =? self.cachedAlpha
+                self.cachedAlpha = nil
             }
         }
     }
 
     internal var cachedTitleAlpha: CGFloat?
     open func applyActivityStateBehaviors() {
-        for behavior in activityBehaviors {
+        for behavior in self.activityBehaviors {
             switch behavior {
             case .removeTitle:
-                cachedTitleAlpha ??= titleLabel.alpha
-                titleLabel.alpha = 0.0
+                self.cachedTitleAlpha ??= self.titleLabel.alpha
+                self.titleLabel.alpha = 0.0
             case let .showIndicator(style, color, position):
                 showActivityIndicator(style: style, color: color, useAutoLayout: false, position: position)
             }
@@ -462,11 +462,11 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     open func removeActivityStateBehaviors() {
-        for behavior in activityBehaviors {
+        for behavior in self.activityBehaviors {
             switch behavior {
             case .removeTitle:
-                titleLabel.alpha =? cachedTitleAlpha
-                cachedTitleAlpha = nil
+                self.titleLabel.alpha =? self.cachedTitleAlpha
+                self.cachedTitleAlpha = nil
             case .showIndicator:
                 hideActivityIndicator()
             }
@@ -477,35 +477,35 @@ open class BaseButton: BaseView, ButtonStyleable {
 extension BaseButton {
     public var fontSize: CGFloat {
         set {
-            if let font = self.titleLabel.font {
-                titleLabel.font = font.withSize(newValue)
+            if let font = titleLabel.font {
+                self.titleLabel.font = font.withSize(newValue)
             } else {
-                titleLabel.font = UIFont.systemFont(ofSize: newValue)
+                self.titleLabel.font = UIFont.systemFont(ofSize: newValue)
             }
         }
         get {
-            return titleLabel.font.pointSize
+            return self.titleLabel.font.pointSize
         }
     }
 
     public var fontName: String {
         set {
-            titleLabel.font = UIFont(name: newValue, size: fontSize)
+            self.titleLabel.font = UIFont(name: newValue, size: self.fontSize)
         }
         get {
-            return titleLabel.font?.familyName ?? UIFont.systemFont(ofSize: fontSize).familyName
+            return self.titleLabel.font?.familyName ?? UIFont.systemFont(ofSize: self.fontSize).familyName
         }
     }
 
     // TODO: Improve this, rough calculation for usage in UIBarButtonItems
     public func calculateMaxButtonSize() -> CGSize {
-        let titleSize = titleMap.values.max()?.size(with: titleLabel.font) ?? CGSize.zero
-        let imageSize = imageMap.values.max(by: { (image1, image2) -> Bool in
+        let titleSize = self.titleMap.values.max()?.size(with: self.titleLabel.font) ?? CGSize.zero
+        let imageSize = self.imageMap.values.max(by: { (image1, image2) -> Bool in
             image1.size.width > image2.size.width
         })?.size ?? .zero
         var size = titleSize + imageSize
-        size.height += (buttonLayout.marginInsets.top + buttonLayout.marginInsets.bottom + buttonLayout.imageInsets.top + buttonLayout.imageInsets.bottom)
-        let widthMargins = (buttonLayout.marginInsets.leading + buttonLayout.marginInsets.trailing + buttonLayout.imageInsets.leading + buttonLayout.imageInsets.trailing)
+        size.height += (self.buttonLayout.marginInsets.top + self.buttonLayout.marginInsets.bottom + self.buttonLayout.imageInsets.top + self.buttonLayout.imageInsets.bottom)
+        let widthMargins = (buttonLayout.marginInsets.leading + self.buttonLayout.marginInsets.trailing + self.buttonLayout.imageInsets.leading + self.buttonLayout.imageInsets.trailing)
         size.width += max(widthMargins, 15) // Magic number to avoid truncation
         return size
     }

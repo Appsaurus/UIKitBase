@@ -14,12 +14,12 @@ open class GIFRefreshAnimator: UIView, CustomPullToRefreshAnimator {
 
     fileprivate var imageView: UIImageView = UIImageView()
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView.frame = bounds
+        self.imageView.frame = bounds
 
-        addSubview(imageView)
+        addSubview(self.imageView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -29,29 +29,29 @@ open class GIFRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     open func animateState(_ state: PullToRefreshState) {
         switch state {
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         case let .releasing(progress):
-            updateForProgress(progress)
+            self.updateForProgress(progress)
         case .loading:
-            startAnimating()
+            self.startAnimating()
         }
     }
 
     func updateForProgress(_ progress: CGFloat) {
-        if refreshImages.count > 0 {
-            let currentIndex = min(Int(progress * CGFloat(refreshImages.count)), refreshImages.count - 1)
-            imageView.image = refreshImages[currentIndex]
+        if self.refreshImages.count > 0 {
+            let currentIndex = min(Int(progress * CGFloat(self.refreshImages.count)), self.refreshImages.count - 1)
+            self.imageView.image = self.refreshImages[currentIndex]
         }
     }
 
     func startAnimating() {
-        imageView.animationImages = animatedImages
-        imageView.startAnimating()
+        self.imageView.animationImages = self.animatedImages
+        self.imageView.startAnimating()
     }
 
     func stopAnimating() {
-        imageView.stopAnimating()
-        imageView.image = refreshImages.first
+        self.imageView.stopAnimating()
+        self.imageView.image = self.refreshImages.first
     }
 
     /*

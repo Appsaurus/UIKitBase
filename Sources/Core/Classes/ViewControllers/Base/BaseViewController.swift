@@ -35,7 +35,7 @@ public extension Reloadable where Self: NSObject {
 
 public extension Reloadable {
     func reload() {
-        reload(completion: {})
+        self.reload(completion: {})
     }
 }
 
@@ -61,25 +61,25 @@ extension BaseViewControllerProtocol where Self: UIViewController {
 }
 
 open class BaseViewController: MixinableViewController, BaseViewControllerProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseViewControllerProtocolMixins
     }
 
     // MARK: Orientation
 
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
 
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+    override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
 
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
 
-    open override var prefersStatusBarHidden: Bool {
+    override open var prefersStatusBarHidden: Bool {
         return statusBarHidden
     }
 

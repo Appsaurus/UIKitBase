@@ -20,7 +20,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         }
     }
 
-    open override var contentOffset: CGPoint {
+    override open var contentOffset: CGPoint {
         didSet {
             if hasReachedTopOfContent {}
             if hasReachedBottomOfContent {
@@ -28,7 +28,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
             } else {
                 bounces = true
             }
-            lastContentOffset = oldValue
+            self.lastContentOffset = oldValue
         }
     }
 
@@ -42,24 +42,24 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         addSubview(contentView)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         showsVerticalScrollIndicator = false
         bounces = false
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 //        print("contentView.frame.size: \(contentView.frame.size)")
-        contentSize = contentView.frame.size
+        contentSize = self.contentView.frame.size
     }
 
     public var childScrollViews: Set<UIScrollView> = Set<UIScrollView>()
     //    var observers: [KeyValueObserver] = []
 
     func captureScrollViewIfNeeded(scrollView: UIScrollView) {
-        guard !childScrollViews.contains(scrollView) else { return }
-        childScrollViews.update(with: scrollView)
+        guard !self.childScrollViews.contains(scrollView) else { return }
+        self.childScrollViews.update(with: scrollView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -76,9 +76,9 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
             let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView,
             innerScrollView.gestureRecognizers?.contains(innerScrollViewPanGestureRecognizer) == true else { return true }
 
-        guard innerScrollView.isDescendant(of: contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return true }
+        guard innerScrollView.isDescendant(of: self.contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return true }
 
-        captureScrollViewIfNeeded(scrollView: innerScrollView)
+        self.captureScrollViewIfNeeded(scrollView: innerScrollView)
 
         if hasReachedBottomOfContent, !innerScrollView.hasReachedTopOfContent {
             return false

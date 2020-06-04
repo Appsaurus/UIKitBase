@@ -82,7 +82,7 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
 
     open var codeInputField: CodeInputFormField = CodeInputFormField<CodeInputTextField>()
 
-    open override var fieldCellInsets: LayoutPadding {
+    override open var fieldCellInsets: LayoutPadding {
         return LayoutPadding(horizontal: 50, vertical: 20)
     }
 
@@ -90,9 +90,9 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
         return configuration.style.navigationBarStyle
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        view.apply(viewStyle: configuration.style.viewStyle)
+        view.apply(viewStyle: self.configuration.style.viewStyle)
     }
 
     public required init(delegate: CodeFormDelegate, configuration: CodeFormViewControllerConfiguration? = nil) {
@@ -102,38 +102,38 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
         initLifecycle(.programmatically)
     }
 
-    open override func didInit(type: InitializationType) {
+    override open func didInit(type: InitializationType) {
         super.didInit(type: type)
-        autoSubmitsValidForm = configuration.autoSubmitsWhenInputIsValid
+        autoSubmitsValidForm = self.configuration.autoSubmitsWhenInputIsValid
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    open override var headerPromptText: String? {
+    override open var headerPromptText: String? {
         return configuration.promptText
     }
 
-    open override func createForm() -> Form {
-        return Form(fields: [codeInputField])
+    override open func createForm() -> Form {
+        return Form(fields: [self.codeInputField])
     }
 
-    open override func createFormToolbar() -> FormToolbar? { // No toolbar needed for single field
+    override open func createFormToolbar() -> FormToolbar? { // No toolbar needed for single field
         return nil
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
         headerPromptLabel?.textAlignment = .center
     }
 
-    open override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = codeInputField.becomeFirstResponder()
+        _ = self.codeInputField.becomeFirstResponder()
     }
 
-    open override func submit(_ submission: String, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
+    override open func submit(_ submission: String, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
         guard let delegate = delegate, let code = codeInputField.value else {
             assertionFailure("No delegate or value set.")
             return
@@ -141,13 +141,13 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
         delegate.processVerification(of: code, resultClosure: resultClosure)
     }
 
-    open override func submissionDidSucceed(with response: Any?) {
+    override open func submissionDidSucceed(with response: Any?) {
         submitButton.isHidden = true
         super.submissionDidSucceed(with: response)
-        delegate?.codeVerificationViewControllerDidVerifyCode()
+        self.delegate?.codeVerificationViewControllerDidVerifyCode()
     }
 
-    open override func submissionDidFail(with error: Error) {
+    override open func submissionDidFail(with error: Error) {
         super.submissionDidFail(with: error)
         showError(error: error)
     }

@@ -22,9 +22,9 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     fileprivate(set) var animating = false
     open var color: UIColor = UIColor.ArrowBlue {
         didSet {
-            arrowLayer.strokeColor = color.cgColor
-            circleFrontLayer.strokeColor = color.cgColor
-            activityIndicatorView.color = color
+            self.arrowLayer.strokeColor = self.color.cgColor
+            self.circleFrontLayer.strokeColor = self.color.cgColor
+            self.activityIndicatorView.color = self.color
         }
     }
 
@@ -34,22 +34,22 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
 
     fileprivate var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        circleBackLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
-        circleBackLayer.fillColor = nil
-        circleBackLayer.strokeColor = UIColor.ArrowLightGray.cgColor
-        circleBackLayer.lineWidth = 3
+        self.circleBackLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
+        self.circleBackLayer.fillColor = nil
+        self.circleBackLayer.strokeColor = UIColor.ArrowLightGray.cgColor
+        self.circleBackLayer.lineWidth = 3
 
-        circleFrontLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
-        circleFrontLayer.fillColor = nil
-        circleFrontLayer.strokeColor = color.cgColor
-        circleFrontLayer.lineWidth = 3
-        circleFrontLayer.lineCap = CAShapeLayerLineCap.round
-        circleFrontLayer.strokeStart = 0
-        circleFrontLayer.strokeEnd = 0
-        circleFrontLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2.0)))
+        self.circleFrontLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
+        self.circleFrontLayer.fillColor = nil
+        self.circleFrontLayer.strokeColor = self.color.cgColor
+        self.circleFrontLayer.lineWidth = 3
+        self.circleFrontLayer.lineCap = CAShapeLayerLineCap.round
+        self.circleFrontLayer.strokeStart = 0
+        self.circleFrontLayer.strokeEnd = 0
+        self.circleFrontLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2.0)))
 
         let arrowWidth = min(frame.width, frame.height) / 2
         let arrowHeight = arrowWidth * 0.5
@@ -59,25 +59,25 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         arrowPath.addLine(to: CGPoint(x: arrowWidth / 2, y: 0))
         arrowPath.addLine(to: CGPoint(x: arrowWidth, y: arrowHeight))
 
-        arrowLayer.path = arrowPath.cgPath
-        arrowLayer.fillColor = nil
-        arrowLayer.strokeColor = color.cgColor
-        arrowLayer.lineWidth = 3
-        arrowLayer.lineJoin = CAShapeLayerLineJoin.round
-        arrowLayer.lineCap = CAShapeLayerLineCap.butt
+        self.arrowLayer.path = arrowPath.cgPath
+        self.arrowLayer.fillColor = nil
+        self.arrowLayer.strokeColor = self.color.cgColor
+        self.arrowLayer.lineWidth = 3
+        self.arrowLayer.lineJoin = CAShapeLayerLineJoin.round
+        self.arrowLayer.lineCap = CAShapeLayerLineCap.butt
 
-        circleBackLayer.frame = bounds
-        circleFrontLayer.frame = bounds
-        arrowLayer.frame = CGRect(x: (frame.width - arrowWidth) / 2, y: (frame.height - arrowHeight) / 2, width: arrowWidth, height: arrowHeight)
+        self.circleBackLayer.frame = bounds
+        self.circleFrontLayer.frame = bounds
+        self.arrowLayer.frame = CGRect(x: (frame.width - arrowWidth) / 2, y: (frame.height - arrowHeight) / 2, width: arrowWidth, height: arrowHeight)
 
-        activityIndicatorView.frame = bounds
-        activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.color = UIColor.ArrowBlue
+        self.activityIndicatorView.frame = bounds
+        self.activityIndicatorView.hidesWhenStopped = true
+        self.activityIndicatorView.color = UIColor.ArrowBlue
 
-        layer.addSublayer(circleBackLayer)
-        layer.addSublayer(circleFrontLayer)
-        layer.addSublayer(arrowLayer)
-        addSubview(activityIndicatorView)
+        layer.addSublayer(self.circleBackLayer)
+        layer.addSublayer(self.circleFrontLayer)
+        layer.addSublayer(self.arrowLayer)
+        addSubview(self.activityIndicatorView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -87,42 +87,42 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     open func animateState(_ state: PullToRefreshState) {
         switch state {
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         case let .releasing(progress):
-            updateForProgress(progress)
+            self.updateForProgress(progress)
         case .loading:
-            startAnimating()
+            self.startAnimating()
         }
     }
 
     func updateForProgress(_ progress: CGFloat) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        circleFrontLayer.strokeEnd = progress * progress
-        arrowLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2) * progress * progress))
+        self.circleFrontLayer.strokeEnd = progress * progress
+        self.arrowLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2) * progress * progress))
         CATransaction.commit()
     }
 
     func startAnimating() {
-        animating = true
-        circleFrontLayer.strokeEnd = 0
-        arrowLayer.transform = CATransform3DIdentity
+        self.animating = true
+        self.circleFrontLayer.strokeEnd = 0
+        self.arrowLayer.transform = CATransform3DIdentity
 
-        circleBackLayer.isHidden = true
-        circleFrontLayer.isHidden = true
-        arrowLayer.isHidden = true
+        self.circleBackLayer.isHidden = true
+        self.circleFrontLayer.isHidden = true
+        self.arrowLayer.isHidden = true
 
-        activityIndicatorView.startAnimating()
+        self.activityIndicatorView.startAnimating()
     }
 
     func stopAnimating() {
-        animating = false
+        self.animating = false
 
-        circleBackLayer.isHidden = false
-        circleFrontLayer.isHidden = false
-        arrowLayer.isHidden = false
+        self.circleBackLayer.isHidden = false
+        self.circleFrontLayer.isHidden = false
+        self.arrowLayer.isHidden = false
 
-        activityIndicatorView.stopAnimating()
+        self.activityIndicatorView.stopAnimating()
     }
 
     /*

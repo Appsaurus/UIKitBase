@@ -8,11 +8,11 @@
 import UIKitMixinable
 
 public class KeyboardSizeAwareMixin: UIViewControllerMixin<UIViewController & KeyboardSizeAware> {
-    open override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         mixable.registerKeyboard()
     }
 
-    open override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         mixable.deregisterKeyboard()
     }
 }

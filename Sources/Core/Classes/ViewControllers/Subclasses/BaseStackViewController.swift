@@ -21,16 +21,16 @@ open class BaseStackViewController: BaseViewController {
         return []
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        stackView.addSubview(stackViewBackgroundView)
-        stackView.sendSubviewToBack(stackViewBackgroundView)
-        view.addSubview(stackView)
-        stackView.layoutMargins = stackviewLayoutMargins
-        stackView.isLayoutMarginsRelativeArrangement = true
+        self.stackView.addSubview(self.stackViewBackgroundView)
+        self.stackView.sendSubviewToBack(self.stackViewBackgroundView)
+        view.addSubview(self.stackView)
+        self.stackView.layoutMargins = self.stackviewLayoutMargins
+        self.stackView.isLayoutMarginsRelativeArrangement = true
     }
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
 //        let stackViewIntroAnimation: [MotionModifier] = [.translate(y: -UIScreen.screenHeight/2.0 + stackView.h),
@@ -39,13 +39,13 @@ open class BaseStackViewController: BaseViewController {
 //        stackView.transition(stackViewIntroAnimation)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        stackView.centerInSuperview()
-        stackView.edgeAnchors.insetOrEqual(to: edgeAnchors.inset(horizontalLayoutPadding, verticalLayoutPadding))
-        stackView.hugContent()
-        stackViewBackgroundView.pinToSuperview()
-        initialArrangedSubviews().forEach { view in
+        self.stackView.centerInSuperview()
+        self.stackView.edgeAnchors.insetOrEqual(to: edgeAnchors.inset(self.horizontalLayoutPadding, self.verticalLayoutPadding))
+        self.stackView.hugContent()
+        self.stackViewBackgroundView.pinToSuperview()
+        self.initialArrangedSubviews().forEach { view in
             view.resistCompression()
             view.heightAnchor.greaterThanOrEqual(to: 0)
         }
@@ -83,12 +83,12 @@ open class StackedAlertViewController: BaseStackViewController {
     open lazy var defaultBottomStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
     open var showsDismissButton: Bool = { true }()
 
-    open override func initialArrangedSubviews() -> [UIView] {
-        return optionalArrangedSubviews + [bottomStackView]
+    override open func initialArrangedSubviews() -> [UIView] {
+        return self.optionalArrangedSubviews + [self.bottomStackView]
     }
 
     open func initialBottomArrangedSubviews() -> [UIView] {
-        return bottomStackArrangedSubviews
+        return self.bottomStackArrangedSubviews
     }
 
     public required init(viewModel: AlertViewModel = AlertViewModel()) {
@@ -101,19 +101,19 @@ open class StackedAlertViewController: BaseStackViewController {
         super.init(coder: aDecoder)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        bottomStackView.hugContent()
-        initialBottomArrangedSubviews().forEach { view in
+        self.bottomStackView.hugContent()
+        self.initialBottomArrangedSubviews().forEach { view in
             view.resistCompression()
             view.size.greaterThanOrEqual(to: 0)
             view.width.equal(to: view.assertSuperview.width)
         }
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        display(viewModel: viewModel)
+        self.display(viewModel: self.viewModel)
     }
 
     open var optionalArrangedSubviews: [UIView] {
@@ -146,30 +146,30 @@ open class StackedAlertViewController: BaseStackViewController {
 
     open func display(viewModel: AlertViewModel) {
         if let image = viewModel.headerImage {
-            headerImageView.image = image
+            self.headerImageView.image = image
         } else if let imageURL = viewModel.headerImageUrl?.toURL {
-            headerImageView.loadImage(with: imageURL)
+            self.headerImageView.loadImage(with: imageURL)
         }
-        alertTitleLabel.text =? viewModel.alertTitle
-        messageLabel.text =? viewModel.message
+        self.alertTitleLabel.text =? viewModel.alertTitle
+        self.messageLabel.text =? viewModel.message
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         stackViewBackgroundView.backgroundColor = .viewControllerBaseViewBackgroundColor
-        if viewModel.alertTitle.hasNonEmptyValue {
-            alertTitleLabel.apply(textStyle: .semibold(color: .primary, size: .button + 2))
+        if self.viewModel.alertTitle.hasNonEmptyValue {
+            self.alertTitleLabel.apply(textStyle: .semibold(color: .primary, size: .button + 2))
         }
-        if viewModel.message.hasNonEmptyValue {
-            messageLabel.apply(textStyle: .regular(size: UIFont.labelFontSize))
+        if self.viewModel.message.hasNonEmptyValue {
+            self.messageLabel.apply(textStyle: .regular(size: UIFont.labelFontSize))
         }
 
-        dismissButton.apply(textStyle: .ultraLight(color: UIColor.textMediumDark.withAlphaComponent(0.8), size: .button - 2.0))
+        self.dismissButton.apply(textStyle: .ultraLight(color: UIColor.textMediumDark.withAlphaComponent(0.8), size: .button - 2.0))
     }
 
-    open override func setupControlActions() {
+    override open func setupControlActions() {
         super.setupControlActions()
-        dismissButton.onTap = userDidTapDismissButton
+        self.dismissButton.onTap = self.userDidTapDismissButton
     }
 
     // MARK: Control Actions

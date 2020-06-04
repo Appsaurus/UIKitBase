@@ -25,7 +25,7 @@ extension UIScrollView {
     }
 
     public func showNeedsLoadingIndicator(title: String = "RELOAD", onTap: VoidClosure? = nil) {
-        if loadingControls.pullToRefresh.isEnabled, needsLoadingIndicator == nil {
+        if loadingControls.pullToRefresh.isEnabled, self.needsLoadingIndicator == nil {
             DispatchQueue.main.async {
                 let needsLoadingIndicator = NeedsLoadingIndicator(scrollView: self)
                 needsLoadingIndicator.titleMap = [.normal: title]
@@ -62,7 +62,7 @@ extension PaginationManaged where Self: UIViewController {
     public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil) {
         let shouldLoad = reloadTest?() ?? (currentState == .empty || !isCurrentlyVisibleToUser)
         guard shouldLoad else {
-            showNeedsLoadingIndicator(title: title)
+            self.showNeedsLoadingIndicator(title: title)
             return
         }
 
@@ -80,7 +80,7 @@ extension PaginationManaged where Self: UIViewController {
 
     public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotifications names: [Notification.Name], reloadTest: ClosureOut<Bool>? = nil) {
         for name in names {
-            reloadOrShowNeedsLoadingIndicator(onNotification: name)
+            self.reloadOrShowNeedsLoadingIndicator(onNotification: name)
         }
     }
 
@@ -98,19 +98,19 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
         initLifecycle(.programmatically)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
 //        transition(.beginWith(modifiers: [.fadeOut]), .fadeIn, .scale(1.5))
         scrollView.addSubview(self)
         scrollView.bringSubviewToFront(self)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         height.equal(to: 50)
         width.greaterThanOrEqual(to: 0.0)
         width.lessThanOrEqual(to: assertSuperview)
-        topConstraint = top.equal(to: scrollView.contentOffset.y + padding)
+        self.topConstraint = top.equal(to: scrollView.contentOffset.y + self.padding)
         centerX.equalToSuperview()
     }
 
@@ -119,6 +119,6 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
     }
 
     public func scrollViewObserverDidObserveScroll(of scrollView: UIScrollView, to offset: CGPoint) {
-        topConstraint?.constant = offset.y + padding
+        self.topConstraint?.constant = offset.y + self.padding
     }
 }

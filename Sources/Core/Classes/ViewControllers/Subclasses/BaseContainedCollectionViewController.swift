@@ -17,7 +17,7 @@ extension BaseCollectionViewControllerProtocol where Self: BaseContainedCollecti
 
 open class BaseContainedCollectionViewController: BaseContainerViewController, BaseCollectionViewControllerProtocol, UICollectionViewDelegate {
     private var _layout: UICollectionViewLayout = UICollectionViewFlowLayout()
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseCollectionViewControllerProtocolMixins
     }
 
@@ -28,7 +28,7 @@ open class BaseContainedCollectionViewController: BaseContainerViewController, B
 
     public init(collectionViewLayout: UICollectionViewLayout) {
         super.init(callInitLifecycle: false)
-        _layout = collectionViewLayout
+        self._layout = collectionViewLayout
         initLifecycle(.programmatically)
     }
 
@@ -36,13 +36,13 @@ open class BaseContainedCollectionViewController: BaseContainerViewController, B
         super.init(coder: aDecoder)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        containedView = collectionView
+        containedView = self.collectionView
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        collectionView.delegate = self
+        self.collectionView.delegate = self
     }
 }

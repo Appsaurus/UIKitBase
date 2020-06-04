@@ -19,7 +19,7 @@ extension BaseTextFieldProtocol where Self: UITextField {
 }
 
 open class BaseTextField: MixinableTextField, BaseTextFieldProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTextFieldProtocolMixins
     }
 
@@ -71,13 +71,13 @@ open class StatefulTextField: BaseTextField {
         }
     }
 
-    open override var isSelected: Bool {
+    override open var isSelected: Bool {
         didSet {
             applyCurrentStateConfiguration()
         }
     }
 
-    open override var isEnabled: Bool {
+    override open var isEnabled: Bool {
         didSet {
             applyCurrentStateConfiguration()
         }
@@ -102,23 +102,23 @@ open class StatefulTextField: BaseTextField {
     }
 
     open func applyCurrentStateConfiguration(animated: Bool = false) {
-        if previousState != currentState {
-            previousState = currentState
+        if self.previousState != self.currentState {
+            self.previousState = self.currentState
         }
 
-        if currentState == .inactive, text.hasNonEmptyValue {
+        if self.currentState == .inactive, text.hasNonEmptyValue {
             // Fixes UIKit bug where text input jumps vertically on first resignation.
             // Shitty and may have unforeseen side effects. Find better fix or consider living with UITextField bug.
             forceAutolayoutPass()
         }
 
         guard animated else {
-            applyCurrentTextFieldStyle()
-            layoutSubviews(for: currentState)
+            self.applyCurrentTextFieldStyle()
+            self.layoutSubviews(for: self.currentState)
             return
         }
 
-        animate(configuration: labelAnimationConfiguration, animations: { [weak self] in
+        animate(configuration: self.labelAnimationConfiguration, animations: { [weak self] in
             guard let self = self else { return }
             self.applyCurrentTextFieldStyle()
             self.layoutSubviews(for: self.currentState)
@@ -134,42 +134,42 @@ open class StatefulTextField: BaseTextField {
 
     open func applyCurrentTextFieldStyle() {
         if let textFieldStyle = styleMap[currentState] {
-            apply(textFieldStyle: textFieldStyle)
+            self.apply(textFieldStyle: textFieldStyle)
         }
-        if matchesCaretToTextColor, let color = textColor {
+        if self.matchesCaretToTextColor, let color = textColor {
             setCaret(color: color)
         }
     }
 
     open func apply(textFieldStyle: TextFieldStyle) {
-        apply(textStyle: textFieldStyle.textStyle)
-        apply(viewStyle: textFieldStyle.viewStyle, optimizeRendering: false)
+        self.apply(textStyle: textFieldStyle.textStyle)
+        self.apply(viewStyle: textFieldStyle.viewStyle, optimizeRendering: false)
     }
 
-    open override func setupControlActions() {
+    override open func setupControlActions() {
         addTarget(self, action: #selector(StatefulTextField.controlEventFired), for: UIControl.Event.allEvents)
     }
 
     @objc open func controlEventFired() {
-        applyCurrentStateConfiguration(animated: true)
+        self.applyCurrentStateConfiguration(animated: true)
     }
 
-    open override func caretRect(for position: UITextPosition) -> CGRect {
-        guard hidesCaret else { return super.caretRect(for: position) }
+    override open func caretRect(for position: UITextPosition) -> CGRect {
+        guard self.hidesCaret else { return super.caretRect(for: position) }
         return .zero
     }
 
-    open override func style() {
-        applyCurrentTextFieldStyle()
+    override open func style() {
+        self.applyCurrentTextFieldStyle()
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        if adjustsFontSizeToFitHeight {
+        if self.adjustsFontSizeToFitHeight {
             adjustsFontSizeToFitWidth = false
             adjustFontSizeToFitHeight()
         }
 
-        layoutSubviews(for: currentState)
+        self.layoutSubviews(for: self.currentState)
     }
 }

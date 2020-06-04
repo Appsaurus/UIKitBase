@@ -11,19 +11,19 @@ import UIKitMixinable
 open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestureRecognizerDelegate {
     open var childViewControllerContainerView: UIView = UIView()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        scrollViewContentView.addSubview(childViewControllerContainerView)
+        scrollViewContentView.addSubview(self.childViewControllerContainerView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        childViewControllerContainerView.pinToSuperview()
+        self.childViewControllerContainerView.pinToSuperview()
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        add(initialChildViewController(), to: childViewControllerContainerView)
+        add(self.initialChildViewController(), to: self.childViewControllerContainerView)
     }
 
     open func initialChildViewController() -> UIViewController {

@@ -51,9 +51,9 @@ public extension ModelBindable where Self: SyncListener, Model: Synchronizable {
         }
         self.model = model
         if let model = model {
-            syncActions[model.typedSyncID] = model.onSync(modelDidChange)
+            syncActions[model.typedSyncID] = model.onSync(self.modelDidChange)
         }
-        modelDidChange()
+        self.modelDidChange()
     }
 }
 
@@ -82,7 +82,7 @@ public protocol ModelBound: AnyObject {
 public extension ModelBound {
     func bind(model: Model) {
         self.model = model
-        modelDidChange()
+        self.modelDidChange()
     }
 
     func modelDidChange() {}
@@ -111,8 +111,8 @@ extension ModelBound where Self: SyncListener, Model: Synchronizable {
             self.model.stopObservingSync(action: existingSyncAction)
         }
         self.model = model
-        syncActions[model.typedSyncID] = model.onSync(modelDidChange)
-        modelDidChange()
+        syncActions[model.typedSyncID] = model.onSync(self.modelDidChange)
+        self.modelDidChange()
     }
 }
 

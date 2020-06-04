@@ -15,7 +15,7 @@ open class FormFieldCell: DynamicHeightCell {
     public init(field: View, insets: LayoutPadding? = nil) {
         self.field = field
         super.init(callInitLifecycle: false)
-        mainViewInsets =? insets
+        self.mainViewInsets =? insets
         initLifecycle(.programmatically)
     }
 
@@ -27,14 +27,14 @@ open class FormFieldCell: DynamicHeightCell {
         .zero
     }()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        mainLayoutView.addSubview(field)
+        mainLayoutView.addSubview(self.field)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        field.forceSuperviewToMatchContentSize(insetBy: mainViewInsets)
+        self.field.forceSuperviewToMatchContentSize(insetBy: self.mainViewInsets)
 //        field.autoPinToSuperview(edges: .leftAndRight, withInsets: mainViewInsets)
 //        mainLayoutView.autoExpandHeight(toFitHeightOf: [field], topPadding: mainViewInsets.top, bottomPadding: mainViewInsets.bottom)
 //        field.height.greaterThanOrEqual(to: 0.0)

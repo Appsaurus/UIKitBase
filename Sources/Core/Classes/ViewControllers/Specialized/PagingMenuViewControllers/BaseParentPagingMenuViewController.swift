@@ -11,18 +11,18 @@ import UIKitExtensions
 import UIKitTheme
 
 open class BaseParentPagingMenuViewController: BaseParentPagingViewController, PagingMenuViewDelegate {
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
+        self.pagingMenuView.initialSelectedMenuIndexPath = initialPageIndex.indexPath
     }
 
-    open override func createHeaderView() -> UIView? {
-        return pagingMenuView
+    override open func createHeaderView() -> UIView? {
+        return self.pagingMenuView
     }
 
-    open override func viewWillLayoutSubviews() {
+    override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        pagingMenuView.invalidateLayout()
+        self.pagingMenuView.invalidateLayout()
     }
 
     // MARK: PagingMenuVIew
@@ -32,7 +32,7 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
     }()
 
     open func createPagingMenuView() -> PagingMenuView {
-        return PagingMenuView(delegate: self, options: pagingMenuViewOptions)
+        return PagingMenuView(delegate: self, options: self.pagingMenuViewOptions)
     }
 
     open var pagingMenuViewOptions: PagingMenuViewOptions {
@@ -40,16 +40,16 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
         return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: .spanWidthCollectively(height: menuHeight), scrollBehavior: .tabBar)
     }
 
-    open override func didPage(from page: Int?, to nextPage: Int?) {
+    override open func didPage(from page: Int?, to nextPage: Int?) {
         super.didPage(from: page, to: nextPage)
         guard let nextPage = nextPage else { return }
-        pagingMenuView.selectItem(at: nextPage)
+        self.pagingMenuView.selectItem(at: nextPage)
     }
 
-    open override func didCancelPaging(from page: Int?, to nextPage: Int?) {
+    override open func didCancelPaging(from page: Int?, to nextPage: Int?) {
         super.didCancelPaging(from: page, to: nextPage)
         guard let page = page else { return }
-        pagingMenuView.selectItem(at: page)
+        self.pagingMenuView.selectItem(at: page)
     }
 
     // MARK: PagingMenuViewDelegate
@@ -78,8 +78,8 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
         return true
     }
 
-    open override func pagesDidReload() {
-        pagingMenuView.reloadItems(selectedIndex: initialPageIndex.indexPath, animated: false) // Keep menu synced with datasource
+    override open func pagesDidReload() {
+        self.pagingMenuView.reloadItems(selectedIndex: initialPageIndex.indexPath, animated: false) // Keep menu synced with datasource
         super.pagesDidReload()
     }
 

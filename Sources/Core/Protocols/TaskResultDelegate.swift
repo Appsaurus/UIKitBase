@@ -28,7 +28,7 @@ public extension OptionalTaskResultDelegate {
 
     func finishTask(with result: TaskResult) {
         self.result = result
-        finishTask()
+        self.finishTask()
     }
 
     func cancelTask() {
@@ -58,7 +58,7 @@ public extension TaskResultDelegate {
 
     func finishTask(with result: TaskResult) {
         self.result = result
-        finishTask()
+        self.finishTask()
     }
 
     func cancelTask() {

@@ -19,7 +19,7 @@ extension BaseImageViewProtocol where Self: UIImageView {
 open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
     open var tintsImages: Bool = false
 
-    open override var image: UIImage? {
+    override open var image: UIImage? {
         set {
             if self.tintsImages {
                 super.image = newValue?.withRenderingMode(.alwaysTemplate)
@@ -30,11 +30,11 @@ open class BaseImageView: MixinableImageView, BaseImageViewProtocol {
         }
     }
 
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseImageViewProtocolMixins
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         contentMode = .scaleAspectFit
         clipsToBounds = true

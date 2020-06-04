@@ -12,12 +12,12 @@ import UIKit
 import UIKitMixinable
 
 open class PhoneNumberFormTextField<ContentView: UITextField>: FormTextField<ContentView, String> where ContentView: FormFieldViewProtocol {
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         keyboardType = .numberPad
     }
 
-    open override func setupValidationRules() {
+    override open func setupValidationRules() {
         super.setupValidationRules()
         validationThrottle = 0.3
     }
@@ -46,44 +46,44 @@ open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, P
         return picker
     }()
 
-    open override var inputView: UIView? {
+    override open var inputView: UIView? {
         return countryPicker
     }
 
-    open override func updateContentView() {
+    override open func updateContentView() {
         super.updateContentView()
-        display(object: value)
+        self.display(object: value)
     }
 
     public func display(object: PhoneNumberCountry?) {
         guard let country = object else {
             return
         }
-        flagImageView.image = country.flag
+        self.flagImageView.image = country.flag
         contentView.text = country.phoneCode + " (\(country.name))"
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         disableUserTextEntry = true
-        countryPicker.setCountry(Locale.current.regionCode ?? "")
+        self.countryPicker.setCountry(Locale.current.regionCode ?? "")
     }
 
-    open override func didInit(type: InitializationType) {
+    override open func didInit(type: InitializationType) {
         super.didInit(type: type)
-        reloadInputViews()
+        self.reloadInputViews()
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
         let flagHeight = 30.0.cgFloat.scaledForDevice()
         let size = CGSize(width: flagHeight * (5.0 / 3.0), height: flagHeight)
         let insets = UIEdgeInsets(t: 10, l: 0, b: 25, r: 0)
-        contentView.setupAccessoryView(flagImageView, position: .right, viewMode: .always, insets: insets, size: size)
+        contentView.setupAccessoryView(self.flagImageView, position: .right, viewMode: .always, insets: insets, size: size)
     }
 
-    open override func reloadInputViews() {
-        contentView.inputView = inputView
+    override open func reloadInputViews() {
+        contentView.inputView = self.inputView
         super.reloadInputViews()
     }
 

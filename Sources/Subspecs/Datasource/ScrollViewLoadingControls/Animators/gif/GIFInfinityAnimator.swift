@@ -13,11 +13,11 @@ open class GIFInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
 
     var imageView: UIImageView = UIImageView()
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView.frame = bounds
-        addSubview(imageView)
+        self.imageView.frame = bounds
+        addSubview(self.imageView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -27,20 +27,20 @@ open class GIFInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     open func animateState(_ state: InfiniteScrollState) {
         switch state {
         case .loading:
-            startAnimating()
+            self.startAnimating()
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         }
     }
 
     func startAnimating() {
-        imageView.animationImages = animatedImages
-        imageView.isHidden = false
-        imageView.startAnimating()
+        self.imageView.animationImages = self.animatedImages
+        self.imageView.isHidden = false
+        self.imageView.startAnimating()
     }
 
     func stopAnimating() {
-        imageView.isHidden = true
-        imageView.stopAnimating()
+        self.imageView.isHidden = true
+        self.imageView.stopAnimating()
     }
 }

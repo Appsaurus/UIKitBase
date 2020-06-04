@@ -26,14 +26,14 @@ open class FooterView<View: UIView>: BaseView {
         super.init(coder: aDecoder)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(contentView)
+        addSubview(self.contentView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        contentView.edges.equal(to: margins.edges)
+        self.contentView.edges.equal(to: margins.edges)
     }
 
     open func createContentView() -> View {

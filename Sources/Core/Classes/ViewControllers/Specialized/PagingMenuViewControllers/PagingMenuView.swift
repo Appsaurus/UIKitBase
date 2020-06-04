@@ -106,9 +106,9 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
         return nil
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        pagingMenuCollectionView.backgroundView?.backgroundColor = .primaryContrast
+        self.pagingMenuCollectionView.backgroundView?.backgroundColor = .primaryContrast
     }
 
     public init(delegate: PagingMenuViewDelegate, options: PagingMenuViewOptions) {
@@ -117,19 +117,19 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
         super.init(frame: .zero)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        delegate.pagingMenuItemCellClasses(for: self).forEach { cellClass in
+        self.delegate.pagingMenuItemCellClasses(for: self).forEach { cellClass in
             pagingMenuCollectionView.register(cellClass)
         }
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(pagingMenuCollectionView)
+        addSubview(self.pagingMenuCollectionView)
         guard let indicator = selectionIndicatorView else { return }
-        pagingMenuCollectionView.addSubview(indicator)
-        pagingMenuCollectionView.backgroundView = UIView(frame: pagingMenuCollectionView.bounds)
+        self.pagingMenuCollectionView.addSubview(indicator)
+        self.pagingMenuCollectionView.backgroundView = UIView(frame: self.pagingMenuCollectionView.bounds)
     }
 
     //	open override func willMove(toWindow newWindow: UIWindow?) {
@@ -139,10 +139,10 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     //		}
     //	}
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        pagingMenuCollectionView.pinToSuperview()
-        switch options.layout {
+        self.pagingMenuCollectionView.pinToSuperview()
+        switch self.options.layout {
         case let .horizontal(height):
             self.height.equal(to: height)
         case let .vertical(width):
@@ -152,7 +152,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     }
 
     open func invalidateLayout() {
-        pagingMenuCollectionView.collectionViewLayout.invalidateLayout()
+        self.pagingMenuCollectionView.collectionViewLayout.invalidateLayout()
         guard let index = selectedMenuIndexPath else { return }
         renderCollectionMenuItemSelectionIndicator(transition: IndexPathTransition(from: index, to: index))
     }
@@ -172,10 +172,10 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
 
     public func selectItemProgramtically(at index: IndexPath?, animated: Bool = false) {
         guard let index = index else { return }
-        guard numberOfSections(in: pagingMenuCollectionView) >= index.section,
-            collectionView(pagingMenuCollectionView, numberOfItemsInSection: index.section) >= index.row else { return }
+        guard self.numberOfSections(in: self.pagingMenuCollectionView) >= index.section,
+            self.collectionView(self.pagingMenuCollectionView, numberOfItemsInSection: index.section) >= index.row else { return }
         selectCollectionMenuItem(at: index, animated: animated)
-        pagingMenuCollectionView.selectItem(at: index, animated: animated, scrollPosition: [])
+        self.pagingMenuCollectionView.selectItem(at: index, animated: animated, scrollPosition: [])
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -200,21 +200,21 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     // MARK: CollectionView Delegate/Datasource
 
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard delegate != nil else { return 0 }
+        guard self.delegate != nil else { return 0 }
         return 1
     }
 
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return options.scrollBehavior == .infiniteLoop ? Int.max : delegate!.pagingMenuNumberOfItems(for: self)
+        return self.options.scrollBehavior == .infiniteLoop ? Int.max : self.delegate!.pagingMenuNumberOfItems(for: self)
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var index = indexPath.row
-        if options.scrollBehavior == .infiniteLoop {
-            index = indexPath.row % delegate.pagingMenuNumberOfItems(for: self)
+        if self.options.scrollBehavior == .infiniteLoop {
+            index = indexPath.row % self.delegate.pagingMenuNumberOfItems(for: self)
         }
 
-        let cell = delegate.pagingMenuItemCell(for: self, at: index)
+        let cell = self.delegate.pagingMenuItemCell(for: self, at: index)
         if collectionView.indexPathsForSelectedItems?.contains(indexPath) == true, !cell.isSelected {
             selectCollectionMenuItem(at: indexPath, animated: false)
         }
@@ -226,7 +226,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
         var cellSize: CGSize!
         let cellCount = self.collectionView(collectionView, numberOfItemsInSection: 0)
 
-        switch options.itemSizingBehavior {
+        switch self.options.itemSizingBehavior {
         case let .spanWidthCollectivelyUnlessExceeding(maxNumberOfCells, height):
             let width = cellCount.float > maxNumberOfCells ? frame.w / maxNumberOfCells.cgFloat : frame.w / cellCount.cgFloat
             cellSize = CGSize(width: width, height: height)
@@ -239,7 +239,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
             let width = frame.w / numberOfCells.cgFloat
             cellSize = CGSize(width: width, height: height)
         case .delegateSizing:
-            cellSize = delegate.pagingMenuView(menuView: self, sizeForItemAt: indexPath.row)
+            cellSize = self.delegate.pagingMenuView(menuView: self, sizeForItemAt: indexPath.row)
         case let .spanWidthProportionately(height):
             var totalContentSize: CGFloat = 0.0
             var thisCellContentSize: CGFloat = 0.0
@@ -255,7 +255,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     }
 
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return delegate?.pagingMenuView(menuView: self, canSelectItemAtIndex: indexPath.row) ?? true
+        return self.delegate?.pagingMenuView(menuView: self, canSelectItemAtIndex: indexPath.row) ?? true
     }
 
     public func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
@@ -291,14 +291,14 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
 
     open func userDidReselectCollectionMenuItem(at indexPath: IndexPath) {
         guard let cell: PagingMenuItemCell = pagingMenuCollectionView.cellForItem(at: indexPath) as? PagingMenuItemCell else { return }
-        delegate?.pagingMenuView(menuView: self, didReselectCurrentMenuItemCell: cell, at: indexPath.intIndex)
+        self.delegate?.pagingMenuView(menuView: self, didReselectCurrentMenuItemCell: cell, at: indexPath.intIndex)
     }
 
     open func didSelectCollectionMenuItem(at index: IndexPath?) {
         guard let index = index else { return }
         deselectAllOtherIndices(selectedIndex: index)
         guard let cell: PagingMenuItemCell = pagingMenuCollectionView.cellForItem(at: index) as? PagingMenuItemCell else { return }
-        delegate?.pagingMenuView(menuView: self, didSelectMenuItemCell: cell, at: index.intIndex)
+        self.delegate?.pagingMenuView(menuView: self, didSelectMenuItemCell: cell, at: index.intIndex)
     }
 
     open func renderCollectionMenuItemSelection(transition: IndexPathTransition) {
@@ -339,13 +339,13 @@ extension PagingMenuView {
     }
 
     open var selectedMenuItemCell: PagingMenuItemCell<UIView>? {
-        let numRows = collectionView(pagingMenuCollectionView, numberOfItemsInSection: 0)
+        let numRows = self.collectionView(self.pagingMenuCollectionView, numberOfItemsInSection: 0)
         guard let selectedIndexPath = selectedMenuIndexPath else { return nil }
         let selectedIndex = selectedIndexPath.intIndex
         guard selectedIndex >= 0, selectedIndex < numRows else {
             return nil
         }
-        return pagingMenuCollectionView.cellForItem(at: selectedIndexPath) as? PagingMenuItemCell
+        return self.pagingMenuCollectionView.cellForItem(at: selectedIndexPath) as? PagingMenuItemCell
     }
 }
 
@@ -366,19 +366,19 @@ open class PagingMenuButtonCell: PagingMenuItemCell<UIView> {
         return button
     }()
 
-    open override func createMainView() -> UIView {
-        return menuItemButton
+    override open func createMainView() -> UIView {
+        return self.menuItemButton
     }
 
-    open override var isSelected: Bool {
+    override open var isSelected: Bool {
         didSet {
             menuItemButton.state = isSelected ? .selected : .normal
         }
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        menuItemButton.styleMap = [
+        self.menuItemButton.styleMap = [
             .normal: .flat(textStyle: .regular(color: .deselected)),
             .selected: .flat(textStyle: .regular(color: .selected))
         ]

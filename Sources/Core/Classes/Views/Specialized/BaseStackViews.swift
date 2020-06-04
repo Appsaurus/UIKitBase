@@ -50,13 +50,13 @@ extension LazilyGrowingStackView where Self: UIStackView {
     }
 
     public mutating func stackedView(at index: Int) -> StackedView {
-        while stackedViews[safe: index] == nil {
+        while self.stackedViews[safe: index] == nil {
             let view = createStackedView()
             stackedViews.append(view)
             view.enforceContentSize()
             addArrangedSubview(view)
         }
-        return stackedViews[index]
+        return self.stackedViews[index]
     }
 }
 

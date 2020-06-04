@@ -28,7 +28,7 @@ public extension UIButton {
         setTitle(viewModel.title, for: .normal)
         addAction(action: viewModel.action)
         if let style = viewModel.style {
-            apply(buttonStyle: style)
+            self.apply(buttonStyle: style)
         }
         return self
     }
@@ -40,7 +40,7 @@ public extension BaseButton {
         setTitle(viewModel.title, for: .normal)
         addAction(action: viewModel.action)
         if let style = viewModel.style {
-            apply(buttonStyle: style)
+            self.apply(buttonStyle: style)
         }
         return self
     }

@@ -17,13 +17,13 @@ extension BaseToolbarProtocol where Self: UIToolbar {
 }
 
 open class BaseToolbar: MixinableToolbar, BaseToolbarProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseToolbarProtocolMixins
     }
 
     // MARK: UIViewLifeCycle Overrides
 
-    open override func willMove(toSuperview newSuperview: UIView?) {
+    override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         bindStyle()
     }

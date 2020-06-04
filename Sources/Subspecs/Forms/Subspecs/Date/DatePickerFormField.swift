@@ -15,7 +15,7 @@ open class DatePickerFormField<ContentView: UIView>: FormTextField<ContentView, 
     //	open var smartPadsDefaultDates: Bool = true
     public var minDate: Date? {
         didSet {
-            setDefaultValue()
+            self.setDefaultValue()
         }
     }
 
@@ -25,22 +25,22 @@ open class DatePickerFormField<ContentView: UIView>: FormTextField<ContentView, 
         }
     }
 
-    open override var inputView: UIView? {
+    override open var inputView: UIView? {
         return picker
     }
 
-    open override var canBecomeFirstResponder: Bool {
+    override open var canBecomeFirstResponder: Bool {
         return true
     }
 
-    open override func textDescription(for value: Date?) -> String? {
+    override open func textDescription(for value: Date?) -> String? {
         guard let value = value else { return nil }
         return "\(value.monthName(.short)) \(value.day), \(value.year)"
     }
 
     open func setDefaultValue() {
         if let date = value ?? maxDate ?? minDate {
-            picker.date = date
+            self.picker.date = date
         }
     }
 

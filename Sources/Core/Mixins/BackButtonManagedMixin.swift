@@ -9,7 +9,7 @@ import UIFontIcons
 import UIKitMixinable
 import UIKitTheme
 open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged & UIViewController> {
-    open override func createSubviews() {
+    override open func createSubviews() {
         var fontIconConfiguration: FontIconConfiguration?
         if let barItemColor = mixable.navigationBarStyle?.barItemColor {
             fontIconConfiguration = FontIconConfiguration(style: .init(color: barItemColor))

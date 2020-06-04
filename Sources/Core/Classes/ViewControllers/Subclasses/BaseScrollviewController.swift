@@ -13,27 +13,27 @@ open class BaseScrollviewController: BaseViewController, UIScrollViewDelegate {
     open lazy var scrollView: UIScrollView = containerScrollView
     open var containerScrollView: ContainerScrollView = ContainerScrollView(contentView: UIView())
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        scrollView.delegate = self
+        self.scrollView.delegate = self
     }
 
     open var scrollViewContentView: UIView {
-        return containerScrollView.contentView
+        return self.containerScrollView.contentView
     }
 
     fileprivate var additionalPaddingForScrollViewHeaderContent: CGFloat = 0.0
     fileprivate var expandContentSizeHeight: CGFloat = 0.0
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createAutoLayoutConstraints()
-        view.addSubview(scrollView)
+        view.addSubview(self.scrollView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        scrollView.pinToSuperview()
-        scrollView.bringSubviewToFront(scrollViewContentView)
+        self.scrollView.pinToSuperview()
+        self.scrollView.bringSubviewToFront(self.scrollViewContentView)
 //        scrollView.top.greaterThanOrEqual(to: 0)
     }
 

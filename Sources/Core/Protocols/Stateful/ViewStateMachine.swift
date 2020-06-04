@@ -37,7 +37,7 @@ import UIKit
     ///
     public init(view: UIView, states: [State: UIView]?) {
         self.view = view
-        viewStore = states ?? [State: UIView]()
+        self.viewStore = states ?? [State: UIView]()
     }
 
     /// - parameter view:        The view that should act as the superview for any added views
@@ -52,30 +52,30 @@ import UIKit
 
     /// - returns: the view for a given state
     public func viewForState(state: State) -> UIView? {
-        return viewStore[state]
+        return self.viewStore[state]
     }
 
     /// Associates a view for the given state
     public func addView(view: UIView, forState state: State) {
-        viewStore[state] = view
+        self.viewStore[state] = view
     }
 
     ///  Removes the view for the given state
     public func removeViewForState(state: State) {
-        viewStore[state] = nil
+        self.viewStore[state] = nil
     }
 
     // MARK: Subscripting
 
     public subscript(state: State) -> UIView? {
         get {
-            return viewForState(state: state)
+            return self.viewForState(state: state)
         }
         set(newValue) {
             if let value = newValue {
-                addView(view: value, forState: state)
+                self.addView(view: value, forState: state)
             } else {
-                removeViewForState(state: state)
+                self.removeViewForState(state: state)
             }
         }
     }
@@ -119,9 +119,9 @@ import UIKit
 //        if let previousView = self.viewForState(state: previousState) {
 //            previousView.removeFromSuperview()
 //        }
-        hideAllViews(animated: animated)
+        self.hideAllViews(animated: animated)
 
-        let parentView = view // is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
+        let parentView = self.view // is UIScrollView ? view.superview ?? view : view //Adding to scrollview will not have desired behavior, so add to parent and pin to view.
 
         statefulView.frame = parentView.bounds
         parentView.addSubview(statefulView)
@@ -135,7 +135,7 @@ import UIKit
     }
 
     public func hideAllViews(animated: Bool, completion: (() -> Void)? = nil) {
-        for (_, view) in viewStore {
+        for (_, view) in self.viewStore {
             view.removeFromSuperview()
         }
         completion?()

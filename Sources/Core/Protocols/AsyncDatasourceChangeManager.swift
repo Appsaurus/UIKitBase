@@ -24,7 +24,7 @@ extension AsyncDatasourceChangeManager {
     public func enqueue(_ modification: @escaping AsyncDatasourceChange) {
         asyncDatasourceChangeQueue.enqueue(modification)
         if asyncDatasourceChangeQueue.count == 1 {
-            performNextModification()
+            self.performNextModification()
         }
     }
 

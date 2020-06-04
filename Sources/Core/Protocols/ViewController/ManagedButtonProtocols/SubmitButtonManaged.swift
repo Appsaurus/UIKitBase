@@ -39,28 +39,28 @@ public enum SubmissionError: Error {
 
 extension SubmissionManaged where Self: UIViewController {
     public func performSubmission() {
-        let isNoEditSubmission = noEditsBehavior == .skipSubmit && !submissionHasBeenEdited()
+        let isNoEditSubmission = noEditsBehavior == .skipSubmit && !self.submissionHasBeenEdited()
         if isNoEditSubmission {
-            submissionDidEnd(with: .failure(SubmissionError.submittedNoEdits))
+            self.submissionDidEnd(with: .failure(SubmissionError.submittedNoEdits))
             return
         }
         do {
-            submissionDidBegin()
+            self.submissionDidBegin()
             submit(try createSubmission()) { [weak self] result in
                 self?.submissionDidEnd(with: result)
             }
         } catch {
-            submissionDidEnd(with: .failure(error))
+            self.submissionDidEnd(with: .failure(error))
         }
     }
 
     public func submissionDidEnd(with result: Result<Response, Error>) {
-        submissionDidEnd()
+        self.submissionDidEnd()
         switch result {
         case let .success(response):
-            submissionDidSucceed(with: response)
+            self.submissionDidSucceed(with: response)
         case let .failure(error):
-            submissionDidFail(with: error)
+            self.submissionDidFail(with: error)
         }
         onCompletion?(result)
     }
@@ -89,7 +89,7 @@ extension SubmissionManaged where Self: UIViewController {
 
     public func autoSubmitIfAllowed() {
         if autoSubmitsValidForm {
-            performSubmission()
+            self.performSubmission()
         }
     }
 
@@ -97,7 +97,7 @@ extension SubmissionManaged where Self: UIViewController {
         guard noEditsBehavior == .disableSubmit else {
             return true
         }
-        return submissionHasBeenEdited()
+        return self.submissionHasBeenEdited()
     }
 
     public func submissionHasBeenEdited() -> Bool {
@@ -120,7 +120,7 @@ extension SubmitButtonManaged where Self: UIViewController {
     }
 
     public func didPressSubmitButton() {
-        performSubmission()
+        self.performSubmission()
     }
 
     public func didPressSubmitButtonWhileDisabled() {}
@@ -142,7 +142,7 @@ extension SubmitButtonManaged where Self: UIViewController {
                                     .showIndicator(style: .gray,
                                                    color: navigationBarStyle?.barItemColor,
                                                    at: activityIndicatoPosition)]
-        setupSubmitButtonAction(for: button)
+        self.setupSubmitButtonAction(for: button)
         submitButton = button
         return button
     }

@@ -17,7 +17,7 @@ open class AnimatableTextField: StatefulTextField {
     open var layoutHeights: (titleLabel: CGFloat, textField: CGFloat, secondaryLabel: CGFloat) = (17.0, 34.0, 17.0)
 
     /// Sync up textAlignment of all labels
-    open override var textAlignment: NSTextAlignment {
+    override open var textAlignment: NSTextAlignment {
         get {
             return super.textAlignment
         }
@@ -43,9 +43,9 @@ open class AnimatableTextField: StatefulTextField {
      }
      */
 
-    open override func layoutSubviews(for state: TextFieldState) {
+    override open func layoutSubviews(for state: TextFieldState) {
         super.layoutSubviews(for: state)
-        layoutTitleLabel()
+        self.layoutTitleLabel()
     }
 
     open func layoutTitleLabel() {}

@@ -14,7 +14,7 @@ open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController
     where VC: TaskResultDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol {
     open lazy var pickerViewController: VC = VC(nibName: nil, bundle: nil)
 
-    open override var canBecomeFirstResponder: Bool {
+    override open var canBecomeFirstResponder: Bool {
         return false
     }
 
@@ -23,18 +23,18 @@ open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController
 //        return true
 //    }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
     }
 
-    open override func fieldWasTapped() {
-        presentPickerViewController()
+    override open func fieldWasTapped() {
+        self.presentPickerViewController()
     }
 
     open func presentPickerViewController() {
-        configurePickerTaskHandler(picker: pickerViewController)
+        self.configurePickerTaskHandler(picker: self.pickerViewController)
         parentViewController?.view.endEditing(true)
-        parentViewController?.navigationController?.push(pickerViewController)
+        parentViewController?.navigationController?.push(self.pickerViewController)
     }
 
     open func configurePickerTaskHandler(picker: VC) {

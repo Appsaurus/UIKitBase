@@ -16,7 +16,7 @@ public protocol BaseUIApplicationDelegateProtocol: AppConfigurable,
 
 @available(iOS 10, *)
 open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDelegateProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + [
             AppConfigurableMixin(self)
         ]
@@ -32,9 +32,9 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
         return ViewControllerConfiguration()
     }
 
-    public override init() {
+    override public init() {
         super.init()
-        configureLoggingLevels()
+        self.configureLoggingLevels()
     }
 
     // MARK: Methods/Functions
@@ -49,7 +49,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+        self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
         }, completionHandler: { [weak self] results in
             guard let self = self else { return }
@@ -61,7 +61,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      didReceive response: UNNotificationResponse,
                                      withCompletionHandler completionHandler: @escaping () -> Void) {
-        userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+        self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
         }, completionHandler: completionHandler)
     }
@@ -69,7 +69,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     // The method will be called on the delegate when the application is launched in response to the user's request to view in-app notification settings. Add UNAuthorizationOptionProvidesAppNotificationSettings as an option in requestAuthorizationWithOptions:completionHandler: to add a button to inline notification settings view and the notification settings view in Settings. The notification will be nil when opened from Settings.
     @available(iOS 12.0, *)
     open func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        userNotificationMixins.forEach { $0.userNotificationCenter?(center, openSettingsFor: notification) }
+        self.userNotificationMixins.forEach { $0.userNotificationCenter?(center, openSettingsFor: notification) }
     }
 }
 
@@ -79,13 +79,13 @@ public protocol AppConfigurable {
 }
 
 open class AppConfigurableMixin: UIApplicationDelegateMixin<UIApplicationDelegate & AppConfigurable> {
-    open override func didInit() {
+    override open func didInit() {
         super.didInit()
         AppConfigurationManager.shared.apply(configuration: mixable.appConfiguration)
         ViewControllerConfiguration.default = mixable.viewControllerConfiguration
     }
 
-    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    override open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UIApplication.mainWindow.backgroundColor = .mainWindowBackgroundColor
         return true
     }
@@ -158,14 +158,14 @@ extension AppIOManager {
 
     public func application(_ application: UIApplication = UIApplication.shared, didLaunchFrom notification: AppNotification<AppNotificationIDType>) {
         if let request = convertNotificationToDeepLinkRequest(notification) {
-            respond(to: request)
+            self.respond(to: request)
         }
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        willPresent notification: UNNotification,
                                        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
+        self.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
         guard let options = completionHandlerOptions(for: notification) else { return }
         completionHandler(options)
     }
@@ -177,7 +177,7 @@ extension AppIOManager {
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        didReceive response: UNNotificationResponse,
                                        withCompletionHandler completionHandler: @escaping () -> Void) {
-        application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
+        self.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
         completionHandler()
     }
 
@@ -188,7 +188,7 @@ extension AppIOManager {
     }
 
     public func respond(to deepLinkURLRequest: String) {
-        deepLinker.respond(to: deepLinkURLRequest)
+        self.deepLinker.respond(to: deepLinkURLRequest)
     }
 
     public func convertNotificationToDeepLinkRequest(_ notification: AppNotification<AppNotificationIDType>) -> String? {
@@ -213,15 +213,15 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
 
     // MARK: Registration
 
-    open override func didInit() {
+    override open func didInit() {
         super.didInit()
         UNUserNotificationCenter.current().delegate = mixable
     }
 
     open func registerForRemoteNotifications(options: UNAuthorizationOptions = .basicAlerts, success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
         let application = UIApplication.shared
-        remoteNotificationRegistrationSuccess = success
-        remoteNotificationRegistrationFailure = failure
+        self.remoteNotificationRegistrationSuccess = success
+        self.remoteNotificationRegistrationFailure = failure
 
         guard application.delegate === mixable else {
             assertionFailure()
@@ -237,7 +237,7 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         application.registerForRemoteNotifications()
     }
 
-    open override func userNotificationCenter(_ center: UNUserNotificationCenter,
+    override open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                               willPresent notification: UNNotification,
                                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         mixable.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
@@ -245,36 +245,36 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
         completionHandler(options)
     }
 
-    open override func userNotificationCenter(_ center: UNUserNotificationCenter,
+    override open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                               didReceive response: UNNotificationResponse,
                                               withCompletionHandler completionHandler: @escaping () -> Void) {
         mixable.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
         completionHandler()
     }
 
-    open override func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+    override open func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
 
-    open override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    override open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         mixable.registerDevice(withToken: String(deviceToken: deviceToken),
                                serviceToken: nil,
-                               success: remoteNotificationRegistrationSuccess,
-                               failure: remoteNotificationRegistrationFailure)
+                               success: self.remoteNotificationRegistrationSuccess,
+                               failure: self.remoteNotificationRegistrationFailure)
     }
 
-    open override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    override open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
-    open override func application(_ application: UIApplication,
+    override open func application(_ application: UIApplication,
                                    didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                                    fetchCompletionHandler
                                    completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
-    open override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    override open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Unifying notification methods
         if let remoteNotification = launchOptions?[.remoteNotification] as? [NSObject: AnyObject] {
             mixable.application(application, didRecieve: BaseAppNotification(payload: remoteNotification, origin: .remote))

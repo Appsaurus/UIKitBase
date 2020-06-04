@@ -10,18 +10,18 @@ import Layman
 import Swiftest
 
 open class CornerBadgeView<S: Hashable>: StatefulBadgeView<S> {
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         size.equal(to: badgeHeight)
     }
 
-    open override func applyCurrentViewStyle() {
+    override open func applyCurrentViewStyle() {
         // Do nothing. Override parent implementation of styling since this needs to be done in draw rect in this case
         backgroundColor = .clear
         setNeedsDisplay()
     }
 
-    open override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let viewStyle = viewStyleMap[state] else {
             return
@@ -31,9 +31,9 @@ open class CornerBadgeView<S: Hashable>: StatefulBadgeView<S> {
         var polygonVertices: [CGPoint] = []
         switch position {
         case .topRight, .topRightInside:
-            polygonVertices = [self.bounds.topLeft, self.bounds.topRight, self.bounds.bottomRight]
+            polygonVertices = [bounds.topLeft, bounds.topRight, bounds.bottomRight]
         case .topLeft, .topLeftInside:
-            polygonVertices = [self.bounds.bottomLeft, self.bounds.topLeft, self.bounds.topRight]
+            polygonVertices = [bounds.bottomLeft, bounds.topLeft, bounds.topRight]
         }
         DrawingUtils.draw(polygon: polygonVertices, style: viewStyle)
     }

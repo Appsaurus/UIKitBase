@@ -25,28 +25,28 @@ open class SearchBarContainerView: BaseView {
         super.init(frame: CGRect.zero)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(horizontalStackView)
-        let stackedViews = [contentView] + rightStackedViews
-        horizontalStackView.addArrangedSubviews(stackedViews)
+        addSubview(self.horizontalStackView)
+        let stackedViews = [contentView] + self.rightStackedViews
+        self.horizontalStackView.addArrangedSubviews(stackedViews)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        contentView.height.equalToSuperview()
-        contentView.width ≥ 1
-        contentView.resistCompression()
-        rightStackedViews.hugContent()
+        self.contentView.height.equalToSuperview()
+        self.contentView.width ≥ 1
+        self.contentView.resistCompression()
+        self.rightStackedViews.hugContent()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        horizontalStackView.frame = bounds.inset(by: contentInsets)
+        self.horizontalStackView.frame = bounds.inset(by: self.contentInsets)
     }
 }
 
@@ -133,34 +133,34 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
                                         preSearchViewController: UIViewController())
     }
 
-    open override func initialChildViewController() -> UIViewController {
-        return resultsController.preSearchViewController ?? resultsController.resultsViewController
+    override open func initialChildViewController() -> UIViewController {
+        return self.resultsController.preSearchViewController ?? self.resultsController.resultsViewController
     }
 
-    open override func createHeaderView() -> UIView? {
-        guard layoutConfig.searchBarPosition == .header else {
+    override open func createHeaderView() -> UIView? {
+        guard self.layoutConfig.searchBarPosition == .header else {
             return nil
         }
-        return searchLayoutView
+        return self.searchLayoutView
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        searchBar.textField?.subviews.first?.cornerRadius = 10.0
+        self.searchBar.textField?.subviews.first?.cornerRadius = 10.0
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        searchBar.delegate = self
+        self.searchBar.delegate = self
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        switch layoutConfig.searchBarPosition {
+        switch self.layoutConfig.searchBarPosition {
         case .header:
-            if layoutConfig.displaysNavigationbarSearchControls {
-                navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", action: didTapNavigationCancelBar)
-                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", action: didTapNavigationSearchBar)
+            if self.layoutConfig.displaysNavigationbarSearchControls {
+                navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", action: self.didTapNavigationCancelBar)
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", action: self.didTapNavigationSearchBar)
             }
         case .navigationTitle:
             let searchBarContainer = SearchBarContainerView(contentView: searchBar, contentInsets: layoutConfig.searchBarInsets)
@@ -175,23 +175,23 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     var searchBarWasActiveWhenLastVisible: Bool = false
 
-    open override func viewWillDisappear(_ animated: Bool) {
-        searchBarWasActiveWhenLastVisible = searchBar.isFirstResponder
+    override open func viewWillDisappear(_ animated: Bool) {
+        self.searchBarWasActiveWhenLastVisible = self.searchBar.isFirstResponder
         super.viewWillDisappear(animated)
         if endsEditingOnDisappearance {
-            resignSearchBar()
+            self.resignSearchBar()
         }
     }
 
-    open override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let shouldBecomeFirstResponder = config.searchBarRegainsFirstResponderOnReappear && searchBarWasActiveWhenLastVisible
-        restorePreviousSearchState(makeSearchBarFirstResponder: shouldBecomeFirstResponder)
+        let shouldBecomeFirstResponder = self.config.searchBarRegainsFirstResponderOnReappear && self.searchBarWasActiveWhenLastVisible
+        self.restorePreviousSearchState(makeSearchBarFirstResponder: shouldBecomeFirstResponder)
     }
 
     open func queryInputChanged() {
         guard let searchThrottle = config.searchThrottle else {
-            performSearch(query: searchQuery())
+            self.performSearch(query: searchQuery())
             return
         }
 
@@ -202,7 +202,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     }
 
     @objc private func triggerSearch() {
-        performSearch(query: searchQuery())
+        self.performSearch(query: searchQuery())
     }
 
     open func performSearch(query: String?) {
@@ -212,7 +212,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     }
 
     open func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resignSearch()
+        self.resignSearch()
     }
 
     open func resignSearch(forceClearQuery: Bool? = nil) {
@@ -227,7 +227,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
         guard let preSearchViewController = resultsController.preSearchViewController, preSearchViewController != children.first else {
             return
         }
-        let resultsViewController = resultsController.resultsViewController
+        let resultsViewController = self.resultsController.resultsViewController
         swap(out: resultsViewController,
              with: preSearchViewController,
              into: containerView,
@@ -238,45 +238,45 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
     }
 
     open func resignSearchBar(forceClearQuery: Bool = false) {
-        if config.cachesQueryOnResignation {
-            searchState.lastSearchQuery = searchBar.text
+        if self.config.cachesQueryOnResignation {
+            self.searchState.lastSearchQuery = self.searchBar.text
         }
         if forceClearQuery {
-            clearSearchQuery()
-            queryInputChanged()
+            self.clearSearchQuery()
+            self.queryInputChanged()
         }
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.resignFirstResponder()
+        self.searchBar.setShowsCancelButton(false, animated: true)
+        self.searchBar.resignFirstResponder()
     }
 
     open func resetSearch() {
-        resignSearch(forceClearQuery: true)
-        searchBarWasActiveWhenLastVisible = false
+        self.resignSearch(forceClearQuery: true)
+        self.searchBarWasActiveWhenLastVisible = false
     }
 
     open func clearSearchQuery() {
-        searchState.lastSearchQuery = nil
-        searchBar.text = nil
+        self.searchState.lastSearchQuery = nil
+        self.searchBar.text = nil
     }
 
     open func resignSearchBarIfActive(forceClearQuery: Bool = false) {
-        if searchBar.isFirstResponder {
-            resignSearchBar(forceClearQuery: forceClearQuery)
+        if self.searchBar.isFirstResponder {
+            self.resignSearchBar(forceClearQuery: forceClearQuery)
         }
     }
 
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        queryInputChanged()
+        self.queryInputChanged()
     }
 
     open func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        queryInputChanged()
+        self.queryInputChanged()
         searchBar.resignFirstResponder()
     }
 
     open func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         guard let preSearchViewController = preSearchViewController, preSearchViewController == children.first else {
-            restorePreviousSearchState()
+            self.restorePreviousSearchState()
             return
         }
 
@@ -292,11 +292,11 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 
     open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false) {
         if let query = searchState.lastSearchQuery, self.searchBar.text != query {
-            searchBar.text = query
-            queryInputChanged()
+            self.searchBar.text = query
+            self.queryInputChanged()
         }
-        if makeSearchBarFirstResponder { searchBar.becomeFirstResponder() }
-        searchBar.setShowsCancelButton(searchBar.isFirstResponder, animated: false)
+        if makeSearchBarFirstResponder { self.searchBar.becomeFirstResponder() }
+        self.searchBar.setShowsCancelButton(self.searchBar.isFirstResponder, animated: false)
     }
 }
 
@@ -306,7 +306,7 @@ extension SearchViewController {
     }
 
     open func searchQuery(filterEmpty: Bool = true) -> String? {
-        return searchBar.searchQuery(filterEmpty: filterEmpty)
+        return self.searchBar.searchQuery(filterEmpty: filterEmpty)
     }
 
     open var resultsViewController: SearchResultsViewController {
@@ -314,7 +314,7 @@ extension SearchViewController {
     }
 
     open var preSearchViewController: UIViewController? {
-        return resultsController.preSearchViewController
+        return self.resultsController.preSearchViewController
     }
 }
 

@@ -42,9 +42,9 @@ open class Route {
 
     init(route: String) throws {
         self.route = route
-        switch regex() {
+        switch self.regex() {
         case let .success(regex):
-            routePattern = regex
+            self.routePattern = regex
         case let .duplicateRouteParamError(route, urlParam):
             throw RegexResult.duplicateRouteParamError(route: route, urlParam: urlParam)
         }
@@ -58,8 +58,8 @@ open class Route {
     func regex() -> RegexResult {
         let _route = "^\(route)?$"
         var _routeRegex = NSString(string: _route)
-        let matches = routeParameter.matches(in: _route, options: [],
-                                             range: NSRange(location: 0, length: _route.count))
+        let matches = self.routeParameter.matches(in: _route, options: [],
+                                                  range: NSRange(location: 0, length: _route.count))
 
         // range offset when replacing :params
         var offset = 0

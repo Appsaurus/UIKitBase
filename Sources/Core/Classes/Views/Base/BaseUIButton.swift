@@ -17,7 +17,7 @@ extension BaseButtonProtocol where Self: UIButton {
 }
 
 open class BaseUIButton: MixinableButton, BaseButtonProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseButtonProtocolMixins
     }
 

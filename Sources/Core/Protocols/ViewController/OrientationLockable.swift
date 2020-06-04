@@ -38,6 +38,6 @@ public extension OrientationLockable where Self: UIViewController {
     }
 
     var currentSupportedInterfaceOrientation: UIInterfaceOrientationMask {
-        return temporaryOrientationLock ?? defaultSupportedOrientations ?? .default
+        return self.temporaryOrientationLock ?? self.defaultSupportedOrientations ?? .default
     }
 }

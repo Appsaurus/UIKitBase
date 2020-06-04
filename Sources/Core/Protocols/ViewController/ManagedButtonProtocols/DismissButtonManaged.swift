@@ -53,7 +53,7 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
         case .leading, .trailing:
             let item: UIBarButtonItem = UIBarButtonItem(customView: button)
             button.setTitle(configuration.buttonTitle, for: .normal)
-            if let style = navigationBarStyle?.titleTextStyle ?? self.navigationController?.navigationBarStyle?.titleTextStyle {
+            if let style = navigationBarStyle?.titleTextStyle ?? navigationController?.navigationBarStyle?.titleTextStyle {
                 button.apply(textStyle: style)
             }
 
@@ -84,7 +84,7 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
 }
 
 open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
         if mixable.dismissButtonConfiguration.showsDismissButton {
             mixable.setupDismissButton()
@@ -103,7 +103,7 @@ public protocol DismissButtonManaged: NavigationBarButtonManaged {
 extension DismissButtonManaged where Self: UIViewController {
     public mutating func setupDismissButton() {
         setupNavigationBar(button: dismissButton, configuration: dismissButtonConfiguration)
-        setupDismissButtonAction(for: dismissButton)
+        self.setupDismissButtonAction(for: dismissButton)
     }
 
     public func setupDismissButtonAction(for button: BaseUIButton) {

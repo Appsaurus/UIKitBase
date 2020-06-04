@@ -38,11 +38,11 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open lazy var form: Form = self.createForm()
     open lazy var textFieldStyleMap: TextFieldStyleMap = .materialStyleMap(contrasting: self.view.backgroundColor ?? App.style.formViewControllerBackgroundColor)
-    open override func style() {
+    override open func style() {
         super.style()
-        formToolbar?.toolBarStyle = FormToolbarStyle()
+        self.formToolbar?.toolBarStyle = FormToolbarStyle()
         view.backgroundColor = App.style.formViewControllerBackgroundColor
-        style(fields: form.fields)
+        self.style(fields: self.form.fields)
     }
 
     open func style(fields: [FormFieldProtocol]) {
@@ -50,14 +50,14 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
             guard let textField = field.getContentView() as? StatefulTextField else {
                 continue
             }
-            textField.styleMap = textFieldStyleMap
+            textField.styleMap = self.textFieldStyleMap
         }
     }
 
     open func prefillForm() {}
 
     public func cacheSubmission() {
-        cachedSubmissionState = try? createSubmission()
+        self.cachedSubmissionState = try? self.createSubmission()
     }
 
     public init(onCompletion: ResultClosure<Response>? = nil) {
@@ -65,7 +65,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         super.init(callInitLifecycle: true)
     }
 
-    public override init(callInitLifecycle: Bool) {
+    override public init(callInitLifecycle: Bool) {
         super.init(callInitLifecycle: callInitLifecycle)
     }
 
@@ -73,35 +73,35 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        form.formDelegate = self
-        if autoPrefillsForm {
-            prefillForm()
+        self.form.formDelegate = self
+        if self.autoPrefillsForm {
+            self.prefillForm()
         }
         if noEditsBehavior != nil {
-            cacheSubmission()
+            self.cacheSubmission()
         }
-        form.validate(displayErrors: false)
-        updateSubmitButtonState()
+        self.form.validate(displayErrors: false)
+        self.updateSubmitButtonState()
     }
 
-    open override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if autoAssignFirstResponder {
-            assignFirstResponderToNextInvalidField()
+        if self.autoAssignFirstResponder {
+            self.assignFirstResponderToNextInvalidField()
         }
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        setupSubmitButton(configuration: ManagedButtonConfiguration(position: submitButtonPosition))
+        setupSubmitButton(configuration: ManagedButtonConfiguration(position: self.submitButtonPosition))
     }
 
     open func createForm() -> Form {
-        let fields = createFields()
+        let fields = self.createFields()
         for field in fields {
-            field.behaviors = formFieldBehaviors
+            field.behaviors = self.formFieldBehaviors
         }
         return Form(fields: fields)
     }
@@ -113,7 +113,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func createFormToolbar() -> FormToolbar? {
         var textFields: [FormInput] = []
-        for field in form.fields where field is FormInput {
+        for field in self.form.fields where field is FormInput {
             // swiftlint:disable force_cast
             textFields.append(field as! FormInput)
         }
@@ -129,16 +129,16 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     }
 
     open func formIsValidating(_ form: Form) {
-        updateSubmitButtonState()
+        self.updateSubmitButtonState()
     }
 
     open func formPassedValidation(_ form: Form) {
-        updateSubmitButtonState()
+        self.updateSubmitButtonState()
         autoSubmitIfAllowed()
     }
 
     open func formFailedValidation(_ form: Form, failures: [ValidationFailure]) {
-        updateSubmitButtonState()
+        self.updateSubmitButtonState()
     }
 
     open func fieldPassedValidation(_ field: FormFieldProtocol) {}
@@ -148,7 +148,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     open func fieldIsValidating(_ field: FormFieldProtocol) {}
 
     open func fieldDidBeginEditing(_ field: FormFieldProtocol) {
-        formToolbar?.update()
+        self.formToolbar?.update()
     }
 
     open func fieldDidEndEditing(_ field: FormFieldProtocol) {}
@@ -156,43 +156,43 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     func textFieldDidBeginEditing(_ textField: UITextField) {}
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        formToolbar?.goForward()
+        self.formToolbar?.goForward()
         return true
     }
 
     // MARK: SubmitButtonManaged
 
     open func didPressSubmitButtonWhileDisabled() {
-        if showsValidationErrorsOnDisbledSubmit {
-            displayFormErrors()
+        if self.showsValidationErrorsOnDisbledSubmit {
+            self.displayFormErrors()
         }
     }
 
     open func updateSubmitButtonState() {
-        switch form.status {
+        switch self.form.status {
         case .testingInProgress:
             submitButton.state = .activity
         default:
-            submitButton.state = userCanSubmit() ? .normal : .disabled
+            submitButton.state = self.userCanSubmit() ? .normal : .disabled
         }
     }
 
     open func userCanSubmit() -> Bool {
-        let formIsValid = form.status == .valid
+        let formIsValid = self.form.status == .valid
         guard noEditsBehavior == .disableSubmit else {
             return formIsValid
         }
-        return submissionHasBeenEdited() && formIsValid
+        return self.submissionHasBeenEdited() && formIsValid
     }
 
     open func displayFormErrors(withAlert: Bool = false) {
-        for field in form.fields {
+        for field in self.form.fields {
             field.validate(displayErrors: true)
         }
         if withAlert {
-            form.presentFormErrorsAlertView(self)
+            self.form.presentFormErrorsAlertView(self)
         } else {
-            assignFirstResponderToNextInvalidField()
+            self.assignFirstResponderToNextInvalidField()
         }
     }
 
@@ -202,11 +202,11 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func createSubmission() throws -> Submission {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
-        return try createSubmission()
+        return try self.createSubmission()
     }
 
     open func submissionDidSucceed(with response: Response) {
-        guard popsOrDismissesOnSuccess else { return }
+        guard self.popsOrDismissesOnSuccess else { return }
         popOrDismiss()
     }
 
@@ -229,8 +229,8 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
     }
 
     open func updateFieldBehaviors() {
-        for field in form.fields {
-            field.behaviors = formFieldBehaviors
+        for field in self.form.fields {
+            field.behaviors = self.formFieldBehaviors
         }
     }
 }
@@ -269,37 +269,37 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
         return LayoutPadding(horizontal: 20.0, vertical: 5.0)
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        tableView.backgroundColor = containerView.backgroundColor
+        self.tableView.backgroundColor = containerView.backgroundColor
         let backgroundContrast = view.backgroundColor?.contrastingColor(fromCandidates: [.primary, .primaryContrast]) ?? .primary
-        headerPromptLabel?.apply(textStyle: .displayHeadline(color: backgroundContrast))
+        self.headerPromptLabel?.apply(textStyle: .displayHeadline(color: backgroundContrast))
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        containedView = tableView
-        tableView.separatorStyle = .none
+        containedView = self.tableView
+        self.tableView.separatorStyle = .none
 //        containedViewAvoidsKeyboard = true
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        tableView.setController(self)
+        self.tableView.setController(self)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
         guard let label = headerPromptLabel else { return }
-        tableView.setupDynamicHeader(label)
+        self.tableView.setupDynamicHeader(label)
     }
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        tableView.automaticallySizeCellHeights(200)
-        tableView.reloadData()
+        self.tableView.automaticallySizeCellHeights(200)
+        self.tableView.reloadData()
 
-        keyboardAvoiding = KeyboardAvoiding()
+        self.keyboardAvoiding = KeyboardAvoiding()
             .onKeyboardWillShow { [weak self] rect in
                 guard let self = self else { return }
                 self.tableView.contentInset.bottom = rect.height
@@ -313,14 +313,14 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
             .onKeyboardDidHide {}
     }
 
-    open override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        keyboardAvoiding.start()
+        self.keyboardAvoiding.start()
     }
 
-    open override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        keyboardAvoiding.stop()
+        self.keyboardAvoiding.stop()
     }
 
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -333,8 +333,8 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let field = form.fields[indexPath.row]
-        let cell = FormFieldCell(field: field as! UIView, insets: fieldCellInsets)
-        customize(fieldCell: cell, at: indexPath)
+        let cell = FormFieldCell(field: field as! UIView, insets: self.fieldCellInsets)
+        self.customize(fieldCell: cell, at: indexPath)
         return cell
     }
 
@@ -383,22 +383,22 @@ open class KeyboardAvoiding {
 
     public func start() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(_:)),
+                                               selector: #selector(self.keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(_:)),
+                                               selector: #selector(self.keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidShow(_:)),
+                                               selector: #selector(self.keyboardDidShow(_:)),
                                                name: UIResponder.keyboardDidShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidHide(_:)),
+                                               selector: #selector(self.keyboardDidHide(_:)),
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
     }
@@ -427,7 +427,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        animate(curve: curve, duration: duration) {
+        self.animate(curve: curve, duration: duration) {
             self.willShow?(frame)
         }
     }
@@ -442,7 +442,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        animate(curve: curve, duration: duration) {
+        self.animate(curve: curve, duration: duration) {
             self.didShow?(frame)
         }
     }
@@ -455,7 +455,7 @@ open class KeyboardAvoiding {
         else {
             return
         }
-        animate(curve: curve, duration: duration) {
+        self.animate(curve: curve, duration: duration) {
             self.willHide?()
         }
     }
@@ -469,7 +469,7 @@ open class KeyboardAvoiding {
             return
         }
 
-        animate(curve: curve, duration: duration) {
+        self.animate(curve: curve, duration: duration) {
             self.didHide?()
         }
     }

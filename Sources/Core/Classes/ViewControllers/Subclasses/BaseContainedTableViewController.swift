@@ -14,7 +14,7 @@ extension BaseTableViewControllerProtocol where Self: BaseContainedTableViewCont
 }
 
 open class BaseContainedTableViewController: BaseContainerViewController, BaseTableViewControllerProtocol, UITableViewDelegate {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
 
@@ -23,13 +23,13 @@ open class BaseContainedTableViewController: BaseContainerViewController, BaseTa
         tv.backgroundColor = .clear
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        containedView = tableView
+        containedView = self.tableView
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        tableView.delegate = self
+        self.tableView.delegate = self
     }
 }

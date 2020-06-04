@@ -15,19 +15,19 @@ struct SearchHistoryManager {
     private var defaults = UserDefaults.standard
 
     func history() -> [LocationData] {
-        let history = defaults.object(forKey: HistoryKey) as? [NSDictionary] ?? []
+        let history = self.defaults.object(forKey: self.HistoryKey) as? [NSDictionary] ?? []
         return history.compactMap(LocationData.fromDefaultsDic)
     }
 
     func addToHistory(_ location: LocationData) {
         guard let dic = location.toDefaultsDic() else { return }
 
-        var history = defaults.object(forKey: HistoryKey) as? [NSDictionary] ?? []
+        var history = self.defaults.object(forKey: self.HistoryKey) as? [NSDictionary] ?? []
         let historyNames = history.compactMap { $0[LocationDicKeys.name] as? String }
         let alreadyInHistory = location.title.flatMap(historyNames.contains) ?? false
         if !alreadyInHistory {
             history.insert(dic, at: 0)
-            defaults.set(history, forKey: HistoryKey)
+            self.defaults.set(history, forKey: self.HistoryKey)
         }
     }
 }

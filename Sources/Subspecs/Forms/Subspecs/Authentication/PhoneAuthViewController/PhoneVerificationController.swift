@@ -53,7 +53,7 @@ open class PhoneVerificationController<TextField: UITextField> where TextField: 
 
     open func present(in navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.pushViewController(createPhoneNumberFormViewController(), animated: true)
+        navigationController.pushViewController(self.createPhoneNumberFormViewController(), animated: true)
     }
 
     open func presentModally(from presentingViewController: UIViewController) {
@@ -69,31 +69,31 @@ open class PhoneVerificationController<TextField: UITextField> where TextField: 
 
     open func segueToCodeVerification() {
         let codeEntryVC = CodeFormViewController(delegate: self, configuration: configuration.codeFormConfiguration)
-        navigationController?.push(codeEntryVC)
+        self.navigationController?.push(codeEntryVC)
     }
 }
 
 extension PhoneVerificationController: PhoneNumberFormDelegate {
     public func phoneNumberFormViewControllerDidCancel() {
-        delegate?.phoneVerificationControllerDidCancel()
+        self.delegate?.phoneVerificationControllerDidCancel()
     }
 
     public func processSelected(phoneNumber: PhoneNumber, success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
         self.phoneNumber = phoneNumber
-        delegate?.requestVerificationCode(for: phoneNumber, successVerificationId: { [weak self] verificationID in
+        self.delegate?.requestVerificationCode(for: phoneNumber, successVerificationId: { [weak self] verificationID in
             self?.verificationID = verificationID
             success()
         }, failure: failure)
     }
 
     public func phoneNumberFormViewController(didSelect phoneNumber: PhoneNumber) {
-        segueToCodeVerification()
+        self.segueToCodeVerification()
     }
 }
 
 extension PhoneVerificationController: CodeFormDelegate {
     public func processVerification(of code: String, success: @escaping VoidClosure, failure: @escaping ErrorClosure) {
-        delegate?.confirmVerificationCode(verificationCode: code, verificationID: verificationID!, success: success, failure: failure)
+        self.delegate?.confirmVerificationCode(verificationCode: code, verificationID: self.verificationID!, success: success, failure: failure)
     }
 
     public func codeVerificationViewControllerDidVerifyCode() {
@@ -101,6 +101,6 @@ extension PhoneVerificationController: CodeFormDelegate {
             assertionFailure("phoneNumber must be set before code verification step.")
             return
         }
-        delegate?.phoneVerificationControllerDidVerify(phoneNumber: phoneNumber)
+        self.delegate?.phoneVerificationControllerDidVerify(phoneNumber: phoneNumber)
     }
 }

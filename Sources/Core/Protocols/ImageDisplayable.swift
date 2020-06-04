@@ -11,7 +11,6 @@ import Swiftest
 import UIKit
 
 extension Nuke_ImageDisplaying where Self: UIView {
-
     @discardableResult
     public func loadImage(_ imageResolving: ImageResolving,
                           options: ImageLoadingOptions = .shared,
@@ -22,7 +21,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
             nuke_display(image: image)
             return nil
         case let .url(urlConvertible):
-            return try loadImage(with: urlConvertible, options: options, progress: progress, completion: completion)
+            return try self.loadImage(with: urlConvertible, options: options, progress: progress, completion: completion)
         }
     }
 
@@ -33,7 +32,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           completion: ImageTask.Completion? = nil,
                           errorImage: PlatformImage?) -> ImageTask? {
         do {
-            return try loadImage(imageResolving, options: options, progress: progress, completion: completion)
+            return try self.loadImage(imageResolving, options: options, progress: progress, completion: completion)
         } catch {
             nuke_display(image: errorImage)
             return nil
@@ -45,7 +44,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil) throws -> ImageTask? {
-        return try loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
+        return try self.loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
     }
 
     @discardableResult
@@ -55,7 +54,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           completion: ImageTask.Completion? = nil,
                           errorImage: PlatformImage?) -> ImageTask? {
         do {
-            return try loadImage(with: url, options: options, progress: progress, completion: completion)
+            return try self.loadImage(with: url, options: options, progress: progress, completion: completion)
         } catch {
             nuke_display(image: errorImage)
             return nil

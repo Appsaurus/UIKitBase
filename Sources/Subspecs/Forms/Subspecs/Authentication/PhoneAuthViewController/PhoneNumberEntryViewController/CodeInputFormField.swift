@@ -42,7 +42,7 @@ open class CodeInputFormField<ContentView: CodeInputTextField>: FormTextField<Co
     open var configuration: CodeInputFieldConfiguration = CodeInputFieldConfiguration()
 
     open var inputFilled: Bool {
-        return value?.count == configuration.codeLength
+        return value?.count == self.configuration.codeLength
     }
 
     public convenience init(configuration: CodeInputFieldConfiguration? = nil) {
@@ -51,10 +51,10 @@ open class CodeInputFormField<ContentView: CodeInputTextField>: FormTextField<Co
         initLifecycle(.programmatically)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         keyboardType = .numberPad
-        textField.keyboardAppearance = configuration.style.keyboardAppearance
+        textField.keyboardAppearance = self.configuration.style.keyboardAppearance
         textField.textAlignment = .center
         contentView.hideCaret()
         if #available(iOS 12.0, *) {
@@ -62,32 +62,32 @@ open class CodeInputFormField<ContentView: CodeInputTextField>: FormTextField<Co
         }
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         textField.height.equal(to: 50)
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        updateTextFieldStyle()
+        self.updateTextFieldStyle()
     }
 
     open func updateTextFieldStyle() {
-        textField.apply(textFieldStyle: validationStatus == .valid ? configuration.style.filledTextFieldStyle : configuration.style.emptyTextFieldStyle)
+        textField.apply(textFieldStyle: validationStatus == .valid ? self.configuration.style.filledTextFieldStyle : self.configuration.style.emptyTextFieldStyle)
     }
 
-    open override func validationStatusChanged(_ status: ValidationStatus) {
+    override open func validationStatusChanged(_ status: ValidationStatus) {
         super.validationStatusChanged(status)
-        updateTextFieldStyle()
+        self.updateTextFieldStyle()
     }
 
     open func clear() {
         textField.text = nil
     }
 
-    open override func runValidationTests() -> [ValidationFailure] {
+    override open func runValidationTests() -> [ValidationFailure] {
         var failures = super.runValidationTests()
-        if !inputFilled {
+        if !self.inputFilled {
             failures.append(ValidationFailure(failureType: .customValidation, explanationMessage: "Code too short."))
         }
         return failures

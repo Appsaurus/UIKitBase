@@ -12,67 +12,67 @@ open class DefaultRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     open var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     open var circleLayer: CAShapeLayer = CAShapeLayer()
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        activityIndicatorView.isHidden = true
-        activityIndicatorView.hidesWhenStopped = true
+        self.activityIndicatorView.isHidden = true
+        self.activityIndicatorView.hidesWhenStopped = true
 
-        circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
-        circleLayer.strokeColor = UIColor.gray.cgColor
-        circleLayer.fillColor = UIColor.clear.cgColor
-        circleLayer.lineWidth = 3
-        circleLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2.0)))
-        circleLayer.strokeStart = 0
-        circleLayer.strokeEnd = 0
+        self.circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.width, height: frame.height)).cgPath
+        self.circleLayer.strokeColor = UIColor.gray.cgColor
+        self.circleLayer.fillColor = UIColor.clear.cgColor
+        self.circleLayer.lineWidth = 3
+        self.circleLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2.0)))
+        self.circleLayer.strokeStart = 0
+        self.circleLayer.strokeEnd = 0
 
-        addSubview(activityIndicatorView)
-        layer.addSublayer(circleLayer)
+        addSubview(self.activityIndicatorView)
+        layer.addSublayer(self.circleLayer)
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 
-        activityIndicatorView.frame = bounds
-        circleLayer.frame = bounds
+        self.activityIndicatorView.frame = bounds
+        self.circleLayer.frame = bounds
     }
 
     open func animateState(_ state: PullToRefreshState) {
         switch state {
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         case let .releasing(progress):
-            updateCircle(progress)
+            self.updateCircle(progress)
         case .loading:
-            startAnimating()
+            self.startAnimating()
         }
     }
 
     func startAnimating() {
-        circleLayer.isHidden = true
-        circleLayer.strokeEnd = 0
+        self.circleLayer.isHidden = true
+        self.circleLayer.strokeEnd = 0
 
-        activityIndicatorView.isHidden = false
-        activityIndicatorView.startAnimating()
+        self.activityIndicatorView.isHidden = false
+        self.activityIndicatorView.startAnimating()
     }
 
     func stopAnimating() {
-        circleLayer.isHidden = false
+        self.circleLayer.isHidden = false
 
-        activityIndicatorView.isHidden = true
-        activityIndicatorView.stopAnimating()
+        self.activityIndicatorView.isHidden = true
+        self.activityIndicatorView.stopAnimating()
     }
 
     func updateCircle(_ progress: CGFloat) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        circleLayer.strokeStart = 0
+        self.circleLayer.strokeStart = 0
         // 为了让circle增长速度在开始时比较慢，后来加快，这样更好看
-        circleLayer.strokeEnd = progress * progress
+        self.circleLayer.strokeEnd = progress * progress
         CATransaction.commit()
     }
 

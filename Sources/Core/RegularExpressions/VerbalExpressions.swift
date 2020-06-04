@@ -21,11 +21,11 @@ public struct VerbalExpressions {
     fileprivate let options: NSRegularExpression.Options
 
     // computed properties
-    public var pattern: String { return prefixes + source + suffixes }
+    public var pattern: String { return self.prefixes + self.source + self.suffixes }
 
     public var regularExpression: NSRegularExpression! {
         // swiftlint:disable:next force_try
-        return try! NSRegularExpression(pattern: pattern, options: options)
+        return try! NSRegularExpression(pattern: self.pattern, options: self.options)
     }
 
     // initializers
@@ -54,16 +54,16 @@ public struct VerbalExpressions {
     }
 
     public func then(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return then(exp.source)
+        return self.then(exp.source)
     }
 
     // alias for then
     public func find(_ string: String) -> VerbalExpressions {
-        return then(string)
+        return self.then(string)
     }
 
     public func find(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return find(exp.source)
+        return self.find(exp.source)
     }
 
     public func maybe(_ string: String) -> VerbalExpressions {
@@ -71,20 +71,20 @@ public struct VerbalExpressions {
     }
 
     public func maybe(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return maybe(exp.source)
+        return self.maybe(exp.source)
     }
 
     public func or() -> VerbalExpressions {
-        return setting(prefixes: prefixes + "(?:", suffixes: ")" + suffixes)
+        return setting(prefixes: self.prefixes + "(?:", suffixes: ")" + self.suffixes)
             .adding(")|(?:")
     }
 
     public func or(_ string: String) -> VerbalExpressions {
-        return or().then(string)
+        return self.or().then(string)
     }
 
     public func or(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return or(exp.source)
+        return self.or(exp.source)
     }
 
     public func anything() -> VerbalExpressions {
@@ -96,7 +96,7 @@ public struct VerbalExpressions {
     }
 
     public func anythingBut(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return anythingBut(exp.source)
+        return self.anythingBut(exp.source)
     }
 
     public func something() -> VerbalExpressions {
@@ -108,7 +108,7 @@ public struct VerbalExpressions {
     }
 
     public func somethingBut(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return somethingBut(exp.source)
+        return self.somethingBut(exp.source)
     }
 
     public func lineBreak() -> VerbalExpressions {
@@ -117,7 +117,7 @@ public struct VerbalExpressions {
 
     // alias for lineBreak
     public func br() -> VerbalExpressions {
-        return lineBreak()
+        return self.lineBreak()
     }
 
     public func tab() -> VerbalExpressions {
@@ -133,16 +133,16 @@ public struct VerbalExpressions {
     }
 
     public func anyOf(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return anyOf(exp.source)
+        return self.anyOf(exp.source)
     }
 
     // alias for anyOf
     public func any(_ string: String) -> VerbalExpressions {
-        return anyOf(string)
+        return self.anyOf(string)
     }
 
     public func any(_ exp: VerbalExpressions) -> VerbalExpressions {
-        return anyOf(exp.source)
+        return self.anyOf(exp.source)
     }
 
     public func withAnyCase(enabled: Bool = true) -> VerbalExpressions {
@@ -162,26 +162,26 @@ public struct VerbalExpressions {
     }
 
     public func beginCapture() -> VerbalExpressions {
-        return setting(suffixes: suffixes + ")")
+        return setting(suffixes: self.suffixes + ")")
             .adding("(")
     }
 
     public func endCapture() -> VerbalExpressions {
-        return setting(suffixes: String(suffixes[..<suffixes.endIndex]))
+        return setting(suffixes: String(self.suffixes[..<self.suffixes.endIndex]))
             .adding(")")
     }
 
     public func replace(_ string: String, template: String) -> String {
         let range = NSRange(location: 0, length: string.utf16.count)
 
-        return regularExpression.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: template)
+        return self.regularExpression.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: template)
     }
 
     public func replace(_ string: String, with: String) -> String {
         let range = NSRange(location: 0, length: string.utf16.count)
         let template = NSRegularExpression.escapedTemplate(for: with)
 
-        return regularExpression.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: template)
+        return self.regularExpression.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: template)
     }
 
     public func test(_ string: String) -> Bool {
@@ -210,29 +210,29 @@ private extension VerbalExpressions {
     }
 
     func adding(_ string: String) -> VerbalExpressions {
-        return setting(source: source + string)
+        return self.setting(source: self.source + string)
     }
 
     func adding(modifier: Character) -> VerbalExpressions {
-        return adding(options: NSRegularExpression.Options(modifier: modifier))
+        return self.adding(options: NSRegularExpression.Options(modifier: modifier))
     }
 
     func adding(options: NSRegularExpression.Options) -> VerbalExpressions {
-        return setting(options: self.options.union(options))
+        return self.setting(options: self.options.union(options))
     }
 
     func removing(modifier: Character) -> VerbalExpressions {
         let removedOptions = NSRegularExpression.Options(modifier: modifier)
-        let newOptions = options.subtracting(removedOptions)
-        return setting(options: newOptions)
+        let newOptions = self.options.subtracting(removedOptions)
+        return self.setting(options: newOptions)
     }
 }
 
 // MARK: - CustomStringConvertible, CustomDebugStringConvertible conformance
 
 extension VerbalExpressions: CustomStringConvertible, CustomDebugStringConvertible {
-    public var description: String { return pattern }
-    public var debugDescription: String { return pattern }
+    public var description: String { return self.pattern }
+    public var debugDescription: String { return self.pattern }
 }
 
 // MARK: - Equatable conformance

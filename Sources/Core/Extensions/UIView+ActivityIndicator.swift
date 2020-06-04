@@ -44,7 +44,7 @@ extension UIView {
                                       disablingUserInteraction: Bool = true,
                                       disablingGlobalUserInteraction: Bool = false) {
         // Indicator already exists, make sure it is visible but do not create another
-        if let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
+        if let indicator: UIActivityIndicatorView = subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
             bringSubviewToFront(indicator)
             indicator.startAnimating()
             return
@@ -98,7 +98,7 @@ extension UIView {
      Stops and removes an UIActivityIndicator in any UIView
      */
     public func hideActivityIndicator(enablingUserInteraction: Bool = true, enablingGlobbalUserInteraction: Bool = true) {
-        guard let indicator: UIActivityIndicatorView = self.subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
+        guard let indicator: UIActivityIndicatorView = subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
             return
         }
         indicator.stopAnimating()

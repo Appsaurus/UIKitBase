@@ -18,18 +18,18 @@ open class DynamicHeightCell: BaseTableViewCell {
         .zero
     }()
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         selectionStyle = .none
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        contentView.addSubview(mainLayoutView)
+        contentView.addSubview(self.mainLayoutView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        mainLayoutView.forceSuperviewToMatchContentSize(insetBy: mainLayoutViewInsets)
+        self.mainLayoutView.forceSuperviewToMatchContentSize(insetBy: self.mainLayoutViewInsets)
     }
 }

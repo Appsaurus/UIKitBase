@@ -62,14 +62,14 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     // MARK: Notifications
 
-    open override func notificationsToObserve() -> [Notification.Name] {
+    override open func notificationsToObserve() -> [Notification.Name] {
         return [.logoutRequested]
     }
 
-    open override func didObserve(notification: Notification) {
+    override open func didObserve(notification: Notification) {
         switch notification.name {
         case .logoutRequested:
-            logout()
+            self.logout()
         default: break
         }
     }
@@ -78,15 +78,15 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     open func setupAuthControllers() {}
 
-    open override func viewDidLoad() {
-        setupAuthControllers()
+    override open func viewDidLoad() {
+        self.setupAuthControllers()
         super.viewDidLoad()
     }
 
     // MARK: Abstract methods
 
     open func logout() {
-        logout(onCompletion: logoutDidComplete)
+        self.logout(onCompletion: self.logoutDidComplete)
     }
 
     open func logout(onCompletion: @escaping ResultClosure<Any?>) {
@@ -113,20 +113,20 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     // MARK: AuthControllerDelegate
 
     open func authenticationDidBegin<A: Authenticator>(authenticator: A) {
-        authenticationDidBegin()
+        self.authenticationDidBegin()
     }
 
     open func authenticationDidComplete<A: Authenticator>(authenticator: A, with result: Result<A.Result, Error>) {
         switch result {
         case let .success(value):
-            authenticationDidSucceed(successResponse: value)
+            self.authenticationDidSucceed(successResponse: value)
         case let .failure(error):
-            authenticationDidFail(error: error)
+            self.authenticationDidFail(error: error)
         }
     }
 
     open func logoutDidComplete<A: Authenticator>(authenticator: A, with result: Result<Any?, Error>) {
-        logoutDidComplete(with: result)
+        self.logoutDidComplete(with: result)
     }
 
     open func didBeginSessionRestore<A: Authenticator>(for authenticator: A) {
@@ -134,11 +134,11 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     }
 
     open func logoutDidComplete(with result: Result<Any?, Error>) {
-        onAnyLogoutAttempt()
+        self.onAnyLogoutAttempt()
     }
 
     open func authenticationDidBegin() {
-        showAuthenticatingState()
+        self.showAuthenticatingState()
     }
 
     open func showReadyToAuthenticateState(animated: Bool = true) {
@@ -166,37 +166,37 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     }
 
     open func authenticationDidSucceed(successResponse: Any) {
-        stopAuthenticationInProgressAnimation()
-        guard config.automaticallySeguesAfterAuthentication else {
+        self.stopAuthenticationInProgressAnimation()
+        guard self.config.automaticallySeguesAfterAuthentication else {
             view.isUserInteractionEnabled = true
             return
         }
-        presentInitialViewController { [weak self] in
+        self.presentInitialViewController { [weak self] in
             self?.showReadyToAuthenticateState()
             self?.view.isUserInteractionEnabled = true
         }
     }
 
     open func authenticationDidFail(error: Error) {
-        showReadyToAuthenticateState()
+        self.showReadyToAuthenticateState()
 
         // For developer use, no reason to necessarily show error message when user cancels.
         let ignorableErrors: [AuthError] = [.userCancelled, .userCancelledSignup]
 
         if let authError = error as? AuthError, authError.equalToAny(of: ignorableErrors) {
-            authenticationWasCancelledByUser(error)
+            self.authenticationWasCancelledByUser(error)
             return
         }
-        showAuthentication(error: error)
+        self.showAuthentication(error: error)
     }
 
     open func authenticationWasCancelledByUser(_ error: Error? = nil) {
-        showReadyToAuthenticateState()
+        self.showReadyToAuthenticateState()
     }
 
     open func onAnyLogoutAttempt() {
-        guard config.dimissesInitialViewControllerOnLogoutAttempt else { return }
-        dimissInitialViewController { [weak self] in
+        guard self.config.dimissesInitialViewControllerOnLogoutAttempt else { return }
+        self.dimissInitialViewController { [weak self] in
             self?.showReadyToAuthenticateState()
         }
     }
@@ -212,7 +212,7 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     }
 
     open func presentInitialViewController(animated: Bool = true, completion: VoidClosure? = nil) {
-        let firstVC = createIntialViewControllerAfterLogin()
+        let firstVC = self.createIntialViewControllerAfterLogin()
         guard let navigationController = navigationController else {
             present(viewController: firstVC, animated: animated, completion: completion)
             return
@@ -238,6 +238,6 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     // Stateful convenience
     public func transition(to state: AuthenticationState, animated: Bool = true, completion: (() -> Void)? = nil) {
-        transition(to: state.rawValue, animated: animated, completion: completion)
+        self.transition(to: state.rawValue, animated: animated, completion: completion)
     }
 }

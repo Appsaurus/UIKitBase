@@ -15,14 +15,14 @@ open class DynamicSizeCollectionViewCell: BaseCollectionViewCell {
         .zero
     }()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        contentView.addSubview(mainLayoutView)
+        contentView.addSubview(self.mainLayoutView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        mainLayoutView.forceSuperviewToMatchContentSize(insetBy: mainLayoutViewInsets)
+        self.mainLayoutView.forceSuperviewToMatchContentSize(insetBy: self.mainLayoutViewInsets)
     }
 
 //    open override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

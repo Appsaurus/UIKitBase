@@ -13,17 +13,17 @@ import UIKitMixinable
 // changes in unrelated view heirarchies (specifically content size of unrelated tableviews)
 public class DynamicHeightTableViewAccessoriesMixins: UIViewControllerMixin<UITableViewReferencing> {
     var viewTypes: [TableViewAccesoryView] = TableViewAccesoryView.allCases
-    open override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
+        mixable.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
     }
 
 //    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
 //    }
 
-    open override func viewWillAppear(_ animated: Bool) {
-        mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
+    override open func viewWillAppear(_ animated: Bool) {
+        mixable.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
     }
 }
 
@@ -38,7 +38,7 @@ public extension UITableView {
     }
 
     func dynamicallySizeHeight(of views: TableViewAccesoryView...) {
-        dynamicallySizeHeight(of: views)
+        self.dynamicallySizeHeight(of: views)
     }
 
     func dynamicallySizeHeight(of views: [TableViewAccesoryView]) {
@@ -46,11 +46,11 @@ public extension UITableView {
             switch view {
             case .header:
                 guard let headerView = tableHeaderView else { continue }
-                dynamicallySizeHeight(of: headerView)
+                self.dynamicallySizeHeight(of: headerView)
                 tableHeaderView = headerView
             case .footer:
                 guard let footerView = tableFooterView else { continue }
-                dynamicallySizeHeight(of: footerView)
+                self.dynamicallySizeHeight(of: footerView)
                 tableFooterView = footerView
             }
         }

@@ -17,7 +17,7 @@ extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell {
 }
 
 open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionViewCellProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseCollectionViewCellProtocolMixins
     }
 
@@ -43,40 +43,40 @@ open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionVi
 open class BaseImageCollectionViewCell: BaseCollectionViewCell {
     open var imageView: BaseImageView = BaseImageView()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        contentView.addSubview(imageView)
+        contentView.addSubview(self.imageView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        imageView.pinToSuperview()
+        self.imageView.pinToSuperview()
     }
 }
 
 open class BaseLabeledCollectionViewCell: BaseCollectionViewCell {
     open var label: UILabel = UILabel()
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        label.textAlignment = .center
+        self.label.textAlignment = .center
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        contentView.addSubview(label)
+        contentView.addSubview(self.label)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        label.pinToSuperview()
+        self.label.pinToSuperview()
         //        label.centerInSuperview()
         //        label.autoMatchSize(of: self.contentView, relatedBy: .lessThanOrEqual)
     }
 }
 
 open class BaseCollectionReusableView: MixinableCollectionReusableView, BaseViewProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseViewProtocolMixins
     }
 

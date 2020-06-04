@@ -22,12 +22,12 @@ open class KeyboardLayoutManager: NSObject {
     @objc open func keyboardWillShowNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo {
             let kKeyBoardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue
-            currentKeyboardHeight = (kKeyBoardFrame?.size.height)!
+            self.currentKeyboardHeight = (kKeyBoardFrame?.size.height)!
         }
     }
 
     @objc open func keyboardWillHideNotification(_ notification: Notification) {
-        currentKeyboardHeight = 0
+        self.currentKeyboardHeight = 0
     }
 }
 
@@ -35,7 +35,7 @@ open class KeyboardAwareLayoutConstraint: NSLayoutConstraint, NotificationObserv
     var storyboardInstantiated: Bool = true
     open var currentKeyboardHeight: CGFloat = 0
     open var constantWhenKeyboardHidden: CGFloat!
-    open override var constant: CGFloat {
+    override open var constant: CGFloat {
         didSet {
             // In the cases where constantWhenKeyboardHidden is not set explictly, it is assumed that the regular constant value is desired.
             guard constantWhenKeyboardHidden == nil else { return }
@@ -43,9 +43,9 @@ open class KeyboardAwareLayoutConstraint: NSLayoutConstraint, NotificationObserv
         }
     }
 
-    open override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
-        didInit()
+        self.didInit()
     }
 
     open func didInit() {
@@ -62,12 +62,12 @@ open class KeyboardAwareLayoutConstraint: NSLayoutConstraint, NotificationObserv
         case UIResponder.keyboardWillShowNotification:
             let keyboardFrame = self.keyboardFrame(notification)
             let keyboardHeight = keyboardFrame.height
-            let deltaHeight = keyboardHeight - currentKeyboardHeight
-            keyboardWillShow(keyboardFrame, deltaHeight: deltaHeight, notification: notification)
-            currentKeyboardHeight = keyboardHeight
+            let deltaHeight = keyboardHeight - self.currentKeyboardHeight
+            self.keyboardWillShow(keyboardFrame, deltaHeight: deltaHeight, notification: notification)
+            self.currentKeyboardHeight = keyboardHeight
         case UIResponder.keyboardWillHideNotification:
-            currentKeyboardHeight = 0.0
-            keyboardWillHide(notification)
+            self.currentKeyboardHeight = 0.0
+            self.keyboardWillHide(notification)
         default: break
         }
     }
@@ -135,12 +135,12 @@ open class KeyboardAdjustableLayoutConstraint: KeyboardAwareLayoutConstraint {
         return constraint
     }
 
-    open override func keyboardWillHide(_ notification: Notification) {
+    override open func keyboardWillHide(_ notification: Notification) {
         animateConstant(constantWhenKeyboardHidden, notification: notification)
     }
 
-    open override func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
-        animateConstant(constantWhenKeyboardVisible, notification: notification)
+    override open func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
+        animateConstant(self.constantWhenKeyboardVisible, notification: notification)
     }
 }
 
@@ -177,14 +177,14 @@ open class KeyboardDodgingLayoutConstraint: KeyboardAwareLayoutConstraint {
         return constraint
     }
 
-    open override func keyboardWillHide(_ notification: Notification) {
+    override open func keyboardWillHide(_ notification: Notification) {
         animateConstant(constantWhenKeyboardHidden, notification: notification)
         if let sv = scrollViewToAdjust, let bottom = originalBotomInset {
             sv.contentInset.bottom = bottom
         }
     }
 
-    open override func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
+    override open func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
         if let firstView = firstItem as? UIView {
             firstView.superview?.setNeedsLayout()
             firstView.superview?.layoutIfNeeded() // Need final frame of view to calculate overlap properly
@@ -204,7 +204,7 @@ open class KeyboardDodgingLayoutConstraint: KeyboardAwareLayoutConstraint {
 }
 
 open class KeyboardPaddedLayoutConstraint: KeyboardAwareLayoutConstraint {
-    open override func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
+    override open func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {
         if firstItem is UIView {
             let newConstant = constantWhenKeyboardHidden - deltaHeight
             animateConstant(newConstant, notification: notification)
@@ -213,7 +213,7 @@ open class KeyboardPaddedLayoutConstraint: KeyboardAwareLayoutConstraint {
 }
 
 open class KeyboardAdjustingScrollViewConstraint: KeyboardAwareLayoutConstraint {
-    open override func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {}
+    override open func keyboardWillShow(_ keyboardEndFrame: CGRect, deltaHeight: CGFloat, notification: Notification) {}
 
-    open override func keyboardWillHide(_ notification: Notification) {}
+    override open func keyboardWillHide(_ notification: Notification) {}
 }

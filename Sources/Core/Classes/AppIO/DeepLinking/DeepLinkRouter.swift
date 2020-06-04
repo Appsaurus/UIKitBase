@@ -24,7 +24,7 @@ open class DeepLinkRouter {
         do {
             let route = try Route(route: route)
             orderedRoutes.append(route)
-            if let callback = callback { routes[route] = callback }
+            if let callback = callback { self.routes[route] = callback }
         } catch let error as Route.RegexResult {
             debugLog(error)
         } catch {
@@ -51,7 +51,7 @@ open class DeepLinkRouter {
         var urlParams = [URLQueryItem]()
 
         // match the route!
-        for route in orderedRoutes {
+        for route in self.orderedRoutes {
             guard let pattern = route.routePattern else {
                 continue
             }

@@ -17,7 +17,7 @@ extension BaseTableViewHeaderFooterViewProtocol where Self: UITableViewHeaderFoo
 }
 
 open class BaseUITableViewHeaderFooterView: MixinableTableViewHeaderFooterView, BaseTableViewHeaderFooterViewProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewHeaderFooterViewProtocolMixins
     }
 

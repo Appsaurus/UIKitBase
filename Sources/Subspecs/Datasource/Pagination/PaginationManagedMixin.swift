@@ -14,7 +14,7 @@ import UIKitExtensions
 import UIKitMixinable
 
 open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
@@ -28,17 +28,17 @@ open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: Dat
         }
     }
 
-    open override func willDeinit() {
+    override open func willDeinit() {
         super.willDeinit()
         mixable.datasourceManagedView.loadingControls.clear()
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
         mixable.setupPaginatable()
     }
 
-    open override func loadAsyncData() {
+    override open func loadAsyncData() {
         super.loadAsyncData()
         mixable.startLoadingData()
     }

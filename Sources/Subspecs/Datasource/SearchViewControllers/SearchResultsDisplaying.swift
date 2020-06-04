@@ -41,28 +41,28 @@ public extension SearchResultsDisplaying where Self: NSObject {
 
     var fetchesResultsWithEmptyQuery: Bool {
         get {
-            return searchConfiguration.fetchesResultsWithEmptyQuery
+            return self.searchConfiguration.fetchesResultsWithEmptyQuery
         }
         set {
-            searchConfiguration.fetchesResultsWithEmptyQuery = newValue
+            self.searchConfiguration.fetchesResultsWithEmptyQuery = newValue
         }
     }
 
     var loadsSearchResultsImmediately: Bool {
         get {
-            return searchConfiguration.loadsSearchResultsImmediately
+            return self.searchConfiguration.loadsSearchResultsImmediately
         }
         set {
-            searchConfiguration.loadsSearchResultsImmediately = newValue
+            self.searchConfiguration.loadsSearchResultsImmediately = newValue
         }
     }
 
     var searchDataSourceType: SearchDataSource {
         get {
-            return searchConfiguration.searchDataSourceType
+            return self.searchConfiguration.searchDataSourceType
         }
         set {
-            searchConfiguration.searchDataSourceType = newValue
+            self.searchConfiguration.searchDataSourceType = newValue
         }
     }
 }
@@ -72,13 +72,12 @@ public typealias SearchResultsViewController = UIViewController & SearchResultsD
 public extension SearchResultsDisplaying where Self: UIViewController & PaginationManaged {
     func fetchResults(query: String?) {
         guard let query = query else {
-            switch searchDataSourceType {
+            switch self.searchDataSourceType {
             case .remote:
                 paginator.searchQuery = nil
-                if fetchesResultsWithEmptyQuery {
+                if self.fetchesResultsWithEmptyQuery {
                     fetchNextPage(firstPage: true)
-                }
-                else {
+                } else {
                     datasource.clearData()
                 }
             case .local:
@@ -88,7 +87,7 @@ public extension SearchResultsDisplaying where Self: UIViewController & Paginati
             }
             return
         }
-        switch searchDataSourceType {
+        switch self.searchDataSourceType {
         case .remote:
 //            reset(to: .loading)
             paginator.searchQuery = query

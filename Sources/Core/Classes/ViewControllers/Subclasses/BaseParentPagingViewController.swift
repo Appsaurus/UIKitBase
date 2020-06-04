@@ -27,7 +27,7 @@ open class BaseParentPagingViewController: BaseParentViewController {
     }
 
     public func defaultReloadIndex() -> Int {
-        return currentPage ?? initialPageIndex
+        return self.currentPage ?? self.initialPageIndex
     }
 
     // AsyncStateManagementQueue
@@ -45,8 +45,8 @@ open class BaseParentPagingViewController: BaseParentViewController {
         return pageVC
     }
 
-    open override func initialChildViewController() -> UIViewController {
-        return pageViewController
+    override open func initialChildViewController() -> UIViewController {
+        return self.pageViewController
     }
 
     open lazy var pagedViewControllers: [UIViewController] = {
@@ -71,108 +71,108 @@ open class BaseParentPagingViewController: BaseParentViewController {
 
     open var pendingPage: Int?
 
-    open override func setupDelegates() {
-        pageViewController.dataSource = self
-        pageViewController.delegate = self
+    override open func setupDelegates() {
+        self.pageViewController.dataSource = self
+        self.pageViewController.delegate = self
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        customPageControl.pageIndicatorTintColor = .deselected
-        customPageControl.currentPageIndicatorTintColor = .primaryLight
+        self.customPageControl.pageIndicatorTintColor = .deselected
+        self.customPageControl.currentPageIndicatorTintColor = .primaryLight
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        pageViewController.hidePageControl() // Hide default page control
-        guard showsPageControl else {
+        self.pageViewController.hidePageControl() // Hide default page control
+        guard self.showsPageControl else {
             return
         }
-        view.addSubview(customPageControl)
+        view.addSubview(self.customPageControl)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        layoutPageControl()
+        self.layoutPageControl()
     }
 
     open func layoutPageControl() {
-        guard showsPageControl else {
+        guard self.showsPageControl else {
             return
         }
-        customPageControl.enforceContentSize()
+        self.customPageControl.enforceContentSize()
 //        pageControl.height.equal(to: 30)
 //        pageControl.width.equal(to: self.view.width.times(0.5))
-        customPageControl.centerX.equal(to: view.centerX)
-        customPageControl.bottom.equal(to: bottom.inset(20))
+        self.customPageControl.centerX.equal(to: view.centerX)
+        self.customPageControl.bottom.equal(to: bottom.inset(20))
     }
 
-    open override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard showsPageControl else {
+        guard self.showsPageControl else {
             return
         }
-        customPageControl.moveToFront()
+        self.customPageControl.moveToFront()
     }
 
-    open override func didTransition(to state: State) {
+    override open func didTransition(to state: State) {
         super.didTransition(to: state)
         guard state == .empty else { return }
-        pageViewController.setViewControllers([UIViewController()], direction: .forward, animated: false, completion: nil)
+        self.pageViewController.setViewControllers([UIViewController()], direction: .forward, animated: false, completion: nil)
     }
 
     open func transitionToPage(at index: Int) {
-        guard index >= 0, index < pagedViewControllers.count else {
+        guard index >= 0, index < self.pagedViewControllers.count else {
             transition(to: .empty)
             return
         }
 
-        guard index != currentPage else {
+        guard index != self.currentPage else {
             return
         }
         guard isViewLoaded else {
-            initialPageIndex = index
+            self.initialPageIndex = index
             return
         }
 //        transition(to: .loading)
-        let page = currentPage
-        willPage(from: page, to: index)
-        _performTransitionToPage(at: index)
-        didPage(from: page, to: index)
+        let page = self.currentPage
+        self.willPage(from: page, to: index)
+        self._performTransitionToPage(at: index)
+        self.didPage(from: page, to: index)
     }
 
     open func willPage(from page: Int?, to nextPage: Int?) {
-        pendingPage = nextPage
+        self.pendingPage = nextPage
     }
 
     open func didCancelPaging(from page: Int?, to nextPage: Int?) {
-        pendingPage = nil
+        self.pendingPage = nil
     }
 
     private func _performTransitionToPage(at index: Int) {
-        currentPagedViewController?.view.endEditing(true)
-        let vc = pagedViewControllers[index]
-        let direction: UIPageViewController.NavigationDirection = index > currentPage ?? 0 ? .forward : .reverse
+        self.currentPagedViewController?.view.endEditing(true)
+        let vc = self.pagedViewControllers[index]
+        let direction: UIPageViewController.NavigationDirection = index > self.currentPage ?? 0 ? .forward : .reverse
         if let eagerLoadBuffer = eagerLoadBuffer {
-            eagerLoadViewControllers(surrounding: index, by: eagerLoadBuffer)
+            self.eagerLoadViewControllers(surrounding: index, by: eagerLoadBuffer)
         }
-        pageViewController.setViewControllers([vc], direction: direction, animated: animatesPageTransitions, completion: nil)
-        currentPage = index
+        self.pageViewController.setViewControllers([vc], direction: direction, animated: self.animatesPageTransitions, completion: nil)
+        self.currentPage = index
     }
 
     open func didPage(from page: Int?, to nextPage: Int?) {
 //        print("Did page from: \(page) to: \(nextPage)")
-        currentPage = nextPage
-        pendingPage = nil
+        self.currentPage = nextPage
+        self.pendingPage = nil
     }
 
     open func eagerLoadViewControllers(surrounding index: Int, by buffer: Int) {
         let minIndex = 0
-        let maxIndex = pagedViewControllers.lastIndex
+        let maxIndex = self.pagedViewControllers.lastIndex
         let startIndex = buffer == .max ? minIndex : max(index - buffer, minIndex)
         let lastIndex = buffer == .max ? maxIndex : min(index + buffer, maxIndex)
         guard startIndex < lastIndex else { return }
-        for vc in pagedViewControllers[startIndex ... lastIndex] {
+        for vc in self.pagedViewControllers[startIndex ... lastIndex] {
             vc.loadViewIfNeeded()
         }
     }
@@ -182,12 +182,12 @@ open class BaseParentPagingViewController: BaseParentViewController {
             debugLog("Attempted to page to vc not in page index")
             return
         }
-        transitionToPage(at: index)
+        self.transitionToPage(at: index)
     }
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        if loadsPagesImmediately { reloadPages() }
+        if self.loadsPagesImmediately { self.reloadPages() }
     }
 
     open func pageViewController(_ pageViewController: UIPageViewController,
@@ -202,11 +202,11 @@ open class BaseParentPagingViewController: BaseParentViewController {
             return nil
         }
 
-        guard pagedViewControllers.count > previousIndex else {
+        guard self.pagedViewControllers.count > previousIndex else {
             return nil
         }
 
-        return pagedViewControllers[previousIndex]
+        return self.pagedViewControllers[previousIndex]
     }
 
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -215,7 +215,7 @@ open class BaseParentPagingViewController: BaseParentViewController {
         }
 
         let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = pagedViewControllers.count
+        let orderedViewControllersCount = self.pagedViewControllers.count
 
         guard orderedViewControllersCount != nextIndex else {
             return nil
@@ -225,7 +225,7 @@ open class BaseParentPagingViewController: BaseParentViewController {
             return nil
         }
 
-        return pagedViewControllers[nextIndex]
+        return self.pagedViewControllers[nextIndex]
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController,
@@ -237,25 +237,25 @@ open class BaseParentPagingViewController: BaseParentViewController {
         guard finished else { return }
 
         guard completed else {
-            didCancelPaging(from: currentPage, to: pendingPage)
+            self.didCancelPaging(from: self.currentPage, to: self.pendingPage)
             return
         }
-        let newIndex = pagedViewControllers.firstIndex(of: lastVC)
-        didPage(from: currentPage, to: newIndex)
+        let newIndex = self.pagedViewControllers.firstIndex(of: lastVC)
+        self.didPage(from: self.currentPage, to: newIndex)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         guard let lastVC = pendingViewControllers.last else { return }
-        willPage(from: currentPage, to: pagedViewControllers.firstIndex(of: lastVC))
+        self.willPage(from: self.currentPage, to: self.pagedViewControllers.firstIndex(of: lastVC))
     }
 
     open func reloadPageDatasource() {
-        pagedViewControllers = createPagedViewControllers()
-        currentPage = nil
+        self.pagedViewControllers = self.createPagedViewControllers()
+        self.currentPage = nil
     }
 
     open func reloadPages(initialPage: Int? = nil) {
-        let index = initialPage ?? defaultReloadIndex()
+        let index = initialPage ?? self.defaultReloadIndex()
         enqueue { complete in
             self.reloadPageDatasource()
             if self.pagedViewControllers.count > 0 {
@@ -269,8 +269,8 @@ open class BaseParentPagingViewController: BaseParentViewController {
     }
 
     open func pagesDidReload() {
-        customPageControl.numberOfPages = pagedViewControllers.count
-        customPageControl.currentPage = currentPage ?? 0
+        self.customPageControl.numberOfPages = self.pagedViewControllers.count
+        self.customPageControl.currentPage = self.currentPage ?? 0
         //		transitionToPage(at: defaultReloadIndex())
     }
 

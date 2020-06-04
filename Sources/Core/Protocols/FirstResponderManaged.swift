@@ -33,7 +33,7 @@ extension FirstResponderManaged where Self: UIViewController {
 
     func firstResponderManagedWillAppear() {
         guard persistsFirstResponderBetweenAppearances else { return }
-        restoreLastFirstResponder()
+        self.restoreLastFirstResponder()
     }
 }
 

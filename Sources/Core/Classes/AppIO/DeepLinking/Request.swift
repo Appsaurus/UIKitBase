@@ -34,7 +34,7 @@ open class Request {
      - returns: value of the the param
      */
     open func param(_ name: String) -> String? {
-        return urlParamsDict[name]
+        return self.urlParamsDict[name]
     }
 
     /**
@@ -44,7 +44,7 @@ open class Request {
      - returns: value of the the param
      */
     open func query(_ name: String) -> String? {
-        return queryParamsDict[name]
+        return self.queryParamsDict[name]
     }
 }
 

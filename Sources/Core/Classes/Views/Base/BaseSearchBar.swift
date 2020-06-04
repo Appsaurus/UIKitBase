@@ -17,7 +17,7 @@ extension BaseSearchBarProtocol where Self: UISearchBar {
 }
 
 open class BaseSearchBar: MixinableSearchBar, BaseSearchBarProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseSearchBarProtocolMixins
     }
 

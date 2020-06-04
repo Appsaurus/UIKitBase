@@ -71,6 +71,7 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
         case center
         case topCenter
     }
+
     public typealias Model = StatefulViewViewModel
 
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
@@ -84,7 +85,7 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
     public required init(viewModel: StatefulViewViewModel, layout: Layout = .topCenter) {
         self.layout = layout
         super.init(callInitLifecycle: false)
-        self.bind(model: viewModel)
+        bind(model: viewModel)
         initLifecycle()
     }
 
@@ -108,28 +109,27 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
         return button
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(stackView)
+        addSubview(self.stackView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
         let margin: LayoutConstant = 20
-        switch layout {
-            case .center:
-                stackView.centerInSuperview()
-                stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors.inset(margin))
-            case .topCenter:
-                stackView.centerX.equalToSuperview()
-                stackView.edgeAnchors.excluding(.top).insetOrEqual(to: margins.edgeAnchors.inset(margin))
-                stackView.top.equal(to: margins.top.inset(margin))
+        switch self.layout {
+        case .center:
+            self.stackView.centerInSuperview()
+            self.stackView.edgeAnchors.insetOrEqual(to: margins.edgeAnchors.inset(margin))
+        case .topCenter:
+            self.stackView.centerX.equalToSuperview()
+            self.stackView.edgeAnchors.excluding(.top).insetOrEqual(to: margins.edgeAnchors.inset(margin))
+            self.stackView.top.equal(to: margins.top.inset(margin))
         }
-        
-        stackView.sizeAnchors.greaterThanOrEqual(to: 0)
-        stackView.arrangedSubviews.enforceContentSize()
-        stackView.apply(stackViewConfiguration: defaultStackViewConfiguration)
 
+        self.stackView.sizeAnchors.greaterThanOrEqual(to: 0)
+        self.stackView.arrangedSubviews.enforceContentSize()
+        self.stackView.apply(stackViewConfiguration: self.defaultStackViewConfiguration)
     }
 
 //    open override func didFinishCreatingAllViews() {
@@ -140,38 +140,38 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
     open func display(model: StatefulViewViewModel) {
         var arrangedViews: [LayoutStackable] = []
         if let image = model.image {
-            arrangedViews.append(imageView)
-            _ = try? imageView.loadImage(image)
+            arrangedViews.append(self.imageView)
+            _ = try? self.imageView.loadImage(image)
         }
 
         if let headline = model.headline {
-            headlineLabel.text = headline
-            arrangedViews.append(headlineLabel)
+            self.headlineLabel.text = headline
+            arrangedViews.append(self.headlineLabel)
         }
 
         if let message = model.message {
-            messageLabel.text = message
-            arrangedViews.append(messageLabel)
+            self.messageLabel.text = message
+            arrangedViews.append(self.messageLabel)
         }
 
         arrangedViews += model.buttonViewModels.map { self.createButton($0) }
-        stackView.stack(arrangedViews)
+        self.stackView.stack(arrangedViews)
     }
 
     open func set(message: String) {
-        messageLabel.text = message
+        self.messageLabel.text = message
     }
 
     open func set(message: String? = nil, responseButtonTitle: String? = nil, responseAction: VoidClosure? = nil) {
         if let message = message {
-            messageLabel.text = message
+            self.messageLabel.text = message
         }
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        messageLabel.apply(textStyle: model.messageStyle ?? .regular())
-        headlineLabel.apply(textStyle: model.headlineStyle ?? .displayHeadline(color: .primary))
+        self.messageLabel.apply(textStyle: model.messageStyle ?? .regular())
+        self.headlineLabel.apply(textStyle: model.headlineStyle ?? .displayHeadline(color: .primary))
         backgroundColor = App.style.statefulViewControllerViewBackgroundColor ?? parentViewController?.view.backgroundColor
         if backgroundColor == .clear || backgroundColor == nil {
             backgroundColor = .white

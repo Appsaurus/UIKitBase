@@ -114,23 +114,23 @@ public extension PaginationManaged where Self: UIViewController {
 //    func didReload() {}
 
     func startLoadingData() {
-        if paginationConfig.loadsResultsImmediately {
-            fetchNextPage(firstPage: true)
+        if self.paginationConfig.loadsResultsImmediately {
+            self.fetchNextPage(firstPage: true)
         }
     }
 
     func infiniteScrollTriggered() {
-        guard !paginator.hasLoadedAllPages else {
+        guard !self.paginator.hasLoadedAllPages else {
             debugLog("Triggered infinite scroll when there are no more pages to load.")
             return
         }
-        fetchNextPage(firstPage: false,
-                      transitioningState: .loadingMore)
+        self.fetchNextPage(firstPage: false,
+                           transitioningState: .loadingMore)
     }
 
     func pullToRefreshTriggered() {
         datasourceManagedView.hideNeedsLoadingIndicator()
-        fetchNextPage(firstPage: true, transitioningState: .refreshing)
+        self.fetchNextPage(firstPage: true, transitioningState: .refreshing)
     }
 
     func fetchNextPage(firstPage: Bool = false,
@@ -140,8 +140,8 @@ public extension PaginationManaged where Self: UIViewController {
             transition(to: state)
         }
 
-        if firstPage { paginator.reset(stashingLastPageInfo: true) }
-        paginator.fetchNextPage(success: { [weak self] items, isLastPage in
+        if firstPage { self.paginator.reset(stashingLastPageInfo: true) }
+        self.paginator.fetchNextPage(success: { [weak self] items, isLastPage in
             self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
         }, failure: { [weak self] error in
             self?.paginator.restoreLastPageInfo()
@@ -153,7 +153,7 @@ public extension PaginationManaged where Self: UIViewController {
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>,
                            isFirstPage: Bool = false,
                            reloadCompletion: VoidClosure? = nil) {
-        let result = modifyFetched(result: result)
+        let result = self.modifyFetched(result: result)
 
         let completion = { [weak self] in
             guard let self = self else { return }
@@ -164,7 +164,7 @@ public extension PaginationManaged where Self: UIViewController {
             datasource.load(result.items, animated: true, completion: completion)
         } else {
             // Turning off animation for now, causing conflicts with ScrollView headers at the moment
-            datasource.append(result.items, animated: paginationConfig.animatesDatasourceChanges, completion: completion)
+            datasource.append(result.items, animated: self.paginationConfig.animatesDatasourceChanges, completion: completion)
         }
     }
 
@@ -183,7 +183,7 @@ public extension PaginationManaged where Self: UIViewController {
         }
         guard currentState != .loadingMore else {
             transition(to: .loadMoreError)
-            loadMoreDidFail(with: error)
+            self.loadMoreDidFail(with: error)
             return
         }
 
@@ -191,7 +191,7 @@ public extension PaginationManaged where Self: UIViewController {
         default:
             guard currentState != .refreshing else {
                 transition(to: .refreshingError)
-                refreshDidFail(with: error)
+                self.refreshDidFail(with: error)
                 return
             }
             transitionToErrorState(error)
@@ -267,21 +267,21 @@ public extension PaginationManaged where Self: UIViewController {
     }
 
     func setupPaginatable() {
-        if paginationConfig.refreshable {
+        if self.paginationConfig.refreshable {
             addPullToRefresh()
         }
 
-        if paginationConfig.infiniteScrollable {
+        if self.paginationConfig.infiniteScrollable {
             addInfinityScroll()
         }
     }
 
     func setLoadingTriggers(enabled: Bool) {
-        if paginationConfig.refreshable {
+        if self.paginationConfig.refreshable {
             addPullToRefresh()
         }
 
-        if paginationConfig.infiniteScrollable {
+        if self.paginationConfig.infiniteScrollable {
             datasourceManagedView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 275.0, right: 0.0)
             addInfinityScroll()
 
@@ -332,7 +332,7 @@ public extension PullToRefreshable {
 
 public extension PullToRefreshable {
     func addPullToRefresh(direction: ScrollDirection = .vertical, animator: CustomPullToRefreshAnimator? = nil) {
-        scrollView.loadingControls.pullToRefresh.add(direction: direction, animator: animator ?? createPullToRefreshAnimator()) { [weak self] in
+        scrollView.loadingControls.pullToRefresh.add(direction: direction, animator: animator ?? self.createPullToRefreshAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.pullToRefreshTriggered()
             }
@@ -352,7 +352,7 @@ public protocol InfiniteScrollable: AnyObject, ScrollViewReferencing {
 
 public extension InfiniteScrollable {
     func addInfinityScroll(direction: ScrollDirection = .vertical, animator: CustomInfiniteScrollAnimator? = nil) {
-        scrollView.loadingControls.infiniteScroll.add(direction: direction, animator: animator ?? createInfiniteScrollAnimator()) { [weak self] in
+        scrollView.loadingControls.infiniteScroll.add(direction: direction, animator: animator ?? self.createInfiniteScrollAnimator()) { [weak self] in
             DispatchQueue.main.async {
                 self?.infiniteScrollTriggered()
             }
@@ -365,7 +365,7 @@ public extension InfiniteScrollable {
 }
 
 open class PullToRefreshableMixin<VC: UIViewController & PullToRefreshable & StatefulViewController>: UIViewControllerMixin<VC> {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
@@ -373,12 +373,12 @@ open class PullToRefreshableMixin<VC: UIViewController & PullToRefreshable & Sta
         }
     }
 
-    open override func willDeinit() {
+    override open func willDeinit() {
         super.willDeinit()
         mixable.scrollView.loadingControls.clear()
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
         mixable.addPullToRefresh()
         mixable.scrollView.loadingControls.pullToRefresh.isEnabled = true

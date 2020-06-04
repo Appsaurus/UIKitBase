@@ -21,7 +21,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
             guard let url = titledUrlString.value?.toURL else {
                 continue
             }
-            titledUrls.insert(value: url, for: titledUrlString.key)
+            self.titledUrls.insert(value: url, for: titledUrlString.key)
         }
         super.init(callInitLifecycle: true)
     }
@@ -30,13 +30,13 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func createPagingMenuView() -> PagingMenuView {
-        return WebViewPagingMenuView(delegate: self, options: pagingMenuViewOptions)
+    override open func createPagingMenuView() -> PagingMenuView {
+        return WebViewPagingMenuView(delegate: self, options: self.pagingMenuViewOptions)
     }
 
-    open override func createPagedViewControllers() -> [UIViewController] {
+    override open func createPagedViewControllers() -> [UIViewController] {
         var vcs: [UIViewController] = []
-        for titledUrl in titledUrls {
+        for titledUrl in self.titledUrls {
             guard let url = titledUrl.value else { continue }
             let vc = UIViewController()
             let webView = WKWebView()
@@ -50,41 +50,41 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 
     // MARK: PagingMenuController
 
-    open override var pagingMenuViewOptions: PagingMenuViewOptions {
+    override open var pagingMenuViewOptions: PagingMenuViewOptions {
         let menuHeight: CGFloat = 50.0
         let sizing: PagingeMenuViewItemSizingBehavior = .spanWidthCollectively(height: menuHeight * 0.75)
         return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: sizing, scrollBehavior: .tabBar)
     }
 
-    open override func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
+    override open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
         return [WebViewPagingMenuItemCell.self]
     }
 
-    open override func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
+    override open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
         let cell: WebViewPagingMenuItemCell = WebViewPagingMenuItemCell()
         configure(cell: cell, at: index)
         return cell.calculateDynamicSize(fixedDimension: .height(size: menuView.frame.h))
     }
 
-    open override func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
+    override open func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
         let cell: WebViewPagingMenuItemCell = menuView.pagingMenuCollectionView.dequeueReusableCell(for: index)
-        configure(cell: cell, at: index)
+        self.configure(cell: cell, at: index)
         return cell
     }
 
     open func configure(cell: WebViewPagingMenuItemCell, at index: Int) {
-        cell.menuItemButton.setTitle(titledUrls[index].key)
+        cell.menuItemButton.setTitle(self.titledUrls[index].key)
         cell.menuItemButton.buttonLayout = cell.menuItemButtonLayout()
         cell.forceAutolayoutPass()
     }
 }
 
 open class WebViewPagingMenuView: PagingMenuView {
-    open override func createSelectionIndicatorView() -> UIView? {
+    override open func createSelectionIndicatorView() -> UIView? {
         return UIView()
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         selectionIndicatorView?.backgroundColor = .primary
     }
@@ -99,12 +99,12 @@ open class WebViewPagingMenuView: PagingMenuView {
 }
 
 open class WebViewPagingMenuItemCell: PagingMenuButtonCell {
-    open override func menuItemButtonLayout() -> ButtonLayout {
+    override open func menuItemButtonLayout() -> ButtonLayout {
         let insets = LayoutPadding(10)
         return ButtonLayout(layoutType: .titleCentered, marginInsets: insets)
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         let viewStyle = ViewStyle(backgroundColor: .clear)
 

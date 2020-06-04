@@ -20,37 +20,37 @@ extension BaseTabBarControllerProtocol where Self: UITabBarController {
 open class BaseTabBarController: MixinableTabBarController, BaseTabBarControllerProtocol, UITabBarControllerDelegate {
     open var initialSelectedIndex: Int? = 0
 
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTabBarControllerProtocolMixins
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
         delegate = self
     }
 
     // MARK: LifeCycle
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        selectedIndex =? initialSelectedIndex
+        selectedIndex =? self.initialSelectedIndex
     }
 
     // MARK: Orientation
 
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
 
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+    override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
 
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
 
-    open override var prefersStatusBarHidden: Bool {
+    override open var prefersStatusBarHidden: Bool {
         return statusBarHidden
     }
 
@@ -104,7 +104,7 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
         childVC.tabBarChildDidAppear()
     }
 
-    open override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    override open func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let vc = selectedViewController else { return }
         if vc.tabBarItem == item, vc.isViewLoaded == true {
             self.tabBar(tabBar, didReselect: vc)
@@ -112,7 +112,7 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
     }
 
     open func tabBar(_ tabBar: UITabBar, didReselect viewController: UIViewController) {
-        guard let childVC = self.selectedViewController as? TabBarChild else {
+        guard let childVC = selectedViewController as? TabBarChild else {
             return
         }
         childVC.tabItemWasTappedWhileActive()
@@ -120,7 +120,7 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
 
     open func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let placeholderVC = viewController as? TabBarControllerModalChildPlaceholder else { return true }
-        let modalVC = modalViewControllerToPresent(inPlaceOf: placeholderVC)
+        let modalVC = self.modalViewControllerToPresent(inPlaceOf: placeholderVC)
         self.tabBarController(self, willPresentModal: modalVC)
         present(viewController: modalVC)
         return false

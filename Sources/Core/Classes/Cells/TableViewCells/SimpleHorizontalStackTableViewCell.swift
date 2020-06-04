@@ -13,13 +13,13 @@ open class SimpleHorizontalStackTableViewCell: DynamicHeightCell {
     open var stackViewLayoutInsets: LayoutPadding = LayoutPadding(10.0, 5.0)
     open var stackView: HorizontalStackView = HorizontalStackView()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        mainLayoutView.addSubview(stackView)
+        mainLayoutView.addSubview(self.stackView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        stackView.forceSuperviewToMatchContentSize()
+        self.stackView.forceSuperviewToMatchContentSize()
     }
 }

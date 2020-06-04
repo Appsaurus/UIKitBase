@@ -129,8 +129,8 @@ extension StatefulViewController where Self: NSObject {
 
     public func transitionToInitialState() {
         if currentState == .uninitialized {
-            stateMachine.view = statefulSuperview
-            transition(to: initialState ?? .initialized)
+            self.stateMachine.view = statefulSuperview
+            transition(to: self.initialState ?? .initialized)
         }
     }
 }
@@ -141,11 +141,11 @@ public extension StatefulViewController {
     }
 
     var currentState: State {
-        return stateMachine.currentState
+        return self.stateMachine.currentState
     }
 
     var previousState: State {
-        return stateMachine.previousState
+        return self.stateMachine.previousState
     }
 
     func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -165,18 +165,18 @@ public extension StatefulViewController {
     }
 
     func transitionToErrorState(_ error: Error) {
-        guard shouldShowStatefulErrorView(for: error) else {
+        guard self.shouldShowStatefulErrorView(for: error) else {
             return
         }
-        errorView?.bind(model: viewModelForErrorState(error))
-        transition(to: .error)
+        errorView?.bind(model: self.viewModelForErrorState(error))
+        self.transition(to: .error)
     }
 
     func enforceCurrentState() {
-        if logsStateTransitions {
-            debugLog("\(String(describing: self)) Enforcing current state state: \(currentState)")
+        if self.logsStateTransitions {
+            debugLog("\(String(describing: self)) Enforcing current state state: \(self.currentState)")
         }
-        stateMachine.transition(to: currentState)
+        self.stateMachine.transition(to: self.currentState)
     }
 }
 
@@ -184,15 +184,15 @@ public extension StatefulViewController {
 
 extension StatefulViewController {
     public var loadingView: StatefulViewControllerDefaultLoadingView? {
-        return stateMachine[.loading] as? StatefulViewControllerDefaultLoadingView
+        return self.stateMachine[.loading] as? StatefulViewControllerDefaultLoadingView
     }
 
     public var errorView: StatefulViewControllerView? {
-        return stateMachine[.error] as? StatefulViewControllerView
+        return self.stateMachine[.error] as? StatefulViewControllerView
     }
 
     public var emptyView: StatefulViewControllerView? {
-        return stateMachine[.empty] as? StatefulViewControllerView
+        return self.stateMachine[.empty] as? StatefulViewControllerView
     }
 }
 
@@ -227,9 +227,9 @@ public extension Array where Element: UIViewController {
 }
 
 public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewController> {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         mixable.customizeStatefulViews()
-        loadInitialStateIfNeeded()
+        self.loadInitialStateIfNeeded()
     }
 
     open func loadInitialStateIfNeeded() {
@@ -247,7 +247,7 @@ public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewCont
 }
 
 public class StatefulViewMixin: UIViewMixin<StatefulViewController> {
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         mixable.customizeStatefulViews()
     }
 }

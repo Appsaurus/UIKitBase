@@ -51,7 +51,7 @@ public extension Synchronizable where Self: KVC {
 
 extension Synchronizable {
     private var proxySyncID: String? {
-        return ModelSync.sharedInstance.proxySyncIDMap[typeId]?(self)
+        return ModelSync.sharedInstance.proxySyncIDMap[self.typeId]?(self)
     }
 
     private var typeId: ObjectIdentifier {
@@ -60,18 +60,18 @@ extension Synchronizable {
 
     fileprivate var _internalSyncID: String {
         if let proxy = proxySyncID {
-            return "\(typeId)_\(proxy)"
+            return "\(self.typeId)_\(proxy)"
         }
-        return typedSyncID
+        return self.typedSyncID
     }
 
     public var observableDebugDescription: String {
-        let proxyString: String = proxySyncID != nil ? "proxy" : ""
-        return "ObjectReference: \(self) | \(proxyString)ReferenceId: \(_internalSyncID) | Pointer: \(pointer(self))"
+        let proxyString: String = self.proxySyncID != nil ? "proxy" : ""
+        return "ObjectReference: \(self) | \(proxyString)ReferenceId: \(self._internalSyncID) | Pointer: \(pointer(self))"
     }
 
     public var typedSyncID: String {
-        return "\(typeId)_\(syncID)" // .hashValue
+        return "\(self.typeId)_\(syncID)" // .hashValue
     }
 
     public func syncReferences() {
@@ -100,7 +100,7 @@ public class ModelSync {
     }
 
     public func overrideReferenceIdHash<T: Synchronizable>(for type: T.Type, _ idWork: @escaping (Synchronizable) -> String) {
-        proxySyncIDMap[ObjectIdentifier(type)] = idWork
+        self.proxySyncIDMap[ObjectIdentifier(type)] = idWork
     }
 
     public func syncReferences<T: Synchronizable>(_ object: T) {
@@ -108,14 +108,14 @@ public class ModelSync {
 
         // If there is no table for a given object id, create one including first reference and return
         guard let existingObjectReferences: NSHashTable<T> = referenceMap[referencedId] as? NSHashTable<T> else {
-            if logsActivity { print("Creating reference map for \(object.observableDebugDescription)") }
+            if self.logsActivity { print("Creating reference map for \(object.observableDebugDescription)") }
             let referenceHashTable = NSHashTable<AnyObject>(options: NSPointerFunctions.Options.weakMemory)
             referenceHashTable.add(object)
-            referenceMap[referencedId] = referenceHashTable
+            self.referenceMap[referencedId] = referenceHashTable
             return
         }
 
-        if logsActivity { print("Syncing \(object.observableDebugDescription)") }
+        if self.logsActivity { print("Syncing \(object.observableDebugDescription)") }
         // If there are any existing references, update them with the data from the freshest copy of the object
         lock(existingObjectReferences) {
             let existingObjects: [T] = existingObjectReferences.allObjects
@@ -136,12 +136,12 @@ public class ModelSync {
     }
 
     public func getSynchronizedReferences<T: Synchronizable>(of type: T.Type = T.self, with referenceId: String) -> [T]? {
-        let resolvedId = resolve(referenceId: referenceId, forObjectOf: type)
-        return (referenceMap[resolvedId] as? NSHashTable<T>)?.allObjects
+        let resolvedId = self.resolve(referenceId: referenceId, forObjectOf: type)
+        return (self.referenceMap[resolvedId] as? NSHashTable<T>)?.allObjects
     }
 
     public func getSynchronizedReference<T: Synchronizable>(of type: T.Type = T.self, with referenceId: String) -> T? {
-        return getSynchronizedReferences(of: type, with: referenceId)?.first
+        return self.getSynchronizedReferences(of: type, with: referenceId)?.first
     }
 
     // Returns true if reference exists and modifications will be applied

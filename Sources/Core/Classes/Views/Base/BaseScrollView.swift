@@ -17,7 +17,7 @@ extension BaseScrollViewProtocol where Self: UIScrollView {
 }
 
 open class BaseScrollView: MixinableScrollView, BaseScrollViewProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseScrollViewProtocolMixins
     }
 

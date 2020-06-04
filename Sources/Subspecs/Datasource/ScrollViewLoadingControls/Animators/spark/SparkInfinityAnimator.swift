@@ -14,7 +14,7 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
 
     fileprivate var positions = [CGPoint]()
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
         let ovalDiameter = min(frame.width, frame.height) / 8
@@ -27,7 +27,7 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
             circleLayer.fillColor = UIColor.sparkColorWithIndex(index).cgColor
             circleLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
-            circles.append(circleLayer)
+            self.circles.append(circleLayer)
             layer.addSublayer(circleLayer)
 
             let angle = CGFloat(Double.pi * 2) / CGFloat(count) * CGFloat(index)
@@ -36,7 +36,7 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
             let position = CGPoint(x: bounds.midX + sin(angle) * radius, y: bounds.midY - cos(angle) * radius)
             circleLayer.position = position
 
-            positions.append(position)
+            self.positions.append(position)
         }
     }
 
@@ -44,27 +44,27 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func didMoveToWindow() {
+    override open func didMoveToWindow() {
         super.didMoveToWindow()
 
-        if window != nil, animating {
-            startAnimating()
+        if window != nil, self.animating {
+            self.startAnimating()
         }
     }
 
     open func animateState(_ state: InfiniteScrollState) {
         switch state {
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         case .loading:
-            startAnimating()
+            self.startAnimating()
         }
     }
 
     func startAnimating() {
-        animating = true
+        self.animating = true
         for index in 0 ..< 8 {
-            applyAnimationForIndex(index)
+            self.applyAnimationForIndex(index)
         }
     }
 
@@ -89,18 +89,18 @@ open class SparkInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         animationGroup.beginTime = CACurrentMediaTime() + Double(index) * animationGroup.duration / 8 / 2
         animationGroup.timingFunction = CAMediaTimingFunction(controlPoints: 1, 0.5, 0, 0.5)
 
-        let circleLayer = circles[index]
+        let circleLayer = self.circles[index]
         circleLayer.isHidden = false
-        circleLayer.add(animationGroup, forKey: CircleAnimationKey)
+        circleLayer.add(animationGroup, forKey: self.CircleAnimationKey)
     }
 
     func stopAnimating() {
-        for circleLayer in circles {
-            circleLayer.removeAnimation(forKey: CircleAnimationKey)
+        for circleLayer in self.circles {
+            circleLayer.removeAnimation(forKey: self.CircleAnimationKey)
             circleLayer.transform = CATransform3DIdentity
             circleLayer.isHidden = true
         }
-        animating = false
+        self.animating = false
     }
 
     /*

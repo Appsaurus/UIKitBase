@@ -50,10 +50,10 @@ extension BackButtonManaged {
 
 extension BackButtonManaged where Self: UIViewController {
     public func popViewControllerIfAllowed() {
-        if backButtonShouldPopViewController() {
-            backButtonWillPopViewController()
+        if self.backButtonShouldPopViewController() {
+            self.backButtonWillPopViewController()
             navigationController?.popViewController(animated: true)
-            backButtonDidPopViewController()
+            self.backButtonDidPopViewController()
         }
     }
 }

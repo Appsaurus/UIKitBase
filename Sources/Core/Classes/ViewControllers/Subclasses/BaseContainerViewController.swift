@@ -24,44 +24,44 @@ open class BaseContainerViewController: BaseViewController {
     open lazy var containerView: UIView = UIView()
     open lazy var containedView: UIView? = nil
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        view.addSubview(containerView)
+        view.addSubview(self.containerView)
         if let containedView = containedView {
-            containerView.addSubview(containedView)
+            self.containerView.addSubview(containedView)
         }
 
         guard let headerView = headerView else { return }
         view.addSubview(headerView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        createContainedViewLayoutConstraints()
-        createContainerViewLayoutConstraints()
+        self.createContainedViewLayoutConstraints()
+        self.createContainerViewLayoutConstraints()
     }
 
     open func createContainerViewLayoutConstraints() {
         view.removeLayoutMarginsInset(removingSafeAreaInset: true)
-        containerView.removeLayoutMarginsInset(removingSafeAreaInset: true)
+        self.containerView.removeLayoutMarginsInset(removingSafeAreaInset: true)
         view.layoutMargins = .zero
-        containerView.layoutMargins = .zero
+        self.containerView.layoutMargins = .zero
         if #available(iOS 11.0, *) {
             view.directionalLayoutMargins = .zero
             viewRespectsSystemMinimumLayoutMargins = false
         }
         guard let headerView = headerView else {
-            containerView.pinToSuperviewMargins()
+            self.containerView.pinToSuperviewMargins()
             return
         }
-        [headerView, containerView].stack(.topToBottom, in: view.margins)
+        [headerView, self.containerView].stack(.topToBottom, in: view.margins)
         headerView.enforceContentSize()
     }
 
     open func createContainedViewLayoutConstraints() {
         if let containedView = containedView {
-            containedView.equal(to: containerView.margins.edges)
+            containedView.equal(to: self.containerView.margins.edges)
         }
-        containerView.layoutMargins = .zero
+        self.containerView.layoutMargins = .zero
     }
 }

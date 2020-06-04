@@ -10,7 +10,7 @@ import UIKit
 
 open class CollapsibleLayoutConstraint: NSLayoutConstraint {
     open var expandedConstant: CGFloat = 0.0
-    open override var constant: CGFloat {
+    override open var constant: CGFloat {
         get {
             return super.constant
         }
@@ -22,16 +22,16 @@ open class CollapsibleLayoutConstraint: NSLayoutConstraint {
         }
     }
 
-    open override func awakeFromNib() {
-        expandedConstant = constant
+    override open func awakeFromNib() {
+        self.expandedConstant = self.constant
     }
 
     open func collapse() {
-        constant = 0.0
+        self.constant = 0.0
     }
 
     open func expand() {
-        constant = expandedConstant
+        self.constant = self.expandedConstant
     }
 }
 

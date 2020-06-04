@@ -19,24 +19,24 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
     }()
 
     // PagingMenuControllerDelegate
-    open override func createPagingMenuView() -> PagingMenuView {
-        return StepProcessPagingMenuView(delegate: self, options: pagingMenuViewOptions)
+    override open func createPagingMenuView() -> PagingMenuView {
+        return StepProcessPagingMenuView(delegate: self, options: self.pagingMenuViewOptions)
     }
 
-    open override var pagingMenuViewOptions: PagingMenuViewOptions {
+    override open var pagingMenuViewOptions: PagingMenuViewOptions {
         let menuHeight: CGFloat = 75.0
         return PagingMenuViewOptions(layout: .horizontal(height: menuHeight),
                                      itemSizingBehavior: .spanWidthCollectivelyUnlessExceeding(numberOfCells: 4.5, height: menuHeight),
                                      scrollBehavior: .scrolls)
     }
 
-    open override func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
+    override open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
         return [StepProcessPagingMenuItemCell.self]
     }
 
-    open override func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
+    override open func pagingMenuItemCell(for menuView: PagingMenuView, at index: Int) -> PagingMenuItemCell<UIView> {
         let cell: StepProcessPagingMenuItemCell = menuView.pagingMenuCollectionView.dequeueReusableCell(for: index)
-        configure(cell: cell, at: index)
+        self.configure(cell: cell, at: index)
         switch index {
         case 0:
             cell.stepLinkVisibility = [.next]
@@ -45,19 +45,19 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
         default:
             cell.stepLinkVisibility = [.previousAndNext]
         }
-        configure(cell: cell, at: index)
+        self.configure(cell: cell, at: index)
 
         return cell
     }
 
     open func configure(cell: StepProcessPagingMenuItemCell, at index: Int) {
         cell.menuItemButton.titleLabel.wrapWords()
-        cell.display(object: stepModels[index])
+        cell.display(object: self.stepModels[index])
     }
 
     open func completeStep(at index: Int, isComplete complete: Bool = true) {
-        stepModels[index].complete = complete
-        pagingMenuView.pagingMenuCollectionView.reloadData { [weak self] in
+        self.stepModels[index].complete = complete
+        self.pagingMenuView.pagingMenuCollectionView.reloadData { [weak self] in
             guard let self = self else { return }
             if complete, self.automaticallyPageToNextStep, let nextStepIndex = self.nextAvailbleStepIndex(after: index) ?? self.nextAvailbleStepIndex() {
                 self.transitionToPage(at: nextStepIndex)
@@ -67,28 +67,28 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
 
     open func nextAvailbleStepIndex(after index: Int = -1) -> Int? {
         guard let step = nextAvailableStep(after: index) else { return nil }
-        return stepModels.firstIndex(of: step)
+        return self.stepModels.firstIndex(of: step)
     }
 
     open func nextAvailableStep(after index: Int = -1) -> StepProcessMenuStepViewModel? {
         let nextIndex = index + 1
-        guard nextIndex <= stepModels.lastIndex else { return nil }
-        return stepModels[nextIndex...].first { (stepModel) -> Bool in
+        guard nextIndex <= self.stepModels.lastIndex else { return nil }
+        return self.stepModels[nextIndex...].first { (stepModel) -> Bool in
             !stepModel.complete && stepModel.unfulfilledPrerequisites.count == 0
         }
     }
 
-    open override func pagingMenuView(menuView: PagingMenuView, canSelectItemAtIndex index: Int) -> Bool {
-        let unfulfilledPrerequisites = stepModels[index].unfulfilledPrerequisites
+    override open func pagingMenuView(menuView: PagingMenuView, canSelectItemAtIndex index: Int) -> Bool {
+        let unfulfilledPrerequisites = self.stepModels[index].unfulfilledPrerequisites
         guard unfulfilledPrerequisites.count == 0 else {
-            hintUncompletedSteps(steps: unfulfilledPrerequisites)
+            self.hintUncompletedSteps(steps: unfulfilledPrerequisites)
             return false
         }
         return super.pagingMenuView(menuView: menuView, canSelectItemAtIndex: index)
     }
 
     open func hintUncompletedSteps(steps: [StepProcessMenuStepViewModel]? = nil) {
-        let steps = steps ?? stepModels.filter { !$0.complete }
+        let steps = steps ?? self.stepModels.filter { !$0.complete }
         steps.forEach { step in
             guard let index = stepModels.firstIndex(where: { $0 === step })?.indexPath,
                 let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell else {
@@ -134,26 +134,26 @@ open class StepProcessMenuStepViewModel: Equatable {
     public init(stepTitle: String, completedStepTitleBuilder: (() -> String?)? = nil, completed: Bool = false, prerequisiteSteps: [StepProcessMenuStepViewModel] = []) {
         self.stepTitle = stepTitle
         self.completedStepTitleBuilder = completedStepTitleBuilder
-        complete = completed
+        self.complete = completed
         self.prerequisiteSteps = prerequisiteSteps
     }
 
     public var unfulfilledPrerequisites: [StepProcessMenuStepViewModel] {
-        return prerequisiteSteps.filter { !$0.complete }
+        return self.prerequisiteSteps.filter { !$0.complete }
     }
 }
 
 open class StepProcessPagingMenuView: PagingMenuView {
-    open override func createSelectionIndicatorView() -> UIView? {
+    override open func createSelectionIndicatorView() -> UIView? {
         return BaseView()
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         selectionIndicatorAnimation = StepProcessBallMenuSelectionIndicatorAnimation()
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         pagingMenuCollectionView.backgroundColor = .primaryDark
 
@@ -161,7 +161,7 @@ open class StepProcessPagingMenuView: PagingMenuView {
     }
 
     open func updateLayoutOfSelectionIndicator(view: UIView, transition: IndexPathTransition) {
-        guard let selectedCell = self.selectedMenuItemCell as? StepProcessPagingMenuItemCell else {
+        guard let selectedCell = selectedMenuItemCell as? StepProcessPagingMenuItemCell else {
             view.frame = .zero
             return
         }
@@ -170,8 +170,8 @@ open class StepProcessPagingMenuView: PagingMenuView {
         view.center = selectedCell.menuItemButton.imageView.frameConvertedToCoordinateSpace(of: view).center
     }
 
-    open override func viewForSelectedCollectioMenuItem() -> UIView? {
-        guard let selectedCell = self.selectedMenuItemCell as? StepProcessPagingMenuItemCell else {
+    override open func viewForSelectedCollectioMenuItem() -> UIView? {
+        guard let selectedCell = selectedMenuItemCell as? StepProcessPagingMenuItemCell else {
             return nil
         }
         return selectedCell.menuItemButton.imageView
@@ -179,7 +179,7 @@ open class StepProcessPagingMenuView: PagingMenuView {
 }
 
 public class StepProcessBallMenuSelectionIndicatorAnimation: CollectionMenuSelectionIndicatorAnimation {
-    open override func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect {
+    override open func finalFrameForSelectionIndicator(view: UIView, whenAnimatedTo selectedView: UIView) -> CGRect {
         var frame = CGRect()
         frame.size = selectedView.frame.size * 0.7
         let center = selectedView.frameConvertedToCoordinateSpace(of: view).center
@@ -206,8 +206,8 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
     open var nextStepLinkView: UIView = UIView()
     open var stepLinkVisibility: Set<StepProcessLinkVisibility> = [.none] {
         didSet {
-            previousStepLinkView.isVisible = stepLinkVisibility.contains(.previous) || stepLinkVisibility.contains(.previousAndNext)
-            nextStepLinkView.isVisible = stepLinkVisibility.contains(.next) || stepLinkVisibility.contains(.previousAndNext)
+            self.previousStepLinkView.isVisible = self.stepLinkVisibility.contains(.previous) || self.stepLinkVisibility.contains(.previousAndNext)
+            self.nextStepLinkView.isVisible = self.stepLinkVisibility.contains(.next) || self.stepLinkVisibility.contains(.previousAndNext)
         }
     }
 
@@ -215,9 +215,9 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
         menuItemButton.setTitle(object.stepTitle)
         switch object.complete {
         case true:
-            markAsCompleted(title: object.completedStepTitleBuilder?() ?? object.stepTitle)
+            self.markAsCompleted(title: object.completedStepTitleBuilder?() ?? object.stepTitle)
         case false:
-            markAsIncomplete()
+            self.markAsIncomplete()
         }
     }
 
@@ -233,36 +233,36 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
         menuItemButton.styleMap[.overrideAll] = menuItemButton.styleMap[.selected]
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        mainLayoutView.addSubviews(previousStepLinkView, nextStepLinkView)
+        mainLayoutView.addSubviews(self.previousStepLinkView, self.nextStepLinkView)
         menuItemButton.moveToFront()
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        [previousStepLinkView, nextStepLinkView].forEach { view in
+        [self.previousStepLinkView, self.nextStepLinkView].forEach { view in
             view.height.equal(to: menuItemButton.imageView.height.times(0.25))
             view.centerY.equal(to: menuItemButton.imageView.centerY)
         }
-        previousStepLinkView.trailing.equal(to: menuItemButton.imageView.centerX)
-        previousStepLinkView.leading.equalToSuperview()
-        nextStepLinkView.leading.equal(to: menuItemButton.imageView.centerX)
-        nextStepLinkView.trailing.equalToSuperview()
+        self.previousStepLinkView.trailing.equal(to: menuItemButton.imageView.centerX)
+        self.previousStepLinkView.leading.equalToSuperview()
+        self.nextStepLinkView.leading.equal(to: menuItemButton.imageView.centerX)
+        self.nextStepLinkView.trailing.equalToSuperview()
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
         menuItemButton.tintsImagesToMatchTextColor = true
     }
 
-    open override func menuItemButtonLayout() -> ButtonLayout {
+    override open func menuItemButtonLayout() -> ButtonLayout {
         let insets = LayoutPadding(horizontal: 0, vertical: 10)
         let imageInsets = LayoutPadding(horizontal: 0, vertical: 5)
         return ButtonLayout(layoutType: .centerTitleUnderImage(padding: 5.0), marginInsets: insets, imageInsets: imageInsets)
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         let viewStyle = ViewStyle(backgroundColor: .clear)
 
@@ -278,7 +278,7 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
 
         let pathStyle = ViewStyle(backgroundColor: .primary)
         nextStepLinkView.apply(viewStyle: pathStyle)
-        previousStepLinkView.apply(viewStyle: pathStyle)
+        self.previousStepLinkView.apply(viewStyle: pathStyle)
         let imageViewStyle = ViewStyle(backgroundColor: .primary, shape: .rounded)
         menuItemButton.imageView.apply(viewStyle: imageViewStyle)
         apply(viewStyle: .clear)

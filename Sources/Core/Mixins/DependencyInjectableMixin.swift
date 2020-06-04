@@ -8,7 +8,7 @@
 import UIKitMixinable
 
 open class DependencyInjectableMixin: UIViewControllerMixin<DependencyInjectable> {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         mixable.assertDependencies()
     }
 }
@@ -16,9 +16,9 @@ open class DependencyInjectableMixin: UIViewControllerMixin<DependencyInjectable
 open class DependencyInjectableViewMixin: UIViewMixin<DependencyInjectable> {
     private var dependenciesConfirmed: Bool = false
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        guard dependenciesConfirmed else {
+        guard self.dependenciesConfirmed else {
             mixable.assertDependencies()
             return
         }

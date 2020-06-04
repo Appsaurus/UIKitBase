@@ -17,14 +17,14 @@ open class ViewBasedCollectionViewCell<View: UIView>: DynamicSizeCollectionViewC
         .zero
     }()
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        mainLayoutView.addSubview(view)
+        mainLayoutView.addSubview(self.view)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        view.forceSuperviewToMatchContentSize(insetBy: mainViewInsets)
+        self.view.forceSuperviewToMatchContentSize(insetBy: self.mainViewInsets)
     }
 
     open func createMainView() -> View {

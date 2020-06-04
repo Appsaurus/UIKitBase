@@ -20,30 +20,30 @@ extension BaseTableViewControllerProtocol where Self: UITableViewController {
 open class BaseTableViewController: MixinableTableViewController, BaseTableViewControllerProtocol {
     private var cellHeightsDictionary: [String: CGFloat] = [:]
 
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewControllerProtocolMixins
     }
 
-    open override func setupDelegates() {
+    override open func setupDelegates() {
         super.setupDelegates()
-        tableView.delegate = self
+        self.tableView.delegate = self
     }
 
     // MARK: Orientation
 
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return currentSupportedInterfaceOrientation
     }
 
-    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+    override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return statusBarAnimation
     }
 
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
 
-    open override var prefersStatusBarHidden: Bool {
+    override open var prefersStatusBarHidden: Bool {
         return statusBarHidden
     }
 
@@ -63,7 +63,7 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
 
     open func style() {
         applyBaseViewStyle()
-        tableView.apply(tableViewStyle: .defaultStyle)
+        self.tableView.apply(tableViewStyle: .defaultStyle)
     }
 
     // MARK: Reloadable
@@ -88,12 +88,12 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return .error(error, retry: loadAsyncData)
     }
 
-    open override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height
+    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cellHeightsDictionary[indexPath.cacheKey] = cell.frame.size.height
     }
 
-    open override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
+    override open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
     }
 }
 

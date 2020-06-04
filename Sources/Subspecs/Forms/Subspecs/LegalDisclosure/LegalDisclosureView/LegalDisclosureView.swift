@@ -49,7 +49,7 @@ public struct LegalDisclosureViewModel {
             return
         }
 
-        self.message = generateMessageText()
+        self.message = self.generateMessageText()
     }
 
     public var regularExpressionPattern: String {
@@ -67,7 +67,7 @@ public struct LegalDisclosureViewModel {
     }
 
     public func generateMessageText() -> String {
-        return "\(message) \(StringUtils.English.punctuatedList(from: legalDocuments.keys))."
+        return "\(self.message) \(StringUtils.English.punctuatedList(from: self.legalDocuments.keys))."
     }
 }
 
@@ -80,15 +80,15 @@ open class LegalDisclosureView: BaseView {
         super.init(frame: .zero)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        let customType = ActiveType.custom(pattern: viewModel.regularExpressionPattern)
-        label.enabledTypes = [customType]
-        label.apply(textStyle: .light(color: .deselected, size: .button))
-        label.customColor[customType] = .selected
-        label.customSelectedColor[customType] = .selected
+        let customType = ActiveType.custom(pattern: self.viewModel.regularExpressionPattern)
+        self.label.enabledTypes = [customType]
+        self.label.apply(textStyle: .light(color: .deselected, size: .button))
+        self.label.customColor[customType] = .selected
+        self.label.customSelectedColor[customType] = .selected
 
-        label.handleCustomTap(for: customType) { [weak self] element in
+        self.label.handleCustomTap(for: customType) { [weak self] element in
             guard let self = self else { return }
             let pagingVC = PagingWebViewController(titledUrlStrings: self.viewModel.legalDocuments)
             pagingVC.initialPageIndex = self.viewModel.legalDocuments.keys.firstIndex(of: element) ?? 0
@@ -101,19 +101,19 @@ open class LegalDisclosureView: BaseView {
                 parent.present(viewController: dismissableNav)
             }
         }
-        label.text = viewModel.message
-        label.textAlignment = .center
-        label.wrapWords()
+        self.label.text = self.viewModel.message
+        self.label.textAlignment = .center
+        self.label.wrapWords()
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(label)
+        addSubview(self.label)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        label.edges.equal(to: .inset(10, 20))
+        self.label.edges.equal(to: .inset(10, 20))
     }
 
     public required init?(coder aDecoder: NSCoder) {

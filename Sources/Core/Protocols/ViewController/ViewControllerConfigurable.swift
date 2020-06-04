@@ -30,11 +30,11 @@ private extension AssociatedObjectKeys {
 
 public extension ViewControllerConfigurable where Self: UIViewController {
     func applyBaseViewStyle() {
-        view.apply(viewStyle: viewControllerConfiguration.style.viewStyle)
+        view.apply(viewStyle: self.viewControllerConfiguration.style.viewStyle)
     }
 
     var statusBarConfiguration: StatusBarConfiguration {
-        return viewControllerConfiguration.statusBarConfiguration
+        return self.viewControllerConfiguration.statusBarConfiguration
     }
 
     var viewControllerConfiguration: ViewControllerConfiguration {
@@ -49,6 +49,6 @@ public extension ViewControllerConfigurable where Self: UIViewController {
 
 public extension ViewControllerConfigurable where Self: UIViewController {
     var defaultOrientationLock: UIInterfaceOrientationMask? {
-        return viewControllerConfiguration.orientationMask
+        return self.viewControllerConfiguration.orientationMask
     }
 }

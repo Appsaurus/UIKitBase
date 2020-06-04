@@ -103,24 +103,24 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
     open func displayValidationFailures() {}
 
     open func validate(displayErrors: Bool = true) {
-        displayErrorOnNextValidation = displayErrors
-        validationFailures.removeAll()
+        self.displayErrorOnNextValidation = displayErrors
+        self.validationFailures.removeAll()
 
-        validationFailures.append(contentsOf: runValidationTests())
+        self.validationFailures.append(contentsOf: self.runValidationTests())
 
-        if requiresValue, !hasValue {
+        if self.requiresValue, !self.hasValue {
             let failureType = ValidationFailureType.missingRequiredValue
-            let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) is required."
-            validationFailures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
+            let explanationMessage = self.customErrorMessages[failureType] ?? "\(self.fieldName) is required."
+            self.validationFailures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))
         }
         if let failure = customValidationCheck?() {
-            validationFailures.append(failure)
+            self.validationFailures.append(failure)
         }
-        if validationFailures.count > 0 {
-            validationStatus = .invalid
-        } else if requiresNetworkValidation {
-            validationStatus = ValidationStatus.testingInProgress
-            runNetworkValidation({ [weak self] () -> Void in
+        if self.validationFailures.count > 0 {
+            self.validationStatus = .invalid
+        } else if self.requiresNetworkValidation {
+            self.validationStatus = ValidationStatus.testingInProgress
+            self.runNetworkValidation({ [weak self] () -> Void in
                 self?.validationStatus = .valid
             }, failure: { [weak self] () -> Void in
                 // TODO: Get custom error message from network call
@@ -130,7 +130,7 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
                 self?.validationStatus = .invalid
             })
         } else {
-            validationStatus = .valid
+            self.validationStatus = .valid
         }
     }
 
@@ -140,7 +140,7 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
 
     open func allValidationFailureErrorMessages() -> String {
         var errorMessagesString = ""
-        let allFailures = validationFailures
+        let allFailures = self.validationFailures
         let failureCount = allFailures.count
         for (index, failure) in allFailures.enumerated() {
             errorMessagesString += failure.explanationMessage

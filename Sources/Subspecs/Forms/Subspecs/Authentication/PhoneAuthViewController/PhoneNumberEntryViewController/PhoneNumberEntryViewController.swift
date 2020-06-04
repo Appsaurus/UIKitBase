@@ -45,7 +45,7 @@ public class PhoneNumberFormViewControllerStyle {
 
 extension PhoneNumberFormViewController: BackButtonManaged {}
 open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewController<PhoneNumber, Any?> where TextField: FormFieldViewProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + [BackButtonManagedMixin(self)]
     }
 
@@ -69,18 +69,18 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
 //        return configuration.style
 //    }
 
-    open override var headerPromptText: String? {
-        return configuration.promptText
+    override open var headerPromptText: String? {
+        return self.configuration.promptText
     }
 
     public var defaultNavigationBarStyle: NavigationBarStyle? {
         return configuration.style.navigationBarStyle
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        view.apply(viewStyle: configuration.style.viewStyle)
-        let fields: [UITextField] = [numberField.textField, countryField.textField]
+        view.apply(viewStyle: self.configuration.style.viewStyle)
+        let fields: [UITextField] = [numberField.textField, self.countryField.textField]
 
         fields.forEach { (tf: UITextField) in
             switch tf {
@@ -110,7 +110,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         super.init(coder: aDecoder)
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
         tableView.hideEmptyCellsAtBottomOfTable()
         tableView.hideSeparatorInset()
@@ -118,17 +118,17 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         headerPromptLabel?.textAlignment = .center
     }
 
-    open override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = numberField.becomeFirstResponder()
+        _ = self.numberField.becomeFirstResponder()
     }
 
     open func backButtonWillPopViewController() {
-        delegate?.phoneNumberFormViewControllerDidCancel()
+        self.delegate?.phoneNumberFormViewControllerDidCancel()
     }
 
-    open override func createForm() -> Form {
-        numberField.validationThrottle = 1.0
+    override open func createForm() -> Form {
+        self.numberField.validationThrottle = 1.0
         let form = Form(fields: [countryField, numberField])
         form.customValidationCheck = { [weak self] in
             guard let self = self else { return nil }
@@ -141,7 +141,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         return form
     }
 
-    open override func submit(_ submission: PhoneNumber, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
+    override open func submit(_ submission: PhoneNumber, _ resultClosure: @escaping (Result<Any?, Error>) -> Void) {
         guard let delegate = delegate, let phoneNumber = phoneNumber else {
             resultClosure(.success(nil))
             return
@@ -150,7 +150,7 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         delegate.processSelected(phoneNumber: phoneNumber, resultClosure: resultClosure)
     }
 
-    open override func submissionDidSucceed(with response: Any?) {
+    override open func submissionDidSucceed(with response: Any?) {
         super.submissionDidSucceed(with: response)
         guard let delegate = delegate, let phoneNumber = phoneNumber else {
             return

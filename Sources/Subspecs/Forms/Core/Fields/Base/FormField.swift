@@ -89,7 +89,7 @@ public enum FormFieldState {
 }
 
 open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where ContentView: FormFieldViewProtocol {
-    open override var behaviors: Set<FormFieldBehavior> {
+    override open var behaviors: Set<FormFieldBehavior> {
         didSet {
             updateContentView()
         }
@@ -102,11 +102,11 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         }
     }
 
-    open override var inputAccessoryView: UIView? {
+    override open var inputAccessoryView: UIView? {
         return _inputAccessoryView
     }
 
-    open override var isEnabled: Bool {
+    override open var isEnabled: Bool {
         didSet {
             (contentView as? UIControl)?.isEnabled = isEnabled
         }
@@ -135,7 +135,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         }
     }
 
-    open override var hasValue: Bool {
+    override open var hasValue: Bool {
         return value != nil
     }
 
@@ -144,8 +144,8 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         return "\(value)"
     }
 
-    open override func outputValueToJSON() -> Any? {
-        return value
+    override open func outputValueToJSON() -> Any? {
+        return self.value
     }
 
     public lazy var contentView: ContentView = {
@@ -167,15 +167,15 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         self.fieldName = fieldName
         self.title = title ?? fieldName
         self.value =? value
-        updateContentView()
+        self.updateContentView()
         initLifecycle(.programmatically)
     }
 
-    public override init(callInitLifecycle: Bool = true) {
+    override public init(callInitLifecycle: Bool = true) {
         super.init(callInitLifecycle: callInitLifecycle)
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -183,26 +183,26 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         super.init(coder: aDecoder)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        if title.isEmpty { title = fieldName }
-        if usesFieldNameAsPlaceholder { placeholder = fieldName }
+        if self.title.isEmpty { self.title = fieldName }
+        if self.usesFieldNameAsPlaceholder { self.placeholder = fieldName }
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(contentView)
+        addSubview(self.contentView)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        contentView.height.greaterThanOrEqual(to: 0)
-        contentView.horizontalEdges.equal(to: horizontalEdges)
-        matchContentHeight(of: contentView)
+        self.contentView.height.greaterThanOrEqual(to: 0)
+        self.contentView.horizontalEdges.equal(to: horizontalEdges)
+        matchContentHeight(of: self.contentView)
         enforceContentSize()
     }
 
-    open override func setupControlActions() {
+    override open func setupControlActions() {
         super.setupControlActions()
         addTap { [weak self] _ in
             guard let self = self else { return }
@@ -211,48 +211,48 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     }
 
     open func fieldWasTapped() {
-        _ = becomeFirstResponder()
+        _ = self.becomeFirstResponder()
     }
 
     open func proxyFirstResponder() -> UIResponder? {
-        if contentView.canBecomeFirstResponder {
-            return contentView
+        if self.contentView.canBecomeFirstResponder {
+            return self.contentView
         }
         return nil
     }
 
-    open override func becomeFirstResponder() -> Bool {
-        let didRespond = proxyFirstResponder()?.becomeFirstResponder() ?? super.becomeFirstResponder()
+    override open func becomeFirstResponder() -> Bool {
+        let didRespond = self.proxyFirstResponder()?.becomeFirstResponder() ?? super.becomeFirstResponder()
         if didRespond {
             validationDelegate?.fieldDidBeginEditing(self)
         }
         return didRespond
     }
 
-    open override var isFirstResponder: Bool {
+    override open var isFirstResponder: Bool {
         return proxyFirstResponder()?.isFirstResponder ?? super.isFirstResponder
     }
 
-    open override func resignFirstResponder() -> Bool {
-        let didResign = proxyFirstResponder()?.resignFirstResponder() ?? super.resignFirstResponder()
+    override open func resignFirstResponder() -> Bool {
+        let didResign = self.proxyFirstResponder()?.resignFirstResponder() ?? super.resignFirstResponder()
         if didResign {
             validationDelegate?.fieldDidEndEditing(self)
         }
         return didResign
     }
 
-    open override var canBecomeFirstResponder: Bool {
+    override open var canBecomeFirstResponder: Bool {
         return true
     }
 
     // MARK: Validation
 
-    open override func validationStatusChanged(_ status: ValidationStatus) {
-        contentView.display(validationStatus: status)
+    override open func validationStatusChanged(_ status: ValidationStatus) {
+        self.contentView.display(validationStatus: status)
     }
 
-    open override func displayValidationFailures() {
-        contentView.display(validationFailures: validationFailures)
+    override open func displayValidationFailures() {
+        self.contentView.display(validationFailures: validationFailures)
     }
 
     func getValidationErrorMessage() -> String? {
@@ -262,8 +262,8 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     // MARK: Content View Updating
 
     open func updateContentView() {
-        var fullTitle = title
-        for behavior in behaviors {
+        var fullTitle = self.title
+        for behavior in self.behaviors {
             switch (behavior, requiresValue) {
             case (.indicatesOptionalFields, false):
                 fullTitle += " (optional)"
@@ -272,9 +272,9 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
             default: break
             }
         }
-        contentView.display(title: fullTitle)
-        contentView.display(placeholder: placeholder)
-        contentView.display(valueDescription: textDescription(for: value))
+        self.contentView.display(title: fullTitle)
+        self.contentView.display(placeholder: self.placeholder)
+        self.contentView.display(valueDescription: self.textDescription(for: self.value))
     }
 }
 
@@ -286,6 +286,6 @@ extension FormFieldProtocol {
 
 extension FormField: FormFieldContentViewProvider {
     public func getContentView() -> UIView & FormFieldViewProtocol {
-        return contentView
+        return self.contentView
     }
 }

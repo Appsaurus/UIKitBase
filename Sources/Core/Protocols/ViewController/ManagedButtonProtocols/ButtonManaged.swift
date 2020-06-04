@@ -41,8 +41,8 @@ public enum ManagedButtonPosition {
 extension ButtonManaged where Self: UIViewController {
     @discardableResult
     public func createManagedButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
-        let button: BaseButton = configuration.button ?? defaultButton(configuration: configuration)
-        layoutManagedButton(button: button, position: configuration.position, size: configuration.size)
+        let button: BaseButton = configuration.button ?? self.defaultButton(configuration: configuration)
+        self.layoutManagedButton(button: button, position: configuration.position, size: configuration.size)
         return button
     }
 

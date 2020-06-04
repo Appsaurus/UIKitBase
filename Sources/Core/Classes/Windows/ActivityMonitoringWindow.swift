@@ -21,12 +21,12 @@ open class ActivityMonitoringWindow: UIWindow {
     // Time until the window is considered dormant.
     open var dormantTimeout: TimeInterval = 5
 
-    open override func sendEvent(_ event: UIEvent) {
-        updateLastTouchedTimestamp()
+    override open func sendEvent(_ event: UIEvent) {
+        self.updateLastTouchedTimestamp()
         super.sendEvent(event)
     }
 
     open func updateLastTouchedTimestamp() {
-        lastTouched = Date()
+        self.lastTouched = Date()
     }
 }

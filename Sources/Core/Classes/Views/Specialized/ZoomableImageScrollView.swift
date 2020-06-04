@@ -28,12 +28,12 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
+        self.initialize()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initialize()
+        self.initialize()
     }
 
     fileprivate func initialize() {
@@ -41,56 +41,56 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
         showsHorizontalScrollIndicator = false
         decelerationRate = UIScrollView.DecelerationRate.fast
         delegate = self
-        boundingView = self
+        self.boundingView = self
 
         bouncesZoom = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ZoomableImageScrollView.doubleTapGestureRecognizer(_:)))
         tapGesture.numberOfTapsRequired = 2
-        imageView.addGestureRecognizer(tapGesture)
+        self.imageView.addGestureRecognizer(tapGesture)
 
         minimumZoomScale = 1.0
         maximumZoomScale = 5.0
-        imageView.frame = boundingView.bounds
-        addSubview(imageView)
-        contentSize = imageView.frame.size
-        originalImageViewSize = imageView.frame.size
-        recalculateMinMaxZoomScalesForCurrentBounds()
+        self.imageView.frame = self.boundingView.bounds
+        addSubview(self.imageView)
+        contentSize = self.imageView.frame.size
+        self.originalImageViewSize = self.imageView.frame.size
+        self.recalculateMinMaxZoomScalesForCurrentBounds()
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        recalculateMinMaxZoomScalesForCurrentBounds()
+        self.recalculateMinMaxZoomScalesForCurrentBounds()
     }
 
     // MARK: - UIScrollViewDelegate
 
     open func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
+        return self.imageView
     }
 
     // MARK: - Display image
 
     open func displayImage(_ image: UIImage) {
         contentOffset = CGPoint.zero
-        imageView.image = image
-        resetZoom()
+        self.imageView.image = image
+        self.resetZoom()
     }
 
     open func resetZoom() {
-        zoomScale = calculateZoomScaleToAspectFitImageViewToBoundingView()
+        zoomScale = self.calculateZoomScaleToAspectFitImageViewToBoundingView()
     }
 
     open func recalculateMinMaxZoomScalesForCurrentBounds() {
         let zoomRange = maximumZoomScale - minimumZoomScale
-        minimumZoomScale = calculateZoomScaleToAspectFitImageViewToBoundingView()
+        minimumZoomScale = self.calculateZoomScaleToAspectFitImageViewToBoundingView()
         maximumZoomScale = minimumZoomScale + zoomRange
     }
 
     fileprivate func calculateZoomScaleToAspectFitImageViewToBoundingView() -> CGFloat {
         // calculate min/max zoomscale
-        let boundingSize = boundingView.bounds.size
-        let xScale = boundingSize.width / originalImageViewSize.width
-        let yScale = boundingSize.height / originalImageViewSize.height
+        let boundingSize = self.boundingView.bounds.size
+        let xScale = boundingSize.width / self.originalImageViewSize.width
+        let yScale = boundingSize.height / self.originalImageViewSize.height
         let minScale = min(xScale, yScale) // Forces image to span at least one length fo the boundingView
         return minScale
     }
@@ -104,21 +104,21 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
         if nextStep > maximumZoomScale {
             nextStep = minimumZoomScale
         }
-        let zoomRect = zoomRectForScale(nextStep, center: gestureRecognizer.location(ofTouch: 0, in: imageView))
+        let zoomRect = self.zoomRectForScale(nextStep, center: gestureRecognizer.location(ofTouch: 0, in: self.imageView))
         zoom(to: zoomRect, animated: true)
     }
 
     open func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        imageWasReframed()
+        self.imageWasReframed()
     }
 
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        imageWasReframed()
+        self.imageWasReframed()
     }
 
     open func imageWasReframed() {
-        if let image = self.imageView.image {
-            imageScrollViewDelegate?.imageScrollView(self, didReframeImage: image)
+        if let image = imageView.image {
+            self.imageScrollViewDelegate?.imageScrollView(self, didReframeImage: image)
         }
     }
 
@@ -149,7 +149,7 @@ open class ZoomableImageScrollView: UIScrollView, UIScrollViewDelegate {
 
     open func refresh() {
         if let image = imageView.image {
-            displayImage(image)
+            self.displayImage(image)
         }
     }
 }

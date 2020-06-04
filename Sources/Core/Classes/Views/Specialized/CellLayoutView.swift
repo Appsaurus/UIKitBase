@@ -64,11 +64,11 @@ open class CellLayoutView<MV: UIView>: BaseView {
         initLifecycle(.programmatically)
     }
 
-    public override init(callInitLifecycle: Bool = true) {
+    override public init(callInitLifecycle: Bool = true) {
         super.init(callInitLifecycle: callInitLifecycle)
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -76,37 +76,37 @@ open class CellLayoutView<MV: UIView>: BaseView {
         super.init(coder: aDecoder)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(stackView)
+        addSubview(self.stackView)
 
         var items: [UIView] = [middleView]
-        if config.showsLeftImageView {
-            items.prepend(leftImageView)
+        if self.config.showsLeftImageView {
+            items.prepend(self.leftImageView)
         }
 
         if let optionalRightView = optionalRightView {
             items.append(optionalRightView)
         }
 
-        stackView.stack(items).distribute(.fillProportionally)
+        self.stackView.stack(items).distribute(.fillProportionally)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        stackView.forceSuperviewToMatchContentSize(insetBy: config.mainLayoutViewInsets)
-        middleView.width.greaterThanOrEqual(to: 1)
-        optionalRightView?.width.greaterThanOrEqual(to: 1)
-        middleView.enforceContentSize()
-        optionalRightView?.enforceContentSize()
-        if prioritizeMiddleViewWidthOverRightView {
-            optionalRightView?.resistCompression(.high, forAxes: [.horizontal])
+        self.stackView.forceSuperviewToMatchContentSize(insetBy: self.config.mainLayoutViewInsets)
+        self.middleView.width.greaterThanOrEqual(to: 1)
+        self.optionalRightView?.width.greaterThanOrEqual(to: 1)
+        self.middleView.enforceContentSize()
+        self.optionalRightView?.enforceContentSize()
+        if self.prioritizeMiddleViewWidthOverRightView {
+            self.optionalRightView?.resistCompression(.high, forAxes: [.horizontal])
         } else {
-            middleView.resistCompression(.high, forAxes: [.horizontal])
+            self.middleView.resistCompression(.high, forAxes: [.horizontal])
         }
 
-        leftImageView.size.equal(to: config.leftImageViewSize)
-        leftImageView.enforceContentSize()
-        stackView.height.greaterThanOrEqual(to: stackView.arrangedSubviews)
+        self.leftImageView.size.equal(to: self.config.leftImageViewSize)
+        self.leftImageView.enforceContentSize()
+        self.stackView.height.greaterThanOrEqual(to: self.stackView.arrangedSubviews)
     }
 }

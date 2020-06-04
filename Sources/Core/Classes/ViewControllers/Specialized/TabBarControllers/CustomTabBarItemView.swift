@@ -18,10 +18,10 @@ open class CustomTabBarItemView: BaseButton, ObjectDisplayable {
     public required init(tabBarItem: UITabBarItem) {
         self.tabBarItem = tabBarItem
         super.init(frame: .zero)
-        display(object: tabBarItem)
+        self.display(object: tabBarItem)
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         buttonLayout = ButtonLayout(layoutType: .centerTitleUnderImage(padding: 4), imageLayoutType: .stretchWidth)
     }
@@ -31,16 +31,16 @@ open class CustomTabBarItemView: BaseButton, ObjectDisplayable {
     }
 
     public func display(object: UITabBarItem) {
-        tabBarItem = object
+        self.tabBarItem = object
         var images: [ButtonState: UIImage] = [:]
-        images[.normal] =? tabBarItem.image
-        images[.selected] =? tabBarItem.selectedImage
+        images[.normal] =? self.tabBarItem.image
+        images[.selected] =? self.tabBarItem.selectedImage
         imageMap = images
-        titleMap[.any] = tabBarItem.title
+        titleMap[.any] = self.tabBarItem.title
         print(titleMap)
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
         let tabBarItemStyle: TabBarItemStyle = .defaultStyle
 

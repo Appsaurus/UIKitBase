@@ -57,25 +57,25 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
         return UIViewPropertyAnimator()
     }
 
-    open override func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+    override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         super.adjustViews(for: scrollViewHeader)
         switch scrollViewHeader.headerState {
         case .expanded:
-            animator.fractionComplete = 0.0
+            self.animator.fractionComplete = 0.0
         case .transitioning, .collapsed:
-            animator.fractionComplete = timing.contains(.onCollapse) ? scrollViewHeader.percentCollapsed * strength : 0.0
+            self.animator.fractionComplete = self.timing.contains(.onCollapse) ? scrollViewHeader.percentCollapsed * self.strength : 0.0
         case .stretched:
-            animator.fractionComplete = timing.contains(.onPull) ? (scrollViewHeader.percentExpanded - 1.0) * strength : 0.0
+            self.animator.fractionComplete = self.timing.contains(.onPull) ? (scrollViewHeader.percentExpanded - 1.0) * self.strength : 0.0
         }
     }
 }
 
 open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior {
-    open override func setup() {
+    override open func setup() {
         super.setup()
     }
 
-    open override func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+    override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         super.adjustViews(for: scrollViewHeader)
         scrollViewHeader.scrollView.bringSubviewToFront(scrollViewHeader)
 //        var topConstant = -scrollView.contentInset.top
@@ -91,7 +91,7 @@ open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior {
     open var speed: CGFloat
 
     open var parallaxOffset: CGFloat {
-        return speed * scrollViewHeader.percentCollapsed * scrollViewHeader.expandedHeight
+        return self.speed * scrollViewHeader.percentCollapsed * scrollViewHeader.expandedHeight
     }
 
     public init(speed: CGFloat = 0.3) {
@@ -99,11 +99,11 @@ open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior {
         self.speed = speed
     }
 
-    open override func setup() {}
+    override open func setup() {}
 
-    open override func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+    override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         super.adjustViews(for: scrollViewHeader)
-        scrollViewHeader.backgroundViewConstraints[.centerY]?.first?.constant = parallaxOffset
+        scrollViewHeader.backgroundViewConstraints[.centerY]?.first?.constant = self.parallaxOffset
         switch scrollViewHeader.headerState {
         case .collapsed, .transitioning:
             scrollViewHeader.resetBackgroundViewSizeConstraints()
@@ -119,19 +119,19 @@ open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeade
     open var visualEffectView: UIVisualEffectView
     open var visualEffect: UIVisualEffect
 
-    open override func setup() {
+    override open func setup() {
         super.setup()
-        scrollViewHeader.headerLayoutView.insertSubview(visualEffectView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
-        visualEffectView.pinToSuperview()
+        scrollViewHeader.headerLayoutView.insertSubview(self.visualEffectView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
+        self.visualEffectView.pinToSuperview()
     }
 
     public init(timing: [ScrollViewHeaderBehaviorTiming] = [.onCollapse], strength: CGFloat = 1.0, visualEffect: UIVisualEffect = UIBlurEffect(style: .dark)) {
         self.visualEffect = visualEffect
-        visualEffectView = UIVisualEffectView()
+        self.visualEffectView = UIVisualEffectView()
         super.init(timing: timing, strength: strength)
     }
 
-    open override func createViewPropertyAnimator() -> UIViewPropertyAnimator {
+    override open func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.visualEffectView.effect = sSelf.visualEffect
@@ -140,7 +140,7 @@ open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeade
 }
 
 open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior {
-    open override func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+    override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         scrollViewHeader.headerLayoutHeightConstraint?.constant = max(scrollViewHeader.expandedHeaderHeight, scrollViewHeader.expandedHeaderHeight - scrollViewHeader.offset)
         switch scrollViewHeader.headerState {
         case .expanded, .stretched:
@@ -152,7 +152,7 @@ open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior {
 
 @available(iOS 10.0, *)
 open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
-    open override func createViewPropertyAnimator() -> UIViewPropertyAnimator {
+    override open func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.scrollViewHeader.alpha = 0.0
@@ -165,14 +165,14 @@ open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHe
     var fillColor: UIColor
     var fillView: PassThroughView = PassThroughView()
 
-    open override func setup() {
+    override open func setup() {
         super.setup()
 
-        scrollViewHeader.addSubview(fillView)
-        fillView.moveToFront()
-        fillView.pinToSuperview()
-        fillView.backgroundColor = fillColor
-        fillView.alpha = 0.0
+        scrollViewHeader.addSubview(self.fillView)
+        self.fillView.moveToFront()
+        self.fillView.pinToSuperview()
+        self.fillView.backgroundColor = self.fillColor
+        self.fillView.alpha = 0.0
     }
 
     public init(timing: [ScrollViewHeaderBehaviorTiming] = [.onCollapse], strength: CGFloat = 1.0, fillColor: UIColor) {
@@ -180,7 +180,7 @@ open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHe
         super.init(timing: timing, strength: strength)
     }
 
-    open override func createViewPropertyAnimator() -> UIViewPropertyAnimator {
+    override open func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.fillView.alpha = 1.0

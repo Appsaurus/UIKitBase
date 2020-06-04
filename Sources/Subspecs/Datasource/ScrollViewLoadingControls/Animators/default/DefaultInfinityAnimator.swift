@@ -12,29 +12,29 @@ open class DefaultInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     open var activityIndicatorView: UIActivityIndicatorView
     open fileprivate(set) var animating: Bool = false
 
-    public override init(frame: CGRect) {
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
-        activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.isHidden = true
+    override public init(frame: CGRect) {
+        self.activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        self.activityIndicatorView.hidesWhenStopped = true
+        self.activityIndicatorView.isHidden = true
 
         super.init(frame: frame)
 
-        addSubview(activityIndicatorView)
+        addSubview(self.activityIndicatorView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 
-        activityIndicatorView.frame = bounds
+        self.activityIndicatorView.frame = bounds
     }
 
-    open override func didMoveToWindow() {
-        if window != nil, animating {
-            startAnimating()
+    override open func didMoveToWindow() {
+        if window != nil, self.animating {
+            self.startAnimating()
         }
     }
 
@@ -42,24 +42,24 @@ open class DefaultInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         print(state)
         switch state {
         case .none:
-            stopAnimating()
+            self.stopAnimating()
         case .loading:
-            startAnimating()
+            self.startAnimating()
         }
     }
 
     func startAnimating() {
-        animating = true
+        self.animating = true
 
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.isHidden = false
+        self.activityIndicatorView.startAnimating()
+        self.activityIndicatorView.isHidden = false
     }
 
     func stopAnimating() {
-        animating = false
+        self.animating = false
 
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
+        self.activityIndicatorView.stopAnimating()
+        self.activityIndicatorView.isHidden = true
     }
 
     /*

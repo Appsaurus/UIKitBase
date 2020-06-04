@@ -31,7 +31,7 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
     }
 
     func setupScrollViewHeader() {
-        addScrollViewHeader(createScrollViewHeader())
+        self.addScrollViewHeader(createScrollViewHeader())
     }
 
     func addScrollViewHeader(_ scrollViewHeader: SVH) {
@@ -51,12 +51,12 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
             }
         }
 
-        headerContentDidChange()
+        self.headerContentDidChange()
     }
 
     // Called whenever changes are made that could effect the height of the header
     func headerContentDidChange() {
-        adjustContentPositionToAccomodateHeaderHeight()
+        self.adjustContentPositionToAccomodateHeaderHeight()
     }
 
     func adjustContentPositionToAccomodateHeaderHeight() {
@@ -68,9 +68,9 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
     }
 
     func removeScrollViewHeader() {
-        scrollViewHeader?.clearObservations()
-        scrollViewHeader?.removeFromSuperview()
-        scrollViewHeader = nil
+        self.scrollViewHeader?.clearObservations()
+        self.scrollViewHeader?.removeFromSuperview()
+        self.scrollViewHeader = nil
     }
 }
 
@@ -89,8 +89,8 @@ extension ScrollViewHeaderAdornable where Self: UICollectionViewController {
 // extension BaseScrollviewController: ScrollViewHeaderAdornable{
 extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
     public func setupScrollViewHeader() {
-        addScrollViewHeader(createScrollViewHeader())
-        headerContentDidChange() // Get initial layout
+        self.addScrollViewHeader(createScrollViewHeader())
+        self.headerContentDidChange() // Get initial layout
     }
 
     // Called whenever changes are made that could effect the height of the header
@@ -99,9 +99,9 @@ extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
         view.forceAutolayoutPass()
         var contentSize = view.bounds.size
         contentSize.height -= header.collapsedHeaderHeight
-        scrollView.contentSize = contentSize
+        self.scrollView.contentSize = contentSize
         scrollViewContentView.frame.size = contentSize
-        adjustContentPositionToAccomodateHeaderHeight()
+        self.adjustContentPositionToAccomodateHeaderHeight()
     }
 }
 

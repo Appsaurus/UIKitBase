@@ -71,26 +71,26 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
                 }
             }
         }
-        status = initialStatus
+        self.status = initialStatus
     }
 
     open func fieldFailedValidation(_ field: FormFieldProtocol, failures: [ValidationFailure]) {
-        formDelegate?.fieldFailedValidation(field, failures: failures)
-        status = .invalid
+        self.formDelegate?.fieldFailedValidation(field, failures: failures)
+        self.status = .invalid
     }
 
     open func fieldPassedValidation(_ field: FormFieldProtocol) {
-        formDelegate?.fieldPassedValidation(field)
+        self.formDelegate?.fieldPassedValidation(field)
 
         var untestedCount = 0
-        for field in fields {
+        for field in self.fields {
             let fieldStatus = field.validationStatus
             switch fieldStatus {
             case .testingInProgress:
-                status = .testingInProgress
+                self.status = .testingInProgress
                 return
             case .invalid:
-                status = .invalid
+                self.status = .invalid
                 return
             case .valid:
                 break
@@ -100,19 +100,19 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
         }
 
         if untestedCount > 0 {
-            status = .untested
+            self.status = .untested
         } else {
-            status = customValidationCheck?() == nil ? .valid : .invalid
+            self.status = self.customValidationCheck?() == nil ? .valid : .invalid
             //            self.formDelegate?.formPassedValidation(self)
         }
     }
 
     public func fieldDidBeginEditing(_ field: FormFieldProtocol) {
-        formDelegate?.fieldDidBeginEditing(field)
+        self.formDelegate?.fieldDidBeginEditing(field)
     }
 
     public func fieldDidEndEditing(_ field: FormFieldProtocol) {
-        formDelegate?.fieldDidEndEditing(field)
+        self.formDelegate?.fieldDidEndEditing(field)
 
         switch (field.validationFrequency, field.validationErrorDisplayFrequency) {
         case let (.onDidFinishEditing, freq):
@@ -124,22 +124,22 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
     }
 
     open func validate(displayErrors: Bool = true) {
-        if fields.count == 0 {
-            if customValidationCheck?() != nil {
-                status = .invalid
+        if self.fields.count == 0 {
+            if self.customValidationCheck?() != nil {
+                self.status = .invalid
             } else {
-                status = .valid
+                self.status = .valid
             }
         } else {
-            for field in fields {
+            for field in self.fields {
                 field.validate(displayErrors: displayErrors)
             }
         }
     }
 
     open func fieldIsValidating(_ field: FormFieldProtocol) {
-        formDelegate?.fieldIsValidating(field)
-        status = .testingInProgress
+        self.formDelegate?.fieldIsValidating(field)
+        self.status = .testingInProgress
     }
 
     // MARK: UITextFieldDelegate methods, forward to delegate or to ValidationGroup's delegate
@@ -229,7 +229,7 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
 extension Form {
     var outputValue: [String: Any] {
         var dict: [String: Any] = [:]
-        for field in fields {
+        for field in self.fields {
             dict[field.fieldName] = field.outputValueToJSON()
         }
         return dict

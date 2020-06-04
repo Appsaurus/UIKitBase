@@ -9,7 +9,7 @@ import UIKit
 import UIKitMixinable
 
 open class BaseStatefulView: BaseView, StatefulViewController {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + [StatefulViewMixin(self)]
     }
 

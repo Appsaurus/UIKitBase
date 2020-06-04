@@ -25,13 +25,13 @@ open class EmailComposer: NSObject, MFMailComposeViewControllerDelegate {
             mailComposerVC.setToRecipients(recipients)
             mailComposerVC.setSubject(subject ?? "")
 
-            presenter?.present(mailComposerVC, animated: true, completion: nil)
+            self.presenter?.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            presenter?.presentAlert(title: "Could Not Send Email", message: "Your device cannot send e-mail. Please check e-mail configuration and try again.")
+            self.presenter?.presentAlert(title: "Could Not Send Email", message: "Your device cannot send e-mail. Please check e-mail configuration and try again.")
         }
     }
 
     @objc open func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        presenter?.dismiss(animated: true, completion: nil)
+        self.presenter?.dismiss(animated: true, completion: nil)
     }
 }

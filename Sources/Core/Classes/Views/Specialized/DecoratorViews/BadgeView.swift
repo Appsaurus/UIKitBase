@@ -53,7 +53,7 @@ open class StatefulBadgeView<S: Hashable>: BaseView, BadgeViewProtocol, Stateful
         self.viewStyleMap =? viewStyleMap
         self.state = state
         super.init(frame: .zero)
-        applyCurrentViewStyle()
+        self.applyCurrentViewStyle()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -89,19 +89,19 @@ open class BadgeView: BaseView, BadgeViewProtocol {
     open var position: BadgeViewPosition
     open var badgeStyle: BadgeStyle {
         didSet {
-            style()
+            self.style()
         }
     }
 
     private var fontIconFont: UIFont? {
         didSet {
-            style()
+            self.style()
         }
     }
 
     private var fontSize: CGFloat? {
         didSet {
-            style()
+            self.style()
         }
     }
 
@@ -116,44 +116,44 @@ open class BadgeView: BaseView, BadgeViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        addSubview(label)
-        label.textAlignment = .center
+        addSubview(self.label)
+        self.label.textAlignment = .center
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        label.pinToSuperview()
-        height.equal(to: badgeHeight)
-        width.greaterThanOrEqual(to: badgeHeight)
+        self.label.pinToSuperview()
+        height.equal(to: self.badgeHeight)
+        width.greaterThanOrEqual(to: self.badgeHeight)
     }
 
     open var defaultFontSize: CGFloat {
         return badgeHeight * 0.6
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        let textStyle = App.style.badgeTextStyle(for: badgeStyle, fontSize: fontSize ?? defaultFontSize)
+        let textStyle = App.style.badgeTextStyle(for: self.badgeStyle, fontSize: self.fontSize ?? self.defaultFontSize)
         if let iconFont = fontIconFont {
             textStyle.font = iconFont
         }
-        label.apply(textStyle: textStyle)
-        apply(viewStyle: App.style.badgeViewStyle(for: badgeStyle))
+        self.label.apply(textStyle: textStyle)
+        apply(viewStyle: App.style.badgeViewStyle(for: self.badgeStyle))
     }
 
     open func set(text: String, fontSize: CGFloat? = nil) {
-        fontIconFont = nil
+        self.fontIconFont = nil
         self.fontSize = fontSize
-        label.text = text
-        style() // Adjusts font size to fit
+        self.label.text = text
+        self.style() // Adjusts font size to fit
     }
 
     open func set<FI: FontIconEnum>(icon: FI, fontSize: CGFloat? = nil) {
-        label.setFontIconText(icon)
+        self.label.setFontIconText(icon)
         self.fontSize = fontSize
-        fontIconFont = icon.getFont(fontSize ?? defaultFontSize)
-        style() // Adjusts font size to fit
+        self.fontIconFont = icon.getFont(fontSize ?? self.defaultFontSize)
+        self.style() // Adjusts font size to fit
     }
 }

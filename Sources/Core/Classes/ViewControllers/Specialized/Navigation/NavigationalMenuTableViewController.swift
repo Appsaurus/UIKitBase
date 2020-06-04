@@ -11,28 +11,28 @@ import Swiftest
 import UIKitTheme
 
 open class NavigationalMenuTableViewController: BaseTableViewController {
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         navigationBarStyle = .primary
     }
 
     open var cells: [NavigationalMenuTableViewCellDatasource] = []
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
-    open override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cells.count
     }
 
-    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let cellData = cells[indexPath.row]
+        let cellData = self.cells[indexPath.row]
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets.zero
         cell.textLabel?.font = .regular(15.0)
@@ -42,10 +42,10 @@ open class NavigationalMenuTableViewController: BaseTableViewController {
         return cell
     }
 
-    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellData = cells[indexPath.row]
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellData = self.cells[indexPath.row]
 
-        if !cellData.presentModally, let navVC = self.navigationController {
+        if !cellData.presentModally, let navVC = navigationController {
             navVC.pushViewController(cellData.createDestinationVC(), animated: true)
         } else {
             let destinationVC = cellData.createDestinationVC()
@@ -55,7 +55,7 @@ open class NavigationalMenuTableViewController: BaseTableViewController {
     }
 
     open func addRow(leftImage: UIImage? = nil, title: String, createDestinationVC: @escaping @autoclosure () -> UIViewController, presentModally: Bool = false) {
-        cells.append(NavigationalMenuTableViewCellDatasource(leftImage: leftImage, title: title, createDestinationVC: createDestinationVC, presentModally: presentModally))
+        self.cells.append(NavigationalMenuTableViewCellDatasource(leftImage: leftImage, title: title, createDestinationVC: createDestinationVC, presentModally: presentModally))
     }
 }
 

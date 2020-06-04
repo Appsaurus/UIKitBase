@@ -43,7 +43,7 @@ public extension DependencyInjectable where Self: NSObject {
 
 extension DependencyInjectable {
     public func assertDependencies() {
-        assert(confirmDependencies(), "Failed to resolve dependencies for class \(String(describing: self))")
+        assert(self.confirmDependencies(), "Failed to resolve dependencies for class \(String(describing: self))")
     }
 
     //    public func assertDependencies(){
@@ -63,16 +63,16 @@ extension DependencyInjectable {
     //    }
 
     public func unresolvedDependencies() -> [Any?] {
-        var missingReqDependencies: [Any?] = requiredDependencies.filter { (value) -> Bool in
+        var missingReqDependencies: [Any?] = self.requiredDependencies.filter { (value) -> Bool in
             value == nil
         }
 
-        if requiresOneOfDependencies.count != 0 {
-            let hasOne = requiresOneOfDependencies.contains { (value) -> Bool in
+        if self.requiresOneOfDependencies.count != 0 {
+            let hasOne = self.requiresOneOfDependencies.contains { (value) -> Bool in
                 value != nil
             }
             if !hasOne {
-                missingReqDependencies.append(contentsOf: requiresOneOfDependencies)
+                missingReqDependencies.append(contentsOf: self.requiresOneOfDependencies)
             }
         }
         return missingReqDependencies
@@ -82,15 +82,15 @@ extension DependencyInjectable {
     ///
     /// - Returns: True if depdencies are valid. False if any dependency is missing.
     public func confirmDependencies() -> Bool {
-        let allRequired = !requiredDependencies.contains { (value) -> Bool in
+        let allRequired = !self.requiredDependencies.contains { (value) -> Bool in
             value == nil
         }
         if !allRequired { return false }
 
-        if requiresOneOfDependencies.count == 0 {
+        if self.requiresOneOfDependencies.count == 0 {
             return true
         }
-        return requiresOneOfDependencies.contains { (value) -> Bool in
+        return self.requiresOneOfDependencies.contains { (value) -> Bool in
             value != nil
         }
     }

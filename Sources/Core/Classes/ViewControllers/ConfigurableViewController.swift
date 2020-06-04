@@ -33,7 +33,7 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
             self.config = config
         }
         if let style = style {
-            vcStyle = style
+            self.vcStyle = style
         }
 
         if callInitLifecycle {
@@ -45,7 +45,7 @@ open class ConfigurableViewController<Configuration: ViewControllerConfiguration
         super.init(coder: aDecoder)
     }
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 }

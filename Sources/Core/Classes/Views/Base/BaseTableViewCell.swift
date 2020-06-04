@@ -19,7 +19,7 @@ extension BaseTableViewCellProtocol where Self: UITableViewCell {
 open class BaseTableViewCell: MixinableTableViewCell, BaseTableViewCellProtocol {
 //    open var subviewsUnmodifiedBySelectionState: [UIView] = []
 
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseTableViewCellProtocolMixins
     }
 

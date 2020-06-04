@@ -53,21 +53,21 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     private lazy var backButton: UIBarButtonItem = self.buildBackButton()
 
     private func buildBackButton() -> UIBarButtonItem {
-        return UIBarButtonItem(barButtonHiddenItem: backButtonType, target: self, action: #selector(backButtonDidTap))
+        return UIBarButtonItem(barButtonHiddenItem: self.backButtonType, target: self, action: #selector(self.backButtonDidTap))
     }
 
     private lazy var fixedSpacer: UIBarButtonItem = self.buildFixedSpacer()
 
     private func buildFixedSpacer() -> UIBarButtonItem {
         let item = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        item.width = direction == .upDown ? 8.0 : 20.0
+        item.width = self.direction == .upDown ? 8.0 : 20.0
         return item
     }
 
     private lazy var forwardButton: UIBarButtonItem = self.buildForwardButton()
 
     private func buildForwardButton() -> UIBarButtonItem {
-        return UIBarButtonItem(barButtonHiddenItem: forwardButtonType, target: self, action: #selector(forwardButtonDidTap))
+        return UIBarButtonItem(barButtonHiddenItem: self.forwardButtonType, target: self, action: #selector(self.forwardButtonDidTap))
     }
 
     private lazy var flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -75,7 +75,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     private lazy var doneButton: UIBarButtonItem = self.buildDoneButton()
 
     private func buildDoneButton() -> UIBarButtonItem {
-        return UIBarButtonItem(title: doneButtonTitle, style: .plain, target: self, action: #selector(doneButtonDidtap(_:)))
+        return UIBarButtonItem(title: self.doneButtonTitle, style: .plain, target: self, action: #selector(self.doneButtonDidtap(_:)))
     }
 
     private var formItems: [FormItem] = []
@@ -85,33 +85,33 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
 
     open var toolBarStyle: FormToolbarStyle = FormToolbarStyle()
 
-    open override func style() {
+    override open func style() {
         super.style()
-        apply(toolBarStyle: toolBarStyle)
+        self.apply(toolBarStyle: self.toolBarStyle)
     }
 
     open func apply(toolBarStyle: FormToolbarStyle) {
-        doneButton.apply(textStyle: toolBarStyle.buttonActiveStyle, for: .normal)
-        doneButton.apply(textStyle: toolBarStyle.buttonInactiveStyle, for: .disabled)
-        forwardButton.tintColor = toolBarStyle.buttonActiveStyle.color
-        backButton.tintColor = toolBarStyle.buttonActiveStyle.color
+        self.doneButton.apply(textStyle: toolBarStyle.buttonActiveStyle, for: .normal)
+        self.doneButton.apply(textStyle: toolBarStyle.buttonInactiveStyle, for: .disabled)
+        self.forwardButton.tintColor = toolBarStyle.buttonActiveStyle.color
+        self.backButton.tintColor = toolBarStyle.buttonActiveStyle.color
     }
 
     /// Back/Forward button arrow direction
     public var direction: Direction = .leftRight {
         didSet {
-            switch direction {
+            switch self.direction {
             case .upDown:
-                backButtonType = .up
-                forwardButtonType = .down
+                self.backButtonType = .up
+                self.forwardButtonType = .down
             case .leftRight:
-                backButtonType = .prev
-                forwardButtonType = .next
+                self.backButtonType = .prev
+                self.forwardButtonType = .next
             }
-            backButton = buildBackButton()
-            forwardButton = buildForwardButton()
-            fixedSpacer = buildFixedSpacer()
-            updateBarItems()
+            self.backButton = self.buildBackButton()
+            self.forwardButton = self.buildForwardButton()
+            self.fixedSpacer = self.buildFixedSpacer()
+            self.updateBarItems()
         }
     }
 
@@ -125,17 +125,17 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     }
 
     private var currentFormItem: FormItem? {
-        return formItems.filter { $0.input?.responder.isFirstResponder ?? false }.first
+        return self.formItems.filter { $0.input?.responder.isFirstResponder ?? false }.first
     }
 
     /// Get current input.
     public var currentInput: FormInput? {
-        return currentFormItem?.input
+        return self.currentFormItem?.input
     }
 
     /// Get previous input.
     public var previousInput: FormInput? {
-        var previousValidInput = currentFormItem?.previousItem
+        var previousValidInput = self.currentFormItem?.previousItem
         while previousValidInput?.input?.responder.canBecomeFirstResponder == false {
             previousValidInput = previousValidInput?.previousItem
         }
@@ -144,7 +144,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
 
     /// Get next input.
     public var nextInput: FormInput? {
-        var nextItem = currentFormItem?.nextItem
+        var nextItem = self.currentFormItem?.nextItem
         while nextItem?.input?.responder.canBecomeFirstResponder == false {
             nextItem = nextItem?.nextItem
         }
@@ -160,10 +160,10 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     public required convenience init(inputs: [FormInput], attachToolbarToInputs: Bool = true) {
         self.init(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 44.0)))
 
-        set(inputs: inputs, attachToolbarToInputs: attachToolbarToInputs)
+        self.set(inputs: inputs, attachToolbarToInputs: attachToolbarToInputs)
 
-        updateBarItems()
-        update()
+        self.updateBarItems()
+        self.update()
     }
 
     override init(frame: CGRect) {
@@ -182,9 +182,9 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     ///     default is `true`
     public func set(inputs: [FormInput], attachToolbarToInputs: Bool = true) {
         // remove toolbar before releasing
-        formItems.forEach { $0.input?._inputAccessoryView = nil }
+        self.formItems.forEach { $0.input?._inputAccessoryView = nil }
 
-        formItems = inputs.map { input in
+        self.formItems = inputs.map { input in
             let formItem = FormItem()
             formItem.input = input
             return formItem
@@ -192,7 +192,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
 
         do {
             var lastFormItem: FormItem?
-            formItems.forEach { formItem in
+            self.formItems.forEach { formItem in
                 lastFormItem?.nextInput = formItem.input
                 lastFormItem?.nextItem = formItem
                 formItem.previousInput = lastFormItem?.input
@@ -208,14 +208,14 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
 
     /// Update toolbar's buttons.
     public func update() {
-        guard currentInput != nil else {
-            backButton.isEnabled = false
-            forwardButton.isEnabled = false
+        guard self.currentInput != nil else {
+            self.backButton.isEnabled = false
+            self.forwardButton.isEnabled = false
             return
         }
 
-        backButton.isEnabled = previousInput != nil
-        forwardButton.isEnabled = nextInput != nil
+        self.backButton.isEnabled = self.previousInput != nil
+        self.forwardButton.isEnabled = self.nextInput != nil
     }
 
     /// Go back to previous input.
@@ -229,7 +229,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
                 FeedbackGenerator.selectionChanged()
             }
         }
-        update()
+        self.update()
     }
 
     /// Go forward to next input.
@@ -243,7 +243,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
                 FeedbackGenerator.selectionChanged()
             }
         }
-        update()
+        self.update()
     }
 
     private func updateBarItems() {
@@ -252,15 +252,15 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     }
 
     @objc open func backButtonDidTap() {
-        goBack()
+        self.goBack()
     }
 
     @objc open func forwardButtonDidTap() {
-        goForward()
+        self.goForward()
     }
 
     @objc private func doneButtonDidtap(_: UIBarButtonItem) {
-        guard currentFormItem?.input?.responder.resignFirstResponder() == true else {
+        guard self.currentFormItem?.input?.responder.resignFirstResponder() == true else {
             parentViewController?.view.endEditing(true)
             return
         }

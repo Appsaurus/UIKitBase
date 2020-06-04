@@ -25,19 +25,19 @@ open class BaseAppNotification {
     @available(iOS 10.0, *)
     open var unNotification: UNNotification? {
         get {
-            return _unNotification as? UNNotification
+            return self._unNotification as? UNNotification
         }
         set {
-            _unNotification = newValue
+            self._unNotification = newValue
         }
     }
 
     @available(iOS 10.0, *)
     public init(unNotification: UNNotification) {
-        _unNotification = unNotification
+        self._unNotification = unNotification
         let request = unNotification.request
-        payload = request.content.userInfo
-        origin = request.trigger is UNPushNotificationTrigger ? .remote : .local
+        self.payload = request.content.userInfo
+        self.origin = request.trigger is UNPushNotificationTrigger ? .remote : .local
     }
 
     public init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote) {
@@ -74,7 +74,7 @@ open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
         guard let notificationStringId = payload[idKey] as? String else {
             return
         }
-        notificationIdentifier = ID.from(id: notificationStringId)
+        self.notificationIdentifier = ID.from(id: notificationStringId)
     }
 
     public required init(payload: AppNotificationPayload, origin: AppNotificationOrigin = .remote, idKey: String = ID.notificationIdentifierKey) {
@@ -82,7 +82,7 @@ open class AppNotification<ID: AppNotificationID>: BaseAppNotification {
         guard let notificationStringId = payload[idKey] as? String else {
             return
         }
-        notificationIdentifier = ID.from(id: notificationStringId)
+        self.notificationIdentifier = ID.from(id: notificationStringId)
     }
 
     public convenience init(notification: BaseAppNotification, idKey: String = ID.notificationIdentifierKey) {

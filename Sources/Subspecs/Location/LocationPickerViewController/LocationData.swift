@@ -41,7 +41,7 @@ import MapKit
 
 extension LocationData: MKAnnotation {
     @objc public var coordinate: CLLocationCoordinate2D {
-        return location.coordinate
+        return self.location.coordinate
     }
 
     public var title: String? {
@@ -59,7 +59,7 @@ extension LocationData: MKAnnotation {
             }
         }
 
-        return "\(location.coordinate)"
+        return "\(self.location.coordinate)"
     }
 
     public var subtitle: String? {
@@ -81,7 +81,7 @@ extension LocationData: MKAnnotation {
             return CNPostalAddressFormatter.string(from: address, style: .mailingAddress)
         }
 
-        return "\(location.coordinate)"
+        return "\(self.location.coordinate)"
     }
 }
 

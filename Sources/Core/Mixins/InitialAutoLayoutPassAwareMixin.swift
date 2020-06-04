@@ -8,7 +8,7 @@
 import UIKitMixinable
 
 open class InitialAutoLayoutPassAwareMixin: UIViewMixin<InitialAutoLayoutPassAware> {
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         if !mixable.didInitialAutolayoutPass {
             mixable.didInitialAutolayoutPass = true
             mixable.didFinishInitialAutoLayoutPass()
@@ -17,7 +17,7 @@ open class InitialAutoLayoutPassAwareMixin: UIViewMixin<InitialAutoLayoutPassAwa
 }
 
 open class InitialAutoLayoutPassAwareViewControllerMixin: UIViewControllerMixin<InitialAutoLayoutPassAware> {
-    open override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         if !mixable.didInitialAutolayoutPass {
             mixable.didInitialAutolayoutPass = true
             mixable.didFinishInitialAutoLayoutPass()

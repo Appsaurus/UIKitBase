@@ -11,7 +11,7 @@ import Swiftest
 import UIKitTheme
 
 open class PassThroughView: BaseStatefulView, PassThroughTouchable {
-    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return shouldPassThroughTouch(inside: point, with: event)
     }
 }

@@ -17,15 +17,15 @@ open class BaseParentViewController: BaseContainerViewController {
         return true
     }
 
-    open override func didFinishCreatingAllViews() {
+    override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        if loadChildViewControllerImmediately() {
-            loadChildViewController()
+        if self.loadChildViewControllerImmediately() {
+            self.loadChildViewController()
         }
     }
 
     open func loadChildViewController() {
-        let child = initialChildViewController()
+        let child = self.initialChildViewController()
         if !children.contains(child) {
             add(child, to: containerView)
             child.loadViewIfNeeded()
@@ -37,7 +37,7 @@ open class BaseParentViewController: BaseContainerViewController {
         return UIViewController()
     }
 
-    open override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if endsEditingOnDisappearance {
             containerView.endEditing(true)

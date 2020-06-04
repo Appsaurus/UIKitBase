@@ -42,11 +42,11 @@ public extension TabBarChild where Self: UINavigationController {
     }
 
     func defaultTabItemWasTappedWhileActive() {
-        stackedChild?.tabItemWasTappedWhileActive()
+        self.stackedChild?.tabItemWasTappedWhileActive()
     }
 
     func tabBarChildDidAppear() {
-        stackedChild?.tabBarChildDidAppear()
+        self.stackedChild?.tabBarChildDidAppear()
     }
 }
 
@@ -71,11 +71,11 @@ public extension TabBarChild where Self: BaseParentPagingViewController {
     }
 
     func defaultTabItemWasTappedWhileActive() {
-        pagedChild?.tabItemWasTappedWhileActive()
+        self.pagedChild?.tabItemWasTappedWhileActive()
     }
 
     func tabBarChildDidAppear() {
-        pagedChild?.tabBarChildDidAppear()
+        self.pagedChild?.tabBarChildDidAppear()
     }
 }
 
@@ -89,11 +89,11 @@ public extension TabBarChild where Self: BaseScrollviewParentViewController {
             scrollView.scrollToTop()
             return
         }
-        contentChild?.tabItemWasTappedWhileActive()
+        self.contentChild?.tabItemWasTappedWhileActive()
     }
 
     func tabBarChildDidAppear() {
-        contentChild?.tabBarChildDidAppear()
+        self.contentChild?.tabBarChildDidAppear()
     }
 }
 
@@ -103,10 +103,10 @@ public extension TabBarChild where Self: BaseParentViewController {
     }
 
     func defaultTabItemWasTappedWhileActive() {
-        contentChild?.tabItemWasTappedWhileActive()
+        self.contentChild?.tabItemWasTappedWhileActive()
     }
 
     func tabBarChildDidAppear() {
-        contentChild?.tabBarChildDidAppear()
+        self.contentChild?.tabBarChildDidAppear()
     }
 }

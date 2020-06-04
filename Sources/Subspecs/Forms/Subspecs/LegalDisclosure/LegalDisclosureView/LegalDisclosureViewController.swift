@@ -23,28 +23,28 @@ open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
                          onDeny: VoidClosure? = nil) {
         self.onAccept = onAccept
         self.onDeny = onDeny
-        legalDisclosureView = LegalDisclosureView(viewModel: legalDisclosureViewModel)
+        self.legalDisclosureView = LegalDisclosureView(viewModel: legalDisclosureViewModel)
         super.init(viewModel: alertViewModel)
     }
 
-    open override func userDidDismiss() {
+    override open func userDidDismiss() {
         super.userDidDismiss()
-        onDeny?()
+        self.onDeny?()
     }
 
-    open override func setupControlActions() {
+    override open func setupControlActions() {
         super.setupControlActions()
-        acceptButton.onTap = { [weak self] in
+        self.acceptButton.onTap = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: self.onAccept)
         }
     }
 
-    open override func style() {
+    override open func style() {
         super.style()
-        acceptButton.styleMap = [.any: .solid(backgroundColor: .primary,
-                                              textColor: .primaryContrast,
-                                              font: .bold(.button))]
+        self.acceptButton.styleMap = [.any: .solid(backgroundColor: .primary,
+                                                   textColor: .primaryContrast,
+                                                   font: .bold(.button))]
     }
 
     public required init(viewModel: AlertViewModel) {
@@ -55,17 +55,17 @@ open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        stackView.insertArrangedSubview(legalDisclosureView, at: 1)
+        stackView.insertArrangedSubview(self.legalDisclosureView, at: 1)
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        acceptButton.height.equal(to: 70.0)
+        self.acceptButton.height.equal(to: 70.0)
     }
 
-    open override var bottomStackArrangedSubviews: [UIView] {
-        return [acceptButton] + super.bottomStackArrangedSubviews
+    override open var bottomStackArrangedSubviews: [UIView] {
+        return [self.acceptButton] + super.bottomStackArrangedSubviews
     }
 }

@@ -44,7 +44,7 @@ public protocol OAuthAuthenticator: Authenticator {
 public extension OAuthAuthenticator {
     func _authenticate() {
         authenticationWillBegin()
-        authenticate(onCompletion: { [weak self] result in
+        self.authenticate(onCompletion: { [weak self] result in
             guard let self = self else { return }
             self.delegate?.authenticationDidComplete(authenticator: self, with: result)
         })

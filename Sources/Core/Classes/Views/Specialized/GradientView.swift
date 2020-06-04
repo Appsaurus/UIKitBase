@@ -118,7 +118,7 @@ import UIKitTheme
 
     // MARK: - UIView
 
-    open override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let size = bounds.size
 
@@ -126,9 +126,9 @@ import UIKitTheme
         if let gradient = gradient {
             let options: CGGradientDrawingOptions = [.drawsAfterEndLocation]
 
-            if mode == .linear {
+            if self.mode == .linear {
                 let startPoint = CGPoint.zero
-                let endPoint = direction == .vertical ? CGPoint(x: 0, y: size.height) : CGPoint(x: size.width, y: 0)
+                let endPoint = self.direction == .vertical ? CGPoint(x: 0, y: size.height) : CGPoint(x: size.width, y: 0)
                 context?.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: options)
             } else {
                 let center = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -137,7 +137,7 @@ import UIKitTheme
         }
 
         let screen: UIScreen = window?.screen ?? UIScreen.main
-        let borderWidth: CGFloat = drawsThinBorders ? 1.0 / screen.scale : 1.0
+        let borderWidth: CGFloat = self.drawsThinBorders ? 1.0 / screen.scale : 1.0
 
         // Top border
         if let color = topBorderColor {
@@ -145,8 +145,8 @@ import UIKitTheme
             context?.fill(CGRect(x: 0, y: 0, width: size.width, height: borderWidth))
         }
 
-        let sideY: CGFloat = topBorderColor != nil ? borderWidth : 0
-        let sideHeight: CGFloat = size.height - sideY - (bottomBorderColor != nil ? borderWidth : 0)
+        let sideY: CGFloat = self.topBorderColor != nil ? borderWidth : 0
+        let sideHeight: CGFloat = size.height - sideY - (self.bottomBorderColor != nil ? borderWidth : 0)
 
         // Right border
         if let color = rightBorderColor {
@@ -167,15 +167,15 @@ import UIKitTheme
         }
     }
 
-    open override func tintColorDidChange() {
+    override open func tintColorDidChange() {
         super.tintColorDidChange()
 
-        if automaticallyDims {
-            updateGradient()
+        if self.automaticallyDims {
+            self.updateGradient()
         }
     }
 
-    open override func didMoveToWindow() {
+    override open func didMoveToWindow() {
         super.didMoveToWindow()
         contentMode = .redraw
     }
@@ -185,10 +185,10 @@ import UIKitTheme
     fileprivate var gradient: CGGradient?
 
     fileprivate func updateGradient() {
-        gradient = nil
+        self.gradient = nil
         setNeedsDisplay()
 
-        let colors = gradientColors()
+        let colors = self.gradientColors()
         if let colors = colors {
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let colorSpaceModel = colorSpace.model
@@ -211,7 +211,7 @@ import UIKitTheme
                 return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor as AnyObject
             } as NSArray
 
-            gradient = CGGradient(colorsSpace: colorSpace, colors: gradientColors, locations: locations)
+            self.gradient = CGGradient(colorsSpace: colorSpace, colors: gradientColors, locations: self.locations)
         }
     }
 
@@ -221,7 +221,7 @@ import UIKitTheme
                 return dimmedColors
             }
 
-            if automaticallyDims {
+            if self.automaticallyDims {
                 if let colors = colors {
                     return colors.map {
                         var hue: CGFloat = 0
@@ -236,7 +236,7 @@ import UIKitTheme
             }
         }
 
-        return colors
+        return self.colors
     }
 }
 
@@ -265,7 +265,7 @@ public extension GradientView {
                                             gradientMode: Mode = .linear,
                                             gradientDirection: Direction = .horizontal,
                                             alpha: CGFloat = 1.0) -> GradientView {
-        let gradientView = gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
+        let gradientView = self.gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
         view.insertSubview(gradientView, at: 0)
         gradientView.clipsToBounds = true
         gradientView.cornerRadius = view.cornerRadius

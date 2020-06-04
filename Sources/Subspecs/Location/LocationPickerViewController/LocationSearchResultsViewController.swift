@@ -22,7 +22,7 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
 
     public typealias PaginatableModel = MKMapItem
 
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + PaginationManagedMixin(self)
     }
 
@@ -54,15 +54,15 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
         return cell
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        paginator = locationSearchPaginator
+        self.paginator = self.locationSearchPaginator
     }
 
-    open override func didInit(type: InitializationType) {
+    override open func didInit(type: InitializationType) {
         super.didInit(type: type)
         if let location = locationHint {
-            locationSearchPaginator.locationHint = location
+            self.locationSearchPaginator.locationHint = location
         } else {
             LocationManager.shared.locateFromIP(service: .ipAPI) { [weak self] result in
                 guard let self = self else { return }
@@ -77,8 +77,8 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
         }
     }
 
-    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onDidFinishTask?.result(LocationData(placemark: datasource[indexPath].placemark))
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.onDidFinishTask?.result(LocationData(placemark: self.datasource[indexPath].placemark))
     }
 
     open func reloadDidBegin() {}
@@ -115,9 +115,9 @@ class MKLocalSearchRequestQueryPaginator: Paginator<MKMapItem> {
                                                 span: MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2))
         }
 
-        localSearch?.cancel()
-        localSearch = MKLocalSearch(request: request)
-        localSearch!.start { response, error in
+        self.localSearch?.cancel()
+        self.localSearch = MKLocalSearch(request: request)
+        self.localSearch!.start { response, error in
             guard error == nil else {
                 failure(error!)
                 return

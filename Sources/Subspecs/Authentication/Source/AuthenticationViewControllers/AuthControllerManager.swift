@@ -16,7 +16,7 @@ public extension Keychain {
     subscript<V: Codable>(key: AuthKey) -> V? {
         get {
             do {
-                guard let data = try self.getData(key.rawValue) else { return nil }
+                guard let data = try getData(key.rawValue) else { return nil }
                 return try JSONDecoder().decode(V.self, from: data)
             } catch {
                 return nil
@@ -51,14 +51,14 @@ public extension KeychainCredentialStoring {
     }
 
     func saveCredentialsToKeychain(_ credentials: Credential) {
-        keychain[.credentials] = credentials
+        self.keychain[.credentials] = credentials
     }
 
     func removeCredentialsFromKeychain() throws {
-        try keychain.remove(AuthKey.credentials.rawValue)
+        try self.keychain.remove(AuthKey.credentials.rawValue)
     }
 
     func getSavedCredentialsFromKeychain() -> Credential? {
-        return keychain[.credentials]
+        return self.keychain[.credentials]
     }
 }

@@ -19,7 +19,7 @@ extension BaseBarButtonItemProtocol where Self: UIBarButtonItem {
 }
 
 open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseBarButtonItemProtocolMixins
     }
 

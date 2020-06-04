@@ -31,7 +31,7 @@ extension BaseViewProtocol where Self: UIView {
 }
 
 open class BaseView: MixinableView, BaseViewProtocol {
-    open override func createMixins() -> [LifeCycle] {
+    override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseViewProtocolMixins
     }
 

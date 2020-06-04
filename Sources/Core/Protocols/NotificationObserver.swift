@@ -38,7 +38,7 @@ extension NotificationObserver {
 
 extension NotificationObserver where Self: NSObject {
     public func setupNotificationObserverCallback() {
-        notificationsToObserve().forEach { notificationName in
+        self.notificationsToObserve().forEach { notificationName in
             let notificationName = notificationName as NSNotification.Name
             NotificationCenter.default.add(observer: self,
                                            name: notificationName,
@@ -50,7 +50,7 @@ extension NotificationObserver where Self: NSObject {
             })
         }
 
-        notificationClosureMap().forEach { mappedNotification in
+        self.notificationClosureMap().forEach { mappedNotification in
 
             NotificationCenter.default.add(observer: self,
                                            name: mappedNotification.key,
@@ -65,11 +65,11 @@ extension NotificationObserver where Self: NSObject {
 }
 
 open class NotificationObserverMixin: InitializableMixin<NotificationObserver> {
-    open override func initProperties() {
+    override open func initProperties() {
         mixable.setupNotificationObserverCallback()
     }
 
-    open override func willDeinit() {
+    override open func willDeinit() {
         NotificationCenter.default.removeObserver(mixable)
     }
 }

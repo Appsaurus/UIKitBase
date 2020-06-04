@@ -9,7 +9,7 @@ import Foundation
 import UIKitMixinable
 
 public class ManualScrollViewContentManagerMixin: UIViewControllerMixin<UIViewController> {
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         mixable.manuallyManageScrollViewContentInsets()
     }
@@ -35,7 +35,7 @@ public extension UIViewController {
 }
 
 open class ViewEdgesLayoutMixin: UIViewControllerMixin<UIViewController> {
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         mixable.edgesForExtendedLayout = .all
         mixable.extendedLayoutIncludesOpaqueBars = false

@@ -11,10 +11,10 @@ import UIKitTheme
 
 open class DrawingUtils {
     public static func draw(polygon: [CGPoint], style: ViewStyle, innerBorder: Bool = true) {
-        draw(polygon: polygon,
-             fill: style.backgroundColor,
-             borderColor: style.borderStyle?.borderColor,
-             borderWidth: style.borderStyle?.borderWidth)
+        self.draw(polygon: polygon,
+                  fill: style.backgroundColor,
+                  borderColor: style.borderStyle?.borderColor,
+                  borderWidth: style.borderStyle?.borderWidth)
     }
 
     public static func draw(polygon: [CGPoint], fill: UIColor? = nil, borderColor: UIColor? = nil, borderWidth: CGFloat? = nil, innerBorder: Bool = true) {
@@ -50,7 +50,7 @@ open class DrawingUtils {
             CGPoint(x: rect.maxX, y: rect.maxY),
             CGPoint(x: rect.minX, y: rect.maxY)
         ]
-        draw(polygon: poly, fill: color)
+        self.draw(polygon: poly, fill: color)
     }
 
     public static func drawDottedUnderline(strokeColor: UIColor? = nil,

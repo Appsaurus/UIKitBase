@@ -14,7 +14,7 @@ open class DeepLink<R: DeepLinkRoute> {
     open var route: R
     open var authorizationTest: DeepLinkAuthorizationTest?
     open var isActionable: Bool {
-        return authorizationTest == nil || authorizationTest!() == true
+        return self.authorizationTest == nil || self.authorizationTest!() == true
     }
 
     public init(route: R, authorizationTest: DeepLinkAuthorizationTest? = nil) {
@@ -58,14 +58,14 @@ open class DeepLinker<R: DeepLinkRoute> {
 
     open func register(deepLinks: [DeepLink<R>]) {
         for deepLink in deepLinks {
-            router.bind(deepLink.route.rawValue, callback: { req in
+            self.router.bind(deepLink.route.rawValue, callback: { req in
                 self.request = DeepLinkRequest(request: req, link: deepLink)
             })
         }
     }
 
     open func register(deepLinks: DeepLink<R>...) {
-        register(deepLinks: deepLinks)
+        self.register(deepLinks: deepLinks)
     }
 
     @discardableResult
@@ -76,7 +76,7 @@ open class DeepLinker<R: DeepLinkRoute> {
             return false
         }
 
-        return request == nil ? false : true
+        return self.request == nil ? false : true
     }
 
     open var request: DeepLinkRequest<R>? {
@@ -90,7 +90,7 @@ open class DeepLinker<R: DeepLinkRoute> {
             return
         }
 
-        router.match(url)
+        self.router.match(url)
     }
 
     open func postDeepLinkNotification() {
@@ -111,18 +111,20 @@ open class DeepLinker<R: DeepLinkRoute> {
         R.allCases.forEach { route in
             deepLinks.append(DeepLink(route: route, authorizationTest: authorizationTest))
         }
-        register(deepLinks: deepLinks)
+        self.register(deepLinks: deepLinks)
     }
 }
 
 public protocol DeepLinkRoute: StringIdentifiableEnum {
     static var scheme: String { get }
 }
+
 extension DeepLinkRoute {
     public var fullPath: String {
-        return  "\(Self.scheme)//\(self.rawValue)"
-     }
+        return "\(Self.scheme)//\(rawValue)"
+    }
 }
+
 public protocol DeepLinkObserver: AnyObject {
     func observeDeepLinkNotifications()
 }
@@ -153,7 +155,7 @@ extension DeepLinkHandler where Self: NSObject {
     }
 
     public func observeDeepLinkNotifications() {
-        handleDeepLink() // Run once to take care of any links posted before observation starts
+        self.handleDeepLink() // Run once to take care of any links posted before observation starts
         for route in deepLinkRoutes() {
             NotificationCenter.default.observe(route.notificationCenterName(), action: { [weak self] in
                 DispatchQueue.main.async {
@@ -167,7 +169,7 @@ extension DeepLinkHandler where Self: NSObject {
 import UIKitMixinable
 
 open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler> {
-    open override func initProperties() {
+    override open func initProperties() {
         mixable.observeDeepLinkNotifications()
     }
 }

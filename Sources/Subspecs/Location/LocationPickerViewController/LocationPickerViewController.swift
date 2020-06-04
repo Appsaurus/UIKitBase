@@ -55,9 +55,9 @@ open class LocationPickerSearchViewController: SearchViewController, TaskResultD
         return resultsVC
     }()
 
-    open override func createSearchResultsControllers() -> SearchResultsControllers {
-        return SearchResultsControllers(resultsViewController: searchResultsViewController,
-                                        preSearchViewController: mapViewController)
+    override open func createSearchResultsControllers() -> SearchResultsControllers {
+        return SearchResultsControllers(resultsViewController: self.searchResultsViewController,
+                                        preSearchViewController: self.mapViewController)
     }
 
     lazy var mapViewController: LocationPickerMapViewController = {
@@ -65,11 +65,11 @@ open class LocationPickerSearchViewController: SearchViewController, TaskResultD
         return mapVC
     }()
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         layoutConfig.searchBarPosition = .navigationTitle
-        mapViewController.onDidFinishTask = onDidFinishTask
-        searchResultsViewController.onDidFinishTask = (result: { [weak self] value in
+        self.mapViewController.onDidFinishTask = self.onDidFinishTask
+        self.searchResultsViewController.onDidFinishTask = (result: { [weak self] value in
             guard let self = self else { return }
             self.resignSearch()
             self.mapViewController.location = value
@@ -116,7 +116,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     public var submitButton: BaseButton!
     public var selectButtonTitle: String {
-        return config.selectButtonTitleBuilder.titleFor(location: location)
+        return config.selectButtonTitleBuilder.titleFor(location: self.location)
     }
 
     // MARK: Configuration
@@ -126,7 +126,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
     public var mapType: MKMapType = .standard {
         didSet {
             if isViewLoaded {
-                mapView.mapType = mapType
+                self.mapView.mapType = self.mapType
             }
         }
     }
@@ -135,11 +135,11 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     public var location: LocationData? {
         didSet {
-            location?.locationDisplayNameFormatter = config.locationDisplayNameFormatter
-            submitButton.titleMap = [.normal: selectButtonTitle]
+            self.location?.locationDisplayNameFormatter = config.locationDisplayNameFormatter
+            self.submitButton.titleMap = [.normal: self.selectButtonTitle]
             updateSubmitButtonState()
             if isViewLoaded {
-                updateAnnotation()
+                self.updateAnnotation()
             }
         }
     }
@@ -152,50 +152,50 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         BaseButton(icon: MaterialIcons.My_Location, buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: .zero))
     }()
 
-    open override func style() {
+    override open func style() {
         super.style()
 
         let viewStyle: ViewStyle = .raised(backgroundColor: .primary)
 
         let selectButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast), viewStyle: viewStyle)
         submitButton.apply(buttonStyle: selectButtonStyle)
-        submitButton.apply(shape: .roundedRect)
+        self.submitButton.apply(shape: .roundedRect)
 
         let iconTextStyle = TextStyle(color: .primaryContrast, font: MaterialIcons.font())
         let iconButtonStyle = ButtonStyle(textStyle: iconTextStyle, viewStyle: viewStyle)
         currentLocationButton.apply(buttonStyle: iconButtonStyle)
-        currentLocationButton.rounded = true
+        self.currentLocationButton.rounded = true
     }
 
-    open override func initProperties() {
+    override open func initProperties() {
         super.initProperties()
-        mapView.mapType = mapType
+        self.mapView.mapType = self.mapType
     }
 
-    open override func viewWillLayoutSubviews() {
+    override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         guard let annotation = mapView.annotations.first, let annotationView = mapView.view(for: annotation) else { return }
         annotationView.superview?.bringSubviewToFront(annotationView)
     }
 
-    open override func createSubviews() {
+    override open func createSubviews() {
         super.createSubviews()
-        view.addSubview(mapView)
-        mapView.addSubview(currentLocationButton)
+        view.addSubview(self.mapView)
+        self.mapView.addSubview(self.currentLocationButton)
         setupSubmitButton(configuration: ManagedButtonConfiguration(position: .floatingFooter))
-        submitButton.titleMap = [.normal: selectButtonTitle]
+        self.submitButton.titleMap = [.normal: self.selectButtonTitle]
     }
 
-    open override func createAutoLayoutConstraints() {
+    override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        mapView.pinToSuperview()
-        currentLocationButton.size.equal(to: 35)
-        currentLocationButton.topTrailing.equal(to: .inset(25, 25))
+        self.mapView.pinToSuperview()
+        self.currentLocationButton.size.equal(to: 35)
+        self.currentLocationButton.topTrailing.equal(to: .inset(25, 25))
     }
 
-    open override func setupControlActions() {
+    override open func setupControlActions() {
         super.setupControlActions()
-        currentLocationButton.addAction { [weak self] in
+        self.currentLocationButton.addAction { [weak self] in
             guard let self = self else { return }
             self.authorize {
                 self.currentLocationButton.showActivityIndicator()
@@ -215,7 +215,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         }
     }
 
-    open override func loadAsyncData() {
+    override open func loadAsyncData() {
         super.loadAsyncData()
         if config.dropPinAtInitialLocation {
             LocationManager.shared.locateFromIP(service: .ipAPI) { [weak self] result in
@@ -232,12 +232,12 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         }
     }
 
-    open override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-        mapView.userTrackingMode = .none
-        mapView.showsUserLocation = config.dropPinAtInitialLocation || config.showCurrentLocationButton
-        currentLocationButton.isVisible = config.showCurrentLocationButton
+        self.mapView.delegate = self
+        self.mapView.userTrackingMode = .none
+        self.mapView.showsUserLocation = config.dropPinAtInitialLocation || config.showCurrentLocationButton
+        self.currentLocationButton.isVisible = config.showCurrentLocationButton
         //        if useCurrentLocationAsHint {
         //            getCurrentLocation()
         //        }
@@ -245,12 +245,12 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     var presentedInitialLocation = false
 
-    open override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // setting initial location here since viewWillAppear is too early, and viewDidAppear is too late
-        if !presentedInitialLocation {
-            setInitialLocation()
-            presentedInitialLocation = true
+        if !self.presentedInitialLocation {
+            self.setInitialLocation()
+            self.presentedInitialLocation = true
         }
     }
 
@@ -258,14 +258,14 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         if let location = location {
             // present initial location if any
             self.location = location
-            showCoordinates(location.coordinate, animated: false)
+            self.showCoordinates(location.coordinate, animated: false)
         } else if config.dropPinAtInitialLocation {
-            showCurrentLocation(false)
+            self.showCurrentLocation(false)
         }
     }
 
     func currentLocationPressed() {
-        showCurrentLocation()
+        self.showCurrentLocation()
     }
 
     func showCurrentLocation(_ animated: Bool = true) {
@@ -273,20 +273,20 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
     }
 
     func updateAnnotation() {
-        mapView.removeAnnotations(mapView.annotations)
+        self.mapView.removeAnnotations(self.mapView.annotations)
         if let location = location {
-            mapView.addAnnotation(location)
-            mapView.selectAnnotation(location, animated: true)
+            self.mapView.addAnnotation(location)
+            self.mapView.selectAnnotation(location, animated: true)
         }
     }
 
     func showCoordinates(_ coordinate: CLLocationCoordinate2D, animated: Bool = true) {
         let displayRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: config.resultRegionDistance, longitudinalMeters: config.resultRegionDistance)
-        mapView.setRegion(displayRegion, animated: animated)
+        self.mapView.setRegion(displayRegion, animated: animated)
     }
 
     func reversGeocodeAndDropPin(at location: CLLocationCoordinate2D) {
-        dropPin(at: location)
+        self.dropPin(at: location)
         LocationManager.shared.locateFromCoordinates(location) { [weak self] result in
             guard let self = self else { return }
             do {
@@ -306,7 +306,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         // add point annotation to map
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-        mapView.addAnnotation(annotation)
+        self.mapView.addAnnotation(annotation)
     }
 
     func authorize(locationRequest: @escaping VoidClosure) {
@@ -345,7 +345,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         // drop only on long press gesture
         let fromLongPress = annotation is MKPointAnnotation
         pin.animatesDrop = fromLongPress
-        pin.rightCalloutAccessoryView = selectLocationButton()
+        pin.rightCalloutAccessoryView = self.selectLocationButton()
         pin.canShowCallout = true
         return pin
     }
@@ -363,7 +363,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     @nonobjc public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let location = location else { return }
-        onDidFinishTask?.result(location)
+        self.onDidFinishTask?.result(location)
     }
 
     @nonobjc public func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
@@ -386,12 +386,12 @@ extension LocationPickerMapViewController: SubmitButtonManaged {
     // MARK: SubmitButtonManaged
 
     public func userCanSubmit() -> Bool {
-        return location != nil
+        return self.location != nil
     }
 
     public func submissionDidSucceed() {
         guard let location = location else { return }
-        onDidFinishTask?.result(location)
+        self.onDidFinishTask?.result(location)
     }
 }
 
@@ -400,17 +400,17 @@ extension LocationPickerMapViewController: SubmitButtonManaged {
 extension LocationPickerMapViewController {
     func addLocation(_ gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            let point = gestureRecognizer.location(in: mapView)
-            let coordinates = mapView.convert(point, toCoordinateFrom: mapView)
+            let point = gestureRecognizer.location(in: self.mapView)
+            let coordinates = self.mapView.convert(point, toCoordinateFrom: self.mapView)
             _ = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
 
             // clean location, cleans out old annotation too
-            location = nil
+            self.location = nil
 
             // add point annotation to map
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinates
-            mapView.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
 
             //            geocoder.cancelGeocode()
             //            geocoder.reverseGeocodeLocation(location) { response, error in
