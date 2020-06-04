@@ -212,9 +212,9 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         if let prependedCount = self.parkedText.prepended?.count, range.location < prependedCount {
             return false
         }
-//        if !allowsSpaces, string == " " {
-//            return true
-//        }
+        if range.length <= 0, !allowsSpaces, string.isWhitespace { //Allow deleting, don't allow whitespace insertion
+            return false
+        }
 
         let prevCharCount = textField.text!.count
 
