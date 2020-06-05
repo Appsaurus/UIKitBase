@@ -68,11 +68,13 @@ extension SubmissionManaged where Self: UIViewController {
     public func submissionDidBegin() {
         submitButton.state = .activity
         view.endEditing(true)
+        navigationController?.navigationBar.isUserInteractionEnabled = false
         view.isUserInteractionEnabled = false
     }
 
     public func submissionDidEnd() {
         view.isUserInteractionEnabled = true
+        navigationController?.navigationBar.isUserInteractionEnabled = true
         updateSubmitButtonState()
     }
 
