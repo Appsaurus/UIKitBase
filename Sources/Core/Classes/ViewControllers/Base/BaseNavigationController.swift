@@ -7,6 +7,7 @@
 //
 
 import UIKitMixinable
+import UIKitTheme
 
 public protocol BaseNavigationControllerProtocol: BaseViewControllerProtocol {}
 
@@ -17,6 +18,8 @@ extension BaseNavigationControllerProtocol where Self: UINavigationController {
 }
 
 open class BaseNavigationController: MixinableNavigationController, BaseNavigationControllerProtocol {
+    public var overridesChildStatusBarStyles: Bool = false
+
     override open func createMixins() -> [LifeCycle] {
         return super.createMixins() + baseNavigationControllerProtocolMixins
     }
@@ -28,14 +31,23 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
     }
 
     override open var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        guard overridesChildStatusBarStyles else {
+            return (topViewController as? BaseViewController)?.statusBarAnimation ?? statusBarAnimation
+        }
         return statusBarAnimation
     }
 
     override open var preferredStatusBarStyle: UIStatusBarStyle {
+        guard overridesChildStatusBarStyles else {
+            return (topViewController as? BaseViewController)?.statusBarStyle ?? statusBarStyle
+        }
         return statusBarStyle
     }
 
     override open var prefersStatusBarHidden: Bool {
+        guard overridesChildStatusBarStyles else {
+            return (topViewController as? BaseViewController)?.statusBarHidden ?? statusBarHidden
+        }
         return statusBarHidden
     }
 

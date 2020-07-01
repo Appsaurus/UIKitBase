@@ -11,12 +11,20 @@ import Nuke
 import Swiftest
 import UIKitExtensions
 open class BaseStackViewController: BaseViewController {
+
+    public enum Layout {
+        case center
+        case topCenter
+    }
     open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
     open var stackViewBackgroundView: UIView = UIView()
     open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .fill, spacing: 12)
     open lazy var stackviewLayoutMargins: UIEdgeInsets = 25
     open lazy var verticalLayoutPadding: CGFloat = 25.0
     open lazy var horizontalLayoutPadding: CGFloat = 25.0
+
+    open var layout: Layout = .center
+
     open func initialArrangedSubviews() -> [UIView] {
         return []
     }
@@ -41,13 +49,22 @@ open class BaseStackViewController: BaseViewController {
 
     override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        self.stackView.centerInSuperview()
-        self.stackView.edgeAnchors.insetOrEqual(to: edgeAnchors.inset(self.horizontalLayoutPadding, self.verticalLayoutPadding))
         self.stackView.hugContent()
         self.stackViewBackgroundView.pinToSuperview()
         self.initialArrangedSubviews().forEach { view in
             view.resistCompression()
             view.heightAnchor.greaterThanOrEqual(to: 0)
+        }
+
+        switch self.layout {
+        case .center:
+            self.stackView.centerInSuperview()
+          self.stackView.edgeAnchors.insetOrEqual(to: edgeAnchors.inset(self.horizontalLayoutPadding, self.verticalLayoutPadding))
+        case .topCenter:
+            self.stackView.centerX.equalToSuperview()
+            self.stackView.top.equal(to: .inset(self.verticalLayoutPadding))
+            self.stackView.edgeAnchors.excluding(.top)
+                .insetOrEqual(to: edgeAnchors.inset(self.horizontalLayoutPadding, self.verticalLayoutPadding))
         }
     }
 }

@@ -17,6 +17,7 @@ public class ViewControllerConfigurableMixin: UIViewControllerMixin<UIViewContro
         mixable.applyDefaultNavigationBarStyle()
     }
 
+
     override open func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         guard parent == nil else { return }
