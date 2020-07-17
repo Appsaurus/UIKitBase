@@ -153,7 +153,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     }()
 
     open func createContentView() -> ContentView {
-        return ContentView()
+        return ContentView(frame: .zero)
     }
 
     open var usesFieldNameAsPlaceholder: Bool = false
