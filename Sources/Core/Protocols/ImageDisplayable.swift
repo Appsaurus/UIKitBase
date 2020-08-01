@@ -66,6 +66,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil) -> ImageTask? {
+        Nuke.cancelRequest(for: self)
         return Nuke.loadImage(with: url, options: options, into: self, progress: progress, completion: completion)
     }
 
@@ -76,6 +77,7 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           progress: ImageTask.ProgressHandler? = nil,
                           processors: [ImageProcessing] = [],
                           completion: ImageTask.Completion? = nil) -> ImageTask? {
+        Nuke.cancelRequest(for: self)
         let request = ImageRequest(url: url, processors: processors, options: requestOptions ?? .init())
         return Nuke.loadImage(with: request, options: loadingOptions, into: self, progress: progress, completion: completion)
     }
