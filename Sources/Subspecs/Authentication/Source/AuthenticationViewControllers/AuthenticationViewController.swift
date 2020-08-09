@@ -143,25 +143,25 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
 
     open func showReadyToAuthenticateState(animated: Bool = true) {
 //        DispatchQueue.main.async {
-            self.view.isUserInteractionEnabled = true
-            self.showAuthViews(animated: animated)
-            self.stopAuthenticationInProgressAnimation()
+        self.view.isUserInteractionEnabled = true
+        self.showAuthViews(animated: animated)
+        self.stopAuthenticationInProgressAnimation()
 //        }
     }
 
     open func showSessionRestoreState() {
 //        DispatchQueue.main.async {
-            self.view.isUserInteractionEnabled = false
-            self.hideAuthViews(animated: false)
-            self.startAuthenticationInProgressAnimation()
+        self.view.isUserInteractionEnabled = false
+        self.hideAuthViews(animated: false)
+        self.startAuthenticationInProgressAnimation()
 //        }
     }
 
     open func showAuthenticatingState(animated: Bool = true) {
 //        DispatchQueue.main.async {
-            self.view.isUserInteractionEnabled = false
-            self.startAuthenticationInProgressAnimation()
-            self.view.endEditing(true)
+        self.view.isUserInteractionEnabled = false
+        self.startAuthenticationInProgressAnimation()
+        self.view.endEditing(true)
 //        }
     }
 
@@ -178,7 +178,6 @@ open class AuthenticationViewController: BaseViewController, AuthControllerDeleg
     }
 
     open func authenticationDidFail(error: Error) {
-
         // For developer use, no reason to necessarily show error message when user cancels.
         let ignorableErrors: [AuthError] = [.userCancelled, .userCancelledSignup]
         if let authError = error as? AuthError, authError.equalToAny(of: ignorableErrors) {

@@ -184,7 +184,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         self.viewConstraints.update(with: width.equal(to: scrollView.width))
         self.viewConstraints.update(with: top.equal(to: scrollView.top.inset(initialInsetTop)))
         self.viewConstraints.update(with: centerX.equal(to: scrollView.centerX))
-        self.headerLayoutHeightConstraint = self.headerLayoutView.height.equal(to: self.expandedHeight)//.priority(.required)
+        self.headerLayoutHeightConstraint = self.headerLayoutView.height.equal(to: self.expandedHeight) // .priority(.required)
     }
 
     override open func layoutSubviews() {

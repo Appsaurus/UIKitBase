@@ -15,6 +15,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     where ContentView: FormFieldViewProtocol {
     open lazy var autocorrectionType: UITextAutocorrectionType = .no
     open lazy var keyboardType: UIKeyboardType = .default
+    
 
     open var disableUserTextEntry: Bool = false {
         didSet {
@@ -275,7 +276,13 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
 
         if Value.self is String.Type {
-            value = self.textField.text as? Value
+            let text = self.textField.text
+            if text.isNilOrEmpty {
+                value = nil
+            }
+            else {
+                value = text as? Value
+            }
         }
 
         if validationFrequency == .onValueChanged {

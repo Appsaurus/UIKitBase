@@ -152,14 +152,14 @@ open class BaseParentPagingViewController: BaseParentViewController {
     var isTransitioningPage: Bool = false
 
     private func _performTransitionToPage(at index: Int) {
-        guard !isTransitioningPage else { return }
+        guard !self.isTransitioningPage else { return }
         self.currentPagedViewController?.view.endEditing(true)
         let vc = self.pagedViewControllers[index]
         let direction: UIPageViewController.NavigationDirection = index > self.currentPage ?? 0 ? .forward : .reverse
         if let eagerLoadBuffer = eagerLoadBuffer {
             self.eagerLoadViewControllers(surrounding: index, by: eagerLoadBuffer)
         }
-        isTransitioningPage = true
+        self.isTransitioningPage = true
         self.pageViewController.setViewControllers([vc], direction: direction, animated: self.animatesPageTransitions, completion: { [weak self] _ in
             self?.isTransitioningPage = false
             self?.currentPage = index

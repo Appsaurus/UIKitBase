@@ -86,8 +86,8 @@ open class AppConfigurableMixin: UIApplicationDelegateMixin<UIApplicationDelegat
     }
 
     override open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-                /// the system automatically relaunches the app into the background if a new event arrives.
-        if #available(iOS 13.0, *) { } else {
+        /// the system automatically relaunches the app into the background if a new event arrives.
+        if #available(iOS 13.0, *) {} else {
             UIApplication.mainWindow.backgroundColor = .mainWindowBackgroundColor
         }
 
