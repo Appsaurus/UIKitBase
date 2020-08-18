@@ -429,7 +429,6 @@
 		E466AC3E224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC3F224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
 		E466AC40224EA97200CA54F4 /* FormLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466AC3C224EA97200CA54F4 /* FormLocationField.swift */; };
-		E475F5F122D6CF5400FE1007 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */; };
 		E475F5F322D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
 		E475F5F422D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
 		E475F5F522D6D17D00FE1007 /* TaskResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */; };
@@ -879,7 +878,6 @@
 		E466AC37224EA71000CA54F4 /* ActivityMonitoringWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMonitoringWindow.swift; sourceTree = "<group>"; };
 		E466AC3C224EA97200CA54F4 /* FormLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormLocationField.swift; sourceTree = "<group>"; };
 		E466AC45224EC1A700CA54F4 /* config.swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.swiftformat; sourceTree = "<group>"; };
-		E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
 		E475F5F222D6D17D00FE1007 /* TaskResultDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskResultDelegate.swift; sourceTree = "<group>"; };
 		E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornableMixin.swift; sourceTree = "<group>"; };
 		E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsDisplaying.swift; sourceTree = "<group>"; };
@@ -1167,7 +1165,6 @@
 		E41D6F782245F05400CA05C4 /* DeepLinking */ = {
 			isa = PBXGroup;
 			children = (
-				E475F5F022D6CF5400FE1007 /* DeepLinkRouter.swift */,
 				E41D6F862249731200CA05C4 /* DeepLinker.swift */,
 				E41D6F872249731200CA05C4 /* Request.swift */,
 				E41D6F842249731100CA05C4 /* Route.swift */,
@@ -2774,7 +2771,6 @@
 				E4AF80DD21BB2D90002D6E86 /* BaseParentViewController.swift in Sources */,
 				E4AF810121BB2D90002D6E86 /* BasePageViewController.swift in Sources */,
 				E475F5F822D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift in Sources */,
-				E475F5F122D6CF5400FE1007 /* DeepLinkRouter.swift in Sources */,
 				E41D727C224D7C0300CA05C4 /* BaseParentPagingMenuViewController.swift in Sources */,
 				E41D6F942249731200CA05C4 /* Request.swift in Sources */,
 				E4AF81E221BF84EF002D6E86 /* StatefulViewControllerView.swift in Sources */,

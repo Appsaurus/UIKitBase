@@ -34,6 +34,7 @@ Pod::Spec.new do |s|
     core.dependency 'Nuke'
     core.dependency 'DiffableDataSources'
     core.dependency 'Algorithm'
+    core.dependency 'URLNavigator'
 
     core.ios.dependency 'AssistantKit'
     core.frameworks = 'UIKit'

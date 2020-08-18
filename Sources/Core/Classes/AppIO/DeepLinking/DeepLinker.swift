@@ -7,6 +7,7 @@
 
 import Foundation
 import Swiftest
+import URLNavigator
 
 open class DeepLink<R: DeepLinkRoute> {
     public typealias DeepLinkAuthorizationTest = ClosureOut<Bool>
@@ -24,12 +25,16 @@ open class DeepLink<R: DeepLinkRoute> {
 }
 
 open class DeepLinkRequest<R: DeepLinkRoute> {
-    open var request: Request
+    open var request: String
+    open var params: [String : Any]
+    open var context: Any?
     open var link: DeepLink<R>
 
-    public init(request: Request, link: DeepLink<R>) {
-        self.request = request
+    public init(link: DeepLink<R>, request: String, params: [String : Any], context: Any?) {
         self.link = link
+        self.request = request
+        self.params = params
+        self.context = context
     }
 }
 
@@ -51,16 +56,17 @@ open class DeepLinker<R: DeepLinkRoute> {
         }
     }
 
-    open var router: DeepLinkRouter = DeepLinkRouter()
     open var registeredDeepLinks: [DeepLink<R>] = []
-
+    open var navigator: Navigator = Navigator()
     public init() {}
 
     open func register(deepLinks: [DeepLink<R>]) {
         for deepLink in deepLinks {
-            self.router.bind(deepLink.route.rawValue, callback: { req in
-                self.request = DeepLinkRequest(request: req, link: deepLink)
-            })
+            print("Registering route " + deepLink.route.fullPath )
+            self.navigator.handle(deepLink.route.fullPath) {(_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) in
+                self.request = DeepLinkRequest(link: DeepLink<R>(route: deepLink.route), request: url.urlStringValue, params: values, context: context)
+                return true
+            }
         }
     }
 
@@ -69,10 +75,10 @@ open class DeepLinker<R: DeepLinkRoute> {
     }
 
     @discardableResult
-    open func respond(to deepLinkURLRequest: String) -> Bool {
-        guard let linkUrl = URL(string: deepLinkURLRequest), router.match(linkUrl) != nil else {
+    open func route(to deepLinkURLRequest: String) -> Bool {
+        guard navigator.open(deepLinkURLRequest) else {
             debugLog("Invalid deeplink request:\(deepLinkURLRequest)")
-            UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: :\(deepLinkURLRequest)")
+            UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: \(deepLinkURLRequest)")
             return false
         }
 
@@ -86,11 +92,7 @@ open class DeepLinker<R: DeepLinkRoute> {
     }
 
     open func route(to route: R) {
-        guard let url = URL(string: route.rawValue) else {
-            return
-        }
-
-        self.router.match(url)
+        self.navigator.open(route.fullPath)
     }
 
     open func postDeepLinkNotification() {
@@ -121,7 +123,10 @@ public protocol DeepLinkRoute: StringIdentifiableEnum {
 
 extension DeepLinkRoute {
     public var fullPath: String {
-        return "\(Self.scheme)//\(rawValue)"
+        return Self.schemePrefix + rawValue
+    }
+    static var schemePrefix: String {
+        return scheme + "://"
     }
 }
 

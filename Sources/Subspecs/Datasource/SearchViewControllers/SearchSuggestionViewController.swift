@@ -160,6 +160,9 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         super.viewWillAppear(animated)
         let shouldBecomeFirstResponder = self.currentSearchController.config.searchBarRegainsFirstResponderOnReappear && self.searchBarWasActiveWhenLastVisible
         self.restorePreviousSearchState(to: self.currentSearchController, makeSearchBarFirstResponder: shouldBecomeFirstResponder)
+//        if !shouldBecomeFirstResponder {
+//            primarySearchBar.becomeFirstResponder()
+//        }
     }
 
     open func queryInputChanged() {

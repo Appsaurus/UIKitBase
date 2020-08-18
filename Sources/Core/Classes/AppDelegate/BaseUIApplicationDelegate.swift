@@ -192,7 +192,7 @@ extension AppIOManager {
     }
 
     public func respond(to deepLinkURLRequest: String) {
-        self.deepLinker.respond(to: deepLinkURLRequest)
+        self.deepLinker.route(to: deepLinkURLRequest)
     }
 
     public func convertNotificationToDeepLinkRequest(_ notification: AppNotification<AppNotificationIDType>) -> String? {
