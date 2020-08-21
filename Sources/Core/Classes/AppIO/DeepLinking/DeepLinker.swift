@@ -62,7 +62,7 @@ open class DeepLinker<R: DeepLinkRoute> {
 
     open func register(deepLinks: [DeepLink<R>]) {
         for deepLink in deepLinks {
-            print("Registering route " + deepLink.route.fullPath )
+            debugLog("Registering route " + deepLink.route.fullPath )
             self.navigator.handle(deepLink.route.fullPath) {(_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) in
                 self.request = DeepLinkRequest(link: DeepLink<R>(route: deepLink.route), request: url.urlStringValue, params: values, context: context)
                 return true
@@ -77,8 +77,8 @@ open class DeepLinker<R: DeepLinkRoute> {
     @discardableResult
     open func route(to deepLinkURLRequest: String) -> Bool {
         guard navigator.open(deepLinkURLRequest) else {
-            debugLog("Invalid deeplink request:\(deepLinkURLRequest)")
-            UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: \(deepLinkURLRequest)")
+            debugLog("Navigator could not handle deeplink request: \(deepLinkURLRequest)")
+//            UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: \(deepLinkURLRequest)")
             return false
         }
 

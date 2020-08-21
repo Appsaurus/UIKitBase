@@ -52,8 +52,12 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
         self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
         }, completionHandler: { [weak self] results in
-            guard let self = self else { return }
-            completionHandler(results.first ?? self.completionHandlerOptions(for: notification))
+            guard let self = self else { return }            
+            var results = results.reduce(UNNotificationPresentationOptions(), {$0.union($1)})
+            if results.isEmpty {
+                results = self.completionHandlerOptions(for: notification)
+            }
+            completionHandler(results)
         })
     }
 
@@ -245,7 +249,10 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
                                               willPresent notification: UNNotification,
                                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         mixable.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
-        guard let options = mixable.completionHandlerOptions(for: notification) else { return }
+        guard let options = mixable.completionHandlerOptions(for: notification) else {
+            completionHandler([])
+            return
+        }
         completionHandler(options)
     }
 
