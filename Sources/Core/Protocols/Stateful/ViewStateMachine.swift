@@ -90,7 +90,7 @@ import UIKit
     /// - parameter completion:    called when all animations are finished and the view has been updated
     ///
     public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
+        DispatchQueue.mainSyncSafe {
             if state == self.currentState {
                 if let statefulView = self.viewForState(state: state) {
                     statefulView.superview?.bringSubviewToFront(statefulView)
