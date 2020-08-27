@@ -159,8 +159,7 @@ extension DeepLinkHandler where Self: NSObject {
         respond(to: request)
     }
 
-    public func observeDeepLinkNotifications() {
-        self.handleDeepLink() // Run once to take care of any links posted before observation starts
+    public func observeDeepLinkNotifications() {        
         for route in deepLinkRoutes() {
             NotificationCenter.default.observe(route.notificationCenterName(), action: { [weak self] in
                 DispatchQueue.main.async {
@@ -173,8 +172,13 @@ extension DeepLinkHandler where Self: NSObject {
 
 import UIKitMixinable
 
-open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler> {
+open class DeepLinkHandlerMixin: UIViewControllerMixin<DeepLinkHandler> {
     override open func initProperties() {
         mixable.observeDeepLinkNotifications()
     }
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mixable.handleDeepLink()
+    }
+    
 }
