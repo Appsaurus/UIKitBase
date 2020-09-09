@@ -90,26 +90,27 @@ import UIKit
     /// - parameter completion:    called when all animations are finished and the view has been updated
     ///
     public func transition(to state: State, animated: Bool = true, completion: (() -> Void)? = nil) {
-        DispatchQueue.mainSyncSafe {
-            if state == self.currentState {
-                if let statefulView = self.viewForState(state: state) {
-                    statefulView.superview?.bringSubviewToFront(statefulView)
-                    completion?()
-                } else {
-                    self.hideAllViews(animated: animated, completion: completion)
-                }
-                return
-            }
-
-            self.previousState = self.currentState
-            self.currentState = state
-            // Update the view
-
+        defer {
+            self.view.forceAutolayoutPass()
+        }
+        if state == self.currentState {
             if let statefulView = self.viewForState(state: state) {
-                self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
+                statefulView.superview?.bringSubviewToFront(statefulView)
+                completion?()
             } else {
                 self.hideAllViews(animated: animated, completion: completion)
             }
+            return
+        }
+        
+        self.previousState = self.currentState
+        self.currentState = state
+        // Update the view
+        
+        if let statefulView = self.viewForState(state: state) {
+            self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
+        } else {
+            self.hideAllViews(animated: animated, completion: completion)
         }
     }
 

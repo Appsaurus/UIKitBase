@@ -137,12 +137,13 @@ public extension PaginationManaged where Self: UIViewController {
                        transitioningState: State? = .loading,
                        reloadCompletion: VoidClosure? = nil) {
         if let state = transitioningState {
-            transition(to: state)
+            self.transition(to: state)
         }
 
         if firstPage { self.paginator.reset(stashingLastPageInfo: true) }
         self.paginator.fetchNextPage(success: { [weak self] items, isLastPage in
             self?.didFinishFetching(result: (items, isLastPage), isFirstPage: firstPage, reloadCompletion: reloadCompletion)
+
         }, failure: { [weak self] error in
             self?.paginator.restoreLastPageInfo()
             self?.didFinishFetching(error: error)

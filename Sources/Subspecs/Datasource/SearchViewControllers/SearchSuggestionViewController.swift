@@ -288,8 +288,6 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         }
         self.queryInputChanged(resultsController: resultsController)
 
-        print("isEmpty: \(isEmpty)")
-        print("wasManuallyClearedByDeleteKeystroke: \(wasManuallyClearedByDeleteKeystroke)")
         if isEmpty, !wasManuallyClearedByDeleteKeystroke {
             self.searchBarDidClear(searchBar)
         }

@@ -238,12 +238,12 @@ public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewCont
         }
     }
 
-    open override func viewWillAppear(_ animated: Bool){
-        //In some cases, view did not update due to model state change in background
-        DispatchQueue.main.async {
-            self.mixable.enforceCurrentState()
-        }
-    }
+//    open override func viewWillAppear(_ animated: Bool){
+//        //In some cases, view did not update due to model state change in background
+//        DispatchQueue.main.async {
+//            self.mixable.enforceCurrentState()
+//        }
+//    }
 }
 
 public class StatefulViewMixin: UIViewMixin<StatefulViewController> {
