@@ -162,7 +162,7 @@ public extension PaginationManaged where Self: UIViewController {
         }
 
         if isFirstPage {
-            datasource.load(result.items, animated: true, completion: completion)
+            datasource.load(result.items, animated: self.paginationConfig.animatesDatasourceChanges, completion: completion)
             // https://stackoverflow.com/questions/25895311/uicollectionview-self-sizing-cells-with-auto-layout
             if #available(iOS 12.0, *) {} else { // Fixes issue in < iOS 12 where auto sizing cells don't size corrrectly on first load.
                 (self.datasourceManagedView as? UICollectionView)?.collectionViewLayout.invalidateLayout()
