@@ -90,4 +90,9 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
     open func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
         return .error(error, retry: loadAsyncData)
     }
+
+    //MARK: ViewRecycler
+
+    open func registerReusables() {}
+
 }

@@ -95,6 +95,11 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
     override open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
     }
+
+    //MARK: ViewRecycler
+
+    open func registerReusables() {}
+
 }
 
 private extension IndexPath {

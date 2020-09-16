@@ -2234,6 +2234,7 @@
 				"${BUILT_PRODUCTS_DIR}/UIKitExtensions/UIKitExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitMixinable/UIKitMixinable.framework",
 				"${BUILT_PRODUCTS_DIR}/UIKitTheme/UIKitTheme.framework",
+				"${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2263,6 +2264,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitMixinable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIKitTheme.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URLNavigator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

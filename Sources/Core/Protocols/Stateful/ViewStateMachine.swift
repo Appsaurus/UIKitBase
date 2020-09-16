@@ -102,11 +102,11 @@ import UIKit
             }
             return
         }
-        
+
         self.previousState = self.currentState
         self.currentState = state
         // Update the view
-        
+
         if let statefulView = self.viewForState(state: state) {
             self.show(statefulView: statefulView, for: state, animated: animated, completion: completion)
         } else {

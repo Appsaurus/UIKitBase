@@ -122,4 +122,9 @@ open class BaseViewController: MixinableViewController, BaseViewControllerProtoc
     open func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
         return .error(error, retry: loadAsyncData)
     }
+
+    //MARK: ViewRecycler
+
+    open func registerReusables() {}
+
 }

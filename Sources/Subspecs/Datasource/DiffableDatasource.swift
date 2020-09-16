@@ -84,7 +84,7 @@ public extension DiffableDatasource {
 
     func clearData(animated: Bool = false,
                    completion: @escaping VoidClosure = {}) {
-        _apply(snapshot(), animatingDifferences: animated, completion: completion)
+        self._apply(snapshot(), animatingDifferences: animated, completion: completion)
     }
 
     func load(_ sectionedItems: KeyValuePairs<SectionIdentifierType, [ItemIdentifierType]>,
@@ -108,7 +108,7 @@ public extension DiffableDatasource {
             snapshot.appendSections([itemSection.key])
             snapshot.appendItems(itemSection.value, toSection: itemSection.key)
         }
-        _apply(snapshot, animatingDifferences: animated, completion: completion)
+        self._apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
     func load(_ items: [ItemIdentifierType],
@@ -116,8 +116,6 @@ public extension DiffableDatasource {
               animated: Bool = false,
               completion: @escaping VoidClosure = {}) {
         self.append(items, to: section, using: Snapshot(), animated: animated, completion: completion)
-
-
     }
 
     func append(_ items: [ItemIdentifierType],
@@ -135,17 +133,15 @@ public extension DiffableDatasource {
         var snapshot = snapshot
         snapshot.append(section: section, fallback: self.defaultSection())
         snapshot.appendItems(items, toSection: section ?? self.defaultSection())
-        _apply(snapshot, animatingDifferences: animated, completion: completion)
+        self._apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
-
     func _apply(_ snapshot: DiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>,
-               animatingDifferences: Bool,
-               completion: (() -> Void)?) {
-
-        //Calling completion in the paramaterized completion handled of libraries implemenation of this method doesn't always trigger completion handler
-        //Consider refactoring this when library is fixed or when using official UIKit implementation
-        //apply(snapshot, animatingDifferences: animated, completion: completion)
+                animatingDifferences: Bool,
+                completion: (() -> Void)?) {
+        // Calling completion in the paramaterized completion handled of libraries implemenation of this method doesn't always trigger completion handler
+        // Consider refactoring this when library is fixed or when using official UIKit implementation
+        // apply(snapshot, animatingDifferences: animated, completion: completion)
 
         apply(snapshot, animatingDifferences: animatingDifferences, completion: nil)
         completion?()
@@ -164,7 +160,7 @@ public extension DiffableDatasource {
                 completion: @escaping VoidClosure = {}) {
         var snapshot = self.snapshot()
         snapshot.deleteItems(items)
-        _apply(snapshot, animatingDifferences: animated, completion: completion)
+        self._apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
     // MARK: Inserting items
@@ -180,7 +176,7 @@ public extension DiffableDatasource {
                      completion: @escaping VoidClosure = {}) {
         var snapshot = self.snapshot()
         snapshot.insertItems(identifiers, beforeItem: beforeIdentifier)
-        _apply(snapshot, animatingDifferences: animated, completion: completion)
+        self._apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
     /// Inserts the given item identifiers after the specified item.
@@ -194,7 +190,7 @@ public extension DiffableDatasource {
                      completion: @escaping VoidClosure = {}) {
         var snapshot = self.snapshot()
         snapshot.insertItems(identifiers, afterItem: afterIdentifier)
-        _apply(snapshot, animatingDifferences: animated, completion: completion)
+        self._apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 
     func insertItem(_ identifier: ItemIdentifierType,
@@ -203,7 +199,7 @@ public extension DiffableDatasource {
                     completion: @escaping VoidClosure = {}) {
         var snapshot = self.snapshot()
         if snapshot.insert(identifier, at: indexPath) {
-            _apply(snapshot, animatingDifferences: animated, completion: completion)
+            self._apply(snapshot, animatingDifferences: animated, completion: completion)
             return
         }
 
@@ -217,7 +213,6 @@ public extension DiffableDatasource {
     func defaultSection() -> SectionIdentifierType? {
         return "DefaultSection" as? SectionIdentifierType ?? 0 as? SectionIdentifierType
     }
-
 
     func numberOfItems(inSection section: Int) -> Int {
         let snapshot = self.snapshot()

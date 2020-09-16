@@ -30,6 +30,7 @@ def libaryShared
     pod 'DiffableDataSources'
     pod 'KeychainAccess'
     pod 'Permission/Location', :git => 'https://github.com/Appsaurus/Permission'
+    pod 'URLNavigator'
 end
 
 def testShared

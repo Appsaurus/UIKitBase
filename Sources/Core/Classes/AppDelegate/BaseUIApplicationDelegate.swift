@@ -52,8 +52,8 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
         self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
         }, completionHandler: { [weak self] results in
-            guard let self = self else { return }            
-            var results = results.reduce(UNNotificationPresentationOptions(), {$0.union($1)})
+            guard let self = self else { return }
+            var results = results.reduce(UNNotificationPresentationOptions()) { $0.union($1) }
             if results.isEmpty {
                 results = self.completionHandlerOptions(for: notification)
             }

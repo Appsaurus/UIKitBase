@@ -26,11 +26,11 @@ open class DeepLink<R: DeepLinkRoute> {
 
 open class DeepLinkRequest<R: DeepLinkRoute> {
     open var request: String
-    open var params: [String : Any]
+    open var params: [String: Any]
     open var context: Any?
     open var link: DeepLink<R>
 
-    public init(link: DeepLink<R>, request: String, params: [String : Any], context: Any?) {
+    public init(link: DeepLink<R>, request: String, params: [String: Any], context: Any?) {
         self.link = link
         self.request = request
         self.params = params
@@ -62,8 +62,8 @@ open class DeepLinker<R: DeepLinkRoute> {
 
     open func register(deepLinks: [DeepLink<R>]) {
         for deepLink in deepLinks {
-            debugLog("Registering route " + deepLink.route.fullPath )
-            self.navigator.handle(deepLink.route.fullPath) {(_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) in
+            debugLog("Registering route " + deepLink.route.fullPath)
+            self.navigator.handle(deepLink.route.fullPath) { (_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) in
                 self.request = DeepLinkRequest(link: DeepLink<R>(route: deepLink.route), request: url.urlStringValue, params: values, context: context)
                 return true
             }
@@ -76,7 +76,7 @@ open class DeepLinker<R: DeepLinkRoute> {
 
     @discardableResult
     open func route(to deepLinkURLRequest: String) -> Bool {
-        guard navigator.open(deepLinkURLRequest) else {
+        guard self.navigator.open(deepLinkURLRequest) else {
             debugLog("Navigator could not handle deeplink request: \(deepLinkURLRequest)")
 //            UIApplication.shared.topmostViewController?.presentAlert(title: "Invalid deeplink request.", message: "Unknown url: \(deepLinkURLRequest)")
             return false
@@ -125,6 +125,7 @@ extension DeepLinkRoute {
     public var fullPath: String {
         return Self.schemePrefix + rawValue
     }
+
     static var schemePrefix: String {
         return scheme + "://"
     }
@@ -159,7 +160,7 @@ extension DeepLinkHandler where Self: NSObject {
         respond(to: request)
     }
 
-    public func observeDeepLinkNotifications() {        
+    public func observeDeepLinkNotifications() {
         for route in deepLinkRoutes() {
             NotificationCenter.default.observe(route.notificationCenterName(), action: { [weak self] in
                 DispatchQueue.main.async {
@@ -176,9 +177,9 @@ open class DeepLinkHandlerMixin: UIViewControllerMixin<DeepLinkHandler> {
     override open func initProperties() {
         mixable.observeDeepLinkNotifications()
     }
-    open override func viewDidAppear(_ animated: Bool) {
+
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         mixable.handleDeepLink()
     }
-    
 }

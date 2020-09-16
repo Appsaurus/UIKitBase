@@ -56,6 +56,7 @@ PODS:
     - Swiftest
     - UIKitExtensions
     - UIKitMixinable
+  - URLNavigator (2.3.0)
 
 DEPENDENCIES:
   - Actions
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - UIKitExtensions (from `https://github.com/Appsaurus/UIKitExtensions`)
   - UIKitMixinable (from `https://github.com/Appsaurus/UIKitMixinable`)
   - UIKitTheme (from `https://github.com/Appsaurus/UIKitTheme`)
+  - URLNavigator
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -101,6 +103,7 @@ SPEC REPOS:
     - SwiftFormat
     - SwiftLint
     - SwiftLocation
+    - URLNavigator
 
 EXTERNAL SOURCES:
   CwlCatchException:
@@ -197,7 +200,8 @@ SPEC CHECKSUMS:
   UIKitExtensions: c16cb3a5d42d743158b81271620b4862deea0620
   UIKitMixinable: 0585591e662512df6f9b63a96ddb34d38546c0b9
   UIKitTheme: 286a64c3bebe3bc304f6fa141b8db1cacffbfe5b
+  URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
 
-PODFILE CHECKSUM: 2a48bc2d9ebc71b11e5eee766ce63296d61b7f7b
+PODFILE CHECKSUM: 0fa81faa816e90e9a2990889bf3415ba35401323
 
 COCOAPODS: 1.9.1

@@ -9,6 +9,6 @@ import UIKitMixinable
 
 public class ViewRecyclerMixin: UIViewControllerMixin<ViewRecycler> {
     override open func viewDidLoad() {
-        mixable.registerReusables?()
+        mixable.registerReusables()
     }
 }
