@@ -77,10 +77,10 @@ open class Route {
             let name = (urlParam as NSString).substring(from: 1)
 
             // url params should be unique
-            if urlParamKeys.contains(name) {
-                return .duplicateRouteParamError(route: route, urlParam: name)
+            if self.urlParamKeys.contains(name) {
+                return .duplicateRouteParamError(route: self.route, urlParam: name)
             } else {
-                urlParamKeys.append(name)
+                self.urlParamKeys.append(name)
             }
 
             // replace :params with regex
@@ -99,7 +99,7 @@ open class Route {
 
 extension Route: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(route)
+        hasher.combine(self.route)
     }
 }
 

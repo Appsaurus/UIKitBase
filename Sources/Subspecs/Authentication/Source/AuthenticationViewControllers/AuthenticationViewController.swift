@@ -56,7 +56,7 @@ open class AuthenticationViewControllerConfiguration {
 }
 
 open class AuthenticationViewController: BaseViewController, AuthControllerDelegate {
-    open lazy var config: AuthenticationViewControllerConfiguration = AuthenticationViewControllerConfiguration()
+    open lazy var config = AuthenticationViewControllerConfiguration()
 
     deinit {}
 

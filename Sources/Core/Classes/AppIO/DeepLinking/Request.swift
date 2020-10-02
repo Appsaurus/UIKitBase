@@ -21,7 +21,8 @@ open class Request {
 
     init(route: Route,
          urlParams: [URLQueryItem]? = nil,
-         queryParams: [URLQueryItem]? = nil) {
+         queryParams: [URLQueryItem]? = nil)
+    {
         self.route = route
         self.urlParams = urlParams ?? []
         self.queryParams = queryParams ?? []

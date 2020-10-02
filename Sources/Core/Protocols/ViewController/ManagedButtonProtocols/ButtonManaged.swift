@@ -18,7 +18,8 @@ public class ManagedButtonConfiguration: NSObject {
     public init(button: BaseButton? = nil,
                 position: ManagedButtonPosition = .navBarTrailing,
                 size: CGSize? = nil,
-                activityIndicatorStyle: UIActivityIndicatorView.Style = .white) {
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .white)
+    {
         self.button = button
         self.position = position
         self.size = size
@@ -67,7 +68,7 @@ extension ButtonManaged where Self: UIViewController {
     internal func layoutManagedButton(button: BaseButton, position: ManagedButtonPosition, size: CGSize? = nil) {
         switch position {
         case .navBarLeading, .navBarTrailing:
-            let item: UIBarButtonItem = UIBarButtonItem(customView: button)
+            let item = UIBarButtonItem(customView: button)
 
             if position == .navBarTrailing {
                 button.titleLabel.textAlignment = .right

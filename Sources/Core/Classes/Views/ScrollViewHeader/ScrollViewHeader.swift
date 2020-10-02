@@ -63,13 +63,13 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     }
 
     open var subheaderView: UIView?
-    open lazy var subheaderBackgroundView: UIView = UIView()
+    open lazy var subheaderBackgroundView = UIView()
     open var subheaderBackgroundViewConstraints: ConstraintAttributeMap = [:]
     open var subheaderCollapses: Bool = true
 
-    open var headerLayoutView: UIView = UIView()
-    open var headerBackgroundImageView: BaseImageView = BaseImageView()
-    open var headerLabel: UILabel = UILabel().then { label in
+    open var headerLayoutView = UIView()
+    open var headerBackgroundImageView = BaseImageView()
+    open var headerLabel = UILabel().then { label in
         label.wrapWords()
     }
 
@@ -108,7 +108,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
                          collapsedHeaderHeight: CGFloat = 0.0,
                          subheaderView: UIView? = nil,
                          subheaderCollapses: Bool = true,
-                         behaviors: [ScrollViewHeaderBehavior] = []) {
+                         behaviors: [ScrollViewHeaderBehavior] = [])
+    {
         self._collapsedHeaderHeight = collapsedHeaderHeight
         autoExpandingContentView.layoutDynamicHeight(forWidth: width)
         self.expandedHeaderHeight = autoExpandingContentView.frame.h
@@ -123,7 +124,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
                          collapsedHeaderHeight: CGFloat = 0.0,
                          subheaderView: UIView? = nil,
                          subheaderCollapses: Bool = true,
-                         behaviors: [ScrollViewHeaderBehavior] = []) {
+                         behaviors: [ScrollViewHeaderBehavior] = [])
+    {
         self._collapsedHeaderHeight = collapsedHeaderHeight
         self.expandedHeaderHeight = expandedHeaderHeight
         self.subheaderView = subheaderView
@@ -133,6 +135,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
         self.setupBehaviors()
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

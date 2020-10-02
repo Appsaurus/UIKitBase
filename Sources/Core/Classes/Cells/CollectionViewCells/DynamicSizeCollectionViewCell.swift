@@ -10,7 +10,7 @@ import Layman
 import UIKitTheme
 
 open class DynamicSizeCollectionViewCell: BaseCollectionViewCell {
-    public var mainLayoutView: UIView = UIView()
+    public var mainLayoutView = UIView()
     public lazy var mainLayoutViewInsets: LayoutPadding = {
         .zero
     }()

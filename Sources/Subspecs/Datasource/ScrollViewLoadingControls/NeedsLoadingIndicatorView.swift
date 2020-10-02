@@ -114,6 +114,7 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
         centerX.equalToSuperview()
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

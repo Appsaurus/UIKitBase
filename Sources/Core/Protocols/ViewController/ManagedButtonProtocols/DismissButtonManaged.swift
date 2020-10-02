@@ -26,7 +26,8 @@ public class NavigationBarButtonConfiguration: NSObject {
                 activityIndicatorStyle: UIActivityIndicatorView.Style = .white,
                 buttonTitle: String = "Done",
                 buttonAttributedTitle: NSAttributedString? = nil,
-                showsDismissButton: Bool = true) {
+                showsDismissButton: Bool = true)
+    {
         self.position = position
         self.size = size
         self.activityIndicatorStyle = activityIndicatorStyle
@@ -51,7 +52,7 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
         let position = configuration.position
         switch position {
         case .leading, .trailing:
-            let item: UIBarButtonItem = UIBarButtonItem(customView: button)
+            let item = UIBarButtonItem(customView: button)
             button.setTitle(configuration.buttonTitle, for: .normal)
             if let style = navigationBarStyle?.titleTextStyle ?? navigationController?.navigationBarStyle?.titleTextStyle {
                 button.apply(textStyle: style)
@@ -86,6 +87,7 @@ public extension NavigationBarButtonManaged where Self: UIViewController {
 open class DismissButtonManagedMixin: UIViewControllerMixin<DismissButtonManaged & UIViewController> {
     override open func createSubviews() {
         super.createSubviews()
+        guard var mixable = self.mixable else { return }
         if mixable.dismissButtonConfiguration.showsDismissButton {
             mixable.setupDismissButton()
         }

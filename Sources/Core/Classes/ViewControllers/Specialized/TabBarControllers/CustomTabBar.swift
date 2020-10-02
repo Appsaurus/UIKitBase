@@ -49,6 +49,7 @@ open class CustomTabBar: PassThroughView, CollectionMenuSelectionAnimator {
         super.init(frame: .zero)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -265,7 +266,7 @@ extension CollectionMenuSelectionAnimator {
 
 public class CollectionMenuSelectionIndicatorAnimation {
     open func animateLayoutOfSelectionIndicator(view: UIView, to selectedView: UIView, completion: VoidClosure? = nil) {
-        let configuration: SpringAnimationConfiguration = SpringAnimationConfiguration(duration: 0.4, springDamping: 0.7)
+        let configuration = SpringAnimationConfiguration(duration: 0.4, springDamping: 0.7)
         DispatchQueue.main.async {
             view.springAnimate(configuration: configuration, animations: {
                 view.frame = self.finalFrameForSelectionIndicator(view: view, whenAnimatedTo: selectedView)

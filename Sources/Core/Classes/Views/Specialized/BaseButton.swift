@@ -71,7 +71,8 @@ open class ButtonLayout {
     public init(layoutType: ButtonLayoutType = .imageLeftTitleCenter,
                 imageLayoutType: ButtonImageLayoutType = .square,
                 marginInsets: LayoutPadding? = nil,
-                imageInsets: LayoutPadding? = nil) {
+                imageInsets: LayoutPadding? = nil)
+    {
         self.layoutType = layoutType
         self.imageInsets =? imageInsets
         self.imageLayoutType = imageLayoutType
@@ -109,16 +110,16 @@ open class BaseButton: BaseView, ButtonStyleable {
     open var onTap: VoidClosure?
     open var adjustsFrameToFitContent: Bool = false
     open var tapRecognizer: UITapGestureRecognizer?
-    open var contentLayoutView: UIView = UIView()
-    open var titleLabel: UILabel = UILabel()
-    open var imageView: BaseImageView = BaseImageView()
+    open var contentLayoutView = UIView()
+    open var titleLabel = UILabel()
+    open var imageView = BaseImageView()
     open var tintsImagesToMatchTextColor: Bool = false {
         didSet {
             imageView.tintsImages = tintsImagesToMatchTextColor
         }
     }
 
-    open lazy var buttonLayout: ButtonLayout = ButtonLayout()
+    open lazy var buttonLayout = ButtonLayout()
     open var activityBehaviors: [ButtonActivityBehavior] = [.removeTitle, .showIndicator(style: .white, color: nil, at: .center)]
     open var disabledBehaviors: [ButtonDisableBehavior] = [.dropAlpha(to: 0.5)]
     open var buttonTapActionMap: ButtonTapActionMap = [:]
@@ -190,7 +191,8 @@ open class BaseButton: BaseView, ButtonStyleable {
                             imageUrlMap: ButtonImageUrlMap? = nil,
                             styleMap: ButtonStyleMap? = nil,
                             buttonLayout: ButtonLayout = ButtonLayout(),
-                            onTap: VoidClosure? = nil) {
+                            onTap: VoidClosure? = nil)
+    {
         self.init(callInitLifecycle: false)
         self.titleMap =? titles
         self.attributedTitleMap =? attributedTitles

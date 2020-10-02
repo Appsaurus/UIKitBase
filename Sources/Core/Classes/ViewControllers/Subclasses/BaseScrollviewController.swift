@@ -11,7 +11,7 @@ import UIKit
 
 open class BaseScrollviewController: BaseViewController, UIScrollViewDelegate {
     open lazy var scrollView: UIScrollView = containerScrollView
-    open var containerScrollView: ContainerScrollView = ContainerScrollView(contentView: UIView())
+    open var containerScrollView = ContainerScrollView(contentView: UIView())
 
     override open func setupDelegates() {
         super.setupDelegates()

@@ -21,7 +21,7 @@ open class BaseContainerViewController: BaseViewController {
         return nil
     }
 
-    open lazy var containerView: UIView = UIView()
+    open lazy var containerView = UIView()
     open lazy var containedView: UIView? = nil
 
     override open func createSubviews() {

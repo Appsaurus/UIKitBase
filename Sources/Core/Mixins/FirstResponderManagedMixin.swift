@@ -9,10 +9,10 @@ import UIKitMixinable
 
 open class FirstResponderManagedMixin: UIViewControllerMixin<UIViewController & FirstResponderManaged> {
     override open func viewWillAppear(_ animated: Bool) {
-        mixable.firstResponderManagedWillAppear()
+        mixable?.firstResponderManagedWillAppear()
     }
 
     override open func viewWillDisappear(_ animated: Bool) {
-        mixable.firstResponderManagedWillDissappear()
+        mixable?.firstResponderManagedWillDissappear()
     }
 }

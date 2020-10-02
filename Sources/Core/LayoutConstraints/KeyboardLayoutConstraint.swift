@@ -86,7 +86,8 @@ open class KeyboardAwareLayoutConstraint: NSLayoutConstraint, NotificationObserv
         }
 
         guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
-            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber else {
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+        else {
             return
         }
 
@@ -121,7 +122,8 @@ open class KeyboardAdjustableLayoutConstraint: KeyboardAwareLayoutConstraint {
                                      attribute attr2: NSLayoutConstraint.Attribute,
                                      multiplier: CGFloat,
                                      keyboardHiddenConstant: CGFloat,
-                                     keyboardVisibleConstant: CGFloat) -> KeyboardAdjustableLayoutConstraint {
+                                     keyboardVisibleConstant: CGFloat) -> KeyboardAdjustableLayoutConstraint
+    {
         let constraint = KeyboardAdjustableLayoutConstraint(item: view1,
                                                             attribute: attr1,
                                                             relatedBy: relation,
@@ -154,7 +156,8 @@ open class KeyboardDodgingLayoutConstraint: KeyboardAwareLayoutConstraint {
                                      toItem view2: AnyObject?,
                                      attribute attr2: NSLayoutConstraint.Attribute,
                                      multiplier: CGFloat = 0.0,
-                                     keyboardHiddenConstant: CGFloat = 0.0) -> KeyboardDodgingLayoutConstraint {
+                                     keyboardHiddenConstant: CGFloat = 0.0) -> KeyboardDodgingLayoutConstraint
+    {
         let constraint = KeyboardDodgingLayoutConstraint(
             item: view1,
             attribute: attr1,

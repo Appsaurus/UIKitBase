@@ -57,7 +57,7 @@ open class DeepLinker<R: DeepLinkRoute> {
     }
 
     open var registeredDeepLinks: [DeepLink<R>] = []
-    open var navigator: Navigator = Navigator()
+    open var navigator = Navigator()
     public init() {}
 
     open func register(deepLinks: [DeepLink<R>]) {
@@ -175,11 +175,11 @@ import UIKitMixinable
 
 open class DeepLinkHandlerMixin: UIViewControllerMixin<DeepLinkHandler> {
     override open func initProperties() {
-        mixable.observeDeepLinkNotifications()
+        mixable?.observeDeepLinkNotifications()
     }
 
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mixable.handleDeepLink()
+        mixable?.handleDeepLink()
     }
 }

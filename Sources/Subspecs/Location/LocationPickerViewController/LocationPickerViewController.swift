@@ -39,7 +39,8 @@ open class LocationPickerSearchViewController: SearchViewController, TaskResultD
     open var mapConfig = LocationPickerMapConfiguration()
 
     public required init(searchConfig: LocationPickerSearchConfiguration? = nil,
-                         mapConfig: LocationPickerMapConfiguration? = nil) {
+                         mapConfig: LocationPickerMapConfiguration? = nil)
+    {
         self.searchConfig =? searchConfig
         self.mapConfig =? mapConfig
         super.init(nibName: nil, bundle: nil)
@@ -146,7 +147,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     // MARK: Views
 
-    var mapView: MKMapView = MKMapView(frame: .zero)
+    var mapView = MKMapView(frame: .zero)
 
     lazy var currentLocationButton: BaseButton = {
         BaseButton(icon: MaterialIcons.My_Location, buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: .zero))

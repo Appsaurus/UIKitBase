@@ -15,7 +15,7 @@ import UIKitTheme
 open class SearchBarContainerView: BaseView {
     public let contentView: UISearchBar
     public let contentInsets: UIEdgeInsets
-    public let horizontalStackView: UIStackView = UIStackView(layout: .fillProportionatelyHorizontal)
+    public let horizontalStackView = UIStackView(layout: .fillProportionatelyHorizontal)
     private let rightStackedViews: [UIView]
 
     public init(contentView: UISearchBar, contentInsets: UIEdgeInsets = .zero, rightStackedViews: [UIView] = []) {
@@ -40,6 +40,7 @@ open class SearchBarContainerView: BaseView {
         self.rightStackedViews.hugContent()
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,7 +56,7 @@ open class SearchState {
 }
 
 open class SearchControls {
-    open var searchBar: UISearchBar = UISearchBar()
+    open var searchBar = UISearchBar()
     open var additionalRightViews: [UIView] = []
     open var additionalLeftViews: [UIView] = []
 }
@@ -65,7 +66,8 @@ open class SearchResultsControllers {
     open var preSearchViewController: UIViewController?
 
     public init(resultsViewController: SearchResultsViewController,
-                preSearchViewController: UIViewController? = nil) {
+                preSearchViewController: UIViewController? = nil)
+    {
         self.resultsViewController = resultsViewController
         self.preSearchViewController = preSearchViewController
     }
@@ -86,7 +88,8 @@ open class SearchViewControllerConfiguration {
                 clearsResultsOnCancel: Bool? = nil,
                 restoreSearchStateOnAppearance: Bool? = nil,
                 searchBarRegainsFirstResponderOnReappear: Bool? = nil,
-                cachesQueryOnResignation: Bool? = nil) {
+                cachesQueryOnResignation: Bool? = nil)
+    {
         self.searchThrottle = searchThrottle
         self.clearsResultsOnCancel =? clearsResultsOnCancel
         self.restoreSearchStateOnAppearance =? restoreSearchStateOnAppearance
@@ -102,7 +105,8 @@ open class SearchViewControllerLayoutConfiguration {
 
     public init(searchBarPosition: SearchBarPosition = .header,
                 searchBarInsets: UIEdgeInsets = .zero,
-                displaysNavigationbarSearchControls: Bool = false) {
+                displaysNavigationbarSearchControls: Bool = false)
+    {
         self.searchBarPosition = searchBarPosition
         self.searchBarInsets = searchBarInsets
         self.displaysNavigationbarSearchControls = displaysNavigationbarSearchControls
@@ -234,7 +238,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
              completion: {
                  guard let statefulVC = resultsViewController as? StatefulViewController else { return }
                  statefulVC.transition(to: statefulVC.currentState)
-        })
+             })
     }
 
     open func resignSearchBar(forceClearQuery: Bool = false) {
@@ -287,7 +291,7 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
                  guard let self = self else { return }
                  self.restorePreviousSearchState()
 
-        })
+             })
     }
 
     open func restorePreviousSearchState(makeSearchBarFirstResponder: Bool = false) {

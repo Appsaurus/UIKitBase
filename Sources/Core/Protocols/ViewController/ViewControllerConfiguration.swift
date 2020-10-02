@@ -14,13 +14,14 @@ open class ViewControllerConfiguration {
 
     public required init(style: ViewControllerStyle = .default,
                          orientationMask: UIInterfaceOrientationMask = .default,
-                         statusBarConfiguration: StatusBarConfiguration = .default) {
+                         statusBarConfiguration: StatusBarConfiguration = .default)
+    {
         self.style = style
         self.orientationMask = orientationMask
         self.statusBarConfiguration = statusBarConfiguration
     }
 
-    public static var `default`: ViewControllerConfiguration = ViewControllerConfiguration()
+    public static var `default` = ViewControllerConfiguration()
 }
 
 extension UIInterfaceOrientationMask {

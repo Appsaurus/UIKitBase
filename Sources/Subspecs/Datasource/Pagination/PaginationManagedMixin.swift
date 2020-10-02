@@ -16,31 +16,32 @@ import UIKitMixinable
 open class PaginationManagedMixin<VC: UIViewController & PaginationManaged>: DatasourceManagedMixin<VC> {
     override open func viewDidLoad() {
         super.viewDidLoad()
+        guard let mixable = self.mixable else { return }
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
             mixable.updatePaginatableViews(for: state)
         }
         mixable.reloadFunction = { [weak self] completion in
             guard let self = self else { return }
-            self.mixable.fetchNextPage(firstPage: true,
-                                       transitioningState: .loading,
-                                       reloadCompletion: { completion() })
+            self.mixable?.fetchNextPage(firstPage: true,
+                                        transitioningState: .loading,
+                                        reloadCompletion: { completion() })
         }
     }
 
     override open func willDeinit() {
         super.willDeinit()
-        mixable.datasourceManagedView.loadingControls.clear()
+        mixable?.datasourceManagedView.loadingControls.clear()
     }
 
     override open func createSubviews() {
         super.createSubviews()
-        mixable.setupPaginatable()
+        mixable?.setupPaginatable()
     }
 
     override open func loadAsyncData() {
         super.loadAsyncData()
-        mixable.startLoadingData()
+        mixable?.startLoadingData()
     }
 }
 

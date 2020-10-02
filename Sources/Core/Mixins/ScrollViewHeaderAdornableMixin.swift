@@ -10,6 +10,6 @@ import UIKitMixinable
 open class ScrollViewHeaderAdornableMixin: UIViewControllerMixin<ScrollViewHeaderAdornable> {
     override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()
-        mixable.setupScrollViewHeader()
+        mixable?.setupScrollViewHeader()
     }
 }

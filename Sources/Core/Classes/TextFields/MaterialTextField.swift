@@ -13,7 +13,7 @@ import UIKitExtensions
 import UIKitTheme
 
 open class MaterialTextField: AnimatableTextField {
-    open var underlineView: UIView = UIView()
+    open var underlineView = UIView()
     open var placeholderActiveScale: CGFloat = 0.7
 
     override open var placeholder: String? {
@@ -175,7 +175,8 @@ open class MaterialTextFieldStyle: TextFieldStyle {
                 viewStyle: ViewStyle = ViewStyle(),
                 underlineViewStyle: ViewStyle? = nil,
                 titleLabelTextStyle: TextStyle? = nil,
-                secondaryLabelTextStyle: TextStyle? = nil) {
+                secondaryLabelTextStyle: TextStyle? = nil)
+    {
         let titleLabelTextStyle = titleLabelTextStyle ?? textStyle
         let underlineViewStyle = underlineViewStyle ?? ViewStyle(backgroundColor: titleLabelTextStyle.color)
         let secondaryLabelTextStyle = secondaryLabelTextStyle ?? {
@@ -220,7 +221,8 @@ extension TextFieldStyleGuide {
                                titleColor: UIColor? = nil,
                                disabledColor: UIColor? = nil,
                                textSize: CGFloat = 16.0,
-                               secondarySize: CGFloat = 12.0) -> TextFieldStyleMap {
+                               secondarySize: CGFloat = 12.0) -> TextFieldStyleMap
+    {
         let color = color ?? colors.primary
         let titleColor = titleColor ?? color
 
@@ -263,7 +265,8 @@ extension Dictionary where Key: T, Value: TextFieldStyle {
                                         titleColor: UIColor? = nil,
                                         disabledColor: UIColor? = nil,
                                         textSize: CGFloat = 16.0,
-                                        secondarySize: CGFloat = 12.0) -> TextFieldStyleMap {
+                                        secondarySize: CGFloat = 12.0) -> TextFieldStyleMap
+    {
         return App.style.textField.materialStyleMap(color: color, titleColor: titleColor, disabledColor: disabledColor, textSize: textSize, secondarySize: secondarySize)
     }
 

@@ -19,7 +19,7 @@ open class BaseContainedTableViewController: BaseContainerViewController, BaseTa
     }
 
     open lazy var tableViewStyle: UITableView.Style = .grouped
-    open lazy var tableView: UITableView = UITableView(frame: .zero, style: self.tableViewStyle).then { tv in
+    open lazy var tableView = UITableView(frame: .zero, style: self.tableViewStyle).then { tv in
         tv.backgroundColor = .clear
     }
 

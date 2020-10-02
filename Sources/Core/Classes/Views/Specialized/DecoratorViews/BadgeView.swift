@@ -56,6 +56,7 @@ open class StatefulBadgeView<S: Hashable>: BaseView, BadgeViewProtocol, Stateful
         self.applyCurrentViewStyle()
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -84,7 +85,7 @@ extension BadgeViewProtocol where Self: UIView {
 }
 
 open class BadgeView: BaseView, BadgeViewProtocol {
-    open var label: UILabel = UILabel()
+    open var label = UILabel()
     open var badgeHeight: CGFloat
     open var position: BadgeViewPosition
     open var badgeStyle: BadgeStyle {
@@ -112,6 +113,7 @@ open class BadgeView: BaseView, BadgeViewProtocol {
         super.init(frame: .zero)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -25,7 +25,8 @@ open class StatefulViewViewModel {
                 headlineStyle: TextStyle? = nil,
                 message: String? = nil,
                 messageStyle: TextStyle? = nil,
-                _ buttonViewModels: [ButtonViewModelConvertible] = []) {
+                _ buttonViewModels: [ButtonViewModelConvertible] = [])
+    {
         self.image = image
         self.headline = headline
         self.headlineStyle = headlineStyle
@@ -40,7 +41,8 @@ open class StatefulViewViewModel {
 extension StatefulViewViewModel {
     static func empty(headline: String = "No results",
                       retryTitle: String = "Reload",
-                      retry: VoidClosure? = nil) -> StatefulViewViewModel {
+                      retry: VoidClosure? = nil) -> StatefulViewViewModel
+    {
         var buttons: [ButtonViewModelConvertible] = []
         if let retry = retry {
             buttons.append(retryTitle => retry)
@@ -55,7 +57,8 @@ extension StatefulViewViewModel {
 
     static func error(_ error: Error,
                       retryTitle: String = "Reload",
-                      retry: VoidClosure? = nil) -> StatefulViewViewModel {
+                      retry: VoidClosure? = nil) -> StatefulViewViewModel
+    {
         var buttons: [ButtonViewModelConvertible] = []
         if let retry = retry {
             buttons.append(retryTitle => retry)
@@ -74,8 +77,8 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
 
     public typealias Model = StatefulViewViewModel
 
-    open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
-    open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
+    open lazy var stackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration)
+    open lazy var defaultStackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 15.0)
 
     open lazy var imageView = BaseImageView()
     open lazy var headlineLabel: UILabel = self.createLabel()
@@ -89,6 +92,7 @@ open class StatefulViewControllerView: BaseView, ViewModelBound {
         initLifecycle()
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

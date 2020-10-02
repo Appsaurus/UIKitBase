@@ -228,13 +228,13 @@ public extension Array where Element: UIViewController {
 
 public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewController> {
     override open func viewDidLoad() {
-        mixable.customizeStatefulViews()
+        mixable?.customizeStatefulViews()
         self.loadInitialStateIfNeeded()
     }
 
     open func loadInitialStateIfNeeded() {
-        if mixable.currentState == .uninitialized {
-            mixable.transitionToInitialState()
+        if mixable?.currentState == .uninitialized {
+            mixable?.transitionToInitialState()
         }
     }
 
@@ -248,6 +248,6 @@ public class StatefulViewControllerMixin: UIViewControllerMixin<StatefulViewCont
 
 public class StatefulViewMixin: UIViewMixin<StatefulViewController> {
     override open func didFinishCreatingAllViews() {
-        mixable.customizeStatefulViews()
+        mixable?.customizeStatefulViews()
     }
 }

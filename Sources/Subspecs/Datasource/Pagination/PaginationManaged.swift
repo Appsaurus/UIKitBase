@@ -135,7 +135,8 @@ public extension PaginationManaged where Self: UIViewController {
 
     func fetchNextPage(firstPage: Bool = false,
                        transitioningState: State? = .loading,
-                       reloadCompletion: VoidClosure? = nil) {
+                       reloadCompletion: VoidClosure? = nil)
+    {
         if let state = transitioningState {
             self.transition(to: state)
         }
@@ -153,7 +154,8 @@ public extension PaginationManaged where Self: UIViewController {
 
     func didFinishFetching(result: PaginationResult<ItemIdentifierType>,
                            isFirstPage: Bool = false,
-                           reloadCompletion: VoidClosure? = nil) {
+                           reloadCompletion: VoidClosure? = nil)
+    {
         let result = self.modifyFetched(result: result)
 
         let completion = { [weak self] in
@@ -372,6 +374,7 @@ public extension InfiniteScrollable {
 open class PullToRefreshableMixin<VC: UIViewController & PullToRefreshable & StatefulViewController>: UIViewControllerMixin<VC> {
     override open func viewDidLoad() {
         super.viewDidLoad()
+        guard let mixable = self.mixable else { return }
         mixable.onDidTransitionMixins.append { [weak mixable] state in
             guard let mixable = mixable else { return }
             mixable.updatePullToRefreshableViews(for: state)
@@ -380,12 +383,12 @@ open class PullToRefreshableMixin<VC: UIViewController & PullToRefreshable & Sta
 
     override open func willDeinit() {
         super.willDeinit()
-        mixable.scrollView.loadingControls.clear()
+        mixable?.scrollView.loadingControls.clear()
     }
 
     override open func createSubviews() {
         super.createSubviews()
-        mixable.addPullToRefresh()
-        mixable.scrollView.loadingControls.pullToRefresh.isEnabled = true
+        mixable?.addPullToRefresh()
+        mixable?.scrollView.loadingControls.pullToRefresh.isEnabled = true
     }
 }

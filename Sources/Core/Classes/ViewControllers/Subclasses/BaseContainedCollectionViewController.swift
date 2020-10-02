@@ -21,8 +21,8 @@ open class BaseContainedCollectionViewController: BaseContainerViewController, B
         return super.createMixins() + baseCollectionViewControllerProtocolMixins
     }
 
-    open lazy var collectionView: UICollectionView = UICollectionView(frame: .zero,
-                                                                      collectionViewLayout: self._layout).then { cv in
+    open lazy var collectionView = UICollectionView(frame: .zero,
+                                                    collectionViewLayout: self._layout).then { cv in
         cv.backgroundColor = .clear
     }
 

@@ -56,7 +56,8 @@ open class DrawingUtils {
     public static func drawDottedUnderline(strokeColor: UIColor? = nil,
                                            fillColor: UIColor? = nil,
                                            lineWidth: CGFloat = 2,
-                                           in view: UIView) {
+                                           in view: UIView)
+    {
         let strokeColor = strokeColor ?? .black
         let fillColor = fillColor ?? view.backgroundColor ?? .white
         let path = UIBezierPath()

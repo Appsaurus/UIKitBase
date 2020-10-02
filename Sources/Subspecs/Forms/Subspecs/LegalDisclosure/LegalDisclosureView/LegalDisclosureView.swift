@@ -72,7 +72,7 @@ public struct LegalDisclosureViewModel {
 }
 
 open class LegalDisclosureView: BaseView {
-    open var label: ActiveLabel = ActiveLabel()
+    open var label = ActiveLabel()
     open var viewModel: LegalDisclosureViewModel
 
     public required init(viewModel: LegalDisclosureViewModel) {
@@ -116,6 +116,7 @@ open class LegalDisclosureView: BaseView {
         self.label.edges.equal(to: .inset(10, 20))
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

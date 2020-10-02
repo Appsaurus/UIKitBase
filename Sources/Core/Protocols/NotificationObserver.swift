@@ -47,7 +47,7 @@ extension NotificationObserver where Self: NSObject {
                                                DispatchQueue.main.async {
                                                    self.didObserve(notification: notification as Notification)
                                                }
-            })
+                                           })
         }
 
         self.notificationClosureMap().forEach { mappedNotification in
@@ -59,17 +59,18 @@ extension NotificationObserver where Self: NSObject {
                                                DispatchQueue.main.async {
                                                    mappedNotification.value(notification as Notification)
                                                }
-            })
+                                           })
         }
     }
 }
 
 open class NotificationObserverMixin: InitializableMixin<NotificationObserver> {
     override open func initProperties() {
-        mixable.setupNotificationObserverCallback()
+        mixable?.setupNotificationObserverCallback()
     }
 
     override open func willDeinit() {
+        guard let mixable = self.mixable else { return }
         NotificationCenter.default.removeObserver(mixable)
     }
 }

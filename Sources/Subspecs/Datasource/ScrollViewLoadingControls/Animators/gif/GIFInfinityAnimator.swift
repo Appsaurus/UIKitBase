@@ -11,7 +11,7 @@ import UIKit
 open class GIFInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     open var animatedImages = [UIImage]()
 
-    var imageView: UIImageView = UIImageView()
+    var imageView = UIImageView()
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +20,7 @@ open class GIFInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         addSubview(self.imageView)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

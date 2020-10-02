@@ -12,7 +12,7 @@ open class GIFRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     open var refreshImages = [UIImage]()
     open var animatedImages = [UIImage]()
 
-    fileprivate var imageView: UIImageView = UIImageView()
+    fileprivate var imageView = UIImageView()
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +22,7 @@ open class GIFRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         addSubview(self.imageView)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

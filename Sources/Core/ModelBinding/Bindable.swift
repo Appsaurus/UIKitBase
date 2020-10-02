@@ -92,7 +92,7 @@ import Actions
 
 public protocol SyncListener: NSObject {}
 
-private let syncActionsAssociated: AssociatedObjectKey = AssociatedObjectKey<[String: Action]>("syncActionsAssociated")
+private let syncActionsAssociated = AssociatedObjectKey<[String: Action]>("syncActionsAssociated")
 
 public extension SyncListener where Self: NSObject {
     var syncActions: [String: Action] {

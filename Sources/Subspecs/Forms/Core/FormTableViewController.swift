@@ -69,6 +69,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
         super.init(callInitLifecycle: callInitLifecycle)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -222,7 +223,8 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func submissionHasBeenEdited() -> Bool {
         guard let cachedSubmissionState = cachedSubmissionState,
-            let submission = try? createSubmission() else {
+            let submission = try? createSubmission()
+        else {
             return true
         }
         return cachedSubmissionState != submission
@@ -249,7 +251,7 @@ open class FormTableViewController<Submission: Equatable, Response>: BaseFormVie
 //        return super.createMixins() + DynamicHeightTableViewAccessoriesMixins(self)
 //    }
 
-    open var tableView: UITableView = UITableView().then { tv in
+    open var tableView = UITableView().then { tv in
         tv.backgroundColor = .clear
     }
 
@@ -354,7 +356,8 @@ open class KeyboardAvoiding {
     public init(willShow: ((CGRect) -> Void)? = nil,
                 didShow: ((CGRect) -> Void)? = nil,
                 willHide: (() -> Void)? = nil,
-                didHide: (() -> Void)? = nil) {
+                didHide: (() -> Void)? = nil)
+    {
         self.willShow = willShow
         self.didShow = didShow
         self.willHide = willHide

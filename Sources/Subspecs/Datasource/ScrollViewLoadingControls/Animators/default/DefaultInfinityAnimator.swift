@@ -22,6 +22,7 @@ open class DefaultInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         addSubview(self.activityIndicatorView)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -33,8 +33,8 @@ public struct CodeFormViewControllerConfiguration {
     public let promptText: String? = "Please enter verification code."
     public let resendText: String? = "Resend code"
     public let autoSubmitsWhenInputIsValid = true
-    public let style: CodeFormViewControllerStyle = CodeFormViewControllerStyle()
-    public let codeInputFieldConfiguration: CodeInputFieldConfiguration = CodeInputFieldConfiguration()
+    public let style = CodeFormViewControllerStyle()
+    public let codeInputFieldConfiguration = CodeInputFieldConfiguration()
     public init() {}
 }
 
@@ -44,7 +44,7 @@ open class CodeFormViewControllerStyle {
     }
 
     open lazy var statusBarStyle: UIStatusBarStyle = .lightContent
-    open lazy var viewStyle: ViewStyle = ViewStyle(backgroundColor: .primary)
+    open lazy var viewStyle = ViewStyle(backgroundColor: .primary)
     open lazy var promptLabelStyle: TextStyle = .light(color: .primaryContrast)
     open lazy var submitButtonStyle: ButtonStyle = .solid(backgroundColor: .success, textColor: .primaryContrast, font: .regular())
     open lazy var submitButtonDisabledStyle: ButtonStyle = .solid(textColor: .primaryContrast, font: .regular())
@@ -55,7 +55,8 @@ open class CodeFormViewControllerStyle {
                 viewStyle: ViewStyle? = nil,
                 promptLabelStyle: TextStyle? = nil,
                 submitButtonStyle: ButtonStyle? = nil,
-                submitButtonDisabledStyle: ButtonStyle? = nil) {
+                submitButtonDisabledStyle: ButtonStyle? = nil)
+    {
         self.statusBarStyle =? statusBarStyle
         self.navigationBarStyle =? navigationBarStyle
         self.viewStyle =? viewStyle
@@ -77,10 +78,10 @@ public enum CodeFormViewControllerError: LocalizedError {
 }
 
 open class CodeFormViewController: FormTableViewController<String, Any?> {
-    open var configuration: CodeFormViewControllerConfiguration = CodeFormViewControllerConfiguration()
+    open var configuration = CodeFormViewControllerConfiguration()
     open weak var delegate: CodeFormDelegate?
 
-    open var codeInputField: CodeInputFormField = CodeInputFormField<CodeInputTextField>()
+    open var codeInputField = CodeInputFormField<CodeInputTextField>()
 
     override open var fieldCellInsets: LayoutPadding {
         return LayoutPadding(horizontal: 50, vertical: 20)

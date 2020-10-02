@@ -48,7 +48,8 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     // The method will be called on the delegate only if the application is in the foreground. If the method is not implemented or the handler is not called in a timely manner then the notification will not be presented. The application can choose to have the notification presented as a sound, badge, alert and/or in the notification list. This decision should be based on whether the information in the notification is otherwise visible to the user.
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
-                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
         self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
         }, completionHandler: { [weak self] results in
@@ -64,7 +65,8 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
     // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from application:didFinishLaunchingWithOptions:.
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      didReceive response: UNNotificationResponse,
-                                     withCompletionHandler completionHandler: @escaping () -> Void) {
+                                     withCompletionHandler completionHandler: @escaping () -> Void)
+    {
         self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
             mixin.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
         }, completionHandler: completionHandler)
@@ -85,6 +87,7 @@ public protocol AppConfigurable {
 open class AppConfigurableMixin: UIApplicationDelegateMixin<UIApplicationDelegate & AppConfigurable> {
     override open func didInit() {
         super.didInit()
+        guard let mixable = self.mixable else { return }
         AppConfigurationManager.shared.apply(configuration: mixable.appConfiguration)
         ViewControllerConfiguration.default = mixable.viewControllerConfiguration
     }
@@ -172,7 +175,8 @@ extension AppIOManager {
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        willPresent notification: UNNotification,
-                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
         self.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
         guard let options = completionHandlerOptions(for: notification) else { return }
         completionHandler(options)
@@ -184,7 +188,8 @@ extension AppIOManager {
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
+                                       withCompletionHandler completionHandler: @escaping () -> Void)
+    {
         self.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
         completionHandler()
     }
@@ -247,9 +252,10 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
 
     override open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                               willPresent notification: UNNotification,
-                                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        mixable.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
-        guard let options = mixable.completionHandlerOptions(for: notification) else {
+                                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        mixable?.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
+        guard let options = mixable?.completionHandlerOptions(for: notification) else {
             completionHandler([])
             return
         }
@@ -258,8 +264,9 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
 
     override open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                               didReceive response: UNNotificationResponse,
-                                              withCompletionHandler completionHandler: @escaping () -> Void) {
-        mixable.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
+                                              withCompletionHandler completionHandler: @escaping () -> Void)
+    {
+        mixable?.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
         completionHandler()
     }
 
@@ -268,27 +275,27 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
     }
 
     override open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        mixable.registerDevice(withToken: String(deviceToken: deviceToken),
-                               serviceToken: nil,
-                               success: self.remoteNotificationRegistrationSuccess,
-                               failure: self.remoteNotificationRegistrationFailure)
+        mixable?.registerDevice(withToken: String(deviceToken: deviceToken),
+                                serviceToken: nil,
+                                success: self.remoteNotificationRegistrationSuccess,
+                                failure: self.remoteNotificationRegistrationFailure)
     }
 
     override open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
+        mixable?.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
     override open func application(_ application: UIApplication,
                                    didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                                   fetchCompletionHandler
-                                   completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        mixable.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
+                                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+    {
+        mixable?.application(application, didRecieve: BaseAppNotification(payload: userInfo, origin: .remote))
     }
 
     override open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Unifying notification methods
         if let remoteNotification = launchOptions?[.remoteNotification] as? [NSObject: AnyObject] {
-            mixable.application(application, didRecieve: BaseAppNotification(payload: remoteNotification, origin: .remote))
+            mixable?.application(application, didRecieve: BaseAppNotification(payload: remoteNotification, origin: .remote))
         }
         return true
     }

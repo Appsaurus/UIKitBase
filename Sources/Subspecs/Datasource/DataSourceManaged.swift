@@ -75,6 +75,6 @@ public extension DatasourceManaged where Self: BaseContainedCollectionViewContro
 open class DatasourceManagedMixin<VC: DatasourceManaged>: UIViewControllerMixin<VC> {
     override open func setupDelegates() {
         super.setupDelegates()
-        mixable.setManagedDatasource()
+        mixable?.setManagedDatasource()
     }
 }

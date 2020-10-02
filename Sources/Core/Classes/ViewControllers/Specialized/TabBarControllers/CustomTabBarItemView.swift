@@ -26,6 +26,7 @@ open class CustomTabBarItemView: BaseButton, ObjectDisplayable {
         buttonLayout = ButtonLayout(layoutType: .centerTitleUnderImage(padding: 4), imageLayoutType: .stretchWidth)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

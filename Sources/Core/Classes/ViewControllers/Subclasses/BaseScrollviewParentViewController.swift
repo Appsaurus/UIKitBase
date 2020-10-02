@@ -9,7 +9,7 @@
 import Layman
 import UIKitMixinable
 open class BaseScrollviewParentViewController: BaseScrollviewController, UIGestureRecognizerDelegate {
-    open var childViewControllerContainerView: UIView = UIView()
+    open var childViewControllerContainerView = UIView()
 
     override open func createSubviews() {
         super.createSubviews()

@@ -14,7 +14,7 @@ import UIKitTheme
 import WebKit
 
 open class PagingWebViewController: BaseParentPagingMenuViewController, DismissButtonManaged {
-    open var titledUrls: SortedDictionary<String, URL> = SortedDictionary<String, URL>()
+    open var titledUrls = SortedDictionary<String, URL>()
 
     public required init(titledUrlStrings: SortedDictionary<String, String>) {
         for titledUrlString in titledUrlStrings {
@@ -26,6 +26,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
         super.init(callInitLifecycle: true)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,7 +62,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
     }
 
     override open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
-        let cell: WebViewPagingMenuItemCell = WebViewPagingMenuItemCell()
+        let cell = WebViewPagingMenuItemCell()
         configure(cell: cell, at: index)
         return cell.calculateDynamicSize(fixedDimension: .height(size: menuView.frame.h))
     }

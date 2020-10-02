@@ -41,7 +41,7 @@ open class BaseCollectionViewCell: MixinableCollectionViewCell, BaseCollectionVi
 }
 
 open class BaseImageCollectionViewCell: BaseCollectionViewCell {
-    open var imageView: BaseImageView = BaseImageView()
+    open var imageView = BaseImageView()
 
     override open func createSubviews() {
         super.createSubviews()
@@ -55,7 +55,7 @@ open class BaseImageCollectionViewCell: BaseCollectionViewCell {
 }
 
 open class BaseLabeledCollectionViewCell: BaseCollectionViewCell {
-    open var label: UILabel = UILabel()
+    open var label = UILabel()
 
     override open func didFinishCreatingAllViews() {
         super.didFinishCreatingAllViews()

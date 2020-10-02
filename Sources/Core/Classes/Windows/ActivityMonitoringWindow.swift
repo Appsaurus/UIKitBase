@@ -11,7 +11,7 @@ import UIKit
 // Custom window that monitors user interactionw with the app
 open class ActivityMonitoringWindow: UIWindow {
     // record the timestamp of the latest touch
-    open var lastTouched: Date = Date()
+    open var lastTouched = Date()
 
     // Indicates whether the app has been touched within the dormant timemout period.
     open var dormant: Bool {

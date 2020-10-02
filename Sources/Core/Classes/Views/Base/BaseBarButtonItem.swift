@@ -31,7 +31,8 @@ open class BaseBarButtonItem: MixinableBarButtonItem, BaseBarButtonItemProtocol 
 
     public convenience init<T: FontIconEnum>(icon: T,
                                              fontSize: CGFloat = .barButtonFontIconSize,
-                                             onTouchUpInside: VoidClosure? = nil) {
+                                             onTouchUpInside: VoidClosure? = nil)
+    {
         let button = UIButton()
         button.setFontIconTitle(icon, fontSize: fontSize)
         self.init(customButton: button, onTouchUpInside: onTouchUpInside)

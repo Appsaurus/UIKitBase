@@ -15,15 +15,15 @@ public class DynamicHeightTableViewAccessoriesMixins: UIViewControllerMixin<UITa
     var viewTypes: [TableViewAccesoryView] = TableViewAccesoryView.allCases
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mixable.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
+        mixable?.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
     }
 
 //    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        mixable.managedTableView.dynamicallySizeHeight(of: viewTypes)
+//        mixable?.managedTableView.dynamicallySizeHeight(of: viewTypes)
 //    }
 
     override open func viewWillAppear(_ animated: Bool) {
-        mixable.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
+        mixable?.managedTableView.dynamicallySizeHeight(of: self.viewTypes)
     }
 }
 
@@ -57,12 +57,14 @@ public extension UITableView {
     }
 
     func setupDynamicHeader(_ view: View,
-                            insets: LayoutPadding = LayoutPadding(20)) {
+                            insets: LayoutPadding = LayoutPadding(20))
+    {
         tableHeaderView = View.parentViewFittingContent(of: view, insetBy: insets)
     }
 
     func setupDynamicFooter(_ view: View,
-                            insets: LayoutPadding = LayoutPadding(20)) {
+                            insets: LayoutPadding = LayoutPadding(20))
+    {
         tableFooterView = View.parentViewFittingContent(of: view, insetBy: insets)
     }
 }

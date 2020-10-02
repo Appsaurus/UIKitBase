@@ -25,7 +25,7 @@ public extension PhoneNumberFormDelegate {
 
 public struct PhoneNumberFormViewControllerConfiguration {
     public let promptText: String? = "Please enter a phone number."
-    public let style: PhoneNumberFormViewControllerStyle = PhoneNumberFormViewControllerStyle()
+    public let style = PhoneNumberFormViewControllerStyle()
     public init() {}
 }
 
@@ -33,12 +33,12 @@ public class PhoneNumberFormViewControllerStyle {
     open lazy var keyboard: UIKeyboardAppearance = .dark
     open lazy var statusBar: UIStatusBarStyle = .lightContent
     open lazy var navigationBarStyle: NavigationBarStyle = .primary
-    open lazy var viewStyle: ViewStyle = ViewStyle(backgroundColor: .primary)
+    open lazy var viewStyle = ViewStyle(backgroundColor: .primary)
     open lazy var promptLabelStyle: TextStyle = .light(color: .primaryContrast)
     open lazy var textFieldStyles: TextFieldStyleMap = .materialStyleMap(color: .primaryContrast)
-    open lazy var submitButtonStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast), viewStyle: ViewStyle(backgroundColor: .success))
-    open lazy var submitButtonDisabledStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
-    open lazy var secondaryButtonStyle: ButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
+    open lazy var submitButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast), viewStyle: ViewStyle(backgroundColor: .success))
+    open lazy var submitButtonDisabledStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
+    open lazy var secondaryButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast))
 
     public init() {}
 }
@@ -50,10 +50,10 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
     }
 
     open weak var delegate: PhoneNumberFormDelegate?
-    open var configuration: PhoneNumberFormViewControllerConfiguration = PhoneNumberFormViewControllerConfiguration()
+    open var configuration = PhoneNumberFormViewControllerConfiguration()
 
-    var numberField: PhoneNumberFormTextField<TextField> = PhoneNumberFormTextField<TextField>(fieldName: "Phone Number")
-    var countryField: PhoneNumberCountryPickerFormField<TextField> = PhoneNumberCountryPickerFormField<TextField>(fieldName: "Country Code")
+    var numberField = PhoneNumberFormTextField<TextField>(fieldName: "Phone Number")
+    var countryField = PhoneNumberCountryPickerFormField<TextField>(fieldName: "Country Code")
 
     internal var phoneNumberString: String {
         return "\(self.countryField.value?.phoneCode ?? "")\(self.numberField.value ?? "")"

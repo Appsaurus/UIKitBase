@@ -12,7 +12,7 @@ import UIKitExtensions
 import UIKitTheme
 
 open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
-    public let acceptButton: BaseButton = BaseButton(titles: [.any: "I Accept"])
+    public let acceptButton = BaseButton(titles: [.any: "I Accept"])
     public var onAccept: VoidClosure
     public var onDeny: VoidClosure?
     public let legalDisclosureView: LegalDisclosureView
@@ -20,7 +20,8 @@ open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
     public required init(legalDisclosureViewModel: LegalDisclosureViewModel,
                          alertViewModel: AlertViewModel = AlertViewModel(alertTitle: "Accept Terms", dismissButtonTitle: "Cancel"),
                          onAccept: @escaping VoidClosure,
-                         onDeny: VoidClosure? = nil) {
+                         onDeny: VoidClosure? = nil)
+    {
         self.onAccept = onAccept
         self.onDeny = onDeny
         self.legalDisclosureView = LegalDisclosureView(viewModel: legalDisclosureViewModel)
@@ -51,6 +52,7 @@ open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
         fatalError("init(viewModel:) has not been implemented")
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -15,7 +15,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
     public func loadImage(_ imageResolving: ImageResolving,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) throws -> ImageTask? {
+                          completion: ImageTask.Completion? = nil) throws -> ImageTask?
+    {
         switch imageResolving {
         case let .image(image):
             nuke_display(image: image)
@@ -30,7 +31,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil,
-                          errorImage: PlatformImage?) -> ImageTask? {
+                          errorImage: PlatformImage?) -> ImageTask?
+    {
         do {
             return try self.loadImage(imageResolving, options: options, progress: progress, completion: completion)
         } catch {
@@ -43,7 +45,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
     public func loadImage(with url: URLConvertible,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) throws -> ImageTask? {
+                          completion: ImageTask.Completion? = nil) throws -> ImageTask?
+    {
         return try self.loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
     }
 
@@ -52,7 +55,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           completion: ImageTask.Completion? = nil,
-                          errorImage: PlatformImage?) -> ImageTask? {
+                          errorImage: PlatformImage?) -> ImageTask?
+    {
         do {
             return try self.loadImage(with: url, options: options, progress: progress, completion: completion)
         } catch {
@@ -65,7 +69,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
     public func loadImage(with url: URL,
                           options: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) -> ImageTask? {
+                          completion: ImageTask.Completion? = nil) -> ImageTask?
+    {
         Nuke.cancelRequest(for: self)
         return Nuke.loadImage(with: url, options: options, into: self, progress: progress, completion: completion)
     }
@@ -76,7 +81,8 @@ extension Nuke_ImageDisplaying where Self: UIView {
                           loadingOptions: ImageLoadingOptions = .shared,
                           progress: ImageTask.ProgressHandler? = nil,
                           processors: [ImageProcessing] = [],
-                          completion: ImageTask.Completion? = nil) -> ImageTask? {
+                          completion: ImageTask.Completion? = nil) -> ImageTask?
+    {
         Nuke.cancelRequest(for: self)
         let request = ImageRequest(url: url, processors: processors, options: requestOptions ?? .init())
         return Nuke.loadImage(with: request, options: loadingOptions, into: self, progress: progress, completion: completion)

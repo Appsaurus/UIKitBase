@@ -16,9 +16,9 @@ open class BaseStackViewController: BaseViewController {
         case topCenter
     }
 
-    open lazy var stackView: UIStackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
-    open var stackViewBackgroundView: UIView = UIView()
-    open lazy var defaultStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .fill, spacing: 12)
+    open lazy var stackView = UIStackView(stackViewConfiguration: defaultStackViewConfiguration, arrangedSubviews: initialArrangedSubviews())
+    open var stackViewBackgroundView = UIView()
+    open lazy var defaultStackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .fill, spacing: 12)
     open lazy var stackviewLayoutMargins: UIEdgeInsets = 25
     open lazy var verticalLayoutPadding: CGFloat = 25.0
     open lazy var horizontalLayoutPadding: CGFloat = 25.0
@@ -80,7 +80,8 @@ open class AlertViewModel {
                 headerImageUrl: URLConvertible? = nil,
                 alertTitle: String? = nil,
                 message: String? = nil,
-                dismissButtonTitle: String = "Dismiss") {
+                dismissButtonTitle: String = "Dismiss")
+    {
         self.headerImage = headerImage
         self.headerImageUrl = headerImageUrl
         self.alertTitle = alertTitle
@@ -90,14 +91,14 @@ open class AlertViewModel {
 }
 
 open class StackedAlertViewController: BaseStackViewController {
-    open var viewModel: AlertViewModel = AlertViewModel()
+    open var viewModel = AlertViewModel()
 
-    open lazy var headerImageView: UIImageView = UIImageView()
-    open lazy var alertTitleLabel: UILabel = UILabel()
-    open lazy var messageLabel: UILabel = UILabel()
+    open lazy var headerImageView = UIImageView()
+    open lazy var alertTitleLabel = UILabel()
+    open lazy var messageLabel = UILabel()
     open lazy var dismissButton = BaseButton()
-    open lazy var bottomStackView: UIStackView = UIStackView(stackViewConfiguration: defaultBottomStackViewConfiguration, arrangedSubviews: initialBottomArrangedSubviews())
-    open lazy var defaultBottomStackViewConfiguration: StackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
+    open lazy var bottomStackView = UIStackView(stackViewConfiguration: defaultBottomStackViewConfiguration, arrangedSubviews: initialBottomArrangedSubviews())
+    open lazy var defaultBottomStackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
     open var showsDismissButton: Bool = { true }()
 
     override open func initialArrangedSubviews() -> [UIView] {

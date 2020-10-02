@@ -9,6 +9,6 @@
 //
 // open class DeepLinkHandlerMixin: InitializableMixin<DeepLinkHandler>{
 //    open override func didInit() {
-//        mixable.observeDeepLinkNotifications()
+//        mixable?.observeDeepLinkNotifications()
 //    }
 // }

@@ -42,7 +42,8 @@ extension UIView {
                                       useAutoLayout: Bool = true,
                                       position: ActivityIndicatorPosition = .center,
                                       disablingUserInteraction: Bool = true,
-                                      disablingGlobalUserInteraction: Bool = false) {
+                                      disablingGlobalUserInteraction: Bool = false)
+    {
         // Indicator already exists, make sure it is visible but do not create another
         if let indicator: UIActivityIndicatorView = subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
             bringSubviewToFront(indicator)

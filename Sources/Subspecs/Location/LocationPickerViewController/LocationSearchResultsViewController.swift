@@ -18,7 +18,7 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
 
     private let locationSearchPaginator = MKLocalSearchRequestQueryPaginator()
     public lazy var paginator: Paginator<MKMapItem> = self.locationSearchPaginator
-    public var paginationConfig: PaginationConfiguration = PaginationConfiguration()
+    public var paginationConfig = PaginationConfiguration()
 
     public typealias PaginatableModel = MKMapItem
 
@@ -33,7 +33,7 @@ open class LocationSearchResultsViewController: PaginatableTableViewController, 
     var searchHistoryLabel: String?
     var locationHint: CLLocationCoordinate2D?
 
-    open var config: LocationPickerSearchConfiguration = LocationPickerSearchConfiguration()
+    open var config = LocationPickerSearchConfiguration()
 
     public init(config: LocationPickerSearchConfiguration = LocationPickerSearchConfiguration(), locationHint: CLLocationCoordinate2D? = nil) {
         self.config = config

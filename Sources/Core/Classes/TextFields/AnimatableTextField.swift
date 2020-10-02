@@ -11,8 +11,8 @@ import UIKit
 open class AnimatableTextFieldConfiguration {}
 
 open class AnimatableTextField: StatefulTextField {
-    open var titleLabel: UILabel = UILabel()
-    open var secondaryLabel: UILabel = UILabel()
+    open var titleLabel = UILabel()
+    open var secondaryLabel = UILabel()
     open var leftViewWidth: CGFloat = 0.0
     open var layoutHeights: (titleLabel: CGFloat, textField: CGFloat, secondaryLabel: CGFloat) = (17.0, 34.0, 17.0)
 

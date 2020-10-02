@@ -245,7 +245,8 @@ public extension GradientView {
                                             colors: [UIColor],
                                             size: CGSize,
                                             gradientMode: Mode = .linear,
-                                            alpha: CGFloat = 1.0) -> GradientView {
+                                            alpha: CGFloat = 1.0) -> GradientView
+    {
         let gradient = GradientView()
         gradient.clipsToBounds = false
         gradient.mode = gradientMode
@@ -264,7 +265,8 @@ public extension GradientView {
                                                                  .secondary],
                                             gradientMode: Mode = .linear,
                                             gradientDirection: Direction = .horizontal,
-                                            alpha: CGFloat = 1.0) -> GradientView {
+                                            alpha: CGFloat = 1.0) -> GradientView
+    {
         let gradientView = self.gradient(ofSize: view.frame.size, colors: colors, gradientMode: gradientMode, gradientDirection: gradientDirection, alpha: alpha)
         view.insertSubview(gradientView, at: 0)
         gradientView.clipsToBounds = true
@@ -278,7 +280,8 @@ public extension GradientView {
                                              .secondary],
                         gradientMode: Mode = .linear,
                         gradientDirection: Direction = .horizontal,
-                        alpha: CGFloat = 1.0) -> GradientView {
+                        alpha: CGFloat = 1.0) -> GradientView
+    {
         let gradient = GradientView()
         gradient.clipsToBounds = false
         gradient.mode = gradientMode

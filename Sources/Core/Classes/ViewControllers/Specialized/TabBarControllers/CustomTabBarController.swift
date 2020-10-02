@@ -19,7 +19,7 @@ public enum CustomTabBarLayout {
 }
 
 open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource, CustomTabBarDelegate {
-    open lazy var customTabBar: CustomTabBar = CustomTabBar(datasource: self, delegate: self, initialIndex: self.initialSelectedIndex ?? 0)
+    open lazy var customTabBar = CustomTabBar(datasource: self, delegate: self, initialIndex: self.initialSelectedIndex ?? 0)
     open var tabBarLayout: CustomTabBarLayout = .bottom(height: 50.0)
     open var appliesTabBarItemTitlesToViewControllerTitles: Bool = true
     open var eagerLoadsViewControllers: Bool = true
@@ -34,7 +34,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
         }
     }
 
-    open var tabBarLayoutView: UIView = UIView()
+    open var tabBarLayoutView = UIView()
     open lazy var contentPadding: CGFloat = 25.0
 
     override open var selectedIndex: Int {

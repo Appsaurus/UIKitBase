@@ -23,7 +23,8 @@ public struct PhoneVerificationControllerConfiguration {
     public let codeFormConfiguration: CodeFormViewControllerConfiguration
     public init(animationDuration: TimeInterval = 0.3,
                 phoneNumberFormConfiguration: PhoneNumberFormViewControllerConfiguration = PhoneNumberFormViewControllerConfiguration(),
-                codeFormConfiguration: CodeFormViewControllerConfiguration = CodeFormViewControllerConfiguration()) {
+                codeFormConfiguration: CodeFormViewControllerConfiguration = CodeFormViewControllerConfiguration())
+    {
         self.animationDuration = animationDuration
         self.phoneNumberFormConfiguration = phoneNumberFormConfiguration
         self.codeFormConfiguration = codeFormConfiguration
@@ -42,7 +43,7 @@ open class PhoneVerificationController<TextField: UITextField> where TextField: 
 
     open lazy var phoneNumberFormViewController: PhoneNumberFormViewController<TextField> = self.createPhoneNumberFormViewController()
 
-    open var configuration: PhoneVerificationControllerConfiguration = PhoneVerificationControllerConfiguration()
+    open var configuration = PhoneVerificationControllerConfiguration()
     public weak var delegate: PhoneVerificationDelegate?
     open weak var navigationController: UINavigationController?
 

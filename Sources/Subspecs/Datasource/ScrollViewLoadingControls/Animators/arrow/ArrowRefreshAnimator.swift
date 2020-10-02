@@ -20,7 +20,7 @@ extension UIColor {
 
 open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     fileprivate(set) var animating = false
-    open var color: UIColor = UIColor.ArrowBlue {
+    open var color = UIColor.ArrowBlue {
         didSet {
             self.arrowLayer.strokeColor = self.color.cgColor
             self.circleFrontLayer.strokeColor = self.color.cgColor
@@ -28,11 +28,11 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         }
     }
 
-    fileprivate var arrowLayer: CAShapeLayer = CAShapeLayer()
-    fileprivate var circleFrontLayer: CAShapeLayer = CAShapeLayer()
-    fileprivate var circleBackLayer: CAShapeLayer = CAShapeLayer()
+    fileprivate var arrowLayer = CAShapeLayer()
+    fileprivate var circleFrontLayer = CAShapeLayer()
+    fileprivate var circleBackLayer = CAShapeLayer()
 
-    fileprivate var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+    fileprivate var activityIndicatorView = UIActivityIndicatorView(style: .gray)
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,6 +80,7 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         addSubview(self.activityIndicatorView)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

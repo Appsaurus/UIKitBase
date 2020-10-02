@@ -9,7 +9,7 @@
 import UIKit
 
 open class CircleInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
-    var circle: CAShapeLayer = CAShapeLayer()
+    var circle = CAShapeLayer()
     fileprivate(set) var animating = false
 
     override public init(frame: CGRect) {
@@ -22,6 +22,7 @@ open class CircleInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         layer.addSublayer(self.circle)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

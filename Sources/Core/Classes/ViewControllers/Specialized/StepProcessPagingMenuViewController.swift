@@ -91,7 +91,8 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
         let steps = steps ?? self.stepModels.filter { !$0.complete }
         steps.forEach { step in
             guard let index = stepModels.firstIndex(where: { $0 === step })?.indexPath,
-                let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell else {
+                let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell
+            else {
                 return
             }
             DispatchQueue.main.async {
@@ -202,8 +203,8 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
         case previous, next, previousAndNext, none
     }
 
-    open var previousStepLinkView: UIView = UIView()
-    open var nextStepLinkView: UIView = UIView()
+    open var previousStepLinkView = UIView()
+    open var nextStepLinkView = UIView()
     open var stepLinkVisibility: Set<StepProcessLinkVisibility> = [.none] {
         didSet {
             self.previousStepLinkView.isVisible = self.stepLinkVisibility.contains(.previous) || self.stepLinkVisibility.contains(.previousAndNext)

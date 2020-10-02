@@ -54,7 +54,7 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         contentSize = self.contentView.frame.size
     }
 
-    public var childScrollViews: Set<UIScrollView> = Set<UIScrollView>()
+    public var childScrollViews = Set<UIScrollView>()
     //    var observers: [KeyValueObserver] = []
 
     func captureScrollViewIfNeeded(scrollView: UIScrollView) {
@@ -62,12 +62,14 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         self.childScrollViews.update(with: scrollView)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                                  shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+                                  shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    {
         guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return true }
 
         guard gestureRecognizers?.contains(pan) == true else { return true }

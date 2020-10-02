@@ -19,7 +19,8 @@ public struct CellLayoutViewConfiguration {
     public init(showsLeftImageView: Bool = true,
                 leftImageViewSize: CGSize = CGSize(side: 45.0),
                 optionalRightViewMinimumWidth: CGFloat = 60.0,
-                mainLayoutViewInsets: LayoutPadding = .constant(10)) {
+                mainLayoutViewInsets: LayoutPadding = .constant(10))
+    {
         self.showsLeftImageView = showsLeftImageView
         self.leftImageViewSize = leftImageViewSize
         self.optionalRightViewMinimumWidth = optionalRightViewMinimumWidth
@@ -34,7 +35,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
         .align(.center)
         .spacing(6)
 
-    open lazy var config: CellLayoutViewConfiguration = CellLayoutViewConfiguration()
+    open lazy var config = CellLayoutViewConfiguration()
 
     open lazy var optionalRightView: UIView? = nil
     open var prioritizeMiddleViewWidthOverRightView: Bool = true

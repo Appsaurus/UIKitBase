@@ -53,7 +53,8 @@ public class PagingMenuViewOptions {
     public init(layout: PagingMenuViewOrientation = .horizontal(height: 30.0),
                 itemSizingBehavior: PagingeMenuViewItemSizingBehavior = .spanWidthCollectively(height: 30.0),
                 scrollBehavior: PagingeMenuViewScrollBehavior = .tabBar,
-                animatesSelectionChanges: Bool = true) {
+                animatesSelectionChanges: Bool = true)
+    {
         self.layout = layout
         self.itemSizingBehavior = itemSizingBehavior
         self.scrollBehavior = scrollBehavior
@@ -178,6 +179,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
         self.pagingMenuCollectionView.selectItem(at: index, animated: animated, scrollPosition: [])
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -304,7 +306,8 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     open func renderCollectionMenuItemSelection(transition: IndexPathTransition) {
         DispatchQueue.main.async {
             guard let selectedIndex = transition.route.to,
-                let cell = self.pagingMenuCollectionView.cellForItem(at: selectedIndex) else {
+                let cell = self.pagingMenuCollectionView.cellForItem(at: selectedIndex)
+            else {
                 return
             }
             if cell.isSelected == false {

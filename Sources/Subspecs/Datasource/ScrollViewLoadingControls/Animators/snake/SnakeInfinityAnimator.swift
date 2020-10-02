@@ -15,7 +15,7 @@ extension UIColor {
 }
 
 open class SnakeInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
-    open var color: UIColor = UIColor.SnakeBlue {
+    open var color = UIColor.SnakeBlue {
         didSet {
             self.snakeLayer.strokeColor = self.color.cgColor
         }
@@ -67,6 +67,7 @@ open class SnakeInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
         layer.addSublayer(self.snakeLayer)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -11,8 +11,9 @@ import UIKit
 
 public protocol FormPickerFieldProtocol {}
 open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController>: FormField<ContentView, Value>, FormPickerFieldProtocol
-    where VC: TaskResultDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol {
-    open lazy var pickerViewController: VC = VC(nibName: nil, bundle: nil)
+    where VC: TaskResultDelegate, VC.TaskResult == Value, ContentView: FormFieldViewProtocol
+{
+    open lazy var pickerViewController = VC(nibName: nil, bundle: nil)
 
     override open var canBecomeFirstResponder: Bool {
         return false

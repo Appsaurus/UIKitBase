@@ -9,8 +9,8 @@
 import UIKit
 
 open class DefaultRefreshAnimator: UIView, CustomPullToRefreshAnimator {
-    open var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
-    open var circleLayer: CAShapeLayer = CAShapeLayer()
+    open var activityIndicatorView = UIActivityIndicatorView(style: .gray)
+    open var circleLayer = CAShapeLayer()
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +30,7 @@ open class DefaultRefreshAnimator: UIView, CustomPullToRefreshAnimator {
         layer.addSublayer(self.circleLayer)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

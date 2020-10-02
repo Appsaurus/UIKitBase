@@ -37,7 +37,7 @@ open class PhoneNumberCountry {
 }
 
 open class PhoneNumberCountryPickerFormField<T: UITextField>: FormTextField<T, PhoneNumberCountry>, CountryPickerDelegate where T: FormFieldViewProtocol {
-    open lazy var flagImageView: UIImageView = UIImageView()
+    open lazy var flagImageView = UIImageView()
 
     fileprivate lazy var countryPicker: CountryPicker = {
         let picker = CountryPicker()

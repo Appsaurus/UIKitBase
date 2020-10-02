@@ -163,7 +163,7 @@ open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderB
 @available(iOS 10.0, *)
 open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     var fillColor: UIColor
-    var fillView: PassThroughView = PassThroughView()
+    var fillView = PassThroughView()
 
     override open func setup() {
         super.setup()

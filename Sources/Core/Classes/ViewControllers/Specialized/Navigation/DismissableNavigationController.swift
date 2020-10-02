@@ -29,7 +29,8 @@ open class DismissableNavigationController: BaseNavigationController, UINavigati
 
     open func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === viewControllers.first,
-            var dismissableViewController = viewController as? DismissButtonManaged {
+            var dismissableViewController = viewController as? DismissButtonManaged
+        {
             dismissableViewController.setupDismissButton()
         }
     }

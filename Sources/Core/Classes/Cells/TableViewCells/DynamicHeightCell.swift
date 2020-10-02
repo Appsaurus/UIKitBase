@@ -13,7 +13,7 @@ import UIKitMixinable
 import UIKitTheme
 
 open class DynamicHeightCell: BaseTableViewCell {
-    open var mainLayoutView: UIView = UIView()
+    open var mainLayoutView = UIView()
     open lazy var mainLayoutViewInsets: LayoutPadding = {
         .zero
     }()

@@ -12,7 +12,8 @@ import Swiftest
 import UIKitMixinable
 
 open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView, Value>, FormTextFieldProtocol
-    where ContentView: FormFieldViewProtocol {
+    where ContentView: FormFieldViewProtocol
+{
     open lazy var autocorrectionType: UITextAutocorrectionType = .no
     open lazy var keyboardType: UIKeyboardType = .default
 
@@ -56,7 +57,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     open var textFieldDelegates: [UITextFieldDelegate] = []
     open var minCharacterCountLimit: Int = 0
-    open var maxCharacterCountLimit: Int = Int.max
+    open var maxCharacterCountLimit = Int.max
     open var parkedText: (prepended: String?, appended: String?)
     open var forbiddenCharacterSet: CharacterSet?
     open var allowedCharacterSet: CharacterSet?
@@ -297,10 +298,12 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
 
         if let confirmationField = confirmationField,
-            confirmationField.textField.text?.isEmpty == false {
+            confirmationField.textField.text?.isEmpty == false
+        {
             confirmationField.validate(displayErrors: displayErrorOnNextValidation)
         } else if let confirmsField = confirmsField,
-            confirmsField.textField.text != textField.text {
+            confirmsField.textField.text != textField.text
+        {
             let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
             let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) and \(confirmsField.fieldName) must match."
             failures.append(ValidationFailure(failureType: failureType, explanationMessage: explanationMessage))

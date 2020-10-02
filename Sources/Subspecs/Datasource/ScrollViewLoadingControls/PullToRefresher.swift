@@ -84,7 +84,7 @@ class PullToRefresher: NSObject {
     var action: (() -> Void)?
     var enable = false
 
-    var animatorOffset: UIOffset = UIOffset() {
+    var animatorOffset = UIOffset() {
         didSet {
             if let scrollView = scrollView {
                 self.containerView.frame = self.containerFrame(scrollView: scrollView)
@@ -93,7 +93,7 @@ class PullToRefresher: NSObject {
     }
 
     // Values
-    var defaultContentInset: UIEdgeInsets = UIEdgeInsets()
+    var defaultContentInset = UIEdgeInsets()
     public var distanceToTrigger: CGFloat = 0.0
     var scrollbackImmediately = false
 

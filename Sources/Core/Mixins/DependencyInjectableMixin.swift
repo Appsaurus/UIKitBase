@@ -9,7 +9,7 @@ import UIKitMixinable
 
 open class DependencyInjectableMixin: UIViewControllerMixin<DependencyInjectable> {
     override open func viewDidLoad() {
-        mixable.assertDependencies()
+        mixable?.assertDependencies()
     }
 }
 
@@ -19,7 +19,7 @@ open class DependencyInjectableViewMixin: UIViewMixin<DependencyInjectable> {
     override open func layoutSubviews() {
         super.layoutSubviews()
         guard self.dependenciesConfirmed else {
-            mixable.assertDependencies()
+            mixable?.assertDependencies()
             return
         }
     }

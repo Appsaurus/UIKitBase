@@ -197,7 +197,8 @@ open class BaseParentPagingViewController: BaseParentViewController {
     }
 
     open func pageViewController(_ pageViewController: UIPageViewController,
-                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
+                                 viewControllerBefore viewController: UIViewController) -> UIViewController?
+    {
         guard let viewControllerIndex = pagedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
@@ -237,7 +238,8 @@ open class BaseParentPagingViewController: BaseParentViewController {
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
                                    previousViewControllers: [UIViewController],
-                                   transitionCompleted completed: Bool) {
+                                   transitionCompleted completed: Bool)
+    {
         guard let lastVC = self.pageViewController.viewControllers?.last else { return }
 
         guard finished else { return }

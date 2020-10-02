@@ -9,7 +9,7 @@
 import UIKit
 
 open class StatefulViewControllerDefaultLoadingView: StatefulViewControllerLoadingView {
-    open var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    open var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
 
     override open func startLoadingAnimation() {
         if !self.activityIndicator.isAnimating {

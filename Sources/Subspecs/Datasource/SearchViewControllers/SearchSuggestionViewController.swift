@@ -50,7 +50,8 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     public required init(primarySearchViewController: ManagedSearchViewController? = nil,
                          secondarySearchViewController: ManagedSearchViewController? = nil,
                          existingQuery: QueryType? = nil,
-                         onDidFinishTask: TaskCompletionClosure? = nil) {
+                         onDidFinishTask: TaskCompletionClosure? = nil)
+    {
         self.result = existingQuery
         super.init(callInitLifecycle: false)
         self.primarySearchViewController =? primarySearchViewController
@@ -59,6 +60,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
         initLifecycle(.programmatically)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -219,7 +221,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
                  guard let self = self else { return }
                  guard let statefulVC = self.currentSearchController.resultsViewController as? StatefulViewController else { return }
                  statefulVC.transition(to: statefulVC.currentState)
-        })
+             })
     }
 
     open func resignSearchBar(resultsController: ManagedSearchViewController, forceClearQuery: Bool = false) {
@@ -314,7 +316,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
                  guard let self = self else { return }
                  self.restorePreviousSearchState(to: self.currentSearchController)
 
-        })
+             })
     }
 
     open func searchBarDidClear(_ searchBar: UISearchBar) {
@@ -323,7 +325,8 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
     }
 
     open func restorePreviousSearchState(to resultsController: ManagedSearchViewController,
-                                         makeSearchBarFirstResponder: Bool = false) {
+                                         makeSearchBarFirstResponder: Bool = false)
+    {
         let searchBar = resultsController.controls.searchBar
         if let query = resultsController.searchState.lastSearchQuery, searchBar.text != query {
             searchBar.text = query

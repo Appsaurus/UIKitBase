@@ -83,7 +83,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     private var backButtonType: UIBarButtonHiddenItem = .prev
     private var forwardButtonType: UIBarButtonHiddenItem = .next
 
-    open var toolBarStyle: FormToolbarStyle = FormToolbarStyle()
+    open var toolBarStyle = FormToolbarStyle()
 
     override open func style() {
         super.style()
@@ -119,8 +119,8 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
     /// Default is `"Done"`.
     public var doneButtonTitle: String = "Done" {
         didSet {
-            doneButton = buildDoneButton()
-            updateBarItems()
+            self.doneButton = self.buildDoneButton()
+            self.updateBarItems()
         }
     }
 
@@ -170,6 +170,7 @@ open class FormToolbar: BaseToolbar, UIInputViewAudioFeedback {
         super.init(frame: frame)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
