@@ -445,6 +445,10 @@
 		E475F60D22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60E22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
 		E475F60F22D6D1E000FE1007 /* SearchSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */; };
+		E485EE2025AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */; };
+		E485EE2125AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */; };
+		E485EE2225AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */; };
+		E485EE2325AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */; };
 		E48838C523BFB6EC00F8CE72 /* TabBarChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48838C423BFB6EC00F8CE72 /* TabBarChild.swift */; };
 		E489F0B923131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
 		E489F0BA23131EF50093D32F /* DynamicHeightTableViewAccessoriesMixins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */; };
@@ -882,6 +886,7 @@
 		E475F5F722D6D1A900FE1007 /* ScrollViewHeaderAdornableMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderAdornableMixin.swift; sourceTree = "<group>"; };
 		E475F60622D6D1E000FE1007 /* SearchResultsDisplaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsDisplaying.swift; sourceTree = "<group>"; };
 		E475F60722D6D1E000FE1007 /* SearchSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewController.swift; sourceTree = "<group>"; };
+		E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseParentSegmentedPagingViewController.swift; sourceTree = "<group>"; };
 		E48838C423BFB6EC00F8CE72 /* TabBarChild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarChild.swift; sourceTree = "<group>"; };
 		E489F0B823131EF40093D32F /* DynamicHeightTableViewAccessoriesMixins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableViewAccessoriesMixins.swift; sourceTree = "<group>"; };
 		E49C4EAD23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualScrollViewContentManagerMixin.swift; sourceTree = "<group>"; };
@@ -1791,6 +1796,7 @@
 				E4AF806D21BB2D90002D6E86 /* BaseScrollviewParentViewController.swift */,
 				E4AF806E21BB2D90002D6E86 /* BaseContainedTableViewController.swift */,
 				E414048423270B180000349E /* BaseContainedCollectionViewController.swift */,
+				E485EE1F25AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -2482,6 +2488,7 @@
 				E41D72B4224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308371226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D70B8224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E485EE2225AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */,
 				E41D70D4224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715B224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7126224D5FB300CA05C4 /* AuthController.swift in Sources */,
@@ -2672,6 +2679,7 @@
 				E41D71D5224D662C00CA05C4 /* NavigationalMenuTableViewController.swift in Sources */,
 				E41D72B5224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308372226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
+				E485EE2325AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */,
 				E41D70B9224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
 				E41D70D5224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715C224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
@@ -2783,6 +2791,7 @@
 				E41D71AF224D654800CA05C4 /* ViewBasedTableViewCell.swift in Sources */,
 				E41D70DA224D5F5B00CA05C4 /* Form.swift in Sources */,
 				E49C4EAE23BFB922002A87A9 /* ManualScrollViewContentManagerMixin.swift in Sources */,
+				E485EE2025AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */,
 				E4AF81FE21BF8C8C002D6E86 /* AsyncDatasourceChangeManager.swift in Sources */,
 				E41D6F7B2245F17000CA05C4 /* BaseUIApplicationDelegate.swift in Sources */,
 				E4AF811521BB2D90002D6E86 /* BaseTableViewHeaderFooterView.swift in Sources */,
@@ -3044,6 +3053,7 @@
 				E41D72B3224D7DDE00CA05C4 /* CellLayoutView.swift in Sources */,
 				E4308370226514580032CD17 /* PaginationManagedMixin.swift in Sources */,
 				E41D70B7224D5F5B00CA05C4 /* FormTableViewController.swift in Sources */,
+				E485EE2125AD08D000D5752D /* BaseParentSegmentedPagingViewController.swift in Sources */,
 				E41D70D3224D5F5B00CA05C4 /* PhoneVerificationController.swift in Sources */,
 				E41D715A224D651300CA05C4 /* UIScrollView+LoadingControls.swift in Sources */,
 				E41D7125224D5FB300CA05C4 /* AuthController.swift in Sources */,

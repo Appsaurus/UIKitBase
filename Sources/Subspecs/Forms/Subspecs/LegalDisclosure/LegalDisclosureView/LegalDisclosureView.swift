@@ -71,10 +71,11 @@ public struct LegalDisclosureViewModel {
     }
 }
 
+
 open class LegalDisclosureView: BaseView {
     open var label = ActiveLabel()
     open var viewModel: LegalDisclosureViewModel
-
+    open var onPresented: VoidClosure?
     public required init(viewModel: LegalDisclosureViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -94,8 +95,9 @@ open class LegalDisclosureView: BaseView {
             pagingVC.initialPageIndex = self.viewModel.legalDocuments.keys.firstIndex(of: element) ?? 0
 
             guard let parent = self.parentViewController else { return }
+            self.onPresented?()
             if let nav = parent.navigationController {
-                nav.push(pagingVC)
+                nav.pushViewController(pagingVC, animated: true)
             } else {
                 let dismissableNav = DismissableNavigationController(dismissableViewController: pagingVC)
                 parent.present(viewController: dismissableNav)
@@ -121,3 +123,4 @@ open class LegalDisclosureView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
