@@ -38,7 +38,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
     override open func createPagedViewControllers() -> [UIViewController] {
         var vcs: [UIViewController] = []
         for titledUrl in self.titledUrls {
-            guard let url = titledUrl.value else { continue }
+            guard let url = try? titledUrl.value?.assertURLPrefixingHTTPSchemeIfNeeded() else { continue }
             let vc = UIViewController()
             let webView = WKWebView()
             vc.view = webView
@@ -46,6 +46,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
             vc.title = titledUrl.key
             vcs.append(vc)
         }
+
         return vcs
     }
 
@@ -53,8 +54,8 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 
     override open var pagingMenuViewOptions: PagingMenuViewOptions {
         let menuHeight: CGFloat = 50.0
-        let sizing: PagingeMenuViewItemSizingBehavior = .spanWidthCollectively(height: menuHeight * 0.75)
-        return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: sizing, scrollBehavior: .tabBar)
+        let sizing: PagingeMenuViewItemSizingBehavior = .spanWidthCollectivelyUnlessExceeding(numberOfCells: 3.5, height: menuHeight * 0.75)
+        return PagingMenuViewOptions(layout: .horizontal(height: menuHeight), itemSizingBehavior: sizing, scrollBehavior: .scrolls)
     }
 
     override open func pagingMenuItemCellClasses(for menuView: PagingMenuView) -> [PagingMenuItemCell<UIView>.Type] {
@@ -78,7 +79,14 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
         cell.menuItemButton.buttonLayout = cell.menuItemButtonLayout()
         cell.forceAutolayoutPass()
     }
+
+    open override func willPage(from page: Int?, to nextPage: Int?) {
+        super.willPage(from: page, to: nextPage)
+        guard let nextPage = nextPage, let vc: UIViewController = self.pagedViewControllers[safe: nextPage], let webView: WKWebView = vc.view as? WKWebView, let url = webView.url else { return }
+        webView.load(URLRequest(url: url))
+    }
 }
+
 
 open class WebViewPagingMenuView: PagingMenuView {
     override open func createSelectionIndicatorView() -> UIView? {
