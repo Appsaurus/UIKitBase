@@ -11,7 +11,7 @@ import UIKit
 
 
 open class BaseParentSegmentedPagingViewController: BaseParentPagingViewController{
-    lazy var segmentedControl: UISegmentedControl = {
+    lazy open var segmentedControl: UISegmentedControl = {
         return UISegmentedControl(items: self.segmentedControlTitles())
     }()
 
