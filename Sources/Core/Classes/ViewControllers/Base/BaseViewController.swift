@@ -123,8 +123,7 @@ open class BaseViewController: MixinableViewController, BaseViewControllerProtoc
         return .error(error, retry: loadAsyncData)
     }
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
-
 }

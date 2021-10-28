@@ -29,7 +29,8 @@ import Algorithm
 public struct LegalDisclosureViewModel {
     public var message: String
     public var legalDocuments: SortedDictionary<String, String>
-
+    public var conjunction: String
+    public var includeOxfordComma: Bool
     /// Example usage:
     /// 		let termsOfUse = "Terms of Use"
     /// 		let privacyPolicy = "Privacy Policy"
@@ -41,9 +42,15 @@ public struct LegalDisclosureViewModel {
     /// - Parameters:
     ///   - message: The label's text, if it does not contain key names for links they will be generated.
     ///   - legalDocuments: String URLS keyed by name of document as it appears in the message text.
-    public init(message: String = "By signing up, you agree to our", legalDocuments: SortedDictionary<String, String>) {
+    public init(message: String = "By signing up, you agree to our",
+                legalDocuments: SortedDictionary<String, String>,
+                conjunction: String = "and",
+                includeOxfordComma: Bool = true)
+    {
         self.message = message
         self.legalDocuments = legalDocuments
+        self.conjunction = conjunction
+        self.includeOxfordComma = includeOxfordComma
         let containsKey: Bool = legalDocuments.keys.contains(where: { message.contains($0) })
         guard !containsKey else {
             return
@@ -67,10 +74,10 @@ public struct LegalDisclosureViewModel {
     }
 
     public func generateMessageText() -> String {
-        return "\(self.message) \(StringUtils.English.punctuatedList(from: self.legalDocuments.keys))."
+        let list = StringUtils.English.punctuatedList(from: self.legalDocuments.keys, conjunction: self.conjunction, includeOxfordComma: self.includeOxfordComma)
+        return "\(self.message) \(list)."
     }
 }
-
 
 open class LegalDisclosureView: BaseView {
     open var label = ActiveLabel()
@@ -123,4 +130,3 @@ open class LegalDisclosureView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

@@ -80,13 +80,12 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
         cell.forceAutolayoutPass()
     }
 
-    open override func willPage(from page: Int?, to nextPage: Int?) {
+    override open func willPage(from page: Int?, to nextPage: Int?) {
         super.willPage(from: page, to: nextPage)
         guard let nextPage = nextPage, let vc: UIViewController = self.pagedViewControllers[safe: nextPage], let webView: WKWebView = vc.view as? WKWebView, let url = webView.url else { return }
         webView.load(URLRequest(url: url))
     }
 }
-
 
 open class WebViewPagingMenuView: PagingMenuView {
     override open func createSelectionIndicatorView() -> UIView? {

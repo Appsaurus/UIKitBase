@@ -94,7 +94,7 @@ public protocol SyncListener: NSObject {}
 
 private let syncActionsAssociated = AssociatedObjectKey<[String: Action]>("syncActionsAssociated")
 
-public extension SyncListener where Self: NSObject {
+public extension SyncListener {
     var syncActions: [String: Action] {
         get {
             return self[syncActionsAssociated, [:]]

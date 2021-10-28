@@ -106,8 +106,9 @@ open class PhoneNumberFormViewController<TextField: UITextField>: FormTableViewC
         initLifecycle(.programmatically)
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override open func didFinishCreatingAllViews() {

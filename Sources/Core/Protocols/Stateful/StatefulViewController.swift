@@ -71,7 +71,7 @@ public extension StatefulViewController {
     }
 }
 
-public extension StatefulViewController where Self: Reloadable {
+public extension StatefulViewController {
     func viewModelForErrorState(_ error: Error) -> StatefulViewViewModel {
         return .init(message: error.localizedDescription,
                      ["Reload" => reload])

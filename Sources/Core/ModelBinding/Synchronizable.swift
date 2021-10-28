@@ -43,7 +43,7 @@ public protocol Synchronizable: KVC {
     func updateWithValues<T: Synchronizable>(of object: T)
 }
 
-public extension Synchronizable where Self: KVC {
+public extension Synchronizable {
     func updateWithValues<T: Synchronizable>(of object: T) {
         _ = try? updateWithKeyValues(of: object)
     }

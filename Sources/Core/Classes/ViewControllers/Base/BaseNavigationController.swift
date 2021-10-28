@@ -91,8 +91,7 @@ open class BaseNavigationController: MixinableNavigationController, BaseNavigati
         return .error(error, retry: loadAsyncData)
     }
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
-
 }

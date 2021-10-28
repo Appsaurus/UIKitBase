@@ -85,7 +85,8 @@ public extension DiffableDatasource {
     }
 
     func clearData(animated: Bool = false,
-                   completion: @escaping VoidClosure = {}) {
+                   completion: @escaping VoidClosure = {})
+    {
         self._apply(snapshot(), animatingDifferences: animated, completion: completion)
     }
 
@@ -146,7 +147,8 @@ public extension DiffableDatasource {
 
     func _apply(_ snapshot: DiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>,
                 animatingDifferences: Bool,
-                completion: (() -> Void)?) {
+                completion: (() -> Void)?)
+    {
         // Calling completion in the paramaterized completion handled of libraries implemenation of this method doesn't always trigger completion handler
         // Consider refactoring this when library is fixed or when using official UIKit implementation
         // apply(snapshot, animatingDifferences: animated, completion: completion)

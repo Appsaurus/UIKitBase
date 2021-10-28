@@ -36,7 +36,7 @@ PODS:
   - RuntimeExtensions (0.1.6):
     - Runtime
   - SwiftDate (6.2.0)
-  - Swiftest (0.0.40)
+  - Swiftest (0.0.42)
   - SwiftFormat/CLI (0.46.3)
   - SwiftLint (0.40.3)
   - SwiftLocation (4.2.0)
@@ -150,7 +150,7 @@ CHECKOUT OPTIONS:
     :commit: f47b6e7e21e0fb5dc5785b77a1cac9a35dbe28e3
     :git: https://github.com/Appsaurus/RuntimeExtensions
   Swiftest:
-    :commit: 0294b9943b7732efb5bda6d112858db8b5a04ff0
+    :commit: b5c0b350f8d1bbf51048b8a479928a08980f3cac
     :git: https://github.com/Appsaurus/Swiftest
   SwiftTestUtils:
     :commit: 042fbc10bfee7101961040aee677e2d4967d6951
@@ -187,7 +187,7 @@ SPEC CHECKSUMS:
   Runtime: 67741bd196fb4ad821c4d259ccc527bf734d8806
   RuntimeExtensions: ec79699194368fb65244ccb3c2ec294903ecf1ca
   SwiftDate: d117c3eb6beed72e47d3f4d1e3bc63fa1e66d7c3
-  Swiftest: fa33781ee5e1b24bd3f87c262dda1e68bac92325
+  Swiftest: a26e32152ebcd9a66bd2ae22504d834a2e8c3f87
   SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   SwiftLocation: 609ac8859f2c5d48a6cadd2a58c63b1dae02dc25
@@ -200,4 +200,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0fa81faa816e90e9a2990889bf3415ba35401323
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

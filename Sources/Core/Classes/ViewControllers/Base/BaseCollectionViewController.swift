@@ -80,8 +80,7 @@ open class BaseCollectionViewController: MixinableCollectionViewController, Base
         return .error(error, retry: loadAsyncData)
     }
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
-
 }

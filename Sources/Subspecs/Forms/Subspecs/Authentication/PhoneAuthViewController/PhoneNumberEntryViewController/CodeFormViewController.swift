@@ -108,8 +108,9 @@ open class CodeFormViewController: FormTableViewController<String, Any?> {
         autoSubmitsValidForm = self.configuration.autoSubmitsWhenInputIsValid
     }
 
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     override open var headerPromptText: String? {

@@ -133,10 +133,9 @@ open class BaseTabBarController: MixinableTabBarController, BaseTabBarController
 
     open func tabBarController(_ tabBarController: UITabBarController, willPresentModal viewController: UIViewController) {}
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
-
 }
 
 open class TabBarControllerModalChildPlaceholder: UIViewController {}

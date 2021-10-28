@@ -38,7 +38,6 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
         return statusBarHidden
     }
 
-
     // MARK: NotificationObserver
 
     open func notificationsToObserve() -> [Notification.Name] {
@@ -79,7 +78,7 @@ open class BasePageViewController: MixinablePageViewController, BasePageViewCont
         return .error(error, retry: loadAsyncData)
     }
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
 }

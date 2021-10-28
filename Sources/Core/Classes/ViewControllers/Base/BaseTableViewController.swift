@@ -96,10 +96,9 @@ open class BaseTableViewController: MixinableTableViewController, BaseTableViewC
         return self.cellHeightsDictionary[indexPath.cacheKey] ?? UITableView.automaticDimension
     }
 
-    //MARK: ViewRecycler
+    // MARK: ViewRecycler
 
     open func registerReusables() {}
-
 }
 
 private extension IndexPath {
