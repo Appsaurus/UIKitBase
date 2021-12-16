@@ -53,10 +53,18 @@ extension UIView {
         let indicator = UIActivityIndicatorView(style: style)
         indicator.color = color
         indicator.apply(viewStyle: viewStyle())
-        while let superview = superview, indicator.backgroundColor == .clear {
-            indicator.backgroundColor = superview.backgroundColor
-            indicator.cornerRadius = superview.cornerRadius
+        indicator.cornerRadius = cornerRadius
+        var backgroundView: UIView? = self
+        while backgroundView != nil, indicator.backgroundColor == .clear {
+            indicator.backgroundColor = backgroundView?.backgroundColor
+            if let parent = backgroundView?.superview {
+                backgroundView = parent
+            }
+            else {
+                break
+            }
         }
+
         indicator.tag = UIViewExtensionTag.activityIndicator.rawValue
         addSubview(indicator)
 
