@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layman
 
 open class BaseParentSegmentedPagingViewController: BaseParentPagingViewController {
     public enum SegmentedControlPosition {
@@ -21,6 +22,7 @@ open class BaseParentSegmentedPagingViewController: BaseParentPagingViewControll
     }
 
     open var segmentedControlPosition: SegmentedControlPosition = .headerView
+    open var segmentedControlLayoutInset: RelativeLayoutConstantTuple = .inset(15.0, 15.0)
 
     open lazy var segmentedControl: UISegmentedControl = .init(items: self.segmentedControlItems())
 
@@ -73,21 +75,21 @@ open class BaseParentSegmentedPagingViewController: BaseParentPagingViewControll
     open func createSegmentedControlAutoLayoutConstraints() {
         switch self.segmentedControlPosition {
         case .headerView:
-            self.segmentedControl.edges.equal(to: .inset(8.0, 5.0))
+            self.segmentedControl.edges.equal(to: segmentedControlLayoutInset)
         case .top:
-            self.segmentedControl.top.equalToSuperviewMargin()
-            self.segmentedControl.centerX.equalToSuperview()
+            self.segmentedControl.top.equal(to: segmentedControlLayoutInset.second)
+            self.segmentedControl.centerX.equal(to: segmentedControlLayoutInset.first)
         case .topRight:
-            self.segmentedControl.topRight.equalToSuperviewMargin()
+            self.segmentedControl.topRight.equal(to: segmentedControlLayoutInset)
         case .topLeft:
-            self.segmentedControl.topLeft.equalToSuperviewMargin()
+            self.segmentedControl.topLeft.equal(to: segmentedControlLayoutInset)
         case .bottom:
-            self.segmentedControl.bottom.equalToSuperviewMargin()
-            self.segmentedControl.centerX.equalToSuperview()
+            self.segmentedControl.bottom.equal(to: segmentedControlLayoutInset.second)
+            self.segmentedControl.centerX.equal(to: segmentedControlLayoutInset.first)
         case .bottomRight:
-            self.segmentedControl.bottomRight.equalToSuperviewMargin()
+            self.segmentedControl.bottomRight.equal(to: segmentedControlLayoutInset)
         case .bottomLeft:
-            self.segmentedControl.bottomLeft.equalToSuperviewMargin()
+            self.segmentedControl.bottomLeft.equal(to: segmentedControlLayoutInset)
         }
     }
 
