@@ -46,9 +46,7 @@ open class CellLayoutView<MV: UIView>: BaseView {
         return iv
     }()
 
-    open lazy var middleView: MV = {
-        self.createMainView()
-    }()
+    open lazy var middleView: MV = self.createMainView()
 
     open func createMainView() -> MV {
         return MV()

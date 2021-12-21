@@ -11,13 +11,9 @@ open class Request {
     public let route: Route
     public var urlParams: [URLQueryItem]
     public var queryParams: [URLQueryItem]
-    private lazy var urlParamsDict: [String: String] = {
-        self.urlParams.dictionary
-    }()
+    private lazy var urlParamsDict: [String: String] = self.urlParams.dictionary
 
-    private lazy var queryParamsDict: [String: String] = {
-        self.queryParams.dictionary
-    }()
+    private lazy var queryParamsDict: [String: String] = self.queryParams.dictionary
 
     init(route: Route,
          urlParams: [URLQueryItem]? = nil,

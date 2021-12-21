@@ -7,14 +7,14 @@ PODS:
   - CwlPreconditionTesting (1.1.1):
     - CwlCatchException
   - DarkMagic (0.0.4)
-  - DiffableDataSources (0.4.0):
+  - DiffableDataSources (0.5.0):
     - DifferenceKit/AppKitExtension (~> 1.1)
     - DifferenceKit/UIKitExtension (~> 1.1)
-  - DifferenceKit/Core (1.1.5)
-  - DifferenceKit/UIKitExtension (1.1.5):
+  - DifferenceKit/Core (1.2.0)
+  - DifferenceKit/UIKitExtension (1.2.0):
     - DifferenceKit/Core
   - DynamicColor (4.2.0)
-  - KeychainAccess (4.2.1)
+  - KeychainAccess (4.2.2)
   - Layman (0.1.26):
     - Layman/Core (= 0.1.26)
     - Layman/Operators (= 0.1.26)
@@ -26,29 +26,29 @@ PODS:
   - Permission/Core (2.2.0)
   - Permission/Location (2.2.0):
     - Permission/Core
-  - PhoneNumberKit (3.3.1):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
-    - PhoneNumberKit/UIKit (= 3.3.1)
-  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
-  - PhoneNumberKit/UIKit (3.3.1):
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
   - Runtime (2.2.2)
-  - RuntimeExtensions (0.1.6):
+  - RuntimeExtensions (0.1.14):
     - Runtime
-  - SwiftDate (6.2.0)
-  - Swiftest (0.0.42)
-  - SwiftFormat/CLI (0.46.3)
-  - SwiftLint (0.40.3)
+  - SwiftDate (6.3.1)
+  - Swiftest (0.0.43)
+  - SwiftFormat/CLI (0.49.1)
+  - SwiftLint (0.45.1)
   - SwiftLocation (4.2.0)
   - SwiftTestUtils (0.1.7)
   - UIFontIcons/Core (0.0.6)
   - UIFontIcons/MaterialIcons (0.0.6):
     - UIFontIcons/Core
-  - UIKitExtensions (0.0.35):
+  - UIKitExtensions (0.0.36):
     - DarkMagic
     - Swiftest
-  - UIKitMixinable (0.1.0)
-  - UIKitTheme (0.0.27):
+  - UIKitMixinable (0.1.1)
+  - UIKitTheme (0.0.30):
     - DarkMagic
     - DynamicColor
     - Swiftest
@@ -141,16 +141,16 @@ CHECKOUT OPTIONS:
     :commit: b6e5a19acc048e21d9caa18a95915137f99beb74
     :git: https://github.com/Appsaurus/DarkMagic
   Layman:
-    :commit: 26d1241ee6ca912ef5b5a2024e5642011a2c0015
+    :commit: 58a1123df81021d76da9d54a1070c89734eebece
     :git: https://github.com/Appsaurus/Layman
   Permission:
     :commit: 651883c3bf54fb09034ded7f9021e94201f6b824
     :git: https://github.com/Appsaurus/Permission
   RuntimeExtensions:
-    :commit: f47b6e7e21e0fb5dc5785b77a1cac9a35dbe28e3
+    :commit: 74d698cb8d0aff1773a9ba7861473669920a68b3
     :git: https://github.com/Appsaurus/RuntimeExtensions
   Swiftest:
-    :commit: b5c0b350f8d1bbf51048b8a479928a08980f3cac
+    :commit: 58eaccbc94351d7c7646c96a76f07cb77a613bde
     :git: https://github.com/Appsaurus/Swiftest
   SwiftTestUtils:
     :commit: 042fbc10bfee7101961040aee677e2d4967d6951
@@ -159,13 +159,13 @@ CHECKOUT OPTIONS:
     :commit: c886860737756bd733561febd8767d1cd0ea5382
     :git: https://github.com/Appsaurus/UIFontIcons
   UIKitExtensions:
-    :commit: f0f5d2f395e411485968e3e459182333c24054af
+    :commit: d43296d7eee2235c7f60a8a0c09e31a6d27239be
     :git: https://github.com/Appsaurus/UIKitExtensions
   UIKitMixinable:
-    :commit: 48afc3989a857e476c66839323e58c73064c75bd
+    :commit: 13dcc61d820bf48a1049f438fb1ae4c994fe96a5
     :git: https://github.com/Appsaurus/UIKitMixinable
   UIKitTheme:
-    :commit: d3d94b3d8e16925b615f8e54fb883c9784e8bf98
+    :commit: a1bc7e221df03e8309fb451aabd79922dfe40f8f
     :git: https://github.com/Appsaurus/UIKitTheme
 
 SPEC CHECKSUMS:
@@ -176,28 +176,28 @@ SPEC CHECKSUMS:
   CwlCatchException: 70a52ae44ea5d46db7bd385f801a94942420cd8c
   CwlPreconditionTesting: d33a4e4f285c0b885fddcae5dfedfbb34d4f3961
   DarkMagic: 2bc17557251fb322573c365be1d3c17e0acaf5fc
-  DiffableDataSources: 80396cec405c9b29e1e07b55c9be7d11b46c8741
-  DifferenceKit: 516f12e336ed65a3a0665847b5c3cb5cad4bd4ea
+  DiffableDataSources: 1ddde2de1978cc02619b2c3bfafab20e68b57279
+  DifferenceKit: 5659c430bb7fe45876fa32ce5cba5d6167f0c805
   DynamicColor: c475f66bda1cabf602f2c54ac1171c0c07148a5a
-  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Layman: 1af5d025e9a52559e2b0b7d2d4be3f160c5c557c
   Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
   Permission: 3b15247a22e35302f6c2426513dee29956725a72
-  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   Runtime: 67741bd196fb4ad821c4d259ccc527bf734d8806
-  RuntimeExtensions: ec79699194368fb65244ccb3c2ec294903ecf1ca
-  SwiftDate: d117c3eb6beed72e47d3f4d1e3bc63fa1e66d7c3
-  Swiftest: a26e32152ebcd9a66bd2ae22504d834a2e8c3f87
-  SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
-  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+  RuntimeExtensions: 80d93db588a0727f1a22055894e5d1b0262f4e6a
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
+  Swiftest: e580318a067c408a0b177f1664c385286d3a49c1
+  SwiftFormat: 16b41f3229f5e7edb130ac4cd631cceed7af7d5e
+  SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
   SwiftLocation: 609ac8859f2c5d48a6cadd2a58c63b1dae02dc25
   SwiftTestUtils: 69c483e473582bc9f166b682b6f28d0e7ca9efd0
   UIFontIcons: d4a72e705e2ce1f7ef60e6107e12500893a0b67a
-  UIKitExtensions: f537810861e3fb57a1970dbe504b10128abe50ec
-  UIKitMixinable: bbe0d8c368dc1ac8c334f3f6a0ac2032c201bb2e
-  UIKitTheme: 0f05baea205630c67ddae0d146f001528cbbf1ce
+  UIKitExtensions: 7bb02b1ed5d68c181b02d3fb9661f94ef288dc43
+  UIKitMixinable: 85bea9927641335a0e28b0f7b4e973c430c5422e
+  UIKitTheme: da3b1025786eb0a4c4f0d067e2b2428b8f87c6e2
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
 
 PODFILE CHECKSUM: 0fa81faa816e90e9a2990889bf3415ba35401323
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

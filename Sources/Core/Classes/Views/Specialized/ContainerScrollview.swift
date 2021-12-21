@@ -75,8 +75,8 @@ open class ContainerScrollView: BaseScrollView, UIGestureRecognizerDelegate {
         guard gestureRecognizers?.contains(pan) == true else { return true }
 
         guard let innerScrollViewPanGestureRecognizer = otherGestureRecognizer as? UIPanGestureRecognizer,
-            let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView,
-            innerScrollView.gestureRecognizers?.contains(innerScrollViewPanGestureRecognizer) == true else { return true }
+              let innerScrollView = innerScrollViewPanGestureRecognizer.view as? UIScrollView,
+              innerScrollView.gestureRecognizers?.contains(innerScrollViewPanGestureRecognizer) == true else { return true }
 
         guard innerScrollView.isDescendant(of: self.contentView), innerScrollView is UITableView || innerScrollView is UICollectionView else { return true }
 

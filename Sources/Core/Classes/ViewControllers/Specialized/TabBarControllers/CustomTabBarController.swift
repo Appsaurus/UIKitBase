@@ -160,7 +160,7 @@ open class CustomTabBarController: BaseTabBarController, CustomTabBarDataSource,
 
     open func transition(to childViewController: UIViewController) {
         guard let index = childViewController.tabBarItem?.tag ?? viewControllers?.firstIndex(of: childViewController),
-            index != selectedIndex else { return }
+              index != selectedIndex else { return }
         self.selectedIndex = index
     }
 }

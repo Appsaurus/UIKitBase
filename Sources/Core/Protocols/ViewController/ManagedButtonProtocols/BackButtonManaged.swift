@@ -20,8 +20,8 @@ public protocol BackButtonManaged: ButtonManaged {
     func backButtonDidPopViewController()
 }
 
-extension BackButtonManaged {
-    public static var defaultButtonConfiguration: ManagedButtonConfiguration {
+public extension BackButtonManaged {
+    static var defaultButtonConfiguration: ManagedButtonConfiguration {
         return ManagedButtonConfiguration(button: BaseButton(buttonLayout: .init(layoutType: .imageCentered,
                                                                                  marginInsets: LayoutPadding(0))),
         position: .navBarLeading,
@@ -29,9 +29,9 @@ extension BackButtonManaged {
     }
 
     @discardableResult
-    public func createBackButton<Icon: FontIconEnum>(icon: Icon,
-                                                     iconConfiguration: FontIconConfiguration? = nil,
-                                                     configuration: ManagedButtonConfiguration = defaultButtonConfiguration) -> BaseButton
+    func createBackButton<Icon: FontIconEnum>(icon: Icon,
+                                              iconConfiguration: FontIconConfiguration? = nil,
+                                              configuration: ManagedButtonConfiguration = defaultButtonConfiguration) -> BaseButton
     {
         let button = configuration.button ?? defaultButton(configuration: configuration)
         let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: configuration.size))
@@ -40,17 +40,17 @@ extension BackButtonManaged {
         return createManagedButton(configuration: configuration)
     }
 
-    public func backButtonShouldPopViewController() -> Bool {
+    func backButtonShouldPopViewController() -> Bool {
         return true
     }
 
-    public func backButtonWillPopViewController() {}
+    func backButtonWillPopViewController() {}
 
-    public func backButtonDidPopViewController() {}
+    func backButtonDidPopViewController() {}
 }
 
-extension BackButtonManaged where Self: UIViewController {
-    public func popViewControllerIfAllowed() {
+public extension BackButtonManaged where Self: UIViewController {
+    func popViewControllerIfAllowed() {
         if self.backButtonShouldPopViewController() {
             self.backButtonWillPopViewController()
             navigationController?.popViewController(animated: true)

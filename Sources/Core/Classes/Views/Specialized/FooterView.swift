@@ -12,9 +12,7 @@ import UIKit
 import UIKitExtensions
 
 open class FooterView<View: UIView>: BaseView {
-    open lazy var contentView: View = {
-        self.createContentView()
-    }()
+    open lazy var contentView: View = self.createContentView()
 
     public init(contentView: View? = nil) {
         super.init(callInitLifecycle: false)
@@ -71,16 +69,16 @@ open class FooterView<View: UIView>: BaseView {
     }
 }
 
-extension UIViewController {
+public extension UIViewController {
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
+    func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
         return footerView.autoLayoutPin(toBottomOf: view, height: height)
     }
 }
 
-extension UIView {
+public extension UIView {
     @discardableResult
-    public func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
+    func add<View>(footerView: FooterView<View>, height: CGFloat? = nil) -> ConstraintAttributeMap {
         return footerView.autoLayoutPin(toBottomOf: self, height: height)
     }
 }

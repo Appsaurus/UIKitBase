@@ -24,8 +24,8 @@ open class ViewControllerConfiguration {
     public static var `default` = ViewControllerConfiguration()
 }
 
-extension UIInterfaceOrientationMask {
-    public static var `default`: UIInterfaceOrientationMask {
+public extension UIInterfaceOrientationMask {
+    static var `default`: UIInterfaceOrientationMask {
         return App.configuration.orientation
     }
 }

@@ -9,13 +9,9 @@
 import Layman
 
 open class ViewBasedCollectionViewCell<View: UIView>: DynamicSizeCollectionViewCell {
-    open lazy var view: View = {
-        self.createMainView()
-    }()
+    open lazy var view: View = self.createMainView()
 
-    open lazy var mainViewInsets: LayoutPadding = {
-        .zero
-    }()
+    open lazy var mainViewInsets: LayoutPadding = .zero
 
     override open func createSubviews() {
         super.createSubviews()

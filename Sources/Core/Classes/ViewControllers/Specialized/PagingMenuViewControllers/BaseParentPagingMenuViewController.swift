@@ -27,9 +27,7 @@ open class BaseParentPagingMenuViewController: BaseParentPagingViewController, P
 
     // MARK: PagingMenuVIew
 
-    open lazy var pagingMenuView: PagingMenuView = {
-        self.createPagingMenuView()
-    }()
+    open lazy var pagingMenuView: PagingMenuView = self.createPagingMenuView()
 
     open func createPagingMenuView() -> PagingMenuView {
         return PagingMenuView(delegate: self, options: self.pagingMenuViewOptions)

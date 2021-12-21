@@ -24,20 +24,20 @@ public protocol NotificationObserver: AnyObject {
 // If creating an abstract or base class, the base class must implement these explicitly
 // in order for subclasses to override.
 
-extension NotificationObserver {
-    public func notificationsToObserve() -> [Notification.Name] {
+public extension NotificationObserver {
+    func notificationsToObserve() -> [Notification.Name] {
         return []
     }
 
-    public func notificationClosureMap() -> NotificationClosureMap {
+    func notificationClosureMap() -> NotificationClosureMap {
         return [:]
     }
 
-    public func didObserve(notification: Notification) {}
+    func didObserve(notification: Notification) {}
 }
 
-extension NotificationObserver where Self: NSObject {
-    public func setupNotificationObserverCallback() {
+public extension NotificationObserver where Self: NSObject {
+    func setupNotificationObserverCallback() {
         self.notificationsToObserve().forEach { notificationName in
             let notificationName = notificationName as NSNotification.Name
             NotificationCenter.default.add(observer: self,

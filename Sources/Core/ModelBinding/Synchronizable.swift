@@ -11,8 +11,8 @@ import Foundation
 import RuntimeExtensions
 import Swiftest
 
-extension Notification.Name {
-    public static func synchronizableDidChange(id: String) -> Notification.Name {
+public extension Notification.Name {
+    static func synchronizableDidChange(id: String) -> Notification.Name {
         return Notification.Name(rawValue: "synchronizableDidChange_\(id)")
     }
 }
@@ -49,7 +49,7 @@ public extension Synchronizable {
     }
 }
 
-extension Synchronizable {
+public extension Synchronizable {
     private var proxySyncID: String? {
         return ModelSync.sharedInstance.proxySyncIDMap[self.typeId]?(self)
     }
@@ -65,16 +65,16 @@ extension Synchronizable {
         return self.typedSyncID
     }
 
-    public var observableDebugDescription: String {
+    var observableDebugDescription: String {
         let proxyString: String = self.proxySyncID != nil ? "proxy" : ""
         return "ObjectReference: \(self) | \(proxyString)ReferenceId: \(self._internalSyncID) | Pointer: \(pointer(self))"
     }
 
-    public var typedSyncID: String {
+    var typedSyncID: String {
         return "\(self.typeId)_\(syncID)" // .hashValue
     }
 
-    public func syncReferences() {
+    func syncReferences() {
         ModelSync.sharedInstance.syncReferences(self)
     }
 }

@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseCollectionViewControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseCollectionViewControllerProtocol where Self: UICollectionViewController {
-    public var baseCollectionViewControllerProtocolMixins: [LifeCycle] {
+public extension BaseCollectionViewControllerProtocol where Self: UICollectionViewController {
+    var baseCollectionViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

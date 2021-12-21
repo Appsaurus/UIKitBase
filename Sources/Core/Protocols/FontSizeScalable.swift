@@ -38,8 +38,8 @@ extension UITextField: FontSizeScalable {
     }
 }
 
-extension UIView {
-    public func scaleSubviewFontSizesForDevice(excludingViews excludedViews: [UIView]? = nil) {
+public extension UIView {
+    func scaleSubviewFontSizesForDevice(excludingViews excludedViews: [UIView]? = nil) {
         let subviews = self.subviews
 
         if subviews.count == 0 {
@@ -58,8 +58,8 @@ extension UIView {
     }
 }
 
-extension Array where Element: FontSizeScalable {
-    public func scaleFontSizesForDevice() {
+public extension Array where Element: FontSizeScalable {
+    func scaleFontSizesForDevice() {
         forEach { fontScalable in
             fontScalable.scaleFontSizeForDevice()
         }

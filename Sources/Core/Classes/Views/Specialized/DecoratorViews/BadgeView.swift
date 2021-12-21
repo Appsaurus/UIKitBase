@@ -27,8 +27,8 @@ public protocol StatefulViewStyleable: ViewStyleable {
     var state: State { get set }
 }
 
-extension StatefulViewStyleable {
-    public typealias ViewStyleMap = [State: ViewStyle]
+public extension StatefulViewStyleable {
+    typealias ViewStyleMap = [State: ViewStyle]
 }
 
 open class StatefulBadgeView<S: Hashable>: BaseView, BadgeViewProtocol, StatefulViewStyleable {
@@ -66,8 +66,8 @@ public protocol BadgeViewProtocol {
     var position: BadgeViewPosition { get set }
 }
 
-extension BadgeViewProtocol where Self: UIView {
-    public func attachTo(view: UIView, in parentView: UIView? = nil) {
+public extension BadgeViewProtocol where Self: UIView {
+    func attachTo(view: UIView, in parentView: UIView? = nil) {
         let parent = parentView ?? view.superview ?? view
         parent.addSubview(self)
         switch position {

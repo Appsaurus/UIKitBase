@@ -50,7 +50,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
-        self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+        self.userNotificationMixins.apply({ mixin, completionHandler -> Void? in
             mixin.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
         }, completionHandler: { [weak self] results in
             guard let self = self else { return }
@@ -67,7 +67,7 @@ open class BaseUIApplicationDelegate: MixinableAppDelegate, BaseUIApplicationDel
                                      didReceive response: UNNotificationResponse,
                                      withCompletionHandler completionHandler: @escaping () -> Void)
     {
-        self.userNotificationMixins.apply({ (mixin, completionHandler) -> Void? in
+        self.userNotificationMixins.apply({ mixin, completionHandler -> Void? in
             mixin.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
         }, completionHandler: completionHandler)
     }
@@ -127,8 +127,8 @@ public protocol AppIOManager: UIApplicationDelegateMixinable, UNUserNotification
 }
 
 @available(iOS 10.0, *)
-extension AppIOManager {
-    public func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
+public extension AppIOManager {
+    func registerForRemoteNotifications(success: VoidClosure? = nil, failure: ErrorClosure? = nil) {
         guard let notificationManager = mixins.first(where: { $0 is AppIOManagerMixin }) as? AppIOManagerMixin else {
             assertionFailure("Attempted to register remote notifications without a AppIOManagerMixin.")
             return
@@ -136,22 +136,22 @@ extension AppIOManager {
         notificationManager.registerForRemoteNotifications(success: success, failure: failure)
     }
 
-    public func application(_ application: UIApplication, didRecieve baseAppNotification: BaseAppNotification) {
+    func application(_ application: UIApplication, didRecieve baseAppNotification: BaseAppNotification) {
         let notification = AppNotification<AppNotificationIDType>(notification: baseAppNotification)
         self.application(application, didReceiveNotification: notification)
     }
 
-    public func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for baseAppNotification: BaseAppNotification) {
+    func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for baseAppNotification: BaseAppNotification) {
         let notification = AppNotification<AppNotificationIDType>(notification: baseAppNotification)
         self.application(application, didRecieve: response, for: notification)
     }
 
-    public func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for notification: AppNotification<AppNotificationIDType>) {
+    func application(_ application: UIApplication, didRecieve response: UNNotificationResponse, for notification: AppNotification<AppNotificationIDType>) {
         // Basic logic assumes you have simple notification that user tapped, and want to handle it with a deep link whether the user launched the app with notification or tapped it while the app is active.
         self.application(application, didLaunchFrom: notification)
     }
 
-    public func application(_ application: UIApplication = UIApplication.shared, didReceiveNotification notification: AppNotification<AppNotificationIDType>) {
+    func application(_ application: UIApplication = UIApplication.shared, didReceiveNotification notification: AppNotification<AppNotificationIDType>) {
         switch application.applicationState {
         case .active:
             self.application(application, didRecieveNotificationWhileActive: notification)
@@ -162,33 +162,33 @@ extension AppIOManager {
         }
     }
 
-    public func application(_ application: UIApplication, didRecieveNotificationWhileActive notification: AppNotification<AppNotificationIDType>) {
+    func application(_ application: UIApplication, didRecieveNotificationWhileActive notification: AppNotification<AppNotificationIDType>) {
         guard let notificationCenterNotification = notification.notificationCenterNotification else { return }
         NotificationCenter.default.post(notificationCenterNotification)
     }
 
-    public func application(_ application: UIApplication = UIApplication.shared, didLaunchFrom notification: AppNotification<AppNotificationIDType>) {
+    func application(_ application: UIApplication = UIApplication.shared, didLaunchFrom notification: AppNotification<AppNotificationIDType>) {
         if let request = convertNotificationToDeepLinkRequest(notification) {
             self.respond(to: request)
         }
     }
 
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       willPresent notification: UNNotification,
-                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
         self.application(UIApplication.shared, didRecieve: BaseAppNotification(unNotification: notification))
         guard let options = completionHandlerOptions(for: notification) else { return }
         completionHandler(options)
     }
 
-    public func completionHandlerOptions(for notification: UNNotification) -> UNNotificationPresentationOptions? {
+    func completionHandlerOptions(for notification: UNNotification) -> UNNotificationPresentationOptions? {
         return [.alert, .badge, .sound]
     }
 
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void)
     {
         self.application(UIApplication.shared, didRecieve: response, for: BaseAppNotification(unNotification: response.notification))
         completionHandler()
@@ -196,15 +196,15 @@ extension AppIOManager {
 
     // MARK: DeepLinking
 
-    public var deepLinker: DeepLinker<DeepLinkRouteType> {
+    var deepLinker: DeepLinker<DeepLinkRouteType> {
         return DeepLinker<DeepLinkRouteType>.shared
     }
 
-    public func respond(to deepLinkURLRequest: String) {
+    func respond(to deepLinkURLRequest: String) {
         self.deepLinker.route(to: deepLinkURLRequest)
     }
 
-    public func convertNotificationToDeepLinkRequest(_ notification: AppNotification<AppNotificationIDType>) -> String? {
+    func convertNotificationToDeepLinkRequest(_ notification: AppNotification<AppNotificationIDType>) -> String? {
         return nil
     }
 }
@@ -301,8 +301,8 @@ open class AppIOManagerMixin: UNUserNotificationCenterDelegateMixin<AppIOManager
     }
 }
 
-extension String {
-    public init(deviceToken: Data) {
+public extension String {
+    init(deviceToken: Data) {
         self = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
     }
 }

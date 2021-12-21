@@ -14,9 +14,7 @@ import UIKitTheme
 
 open class DynamicHeightCell: BaseTableViewCell {
     open var mainLayoutView = UIView()
-    open lazy var mainLayoutViewInsets: LayoutPadding = {
-        .zero
-    }()
+    open lazy var mainLayoutViewInsets: LayoutPadding = .zero
 
     override open func initProperties() {
         super.initProperties()

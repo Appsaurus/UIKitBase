@@ -9,8 +9,8 @@ import UIKitMixinable
 
 public protocol BasePageViewControllerProtocol: BaseViewControllerProtocol {}
 
-extension BasePageViewControllerProtocol where Self: UIPageViewController {
-    public var basePageViewControllerProtocolMixins: [LifeCycle] {
+public extension BasePageViewControllerProtocol where Self: UIPageViewController {
+    var basePageViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

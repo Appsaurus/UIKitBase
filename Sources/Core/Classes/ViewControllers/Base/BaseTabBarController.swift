@@ -11,8 +11,8 @@ import UIKitMixinable
 
 public protocol BaseTabBarControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseTabBarControllerProtocol where Self: UITabBarController {
-    public var baseTabBarControllerProtocolMixins: [LifeCycle] {
+public extension BaseTabBarControllerProtocol where Self: UITabBarController {
+    var baseTabBarControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

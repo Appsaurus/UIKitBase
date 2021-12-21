@@ -24,9 +24,7 @@ open class FormFieldCell: DynamicHeightCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open lazy var mainViewInsets: LayoutPadding = {
-        .zero
-    }()
+    open lazy var mainViewInsets: LayoutPadding = .zero
 
     override open func createSubviews() {
         super.createSubviews()

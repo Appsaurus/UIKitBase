@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseTableViewHeaderFooterViewProtocol: BaseViewProtocol {}
 
-extension BaseTableViewHeaderFooterViewProtocol where Self: UITableViewHeaderFooterView {
-    public var baseTableViewHeaderFooterViewProtocolMixins: [LifeCycle] {
+public extension BaseTableViewHeaderFooterViewProtocol where Self: UITableViewHeaderFooterView {
+    var baseTableViewHeaderFooterViewProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }

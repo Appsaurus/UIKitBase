@@ -58,7 +58,7 @@ open class Form: NSObject, FieldValidationDelegate, UITextFieldDelegate {
         self.init()
         if let fields = fields {
             self.fields = fields
-            var tag: Int = 0
+            var tag = 0
             for field: FormFieldProtocol in fields {
                 field.validationDelegate = self
                 field.validationStatus = initialStatus

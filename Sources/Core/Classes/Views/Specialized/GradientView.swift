@@ -293,8 +293,8 @@ public extension GradientView {
     }
 }
 
-extension GradientConfiguration {
-    public func toView(frame: CGRect) -> GradientView {
+public extension GradientConfiguration {
+    func toView(frame: CGRect) -> GradientView {
         let gv = GradientView()
         gv.locations = locations.map { $0.doubleValue.cgFloat }
         gv.colors = colors

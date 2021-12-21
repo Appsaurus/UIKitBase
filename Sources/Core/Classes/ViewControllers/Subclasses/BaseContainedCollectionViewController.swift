@@ -9,8 +9,8 @@
 import Foundation
 import UIKitMixinable
 
-extension BaseCollectionViewControllerProtocol where Self: BaseContainedCollectionViewController {
-    public var baseCollectionViewControllerProtocolMixins: [LifeCycle] {
+public extension BaseCollectionViewControllerProtocol where Self: BaseContainedCollectionViewController {
+    var baseCollectionViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

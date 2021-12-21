@@ -9,22 +9,20 @@
 import UIFontIcons
 import UIKitTheme
 
-extension UITabBarItem {
-    public static func item<T: FontIconEnum>(withIcon icon: T,
-                                             selectedIcon: T? = nil,
-                                             style: TabBarItemStyle = .defaultStyle,
-                                             title: String,
-                                             tabIconHeight: CGFloat? = nil) -> UITabBarItem
+public extension UITabBarItem {
+    convenience init<T: FontIconEnum>(icon: T,
+                                      selectedIcon: T? = nil,
+                                      style: TabBarItemStyle = .defaultStyle,
+                                      title: String,
+                                      iconHeight: CGFloat? = nil)
     {
-        let sizeConfiguration = FontIconSizeConfiguration(fontSize: tabIconHeight ?? .icon)
-
+        let sizeConfiguration = FontIconSizeConfiguration(size: CGSize(side: 25))
         let normalIconStyle = FontIconStyle(color: style.normalIconColor)
         let normalImage = UIImage.iconImage(icon, configuration: FontIconConfiguration(style: normalIconStyle, sizeConfig: sizeConfiguration))
 
         let selectedIconStyle = FontIconStyle(color: style.selectedIconColor)
         let selectedImage = UIImage.iconImage(selectedIcon ?? icon, configuration: FontIconConfiguration(style: selectedIconStyle, sizeConfig: sizeConfiguration))
-        let item = UITabBarItem(title: title, image: normalImage, selectedImage: selectedImage)
-        item.apply(tabBarItemStyle: style)
-        return item
+        self.init(title: title, image: normalImage, selectedImage: selectedImage)
+        apply(tabBarItemStyle: style)
     }
 }

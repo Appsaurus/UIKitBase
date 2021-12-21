@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseImageViewProtocol: BaseViewProtocol {}
 
-extension BaseImageViewProtocol where Self: UIImageView {
-    public var baseImageViewProtocolMixins: [LifeCycle] {
+public extension BaseImageViewProtocol where Self: UIImageView {
+    var baseImageViewProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

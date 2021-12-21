@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseSearchBarProtocol: BaseViewProtocol {}
 
-extension BaseSearchBarProtocol where Self: UISearchBar {
-    public var baseSearchBarProtocolMixins: [LifeCycle] {
+public extension BaseSearchBarProtocol where Self: UISearchBar {
+    var baseSearchBarProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }

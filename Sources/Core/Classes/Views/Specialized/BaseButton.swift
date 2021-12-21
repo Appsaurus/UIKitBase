@@ -476,8 +476,8 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 }
 
-extension BaseButton {
-    public var fontSize: CGFloat {
+public extension BaseButton {
+    var fontSize: CGFloat {
         set {
             if let font = titleLabel.font {
                 self.titleLabel.font = font.withSize(newValue)
@@ -490,7 +490,7 @@ extension BaseButton {
         }
     }
 
-    public var fontName: String {
+    var fontName: String {
         set {
             self.titleLabel.font = UIFont(name: newValue, size: self.fontSize)
         }
@@ -500,9 +500,9 @@ extension BaseButton {
     }
 
     // TODO: Improve this, rough calculation for usage in UIBarButtonItems
-    public func calculateMaxButtonSize() -> CGSize {
+    func calculateMaxButtonSize() -> CGSize {
         let titleSize = self.titleMap.values.max()?.size(with: self.titleLabel.font) ?? CGSize.zero
-        let imageSize = self.imageMap.values.max(by: { (image1, image2) -> Bool in
+        let imageSize = self.imageMap.values.max(by: { image1, image2 -> Bool in
             image1.size.width > image2.size.width
         })?.size ?? .zero
         var size = titleSize + imageSize

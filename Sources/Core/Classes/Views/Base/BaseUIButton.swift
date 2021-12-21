@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseButtonProtocol: BaseViewProtocol {}
 
-extension BaseButtonProtocol where Self: UIButton {
-    public var baseButtonProtocolMixins: [LifeCycle] {
+public extension BaseButtonProtocol where Self: UIButton {
+    var baseButtonProtocolMixins: [LifeCycle] {
         return baseViewProtocolMixins
     }
 }

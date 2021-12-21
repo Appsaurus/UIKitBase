@@ -14,8 +14,8 @@ private extension AssociatedObjectKeys {
     static let needsLoadingIndicator = AssociatedObjectKey<BaseButton>("needsLoadingIndicator")
 }
 
-extension UIScrollView {
-    public var needsLoadingIndicator: BaseButton? {
+public extension UIScrollView {
+    var needsLoadingIndicator: BaseButton? {
         get {
             return getAssociatedObject(for: .needsLoadingIndicator)
         }
@@ -24,7 +24,7 @@ extension UIScrollView {
         }
     }
 
-    public func showNeedsLoadingIndicator(title: String = "RELOAD", onTap: VoidClosure? = nil) {
+    func showNeedsLoadingIndicator(title: String = "RELOAD", onTap: VoidClosure? = nil) {
         if loadingControls.pullToRefresh.isEnabled, self.needsLoadingIndicator == nil {
             DispatchQueue.main.async {
                 let needsLoadingIndicator = NeedsLoadingIndicator(scrollView: self)
@@ -51,15 +51,15 @@ extension UIScrollView {
 //
 //    }
 
-    public func hideNeedsLoadingIndicator() {
+    func hideNeedsLoadingIndicator() {
         guard let needsLoadingIndicator = needsLoadingIndicator else { return }
         needsLoadingIndicator.removeFromSuperview()
         self.needsLoadingIndicator = nil
     }
 }
 
-extension PaginationManaged where Self: UIViewController {
-    public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil) {
+public extension PaginationManaged where Self: UIViewController {
+    func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", reloadTest: ClosureOut<Bool>? = nil) {
         let shouldLoad = reloadTest?() ?? (currentState == .empty || !isCurrentlyVisibleToUser)
         guard shouldLoad else {
             self.showNeedsLoadingIndicator(title: title)
@@ -69,7 +69,7 @@ extension PaginationManaged where Self: UIViewController {
         reload()
     }
 
-    public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotification name: Notification.Name, reloadTest: ClosureOut<Bool>? = nil) {
+    func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotification name: Notification.Name, reloadTest: ClosureOut<Bool>? = nil) {
         NotificationCenter.default.add(observer: self, name: name) { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -78,13 +78,13 @@ extension PaginationManaged where Self: UIViewController {
         }
     }
 
-    public func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotifications names: [Notification.Name], reloadTest: ClosureOut<Bool>? = nil) {
+    func reloadOrShowNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onNotifications names: [Notification.Name], reloadTest: ClosureOut<Bool>? = nil) {
         for name in names {
             self.reloadOrShowNeedsLoadingIndicator(onNotification: name)
         }
     }
 
-    public func showNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onTap: VoidClosure? = nil) {
+    func showNeedsLoadingIndicator(title: String = "LOAD NEW DATA", onTap: VoidClosure? = nil) {
         datasourceManagedView.showNeedsLoadingIndicator(title: title, onTap: onTap)
     }
 }

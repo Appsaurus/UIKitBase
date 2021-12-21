@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Int {
-    public var indexPath: IndexPath {
+public extension Int {
+    var indexPath: IndexPath {
         return IndexPath(integerLiteral: self)
     }
 }

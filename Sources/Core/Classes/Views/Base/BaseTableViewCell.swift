@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseTableViewCellProtocol: BaseViewProtocol {}
 
-extension BaseTableViewCellProtocol where Self: UITableViewCell {
-    public var baseTableViewCellProtocolMixins: [LifeCycle] {
+public extension BaseTableViewCellProtocol where Self: UITableViewCell {
+    var baseTableViewCellProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

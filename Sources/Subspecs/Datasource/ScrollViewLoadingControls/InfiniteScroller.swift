@@ -175,13 +175,13 @@ class InfiniteScroller: NSObject {
                         inset = UIEdgeInsets(top: self.defaultContentInset.top, left: self.defaultContentInset.left, bottom: self.defaultContentInset.bottom, right: jumpToBottom)
                     }
 
-                    self.scrollView?.setContentInset(inset, completion: { [unowned self] (_) -> Void in
+                    self.scrollView?.setContentInset(inset, completion: { [unowned self] _ in
                         self.updatingState = false
                     })
                     self.action?()
                 case .none where oldValue == .loading:
                     self.updatingState = true
-                    self.scrollView?.setContentInset(self.defaultContentInset, completion: { (_) -> Void in
+                    self.scrollView?.setContentInset(self.defaultContentInset, completion: { _ in
                         self.updatingState = false
                     })
                 default:

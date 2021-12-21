@@ -7,8 +7,8 @@
 import Foundation
 import UIKitMixinable
 
-extension BaseTableViewControllerProtocol where Self: BaseContainedTableViewController {
-    public var baseTableViewControllerProtocolMixins: [LifeCycle] {
+public extension BaseTableViewControllerProtocol where Self: BaseContainedTableViewController {
+    var baseTableViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

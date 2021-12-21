@@ -99,7 +99,7 @@ open class StackedAlertViewController: BaseStackViewController {
     open lazy var dismissButton = BaseButton()
     open lazy var bottomStackView = UIStackView(stackViewConfiguration: defaultBottomStackViewConfiguration, arrangedSubviews: initialBottomArrangedSubviews())
     open lazy var defaultBottomStackViewConfiguration = StackViewConfiguration.equalSpacingVertical(alignment: .center, spacing: 8.0)
-    open var showsDismissButton: Bool = { true }()
+    open var showsDismissButton: Bool = true
 
     override open func initialArrangedSubviews() -> [UIView] {
         return self.optionalArrangedSubviews + [self.bottomStackView]

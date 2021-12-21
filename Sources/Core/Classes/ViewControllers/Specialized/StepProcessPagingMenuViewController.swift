@@ -73,7 +73,7 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
     open func nextAvailableStep(after index: Int = -1) -> StepProcessMenuStepViewModel? {
         let nextIndex = index + 1
         guard nextIndex <= self.stepModels.lastIndex else { return nil }
-        return self.stepModels[nextIndex...].first { (stepModel) -> Bool in
+        return self.stepModels[nextIndex...].first { stepModel -> Bool in
             !stepModel.complete && stepModel.unfulfilledPrerequisites.count == 0
         }
     }
@@ -91,7 +91,7 @@ open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewControll
         let steps = steps ?? self.stepModels.filter { !$0.complete }
         steps.forEach { step in
             guard let index = stepModels.firstIndex(where: { $0 === step })?.indexPath,
-                let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell
+                  let cell = pagingMenuView.pagingMenuCollectionView.cellForItem(at: index) as? StepProcessPagingMenuItemCell
             else {
                 return
             }
@@ -278,7 +278,7 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
         ]
 
         let pathStyle = ViewStyle(backgroundColor: .primary)
-        nextStepLinkView.apply(viewStyle: pathStyle)
+        self.nextStepLinkView.apply(viewStyle: pathStyle)
         self.previousStepLinkView.apply(viewStyle: pathStyle)
         let imageViewStyle = ViewStyle(backgroundColor: .primary, shape: .rounded)
         menuItemButton.imageView.apply(viewStyle: imageViewStyle)

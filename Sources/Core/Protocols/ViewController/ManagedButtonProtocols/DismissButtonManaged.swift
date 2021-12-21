@@ -102,13 +102,13 @@ public protocol DismissButtonManaged: NavigationBarButtonManaged {
     func shouldDismissViewController() -> Bool
 }
 
-extension DismissButtonManaged where Self: UIViewController {
-    public mutating func setupDismissButton() {
+public extension DismissButtonManaged where Self: UIViewController {
+    mutating func setupDismissButton() {
         setupNavigationBar(button: dismissButton, configuration: dismissButtonConfiguration)
         self.setupDismissButtonAction(for: dismissButton)
     }
 
-    public func setupDismissButtonAction(for button: BaseUIButton) {
+    func setupDismissButtonAction(for button: BaseUIButton) {
         button.addAction { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
@@ -119,9 +119,9 @@ extension DismissButtonManaged where Self: UIViewController {
         }
     }
 
-    public func willDismissViewController() {}
+    func willDismissViewController() {}
 
-    public func shouldDismissViewController() -> Bool {
+    func shouldDismissViewController() -> Bool {
         return true
     }
 }

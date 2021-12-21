@@ -12,8 +12,8 @@ import UIKitTheme
 
 public protocol BaseTextFieldProtocol: BaseViewProtocol {}
 
-extension BaseTextFieldProtocol where Self: UITextField {
-    public var baseTextFieldProtocolMixins: [LifeCycle] {
+public extension BaseTextFieldProtocol where Self: UITextField {
+    var baseTextFieldProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

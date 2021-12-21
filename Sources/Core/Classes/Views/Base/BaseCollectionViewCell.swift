@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseCollectionViewCellProtocol: BaseViewProtocol {}
 
-extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell {
-    public var baseCollectionViewCellProtocolMixins: [LifeCycle] {
+public extension BaseCollectionViewCellProtocol where Self: UICollectionViewCell {
+    var baseCollectionViewCellProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

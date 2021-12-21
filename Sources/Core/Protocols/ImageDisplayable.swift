@@ -10,12 +10,12 @@ import Swiftest
 //
 import UIKit
 
-extension Nuke_ImageDisplaying where Self: UIView {
+public extension Nuke_ImageDisplaying where Self: UIView {
     @discardableResult
-    public func loadImage(_ imageResolving: ImageResolving,
-                          options: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) throws -> ImageTask?
+    func loadImage(_ imageResolving: ImageResolving,
+                   options: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   completion: ImageTask.Completion? = nil) throws -> ImageTask?
     {
         switch imageResolving {
         case let .image(image):
@@ -27,11 +27,11 @@ extension Nuke_ImageDisplaying where Self: UIView {
     }
 
     @discardableResult
-    public func loadImage(_ imageResolving: ImageResolving,
-                          options: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil,
-                          errorImage: PlatformImage?) -> ImageTask?
+    func loadImage(_ imageResolving: ImageResolving,
+                   options: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   completion: ImageTask.Completion? = nil,
+                   errorImage: PlatformImage?) -> ImageTask?
     {
         do {
             return try self.loadImage(imageResolving, options: options, progress: progress, completion: completion)
@@ -42,20 +42,20 @@ extension Nuke_ImageDisplaying where Self: UIView {
     }
 
     @discardableResult
-    public func loadImage(with url: URLConvertible,
-                          options: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) throws -> ImageTask?
+    func loadImage(with url: URLConvertible,
+                   options: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   completion: ImageTask.Completion? = nil) throws -> ImageTask?
     {
         return try self.loadImage(with: url.assertURL(), options: options, progress: progress, completion: completion)
     }
 
     @discardableResult
-    public func loadImage(with url: URLConvertible,
-                          options: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil,
-                          errorImage: PlatformImage?) -> ImageTask?
+    func loadImage(with url: URLConvertible,
+                   options: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   completion: ImageTask.Completion? = nil,
+                   errorImage: PlatformImage?) -> ImageTask?
     {
         do {
             return try self.loadImage(with: url, options: options, progress: progress, completion: completion)
@@ -66,29 +66,29 @@ extension Nuke_ImageDisplaying where Self: UIView {
     }
 
     @discardableResult
-    public func loadImage(with url: URL,
-                          options: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          completion: ImageTask.Completion? = nil) -> ImageTask?
+    func loadImage(with url: URL,
+                   options: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   completion: ImageTask.Completion? = nil) -> ImageTask?
     {
         Nuke.cancelRequest(for: self)
         return Nuke.loadImage(with: url, options: options, into: self, progress: progress, completion: completion)
     }
 
     @discardableResult
-    public func loadImage(with url: URL,
-                          requestOptions: ImageRequestOptions? = nil,
-                          loadingOptions: ImageLoadingOptions = .shared,
-                          progress: ImageTask.ProgressHandler? = nil,
-                          processors: [ImageProcessing] = [],
-                          completion: ImageTask.Completion? = nil) -> ImageTask?
+    func loadImage(with url: URL,
+                   requestOptions: ImageRequestOptions? = nil,
+                   loadingOptions: ImageLoadingOptions = .shared,
+                   progress: ImageTask.ProgressHandler? = nil,
+                   processors: [ImageProcessing] = [],
+                   completion: ImageTask.Completion? = nil) -> ImageTask?
     {
         Nuke.cancelRequest(for: self)
         let request = ImageRequest(url: url, processors: processors, options: requestOptions ?? .init())
         return Nuke.loadImage(with: request, options: loadingOptions, into: self, progress: progress, completion: completion)
     }
 
-    public func resetImage() {
+    func resetImage() {
         Nuke.cancelRequest(for: self)
         nuke_display(image: nil)
     }

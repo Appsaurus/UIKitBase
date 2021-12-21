@@ -59,7 +59,7 @@ open class PhoneVerificationController<TextField: UITextField> where TextField: 
 
     open func presentModally(from presentingViewController: UIViewController) {
         let nav = UINavigationController(rootViewController: createPhoneNumberFormViewController())
-        navigationController = nav
+        self.navigationController = nav
         presentingViewController.present(viewController: nav)
     }
 

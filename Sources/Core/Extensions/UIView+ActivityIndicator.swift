@@ -13,8 +13,8 @@ public enum ActivityIndicatorPosition {
     case center, leading, trailing
 }
 
-extension UIBarButtonItem {
-    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, position: ActivityIndicatorPosition = .center) {
+public extension UIBarButtonItem {
+    func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, position: ActivityIndicatorPosition = .center) {
         guard let customView = self.customView else {
             assertionFailure("You can only show activity indicator on a UIBarButtonItem with a customView.")
             return
@@ -22,7 +22,7 @@ extension UIBarButtonItem {
         customView.showActivityIndicator(style: style, useAutoLayout: false, position: position)
     }
 
-    public func hideActivityIndicator() {
+    func hideActivityIndicator() {
         guard let customView = self.customView else {
             assertionFailure("You can only show activity indicator on a UIBarButtonItem with a customView.")
             return
@@ -31,18 +31,18 @@ extension UIBarButtonItem {
     }
 }
 
-extension UIView {
+public extension UIView {
     /**
      Creates and starts animating a UIActivityIndicator in any UIView
      Parameter style: `UIActivityIndicatorViewStyle` default is .gray
      */
 
-    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
-                                      color: UIColor? = nil,
-                                      useAutoLayout: Bool = true,
-                                      position: ActivityIndicatorPosition = .center,
-                                      disablingUserInteraction: Bool = true,
-                                      disablingGlobalUserInteraction: Bool = false)
+    func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
+                               color: UIColor? = nil,
+                               useAutoLayout: Bool = true,
+                               position: ActivityIndicatorPosition = .center,
+                               disablingUserInteraction: Bool = true,
+                               disablingGlobalUserInteraction: Bool = false)
     {
         // Indicator already exists, make sure it is visible but do not create another
         if let indicator: UIActivityIndicatorView = subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView {
@@ -59,8 +59,7 @@ extension UIView {
             indicator.backgroundColor = backgroundView?.backgroundColor
             if let parent = backgroundView?.superview {
                 backgroundView = parent
-            }
-            else {
+            } else {
                 break
             }
         }
@@ -106,7 +105,7 @@ extension UIView {
     /**
      Stops and removes an UIActivityIndicator in any UIView
      */
-    public func hideActivityIndicator(enablingUserInteraction: Bool = true, enablingGlobbalUserInteraction: Bool = true) {
+    func hideActivityIndicator(enablingUserInteraction: Bool = true, enablingGlobbalUserInteraction: Bool = true) {
         guard let indicator: UIActivityIndicatorView = subview(withTag: UIViewExtensionTag.activityIndicator) as? UIActivityIndicatorView else {
             return
         }
@@ -133,8 +132,8 @@ public enum UIViewExtensionTag: Int, UIViewTag {
     case activityIndicator = 1001
 }
 
-extension UIView {
-    public func subview<VT: UIViewTag>(withTag tag: VT) -> UIView? {
+public extension UIView {
+    func subview<VT: UIViewTag>(withTag tag: VT) -> UIView? {
         return viewWithTag(tag.rawValue)
     }
 }

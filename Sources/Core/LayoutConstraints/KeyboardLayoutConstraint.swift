@@ -86,7 +86,7 @@ open class KeyboardAwareLayoutConstraint: NSLayoutConstraint, NotificationObserv
         }
 
         guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
-            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+              let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
         else {
             return
         }

@@ -37,8 +37,8 @@ public enum SubmissionError: Error {
     case submittedNoEdits
 }
 
-extension SubmissionManaged where Self: UIViewController {
-    public func performSubmission() {
+public extension SubmissionManaged where Self: UIViewController {
+    func performSubmission() {
         let isNoEditSubmission = noEditsBehavior == .skipSubmit && !self.submissionHasBeenEdited()
         if isNoEditSubmission {
             self.submissionDidEnd(with: .failure(SubmissionError.submittedNoEdits))
@@ -54,7 +54,7 @@ extension SubmissionManaged where Self: UIViewController {
         }
     }
 
-    public func submissionDidEnd(with result: Result<Response, Error>) {
+    func submissionDidEnd(with result: Result<Response, Error>) {
         self.submissionDidEnd()
         switch result {
         case let .success(response):
@@ -65,21 +65,21 @@ extension SubmissionManaged where Self: UIViewController {
         onCompletion?(result)
     }
 
-    public func submissionDidBegin() {
+    func submissionDidBegin() {
         submitButton.state = .activity
         view.endEditing(true)
         navigationController?.navigationBar.isUserInteractionEnabled = false
         view.isUserInteractionEnabled = false
     }
 
-    public func submissionDidEnd() {
+    func submissionDidEnd() {
         view.isUserInteractionEnabled = true
         navigationController?.navigationBar.isUserInteractionEnabled = true
         updateSubmitButtonState()
     }
 
-    public func submissionDidSucceed(with response: Response) {}
-    public func submissionDidFail(with error: Error) {
+    func submissionDidSucceed(with response: Response) {}
+    func submissionDidFail(with error: Error) {
         switch error {
         case SubmissionError.submittedNoEdits:
             popOrDismiss()
@@ -89,20 +89,20 @@ extension SubmissionManaged where Self: UIViewController {
         }
     }
 
-    public func autoSubmitIfAllowed() {
+    func autoSubmitIfAllowed() {
         if autoSubmitsValidForm {
             self.performSubmission()
         }
     }
 
-    public func userCanSubmit() -> Bool {
+    func userCanSubmit() -> Bool {
         guard noEditsBehavior == .disableSubmit else {
             return true
         }
         return self.submissionHasBeenEdited()
     }
 
-    public func submissionHasBeenEdited() -> Bool {
+    func submissionHasBeenEdited() -> Bool {
         return true
     }
 }
@@ -116,19 +116,19 @@ public protocol SubmitButtonManaged: AnyObject, ButtonManaged {
     func performSubmission()
 }
 
-extension SubmitButtonManaged where Self: UIViewController {
-    public func performSubmission() {
+public extension SubmitButtonManaged where Self: UIViewController {
+    func performSubmission() {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
     }
 
-    public func didPressSubmitButton() {
+    func didPressSubmitButton() {
         self.performSubmission()
     }
 
-    public func didPressSubmitButtonWhileDisabled() {}
+    func didPressSubmitButtonWhileDisabled() {}
 
     @discardableResult
-    public func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
+    func setupSubmitButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
         let button = createManagedButton(configuration: configuration)
         var activityIndicatoPosition: ActivityIndicatorPosition = .center
         switch configuration.position {
@@ -149,27 +149,27 @@ extension SubmitButtonManaged where Self: UIViewController {
         return button
     }
 
-    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
+    func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
         let button = BaseButton(buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: LayoutPadding(5)))
         button.titleMap = [.normal: "Submit"]
         styleManagedButton(button: button, position: configuration.position)
         return button
     }
 
-    public func setupSubmitButtonAction(for button: BaseButton) {
+    func setupSubmitButtonAction(for button: BaseButton) {
         button.buttonTapActionMap = [
             .normal: self.didPressSubmitButton,
             .disabled: self.didPressSubmitButtonWhileDisabled
         ]
     }
 
-    public func updateSubmitButtonState() {
+    func updateSubmitButtonState() {
         DispatchQueue.main.async {
             self.submitButton.state = self.userCanSubmit() ? .normal : .disabled
         }
     }
 
-    public func userCanSubmit() -> Bool {
+    func userCanSubmit() -> Bool {
         return true
     }
 }

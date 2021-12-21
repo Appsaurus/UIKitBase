@@ -11,9 +11,7 @@ import UIKitTheme
 
 open class DynamicSizeCollectionViewCell: BaseCollectionViewCell {
     public var mainLayoutView = UIView()
-    public lazy var mainLayoutViewInsets: LayoutPadding = {
-        .zero
-    }()
+    public lazy var mainLayoutViewInsets: LayoutPadding = .zero
 
     override open func createSubviews() {
         super.createSubviews()

@@ -120,9 +120,9 @@ open class AbstractFormField: BaseView, FormFieldProtocol {
             self.validationStatus = .invalid
         } else if self.requiresNetworkValidation {
             self.validationStatus = ValidationStatus.testingInProgress
-            self.runNetworkValidation({ [weak self] () -> Void in
+            self.runNetworkValidation({ [weak self] () in
                 self?.validationStatus = .valid
-            }, failure: { [weak self] () -> Void in
+            }, failure: { [weak self] () in
                 // TODO: Get custom error message from network call
                 let failureType = ValidationFailureType.networkValidationFailed
                 let explanationMessage = self?.customErrorMessages[failureType] ?? "Network validation failed."

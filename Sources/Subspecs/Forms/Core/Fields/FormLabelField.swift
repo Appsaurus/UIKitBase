@@ -10,9 +10,7 @@ import Swiftest
 import UIKitTheme
 
 open class FormLabelField<ContentView: UIView, Value: Any>: FormField<ContentView, Value> where ContentView: FormFieldViewProtocol {
-    open lazy var valueLabel: UILabel = {
-        self.labelToManage()
-    }()
+    open lazy var valueLabel: UILabel = self.labelToManage()
 
     open func labelToManage() -> UILabel {
         guard let label = contentView as? UILabel ?? subviews(ofType: UILabel.self).first else {

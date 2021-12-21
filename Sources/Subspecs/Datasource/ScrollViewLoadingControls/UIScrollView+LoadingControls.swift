@@ -312,13 +312,13 @@ extension UIScrollView {
             completion?(true)
             return
         }
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: { () in
 
             self.lockInset = true
             self.contentInset = inset
             self.lockInset = false
 
-        }, completion: { (finished) -> Void in
+        }, completion: { finished in
 
             completion?(finished)
         })

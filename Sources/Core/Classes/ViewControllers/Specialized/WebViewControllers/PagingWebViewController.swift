@@ -64,7 +64,7 @@ open class PagingWebViewController: BaseParentPagingMenuViewController, DismissB
 
     override open func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
         let cell = WebViewPagingMenuItemCell()
-        configure(cell: cell, at: index)
+        self.configure(cell: cell, at: index)
         return cell.calculateDynamicSize(fixedDimension: .height(size: menuView.frame.h))
     }
 

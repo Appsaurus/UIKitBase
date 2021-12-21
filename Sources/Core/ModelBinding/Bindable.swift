@@ -15,8 +15,8 @@ public protocol ModelDisplayable: AnyObject {
     func displayEmptyModelState()
 }
 
-extension ModelDisplayable {
-    public func displayEmptyModelState() {}
+public extension ModelDisplayable {
+    func displayEmptyModelState() {}
 }
 
 public protocol ModelBindable: AnyObject {

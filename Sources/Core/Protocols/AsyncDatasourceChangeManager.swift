@@ -20,15 +20,15 @@ public protocol AsyncDatasourceChangeManager: AnyObject {
     func performNextModification()
 }
 
-extension AsyncDatasourceChangeManager {
-    public func enqueue(_ modification: @escaping AsyncDatasourceChange) {
+public extension AsyncDatasourceChangeManager {
+    func enqueue(_ modification: @escaping AsyncDatasourceChange) {
         asyncDatasourceChangeQueue.enqueue(modification)
         if asyncDatasourceChangeQueue.count == 1 {
             self.performNextModification()
         }
     }
 
-    public func performNextModification() {
+    func performNextModification() {
         guard let modification = asyncDatasourceChangeQueue.peekAtQueue() else {
             uponQueueCompletion?()
             uponQueueCompletion = nil

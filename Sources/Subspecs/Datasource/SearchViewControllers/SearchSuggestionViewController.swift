@@ -297,7 +297,7 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
 
     open func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let resultsController = searchResultsController(for: searchBar)
-        queryInputChanged(resultsController: resultsController)
+        self.queryInputChanged(resultsController: resultsController)
         searchBar.resignFirstResponder()
     }
 

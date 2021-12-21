@@ -18,9 +18,7 @@ public class LocationData: NSObject {
     // User set location overrides placemarks location
     public var location: CLLocation
     public var placemark: CLPlacemark?
-    public lazy var postalAddress: CNPostalAddress = {
-        self.placemark?._postalAddress ?? CNPostalAddress()
-    }()
+    public lazy var postalAddress: CNPostalAddress = self.placemark?._postalAddress ?? CNPostalAddress()
 
     // Used for annotation display
     public var locationDisplayNameFormatter: LocationDisplayNameFormatter?
@@ -85,8 +83,8 @@ extension LocationData: MKAnnotation {
     }
 }
 
-extension CLPlacemark {
-    public var _postalAddress: CNPostalAddress? {
+public extension CLPlacemark {
+    var _postalAddress: CNPostalAddress? {
         guard #available(iOS 11.0, *) else {
             guard let addressDictionary = addressDictionary else { return nil }
             let address = CNMutablePostalAddress()

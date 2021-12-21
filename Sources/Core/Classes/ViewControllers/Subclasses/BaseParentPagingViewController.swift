@@ -49,9 +49,7 @@ open class BaseParentPagingViewController: BaseParentViewController {
         return self.pageViewController
     }
 
-    open lazy var pagedViewControllers: [UIViewController] = {
-        self.createPagedViewControllers()
-    }()
+    open lazy var pagedViewControllers: [UIViewController] = self.createPagedViewControllers()
 
     open func createPagedViewControllers() -> [UIViewController] {
         return []

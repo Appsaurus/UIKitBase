@@ -10,7 +10,7 @@ import Swiftest
 import UIKitTheme
 
 @available(iOS 10.0, *)
-open class FeedbackGenerator {
+public enum FeedbackGenerator {
     public static func selectionChanged() {
         let feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.prepare()

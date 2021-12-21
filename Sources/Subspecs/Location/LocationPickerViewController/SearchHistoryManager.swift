@@ -32,14 +32,14 @@ struct SearchHistoryManager {
     }
 }
 
-struct LocationDicKeys {
+enum LocationDicKeys {
     static let name = "Name"
     static let locationCoordinates = "LocationCoordinates"
     static let placemarkCoordinates = "PlacemarkCoordinates"
     static let placemarkAddressDic = "PlacemarkAddressDic"
 }
 
-struct CoordinateDicKeys {
+enum CoordinateDicKeys {
     static let latitude = "Latitude"
     static let longitude = "Longitude"
 }
@@ -51,7 +51,7 @@ extension CLLocationCoordinate2D {
 
     static func fromDefaultsDic(_ dic: NSDictionary) -> CLLocationCoordinate2D? {
         guard let latitude = dic[CoordinateDicKeys.latitude] as? NSNumber,
-            let longitude = dic[CoordinateDicKeys.longitude] as? NSNumber else { return nil }
+              let longitude = dic[CoordinateDicKeys.longitude] as? NSNumber else { return nil }
         return CLLocationCoordinate2D(latitude: latitude.doubleValue, longitude: longitude.doubleValue)
     }
 }
@@ -59,7 +59,7 @@ extension CLLocationCoordinate2D {
 extension LocationData {
     func toDefaultsDic() -> NSDictionary? {
         guard let addressDic = placemark?.addressDictionary,
-            let placemarkCoordinatesDic = placemark?.location?.coordinate.toDefaultsDic()
+              let placemarkCoordinatesDic = placemark?.location?.coordinate.toDefaultsDic()
         else { return nil }
 
         var dic: [String: AnyObject] = [
@@ -73,8 +73,8 @@ extension LocationData {
 
     class func fromDefaultsDic(_ dic: NSDictionary) -> LocationData? {
         guard let placemarkCoordinatesDic = dic[LocationDicKeys.placemarkCoordinates] as? NSDictionary,
-            let placemarkCoordinates = CLLocationCoordinate2D.fromDefaultsDic(placemarkCoordinatesDic),
-            let placemarkAddressDic = dic[LocationDicKeys.placemarkAddressDic] as? [String: AnyObject]
+              let placemarkCoordinates = CLLocationCoordinate2D.fromDefaultsDic(placemarkCoordinatesDic),
+              let placemarkAddressDic = dic[LocationDicKeys.placemarkAddressDic] as? [String: AnyObject]
         else { return nil }
 
         let coordinatesDic = dic[LocationDicKeys.locationCoordinates] as? NSDictionary

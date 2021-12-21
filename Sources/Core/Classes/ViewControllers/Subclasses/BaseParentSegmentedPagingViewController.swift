@@ -10,9 +10,19 @@ import Foundation
 import UIKit
 
 open class BaseParentSegmentedPagingViewController: BaseParentPagingViewController {
-    open lazy var segmentedControl: UISegmentedControl = {
-        UISegmentedControl(items: self.segmentedControlTitles())
-    }()
+    public enum SegmentedControlPosition {
+        case headerView
+        case top
+        case topRight
+        case topLeft
+        case bottom
+        case bottomRight
+        case bottomLeft
+    }
+
+    open var segmentedControlPosition: SegmentedControlPosition = .headerView
+
+    open lazy var segmentedControl: UISegmentedControl = .init(items: self.segmentedControlItems())
 
     open var blendsSegmentedHeaderWithNavigationBar: Bool {
         return true
@@ -20,12 +30,16 @@ open class BaseParentSegmentedPagingViewController: BaseParentPagingViewControll
 
     override open func createSubviews() {
         super.createSubviews()
-        self.segmentedControl.addAction { [weak self] (control: UISegmentedControl) in
-            self?.transitionToPage(at: control.selectedSegmentIndex)
+        guard self.segmentedControlPosition != .headerView else {
+            return
         }
+        self.view.addSubview(self.segmentedControl)
     }
 
     override open func createHeaderView() -> UIView? {
+        guard self.segmentedControlPosition == .headerView else {
+            return nil
+        }
         let header = UIView()
         header.addSubview(self.segmentedControl)
         if self.blendsSegmentedHeaderWithNavigationBar {
@@ -36,20 +50,45 @@ open class BaseParentSegmentedPagingViewController: BaseParentPagingViewControll
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        if self.blendsSegmentedHeaderWithNavigationBar {
-//            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//            navigationController?.navigationBar.shadowImage = UIImage()
-        }
         self.segmentedControl.selectedSegmentIndex = initialPageIndex
+        self.segmentedControl.moveToFront()
     }
 
     override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
-        self.segmentedControl.edges.equal(to: .inset(8.0, 5.0))
+        self.createSegmentedControlAutoLayoutConstraints()
     }
 
-    open func segmentedControlTitles() -> [String] {
+    override open func setupControlActions() {
+        super.setupControlActions()
+        self.segmentedControl.addAction { [weak self] (control: UISegmentedControl) in
+            self?.transitionToPage(at: control.selectedSegmentIndex)
+        }
+    }
+
+    open func segmentedControlItems() -> [Any] {
         return []
+    }
+
+    open func createSegmentedControlAutoLayoutConstraints() {
+        switch self.segmentedControlPosition {
+        case .headerView:
+            self.segmentedControl.edges.equal(to: .inset(8.0, 5.0))
+        case .top:
+            self.segmentedControl.top.equalToSuperviewMargin()
+            self.segmentedControl.centerX.equalToSuperview()
+        case .topRight:
+            self.segmentedControl.topRight.equalToSuperviewMargin()
+        case .topLeft:
+            self.segmentedControl.topLeft.equalToSuperviewMargin()
+        case .bottom:
+            self.segmentedControl.bottom.equalToSuperviewMargin()
+            self.segmentedControl.centerX.equalToSuperview()
+        case .bottomRight:
+            self.segmentedControl.bottomRight.equalToSuperviewMargin()
+        case .bottomLeft:
+            self.segmentedControl.bottomLeft.equalToSuperviewMargin()
+        }
     }
 
     override open func transitionToPage(at index: Int) {

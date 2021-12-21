@@ -41,8 +41,8 @@ public extension DependencyInjectable where Self: NSObject {
     }
 }
 
-extension DependencyInjectable {
-    public func assertDependencies() {
+public extension DependencyInjectable {
+    func assertDependencies() {
         assert(self.confirmDependencies(), "Failed to resolve dependencies for class \(String(describing: self))")
     }
 
@@ -62,13 +62,13 @@ extension DependencyInjectable {
     //
     //    }
 
-    public func unresolvedDependencies() -> [Any?] {
-        var missingReqDependencies: [Any?] = self.requiredDependencies.filter { (value) -> Bool in
+    func unresolvedDependencies() -> [Any?] {
+        var missingReqDependencies: [Any?] = self.requiredDependencies.filter { value -> Bool in
             value == nil
         }
 
         if self.requiresOneOfDependencies.count != 0 {
-            let hasOne = self.requiresOneOfDependencies.contains { (value) -> Bool in
+            let hasOne = self.requiresOneOfDependencies.contains { value -> Bool in
                 value != nil
             }
             if !hasOne {
@@ -81,8 +81,8 @@ extension DependencyInjectable {
     /// Checks if dependency references are instantiated.
     ///
     /// - Returns: True if depdencies are valid. False if any dependency is missing.
-    public func confirmDependencies() -> Bool {
-        let allRequired = !self.requiredDependencies.contains { (value) -> Bool in
+    func confirmDependencies() -> Bool {
+        let allRequired = !self.requiredDependencies.contains { value -> Bool in
             value == nil
         }
         if !allRequired { return false }
@@ -90,7 +90,7 @@ extension DependencyInjectable {
         if self.requiresOneOfDependencies.count == 0 {
             return true
         }
-        return self.requiresOneOfDependencies.contains { (value) -> Bool in
+        return self.requiresOneOfDependencies.contains { value -> Bool in
             value != nil
         }
     }

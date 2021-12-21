@@ -12,8 +12,8 @@ import UIKitExtensions
 import UIKitMixinable
 public protocol BaseBarButtonItemProtocol: BaseNSObjectProtocol {}
 
-extension BaseBarButtonItemProtocol where Self: UIBarButtonItem {
-    public var baseBarButtonItemProtocolMixins: [LifeCycle] {
+public extension BaseBarButtonItemProtocol where Self: UIBarButtonItem {
+    var baseBarButtonItemProtocolMixins: [LifeCycle] {
         return baseNSObjectProtocolMixins
     }
 }

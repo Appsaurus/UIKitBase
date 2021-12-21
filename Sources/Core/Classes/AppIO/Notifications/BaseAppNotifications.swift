@@ -94,8 +94,8 @@ public protocol AppNotificationID: StringIdentifiableEnum {
     static var notificationIdentifierKey: String { get }
 }
 
-extension AppNotificationID {
-    public static var notificationIdentifierKey: String {
+public extension AppNotificationID {
+    static var notificationIdentifierKey: String {
         return "notificationID"
     }
 }
@@ -106,15 +106,15 @@ public protocol StringIdentifiableEnum: CaseIterable, RawRepresentable, Equatabl
     func notificationCenterName() -> Notification.Name
 }
 
-extension StringIdentifiableEnum {
+public extension StringIdentifiableEnum {
     // Convenience for when rawValues don't match labels.
-    public static func from(id: String) -> Self? {
-        return allCases.first { (enumCase) -> Bool in
+    static func from(id: String) -> Self? {
+        return allCases.first { enumCase -> Bool in
             id == "\(enumCase)"
         }
     }
 
-    public func notificationCenterName() -> Notification.Name {
+    func notificationCenterName() -> Notification.Name {
         return Notification.Name("\(rawValue)")
     }
 }

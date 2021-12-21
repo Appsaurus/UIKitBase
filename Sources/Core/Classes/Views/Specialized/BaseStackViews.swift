@@ -39,8 +39,8 @@ public protocol LazilyGrowingStackView {
 
 var stackedViewsAssociated: UInt8 = 0
 
-extension LazilyGrowingStackView where Self: UIStackView {
-    public var stackedViews: [StackedView] {
+public extension LazilyGrowingStackView where Self: UIStackView {
+    var stackedViews: [StackedView] {
         get {
             return getAssociatedObject(for: &stackedViewsAssociated, initialValue: [])
         }
@@ -49,10 +49,10 @@ extension LazilyGrowingStackView where Self: UIStackView {
         }
     }
 
-    public mutating func stackedView(at index: Int) -> StackedView {
+    mutating func stackedView(at index: Int) -> StackedView {
         while self.stackedViews[safe: index] == nil {
             let view = createStackedView()
-            stackedViews.append(view)
+            self.stackedViews.append(view)
             view.enforceContentSize()
             addArrangedSubview(view)
         }

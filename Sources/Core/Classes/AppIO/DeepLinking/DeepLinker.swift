@@ -142,14 +142,14 @@ public protocol DeepLinkHandler: DeepLinkObserver {
     func respond(to deepLinkRequest: DeepLinkRequest<RouteType>)
 }
 
-extension DeepLinkHandler {
-    public var deepLinker: DeepLinker<RouteType> {
+public extension DeepLinkHandler {
+    var deepLinker: DeepLinker<RouteType> {
         return DeepLinker<RouteType>.shared
     }
 }
 
-extension DeepLinkHandler where Self: NSObject {
-    public func handleDeepLink() {
+public extension DeepLinkHandler where Self: NSObject {
+    func handleDeepLink() {
         guard let request = deepLinker.request, request.link.isActionable else {
             return
         }
@@ -160,7 +160,7 @@ extension DeepLinkHandler where Self: NSObject {
         respond(to: request)
     }
 
-    public func observeDeepLinkNotifications() {
+    func observeDeepLinkNotifications() {
         for route in deepLinkRoutes() {
             NotificationCenter.default.observe(route.notificationCenterName(), action: { [weak self] in
                 DispatchQueue.main.async {

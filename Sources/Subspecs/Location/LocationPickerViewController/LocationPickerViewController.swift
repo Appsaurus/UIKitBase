@@ -149,9 +149,7 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
 
     var mapView = MKMapView(frame: .zero)
 
-    lazy var currentLocationButton: BaseButton = {
-        BaseButton(icon: MaterialIcons.My_Location, buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: .zero))
-    }()
+    lazy var currentLocationButton: BaseButton = .init(icon: MaterialIcons.My_Location, buttonLayout: ButtonLayout(layoutType: .titleCentered, marginInsets: .zero))
 
     override open func style() {
         super.style()
@@ -159,12 +157,12 @@ open class LocationPickerMapViewController: ConfigurableViewController<LocationP
         let viewStyle: ViewStyle = .raised(backgroundColor: .primary)
 
         let selectButtonStyle = ButtonStyle(textStyle: .regular(color: .primaryContrast), viewStyle: viewStyle)
-        submitButton.apply(buttonStyle: selectButtonStyle)
+        self.submitButton.apply(buttonStyle: selectButtonStyle)
         self.submitButton.apply(shape: .roundedRect)
 
         let iconTextStyle = TextStyle(color: .primaryContrast, font: MaterialIcons.font())
         let iconButtonStyle = ButtonStyle(textStyle: iconTextStyle, viewStyle: viewStyle)
-        currentLocationButton.apply(buttonStyle: iconButtonStyle)
+        self.currentLocationButton.apply(buttonStyle: iconButtonStyle)
         self.currentLocationButton.rounded = true
     }
 

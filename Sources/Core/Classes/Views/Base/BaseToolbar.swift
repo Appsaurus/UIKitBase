@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseToolbarProtocol: BaseViewProtocol {}
 
-extension BaseToolbarProtocol where Self: UIToolbar {
-    public var baseToolbarProtocolMixins: [LifeCycle] {
+public extension BaseToolbarProtocol where Self: UIToolbar {
+    var baseToolbarProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

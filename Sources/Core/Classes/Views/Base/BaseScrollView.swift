@@ -10,8 +10,8 @@ import UIKitMixinable
 
 public protocol BaseScrollViewProtocol: BaseViewProtocol {}
 
-extension BaseScrollViewProtocol where Self: UIScrollView {
-    public var baseScrollViewProtocolMixins: [LifeCycle] {
+public extension BaseScrollViewProtocol where Self: UIScrollView {
+    var baseScrollViewProtocolMixins: [LifeCycle] {
         return [] + baseViewProtocolMixins
     }
 }

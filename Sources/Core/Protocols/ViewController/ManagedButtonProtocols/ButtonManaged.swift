@@ -39,21 +39,21 @@ public enum ManagedButtonPosition {
     case custom
 }
 
-extension ButtonManaged where Self: UIViewController {
+public extension ButtonManaged where Self: UIViewController {
     @discardableResult
-    public func createManagedButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
+    func createManagedButton(configuration: ManagedButtonConfiguration = ManagedButtonConfiguration()) -> BaseButton {
         let button: BaseButton = configuration.button ?? self.defaultButton(configuration: configuration)
         self.layoutManagedButton(button: button, position: configuration.position, size: configuration.size)
         return button
     }
 
-    public func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
+    func defaultButton(configuration: ManagedButtonConfiguration) -> BaseButton {
         let button = BaseButton()
-        styleManagedButton(button: button, position: configuration.position)
+        self.styleManagedButton(button: button, position: configuration.position)
         return button
     }
 
-    public func styleManagedButton(button: BaseButton, position: ManagedButtonPosition) {
+    func styleManagedButton(button: BaseButton, position: ManagedButtonPosition) {
         switch position {
         case .floatingFooter:
             button.styleMap = [.normal: .outlined(borderColor: .primaryContrast, backgroundColor: .primary)]

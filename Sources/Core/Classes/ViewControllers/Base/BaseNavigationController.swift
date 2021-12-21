@@ -11,8 +11,8 @@ import UIKitTheme
 
 public protocol BaseNavigationControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseNavigationControllerProtocol where Self: UINavigationController {
-    public var baseNavigationControllerProtocolMixins: [LifeCycle] {
+public extension BaseNavigationControllerProtocol where Self: UINavigationController {
+    var baseNavigationControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

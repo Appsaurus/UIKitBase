@@ -16,7 +16,7 @@ public protocol Reloadable {
     var reloadFunction: ReloadFunction? { get set }
 }
 
-public typealias ReloadFunction = ((@escaping VoidClosure) -> Void)
+public typealias ReloadFunction = (@escaping VoidClosure) -> Void
 
 private extension AssociatedObjectKeys {
     static let reloadFunction = AssociatedObjectKey<ReloadFunction?>("reloadFunction")
@@ -47,8 +47,8 @@ public protocol BaseViewControllerProtocol: BaseNSObjectProtocol
     & Reloadable
     & Styleable {}
 
-extension BaseViewControllerProtocol where Self: UIViewController {
-    public var baseViewControllerProtocolMixins: [LifeCycle] {
+public extension BaseViewControllerProtocol where Self: UIViewController {
+    var baseViewControllerProtocolMixins: [LifeCycle] {
         return [ViewControllerConfigurableMixin(self),
                 FirstResponderManagedMixin(self),
                 StatefulViewControllerMixin(self),

@@ -20,12 +20,12 @@ public protocol PagingMenuViewDelegate: AnyObject {
     func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize // Manually size cells when PagingMenuItemSizingBehavior is set to delegateSizing
 }
 
-extension PagingMenuViewDelegate {
-    public func defaultMenuItemCellClasses() -> [PagingMenuItemCell<UIView>.Type] {
+public extension PagingMenuViewDelegate {
+    func defaultMenuItemCellClasses() -> [PagingMenuItemCell<UIView>.Type] {
         return []
     }
 
-    public func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
+    func pagingMenuView(menuView: PagingMenuView, sizeForItemAt index: Int) -> CGSize {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
         return .zero
     }
@@ -174,7 +174,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     public func selectItemProgramtically(at index: IndexPath?, animated: Bool = false) {
         guard let index = index else { return }
         guard self.numberOfSections(in: self.pagingMenuCollectionView) >= index.section,
-            self.collectionView(self.pagingMenuCollectionView, numberOfItemsInSection: index.section) >= index.row else { return }
+              self.collectionView(self.pagingMenuCollectionView, numberOfItemsInSection: index.section) >= index.row else { return }
         selectCollectionMenuItem(at: index, animated: animated)
         self.pagingMenuCollectionView.selectItem(at: index, animated: animated, scrollPosition: [])
     }
@@ -306,7 +306,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
     open func renderCollectionMenuItemSelection(transition: IndexPathTransition) {
         DispatchQueue.main.async {
             guard let selectedIndex = transition.route.to,
-                let cell = self.pagingMenuCollectionView.cellForItem(at: selectedIndex)
+                  let cell = self.pagingMenuCollectionView.cellForItem(at: selectedIndex)
             else {
                 return
             }

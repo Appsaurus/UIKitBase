@@ -23,58 +23,58 @@ public protocol FormFieldViewProtocol {
     func display(state: FormFieldState)
 }
 
-extension FormFieldViewProtocol {
-    public func display(valueDescription: String?) {}
-    public func display(validationStatus: ValidationStatus) {}
-    public func display(validationFailures: [ValidationFailure]) {}
-    public func display(title: String) {}
-    public func display(placeholder: String?) {}
-    public func display(state: FormFieldState) {}
+public extension FormFieldViewProtocol {
+    func display(valueDescription: String?) {}
+    func display(validationStatus: ValidationStatus) {}
+    func display(validationFailures: [ValidationFailure]) {}
+    func display(title: String) {}
+    func display(placeholder: String?) {}
+    func display(state: FormFieldState) {}
 }
 
-extension FormFieldViewProtocol where Self: UITextField {
-    public func display(valueDescription: String?) {
+public extension FormFieldViewProtocol where Self: UITextField {
+    func display(valueDescription: String?) {
         text = valueDescription
         debugLog("")
     }
 
-    public func display(validationStatus: ValidationStatus) {
+    func display(validationStatus: ValidationStatus) {
         debugLog("")
     }
 
-    public func display(title: String) {
+    func display(title: String) {
         debugLog("")
         placeholder = title // Title takes precedence over placeholder in vanilla UITextFields
     }
 
-    public func display(placeholder: String?) {
+    func display(placeholder: String?) {
         debugLog("")
         // Do nothing, title takes precedence over placeholder in vanilla UITextFields
     }
 }
 
 extension MaterialTextField: FormFieldViewProtocol {}
-extension FormFieldViewProtocol where Self: MaterialTextField {
-    public func display(valueDescription: String?) {
+public extension FormFieldViewProtocol where Self: MaterialTextField {
+    func display(valueDescription: String?) {
         debugLog("")
         text = valueDescription
     }
 
-    public func display(validationStatus: ValidationStatus) {
+    func display(validationStatus: ValidationStatus) {
         debugLog("")
     }
 
-    public func display(validationFailures: [ValidationFailure]) {
+    func display(validationFailures: [ValidationFailure]) {
         debugLog("")
         errorText = validationFailures.first?.explanationMessage
     }
 
-    public func display(title: String) {
+    func display(title: String) {
         debugLog("")
         self.title = title
     }
 
-    public func display(placeholder: String) {
+    func display(placeholder: String) {
         debugLog("")
         self.placeholder = placeholder
     }
@@ -148,9 +148,7 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
         return self.value
     }
 
-    public lazy var contentView: ContentView = {
-        self.createContentView()
-    }()
+    public lazy var contentView: ContentView = self.createContentView()
 
     open func createContentView() -> ContentView {
         return ContentView(frame: .zero)
@@ -278,8 +276,8 @@ open class FormField<ContentView: UIView, Value: Any>: AbstractFormField where C
     }
 }
 
-extension FormFieldProtocol {
-    public func getContentView() -> (UIView & FormFieldViewProtocol)? {
+public extension FormFieldProtocol {
+    func getContentView() -> (UIView & FormFieldViewProtocol)? {
         return (self as? FormFieldContentViewProvider)?.getContentView()
     }
 }

@@ -74,27 +74,27 @@ public extension ScrollViewHeaderAdornable where Self: NSObject {
     }
 }
 
-extension ScrollViewHeaderAdornable where Self: UITableViewController {
-    public var scrollView: UIScrollView {
+public extension ScrollViewHeaderAdornable where Self: UITableViewController {
+    var scrollView: UIScrollView {
         return tableView
     }
 }
 
-extension ScrollViewHeaderAdornable where Self: UICollectionViewController {
-    public var scrollView: UIScrollView {
+public extension ScrollViewHeaderAdornable where Self: UICollectionViewController {
+    var scrollView: UIScrollView {
         return collectionView!
     }
 }
 
 // extension BaseScrollviewController: ScrollViewHeaderAdornable{
-extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
-    public func setupScrollViewHeader() {
+public extension ScrollViewHeaderAdornable where Self: BaseScrollviewController {
+    func setupScrollViewHeader() {
         self.addScrollViewHeader(createScrollViewHeader())
         self.headerContentDidChange() // Get initial layout
     }
 
     // Called whenever changes are made that could effect the height of the header
-    public func headerContentDidChange() {
+    func headerContentDidChange() {
         guard let header = scrollViewHeader else { return }
         view.forceAutolayoutPass()
         var contentSize = view.bounds.size

@@ -19,8 +19,8 @@ private extension AssociatedObjectKeys {
     static let scrollView = AssociatedObjectKey<UIScrollView>("scrollView")
 }
 
-extension ScrollViewObserver where Self: NSObject {
-    public internal(set) var scrollView: UIScrollView {
+public extension ScrollViewObserver where Self: NSObject {
+    internal(set) var scrollView: UIScrollView {
         get {
             return self[.scrollView, UIScrollView()]
         }
@@ -29,7 +29,7 @@ extension ScrollViewObserver where Self: NSObject {
         }
     }
 
-    public func setupObserver(for scrollView: UIScrollView) {
+    func setupObserver(for scrollView: UIScrollView) {
         self.scrollView = scrollView
         observe(object: scrollView, \.contentOffset) { [weak self] scrollView, change in
             guard let self = self else { return }

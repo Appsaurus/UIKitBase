@@ -23,9 +23,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
     }
 
-    open lazy var textField: UITextField = {
-        self.textFieldToValidate()
-    }()
+    open lazy var textField: UITextField = self.textFieldToValidate()
 
     open func textFieldToValidate() -> UITextField {
         guard let textField = contentView as? UITextField ?? subviews(ofType: UITextField.self).first else {
@@ -153,7 +151,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         validationDelegate?.fieldDidBeginEditing(self)
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             delegate.textFieldDidBeginEditing?(textField)
         }
         if let prefix = parkedText.prepended, let text = textField.text {
@@ -165,7 +163,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         var delegateOverride: Bool?
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             if let override = delegate.textFieldShouldEndEditing?(textField) {
                 if override == false {
                     delegateOverride = override
@@ -182,7 +180,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         var delegateOverride: Bool?
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             if let override = delegate.textFieldShouldClear?(textField) {
                 if override == false {
                     delegateOverride = override
@@ -199,7 +197,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard !self.disableUserTextEntry else { return false }
         var delegateOverride: Bool?
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             if let override = delegate.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) {
                 if override == false {
                     delegateOverride = override
@@ -234,7 +232,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         var delegateOverride: Bool?
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             if let override = delegate.textFieldShouldBeginEditing?(textField) {
                 delegateOverride = override
             }
@@ -247,7 +245,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         var delegateOverride: Bool?
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             if let override = delegate.textFieldShouldReturn?(textField) {
                 delegateOverride = override
             }
@@ -260,7 +258,7 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         validationDelegate?.fieldDidEndEditing(self)
-        self.textFieldDelegates.forEach { (delegate) -> Void in
+        self.textFieldDelegates.forEach { delegate in
             delegate.textFieldDidEndEditing?(textField)
         }
         if validationFrequency == .onDidFinishEditing {
@@ -298,11 +296,11 @@ open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView
         }
 
         if let confirmationField = confirmationField,
-            confirmationField.textField.text?.isEmpty == false
+           confirmationField.textField.text?.isEmpty == false
         {
             confirmationField.validate(displayErrors: displayErrorOnNextValidation)
         } else if let confirmsField = confirmsField,
-            confirmsField.textField.text != textField.text
+                  confirmsField.textField.text != textField.text
         {
             let failureType = ValidationFailureType.confirmationFieldDoesNotMatch
             let explanationMessage = customErrorMessages[failureType] ?? "\(fieldName) and \(confirmsField.fieldName) must match."

@@ -19,9 +19,7 @@ public enum FormFieldBehavior {
 open class BaseFormViewController<Submission: Equatable, Response>: BaseContainerViewController, FormDelegate, SubmissionManaged {
     public var onCompletion: ResultClosure<Response>?
 
-    open lazy var formToolbar: FormToolbar? = {
-        self.createFormToolbar()
-    }()
+    open lazy var formToolbar: FormToolbar? = self.createFormToolbar()
 
     open var submitButtonPosition: ManagedButtonPosition = .navBarTrailing
     open var autoSubmitsValidForm = false
@@ -223,7 +221,7 @@ open class BaseFormViewController<Submission: Equatable, Response>: BaseContaine
 
     open func submissionHasBeenEdited() -> Bool {
         guard let cachedSubmissionState = cachedSubmissionState,
-            let submission = try? createSubmission()
+              let submission = try? createSubmission()
         else {
             return true
         }

@@ -260,29 +260,29 @@ extension TextFieldStyleGuide {
 
 public protocol T {}
 extension TextFieldState: T {}
-extension Dictionary where Key: T, Value: TextFieldStyle {
-    public static func materialStyleMap(color: UIColor? = nil,
-                                        titleColor: UIColor? = nil,
-                                        disabledColor: UIColor? = nil,
-                                        textSize: CGFloat = 16.0,
-                                        secondarySize: CGFloat = 12.0) -> TextFieldStyleMap
+public extension Dictionary where Key: T, Value: TextFieldStyle {
+    static func materialStyleMap(color: UIColor? = nil,
+                                 titleColor: UIColor? = nil,
+                                 disabledColor: UIColor? = nil,
+                                 textSize: CGFloat = 16.0,
+                                 secondarySize: CGFloat = 12.0) -> TextFieldStyleMap
     {
         return App.style.textField.materialStyleMap(color: color, titleColor: titleColor, disabledColor: disabledColor, textSize: textSize, secondarySize: secondarySize)
     }
 
-    public static var defaultMaterialStyleMap: TextFieldStyleMap {
+    static var defaultMaterialStyleMap: TextFieldStyleMap {
         return App.style.textField.defaults.materialTextFieldMap
     }
 
-    public static var lightMaterialStyleMap: TextFieldStyleMap {
+    static var lightMaterialStyleMap: TextFieldStyleMap {
         return materialStyleMap(color: .textLight)
     }
 
-    public static var darkMaterialStyleMap: TextFieldStyleMap {
+    static var darkMaterialStyleMap: TextFieldStyleMap {
         return materialStyleMap(color: .textDark)
     }
 
-    public static func materialStyleMap(contrasting color: UIColor) -> TextFieldStyleMap {
+    static func materialStyleMap(contrasting color: UIColor) -> TextFieldStyleMap {
         if color == .primary { return self.materialStyleMap(color: .primaryContrast) }
         if color == .primaryContrast { return self.materialStyleMap(color: .primary) }
         let contrast = color.contrastingColor(fromCandidates: [.textDark, .textLight, .primary, .primaryContrast])

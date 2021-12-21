@@ -162,7 +162,7 @@ class PullToRefresher: NSObject {
                     guard self.scrollView?.contentInset != self.defaultContentInset else { return }
                     if !self.scrollbackImmediately {
                         self.updatingState = true
-                        self.scrollView?.setContentInset(self.defaultContentInset, completion: { [unowned self] (_) -> Void in
+                        self.scrollView?.setContentInset(self.defaultContentInset, completion: { [unowned self] _ in
                             self.updatingState = false
                         })
                     }
@@ -176,7 +176,7 @@ class PullToRefresher: NSObject {
                         } else {
                             inset.top += self.distanceToTrigger
                         }
-                        self.scrollView?.setContentInset(inset, completion: { [unowned self] (_) -> Void in
+                        self.scrollView?.setContentInset(inset, completion: { [unowned self] _ in
                             self.updatingState = false
                         })
                         PullToRefresherImpacter.impact()
@@ -233,7 +233,7 @@ extension UIView {
     }
 }
 
-private class PullToRefresherImpacter {
+private enum PullToRefresherImpacter {
     private static var impacter: AnyObject? = {
         if #available(iOS 10.0, *) {
             if NSClassFromString("UIFeedbackGenerator") != nil {

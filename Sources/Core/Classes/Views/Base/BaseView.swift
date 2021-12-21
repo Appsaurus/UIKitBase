@@ -12,8 +12,8 @@ import UIKitTheme
 public protocol BaseNSObjectProtocol: DependencyInjectable
     & NotificationObserver {}
 
-extension BaseNSObjectProtocol where Self: NSObject {
-    public var baseNSObjectProtocolMixins: [LifeCycle] {
+public extension BaseNSObjectProtocol where Self: NSObject {
+    var baseNSObjectProtocolMixins: [LifeCycle] {
         return [DependencyInjectableViewMixin(self),
                 NotificationObserverMixin(self)]
     }
@@ -23,8 +23,8 @@ public protocol BaseViewProtocol: BaseNSObjectProtocol
     & Roundable
     & Styleable {}
 
-extension BaseViewProtocol where Self: UIView {
-    public var baseViewProtocolMixins: [LifeCycle] {
+public extension BaseViewProtocol where Self: UIView {
+    var baseViewProtocolMixins: [LifeCycle] {
         return [RoundableMixin(self),
                 StyleableViewMixin(self)] + baseNSObjectProtocolMixins
     }

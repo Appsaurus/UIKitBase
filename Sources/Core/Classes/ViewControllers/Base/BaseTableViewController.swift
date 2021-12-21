@@ -11,8 +11,8 @@ import UIKitMixinable
 
 public protocol BaseTableViewControllerProtocol: BaseViewControllerProtocol {}
 
-extension BaseTableViewControllerProtocol where Self: UITableViewController {
-    public var baseTableViewControllerProtocolMixins: [LifeCycle] {
+public extension BaseTableViewControllerProtocol where Self: UITableViewController {
+    var baseTableViewControllerProtocolMixins: [LifeCycle] {
         return baseViewControllerProtocolMixins
     }
 }

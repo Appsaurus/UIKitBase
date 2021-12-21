@@ -13,29 +13,29 @@ import UIKitExtensions
 import UIKitMixinable
 public typealias State = String
 
-extension State {
-    public static let uninitialized = "uninitialized"
-    public static let initialized = "initialized"
-    public static let loaded = "loaded"
-    public static let loading = "loading"
-    public static let refreshing = "refreshing"
-    public static let refreshingError = "refreshingError"
-    public static let error = "error"
-    public static let empty = "empty"
-    public static let loadingMore = "loadingMore"
-    public static let loadedAll = "loadedAll"
-    public static let loadMoreError = "loadMoreError"
+public extension State {
+    static let uninitialized = "uninitialized"
+    static let initialized = "initialized"
+    static let loaded = "loaded"
+    static let loading = "loading"
+    static let refreshing = "refreshing"
+    static let refreshingError = "refreshingError"
+    static let error = "error"
+    static let empty = "empty"
+    static let loadingMore = "loadingMore"
+    static let loadedAll = "loadedAll"
+    static let loadMoreError = "loadMoreError"
 }
 
 public typealias StatefulViewMap = [State: UIView]
 
-extension Dictionary where Key == State, Value == UIView {
-    public static func `default`(for statefulViewController: StatefulViewController) -> StatefulViewMap {
+public extension Dictionary where Key == State, Value == UIView {
+    static func `default`(for statefulViewController: StatefulViewController) -> StatefulViewMap {
         return StatefulViewControllerDefaults.statefulViews(statefulViewController)
     }
 }
 
-public class StatefulViewControllerDefaults {
+public enum StatefulViewControllerDefaults {
     public static var statefulViews: (StatefulViewController) -> StatefulViewMap = { vc in
         [.empty: StatefulViewControllerView(viewModel: .empty(retry: vc.reload)),
          .loading: StatefulViewControllerView.defaultLoading,
@@ -87,8 +87,8 @@ private extension AssociatedObjectKeys {
 
 // MARK: Default Implementation StatefulViewController
 
-extension StatefulViewController where Self: NSObject {
-    public var stateMachine: ViewStateMachine {
+public extension StatefulViewController where Self: NSObject {
+    var stateMachine: ViewStateMachine {
         get {
             // swiftformat:disable:next redundantSelf
             return self[.stateMachine, self.createViewStateMachine()]
@@ -98,7 +98,7 @@ extension StatefulViewController where Self: NSObject {
         }
     }
 
-    public var logsStateTransitions: Bool {
+    var logsStateTransitions: Bool {
         get {
             return self[.logsStateTransitions, false]
         }
@@ -107,7 +107,7 @@ extension StatefulViewController where Self: NSObject {
         }
     }
 
-    public var initialState: State? {
+    var initialState: State? {
         get {
             return self[.initialState]
         }
@@ -116,7 +116,7 @@ extension StatefulViewController where Self: NSObject {
         }
     }
 
-    public var onDidTransitionMixins: [(State) -> Void] {
+    var onDidTransitionMixins: [(State) -> Void] {
         get {
             return self[.onDidTransitionMixins, []]
         }
@@ -127,7 +127,7 @@ extension StatefulViewController where Self: NSObject {
 
     // MARK: Transitioning
 
-    public func transitionToInitialState() {
+    func transitionToInitialState() {
         if currentState == .uninitialized {
             self.stateMachine.view = statefulSuperview
             transition(to: self.initialState ?? .initialized)
@@ -182,36 +182,36 @@ public extension StatefulViewController {
 
 // MARK: Default Stateful Views
 
-extension StatefulViewController {
-    public var loadingView: StatefulViewControllerDefaultLoadingView? {
+public extension StatefulViewController {
+    var loadingView: StatefulViewControllerDefaultLoadingView? {
         return self.stateMachine[.loading] as? StatefulViewControllerDefaultLoadingView
     }
 
-    public var errorView: StatefulViewControllerView? {
+    var errorView: StatefulViewControllerView? {
         return self.stateMachine[.error] as? StatefulViewControllerView
     }
 
-    public var emptyView: StatefulViewControllerView? {
+    var emptyView: StatefulViewControllerView? {
         return self.stateMachine[.empty] as? StatefulViewControllerView
     }
 }
 
-extension StatefulViewController where Self: UIView {
-    public var statefulSuperview: UIView {
+public extension StatefulViewController where Self: UIView {
+    var statefulSuperview: UIView {
         return self
     }
 
-    public var logsStateTransitions: Bool {
+    var logsStateTransitions: Bool {
         return false
     }
 }
 
-extension StatefulViewController where Self: UIViewController {
-    public var statefulSuperview: UIView {
+public extension StatefulViewController where Self: UIViewController {
+    var statefulSuperview: UIView {
         return view
     }
 
-    public var logsStateTransitions: Bool {
+    var logsStateTransitions: Bool {
         return false
     }
 }
