@@ -25,7 +25,7 @@ open class BaseScrollingViewController: BaseViewController {
         return UIView()
     }
 
-    override public func initProperties() {
+    override open func initProperties() {
         super.initProperties()
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
