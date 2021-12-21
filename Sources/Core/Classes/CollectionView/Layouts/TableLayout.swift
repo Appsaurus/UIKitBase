@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class CompositionalTableLayout: UICollectionViewCompositionalLayout {
+open class CompositionalTableLayout: UICollectionViewCompositionalLayout {
     public init(estimatedCellHeight: CGFloat) {
         let size = NSCollectionLayoutSize(
             widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
@@ -25,15 +25,15 @@ class CompositionalTableLayout: UICollectionViewCompositionalLayout {
     }
 
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 // Based on https://stackoverflow.com/questions/44187881/uicollectionview-full-width-cells-allow-autolayout-dynamic-height
-class TableLayout: UICollectionViewFlowLayout {
-    let sectionSpacing: CGFloat = 1 // Must be non-zero
-    override init() {
+open class TableLayout: UICollectionViewFlowLayout {
+    public let sectionSpacing: CGFloat = 1 // Must be non-zero
+    override public init() {
         super.init()
         estimatedItemSize = UICollectionViewFlowLayout.automaticSize // CGSize(width: 1, height: 1)
         let spacing: CGFloat = 1
@@ -43,11 +43,11 @@ class TableLayout: UICollectionViewFlowLayout {
     }
 
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributesObjects = super.layoutAttributesForElements(in: rect)?.map { $0.copy() } as? [UICollectionViewLayoutAttributes]
         layoutAttributesObjects?.forEach { layoutAttributes in
             if layoutAttributes.representedElementCategory == .cell {
@@ -59,7 +59,7 @@ class TableLayout: UICollectionViewFlowLayout {
         return layoutAttributesObjects
     }
 
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let collectionView = collectionView else {
             return nil
         }
@@ -75,7 +75,7 @@ class TableLayout: UICollectionViewFlowLayout {
         return layoutAttributes
     }
 
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 }

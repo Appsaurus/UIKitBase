@@ -8,7 +8,7 @@
 
 import DarkMagic
 import Foundation
-import UIKitBase
+
 public protocol CellFocusManaged: AnyObject {
     func addCellFocus(behaviors: [CellFocusAnimationBehavior], to scrollView: UIScrollView, focusedIn focusLocation: CellFocusLocation)
 }
@@ -93,6 +93,10 @@ open class CellFocusLocation {
 
 open class CellFocusAnimationBehavior {
     open var focusLocation: CellFocusLocation?
+
+    public init(focusLocation: CellFocusLocation? = nil) {
+        self.focusLocation = focusLocation
+    }
 
     open func adjust(cell: UIView, for percentFocused: CGFloat) {
         assertionFailure(String(describing: self) + " is abstract. You must implement " + #function)
