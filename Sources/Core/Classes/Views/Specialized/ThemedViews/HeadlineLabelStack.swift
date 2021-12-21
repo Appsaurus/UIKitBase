@@ -10,9 +10,9 @@ import Layman
 import UIKit
 
 public class HeadlineLabelStack: BaseStackView {
-    var headlineLabel = HeadlineLabel()
-    var subheadlineLabel = SubheadlineLabel()
-    var labels: [UILabel] {
+    public var headlineLabel = HeadlineLabel()
+    public var subheadlineLabel = SubheadlineLabel()
+    public var labels: [UILabel] {
         return [headlineLabel, subheadlineLabel]
     }
 
