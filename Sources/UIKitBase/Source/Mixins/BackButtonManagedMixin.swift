@@ -8,6 +8,7 @@
 import UIFontIcons
 import UIKitMixinable
 import UIKitTheme
+import MaterialIcons
 open class BackButtonManagedMixin: UIViewControllerMixin<BackButtonManaged & UIViewController> {
     override open func createSubviews() {
         var fontIconConfiguration: FontIconConfiguration?

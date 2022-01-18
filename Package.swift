@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "UIKitBase",
     platforms: [
-        .iOS(.v10),
+        .iOS(.v11),
 //        .macOS(.v12),
 //        .tvOS(.v15),
 //        .watchOS(.v8),
@@ -102,21 +102,18 @@ let package = Package(
         .target(
             name: "UIKitBase",
             dependencies: [
-                "AssistantKit",
-                "Swiftest",
-                "UIKitTheme",
-                "UIKitMixinable",
-                "UIKitExtensions",
-                "Layman",
-//                "DarkMagic",
-                "RuntimeExtensions",
-                "UIFontIcons",
-//                "Actions",
-                "Nuke",
-                "DiffableDataSources",
-                "Algorithm",
-                "URLNavigator"
-            ],
+                .product(name: "Algorithm", package: "Algorithm"),
+                .product(name: "AssistantKit", package: "AssistantKit"),
+                .product(name: "DiffableDataSources", package: "DiffableDataSources"),
+                .product(name: "Layman", package: "Layman"),
+                .product(name: "Nuke", package: "Nuke"),
+                .product(name: "RuntimeExtensions", package: "RuntimeExtensions"),
+                .product(name: "Swiftest", package: "Swiftest"),
+                .product(name: "UIKitTheme", package: "UIKitTheme"),
+                .product(name: "UIKitMixinable", package: "UIKitMixinable"),
+                .product(name: "UIKitExtensions", package: "UIKitExtensions"),
+                .product(name: "UIFontIcons", package: "UIFontIcons"),
+                .product(name: "URLNavigator", package: "URLNavigator")            ],
             path: "Sources/UIKitBase/",
             resources: [
                 .process("Resources"),

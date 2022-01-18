@@ -88,7 +88,7 @@ public extension ModelBound {
     func modelDidChange() {}
 }
 
-import Actions
+//import Actions
 
 public protocol SyncListener: NSObject {}
 
