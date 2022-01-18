@@ -6,6 +6,7 @@
 //
 
 import Swiftest
+import UIKitBase
 
 @available(iOS 9.0, *)
 public enum AuthenticationState: State {

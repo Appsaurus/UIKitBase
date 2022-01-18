@@ -8,6 +8,7 @@
 
 import Foundation
 import Swiftest
+import UIKitBase
 public protocol FormFieldProtocol: AnyObject {
     var fieldName: String { get set }
     var behaviors: Set<FormFieldBehavior> { get set }

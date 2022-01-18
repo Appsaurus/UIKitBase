@@ -6,10 +6,9 @@
 //
 //
 
-//import Actions
 import Foundation
 import Swiftest
-import UIKitMixinable
+import UIKitBase
 
 open class FormTextField<ContentView: UIView, Value: Any>: FormField<ContentView, Value>, FormTextFieldProtocol
     where ContentView: FormFieldViewProtocol

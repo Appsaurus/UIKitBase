@@ -8,8 +8,7 @@
 import Algorithm
 import Layman
 import Swiftest
-import UIKitExtensions
-import UIKitTheme
+import UIKitBase
 
 open class LegalAcknowledgementAlertViewController: StackedAlertViewController {
     public let acceptButton = BaseButton(titles: [.any: "I Accept"])

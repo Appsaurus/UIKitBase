@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import UIKitBase
 
 public protocol FormPickerFieldProtocol {}
 open class FormPickerField<ContentView: UIView, Value: Any, VC: UIViewController>: FormField<ContentView, Value>, FormPickerFieldProtocol

@@ -7,7 +7,7 @@
 
 import Swiftest
 import UIKitExtensions
-
+import UIKitBase
 public typealias AuthButton = BaseButton & AuthView
 
 // open class ButtonAuthController<R: Codable, V: AuthButton>: AuthController<R> {

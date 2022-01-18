@@ -7,6 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E475AF31279731C800376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF30279731C800376592 /* UIKitBase */; };
+		E475AF33279731CF00376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF32279731CF00376592 /* UIKitBase */; };
+		E475AF35279731D500376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF34279731D500376592 /* UIKitBase */; };
+		E475AF37279731D800376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF36279731D800376592 /* UIKitBase */; };
+		E475AF52279733BA00376592 /* ExampleUIViewControllerMixinable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF39279733BA00376592 /* ExampleUIViewControllerMixinable.swift */; };
+		E475AF53279733BA00376592 /* ExampleUIViewControllerMixinable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF39279733BA00376592 /* ExampleUIViewControllerMixinable.swift */; };
+		E475AF54279733BA00376592 /* TableViewSubheaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3A279733BA00376592 /* TableViewSubheaderExampleViewController.swift */; };
+		E475AF55279733BA00376592 /* TableViewSubheaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3A279733BA00376592 /* TableViewSubheaderExampleViewController.swift */; };
+		E475AF56279733BA00376592 /* ExamplePaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3B279733BA00376592 /* ExamplePaginatableTableViewController.swift */; };
+		E475AF57279733BA00376592 /* ExamplePaginatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3B279733BA00376592 /* ExamplePaginatableTableViewController.swift */; };
+		E475AF58279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3C279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift */; };
+		E475AF59279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3C279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift */; };
+		E475AF5A279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3D279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift */; };
+		E475AF5B279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3D279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift */; };
+		E475AF5C279733BA00376592 /* ExampleAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3E279733BA00376592 /* ExampleAuthenticationViewController.swift */; };
+		E475AF5D279733BA00376592 /* ExampleAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3E279733BA00376592 /* ExampleAuthenticationViewController.swift */; };
+		E475AF5E279733BA00376592 /* ExampleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3F279733BA00376592 /* ExampleObject.swift */; };
+		E475AF5F279733BA00376592 /* ExampleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF3F279733BA00376592 /* ExampleObject.swift */; };
+		E475AF60279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF40279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */; };
+		E475AF61279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF40279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */; };
+		E475AF62279733BA00376592 /* ExampleBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF41279733BA00376592 /* ExampleBaseViewController.swift */; };
+		E475AF63279733BA00376592 /* ExampleBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF41279733BA00376592 /* ExampleBaseViewController.swift */; };
+		E475AF64279733BA00376592 /* ExampleCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF42279733BA00376592 /* ExampleCustomTabBarController.swift */; };
+		E475AF65279733BA00376592 /* ExampleCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF42279733BA00376592 /* ExampleCustomTabBarController.swift */; };
+		E475AF66279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF43279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift */; };
+		E475AF67279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF43279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift */; };
+		E475AF68279733BA00376592 /* ExampleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF44279733BA00376592 /* ExampleSearchViewController.swift */; };
+		E475AF69279733BA00376592 /* ExampleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF44279733BA00376592 /* ExampleSearchViewController.swift */; };
+		E475AF6A279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF45279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift */; };
+		E475AF6B279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF45279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift */; };
+		E475AF6C279733BA00376592 /* ExampleFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF46279733BA00376592 /* ExampleFormViewController.swift */; };
+		E475AF6D279733BA00376592 /* ExampleFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF46279733BA00376592 /* ExampleFormViewController.swift */; };
+		E475AF6E279733BA00376592 /* ExampleAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF47279733BA00376592 /* ExampleAppConfiguration.swift */; };
+		E475AF6F279733BA00376592 /* ExampleAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF47279733BA00376592 /* ExampleAppConfiguration.swift */; };
+		E475AF70279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF48279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift */; };
+		E475AF71279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF48279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift */; };
+		E475AF72279733BA00376592 /* TableViewHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF49279733BA00376592 /* TableViewHeaderExampleViewController.swift */; };
+		E475AF73279733BA00376592 /* TableViewHeaderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF49279733BA00376592 /* TableViewHeaderExampleViewController.swift */; };
+		E475AF74279733BA00376592 /* BaseButtonExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4A279733BA00376592 /* BaseButtonExamplesViewController.swift */; };
+		E475AF75279733BA00376592 /* BaseButtonExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4A279733BA00376592 /* BaseButtonExamplesViewController.swift */; };
+		E475AF76279733BA00376592 /* PagingMenuExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4C279733BA00376592 /* PagingMenuExamplesViewController.swift */; };
+		E475AF77279733BA00376592 /* PagingMenuExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4C279733BA00376592 /* PagingMenuExamplesViewController.swift */; };
+		E475AF78279733BA00376592 /* ExamplePagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4D279733BA00376592 /* ExamplePagingMenuViewController.swift */; };
+		E475AF79279733BA00376592 /* ExamplePagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4D279733BA00376592 /* ExamplePagingMenuViewController.swift */; };
+		E475AF7A279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4E279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift */; };
+		E475AF7B279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4E279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift */; };
+		E475AF7C279733BA00376592 /* ExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4F279733BA00376592 /* ExampleTableViewController.swift */; };
+		E475AF7D279733BA00376592 /* ExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF4F279733BA00376592 /* ExampleTableViewController.swift */; };
+		E475AF7E279733BA00376592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF50279733BA00376592 /* AppDelegate.swift */; };
+		E475AF7F279733BA00376592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF50279733BA00376592 /* AppDelegate.swift */; };
+		E475AF80279733BA00376592 /* FakeDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF51279733BA00376592 /* FakeDataTableViewController.swift */; };
+		E475AF81279733BA00376592 /* FakeDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475AF51279733BA00376592 /* FakeDataTableViewController.swift */; };
+		E475AF84279736FE00376592 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF83279736FE00376592 /* IQKeyboardManagerSwift */; };
+		E475AF872797378300376592 /* UIFontLoader in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF862797378300376592 /* UIFontLoader */; };
+		E475AF8A279738AC00376592 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF89279738AC00376592 /* Fakery */; };
+		E475AF8D27973F0200376592 /* SwiftyTimer in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF8C27973F0200376592 /* SwiftyTimer */; };
 		E47ABC1D2791EFA00065ECF4 /* UIKitBaseDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC0D2791EF9E0065ECF4 /* UIKitBaseDemoApp.swift */; };
 		E47ABC1E2791EFA00065ECF4 /* UIKitBaseDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC0D2791EF9E0065ECF4 /* UIKitBaseDemoApp.swift */; };
 		E47ABC1F2791EFA00065ECF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC0E2791EF9E0065ECF4 /* ContentView.swift */; };
@@ -14,7 +70,6 @@
 		E47ABC212791EFA00065ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC0F2791EFA00065ECF4 /* Assets.xcassets */; };
 		E47ABC222791EFA00065ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC0F2791EFA00065ECF4 /* Assets.xcassets */; };
 		E47ABC612791F0D30065ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC602791F0D30065ECF4 /* Assets.xcassets */; };
-		E47ABC672791F0D30065ECF4 /* UIKitBaseDemo (WatchOS) WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E47ABC662791F0D30065ECF4 /* UIKitBaseDemo (WatchOS) WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E47ABC6C2791F0D30065ECF4 /* UIKitBaseDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC6B2791F0D30065ECF4 /* UIKitBaseDemoApp.swift */; };
 		E47ABC6E2791F0D30065ECF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC6D2791F0D30065ECF4 /* ContentView.swift */; };
 		E47ABC702791F0D30065ECF4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC6F2791F0D30065ECF4 /* NotificationController.swift */; };
@@ -22,60 +77,41 @@
 		E47ABC742791F0D30065ECF4 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC732791F0D30065ECF4 /* ComplicationController.swift */; };
 		E47ABC762791F0D40065ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC752791F0D40065ECF4 /* Assets.xcassets */; };
 		E47ABC792791F0D40065ECF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC782791F0D40065ECF4 /* Preview Assets.xcassets */; };
-		E47ABC7E2791F0D40065ECF4 /* UIKitBaseDemo (WatchOS).app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E47ABC5E2791F0D10065ECF4 /* UIKitBaseDemo (WatchOS).app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E47ABC902791F0F10065ECF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC8F2791F0F10065ECF4 /* ContentView.swift */; };
 		E47ABC922791F0F40065ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC912791F0F40065ECF4 /* Assets.xcassets */; };
 		E47ABC952791F0F40065ECF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47ABC942791F0F40065ECF4 /* Preview Assets.xcassets */; };
 		E47ABC9A2791F1850065ECF4 /* UIKitBaseDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47ABC0D2791EF9E0065ECF4 /* UIKitBaseDemoApp.swift */; };
-		E47ABC9F2791F2090065ECF4 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E47ABC9E2791F2090065ECF4 /* UIKitBase */; };
-		E47ABCA12791F20E0065ECF4 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E47ABCA02791F20E0065ECF4 /* UIKitBase */; };
-		E47ABCA32791F21A0065ECF4 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E47ABCA22791F21A0065ECF4 /* UIKitBase */; };
-		E47ABCA52791F21E0065ECF4 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E47ABCA42791F21E0065ECF4 /* UIKitBase */; };
+		E49A7B6027974EAB00DB7A59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A7B5F27974EAB00DB7A59 /* SceneDelegate.swift */; };
+		E49A7B6127974EAB00DB7A59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A7B5F27974EAB00DB7A59 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E47ABC682791F0D30065ECF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E47ABC082791EF9E0065ECF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E47ABC652791F0D30065ECF4;
-			remoteInfo = "UIKitBaseDemo (WatchOS) WatchKit Extension";
-		};
-		E47ABC7C2791F0D40065ECF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E47ABC082791EF9E0065ECF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E47ABC5D2791F0D10065ECF4;
-			remoteInfo = "UIKitBaseDemo (WatchOS)";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E47ABC822791F0D40065ECF4 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E47ABC672791F0D30065ECF4 /* UIKitBaseDemo (WatchOS) WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E47ABC862791F0D40065ECF4 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				E47ABC7E2791F0D40065ECF4 /* UIKitBaseDemo (WatchOS).app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		E475AF2F27972E9F00376592 /* UIKitBase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIKitBase; path = ../..; sourceTree = "<group>"; };
+		E475AF39279733BA00376592 /* ExampleUIViewControllerMixinable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleUIViewControllerMixinable.swift; sourceTree = "<group>"; };
+		E475AF3A279733BA00376592 /* TableViewSubheaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSubheaderExampleViewController.swift; sourceTree = "<group>"; };
+		E475AF3B279733BA00376592 /* ExamplePaginatableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePaginatableTableViewController.swift; sourceTree = "<group>"; };
+		E475AF3C279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePermissionAuthorizedViewController.swift; sourceTree = "<group>"; };
+		E475AF3D279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewHeaderExamplesViewController.swift; sourceTree = "<group>"; };
+		E475AF3E279733BA00376592 /* ExampleAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAuthenticationViewController.swift; sourceTree = "<group>"; };
+		E475AF3F279733BA00376592 /* ExampleObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleObject.swift; sourceTree = "<group>"; };
+		E475AF40279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewParentHeaderWithPagerExampleViewController.swift; sourceTree = "<group>"; };
+		E475AF41279733BA00376592 /* ExampleBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBaseViewController.swift; sourceTree = "<group>"; };
+		E475AF42279733BA00376592 /* ExampleCustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCustomTabBarController.swift; sourceTree = "<group>"; };
+		E475AF43279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewParentHeaderExampleViewController.swift; sourceTree = "<group>"; };
+		E475AF44279733BA00376592 /* ExampleSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSearchViewController.swift; sourceTree = "<group>"; };
+		E475AF45279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleNeedsLoadingIndicatorTableViewController.swift; sourceTree = "<group>"; };
+		E475AF46279733BA00376592 /* ExampleFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFormViewController.swift; sourceTree = "<group>"; };
+		E475AF47279733BA00376592 /* ExampleAppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppConfiguration.swift; sourceTree = "<group>"; };
+		E475AF48279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDeepLinkDestinationViewController.swift; sourceTree = "<group>"; };
+		E475AF49279733BA00376592 /* TableViewHeaderExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeaderExampleViewController.swift; sourceTree = "<group>"; };
+		E475AF4A279733BA00376592 /* BaseButtonExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButtonExamplesViewController.swift; sourceTree = "<group>"; };
+		E475AF4C279733BA00376592 /* PagingMenuExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuExamplesViewController.swift; sourceTree = "<group>"; };
+		E475AF4D279733BA00376592 /* ExamplePagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePagingMenuViewController.swift; sourceTree = "<group>"; };
+		E475AF4E279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleStepProcessPagingMenuViewController.swift; sourceTree = "<group>"; };
+		E475AF4F279733BA00376592 /* ExampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewController.swift; sourceTree = "<group>"; };
+		E475AF50279733BA00376592 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E475AF51279733BA00376592 /* FakeDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataTableViewController.swift; sourceTree = "<group>"; };
+		E475AF8E2797406600376592 /* UIKitBaseDemo--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "UIKitBaseDemo--iOS--Info.plist"; sourceTree = "<group>"; };
 		E47ABC0D2791EF9E0065ECF4 /* UIKitBaseDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitBaseDemoApp.swift; sourceTree = "<group>"; };
 		E47ABC0E2791EF9E0065ECF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E47ABC0F2791EFA00065ECF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +134,7 @@
 		E47ABC8F2791F0F10065ECF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E47ABC912791F0F40065ECF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E47ABC942791F0F40065ECF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E4DB4D23279207AC002D7380 /* SwiftPackageTemplate */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftPackageTemplate; path = ../..; sourceTree = "<group>"; };
+		E49A7B5F27974EAB00DB7A59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +142,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47ABC9F2791F2090065ECF4 /* UIKitBase in Frameworks */,
+				E475AF8A279738AC00376592 /* Fakery in Frameworks */,
+				E475AF31279731C800376592 /* UIKitBase in Frameworks */,
+				E475AF872797378300376592 /* UIFontLoader in Frameworks */,
+				E475AF84279736FE00376592 /* IQKeyboardManagerSwift in Frameworks */,
+				E475AF8D27973F0200376592 /* SwiftyTimer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47ABCA12791F20E0065ECF4 /* UIKitBase in Frameworks */,
+				E475AF33279731CF00376592 /* UIKitBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47ABCA32791F21A0065ECF4 /* UIKitBase in Frameworks */,
+				E475AF35279731D500376592 /* UIKitBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,16 +170,57 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47ABCA52791F21E0065ECF4 /* UIKitBase in Frameworks */,
+				E475AF37279731D800376592 /* UIKitBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E475AF38279733BA00376592 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E475AF39279733BA00376592 /* ExampleUIViewControllerMixinable.swift */,
+				E475AF3A279733BA00376592 /* TableViewSubheaderExampleViewController.swift */,
+				E475AF3B279733BA00376592 /* ExamplePaginatableTableViewController.swift */,
+				E475AF3C279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift */,
+				E475AF3D279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift */,
+				E475AF3E279733BA00376592 /* ExampleAuthenticationViewController.swift */,
+				E475AF3F279733BA00376592 /* ExampleObject.swift */,
+				E475AF40279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift */,
+				E475AF41279733BA00376592 /* ExampleBaseViewController.swift */,
+				E475AF42279733BA00376592 /* ExampleCustomTabBarController.swift */,
+				E475AF43279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift */,
+				E475AF44279733BA00376592 /* ExampleSearchViewController.swift */,
+				E475AF45279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift */,
+				E475AF46279733BA00376592 /* ExampleFormViewController.swift */,
+				E475AF47279733BA00376592 /* ExampleAppConfiguration.swift */,
+				E475AF48279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift */,
+				E475AF49279733BA00376592 /* TableViewHeaderExampleViewController.swift */,
+				E475AF4A279733BA00376592 /* BaseButtonExamplesViewController.swift */,
+				E475AF4B279733BA00376592 /* PagingMenuViewControllers */,
+				E475AF4F279733BA00376592 /* ExampleTableViewController.swift */,
+				E475AF50279733BA00376592 /* AppDelegate.swift */,
+				E475AF51279733BA00376592 /* FakeDataTableViewController.swift */,
+				E49A7B5F27974EAB00DB7A59 /* SceneDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E475AF4B279733BA00376592 /* PagingMenuViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E475AF4C279733BA00376592 /* PagingMenuExamplesViewController.swift */,
+				E475AF4D279733BA00376592 /* ExamplePagingMenuViewController.swift */,
+				E475AF4E279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift */,
+			);
+			path = PagingMenuViewControllers;
+			sourceTree = "<group>";
+		};
 		E47ABC072791EF9E0065ECF4 = {
 			isa = PBXGroup;
 			children = (
+				E475AF8E2797406600376592 /* UIKitBaseDemo--iOS--Info.plist */,
 				E4DB4D22279207AC002D7380 /* Packages */,
 				E47ABC0C2791EF9E0065ECF4 /* Shared */,
 				E47ABC1B2791EFA00065ECF4 /* macOS */,
@@ -154,6 +235,7 @@
 		E47ABC0C2791EF9E0065ECF4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E475AF38279733BA00376592 /* Sources */,
 				E47ABC0D2791EF9E0065ECF4 /* UIKitBaseDemoApp.swift */,
 				E47ABC0E2791EF9E0065ECF4 /* ContentView.swift */,
 				E47ABC0F2791EFA00065ECF4 /* Assets.xcassets */,
@@ -241,7 +323,7 @@
 		E4DB4D22279207AC002D7380 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				E4DB4D23279207AC002D7380 /* SwiftPackageTemplate */,
+				E475AF2F27972E9F00376592 /* UIKitBase */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -256,16 +338,18 @@
 				E47ABC102791EFA00065ECF4 /* Sources */,
 				E47ABC112791EFA00065ECF4 /* Frameworks */,
 				E47ABC122791EFA00065ECF4 /* Resources */,
-				E47ABC862791F0D40065ECF4 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E47ABC7D2791F0D40065ECF4 /* PBXTargetDependency */,
 			);
 			name = "UIKitBaseDemo (iOS)";
 			packageProductDependencies = (
-				E47ABC9E2791F2090065ECF4 /* UIKitBase */,
+				E475AF30279731C800376592 /* UIKitBase */,
+				E475AF83279736FE00376592 /* IQKeyboardManagerSwift */,
+				E475AF862797378300376592 /* UIFontLoader */,
+				E475AF89279738AC00376592 /* Fakery */,
+				E475AF8C27973F0200376592 /* SwiftyTimer */,
 			);
 			productName = "UIKitBaseDemo (iOS)";
 			productReference = E47ABC142791EFA00065ECF4 /* UIKitBaseDemo.app */;
@@ -285,7 +369,7 @@
 			);
 			name = "UIKitBaseDemo (macOS)";
 			packageProductDependencies = (
-				E47ABCA02791F20E0065ECF4 /* UIKitBase */,
+				E475AF32279731CF00376592 /* UIKitBase */,
 			);
 			productName = "UIKitBaseDemo (macOS)";
 			productReference = E47ABC1A2791EFA00065ECF4 /* UIKitBaseDemo.app */;
@@ -296,12 +380,10 @@
 			buildConfigurationList = E47ABC832791F0D40065ECF4 /* Build configuration list for PBXNativeTarget "UIKitBaseDemo (WatchOS)" */;
 			buildPhases = (
 				E47ABC5C2791F0D10065ECF4 /* Resources */,
-				E47ABC822791F0D40065ECF4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E47ABC692791F0D30065ECF4 /* PBXTargetDependency */,
 			);
 			name = "UIKitBaseDemo (WatchOS)";
 			productName = "UIKitBaseDemo (WatchOS)";
@@ -322,7 +404,7 @@
 			);
 			name = "UIKitBaseDemo (WatchOS) WatchKit Extension";
 			packageProductDependencies = (
-				E47ABCA22791F21A0065ECF4 /* UIKitBase */,
+				E475AF34279731D500376592 /* UIKitBase */,
 			);
 			productName = "UIKitBaseDemo (WatchOS) WatchKit Extension";
 			productReference = E47ABC662791F0D30065ECF4 /* UIKitBaseDemo (WatchOS) WatchKit Extension.appex */;
@@ -342,7 +424,7 @@
 			);
 			name = "UIKitBaseDemo (tvOS)";
 			packageProductDependencies = (
-				E47ABCA42791F21E0065ECF4 /* UIKitBase */,
+				E475AF36279731D800376592 /* UIKitBase */,
 			);
 			productName = "UIKitBaseDemo (tvOS)";
 			productReference = E47ABC8B2791F0F10065ECF4 /* UIKitBaseDemo (tvOS).app */;
@@ -384,6 +466,12 @@
 				Base,
 			);
 			mainGroup = E47ABC072791EF9E0065ECF4;
+			packageReferences = (
+				E475AF82279736FE00376592 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				E475AF852797378300376592 /* XCRemoteSwiftPackageReference "UIFontLoader" */,
+				E475AF88279738AB00376592 /* XCRemoteSwiftPackageReference "Fakery" */,
+				E475AF8B27973F0200376592 /* XCRemoteSwiftPackageReference "SwiftyTimer" */,
+			);
 			productRefGroup = E47ABC152791EFA00065ECF4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -448,7 +536,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				E47ABC1F2791EFA00065ECF4 /* ContentView.swift in Sources */,
+				E475AF72279733BA00376592 /* TableViewHeaderExampleViewController.swift in Sources */,
+				E475AF64279733BA00376592 /* ExampleCustomTabBarController.swift in Sources */,
+				E475AF58279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift in Sources */,
+				E475AF78279733BA00376592 /* ExamplePagingMenuViewController.swift in Sources */,
+				E475AF54279733BA00376592 /* TableViewSubheaderExampleViewController.swift in Sources */,
+				E475AF70279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift in Sources */,
+				E475AF5A279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift in Sources */,
+				E475AF66279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift in Sources */,
 				E47ABC1D2791EFA00065ECF4 /* UIKitBaseDemoApp.swift in Sources */,
+				E475AF68279733BA00376592 /* ExampleSearchViewController.swift in Sources */,
+				E49A7B6027974EAB00DB7A59 /* SceneDelegate.swift in Sources */,
+				E475AF62279733BA00376592 /* ExampleBaseViewController.swift in Sources */,
+				E475AF80279733BA00376592 /* FakeDataTableViewController.swift in Sources */,
+				E475AF7C279733BA00376592 /* ExampleTableViewController.swift in Sources */,
+				E475AF7E279733BA00376592 /* AppDelegate.swift in Sources */,
+				E475AF6C279733BA00376592 /* ExampleFormViewController.swift in Sources */,
+				E475AF6E279733BA00376592 /* ExampleAppConfiguration.swift in Sources */,
+				E475AF7A279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift in Sources */,
+				E475AF5E279733BA00376592 /* ExampleObject.swift in Sources */,
+				E475AF60279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */,
+				E475AF56279733BA00376592 /* ExamplePaginatableTableViewController.swift in Sources */,
+				E475AF6A279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */,
+				E475AF52279733BA00376592 /* ExampleUIViewControllerMixinable.swift in Sources */,
+				E475AF76279733BA00376592 /* PagingMenuExamplesViewController.swift in Sources */,
+				E475AF74279733BA00376592 /* BaseButtonExamplesViewController.swift in Sources */,
+				E475AF5C279733BA00376592 /* ExampleAuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +570,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				E47ABC202791EFA00065ECF4 /* ContentView.swift in Sources */,
+				E475AF73279733BA00376592 /* TableViewHeaderExampleViewController.swift in Sources */,
+				E475AF65279733BA00376592 /* ExampleCustomTabBarController.swift in Sources */,
+				E475AF59279733BA00376592 /* ExamplePermissionAuthorizedViewController.swift in Sources */,
+				E475AF79279733BA00376592 /* ExamplePagingMenuViewController.swift in Sources */,
+				E475AF55279733BA00376592 /* TableViewSubheaderExampleViewController.swift in Sources */,
+				E475AF71279733BA00376592 /* ExampleDeepLinkDestinationViewController.swift in Sources */,
+				E475AF5B279733BA00376592 /* ScrollViewHeaderExamplesViewController.swift in Sources */,
+				E475AF67279733BA00376592 /* ScrollViewParentHeaderExampleViewController.swift in Sources */,
 				E47ABC1E2791EFA00065ECF4 /* UIKitBaseDemoApp.swift in Sources */,
+				E475AF69279733BA00376592 /* ExampleSearchViewController.swift in Sources */,
+				E49A7B6127974EAB00DB7A59 /* SceneDelegate.swift in Sources */,
+				E475AF63279733BA00376592 /* ExampleBaseViewController.swift in Sources */,
+				E475AF81279733BA00376592 /* FakeDataTableViewController.swift in Sources */,
+				E475AF7D279733BA00376592 /* ExampleTableViewController.swift in Sources */,
+				E475AF7F279733BA00376592 /* AppDelegate.swift in Sources */,
+				E475AF6D279733BA00376592 /* ExampleFormViewController.swift in Sources */,
+				E475AF6F279733BA00376592 /* ExampleAppConfiguration.swift in Sources */,
+				E475AF7B279733BA00376592 /* ExampleStepProcessPagingMenuViewController.swift in Sources */,
+				E475AF5F279733BA00376592 /* ExampleObject.swift in Sources */,
+				E475AF61279733BA00376592 /* ScrollViewParentHeaderWithPagerExampleViewController.swift in Sources */,
+				E475AF57279733BA00376592 /* ExamplePaginatableTableViewController.swift in Sources */,
+				E475AF6B279733BA00376592 /* ExampleNeedsLoadingIndicatorTableViewController.swift in Sources */,
+				E475AF53279733BA00376592 /* ExampleUIViewControllerMixinable.swift in Sources */,
+				E475AF77279733BA00376592 /* PagingMenuExamplesViewController.swift in Sources */,
+				E475AF75279733BA00376592 /* BaseButtonExamplesViewController.swift in Sources */,
+				E475AF5D279733BA00376592 /* ExampleAuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,19 +621,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E47ABC692791F0D30065ECF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E47ABC652791F0D30065ECF4 /* UIKitBaseDemo (WatchOS) WatchKit Extension */;
-			targetProxy = E47ABC682791F0D30065ECF4 /* PBXContainerItemProxy */;
-		};
-		E47ABC7D2791F0D40065ECF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E47ABC5D2791F0D10065ECF4 /* UIKitBaseDemo (WatchOS) */;
-			targetProxy = E47ABC7C2791F0D40065ECF4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E47ABC232791EFA00065ECF4 /* Debug */ = {
@@ -618,9 +743,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "UIKitBaseDemo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -647,9 +773,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "UIKitBaseDemo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -784,7 +911,6 @@
 		E47ABC842791F0D40065ECF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -809,7 +935,6 @@
 		E47ABC852791F0D40065ECF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -946,22 +1071,77 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E475AF82279736FE00376592 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		E475AF852797378300376592 /* XCRemoteSwiftPackageReference "UIFontLoader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Appsaurus/UIFontLoader";
+			requirement = {
+				branch = spm;
+				kind = branch;
+			};
+		};
+		E475AF88279738AB00376592 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Appsaurus/Fakery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		E475AF8B27973F0200376592 /* XCRemoteSwiftPackageReference "SwiftyTimer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/janlionly/SwiftyTimer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		E47ABC9E2791F2090065ECF4 /* UIKitBase */ = {
+		E475AF30279731C800376592 /* UIKitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIKitBase;
 		};
-		E47ABCA02791F20E0065ECF4 /* UIKitBase */ = {
+		E475AF32279731CF00376592 /* UIKitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIKitBase;
 		};
-		E47ABCA22791F21A0065ECF4 /* UIKitBase */ = {
+		E475AF34279731D500376592 /* UIKitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIKitBase;
 		};
-		E47ABCA42791F21E0065ECF4 /* UIKitBase */ = {
+		E475AF36279731D800376592 /* UIKitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIKitBase;
+		};
+		E475AF83279736FE00376592 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E475AF82279736FE00376592 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		E475AF862797378300376592 /* UIFontLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E475AF852797378300376592 /* XCRemoteSwiftPackageReference "UIFontLoader" */;
+			productName = UIFontLoader;
+		};
+		E475AF89279738AC00376592 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E475AF88279738AB00376592 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
+		};
+		E475AF8C27973F0200376592 /* SwiftyTimer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E475AF8B27973F0200376592 /* XCRemoteSwiftPackageReference "SwiftyTimer" */;
+			productName = SwiftyTimer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

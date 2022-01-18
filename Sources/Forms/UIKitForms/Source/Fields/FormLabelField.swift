@@ -7,7 +7,7 @@
 //
 
 import Swiftest
-import UIKitTheme
+import UIKitBase
 
 open class FormLabelField<ContentView: UIView, Value: Any>: FormField<ContentView, Value> where ContentView: FormFieldViewProtocol {
     open lazy var valueLabel: UILabel = self.labelToManage()

@@ -8,15 +8,23 @@
 import SwiftUI
 import UIKitBase
 
+
 struct ContentView: View {
+    @EnvironmentObject var appDelegate: AppDelegate
     var body: some View {
-        Text(SwiftPackageClass().text)
-            .padding()
+        MainViewController()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+
+
+
+struct MainViewController: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: BaseNavigationController, context: Context) {
+
+    }
+
+    func makeUIViewController(context: Context) -> BaseNavigationController {
+        return BaseNavigationController(rootViewController: ExampleTableViewController())
     }
 }

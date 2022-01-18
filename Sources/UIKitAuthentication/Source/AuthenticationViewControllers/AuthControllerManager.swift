@@ -7,6 +7,7 @@
 
 import KeychainAccess
 import Swiftest
+import Foundation
 
 public enum AuthKey: String {
     case credentials

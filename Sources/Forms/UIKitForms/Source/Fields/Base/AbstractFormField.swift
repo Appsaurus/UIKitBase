@@ -6,6 +6,8 @@
 //
 //
 import Swiftest
+import UIKitBase
+
 public enum ValidationFailureType {
     case missingRequiredValue
     case containsIllegalCharacters

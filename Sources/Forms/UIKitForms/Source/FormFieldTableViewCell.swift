@@ -8,6 +8,7 @@
 
 import Layman
 import Swiftest
+import UIKitBase
 
 open class FormFieldCell: DynamicHeightCell {
     open var field: View

@@ -16,53 +16,19 @@ let package = Package(
             name: "UIKitBase",
             targets: [
                 "UIKitBase",
-//                "UIKitAuthentication",
-//                "UIKitDatasource",
-//                "UIKitLocation",
-//                "UIKitForms",
+                "UIKitAuthentication",
+                "UIKitLocation",
+                "UIKitForms",
 //                "UIKitAuthenticationForms",
-//                "UIKitDateFields",
-//                "UIKitLegalDisclosureView",
+                "UIKitDateFields",
+                "UIKitLegalDisclosureView",
 //                "UIKitLocationForms",
             ]
         ),
     ],
     dependencies: [
-
 //        // Internal packages
-//        .package(url: "https://github.com/Appsaurus/Layman", .branch("spm")),
-////        .package(url: "https://github.com/Appsaurus/RuntimeExtensions", .branch("spm")),
-////        .package(url: "https://github.com/Appsaurus/Swiftest", .branch("spm")),
-//            .package(url: "https://github.com/Appsaurus/UIKitMixinable", .branch("spm")),
-//        .package(url: "https://github.com/Appsaurus/UIKitTheme", .branch("spm")),
-//        .package(url: "https://github.com/Appsaurus/UIKitExtensions", .branch("spm")),
-//        .package(url: "https://github.com/Appsaurus/UIFontIcons", .branch("spm")),
-////        .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", from: "0.1.26"),
-//        .package(url: "https://github.com/Appsaurus/RuntimeExtensions", .branch("master")),
-////        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", from: "0.1.14"),
-//        .package(url: "https://github.com/Appsaurus/Swiftest", .branch("master")),
-////        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.0.1"),
-////        .package(name: "UIKitMixinable", url: "https://github.com/Appsaurus/UIKitMixinable", from: "0.1.1"),
-////        .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", from: "0.0.30"),
-////        .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "0.0.36"),
-////        .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "0.0.6"),
-//
-//        //  Open Source
-//            .package(url: "https://github.com/optonaut/ActiveLabel.swift", .upToNextMajor(from: "1.1.5")),
-//        .package(url: "https://github.com/CosmicMind/Algorithm", .upToNextMajor(from: "3.1.1")),
-//        .package(url: "https://github.com/woxtu/AssistantKit", .branch("spm")),
-//
-////            .package(url: "https://github.com/4taras4/CountryCode", .upToNextMajor(from: "1.8.2")),
-//        .package(url: "https://github.com/ra1028/DiffableDataSources", .upToNextMajor(from: "0.5.0")),
-//        .package(url: "https://github.com/ra1028/DifferenceKit.git", .upToNextMajor(from: "1.2.0")),
-//        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", .upToNextMajor(from: "4.2.2")),
-//
-//
-//            .package(url: "https://github.com/kean/Nuke", .upToNextMajor(from: "8.4.1")),
-//        .package(url: "https://github.com/marmelroy/PhoneNumberKit", .upToNextMajor(from: "3.3.0")),
-//        .package(url: "https://github.com/malcommac/SwiftDate", .upToNextMajor(from: "6.3.1")),
-////        .package(url: "https://github.com/devxoul/URLNavigator", .upToNextMajor(from: "2.3.0")),
-//        // Internal packages
+        .package(name: "Actions", url: "https://github.com/Appsaurus/Actions", branch: "master"),
         .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", branch: "spm"),
 //        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", branch: "spm"),
 //        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", branch: "spm"),
@@ -85,23 +51,22 @@ let package = Package(
         .package(name: "Algorithm", url: "https://github.com/CosmicMind/Algorithm", from: "3.1.1"),
         .package(name: "AssistantKit", url: "https://github.com/woxtu/AssistantKit", branch: "spm"),
 
+        //CountryCode needs to fix spm integration - https://github.com/4taras4/CountryCode/issues/62
 //        .package(name: "CountryCode", url: "https://github.com/4taras4/CountryCode", from: "1.8.2"),
         .package(name: "DiffableDataSources", url: "https://github.com/ra1028/DiffableDataSources", from: "0.5.0"),
-        .package(name: "DifferenceKit", url: "https://github.com/ra1028/DifferenceKit.git", from: "1.2.0"),
         .package(name: "KeychainAccess", url: "https://github.com/kishikawakatsumi/KeychainAccess", from: "4.2.2"),
 
 
         .package(name: "Nuke", url: "https://github.com/kean/Nuke", from: "8.4.1"),
-        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.3.0"),
+//        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.3.0"),
         .package(name: "SwiftDate", url: "https://github.com/malcommac/SwiftDate", from: "6.3.1"),
         .package(name: "URLNavigator", url: "https://github.com/devxoul/URLNavigator", from: "2.3.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "UIKitBase",
             dependencies: [
+                .product(name: "Actions", package: "Actions"),
                 .product(name: "Algorithm", package: "Algorithm"),
                 .product(name: "AssistantKit", package: "AssistantKit"),
                 .product(name: "DiffableDataSources", package: "DiffableDataSources"),
@@ -113,54 +78,45 @@ let package = Package(
                 .product(name: "UIKitMixinable", package: "UIKitMixinable"),
                 .product(name: "UIKitExtensions", package: "UIKitExtensions"),
                 .product(name: "UIFontIcons", package: "UIFontIcons"),
-                .product(name: "URLNavigator", package: "URLNavigator")            ],
+                .product(name: "URLNavigator", package: "URLNavigator")
+                ],
             path: "Sources/UIKitBase/",
             resources: [
                 .process("Resources"),
             ]
         ),
-//        .target(
-//            name: "UIKitAuthentication",
-//            dependencies: [
-//                .target(name: "UIKitBase"),
-//                "KeychainAccess"
-//            ],
-//            path: "Sources/UIKitAuthentication/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
-//        .target(
-//            name: "UIKitDatasource",
-//            dependencies: [
-//                .target(name: "UIKitBase"),
-//                "DiffableDataSources"
-//            ],
-//            path: "Sources/UIKitDatasource/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
-//        .target(
-//            name: "UIKitLocation",
-//            dependencies: [
-//                .target(name: "UIKitBase"),
-//            ],
-//            path: "Sources/UIKitLocation/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
-//        .target(
-//            name: "UIKitForms",
-//            dependencies: [
-//                .target(name: "UIKitBase"),
-//            ],
-//            path: "Sources/Forms/UIKitForms/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
+        .target(
+            name: "UIKitAuthentication",
+            dependencies: [
+                .target(name: "UIKitBase"),
+                "KeychainAccess"
+            ],
+            path: "Sources/UIKitAuthentication/",
+            resources: [
+                .process("Resources"),
+            ]
+        ),
+        .target(
+            name: "UIKitLocation",
+            dependencies: [
+                .target(name: "UIKitBase"),
+            ],
+            path: "Sources/UIKitLocation/",
+            resources: [
+                .process("Resources"),
+            ]
+        ),
+        .target(
+            name: "UIKitForms",
+            dependencies: [
+                .target(name: "UIKitBase"),
+            ],
+            path: "Sources/Forms/UIKitForms/",
+            resources: [
+                .process("Resources"),
+            ]
+        ),
+        //CountryCode needs to fix spm integration - https://github.com/4taras4/CountryCode/issues/62
 //        .target(
 //            name: "UIKitAuthenticationForms",
 //            dependencies: [
@@ -173,28 +129,29 @@ let package = Package(
 //                .process("Resources"),
 //            ]
 //        ),
-//        .target(
-//            name: "UIKitDateFields",
-//            dependencies: [
-//                .target(name: "UIKitForms"),
-//                "SwiftDate"
-//            ],
-//            path: "Sources/Forms/UIKitDateFields/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
-//        .target(
-//            name: "UIKitLegalDisclosureView",
-//            dependencies: [
-//                .target(name: "UIKitForms"),
-//                "ActiveLabel"
-//            ],
-//            path: "Sources/Forms/UIKitLegalDisclosureView/",
-//            resources: [
-//                .process("Resources"),
-//            ]
-//        ),
+        .target(
+            name: "UIKitDateFields",
+            dependencies: [
+                .target(name: "UIKitForms"),
+                "SwiftDate"
+            ],
+            path: "Sources/Forms/UIKitDateFields/",
+            resources: [
+                .process("Resources"),
+            ]
+        ),
+        .target(
+            name: "UIKitLegalDisclosureView",
+            dependencies: [
+                .target(name: "UIKitForms"),
+                "ActiveLabel"
+            ],
+            path: "Sources/Forms/UIKitLegalDisclosureView/",
+            resources: [
+                .process("Resources"),
+            ]
+        ),
+        //Need to replace Permissions dependency
 //        .target(
 //            name: "UIKitLocationForms",
 //            dependencies: [

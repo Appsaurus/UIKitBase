@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 /// FormInput protocol
 /// Handle UITextField and UITextView in the same way.
-public protocol FormInput: AnyObject, NSObjectProtocol {
+public protocol FormInput: NSObjectProtocol {
     var _inputAccessoryView: UIView? { get set }
     var responder: UIResponder { get }
 //    var view: UIView { get }

@@ -10,6 +10,7 @@ import Swiftest
 import UIFontIcons
 import UIKitExtensions
 import UIKitTheme
+import MaterialIcons
 
 open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewController, StepProcessPagingMenuViewDelegate {
     open lazy var automaticallyPageToNextStep: Bool = false

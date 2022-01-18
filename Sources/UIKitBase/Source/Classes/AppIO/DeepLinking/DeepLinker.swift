@@ -8,6 +8,7 @@
 import Foundation
 import Swiftest
 import URLNavigator
+import protocol URLMatcher.URLConvertible
 
 open class DeepLink<R: DeepLinkRoute> {
     public typealias DeepLinkAuthorizationTest = ClosureOut<Bool>
@@ -63,7 +64,7 @@ open class DeepLinker<R: DeepLinkRoute> {
     open func register(deepLinks: [DeepLink<R>]) {
         for deepLink in deepLinks {
             debugLog("Registering route " + deepLink.route.fullPath)
-            self.navigator.handle(deepLink.route.fullPath) { (_ url: URLNavigator.URLConvertible, _ values: [String: Any], _ context: Any?) in
+            self.navigator.handle(deepLink.route.fullPath) { (_ url: URLConvertible, _ values: [String: Any], _ context: Any?) in
                 self.request = DeepLinkRequest(link: DeepLink<R>(route: deepLink.route), request: url.urlStringValue, params: values, context: context)
                 return true
             }

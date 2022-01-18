@@ -7,7 +7,7 @@
 
 import Layman
 import Swiftest
-import UIKitTheme
+import UIKitBase
 
 @available(iOS 10.0, *)
 public enum FeedbackGenerator {
