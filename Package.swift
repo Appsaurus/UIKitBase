@@ -14,17 +14,36 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "UIKitBase",
-            targets: [
-                "UIKitBase",
-                "UIKitAuthentication",
-                "UIKitLocation",
-                "UIKitForms",
-//                "UIKitAuthenticationForms",
-                "UIKitDateFields",
-                "UIKitLegalDisclosureView",
-//                "UIKitLocationForms",
-            ]
+            targets: ["UIKitBase"]
         ),
+        .library(
+            name: "UIKitAuthentication",
+            targets: ["UIKitAuthentication"]
+        ),
+        .library(
+            name: "UIKitLocation",
+            targets: ["UIKitLocation"]
+        ),
+        .library(
+            name: "UIKitForms",
+            targets: ["UIKitForms"]
+        ),
+//        .library(
+//            name: "UIKitAuthenticationForms",
+//            targets: ["UIKitAuthenticationForms"]
+//        ),
+        .library(
+            name: "UIKitDateFields",
+            targets: ["UIKitDateFields"]
+        ),
+        .library(
+            name: "UIKitLegalDisclosureView",
+            targets: ["UIKitLegalDisclosureView"]
+        ),
+//        .library(
+//            name: "UIKitLocationForms",
+//            targets: ["UIKitLocationForms"]
+//        )
     ],
     dependencies: [
 //        // Internal packages
