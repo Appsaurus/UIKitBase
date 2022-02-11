@@ -37,9 +37,12 @@ public extension Dictionary where Key == State, Value == UIView {
 
 public enum StatefulViewControllerDefaults {
     public static var statefulViews: (StatefulViewController) -> StatefulViewMap = { vc in
-        [.empty: StatefulViewControllerView(viewModel: .empty(retry: vc.reload)),
-         .loading: StatefulViewControllerView.defaultLoading,
-         .error: StatefulViewControllerView(viewModel: .error)]
+        let weakRetry: VoidClosure = { [weak vc] in
+            vc?.reload()
+        }
+        return [.empty: StatefulViewControllerView(viewModel: .empty(retry: weakRetry)),
+                .loading: StatefulViewControllerView.defaultLoading,
+                .error: StatefulViewControllerView(viewModel: .error)]
     }
 }
 
