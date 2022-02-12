@@ -100,6 +100,7 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
 
     override open func createSubviews() {
         super.createSubviews()
+        guard let scrollView = scrollView else { return }
 //        transition(.beginWith(modifiers: [.fadeOut]), .fadeIn, .scale(1.5))
         scrollView.addSubview(self)
         scrollView.bringSubviewToFront(self)
@@ -107,6 +108,7 @@ open class NeedsLoadingIndicator: BaseButton, ScrollViewObserver {
 
     override open func createAutoLayoutConstraints() {
         super.createAutoLayoutConstraints()
+        guard let scrollView = scrollView else { return }
         height.equal(to: 50)
         width.greaterThanOrEqual(to: 0.0)
         width.lessThanOrEqual(to: assertSuperview)

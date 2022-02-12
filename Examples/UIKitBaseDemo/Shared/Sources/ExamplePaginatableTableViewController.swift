@@ -46,6 +46,10 @@ open class ExamplePaginatableTableViewController: PaginatableTableViewController
         print("DID SELECT")
     }
 
+    deinit {
+        print("DId init")
+    }
+
 }
 
 //open class ExampleCollectionDatasource: CollectionDataSource<ExampleObject>{

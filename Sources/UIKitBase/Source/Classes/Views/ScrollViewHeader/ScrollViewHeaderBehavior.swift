@@ -19,7 +19,7 @@ public enum ScrollViewHeaderBehaviorType {
 open class ScrollViewHeaderBehavior {
     public init() {}
 
-    public weak var scrollViewHeader: ScrollViewHeader! {
+    public weak var scrollViewHeader: ScrollViewHeader? {
         didSet {
             setup()
         }
@@ -71,13 +71,15 @@ open class PercentDrivenAnimationScrollViewHeaderBehavior: ScrollViewHeaderBehav
 }
 
 open class ScrollViewHeaderPinBehavior: ScrollViewHeaderBehavior {
+
     override open func setup() {
         super.setup()
     }
 
     override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
         super.adjustViews(for: scrollViewHeader)
-        scrollViewHeader.scrollView.bringSubviewToFront(scrollViewHeader)
+        guard let scrollView = scrollViewHeader.scrollView else { return }
+        scrollView.bringSubviewToFront(scrollViewHeader)
 //        var topConstant = -scrollView.contentInset.top
 //        if(visibleHeaderHeight <= collapsedHeight){
 //            topConstant = scrollView.contentOffset.y + collapsedHeight - expandedHeight
@@ -91,6 +93,7 @@ open class ScrollViewHeaderParallaxBehavior: ScrollViewHeaderBehavior {
     open var speed: CGFloat
 
     open var parallaxOffset: CGFloat {
+        guard let scrollViewHeader = scrollViewHeader else { return 0 }
         return self.speed * scrollViewHeader.percentCollapsed * scrollViewHeader.expandedHeight
     }
 
@@ -121,6 +124,7 @@ open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeade
 
     override open func setup() {
         super.setup()
+        guard let scrollViewHeader = scrollViewHeader else { return }
         scrollViewHeader.headerLayoutView.insertSubview(self.visualEffectView, aboveSubview: scrollViewHeader.headerBackgroundImageView)
         self.visualEffectView.pinToSuperview()
     }
@@ -141,10 +145,11 @@ open class ScrollViewVisualEffectBehavior: PercentDrivenAnimationScrollViewHeade
 
 open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior {
     override open func adjustViews(for scrollViewHeader: ScrollViewHeader) {
+        guard let scrollView = scrollViewHeader.scrollView else { return }
         scrollViewHeader.headerLayoutHeightConstraint?.constant = max(scrollViewHeader.expandedHeaderHeight, scrollViewHeader.expandedHeaderHeight - scrollViewHeader.offset)
         switch scrollViewHeader.headerState {
         case .expanded, .stretched:
-            scrollViewHeader.viewConstraints[.top]?.first?.constant = scrollViewHeader.offset - scrollViewHeader.scrollView.contentInset.top
+            scrollViewHeader.viewConstraints[.top]?.first?.constant = scrollViewHeader.offset - scrollView.contentInset.top
         default: break
         }
     }
@@ -154,8 +159,9 @@ open class ScrollViewHeaderStretchBehavior: ScrollViewHeaderBehavior {
 open class ScrollViewHeaderFadeBehavior: PercentDrivenAnimationScrollViewHeaderBehavior {
     override open func createViewPropertyAnimator() -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.scrollViewHeader.alpha = 0.0
+            guard let self = self else { return }
+            guard let scrollViewHeader = self.scrollViewHeader else { return }
+            scrollViewHeader.alpha = 0.0
         }
     }
 }
@@ -167,7 +173,7 @@ open class ScrollViewHeaderFillColorBehavior: PercentDrivenAnimationScrollViewHe
 
     override open func setup() {
         super.setup()
-
+        guard let scrollViewHeader = scrollViewHeader else { return }
         scrollViewHeader.addSubview(self.fillView)
         self.fillView.moveToFront()
         self.fillView.pinToSuperview()

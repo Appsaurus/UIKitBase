@@ -203,7 +203,7 @@ class PullToRefresher: NSObject {
 }
 
 class HeaderContainerView: UIView {
-    var scrollView: UIScrollView?
+    weak var scrollView: UIScrollView?
 
     override func layoutSubviews() {
         super.layoutSubviews()

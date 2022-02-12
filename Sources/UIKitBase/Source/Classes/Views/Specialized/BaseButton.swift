@@ -301,10 +301,10 @@ open class BaseButton: BaseView, ButtonStyleable {
         case let .imageLeftTitleStackedRight(padding):
 //            [imageView, titleLabel].stack(.leftToRight, in: contentLayoutView)
             self.imageView.equal(to: self.contentLayoutView.edges.excluding(.trailing).inset(buttonLayout.imageInsets))
+            self.imageView.trailing.equal(to: self.titleLabel.leading.inset(padding))
             self.createImageLayoutConstraints(for: self.imageView, ofType: buttonLayout.imageLayoutType)
             self.titleLabel.verticalEdges.equal(to: self.contentLayoutView)
             self.titleLabel.trailing.equal(to: self.contentLayoutView.trailing.inset(padding))
-            self.imageView.trailing.equal(to: self.titleLabel.leading.inset(padding))
             self.titleLabel.textAlignment = .left
         case let .imageRightTitleStackedLeft(padding):
             self.imageView.equal(to: self.contentLayoutView.edges.excluding(.leading).inset(buttonLayout.imageInsets))

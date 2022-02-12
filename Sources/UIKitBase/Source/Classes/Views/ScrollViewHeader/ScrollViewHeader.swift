@@ -76,6 +76,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     var backgroundViewConstraints: ConstraintAttributeMap = [:]
 
     public var offset: CGFloat {
+        guard let scrollView = scrollView else { return 0 }
         return scrollView.contentOffset.y + scrollView.contentInset.top
     }
 
@@ -179,6 +180,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
 
     var startTop: CGFloat?
     open func setupScrollViewRelatedConstraints() {
+        guard let scrollView = scrollView else { return }
         if self.startTop == nil {
             self.startTop = scrollView.contentInset.top
         }
@@ -192,6 +194,8 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
 
     override open func layoutSubviews() {
         super.layoutSubviews()
+        guard let scrollView = scrollView else { return }
+
         self.adjustViews(for: scrollView.contentOffset)
     }
 
@@ -208,6 +212,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     let parallaxFactor: CGFloat = 0.3
 
     open func adjustViews(for scrollViewOffset: CGPoint) {
+        guard let scrollView = scrollView else { return }
         var topConstant = -scrollView.contentInset.top
         if self.visibleHeaderHeight <= self.collapsedHeaderHeight {
             topConstant = scrollViewOffset.y + self.collapsedHeaderHeight - self.expandedHeight
@@ -233,6 +238,7 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     }
 
     func debugPrintDescription() {
+        guard let scrollView = scrollView else { return }
 //        print("startTop: \(startTop)")
         print("ScrollView header frame \(frame)")
         print("headerBackgroundImageView.frame: \(self.headerBackgroundImageView.frame)")

@@ -51,7 +51,9 @@ public extension ModelBindable where Self: SyncListener, Model: Synchronizable {
         }
         self.model = model
         if let model = model {
-            syncActions[model.typedSyncID] = model.onSync(self.modelDidChange)
+            syncActions[model.typedSyncID] = model.onSync {  [weak self] in
+                self?.modelDidChange()
+            }
         }
         self.modelDidChange()
     }

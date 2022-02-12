@@ -9,12 +9,13 @@
 import Foundation
 import ObjectiveC
 import UIKit
-
+import DarkMagic
 // MARK: - UIScrollView Extension
 
 public protocol ScrollViewHeaderAdornable: AnyObject {
     associatedtype SVH: ScrollViewHeader
     var scrollView: UIScrollView { get }
+    var scrollViewHeader: SVH? { get set }
     func createScrollViewHeader() -> SVH
     func setupScrollViewHeader()
 }
@@ -23,10 +24,11 @@ private var scrollViewHeaderKey: UInt8 = 0
 public extension ScrollViewHeaderAdornable where Self: NSObject {
     var scrollViewHeader: SVH? {
         get {
-            return getAssociatedObject(for: &scrollViewHeaderKey)
+            
+            return getAssociatedObject(for: &scrollViewHeaderKey, with: .weak)
         }
         set {
-            setAssociatedObject(newValue, for: &scrollViewHeaderKey)
+            setAssociatedObject(newValue, for: &scrollViewHeaderKey, with: .weak)
         }
     }
 

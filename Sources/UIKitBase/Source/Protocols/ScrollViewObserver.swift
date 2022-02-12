@@ -10,19 +10,19 @@ import DarkMagic
 import Swiftest
 
 public protocol ScrollViewObserver: KVObserver {
-    var scrollView: UIScrollView { get }
+    var scrollView: UIScrollView? { get }
     func setupObserver(for scrollView: UIScrollView)
     func scrollViewObserverDidObserveScroll(of scrollView: UIScrollView, to offset: CGPoint)
 }
 
 private extension AssociatedObjectKeys {
-    static let scrollView = AssociatedObjectKey<UIScrollView>("scrollView")
+    static let scrollView = AssociatedObjectKey<UIScrollView>("scrollView", policy: .weak)
 }
 
 public extension ScrollViewObserver where Self: NSObject {
-    internal(set) var scrollView: UIScrollView {
+    internal(set) var scrollView: UIScrollView? {
         get {
-            return self[.scrollView, UIScrollView()]
+            return self[.scrollView]
         }
         set {
             self[.scrollView] = newValue

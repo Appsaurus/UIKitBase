@@ -70,7 +70,21 @@ open class ExamplePagedViewController: BaseViewController{
         super.style()
         view.backgroundColor = .red// UIColor.random()
     }
+
+    deinit {
+        print("ExamplePagedViewController deinit!!!!!!!!!!!")
+    }
 }
+
+open class ExampleBasic: BaseScrollviewParentViewController{
+
+    deinit {
+        print("ExampleBasic YEPPPPPPPPPPPPPPP(#@)(&)(#&@)(&#)($&)(*@#&$")
+    }
+}
+
+
+
 
 open class ExamplePagingMenuView: PagingMenuView{
 
@@ -121,6 +135,7 @@ open class ExamplePagingMenuItemCell: PagingMenuButtonCell {
 			.selected : .flat(textStyle: .regular(color: .selected))
 		]
     }
+
 }
 
 extension ExamplePagingMenuItemCell: ObjectDisplayable{

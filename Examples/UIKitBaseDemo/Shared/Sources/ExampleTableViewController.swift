@@ -23,6 +23,9 @@ class ExampleTableViewController: NavigationalMenuTableViewController {
 		self.navigationItem.title = "UIKitBase"
 //		addRow(title: "BaseButtons", createDestinationVC: BaseButtonExamplesViewController())
 
+
+        addRow(title: "Memory Leak test", createDestinationVC: ExamplePagedViewController())
+        addRow(title: "BaseScrollviewParentViewController Memory Leak test", createDestinationVC: ExampleBasic())
 		addRow(title: "Custom Tab Bar Controller", createDestinationVC: ExampleCustomTabBarController())
 		addRow(title: "Dismissable Navigation Controller", createDestinationVC: DismissableNavigationController(dismissableViewController: ExamplePaginatableTableViewController()), presentModally: true)
 //        addRow(title: "Forms", createDestinationVC: ExampleFormViewController())
