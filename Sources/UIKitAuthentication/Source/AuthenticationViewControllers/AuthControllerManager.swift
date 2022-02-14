@@ -8,6 +8,8 @@
 import KeychainAccess
 import Swiftest
 import Foundation
+import UIKit
+import UIKitExtensions
 
 public enum AuthKey: String {
     case credentials
@@ -48,7 +50,7 @@ public protocol KeychainCredentialStoring {
 
 public extension KeychainCredentialStoring {
     var keychain: Keychain {
-        return Keychain(service: Bundle.main.bundleIdentifier!).synchronizable(true)
+        return Keychain()
     }
 
     func saveCredentialsToKeychain(_ credentials: Credential) {
