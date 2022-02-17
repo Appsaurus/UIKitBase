@@ -48,22 +48,13 @@ let package = Package(
     dependencies: [
 //        // Internal packages
         .package(name: "Actions", url: "https://github.com/Appsaurus/Actions", branch: "master"),
-        .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", branch: "spm"),
-//        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", branch: "spm"),
-//        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", branch: "spm"),
-        .package(name: "UIKitMixinable", url: "https://github.com/Appsaurus/UIKitMixinable", branch: "spm"),
-        .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", branch: "spm"),
-        .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", branch: "spm"),
-        .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", branch: "spm"),
-//        .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", from: "0.1.26"),
+        .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", from: "1.0.0"),
+        .package(name: "UIKitMixinable", url: "https://github.com/Appsaurus/UIKitMixinable", from: "1.0.0"),
+        .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", from: "1.0.0"),
+        .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
+        .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "1.0.0"),
         .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", branch: "master"),
-//        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", from: "0.1.14"),
-        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", branch: "master"),
-//        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.0.1"),
-//        .package(name: "UIKitMixinable", url: "https://github.com/Appsaurus/UIKitMixinable", from: "0.1.1"),
-//        .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", from: "0.0.30"),
-//        .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "0.0.36"),
-//        .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "0.0.6"),
+        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.0.43"),
 
         //  Open Source
         .package(name: "ActiveLabel", url: "https://github.com/optonaut/ActiveLabel.swift", from: "1.1.5"),
@@ -74,9 +65,6 @@ let package = Package(
 //        .package(name: "CountryCode", url: "https://github.com/4taras4/CountryCode", from: "1.8.2"),
         .package(name: "DiffableDataSources", url: "https://github.com/ra1028/DiffableDataSources", from: "0.5.0"),
         .package(name: "KeychainAccess", url: "https://github.com/kishikawakatsumi/KeychainAccess", from: "4.2.2"),
-
-
-
         .package(name: "Nuke", url: "https://github.com/kean/Nuke", from: "8.4.1"),
 //        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.3.0"),
         .package(name: "SwiftDate", url: "https://github.com/malcommac/SwiftDate", from: "6.3.1"),
