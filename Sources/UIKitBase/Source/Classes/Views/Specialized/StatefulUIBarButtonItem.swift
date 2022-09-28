@@ -5,12 +5,12 @@
 //  Created by Brian Strobach on 2/13/22.
 //
 
-public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
+open class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
 
     public typealias ButtonCyclerStateChangeCallback = (_ oldState: S, _ newState: S) -> Void
 
-    public var stateCycleOrder: [S]? = nil
-    public var onStateChange: ButtonCyclerStateChangeCallback?
+    open var stateCycleOrder: [S]? = nil
+    open var onStateChange: ButtonCyclerStateChangeCallback?
 
     public class Configuration {
 
@@ -27,17 +27,17 @@ public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
         }
     }
 
-    public var currentState: S {
+    open var currentState: S {
         didSet {
             didTransition(from: oldValue, to: currentState)
         }
     }
 
-    public var states: [S : Configuration]
+    open var states: [S : Configuration]
 
-    var globalStyle: ButtonStyle?
+    open var globalStyle: ButtonStyle?
 
-    var currentConfiguration: Configuration {
+    open var currentConfiguration: Configuration {
         return self.states[self.currentState] ?? .init()
     }
 
@@ -55,12 +55,16 @@ public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
         self.applyCurrentStyle()
 
     }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    public func applyCurrentStyle() {
+    open func applyCurrentStyle() {
         self.transitionTo(state: currentState)
     }
 
-    public func setupControlActions() {
+    open func setupControlActions() {
         self.addTargetAction { [weak self] in
             guard let `self` = self else { return }
             if self.onStateChange != nil {
@@ -73,7 +77,7 @@ public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
         }
     }
 
-    public func cycleToNextState() {
+    open func cycleToNextState() {
         guard let stateCycleOrder = self.stateCycleOrder,
               let index = stateCycleOrder.firstIndex(of: self.currentState) else { return }
 
@@ -85,16 +89,16 @@ public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
     }
 
 
-    func didTapButton() {
+    open func didTapButton() {
         currentConfiguration.action(self)
     }
 
-    public func didTransition(from oldState: S, to newState: S){
+    open func didTransition(from oldState: S, to newState: S){
         transitionLayout(from: oldState, to: newState)
         onStateChange?(oldState, newState)
     }
 
-    public func transitionLayout(from oldState: S? = nil, to newState: S, animated: Bool = true) {
+    open func transitionLayout(from oldState: S? = nil, to newState: S, animated: Bool = true) {
 
 //        guard animated else {
         transitionTo(state: newState)
@@ -104,16 +108,12 @@ public class StatefulUIBarButtonItem<S: Hashable>: UIBarButtonItem{
 //        animate(animations: stateChanges)
     }
 
-    public func transitionTo(state: S) {
+    open func transitionTo(state: S) {
         guard let config = self.states[state] else { return }
         self.title = config.title
         self.image = config.image
         if let tintColor = config.style?.textStyle.color ?? globalStyle?.textStyle.color {
             self.tintColor = tintColor
         }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

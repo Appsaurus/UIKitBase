@@ -10,7 +10,7 @@ import Foundation
 import UIKitTheme
 
 
-public class StatefulUIButton<S: Hashable>: BaseUIButton{
+open class StatefulUIButton<S: Hashable>: BaseUIButton{
 
     public class Configuration {
 
@@ -27,16 +27,16 @@ public class StatefulUIButton<S: Hashable>: BaseUIButton{
         }
     }
 
-    public var currentState: S {
+    open var currentState: S {
         didSet {
             didTransition(from: oldValue, to: currentState)
         }
     }
-    public var states: [S : Configuration]
+    open var states: [S : Configuration]
 
-    public var globalStyle: ButtonStyle?
+    open var globalStyle: ButtonStyle?
 
-    public var currentConfiguration: Configuration {
+    open var currentConfiguration: Configuration {
         return self.states[self.currentState] ?? .init()
     }
 
@@ -46,19 +46,23 @@ public class StatefulUIButton<S: Hashable>: BaseUIButton{
         self.states = states
         super.init(frame: .zero)
     }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    public override func style() {
+    open override func style() {
         super.style()
         applyCurrentStyle()
     }
 
-    public func applyCurrentStyle() {
+    open func applyCurrentStyle() {
         if let style = currentConfiguration.style ?? globalStyle {
             self.apply(buttonStyle: style)
         }
     }
 
-    public override func setupControlActions() {
+    open override func setupControlActions() {
         super.setupControlActions()
         self.addAction { [weak self] in
             self?.didTapButton()
@@ -70,11 +74,11 @@ public class StatefulUIButton<S: Hashable>: BaseUIButton{
         currentConfiguration.action(self)
     }
 
-    public func didTransition(from oldState: S, to newState: S){
+    open func didTransition(from oldState: S, to newState: S){
         transitionLayout(from: oldState, to: newState)
     }
 
-    public func transitionLayout(from oldState: S? = nil, to newState: S, animated: Bool = true) {
+    open func transitionLayout(from oldState: S? = nil, to newState: S, animated: Bool = true) {
         let stateChanges = {  [weak self] in
             guard let self = self else { return }
             let config = self.currentConfiguration
@@ -88,9 +92,5 @@ public class StatefulUIButton<S: Hashable>: BaseUIButton{
             return
         }
         animate(animations: stateChanges)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
