@@ -32,7 +32,7 @@ open class ArrowRefreshAnimator: UIView, CustomPullToRefreshAnimator {
     fileprivate var circleFrontLayer = CAShapeLayer()
     fileprivate var circleBackLayer = CAShapeLayer()
 
-    fileprivate var activityIndicatorView = UIActivityIndicatorView(style: .gray)
+    fileprivate var activityIndicatorView = UIActivityIndicatorView(style: .medium)
 
     override public init(frame: CGRect) {
         super.init(frame: frame)

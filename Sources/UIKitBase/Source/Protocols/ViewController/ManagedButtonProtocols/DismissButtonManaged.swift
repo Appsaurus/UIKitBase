@@ -23,7 +23,7 @@ public class NavigationBarButtonConfiguration: NSObject {
     public var showsDismissButton: Bool
     public init(position: NavigationBarButtonPosition = .trailing,
                 size: CGSize? = nil,
-                activityIndicatorStyle: UIActivityIndicatorView.Style = .white,
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .medium,
                 buttonTitle: String = "Done",
                 buttonAttributedTitle: NSAttributedString? = nil,
                 showsDismissButton: Bool = true)

@@ -333,7 +333,7 @@ open class PagingMenuView: BaseView, UICollectionViewDelegate, UICollectionViewD
 }
 
 extension PagingMenuView {
-    open func deselectAllOtherIndices(selectedIndex: IndexPath, animated: Bool = true) {
+    public func deselectAllOtherIndices(selectedIndex: IndexPath, animated: Bool = true) {
         if let selectedIndices = pagingMenuCollectionView.indexPathsForSelectedItems {
             for idx in selectedIndices where idx != selectedIndex {
                 pagingMenuCollectionView.deselectItem(at: idx, animated: animated)
@@ -341,7 +341,7 @@ extension PagingMenuView {
         }
     }
 
-    open var selectedMenuItemCell: PagingMenuItemCell<UIView>? {
+    public var selectedMenuItemCell: PagingMenuItemCell<UIView>? {
         let numRows = self.collectionView(self.pagingMenuCollectionView, numberOfItemsInSection: 0)
         guard let selectedIndexPath = selectedMenuIndexPath else { return nil }
         let selectedIndex = selectedIndexPath.intIndex

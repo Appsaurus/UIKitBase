@@ -33,9 +33,16 @@ public extension BackButtonManaged {
                                               iconConfiguration: FontIconConfiguration? = nil,
                                               configuration: ManagedButtonConfiguration = defaultButtonConfiguration) -> BaseButton
     {
-        let button = configuration.button ?? defaultButton(configuration: configuration)
         let iconConfiguration = iconConfiguration ?? FontIconConfiguration(sizeConfig: FontIconSizeConfiguration(size: configuration.size))
-        button.imageMap[.normal] = UIImage(icon: icon, configuration: iconConfiguration)
+        return createBackButton(image: UIImage(icon: icon, configuration: iconConfiguration))
+    }
+    
+    @discardableResult
+    func createBackButton(image: UIImage,
+                          configuration: ManagedButtonConfiguration = defaultButtonConfiguration) -> BaseButton
+    {
+        let button = configuration.button ?? defaultButton(configuration: configuration)
+        button.imageMap[.normal] = image
         button.onTap = popViewControllerIfAllowed
         return createManagedButton(configuration: configuration)
     }

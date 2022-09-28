@@ -1,6 +1,6 @@
 //
 //  UIViewController+ShowActivityState.swift
-//  GiftAMeal
+//  UIKitBase
 //
 //  Created by Brian Strobach on 12/16/21.
 //  Copyright © 2021 Brian Strobach. All rights reserved.

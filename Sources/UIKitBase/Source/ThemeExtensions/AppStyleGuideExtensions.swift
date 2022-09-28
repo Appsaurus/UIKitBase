@@ -13,7 +13,7 @@ extension AppStyleGuide {
 
     // MARK: Badge View Styles
 
-    open func badgeViewStyle(for badgeStyle: BadgeStyle) -> ViewStyle {
+    public func badgeViewStyle(for badgeStyle: BadgeStyle) -> ViewStyle {
         let style = ViewStyle(backgroundColor: .primary, shape: .rounded)
         switch badgeStyle {
         case .notification, .error, .delete:
@@ -30,7 +30,7 @@ extension AppStyleGuide {
         return style
     }
 
-    open func badgeTextStyle(for badgeStyle: BadgeStyle, fontSize: CGFloat? = nil) -> TextStyle {
+    public func badgeTextStyle(for badgeStyle: BadgeStyle, fontSize: CGFloat? = nil) -> TextStyle {
         let font: UIFont = fontSize != nil ? UIFont.regular(fontSize!) : UIFont.regular()
         let style = TextStyle(color: .primaryContrast, font: font)
         switch badgeStyle {

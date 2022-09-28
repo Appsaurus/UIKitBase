@@ -94,11 +94,8 @@ public extension CLPlacemark {
             address.country =? country
             address.postalCode =? postalCode
             address.isoCountryCode =? isoCountryCode
-
-            if #available(iOS 10.3, *) {
-                address.subLocality =? subLocality
-                address.subAdministrativeArea =? subAdministrativeArea
-            }
+            address.subLocality =? subLocality
+            address.subAdministrativeArea =? subAdministrativeArea
             return address
         }
         return postalAddress

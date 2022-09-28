@@ -141,7 +141,7 @@ public extension SubmitButtonManaged where Self: UIViewController {
         }
         button.disabledBehaviors = [.dropAlpha(to: 0.5)]
         button.activityBehaviors = [.removeTitle,
-                                    .showIndicator(style: .gray,
+                                    .showIndicator(style: .medium,
                                                    color: navigationBarStyle?.barItemColor,
                                                    at: activityIndicatoPosition)]
         self.setupSubmitButtonAction(for: button)

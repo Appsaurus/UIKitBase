@@ -18,7 +18,7 @@ public class ManagedButtonConfiguration: NSObject {
     public init(button: BaseButton? = nil,
                 position: ManagedButtonPosition = .navBarTrailing,
                 size: CGSize? = nil,
-                activityIndicatorStyle: UIActivityIndicatorView.Style = .white)
+                activityIndicatorStyle: UIActivityIndicatorView.Style = .medium)
     {
         self.button = button
         self.position = position

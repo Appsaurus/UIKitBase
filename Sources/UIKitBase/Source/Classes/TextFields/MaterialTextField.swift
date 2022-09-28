@@ -197,7 +197,7 @@ private extension AssociatedObjectKeys {
 }
 
 extension TextFieldStyleDefaults {
-    open var materialTextFieldStyle: MaterialTextFieldStyle {
+    public var materialTextFieldStyle: MaterialTextFieldStyle {
         get {
             return self[.materialTextFieldStyle, MaterialTextFieldStyle(textStyle: self.text.regular())]
         }
@@ -206,7 +206,7 @@ extension TextFieldStyleDefaults {
         }
     }
 
-    open var materialTextFieldMap: TextFieldStyleMap {
+    public var materialTextFieldMap: TextFieldStyleMap {
         get {
             return self[.materialTextFieldMap, self.textField.materialStyleMap(color: .textDark, titleColor: .textMediumLight)]
         }
@@ -217,7 +217,7 @@ extension TextFieldStyleDefaults {
 }
 
 extension TextFieldStyleGuide {
-    open func materialStyleMap(color: UIColor? = nil,
+    public func materialStyleMap(color: UIColor? = nil,
                                titleColor: UIColor? = nil,
                                disabledColor: UIColor? = nil,
                                textSize: CGFloat = 16.0,

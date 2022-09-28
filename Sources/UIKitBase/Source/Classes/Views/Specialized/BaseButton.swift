@@ -120,7 +120,7 @@ open class BaseButton: BaseView, ButtonStyleable {
     }
 
     open lazy var buttonLayout = ButtonLayout()
-    open var activityBehaviors: [ButtonActivityBehavior] = [.removeTitle, .showIndicator(style: .white, color: nil, at: .center)]
+    open var activityBehaviors: [ButtonActivityBehavior] = [.removeTitle, .showIndicator(style: .medium, color: nil, at: .center)]
     open var disabledBehaviors: [ButtonDisableBehavior] = [.dropAlpha(to: 0.5)]
     open var buttonTapActionMap: ButtonTapActionMap = [:]
     open var attributedTitleMap: ButtonAttributedTitleMap = [:] {

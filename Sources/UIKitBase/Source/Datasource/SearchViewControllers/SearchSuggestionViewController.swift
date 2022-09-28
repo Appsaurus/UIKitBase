@@ -337,31 +337,31 @@ open class DualSearchViewController<QueryType>: BaseParentViewController, UISear
 }
 
 extension DualSearchViewController {
-    open var secondaryControls: SearchControls {
+    public var secondaryControls: SearchControls {
         return secondarySearchViewController.controls
     }
 
-    open var primaryControls: SearchControls {
+    public var primaryControls: SearchControls {
         return primarySearchViewController.controls
     }
 
-    open var secondarySearchBar: UISearchBar {
+    public var secondarySearchBar: UISearchBar {
         return secondaryControls.searchBar
     }
 
-    open var primarySearchBar: UISearchBar {
+    public var primarySearchBar: UISearchBar {
         return primaryControls.searchBar
     }
 
-    open var searchBars: [UISearchBar] {
+    public var searchBars: [UISearchBar] {
         return [primarySearchBar, secondarySearchBar]
     }
 
-    open var primaryResultsControllers: SearchResultsControllers {
+    public var primaryResultsControllers: SearchResultsControllers {
         return primarySearchViewController.resultsController
     }
 
-    open var secondaryResultsControllers: SearchResultsControllers {
+    public var secondaryResultsControllers: SearchResultsControllers {
         return self.secondarySearchViewController.resultsController
     }
 

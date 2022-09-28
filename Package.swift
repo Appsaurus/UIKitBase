@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "UIKitBase",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v13),
 //        .macOS(.v12),
 //        .tvOS(.v15),
 //        .watchOS(.v8),
@@ -54,7 +54,7 @@ let package = Package(
         .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
         .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "1.0.0"),
         .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", branch: "master"),
-        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.0.43"),
+        .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.1.0"),
 
         //  Open Source
         .package(name: "ActiveLabel", url: "https://github.com/optonaut/ActiveLabel.swift", from: "1.1.5"),
@@ -69,6 +69,7 @@ let package = Package(
 //        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.3.0"),
         .package(name: "SwiftDate", url: "https://github.com/malcommac/SwiftDate", from: "6.3.1"),
         .package(name: "URLNavigator", url: "https://github.com/devxoul/URLNavigator", from: "2.3.0"),
+        .package(name: "SFSafeSymbols", url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "4.0.0"),
     ],
     targets: [
         .target(
@@ -82,6 +83,7 @@ let package = Package(
                 .product(name: "Nuke", package: "Nuke"),
                 .product(name: "RuntimeExtensions", package: "RuntimeExtensions"),
                 .product(name: "Swiftest", package: "Swiftest"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "UIKitTheme", package: "UIKitTheme"),
                 .product(name: "UIKitMixinable", package: "UIKitMixinable"),
                 .product(name: "UIKitExtensions", package: "UIKitExtensions"),

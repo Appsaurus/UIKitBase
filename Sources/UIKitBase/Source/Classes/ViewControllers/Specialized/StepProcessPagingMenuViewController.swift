@@ -10,7 +10,6 @@ import Swiftest
 import UIFontIcons
 import UIKitExtensions
 import UIKitTheme
-import MaterialIcons
 
 open class StepProcessPagingMenuViewController: BaseParentPagingMenuViewController, StepProcessPagingMenuViewDelegate {
     open lazy var automaticallyPageToNextStep: Bool = false
@@ -230,7 +229,9 @@ open class StepProcessPagingMenuItemCell: PagingMenuButtonCell, ObjectDisplayabl
     }
 
     open func markAsCompleted(title: String) {
-        menuItemButton.imageView.setFontIconImage(MaterialIcons.Check)
+        let fontSize = UIFont.systemFont(ofSize: currentStyle.fontSizes.navigationBarTitle)
+        let configuration = UIImage.SymbolConfiguration(font: fontSize)
+        menuItemButton.imageView.image = UIImage(.checkmark, configuration: configuration)
         menuItemButton.titleMap[.overrideAll] = title
         menuItemButton.styleMap[.overrideAll] = menuItemButton.styleMap[.selected]
     }

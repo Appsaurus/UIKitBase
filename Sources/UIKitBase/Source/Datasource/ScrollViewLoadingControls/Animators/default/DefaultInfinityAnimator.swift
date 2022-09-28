@@ -13,7 +13,7 @@ open class DefaultInfiniteAnimator: UIView, CustomInfiniteScrollAnimator {
     open fileprivate(set) var animating: Bool = false
 
     override public init(frame: CGRect) {
-        self.activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        self.activityIndicatorView = UIActivityIndicatorView(style: .medium)
         self.activityIndicatorView.hidesWhenStopped = true
         self.activityIndicatorView.isHidden = true
 

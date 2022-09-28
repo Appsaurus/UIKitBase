@@ -14,7 +14,7 @@ public enum ActivityIndicatorPosition {
 }
 
 public extension UIBarButtonItem {
-    func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray, position: ActivityIndicatorPosition = .center) {
+    func showActivityIndicator(style: UIActivityIndicatorView.Style = .medium, position: ActivityIndicatorPosition = .center) {
         guard let customView = self.customView else {
             assertionFailure("You can only show activity indicator on a UIBarButtonItem with a customView.")
             return
@@ -37,7 +37,7 @@ public extension UIView {
      Parameter style: `UIActivityIndicatorViewStyle` default is .gray
      */
 
-    func showActivityIndicator(style: UIActivityIndicatorView.Style = .gray,
+    func showActivityIndicator(style: UIActivityIndicatorView.Style = .medium,
                                color: UIColor? = nil,
                                useAutoLayout: Bool = true,
                                position: ActivityIndicatorPosition = .center,

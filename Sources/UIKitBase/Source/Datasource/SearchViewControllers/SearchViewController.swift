@@ -305,19 +305,19 @@ open class SearchViewController: BaseParentViewController, UISearchBarDelegate {
 }
 
 extension SearchViewController {
-    open var searchBar: UISearchBar {
+    public var searchBar: UISearchBar {
         return controls.searchBar
     }
 
-    open func searchQuery(filterEmpty: Bool = true) -> String? {
+    public func searchQuery(filterEmpty: Bool = true) -> String? {
         return self.searchBar.searchQuery(filterEmpty: filterEmpty)
     }
 
-    open var resultsViewController: SearchResultsViewController {
+    public var resultsViewController: SearchResultsViewController {
         return self.resultsController.resultsViewController
     }
 
-    open var preSearchViewController: UIViewController? {
+    public var preSearchViewController: UIViewController? {
         return self.resultsController.preSearchViewController
     }
 }
