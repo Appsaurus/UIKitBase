@@ -47,19 +47,20 @@ let package = Package(
     ],
     dependencies: [
 //        // Internal packages
-        .package(name: "Actions", url: "https://github.com/Appsaurus/Actions", branch: "master"),
+        .package(name: "Actions", url: "https://github.com/Appsaurus/Actions", from: "3.0.2"),
+        .package(name: "DarkMagic", url: "https://github.com/Appsaurus/DarkMagic", from: "0.0.4"),
         .package(name: "Layman", url: "https://github.com/Appsaurus/Layman", from: "1.0.0"),
         .package(name: "UIKitMixinable", url: "https://github.com/Appsaurus/UIKitMixinable", from: "1.0.0"),
         .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", from: "1.0.0"),
         .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
         .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "1.0.0"),
-        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", branch: "master"),
+        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", .exact("1.0.1")),
         .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "0.1.0"),
 
         //  Open Source
         .package(name: "ActiveLabel", url: "https://github.com/optonaut/ActiveLabel.swift", from: "1.1.5"),
         .package(name: "Algorithm", url: "https://github.com/CosmicMind/Algorithm", from: "3.1.1"),
-        .package(name: "AssistantKit", url: "https://github.com/woxtu/AssistantKit", branch: "spm"),
+//        .package(name: "AssistantKit", url: "https://github.com/woxtu/AssistantKit", branch: "spm"),
 
         //CountryCode needs to fix spm integration - https://github.com/4taras4/CountryCode/issues/62
 //        .package(name: "CountryCode", url: "https://github.com/4taras4/CountryCode", from: "1.8.2"),
@@ -77,7 +78,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Actions", package: "Actions"),
                 .product(name: "Algorithm", package: "Algorithm"),
-                .product(name: "AssistantKit", package: "AssistantKit"),
+//                .product(name: "AssistantKit", package: "AssistantKit"),
+                .product(name: "DarkMagic", package: "DarkMagic"),
                 .product(name: "DiffableDataSources", package: "DiffableDataSources"),
                 .product(name: "Layman", package: "Layman"),
                 .product(name: "Nuke", package: "Nuke"),
@@ -177,7 +179,7 @@ let package = Package(
             dependencies: [
                 .target(name: "UIKitBase"),
                 "Algorithm",
-                "AssistantKit",
+//                "AssistantKit",
                 "DiffableDataSources",
                 "Nuke",
                 "RuntimeExtensions",
