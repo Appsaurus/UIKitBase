@@ -81,19 +81,32 @@ open class LegalDisclosureView: BaseView {
     open var label = ActiveLabel()
     open var viewModel: LegalDisclosureViewModel
     open var onPresented: VoidClosure?
+    
+    var customType: ActiveType {
+        ActiveType.custom(pattern: self.viewModel.regularExpressionPattern)
+    }
     public required init(viewModel: LegalDisclosureViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
     }
 
-    override open func initProperties() {
-        super.initProperties()
-        let customType = ActiveType.custom(pattern: self.viewModel.regularExpressionPattern)
+    
+    open override func style() {
+        super.style()
+        styleLabel()
+    }
+    
+    func styleLabel() {
         self.label.enabledTypes = [customType]
         self.label.apply(textStyle: .light(color: .deselected, size: .button))
         self.label.customColor[customType] = .selected
         self.label.customSelectedColor[customType] = .selected
+    }
+    
+    override open func initProperties() {
+        super.initProperties()
 
+        self.styleLabel()
         self.label.handleCustomTap(for: customType) { [weak self] element in
             guard let self = self else { return }
             let pagingVC = PagingWebViewController(titledUrlStrings: self.viewModel.legalDocuments)
@@ -128,3 +141,4 @@ open class LegalDisclosureView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
