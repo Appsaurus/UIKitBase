@@ -53,7 +53,7 @@ let package = Package(
         .package(name: "UIKitTheme", url: "https://github.com/Appsaurus/UIKitTheme", from: "1.0.0"),
         .package(name: "UIKitExtensions", url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
         .package(name: "UIFontIcons", url: "https://github.com/Appsaurus/UIFontIcons", from: "1.0.0"),
-        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", .exact("1.0.1")),
+        .package(name: "RuntimeExtensions", url: "https://github.com/Appsaurus/RuntimeExtensions", from: "1.0.2"),
         .package(name: "Swiftest", url: "https://github.com/Appsaurus/Swiftest", from: "1.2.3"),
 
         //  Open Source
