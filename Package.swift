@@ -47,7 +47,7 @@ let package = Package(
                 .product(name: "Layman", package: "Layman"),
                 .product(name: "Nuke", package: "Nuke"),
                 .product(name: "RuntimeExtensions", package: "RuntimeExtensions"),
-                .product(name: "DarkMagic", package: "RuntimeExtensions"),
+                .product(name: "DarkMagic", package: "DarkMagic"),
                 .product(name: "Swiftest", package: "Swiftest"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "UIKitTheme", package: "UIKitTheme"),
