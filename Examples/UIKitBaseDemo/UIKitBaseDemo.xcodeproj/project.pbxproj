@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E45CC14D2D9F396400CDE562 /* UIFontIconsFeather in Frameworks */ = {isa = PBXBuildFile; productRef = E45CC14C2D9F396400CDE562 /* UIFontIconsFeather */; };
+		E45CC14F2D9F396400CDE562 /* UIFontIconsMaterialIcons in Frameworks */ = {isa = PBXBuildFile; productRef = E45CC14E2D9F396400CDE562 /* UIFontIconsMaterialIcons */; };
 		E475AF31279731C800376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF30279731C800376592 /* UIKitBase */; };
 		E475AF33279731CF00376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF32279731CF00376592 /* UIKitBase */; };
 		E475AF35279731D500376592 /* UIKitBase in Frameworks */ = {isa = PBXBuildFile; productRef = E475AF34279731D500376592 /* UIKitBase */; };
@@ -144,6 +146,8 @@
 			files = (
 				E475AF8A279738AC00376592 /* Fakery in Frameworks */,
 				E475AF31279731C800376592 /* UIKitBase in Frameworks */,
+				E45CC14D2D9F396400CDE562 /* UIFontIconsFeather in Frameworks */,
+				E45CC14F2D9F396400CDE562 /* UIFontIconsMaterialIcons in Frameworks */,
 				E475AF872797378300376592 /* UIFontLoader in Frameworks */,
 				E475AF84279736FE00376592 /* IQKeyboardManagerSwift in Frameworks */,
 				E475AF8D27973F0200376592 /* SwiftyTimer in Frameworks */,
@@ -350,6 +354,8 @@
 				E475AF862797378300376592 /* UIFontLoader */,
 				E475AF89279738AC00376592 /* Fakery */,
 				E475AF8C27973F0200376592 /* SwiftyTimer */,
+				E45CC14C2D9F396400CDE562 /* UIFontIconsFeather */,
+				E45CC14E2D9F396400CDE562 /* UIFontIconsMaterialIcons */,
 			);
 			productName = "UIKitBaseDemo (iOS)";
 			productReference = E47ABC142791EFA00065ECF4 /* UIKitBaseDemo.app */;
@@ -471,6 +477,7 @@
 				E475AF852797378300376592 /* XCRemoteSwiftPackageReference "UIFontLoader" */,
 				E475AF88279738AB00376592 /* XCRemoteSwiftPackageReference "Fakery" */,
 				E475AF8B27973F0200376592 /* XCRemoteSwiftPackageReference "SwiftyTimer" */,
+				E45CC14B2D9F396400CDE562 /* XCRemoteSwiftPackageReference "UIFontIcons" */,
 			);
 			productRefGroup = E47ABC152791EFA00065ECF4 /* Products */;
 			projectDirPath = "";
@@ -1072,6 +1079,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E45CC14B2D9F396400CDE562 /* XCRemoteSwiftPackageReference "UIFontIcons" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appsaurus/UIFontIcons";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		E475AF82279736FE00376592 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -1107,6 +1122,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E45CC14C2D9F396400CDE562 /* UIFontIconsFeather */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E45CC14B2D9F396400CDE562 /* XCRemoteSwiftPackageReference "UIFontIcons" */;
+			productName = UIFontIconsFeather;
+		};
+		E45CC14E2D9F396400CDE562 /* UIFontIconsMaterialIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E45CC14B2D9F396400CDE562 /* XCRemoteSwiftPackageReference "UIFontIcons" */;
+			productName = UIFontIconsMaterialIcons;
+		};
 		E475AF30279731C800376592 /* UIKitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIKitBase;

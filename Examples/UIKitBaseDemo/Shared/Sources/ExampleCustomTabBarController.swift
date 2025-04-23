@@ -36,6 +36,13 @@ public class ExampleCustomTabBarController: CustomTabBarController {
 		vc.tabBarItem = UITabBarItem(icon: MaterialIcons.Airline_Seat_Flat, selectedIcon: MaterialIcons.Airline_Seat_Flat_Angled, title: "TAB 5")
 	}
 
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     open override func initProperties() {
         super.initProperties()
         initialViewControllers = [vc1, vc2, vc3, vc4, vc5]

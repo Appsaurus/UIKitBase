@@ -49,7 +49,6 @@ let package = Package(
                 .product(name: "RuntimeExtensions", package: "RuntimeExtensions"),
                 .product(name: "DarkMagic", package: "DarkMagic"),
                 .product(name: "Swiftest", package: "Swiftest"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "UIKitTheme", package: "UIKitTheme"),
                 .product(name: "UIKitMixinable", package: "UIKitMixinable"),
                 .product(name: "UIKitExtensions", package: "UIKitExtensions"),

@@ -115,6 +115,13 @@ public class MainNavigationTabBarController: BaseTabBarController {
     ]
 
 
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setViewControllers(initialViewControllers, animated: false)
