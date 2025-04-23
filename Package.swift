@@ -35,7 +35,6 @@ let package = Package(
         .package(url: "https://github.com/kean/Nuke", from: "8.4.1"),
         .package(url: "https://github.com/malcommac/SwiftDate", from: "6.3.1"),
         .package(url: "https://github.com/devxoul/URLNavigator", from: "2.3.0"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "4.0.0"),
     ],
     targets: [
         .target(
