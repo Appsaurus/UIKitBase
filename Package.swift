@@ -20,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Appsaurus/Actions", from: "3.0.2"),
-        .package(url: "https://github.com/Appsaurus/Layman", from: "1.0.0"),
+        .package(url: "https://github.com/Appsaurus/Layman", from: "1.0.4"),
         .package(url: "https://github.com/Appsaurus/UIKitMixinable", from: "1.0.0"),
         .package(url: "https://github.com/Appsaurus/UIKitTheme", from: "1.0.0"),
         .package(url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
