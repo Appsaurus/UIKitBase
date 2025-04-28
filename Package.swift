@@ -26,7 +26,7 @@ let package = Package(
         .package(url: "https://github.com/Appsaurus/UIKitExtensions", from: "1.0.0"),
         .package(url: "https://github.com/Appsaurus/UIFontIcons", from: "1.0.0"),
         .package(url: "https://github.com/Appsaurus/RuntimeExtensions", from: "1.0.2"),
-        .package(url: "https://github.com/Appsaurus/Swiftest", from: "1.2.3"),
+        .package(url: "https://github.com/Appsaurus/Swiftest", from: "1.2.7"),
         .package(url: "https://github.com/Appsaurus/DarkMagic", from: "0.0.4"),
         .package(url: "https://github.com/optonaut/ActiveLabel.swift", from: "1.1.5"),
         .package(url: "https://github.com/CosmicMind/Algorithm", from: "3.1.1"),
