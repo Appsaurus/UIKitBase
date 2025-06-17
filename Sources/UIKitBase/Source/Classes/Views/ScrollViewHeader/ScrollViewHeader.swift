@@ -11,7 +11,7 @@ import Layman
 import Swiftest
 
 open class ScrollViewHeader: BaseView, ScrollViewObserver {
-    var debugMode: Bool = false
+    open var debugMode: Bool = false
     override open var bounds: CGRect {
         didSet {
             if oldValue != bounds {
