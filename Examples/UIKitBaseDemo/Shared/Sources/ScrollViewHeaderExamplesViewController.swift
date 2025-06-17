@@ -32,7 +32,7 @@ extension ScrollViewHeaderAdornable where Self: UIViewController{
     
     public func displayScrollViewHeaderExampleContent(){
         guard let scrollViewHeader = scrollViewHeader else { return }
-        let backgroundImageUrl = "http://www.heavymetal.com/wp-content/uploads/2015/06/big-trouble-in-little-china.jpg"
+        let backgroundImageUrl = "https://picsum.photos/200/600"
         do {
             try scrollViewHeader.headerBackgroundImageView.loadImage(with: backgroundImageUrl)
         }
