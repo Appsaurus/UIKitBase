@@ -215,9 +215,9 @@ open class ScrollViewHeader: BaseView, ScrollViewObserver {
     open func adjustViews(for scrollViewOffset: CGPoint) {
         guard let scrollView = scrollView else { return }
         var topConstant = -scrollView.contentInset.top
-        if self.visibleHeaderHeight <= self.collapsedHeaderHeight {
-            topConstant = scrollViewOffset.y + self.collapsedHeaderHeight - self.expandedHeight
-        }
+//        if self.visibleHeaderHeight <= self.collapsedHeaderHeight {
+//            topConstant = scrollViewOffset.y + self.collapsedHeaderHeight - self.expandedHeight
+//        }
         moveToFront()
 
 //        if visibleHeaderHeight >= expandedHeight {
